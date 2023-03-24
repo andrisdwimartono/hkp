@@ -20,6 +20,7 @@
   "company",
   "transaction_date",
   "schedule_date",
+  "submission_time",
   "order_confirmation_no",
   "order_confirmation_date",
   "amended_from",
@@ -27,6 +28,7 @@
   "cost_center",
   "dimension_col_break",
   "project",
+  "project_name",
   "drop_ship",
   "customer",
   "customer_name",
@@ -161,14 +163,15 @@
    "print_hide": 1
   },
   {
+   "default": ".##./SPB/HKP/.MM./.YYYY.",
    "fieldname": "naming_series",
-   "fieldtype": "Select",
+   "fieldtype": "Data",
    "label": "Series",
    "no_copy": 1,
    "oldfieldname": "naming_series",
    "oldfieldtype": "Select",
-   "options": "PUR-ORD-.YYYY.-",
    "print_hide": 1,
+   "read_only": 1,
    "reqd": 1,
    "set_only_once": 1
   },
@@ -1164,17 +1167,28 @@
    "fieldtype": "Link",
    "label": "Project",
    "options": "Project"
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "submission_time",
+   "fieldtype": "Date",
+   "label": "Submission Time"
   }
  ],
  "icon": "fa fa-file-text",
  "idx": 105,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-12-25 18:08:59.074182",
+ "modified": "2023-03-21 15:06:06.848344",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Purchase Order",
- "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
@@ -1221,7 +1235,6 @@
  "show_name_in_global_search": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
  "timeline_field": "supplier",
  "title_field": "supplier_name",
  "track_changes": 1

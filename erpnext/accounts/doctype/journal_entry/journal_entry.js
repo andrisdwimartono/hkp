@@ -373,7 +373,7 @@ erpnext.accounts.JournalEntry = frappe.ui.form.Controller.extend({
 		});
 
 		// set difference
-		if(doc.difference) {
+		if(doc.difference && doc.turn_off_auto_balance != 1) {
 			if(doc.difference > 0) {
 				row.credit_in_account_currency = doc.difference;
 				row.credit = doc.difference;

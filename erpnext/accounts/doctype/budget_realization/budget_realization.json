@@ -1,0 +1,140 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "BR-.YY.-.######.",
+ "creation": "2023-03-20 09:10:56.349474",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project",
+  "project_name",
+  "budget",
+  "pos_rap",
+  "duration",
+  "volume",
+  "unit_price",
+  "budget_amount",
+  "account",
+  "cost_center",
+  "description",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "budget",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Budget",
+   "options": "Budget",
+   "reqd": 1
+  },
+  {
+   "fieldname": "duration",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Duration",
+   "reqd": 1
+  },
+  {
+   "fieldname": "volume",
+   "fieldtype": "Float",
+   "label": "Volume",
+   "reqd": 1
+  },
+  {
+   "fieldname": "unit_price",
+   "fieldtype": "Currency",
+   "label": "Unit Price",
+   "options": "Company:company:default_currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "budget_amount",
+   "fieldtype": "Currency",
+   "label": "Budget Amount",
+   "options": "Company:company:default_currency",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "label": "Account",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Budget Realization",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "pos_rap",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "POS RAP",
+   "options": "POS RAP",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project Name",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-03-20 10:38:38.744560",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Budget Realization",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "pos_rap,project_name",
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

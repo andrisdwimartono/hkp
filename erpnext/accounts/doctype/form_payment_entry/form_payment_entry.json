@@ -1,0 +1,143 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "KB.#####.",
+ "creation": "2023-03-20 14:01:26.374469",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "purpose",
+  "significant",
+  "column_break_ni31z",
+  "posting_date",
+  "section_break_kqfpp",
+  "details",
+  "section_break_fkxbb",
+  "total_budget",
+  "column_break_oflkz",
+  "total_approved_budget",
+  "section_break_73dp1",
+  "keterangan",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "keterangan",
+   "fieldtype": "Small Text",
+   "label": "Keterangan"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Form Payment Entry",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Tanggal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "details",
+   "fieldtype": "Table",
+   "label": "Form Payment Entry Detail",
+   "options": "Form Payment Entry Detail",
+   "reqd": 1
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Untuk Keperluan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "significant",
+   "fieldtype": "Select",
+   "label": "Sifat",
+   "options": "\nImportant\nNot Important",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ni31z",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_kqfpp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_fkxbb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_budget",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Budget",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_oflkz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_approved_budget",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Approved Budget",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_73dp1",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-03-20 16:17:11.599415",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Form Payment Entry",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Kasir",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

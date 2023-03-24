@@ -2,7 +2,7 @@
  "actions": [],
  "allow_auto_repeat": 1,
  "allow_import": 1,
- "autoname": "naming_series:",
+ "autoname": "field:naming_series",
  "creation": "2022-01-25 10:29:58.717206",
  "doctype": "DocType",
  "document_type": "Document",
@@ -22,6 +22,7 @@
   "posting_date",
   "apply_tds",
   "2_add_edit_gl_entries",
+  "turn_off_auto_balance",
   "accounts",
   "section_break99",
   "cheque_no",
@@ -94,15 +95,15 @@
   },
   {
    "fieldname": "naming_series",
-   "fieldtype": "Select",
+   "fieldtype": "Data",
    "label": "Series",
    "no_copy": 1,
    "oldfieldname": "naming_series",
    "oldfieldtype": "Select",
-   "options": "ACC-JV-.YYYY.-",
    "print_hide": 1,
    "reqd": 1,
-   "set_only_once": 1
+   "set_only_once": 1,
+   "unique": 1
   },
   {
    "fieldname": "column_break1",
@@ -271,6 +272,7 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Total Amount in Words",
+   "length": 1000,
    "no_copy": 1,
    "print_hide": 1,
    "read_only": 1,
@@ -533,17 +535,22 @@
    "label": "Process Deferred Accounting",
    "options": "Process Deferred Accounting",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "turn_off_auto_balance",
+   "fieldtype": "Check",
+   "label": "Turn Off Auto Balance"
   }
  ],
  "icon": "fa fa-file-text",
  "idx": 176,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-06-23 22:01:32.348337",
+ "modified": "2023-03-21 15:14:52.020061",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Journal Entry",
- "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
@@ -587,7 +594,6 @@
  "search_fields": "voucher_type,posting_date, due_date, cheque_no",
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
  "title_field": "title",
  "track_changes": 1
 }

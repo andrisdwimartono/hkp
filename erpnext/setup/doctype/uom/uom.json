@@ -40,11 +40,10 @@
  "icon": "fa fa-compass",
  "idx": 1,
  "links": [],
- "modified": "2021-10-18 14:07:43.722144",
+ "modified": "2023-03-14 10:24:15.565941",
  "modified_by": "Administrator",
  "module": "Setup",
  "name": "UOM",
- "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -75,7 +74,6 @@
    "role": "Stock User"
   }
  ],
- "quick_entry": 1,
  "show_name_in_global_search": 1,
  "sort_field": "modified",
  "sort_order": "ASC"

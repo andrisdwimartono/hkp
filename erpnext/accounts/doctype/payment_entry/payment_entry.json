@@ -79,6 +79,10 @@
   "clearance_date",
   "accounting_dimensions_section",
   "project",
+  "project_name",
+  "budget_realization",
+  "pos_rap",
+  "form_payment_entry",
   "dimension_col_break",
   "cost_center",
   "section_break_12",
@@ -230,7 +234,7 @@
    "fieldname": "paid_from",
    "fieldtype": "Link",
    "in_global_search": 1,
-   "label": "Account Paid From",
+   "label": "Kredit",
    "options": "Account",
    "print_hide": 1,
    "reqd": 1
@@ -263,7 +267,7 @@
    "fieldname": "paid_to",
    "fieldtype": "Link",
    "in_global_search": 1,
-   "label": "Account Paid To",
+   "label": "Debit",
    "options": "Account",
    "print_hide": 1,
    "reqd": 1
@@ -726,16 +730,43 @@
    "fieldname": "section_break_60",
    "fieldtype": "Section Break",
    "hide_border": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.project",
+   "fieldname": "budget_realization",
+   "fieldtype": "Link",
+   "label": "Budget Realization",
+   "options": "Budget Realization"
+  },
+  {
+   "fetch_from": "budget_realization.pos_rap",
+   "fieldname": "pos_rap",
+   "fieldtype": "Data",
+   "label": "POS RAP",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.project==\"\"",
+   "fieldname": "form_payment_entry",
+   "fieldtype": "Link",
+   "label": "Form Payment Entry",
+   "options": "Form Payment Entry"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-02-23 20:08:39.559814",
+ "modified": "2023-03-21 15:35:29.920323",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Payment Entry",
- "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
@@ -774,7 +805,6 @@
  "show_name_in_global_search": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
  "title_field": "title",
  "track_changes": 1
 }

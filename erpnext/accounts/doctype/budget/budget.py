@@ -23,6 +23,19 @@ class DuplicateBudgetError(frappe.ValidationError):
 
 
 class Budget(Document):
+	def on_submit(self):
+		self.createposrap()
+	
+	def createposrap(self):
+		for d in self.accounts:
+			if not frappe.db.exists("POS RAP", d.pos_rap):
+				pos_rap_doc = frappe.get_doc({
+					"doctype": "POS RAP",
+					"pos_rap": d.pos_rap
+				})
+				pos_rap_doc.save()
+				frappe.db.commit()
+
 	def autoname(self):
 		self.name = make_autoname(
 			self.get(frappe.scrub(self.budget_against)) + "/" + self.fiscal_year + "/.###"
@@ -35,6 +48,12 @@ class Budget(Document):
 		self.validate_accounts()
 		self.set_null_value()
 		self.validate_applicable_for()
+		self.set_total_budget_amount()
+	
+	def set_total_budget_amount(self):
+		self.total_budget_amount = 0
+		for d in self.accounts:
+			self.total_budget_amount = self.total_budget_amount+d.budget_amount
 
 	def validate_duplicate(self):
 		budget_against_field = frappe.scrub(self.budget_against)
@@ -80,10 +99,11 @@ class Budget(Document):
 						)
 					)
 
-				if d.account in account_list:
-					frappe.throw(_("Account {0} has been entered multiple times").format(d.account))
-				else:
-					account_list.append(d.account)
+				# if d.account in account_list:
+				# 	frappe.throw(_("Account {0} has been entered multiple times").format(d.account))
+				# else:
+				# 	account_list.append(d.account)
+				account_list.append(d.account)
 
 	def set_null_value(self):
 		if self.budget_against == "Cost Center":

@@ -10,6 +10,7 @@
   "company",
   "cost_center",
   "project",
+  "project_name",
   "fiscal_year",
   "column_break_3",
   "monthly_distribution",
@@ -27,24 +28,25 @@
   "action_if_annual_budget_exceeded",
   "action_if_accumulated_monthly_budget_exceeded",
   "section_break_21",
-  "accounts"
+  "accounts",
+  "total_budget_amount",
+  "total_budget_amount_in_words"
  ],
  "fields": [
   {
-   "default": "Cost Center",
+   "default": "Project",
    "fieldname": "budget_against",
    "fieldtype": "Select",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Budget Against",
-   "options": "\nCost Center\nProject",
+   "options": "\nProject\nCost Center",
    "reqd": 1
   },
   {
    "fieldname": "company",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "Company",
    "options": "Company",
    "reqd": 1
@@ -62,7 +64,6 @@
    "depends_on": "eval:doc.budget_against == 'Project'",
    "fieldname": "project",
    "fieldtype": "Link",
-   "in_standard_filter": 1,
    "label": "Project",
    "options": "Project"
   },
@@ -190,12 +191,36 @@
    "label": "Budget Accounts",
    "options": "Budget Account",
    "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_budget_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Budget Amount",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_budget_amount_in_words",
+   "fieldtype": "Data",
+   "label": "Total Budget Amount (Company Currency)",
+   "length": 540,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2020-10-06 15:13:54.055854",
+ "modified": "2023-03-17 15:48:14.147574",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Budget",
@@ -220,5 +245,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
+ "title_field": "project_name",
  "track_changes": 1
 }

@@ -1,0 +1,167 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "KBP.##.",
+ "creation": "2023-03-20 14:59:02.975320",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project",
+  "project_name",
+  "purpose",
+  "significant",
+  "column_break_ni31z",
+  "posting_date",
+  "section_break_kqfpp",
+  "details",
+  "section_break_fkxbb",
+  "total_budget",
+  "column_break_oflkz",
+  "total_approved_budget",
+  "section_break_73dp1",
+  "keterangan",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Untuk Keperluan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "significant",
+   "fieldtype": "Select",
+   "label": "Sifat",
+   "options": "\nImportant\nNot Important",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ni31z",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Tanggal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_kqfpp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "details",
+   "fieldtype": "Table",
+   "label": "Form Payment Entry Detail",
+   "options": "Form Payment Entry Project Detail",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_fkxbb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_budget",
+   "fieldtype": "Currency",
+   "label": "Total Budget",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_oflkz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_approved_budget",
+   "fieldtype": "Currency",
+   "label": "Total Approved Budget",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_73dp1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "keterangan",
+   "fieldtype": "Small Text",
+   "label": "Keterangan"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Form Payment Entry Project",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Form Payment Entry Project",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-03-20 16:11:27.177659",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Form Payment Entry Project",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Kasir",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

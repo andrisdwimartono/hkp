@@ -18,19 +18,23 @@ frappe.ui.form.on('Payment Entry', {
 	},
 
 	setup: function(frm) {
-		frm.set_query("paid_from", function() {
-			frm.events.validate_company(frm);
+		// frm.set_query("paid_from", function() {
+		// 	frm.events.validate_company(frm);
 
-			var account_types = in_list(["Pay", "Internal Transfer"], frm.doc.payment_type) ?
-				["Bank", "Cash"] : [frappe.boot.party_account_types[frm.doc.party_type]];
-			return {
-				filters: {
-					"account_type": ["in", account_types],
-					"is_group": 0,
-					"company": frm.doc.company
-				}
-			}
-		});
+		// 	var account_types = in_list(["Pay", "Internal Transfer"], frm.doc.payment_type) ?
+		// 		["Bank", "Cash"] : [frappe.boot.party_account_types[frm.doc.party_type]];
+		// 	if(account_types.length == 1 && account_types[0] == "Payable"){
+		// 		account_types[0] = "Receivable";
+		// 		account_types[1] = "Income Account";
+		// 	}
+		// 	return {
+		// 		filters: {
+		// 			"account_type": ["in", account_types],
+		// 			"is_group": 0,
+		// 			"company": frm.doc.company
+		// 		}
+		// 	}
+		// });
 
 		frm.set_query("party_type", function() {
 			frm.events.validate_company(frm);
@@ -72,19 +76,22 @@ frappe.ui.form.on('Payment Entry', {
 			}
 		});
 
-		frm.set_query("paid_to", function() {
-			frm.events.validate_company(frm);
+		// frm.set_query("paid_to", function() {
+		// 	frm.events.validate_company(frm);
 
-			var account_types = in_list(["Receive", "Internal Transfer"], frm.doc.payment_type) ?
-				["Bank", "Cash"] : [frappe.boot.party_account_types[frm.doc.party_type]];
-			return {
-				filters: {
-					"account_type": ["in", account_types],
-					"is_group": 0,
-					"company": frm.doc.company
-				}
-			}
-		});
+		// 	var account_types = in_list(["Receive", "Internal Transfer"], frm.doc.payment_type) ?
+		// 		["Bank", "Cash"] : [frappe.boot.party_account_types[frm.doc.party_type]];
+		// 	if(account_types.length == 1 && account_types[0] == "Payable"){
+		// 		account_types[1] = "Expense Account";
+		// 	}
+		// 	return {
+		// 		filters: {
+		// 			"account_type": ["in", account_types],
+		// 			"is_group": 0,
+		// 			"company": frm.doc.company
+		// 		}
+		// 	}
+		// });
 
 		frm.set_query("account", "deductions", function() {
 			return {
@@ -158,6 +165,31 @@ frappe.ui.form.on('Payment Entry', {
 			return {
 				filters: filters
 			};
+		});
+
+		frm.set_query("budget_realization", function() {
+			return {
+				filters: {
+					project: frm.doc.project,
+					docstatus: 1
+				}
+			}
+		});
+	},
+
+	budget_realization: function(frm){
+		frappe.call({
+			method: 'erpnext.accounts.doctype.budget_realization.budget_realization.check_budget_realization',
+			args: {
+				'budget_realization': frm.doc.budget_realization
+			},
+			callback: function(r) {
+				if(r.message){
+					var vals = r.message[0];
+					frm.set_value("paid_amount", vals.budget_amount);
+					frm.refresh_field("paid_amount");
+				}
+			}
 		});
 	},
 

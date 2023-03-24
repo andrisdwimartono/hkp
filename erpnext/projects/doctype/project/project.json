@@ -447,7 +447,7 @@
    "fieldtype": "Select",
    "label": "Series",
    "no_copy": 1,
-   "options": "PROJ-.####",
+   "options": ".YY.-.#.\nPROJ-.####",
    "print_hide": 1,
    "reqd": 1,
    "set_only_once": 1
@@ -458,7 +458,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "max_attachments": 4,
- "modified": "2022-05-25 22:45:06.108499",
+ "modified": "2023-03-17 13:33:37.861363",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Project",
@@ -494,7 +494,6 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
  "search_fields": "project_name,customer, status, priority, is_active",
  "show_name_in_global_search": 1,
  "sort_field": "modified",

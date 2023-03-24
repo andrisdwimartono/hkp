@@ -1,0 +1,49 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-03-20 15:44:00.144900",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "pos_rap",
+  "budget",
+  "approved_budget"
+ ],
+ "fields": [
+  {
+   "fieldname": "pos_rap",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "POS RAP",
+   "options": "POS RAP",
+   "reqd": 1
+  },
+  {
+   "fieldname": "budget",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Budget",
+   "options": "Company:company:default_currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "approved_budget",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Approved Budget",
+   "options": "Company:company:default_currency"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-03-20 15:44:00.144900",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Form Payment Entry Project Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -15,6 +15,7 @@
   "naming_series",
   "first_name",
   "middle_name",
+  "initial",
   "last_name",
   "salutation",
   "employee_name",
@@ -23,6 +24,7 @@
   "column_break1",
   "company",
   "status",
+  "position",
   "gender",
   "date_of_birth",
   "date_of_joining",
@@ -807,18 +809,35 @@
    "fieldtype": "Link",
    "label": "Shift Request Approver",
    "options": "User"
+  },
+  {
+   "fieldname": "initial",
+   "fieldtype": "Data",
+   "label": "Initial"
+  },
+  {
+   "default": "Office",
+   "fieldname": "position",
+   "fieldtype": "Select",
+   "label": "Position",
+   "options": "Project\nOffice"
   }
  ],
  "icon": "fa fa-user",
  "idx": 24,
  "image_field": "image",
- "links": [],
- "modified": "2022-08-20 13:44:37.088519",
+ "links": [
+  {
+   "group": "Allowed Items",
+   "link_doctype": "Party Specific Item",
+   "link_fieldname": "party"
+  }
+ ],
+ "modified": "2023-03-20 11:21:10.777583",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Employee",
  "name_case": "Title Case",
- "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

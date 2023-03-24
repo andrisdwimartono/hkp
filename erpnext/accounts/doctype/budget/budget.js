@@ -47,3 +47,15 @@ frappe.ui.form.on('Budget', {
 		frm.toggle_reqd("project", frm.doc.budget_against=="Project");
 	}
 });
+
+frappe.ui.form.on("Budget Account", "volume", function(frm, cdt, cdn) {
+    var d = locals[cdt][cdn];
+    d.budget_amount = d.volume*d.unit_price;
+	refresh_field("accounts");
+});
+
+frappe.ui.form.on("Budget Account", "unit_price", function(frm, cdt, cdn) {
+    var d = locals[cdt][cdn];
+    d.budget_amount = d.volume*d.unit_price;
+	refresh_field("accounts");
+});

@@ -236,6 +236,12 @@ frappe.ui.form.on("Item", {
 
 	has_variants: function(frm) {
 		erpnext.item.toggle_attributes(frm);
+	},
+
+	item_category: function(frm) {
+		if(frm.doc.item_category){
+			frm.set_value("naming_series", frm.doc.item_category+".###.");
+		}
 	}
 });
 

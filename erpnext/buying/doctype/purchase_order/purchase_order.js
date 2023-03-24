@@ -89,6 +89,32 @@ frappe.ui.form.on("Purchase Order", {
 				});
 			}, __('Create'));
 		}
+	},
+
+	project: function(frm) {
+		var roman = ["I", "II", "III", "IV", "V", "VI", "VII", "VII", "IX", "X", "XI", "XII"];
+		var ser = ".##./SPB/HKP/";
+		if(frm.doc.transaction_date && frm.doc.project){
+			var date = frm.doc.transaction_date;
+			var dt = date.split("-");
+			ser = ser+frm.doc.project+"/"+roman[parseInt(dt[1])-1]+"/"+dt[0];
+		}
+		
+		frm.set_value("naming_series", ser);
+		frm.refresh_field("naming_series");
+	},
+
+	transaction_date: function(frm) {
+		var roman = ["I", "II", "III", "IV", "V", "VI", "VII", "VII", "IX", "X", "XI", "XII"];
+		var ser = ".##./SPB/HKP/";
+		if(frm.doc.transaction_date && frm.doc.project){
+			var date = frm.doc.transaction_date;
+			var dt = date.split("-");
+			ser = ser+frm.doc.project+"/"+roman[parseInt(dt[1])-1]+"/"+dt[0];
+		}
+		
+		frm.set_value("naming_series", ser);
+		frm.refresh_field("naming_series");
 	}
 });
 
