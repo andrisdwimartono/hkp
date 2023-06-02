@@ -3,6 +3,15 @@
 
 frappe.ui.form.on('Asset Maintenance', {
 	setup: (frm) => {
+		frm.set_query("assign_to_employee", "asset_maintenance_tasks", function(doc) {
+			return {
+				query: "erpnext.assets.doctype.asset_maintenance.asset_maintenance.get_team_members2",
+				filters: {
+					maintenance_team: doc.maintenance_team
+				}
+			};
+		});
+
 		frm.set_query("assign_to", "asset_maintenance_tasks", function(doc) {
 			return {
 				query: "erpnext.assets.doctype.asset_maintenance.asset_maintenance.get_team_members",

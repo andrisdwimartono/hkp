@@ -28,6 +28,22 @@ frappe.ui.form.on("Purchase Receipt", {
 			'Purchase Invoice': 'Purchase Invoice'
 		};
 
+		frm.set_query("purchase_order", function() {
+			if(frm.doc.project)
+				return {
+					filters: {
+						'project': frm.doc.project,
+						'docstatus': 1
+					}
+				};
+			else
+				return {
+					filters: {
+						'docstatus': 1
+					}
+				};
+		});
+
 		frm.set_query("expense_account", "items", function() {
 			return {
 				query: "erpnext.controllers.queries.get_expense_account",
@@ -221,6 +237,22 @@ erpnext.stock.PurchaseReceiptController = erpnext.buying.BuyingController.extend
 
 	reopen_purchase_receipt: function() {
 		cur_frm.cscript.update_status("Submitted");
+	},
+
+	purchase_order: function(frm){
+		for(var i = 0; i < frm.doc.items.length; i++){
+			//frm.doc.items[i].purchase_order = frm.doc.purchase_order;
+			frappe.model.set_value(frm.doc.items[i].doctype,frm.doc.items[i].docname,"purchase_order",frm.doc.purchase_order);
+		}
+		frm.refresh_field("items");
+	},
+
+	items_add: function(frm){
+		for(var i = 0; i < frm.doc.items.length; i++){
+			//frm.doc.items[i].purchase_order = frm.doc.purchase_order;
+			frappe.model.set_value(frm.doc.items[i].doctype,frm.doc.items[i].docname,"purchase_order",frm.doc.purchase_order);
+		}
+		frm.refresh_field("items");
 	},
 
 	make_retention_stock_entry: function() {

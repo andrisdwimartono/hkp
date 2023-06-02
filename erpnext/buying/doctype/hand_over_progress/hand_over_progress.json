@@ -1,0 +1,265 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "HOP-.YYYY.-.######.",
+ "creation": "2023-04-06 12:55:18.944050",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sub_contract_hand_over",
+  "job_name",
+  "sub_contract_hand_over_posting_date",
+  "sub_contract",
+  "project",
+  "budget",
+  "pos_rap",
+  "column_break_kqwfs",
+  "contractor_name",
+  "project_name",
+  "posting_date",
+  "section_break_f61hg",
+  "budget_amount",
+  "down_payment_percent",
+  "down_payment",
+  "progress_sequence",
+  "progress_achieved",
+  "hand_over_progress_achieved",
+  "hand_over_progress_discount",
+  "section_break_6bkyx",
+  "total_cost",
+  "use_ppn",
+  "pph_percentage",
+  "column_break_0uorc",
+  "rounded_cost",
+  "ppn",
+  "pph",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "sub_contract_hand_over",
+   "fieldtype": "Link",
+   "label": "Sub Contract Hand Over",
+   "options": "Sub Contract Hand Over",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.sub_contract",
+   "fieldname": "sub_contract",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sub Contract",
+   "options": "Sub Contract",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.project",
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.budget",
+   "fieldname": "budget",
+   "fieldtype": "Link",
+   "label": "Budget",
+   "options": "Budget",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.pos_rap",
+   "fieldname": "pos_rap",
+   "fieldtype": "Link",
+   "label": "POS RAP",
+   "options": "POS RAP",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_kqwfs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "sub_contract.contractor_name",
+   "fieldname": "contractor_name",
+   "fieldtype": "Data",
+   "label": "Contractor Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_f61hg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fetch_from": "sub_contract_hand_over.budget_amount",
+   "fieldname": "budget_amount",
+   "fieldtype": "Currency",
+   "label": "Nilai Kontrak",
+   "options": "Company:company:default_currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Hand Over Progress",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.posting_date",
+   "fieldname": "sub_contract_hand_over_posting_date",
+   "fieldtype": "Date",
+   "label": "Sub Contract Hand Over Posting Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "hand_over_progress_achieved",
+   "fieldtype": "Table",
+   "label": "Hand Over Progress Achieved",
+   "options": "Hand Over Progress Achieved",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "progress_sequence",
+   "fieldtype": "Int",
+   "label": "Progress Sequence",
+   "read_only": 1,
+   "read_only_depends_on": "eval: doc.progress_sequence!=1",
+   "reqd": 1
+  },
+  {
+   "fieldname": "hand_over_progress_discount",
+   "fieldtype": "Table",
+   "label": "Hand Over Progress Discount",
+   "options": "Hand Over Progress Discount"
+  },
+  {
+   "default": "0",
+   "fieldname": "progress_achieved",
+   "fieldtype": "Percent",
+   "label": "Progress Achieved",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "rounded_cost",
+   "fieldtype": "Currency",
+   "label": "Rounded Cost",
+   "options": "Company:company:default_currency"
+  },
+  {
+   "fieldname": "down_payment",
+   "fieldtype": "Currency",
+   "label": "Down Payment",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "down_payment_percent",
+   "fieldtype": "Percent",
+   "label": "Down Payment Percent",
+   "precision": "2",
+   "read_only_depends_on": "eval: doc.progress_sequence != 1",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.job_name",
+   "fieldname": "job_name",
+   "fieldtype": "Data",
+   "label": "Job Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_cost",
+   "fieldtype": "Currency",
+   "label": "Total Cost",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "use_ppn",
+   "fieldtype": "Check",
+   "label": "Use PPn 11%"
+  },
+  {
+   "fieldname": "ppn",
+   "fieldtype": "Currency",
+   "label": "PPn",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "pph_percentage",
+   "fieldtype": "Percent",
+   "label": "PPh Percentage"
+  },
+  {
+   "fieldname": "pph",
+   "fieldtype": "Currency",
+   "label": "PPh",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_0uorc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_6bkyx",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-04-13 13:55:10.996280",
+ "modified_by": "Administrator",
+ "module": "Buying",
+ "name": "Hand Over Progress",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "sub_contract_hand_over,contractor_name",
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -11,6 +11,7 @@
   "cost_center",
   "project",
   "project_name",
+  "cost_coefficient",
   "fiscal_year",
   "column_break_3",
   "monthly_distribution",
@@ -215,12 +216,20 @@
    "label": "Total Budget Amount (Company Currency)",
    "length": 540,
    "read_only": 1
+  },
+  {
+   "default": "100",
+   "fetch_from": "project.cost_coefficient",
+   "fieldname": "cost_coefficient",
+   "fieldtype": "Percent",
+   "label": "Cost Coefficient",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-03-17 15:48:14.147574",
+ "modified": "2023-04-13 09:38:05.209777",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Budget",

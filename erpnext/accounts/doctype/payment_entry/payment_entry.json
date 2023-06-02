@@ -15,6 +15,15 @@
   "posting_date",
   "company",
   "mode_of_payment",
+  "giro_mundur_date",
+  "accounting_dimensions_section",
+  "project",
+  "project_name",
+  "form_payment_entry_project",
+  "purpose",
+  "dimension_col_break",
+  "cost_center",
+  "form_payment_entry",
   "party_section",
   "party_type",
   "party",
@@ -40,6 +49,14 @@
   "paid_amount_after_tax",
   "source_exchange_rate",
   "base_paid_amount",
+  "references",
+  "section_break_34",
+  "total_allocated_amount",
+  "base_total_allocated_amount",
+  "set_exchange_gain_loss",
+  "column_break_36",
+  "unallocated_amount",
+  "difference_amount",
   "base_paid_amount_after_tax",
   "column_break_21",
   "received_amount",
@@ -49,14 +66,6 @@
   "base_received_amount_after_tax",
   "section_break_14",
   "get_outstanding_invoice",
-  "references",
-  "section_break_34",
-  "total_allocated_amount",
-  "base_total_allocated_amount",
-  "set_exchange_gain_loss",
-  "column_break_36",
-  "unallocated_amount",
-  "difference_amount",
   "write_off_difference_amount",
   "taxes_and_charges_section",
   "purchase_taxes_and_charges_template",
@@ -77,14 +86,6 @@
   "column_break_23",
   "reference_date",
   "clearance_date",
-  "accounting_dimensions_section",
-  "project",
-  "project_name",
-  "budget_realization",
-  "pos_rap",
-  "form_payment_entry",
-  "dimension_col_break",
-  "cost_center",
   "section_break_12",
   "status",
   "custom_remarks",
@@ -159,6 +160,7 @@
    "fieldname": "mode_of_payment",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Mode of Payment",
    "options": "Mode of Payment"
   },
@@ -215,7 +217,6 @@
    "read_only": 1
   },
   {
-   "collapsible": 1,
    "fieldname": "payment_accounts_section",
    "fieldtype": "Section Break",
    "label": "Accounts"
@@ -230,7 +231,6 @@
   },
   {
    "bold": 1,
-   "depends_on": "eval:(in_list([\"Internal Transfer\", \"Pay\"], doc.payment_type) || doc.party)",
    "fieldname": "paid_from",
    "fieldtype": "Link",
    "in_global_search": 1,
@@ -263,7 +263,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "depends_on": "eval:(in_list([\"Internal Transfer\", \"Receive\"], doc.payment_type) || doc.party)",
    "fieldname": "paid_to",
    "fieldtype": "Link",
    "in_global_search": 1,
@@ -587,7 +586,6 @@
    "read_only": 1
   },
   {
-   "collapsible": 1,
    "fieldname": "accounting_dimensions_section",
    "fieldtype": "Section Break",
    "label": "Accounting Dimensions"
@@ -740,30 +738,37 @@
   },
   {
    "depends_on": "eval:doc.project",
-   "fieldname": "budget_realization",
+   "fieldname": "form_payment_entry_project",
    "fieldtype": "Link",
-   "label": "Budget Realization",
-   "options": "Budget Realization"
+   "label": "Form Payment Entry Project",
+   "mandatory_depends_on": "eval:doc.project",
+   "options": "Form Payment Entry Project"
   },
   {
-   "fetch_from": "budget_realization.pos_rap",
-   "fieldname": "pos_rap",
+   "fieldname": "purpose",
    "fieldtype": "Data",
-   "label": "POS RAP",
+   "label": "Purpose",
    "read_only": 1
   },
   {
-   "depends_on": "eval:doc.project==\"\"",
+   "depends_on": "eval:!doc.project",
    "fieldname": "form_payment_entry",
    "fieldtype": "Link",
    "label": "Form Payment Entry",
    "options": "Form Payment Entry"
+  },
+  {
+   "depends_on": "eval:doc.mode_of_payment == \"Giro Mundur\"",
+   "fieldname": "giro_mundur_date",
+   "fieldtype": "Date",
+   "label": "Tanggal Jatuh Tempo",
+   "mandatory_depends_on": "eval:doc.mode_of_payment == \"Giro Mundur\""
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-03-21 15:35:29.920323",
+ "modified": "2023-05-04 09:50:35.002186",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Payment Entry",

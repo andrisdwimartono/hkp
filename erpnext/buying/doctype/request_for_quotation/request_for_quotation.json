@@ -10,6 +10,9 @@
   "naming_series",
   "company",
   "vendor",
+  "budget",
+  "item_category",
+  "item_category_name",
   "column_break1",
   "transaction_date",
   "schedule_date",
@@ -18,7 +21,9 @@
   "suppliers_section",
   "suppliers",
   "items_section",
+  "get_item",
   "items",
+  "document",
   "supplier_response_section",
   "salutation",
   "subject",
@@ -101,7 +106,6 @@
    "fieldtype": "Table",
    "label": "Suppliers",
    "options": "Request for Quotation Supplier",
-   "print_hide": 1,
    "reqd": 1
   },
   {
@@ -271,17 +275,45 @@
    "fieldname": "schedule_date",
    "fieldtype": "Date",
    "label": "Required Date"
+  },
+  {
+   "fieldname": "budget",
+   "fieldtype": "Link",
+   "label": "Budget",
+   "options": "Budget"
+  },
+  {
+   "fieldname": "item_category",
+   "fieldtype": "Link",
+   "label": "Item Category",
+   "options": "Item Category"
+  },
+  {
+   "fetch_from": "item_category.item_category_name",
+   "fieldname": "item_category_name",
+   "fieldtype": "Data",
+   "label": "Item Category Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "get_item",
+   "fieldtype": "Button",
+   "label": "Get Data Item"
+  },
+  {
+   "fieldname": "document",
+   "fieldtype": "Attach",
+   "label": "Document"
   }
  ],
  "icon": "fa fa-shopping-cart",
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-04-06 17:47:49.909000",
+ "modified": "2023-05-23 08:50:20.842973",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Request for Quotation",
- "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

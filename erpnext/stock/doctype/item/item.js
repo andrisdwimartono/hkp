@@ -242,6 +242,20 @@ frappe.ui.form.on("Item", {
 		if(frm.doc.item_category){
 			frm.set_value("naming_series", frm.doc.item_category+".###.");
 		}
+	},
+
+	item_group: function(frm) {
+		if(frm.doc.item_group == "Tools"){
+			frm.set_value("naming_series", "TOOLS.###.");
+		}
+
+		if(frm.doc.item_group == "Services"){
+			frm.set_value("naming_series", "SERVICES.###.");
+		}
+
+		if(frm.doc.item_group == "Products"){
+			frm.set_value("naming_series", "PRODUCTS.###.");
+		}
 	}
 });
 

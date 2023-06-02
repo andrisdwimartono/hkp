@@ -43,6 +43,22 @@ class Project(Document):
 		self.send_welcome_email()
 		self.update_costing()
 		self.update_percent_complete()
+		self.update_project_joined()
+
+	def update_project_joined(self):
+		if self.project_team and len(self.project_team) > 0:
+			frappe.db.sql("""DELETE FROM `tabEmployee Project` WHERE project = '{0}'""".format(self.name))
+			frappe.db.commit()
+			for pt in self.project_team:
+				employee_doc = frappe.get_doc("Employee", pt.employee)
+				if employee_doc:
+					employee_project = frappe.db.sql("""SELECT * FROM `tabEmployee Project` ep WHERE ep.project = '{0}' AND ep.parent = '{1}'""".format(self.name, pt.employee), as_dict=1)
+					if not employee_project:
+						employee_doc.append("employee_project", {
+							"project": self.name,
+							"project_name": self.project_name
+						})
+						employee_doc.save()
 
 	def copy_from_template(self):
 		"""

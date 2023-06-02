@@ -1,0 +1,259 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-16 10:11:41.429797",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sub_section",
+  "sub_section_last",
+  "sub_section_history",
+  "drawing",
+  "drawing_last",
+  "drawing_history",
+  "document_no",
+  "date",
+  "date_last",
+  "date_history",
+  "project_material_item",
+  "project_material_item_last",
+  "project_material_item_history",
+  "document",
+  "document_last",
+  "revision",
+  "completeness",
+  "completeness_last",
+  "completeness_history",
+  "drawing_number",
+  "drawing_number_last",
+  "drawing_number_history",
+  "information",
+  "information_last",
+  "information_history",
+  "column_break_vuabg",
+  "document_history",
+  "document_history_display",
+  "date_changed_history",
+  "submit_date",
+  "letter_no_submit",
+  "return_date",
+  "letter_no_return"
+ ],
+ "fields": [
+  {
+   "fieldname": "sub_section",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sub Section",
+   "options": "Project Sub Section"
+  },
+  {
+   "fieldname": "sub_section_last",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Sub Section Last"
+  },
+  {
+   "fieldname": "sub_section_history",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Sub Section History"
+  },
+  {
+   "fieldname": "drawing",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project Material",
+   "options": "Drawing",
+   "reqd": 1
+  },
+  {
+   "fieldname": "drawing_last",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Drawing Last"
+  },
+  {
+   "fieldname": "drawing_history",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Drawing History"
+  },
+  {
+   "fetch_from": "drawing.document_no",
+   "fieldname": "document_no",
+   "fieldtype": "Data",
+   "label": "Document No"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "mandatory_depends_on": "eval: doc.project_document_type == \"Preliminary design\""
+  },
+  {
+   "fieldname": "date_last",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "label": "Date Last"
+  },
+  {
+   "fieldname": "date_history",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Date History"
+  },
+  {
+   "fieldname": "project_material_item",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Project Material Item",
+   "options": "Project Material Item"
+  },
+  {
+   "fieldname": "project_material_item_last",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Project Material Item Last"
+  },
+  {
+   "fieldname": "project_material_item_history",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Project Material Item History"
+  },
+  {
+   "fieldname": "document",
+   "fieldtype": "Attach",
+   "in_list_view": 1,
+   "label": "Document"
+  },
+  {
+   "fieldname": "document_last",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Document Last"
+  },
+  {
+   "default": "0",
+   "fieldname": "revision",
+   "fieldtype": "Int",
+   "label": "Revision",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "default": "RFC",
+   "fieldname": "completeness",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Progress",
+   "options": "RFC\nNEN/APPROVE\nEN\nFI",
+   "reqd": 1
+  },
+  {
+   "fieldname": "completeness_last",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Progress Last"
+  },
+  {
+   "fieldname": "completeness_history",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Progress History"
+  },
+  {
+   "fieldname": "drawing_number",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Drawing Number"
+  },
+  {
+   "fieldname": "drawing_number_last",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Drawing Number Last"
+  },
+  {
+   "fieldname": "drawing_number_history",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Drawing Number History"
+  },
+  {
+   "fieldname": "information",
+   "fieldtype": "Small Text",
+   "label": "Information"
+  },
+  {
+   "fieldname": "information_last",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Information Last"
+  },
+  {
+   "fieldname": "information_history",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Information History"
+  },
+  {
+   "fieldname": "column_break_vuabg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "document_history",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Document History",
+   "read_only": 1
+  },
+  {
+   "fieldname": "document_history_display",
+   "fieldtype": "Small Text",
+   "label": "Document History",
+   "read_only": 1
+  },
+  {
+   "fieldname": "date_changed_history",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Date Changed History"
+  },
+  {
+   "fieldname": "submit_date",
+   "fieldtype": "Date",
+   "label": "Submit Date"
+  },
+  {
+   "fieldname": "letter_no_submit",
+   "fieldtype": "Data",
+   "label": "Letter No"
+  },
+  {
+   "fieldname": "return_date",
+   "fieldtype": "Date",
+   "label": "Return Date"
+  },
+  {
+   "fieldname": "letter_no_return",
+   "fieldtype": "Data",
+   "label": "Letter No"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-16 10:11:58.713847",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Preliminary Design Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

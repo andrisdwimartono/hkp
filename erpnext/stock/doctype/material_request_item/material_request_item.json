@@ -61,7 +61,7 @@
  "fields": [
   {
    "bold": 1,
-   "columns": 3,
+   "columns": 2,
    "fieldname": "item_code",
    "fieldtype": "Link",
    "in_global_search": 1,
@@ -80,9 +80,11 @@
    "fieldtype": "Column Break"
   },
   {
+   "columns": 2,
    "fieldname": "item_name",
    "fieldtype": "Data",
    "in_global_search": 1,
+   "in_list_view": 1,
    "label": "Item Name",
    "oldfieldname": "item_name",
    "oldfieldtype": "Data",
@@ -124,7 +126,7 @@
    "fieldname": "qty",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Quantity",
+   "label": "Volume",
    "oldfieldname": "qty",
    "oldfieldtype": "Currency",
    "print_width": "80px",
@@ -161,7 +163,7 @@
    "reqd": 1
   },
   {
-   "columns": 3,
+   "columns": 2,
    "fieldname": "warehouse",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -451,20 +453,19 @@
    "fieldname": "job_card_item",
    "fieldtype": "Data",
    "hidden": 1,
+   "label": "Job Card Item",
    "no_copy": 1,
-   "print_hide": 1,
-   "label": "Job Card Item"
+   "print_hide": 1
   }
  ],
  "idx": 1,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-03-10 18:42:42.705190",
+ "modified": "2023-04-11 11:39:46.010066",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Material Request Item",
- "naming_rule": "Random",
  "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",

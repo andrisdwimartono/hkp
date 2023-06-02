@@ -10,7 +10,6 @@
  "engine": "InnoDB",
  "field_order": [
   "supplier_section",
-  "column_break0",
   "title",
   "naming_series",
   "supplier",
@@ -26,8 +25,9 @@
   "return_against",
   "accounting_dimensions_section",
   "cost_center",
-  "dimension_col_break",
   "project",
+  "dimension_col_break",
+  "purchase_order",
   "section_addresses",
   "supplier_address",
   "contact_person",
@@ -130,6 +130,7 @@
   "remarks",
   "group_same_items",
   "transporter_info",
+  "no_surat_jalan",
   "transporter_name",
   "column_break5",
   "lr_no",
@@ -140,13 +141,6 @@
    "fieldname": "supplier_section",
    "fieldtype": "Section Break",
    "options": "fa fa-user"
-  },
-  {
-   "fieldname": "column_break0",
-   "fieldtype": "Column Break",
-   "oldfieldtype": "Column Break",
-   "print_width": "50%",
-   "width": "50%"
   },
   {
    "allow_on_submit": 1,
@@ -275,7 +269,6 @@
    "read_only": 1
   },
   {
-   "collapsible": 1,
    "fieldname": "section_addresses",
    "fieldtype": "Section Break",
    "label": "Address and Contact"
@@ -283,7 +276,7 @@
   {
    "fieldname": "supplier_address",
    "fieldtype": "Link",
-   "label": "Select Supplier Address",
+   "label": "Sender Address",
    "options": "Address",
    "print_hide": 1
   },
@@ -328,7 +321,7 @@
   {
    "fieldname": "shipping_address",
    "fieldtype": "Link",
-   "label": "Select Shipping Address",
+   "label": "Receiver Address",
    "options": "Address",
    "print_hide": 1
   },
@@ -340,7 +333,6 @@
    "read_only": 1
   },
   {
-   "collapsible": 1,
    "fieldname": "currency_and_price_list",
    "fieldtype": "Section Break",
    "label": "Currency and Price List",
@@ -499,6 +491,7 @@
    "collapsible_depends_on": "supplied_items",
    "fieldname": "raw_material_details",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Raw Materials Consumed",
    "oldfieldtype": "Section Break",
    "options": "fa fa-table",
@@ -579,6 +572,7 @@
    "description": "Add / Edit Taxes and Charges",
    "fieldname": "taxes_charges_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "oldfieldtype": "Section Break",
    "options": "fa fa-money"
   },
@@ -601,7 +595,8 @@
   },
   {
    "fieldname": "taxes_section",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "hidden": 1
   },
   {
    "fieldname": "taxes_and_charges",
@@ -624,6 +619,7 @@
    "collapsible": 1,
    "fieldname": "sec_tax_breakup",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Tax Breakup"
   },
   {
@@ -638,6 +634,7 @@
   {
    "fieldname": "totals",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "oldfieldtype": "Section Break",
    "options": "fa fa-money"
   },
@@ -710,6 +707,7 @@
    "collapsible_depends_on": "discount_amount",
    "fieldname": "section_break_42",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Additional Discount"
   },
   {
@@ -954,6 +952,7 @@
    "collapsible": 1,
    "fieldname": "printing_settings",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Printing Settings"
   },
   {
@@ -1085,6 +1084,7 @@
   {
    "fieldname": "billing_address",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Select Billing Address",
    "options": "Address"
   },
@@ -1127,7 +1127,6 @@
    "read_only": 1
   },
   {
-   "collapsible": 1,
    "fieldname": "accounting_dimensions_section",
    "fieldtype": "Section Break",
    "label": "Accounting Dimensions"
@@ -1135,19 +1134,34 @@
   {
    "fieldname": "cost_center",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Cost Center",
    "options": "Cost Center"
   },
   {
    "fieldname": "dimension_col_break",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "purchase_order",
+   "fieldtype": "Link",
+   "label": "Purchase Order",
+   "oldfieldtype": "Column Break",
+   "options": "Purchase Order",
+   "print_width": "50%",
+   "width": "50%"
+  },
+  {
+   "fieldname": "no_surat_jalan",
+   "fieldtype": "Data",
+   "label": "No Surat Jalan"
   }
  ],
  "icon": "fa fa-truck",
  "idx": 261,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-03-21 10:41:55.447804",
+ "modified": "2023-05-30 11:36:51.224249",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Purchase Receipt",
@@ -1207,7 +1221,7 @@
    "write": 1
   }
  ],
- "search_fields": "status, posting_date, supplier",
+ "search_fields": "status, posting_date, supplier_name",
  "show_name_in_global_search": 1,
  "sort_field": "modified",
  "sort_order": "DESC",

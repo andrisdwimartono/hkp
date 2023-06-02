@@ -86,6 +86,10 @@ frappe.query_reports["Stock Ledger"] = {
 	],
 	"formatter": function (value, row, column, data, default_formatter) {
 		value = default_formatter(value, row, column, data);
+		console.log(column)
+		if(column.isHeader == 1){
+			column.align = "center";
+		}
 		if (column.fieldname == "out_qty" && data && data.out_qty < 0) {
 			value = "<span style='color:red'>" + value + "</span>";
 		}

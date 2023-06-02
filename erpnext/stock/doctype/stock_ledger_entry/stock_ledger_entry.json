@@ -31,6 +31,7 @@
   "company",
   "stock_uom",
   "project",
+  "project_name",
   "batch_no",
   "column_break_26",
   "fiscal_year",
@@ -309,6 +310,13 @@
    "label": "Recalculate Incoming/Outgoing Rate",
    "no_copy": 1,
    "read_only": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
   }
  ],
  "hide_toolbar": 1,
@@ -317,7 +325,7 @@
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-08 13:44:51.857631",
+ "modified": "2023-04-11 13:33:37.996162",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Stock Ledger Entry",

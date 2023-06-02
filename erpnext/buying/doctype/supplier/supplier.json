@@ -179,6 +179,7 @@
   {
    "fieldname": "pan",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "PAN"
   },
   {
@@ -438,7 +439,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2023-03-14 10:36:23.385407",
+ "modified": "2023-05-30 11:38:31.849520",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Supplier",

@@ -34,6 +34,24 @@ from erpnext.controllers.accounts_controller import AccountsController
 
 class Asset(AccountsController):
 	def validate(self):
+		if not self.item_code:
+			item_doc = frappe.get_doc({
+				"doctype": "Item",
+				"item_name": self.asset_name,
+				"item_category": "3609",
+				"naming_series": "3609.###.",
+				"item_group": "All Item Groups",
+				"stock_uom": "Unit",
+				"is_fixed_asset": 1,
+				"is_sales_item": 0,
+				"is_stock_item": 0,
+				"include_item_in_manufacturing": 0,
+				"asset_category": self.asset_category
+			})
+			item_doc.insert()
+			frappe.db.commit()
+			self.item_code = item_doc.name
+			self.item_name = self.asset_name
 		self.validate_asset_values()
 		self.validate_asset_and_reference()
 		self.validate_item()
@@ -131,8 +149,8 @@ class Asset(AccountsController):
 				)
 
 	def set_missing_values(self):
-		if not self.asset_category:
-			self.asset_category = frappe.get_cached_value("Item", self.item_code, "asset_category")
+		# if not self.asset_category:
+		# 	self.asset_category = frappe.get_cached_value("Item", self.item_code, "asset_category")
 
 		if self.item_code and not self.get("finance_books"):
 			finance_books = get_item_details(self.item_code, self.asset_category)

@@ -489,6 +489,7 @@
   {
    "fieldname": "pan",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "PAN"
   },
   {
@@ -517,7 +518,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2021-09-06 17:38:54.196663",
+ "modified": "2023-05-25 10:54:57.111617",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Customer",

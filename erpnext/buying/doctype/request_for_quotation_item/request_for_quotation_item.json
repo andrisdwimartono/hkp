@@ -7,11 +7,40 @@
  "engine": "InnoDB",
  "field_order": [
   "item_code",
+  "supplier",
   "supplier_part_no",
   "column_break_3",
   "item_name",
   "schedule_date",
   "section_break_5",
+  "daftar_isian",
+  "column_break_upjar",
+  "brosur",
+  "column_break_yjamf",
+  "surat_dukungan",
+  "section_break_odrsm",
+  "surat_jaminan",
+  "column_break_jhq73",
+  "surat_pernyataan_pabrikan",
+  "column_break_zugog",
+  "supply_list",
+  "section_break_9uhdm",
+  "satisfactory_letter",
+  "column_break_lx99j",
+  "tpg",
+  "column_break_d6ck1",
+  "type_test",
+  "section_break_q7nbv",
+  "iso",
+  "column_break_t8caw",
+  "foto_atau_gambar_material",
+  "column_break_qfz75",
+  "surat_keagenan",
+  "section_break_djpin",
+  "surat_penawaran_harga",
+  "column_break_zgaxr",
+  "documents",
+  "section_break_wisdk",
   "description",
   "item_group",
   "brand",
@@ -66,13 +95,13 @@
    "fieldname": "item_name",
    "fieldtype": "Data",
    "in_global_search": 1,
+   "in_list_view": 1,
    "label": "Item Name",
    "oldfieldname": "item_name",
    "oldfieldtype": "Data",
    "search_index": 1
   },
   {
-   "collapsible": 1,
    "fieldname": "section_break_5",
    "fieldtype": "Section Break",
    "label": "Description"
@@ -152,7 +181,6 @@
    "columns": 2,
    "fieldname": "warehouse",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Warehouse",
    "oldfieldname": "warehouse",
    "oldfieldtype": "Link",
@@ -256,12 +284,144 @@
    "fieldname": "section_break_24",
    "fieldtype": "Section Break",
    "label": "Accounting Dimensions"
+  },
+  {
+   "fieldname": "documents",
+   "fieldtype": "Attach",
+   "label": "Document"
+  },
+  {
+   "fieldname": "brosur",
+   "fieldtype": "Attach",
+   "label": "Brosur"
+  },
+  {
+   "fieldname": "surat_dukungan",
+   "fieldtype": "Attach",
+   "label": "Surat Dukungan"
+  },
+  {
+   "fieldname": "surat_jaminan",
+   "fieldtype": "Attach",
+   "label": "Surat Jaminan"
+  },
+  {
+   "fieldname": "surat_pernyataan_pabrikan",
+   "fieldtype": "Attach",
+   "label": "Surat Pernyataan Pabrikan"
+  },
+  {
+   "fieldname": "supply_list",
+   "fieldtype": "Attach",
+   "label": "Supply List"
+  },
+  {
+   "fieldname": "satisfactory_letter",
+   "fieldtype": "Attach",
+   "label": "Satisfactory Letter"
+  },
+  {
+   "fieldname": "tpg",
+   "fieldtype": "Attach",
+   "label": "TPG"
+  },
+  {
+   "fieldname": "type_test",
+   "fieldtype": "Attach",
+   "label": "Type Test"
+  },
+  {
+   "fieldname": "iso",
+   "fieldtype": "Attach",
+   "label": "ISO"
+  },
+  {
+   "fieldname": "foto_atau_gambar_material",
+   "fieldtype": "Attach",
+   "label": "Foto atau Gambar Material"
+  },
+  {
+   "fieldname": "surat_keagenan",
+   "fieldtype": "Attach",
+   "label": "Surat Keagenan"
+  },
+  {
+   "fieldname": "daftar_isian",
+   "fieldtype": "Attach",
+   "label": "Daftar Isian"
+  },
+  {
+   "fieldname": "column_break_upjar",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_yjamf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_odrsm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_jhq73",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_zugog",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_9uhdm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_lx99j",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_d6ck1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_q7nbv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_t8caw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_qfz75",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_djpin",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_wisdk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "surat_penawaran_harga",
+   "fieldtype": "Attach",
+   "label": "Surat Penawaran Harga"
+  },
+  {
+   "fieldname": "column_break_zgaxr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2020-09-24 17:26:46.276934",
+ "modified": "2023-05-16 15:11:59.847622",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Request for Quotation Item",

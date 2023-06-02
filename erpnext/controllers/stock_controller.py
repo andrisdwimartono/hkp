@@ -755,7 +755,10 @@ def make_quality_inspections(doctype, docname, items):
 				"reference_name": docname,
 				"item_code": item.get("item_code"),
 				"description": item.get("description"),
+				"remarks": item.get("remarks"),
+				"status": item.get("status"),
 				"sample_size": flt(item.get("sample_size")),
+				"qty": flt(item.get("qty")),
 				"item_serial_no": item.get("serial_no").split("\n")[0] if item.get("serial_no") else None,
 				"batch_no": item.get("batch_no"),
 			}

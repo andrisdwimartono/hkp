@@ -262,7 +262,13 @@ erpnext.TransactionController = erpnext.taxes_and_totals.extend({
 		const me = this;
 		if (!this.frm.is_new() && this.frm.doc.docstatus === 0) {
 			this.frm.add_custom_button(__("Quality Inspection(s)"), () => {
-				me.make_quality_inspection();
+				if(this.frm.doc.doctype == "Purchase Receipt"){
+					console.log("aaa");
+					me.make_quality_inspection_pr();
+				}else{
+					console.log("aaa");
+					me.make_quality_inspection();
+				}
 			}, __("Create"));
 			this.frm.page.set_inner_btn_group_as_primary(__('Create'));
 		}
@@ -1996,7 +2002,147 @@ erpnext.TransactionController = erpnext.taxes_and_totals.extend({
 		});
 	},
 
+	make_quality_inspection_pr: function () {
+		let data = [];
+		const fields = [
+			{
+				label: "Items",
+				fieldtype: "Table",
+				fieldname: "items",
+				cannot_add_rows: true,
+				in_place_edit: true,
+				data: data,
+				get_data: () => {
+					return data;
+				},
+				fields: [
+					{
+						fieldtype: "Data",
+						fieldname: "docname",
+						hidden: true
+					},
+					{
+						fieldtype: "Read Only",
+						fieldname: "item_code",
+						label: __("Item Code"),
+						hidden: true
+					},
+					{
+						fieldtype: "Read Only",
+						fieldname: "item_name",
+						label: __("Item Name"),
+						in_list_view: true
+					},
+					{
+						fieldtype: "Float",
+						fieldname: "qty",
+						label: __("Accepted Quantity"),
+						in_list_view: true,
+						read_only: true
+					},
+					{
+						fieldtype: "Float",
+						fieldname: "sample_size",
+						label: __("Sample Size"),
+						reqd: true,
+						in_list_view: true
+					},
+					{
+						fieldtype: "Select",
+						fieldname: "status",
+						label: __("Status"),
+						reqd: true,
+						in_list_view: true,
+						options: ["Accepted", "Rejected"]
+					},
+					{
+						fieldtype: "Data",
+						fieldname: "remarks",
+						in_list_view: true,
+						label: __("Remarks")
+					},
+					{
+						fieldtype: "Data",
+						fieldname: "description",
+						in_list_view: true,
+						label: __("Description")
+					},
+					{
+						fieldtype: "Data",
+						fieldname: "serial_no",
+						label: __("Serial No"),
+						hidden: true
+					},
+					{
+						fieldtype: "Data",
+						fieldname: "batch_no",
+						label: __("Batch No"),
+						hidden: true
+					}
+				]
+			}
+		];
+
+		const me = this;
+		const dialog = new frappe.ui.Dialog({
+			title: __("Select Items for Quality Inspection"),
+			fields: fields,
+			primary_action: function () {
+				const data = dialog.get_values();
+				frappe.call({
+					method: "erpnext.controllers.stock_controller.make_quality_inspections",
+					args: {
+						doctype: me.frm.doc.doctype,
+						docname: me.frm.doc.name,
+						items: data.items
+					},
+					freeze: true,
+					callback: function (r) {
+						if (r.message.length > 0) {
+							if (r.message.length === 1) {
+								frappe.set_route("Form", "Quality Inspection", r.message[0]);
+							} else {
+								frappe.route_options = {
+									"reference_type": me.frm.doc.doctype,
+									"reference_name": me.frm.doc.name
+								};
+								frappe.set_route("List", "Quality Inspection");
+							}
+						}
+						dialog.hide();
+					}
+				});
+			},
+			primary_action_label: __("Create")
+		});
+
+		this.frm.doc.items.forEach(item => {
+			if (!item.quality_inspection) {
+				let dialog_items = dialog.fields_dict.items;
+				dialog_items.df.data.push({
+					"docname": item.name,
+					"item_code": item.item_code,
+					"item_name": item.item_name,
+					"qty": item.qty,
+					"description": item.description,
+					"serial_no": item.serial_no,
+					"batch_no": item.batch_no,
+					"sample_size": item.sample_quantity
+				});
+				dialog_items.grid.refresh();
+			}
+		});
+
+		data = dialog.fields_dict.items.df.data;
+		if (!data.length) {
+			frappe.msgprint(__("All items in this document already have a linked Quality Inspection."));
+		} else {
+			dialog.show();
+		}
+	},
+
 	make_quality_inspection: function () {
+		console.log("ssx");
 		let data = [];
 		const fields = [
 			{

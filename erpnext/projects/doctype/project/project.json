@@ -10,8 +10,10 @@
  "field_order": [
   "naming_series",
   "project_name",
+  "project_address",
   "status",
   "project_type",
+  "cost_coefficient",
   "is_active",
   "percent_complete_method",
   "percent_complete",
@@ -25,6 +27,8 @@
   "customer",
   "column_break_14",
   "sales_order",
+  "project_team_section",
+  "project_team",
   "users_section",
   "users",
   "copied_from",
@@ -451,6 +455,29 @@
    "print_hide": 1,
    "reqd": 1,
    "set_only_once": 1
+  },
+  {
+   "default": "100",
+   "fieldname": "cost_coefficient",
+   "fieldtype": "Percent",
+   "label": "Cost Coefficient",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "project_address",
+   "fieldtype": "Small Text",
+   "label": "Project Address"
+  },
+  {
+   "fieldname": "project_team_section",
+   "fieldtype": "Section Break",
+   "label": "Project Team"
+  },
+  {
+   "fieldname": "project_team",
+   "fieldtype": "Table",
+   "label": "Project Team",
+   "options": "Project Team"
   }
  ],
  "icon": "fa fa-puzzle-piece",
@@ -458,7 +485,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "max_attachments": 4,
- "modified": "2023-03-17 13:33:37.861363",
+ "modified": "2023-05-25 08:43:19.952270",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Project",

@@ -11,6 +11,7 @@ from frappe.query_builder.functions import Sum
 from frappe.utils import (
 	add_days,
 	add_months,
+	add_years,
 	cint,
 	flt,
 	fmt_money,
@@ -1704,6 +1705,7 @@ class AccountsController(TransactionBase):
 			self.due_date = max(due_dates)
 
 	def validate_payment_schedule_dates(self):
+		return
 		dates = []
 		li = []
 
@@ -2296,6 +2298,8 @@ def get_due_date(term, posting_date=None, bill_date=None):
 		due_date = add_days(get_last_day(date), term.credit_days)
 	elif term.due_date_based_on == "Month(s) after the end of the invoice month":
 		due_date = add_months(get_last_day(date), term.credit_months)
+	elif term.due_date_based_on == "Day(s) after item was arrived":
+		due_date = add_years(get_last_day(date), 5)
 	return due_date
 
 
@@ -2308,6 +2312,8 @@ def get_discount_date(term, posting_date=None, bill_date=None):
 		discount_validity = add_days(get_last_day(date), term.discount_validity)
 	elif term.discount_validity_based_on == "Month(s) after the end of the invoice month":
 		discount_validity = add_months(get_last_day(date), term.discount_validity)
+	elif term.discount_validity_based_on == "Day(s) after item was arrived":
+		discount_validity = add_years(get_last_day(date), 5)
 	return discount_validity
 
 

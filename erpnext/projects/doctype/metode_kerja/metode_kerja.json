@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "MK-.YYYY.-.######.",
+ "creation": "2023-05-09 13:54:41.982539",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project",
+  "posting_date",
+  "pekerjaan",
+  "jenis_pekerjaan",
+  "customer",
+  "kriteria_metode_kerja",
+  "document",
+  "catatan"
+ ],
+ "fields": [
+  {
+   "fieldname": "document",
+   "fieldtype": "Attach",
+   "in_list_view": 1,
+   "label": "Document",
+   "reqd": 1
+  },
+  {
+   "fieldname": "kriteria_metode_kerja",
+   "fieldtype": "Link",
+   "label": "Kriteria Metode Kerja",
+   "options": "Kriteria Metode Kerja",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pekerjaan",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Pekerjaan",
+   "options": "Pekerjaan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "jenis_pekerjaan",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Jenis Pekerjaan",
+   "options": "Jenis Pekerjaan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Owner",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "catatan",
+   "fieldtype": "Small Text",
+   "label": "Catatan"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project Name",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posting Date",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-05-09 14:54:07.613116",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Metode Kerja",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

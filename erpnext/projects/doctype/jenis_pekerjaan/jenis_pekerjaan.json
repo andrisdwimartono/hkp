@@ -1,0 +1,53 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:jenis_pekerjaan_name",
+ "creation": "2023-05-09 14:03:08.916124",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "jenis_pekerjaan_name",
+  "jenis_pekerjaan_except"
+ ],
+ "fields": [
+  {
+   "fieldname": "jenis_pekerjaan_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Jenis Pekerjaan",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "jenis_pekerjaan_except",
+   "fieldtype": "Table",
+   "label": "Jenis Pekerjaan Exception",
+   "options": "Jenis Pekerjaan Except"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-05-09 14:38:14.559488",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Jenis Pekerjaan",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "jenis_pekerjaan_name",
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -1,0 +1,40 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-04-06 13:11:17.400991",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "remarks",
+  "progress_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Remarks",
+   "reqd": 1
+  },
+  {
+   "fieldname": "progress_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Progress Achieved",
+   "options": "Company:company:default_currency",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-04-06 13:11:17.400991",
+ "modified_by": "Administrator",
+ "module": "Buying",
+ "name": "Hand Over Progress Achieved",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

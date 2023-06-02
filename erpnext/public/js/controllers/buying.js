@@ -43,8 +43,9 @@ erpnext.buying.BuyingController = erpnext.TransactionController.extend({
 						query: 'frappe.contacts.doctype.address.address.address_query',
 						filters: { link_doctype: 'Customer', link_name: me.frm.doc.customer }
 					};
-				} else
-					return erpnext.queries.company_address_query(me.frm.doc)
+				} 
+				// else
+				// 	return erpnext.queries.company_address_query(me.frm.doc)
 			});
 		}
 		/* eslint-enable */

@@ -30,6 +30,16 @@ frappe.ui.form.on("Purchase Order", {
 
 	},
 
+	discount_nominal: function(frm){
+		frm.set_value("additional_discount_percentage", (frm.doc.discount_nominal/frm.doc.total*100));
+		frm.refresh_field("additional_discount_percentage");
+	},
+
+	discount_percentages: function(frm){
+		frm.set_value("additional_discount_percentage", (frm.doc.discount_percentages));
+		frm.refresh_field("additional_discount_percentage");
+	},
+
 	company: function(frm) {
 		erpnext.accounts.dimensions.update_dimension(frm, frm.doctype);
 	},
@@ -60,6 +70,9 @@ frappe.ui.form.on("Purchase Order", {
 
 	refresh: function(frm) {
 		frm.trigger('get_materials_from_supplier');
+		if(frm.doc.__islocal == 1){
+			frm.trigger('project');
+		}
 	},
 
 	get_materials_from_supplier: function(frm) {
@@ -94,11 +107,15 @@ frappe.ui.form.on("Purchase Order", {
 	project: function(frm) {
 		var roman = ["I", "II", "III", "IV", "V", "VI", "VII", "VII", "IX", "X", "XI", "XII"];
 		var ser = ".##./SPB/HKP/";
-		if(frm.doc.transaction_date && frm.doc.project){
-			var date = frm.doc.transaction_date;
-			var dt = date.split("-");
-			ser = ser+frm.doc.project+"/"+roman[parseInt(dt[1])-1]+"/"+dt[0];
+		//if(frm.doc.transaction_date && frm.doc.project){
+		var project = frm.doc.project;
+		if(!frm.doc.project){
+			project = "KS-115";
 		}
+		var date = frm.doc.transaction_date;
+		var dt = date.split("-");
+		ser = ser+project+"/"+roman[parseInt(dt[1])-1]+"/"+dt[0];
+		//}
 		
 		frm.set_value("naming_series", ser);
 		frm.refresh_field("naming_series");
@@ -251,6 +268,14 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 			}
 		} else if(doc.docstatus===0) {
 			cur_frm.cscript.add_from_mappers();
+		}
+		if(!cur_frm.doc.purchase_order_document_checklist){
+			var checklists = ["Certificate of Origin", "Certificate of Lading", "Hasil Routine Test Material", "Hasil Type Test Material Sejenis", "Certificate of Manufacture", "Certificate of Waranty", "Technical Particular Guarantee", "Sertifikat IQC"];
+			for(var i = 0; i < checklists.length; i++){
+				var c = cur_frm.add_child("purchase_order_document_checklist");
+				c.check_list_name = checklists[i];
+			}
+			cur_frm.refresh_field("purchase_order_document_checklist");
 		}
 	},
 
@@ -619,6 +644,10 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 
 	schedule_date: function() {
 		set_schedule_date(this.frm);
+	},
+
+	supplier: function(frm){
+		
 	}
 });
 
@@ -669,3 +698,20 @@ frappe.ui.form.on("Purchase Order", "is_subcontracted", function(frm) {
 		erpnext.buying.get_default_bom(frm);
 	}
 });
+
+frappe.ui.form.on("Payment Schedule", "invoice_percent_amount", function(frm, dt, dn) {
+	var d = locals[dt][dn];
+	set_payment_schedule(frm, d);
+});
+
+
+function set_payment_schedule(frm, d){
+	if(d.payment_schedule_mode == "Percent"){
+		d.invoice_portion = d.invoice_percent_amount;
+		d.payment_amount = d.invoice_portion * frm.doc.grand_total / 100;
+	}else if(d.payment_schedule_mode == "Total"){
+		d.invoice_portion = (d.invoice_percent_amount)/frm.doc.grand_total*100;
+		d.payment_amount = d.invoice_percent_amount;
+	}
+	refresh_field("payment_schedule");
+}

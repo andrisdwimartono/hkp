@@ -503,3 +503,10 @@ def get_rfq_containing_supplier(doctype, txt, searchfield, start, page_len, filt
 	)
 
 	return rfq_data
+
+@frappe.whitelist()
+def get_rap_item(budget):
+	aa = frappe.db.sql("""SELECT * FROM `tabBudget Account` ba
+	WHERE ba.parent = '{0}'
+	""".format(budget), as_dict=1)
+	return aa

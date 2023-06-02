@@ -22,6 +22,7 @@
   "quality_inspection",
   "subcontracted_item",
   "section_break_8",
+  "condition",
   "description",
   "column_break_10",
   "item_group",
@@ -130,12 +131,12 @@
    "fieldname": "item_name",
    "fieldtype": "Data",
    "in_global_search": 1,
+   "in_list_view": 1,
    "label": "Item Name",
    "print_hide": 1,
    "read_only": 1
   },
   {
-   "collapsible": 1,
    "fieldname": "section_break_8",
    "fieldtype": "Section Break",
    "label": "Description"
@@ -171,7 +172,7 @@
    "fieldname": "qty",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Qty",
+   "label": "Volume",
    "oldfieldname": "qty",
    "oldfieldtype": "Currency",
    "reqd": 1
@@ -513,7 +514,7 @@
   {
    "fieldname": "quantity_section",
    "fieldtype": "Section Break",
-   "label": "Quantity"
+   "label": "Volume"
   },
   {
    "fieldname": "column_break_20",
@@ -550,20 +551,23 @@
    "fieldname": "is_process_loss",
    "fieldtype": "Check",
    "label": "Is Process Loss"
+  },
+  {
+   "fieldname": "condition",
+   "fieldtype": "Data",
+   "label": "Condition"
   }
  ],
  "idx": 1,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-02-26 00:51:24.963653",
+ "modified": "2023-04-11 11:37:33.336246",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Stock Entry Detail",
- "naming_rule": "Random",
  "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",
- "sort_order": "ASC",
- "states": []
+ "sort_order": "ASC"
 }

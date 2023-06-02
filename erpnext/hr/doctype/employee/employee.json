@@ -20,6 +20,7 @@
   "salutation",
   "employee_name",
   "employment_type",
+  "contract_number",
   "image",
   "column_break1",
   "company",
@@ -28,6 +29,7 @@
   "gender",
   "date_of_birth",
   "date_of_joining",
+  "date_of_end_contract",
   "employee_number",
   "emergency_contact_details",
   "person_to_be_contacted",
@@ -87,6 +89,7 @@
   "sb53",
   "bio",
   "personal_details",
+  "employee_family",
   "passport_number",
   "date_of_issue",
   "valid_upto",
@@ -112,6 +115,10 @@
   "held_on",
   "new_workplace",
   "feedback",
+  "certificates_section",
+  "employee_certificate",
+  "employee_project_section",
+  "employee_project",
   "lft",
   "rgt",
   "old_parent"
@@ -821,6 +828,49 @@
    "fieldtype": "Select",
    "label": "Position",
    "options": "Project\nOffice"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "certificates_section",
+   "fieldtype": "Section Break",
+   "label": "Certificates"
+  },
+  {
+   "depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\"",
+   "fieldname": "date_of_end_contract",
+   "fieldtype": "Date",
+   "label": "Date of End Contract",
+   "mandatory_depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\""
+  },
+  {
+   "depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\"",
+   "fieldname": "contract_number",
+   "fieldtype": "Data",
+   "label": "Contract Number",
+   "mandatory_depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\""
+  },
+  {
+   "fieldname": "employee_family",
+   "fieldtype": "Table",
+   "label": "Employee Family",
+   "options": "Employee Family"
+  },
+  {
+   "fieldname": "employee_certificate",
+   "fieldtype": "Table",
+   "label": "Employee Certificate",
+   "options": "Employee Certificate"
+  },
+  {
+   "fieldname": "employee_project_section",
+   "fieldtype": "Section Break",
+   "label": "Employee Project"
+  },
+  {
+   "fieldname": "employee_project",
+   "fieldtype": "Table",
+   "label": "Employee Project",
+   "options": "Employee Project"
   }
  ],
  "icon": "fa fa-user",
@@ -833,7 +883,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2023-03-20 11:21:10.777583",
+ "modified": "2023-05-25 08:32:56.293829",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Employee",
@@ -879,5 +929,6 @@
  "show_name_in_global_search": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "title_field": "employee_name"
+ "title_field": "employee_name",
+ "track_changes": 1
 }

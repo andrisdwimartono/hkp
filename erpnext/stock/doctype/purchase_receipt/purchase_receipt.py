@@ -127,6 +127,9 @@ class PurchaseReceipt(BuyingController):
 		self.reset_default_field_value("set_warehouse", "items", "warehouse")
 		self.reset_default_field_value("rejected_warehouse", "items", "rejected_warehouse")
 		self.reset_default_field_value("set_from_warehouse", "items", "from_warehouse")
+		if self.purchase_order:
+			for d in self.items:
+				d.purchase_order = self.purchase_order
 
 	def validate_cwip_accounts(self):
 		for item in self.get("items"):

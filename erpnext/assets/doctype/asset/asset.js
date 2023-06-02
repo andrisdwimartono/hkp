@@ -262,18 +262,18 @@ frappe.ui.form.on('Asset', {
 	},
 
 	set_finance_book: function(frm) {
-		frappe.call({
-			method: "erpnext.assets.doctype.asset.asset.get_item_details",
-			args: {
-				item_code: frm.doc.item_code,
-				asset_category: frm.doc.asset_category
-			},
-			callback: function(r, rt) {
-				if(r.message) {
-					frm.set_value('finance_books', r.message);
-				}
-			}
-		})
+		// frappe.call({
+		// 	method: "erpnext.assets.doctype.asset.asset.get_item_details",
+		// 	args: {
+		// 		item_code: frm.doc.item_code,
+		// 		asset_category: frm.doc.asset_category
+		// 	},
+		// 	callback: function(r, rt) {
+		// 		if(r.message) {
+		// 			frm.set_value('finance_books', r.message);
+		// 		}
+		// 	}
+		// })
 	},
 
 	is_existing_asset: function(frm) {
@@ -482,7 +482,43 @@ frappe.ui.form.on('Asset Finance Book', {
 			book.depreciation_start_date = "";
 			frm.refresh_field("finance_books");
 		}
-	}
+	},
+
+	assets_group: function(frm, cdt, cdn) {
+		var d = locals[cdt][cdn];
+		if(d.assets_group == "Kelompok 1"){
+			d.depreciation_method = "Written Down Value";
+			d.total_number_of_depreciations = 12*4;
+			d.frequency_of_depreciation = 1;
+			d.rate_of_depreciation = 25/12;
+		}else if(d.assets_group == "Kelompok 2"){
+			d.depreciation_method = "Written Down Value";
+			d.total_number_of_depreciations = 12*8;
+			d.frequency_of_depreciation = 1;
+			d.rate_of_depreciation = 12.5/12;
+		}else if(d.assets_group == "Kelompok 3"){
+			d.depreciation_method = "Written Down Value";
+			d.total_number_of_depreciations = 12*16;
+			d.frequency_of_depreciation = 1;
+			d.rate_of_depreciation = 6.25/12;
+		}else if(d.assets_group == "Kelompok 4"){
+			d.depreciation_method = "Written Down Value";
+			d.total_number_of_depreciations = 12*20;
+			d.frequency_of_depreciation = 1;
+			d.rate_of_depreciation = 5/12;
+		}else if(d.assets_group == "Permanen"){
+			d.depreciation_method = "Written Down Value";
+			d.total_number_of_depreciations = 12*20;
+			d.frequency_of_depreciation = 1;
+			d.rate_of_depreciation = 5/12;
+		}else if(d.assets_group == "Tidak Permanen"){
+			d.depreciation_method = "Written Down Value";
+			d.total_number_of_depreciations = 12*10;
+			d.frequency_of_depreciation = 1;
+			d.rate_of_depreciation = 10/12;
+		}
+		frm.refresh_field("finance_books")
+	},
 });
 
 frappe.ui.form.on('Depreciation Schedule', {
@@ -505,7 +541,9 @@ frappe.ui.form.on('Depreciation Schedule', {
 
 	depreciation_amount: function(frm, cdt, cdn) {
 		erpnext.asset.set_accumulated_depreciation(frm);
-	}
+	},
+
+	
 
 })
 

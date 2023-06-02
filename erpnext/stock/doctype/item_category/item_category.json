@@ -73,8 +73,14 @@
  ],
  "index_web_pages_for_search": 1,
  "is_tree": 1,
- "links": [],
- "modified": "2023-03-21 09:13:21.382050",
+ "links": [
+  {
+   "group": "Barang di Kelompok ini",
+   "link_doctype": "Item",
+   "link_fieldname": "item_category"
+  }
+ ],
+ "modified": "2023-04-10 10:45:45.384722",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item Category",

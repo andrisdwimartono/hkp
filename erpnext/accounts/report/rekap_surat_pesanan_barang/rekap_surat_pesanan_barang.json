@@ -1,0 +1,49 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2023-04-18 10:58:17.780831",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "date_from",
+   "fieldtype": "Date",
+   "label": "Tanggal",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "date_to",
+   "fieldtype": "Date",
+   "label": "Tanggal Sampai",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "KOP HKP",
+ "modified": "2023-04-18 10:58:17.780831",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Rekap Surat Pesanan Barang",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\n\tpoi.parent as \"Purchase Order:Link/Purchase Order:140\",\n\tpoi.item_code as \"Kode Barang:Link/Item:120\",\n\tpoi.item_name as \"Item Name::200\",\n\tpoi.uom as \"Satuan:Link/UOM:80\",\n\tSUM(poi.qty) as \"Vol SPB:Float:120\",\n\tCOALESCE(pri.received_qty, 0) as \"Vol Datang:Float:120\",\n\tCOALESCE(pri.qty, 0) as \"Vol Diterima:Float:120\",\n\tCOALESCE(pri.rejected_qty, 0) as \"Vol Ditolak:Float:120\",\n\tCOALESCE(pri.description, \"\") as \"Deskripsi::220\",\n\tCOALESCE(pri.detail, \"\") as \"Detail::420\"\nFROM\n\t`tabPurchase Order Item` poi\nLEFT JOIN (SELECT \n    SUM(pri.received_qty) received_qty, \n    SUM(pri.qty) qty, \n    SUM(pri.rejected_qty) rejected_qty, \n    pri.purchase_order, \n    pri.item_code,\n    GROUP_CONCAT(pri.description separator ',') description,\n    GROUP_CONCAT(CONCAT(pr.posting_date, ': ', FORMAT(pri.qty, 2)) separator ',') detail\n    FROM `tabPurchase Receipt Item` pri \n    INNER JOIN `tabPurchase Receipt` pr ON pr.name = pri.parent\n    WHERE pri.docstatus = 1 AND pr.posting_date BETWEEN %(date_from)s AND %(date_to)s\n    GROUP BY pri.purchase_order, pri.item_code) pri \n        ON pri.purchase_order = poi.parent AND pri.item_code = poi.item_code\nWHERE\n\tpoi.docstatus = 1\nGROUP BY\n\tpoi.parent, poi.item_code\nORDER BY\n\t\"Total Commission:Currency:120\"",
+ "ref_doctype": "Purchase Order",
+ "report_name": "Rekap Surat Pesanan Barang",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Logistik"
+  }
+ ]
+}

@@ -29,6 +29,12 @@ frappe.ui.form.on("Request for Quotation",{
 				is_group: 0
 			}
 		}));
+
+		frm.set_query('budget', () => ({
+			filters: {
+				docstatus: 1
+			}
+		}));
 	},
 
 	onload: function(frm) {
@@ -208,6 +214,26 @@ frappe.ui.form.on("Request for Quotation",{
 
 		dialog.set_value("subject", frm.doc.subject);
 		dialog.show();
+	},
+
+	budget: function(frm){
+		frappe.call({
+			method: "erpnext.buying.doctype.request_for_quotation.request_for_quotation.get_rap_item",
+			args: {
+				budget:frm.doc.budget,
+			},
+			callback: function(r) {
+				if(r.message) {
+					cur_frm.clear_table("items");
+					r.message.forEach(function(element) {
+						var c = frm.add_child("items");
+						c.item_code = element.pos_rap;
+						c.qty = element.volume;
+					});
+					refresh_field("items");
+				}
+			}
+		});
 	}
 })
 frappe.ui.form.on("Request for Quotation Item", {

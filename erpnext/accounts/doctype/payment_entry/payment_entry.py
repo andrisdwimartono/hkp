@@ -97,6 +97,7 @@ class PaymentEntry(AccountsController):
 		self.update_donation()
 		self.update_payment_schedule()
 		self.set_status()
+		self.update_outstanding_amounts_kas_bon()
 
 	def on_cancel(self):
 		self.ignore_linked_doctypes = ("GL Entry", "Stock Ledger Entry")
@@ -109,6 +110,29 @@ class PaymentEntry(AccountsController):
 		self.update_payment_schedule(cancel=1)
 		self.set_payment_req_status()
 		self.set_status()
+		self.update_outstanding_amounts_kas_bon()
+
+	def update_outstanding_amounts_kas_bon(self):
+		if self.project and self.form_payment_entry_project:
+			frappe.db.sql(
+				"""UPDATE `tabForm Payment Entry Project` fpep, (SELECT SUM(pe.paid_amount) paid_amount, pe.form_payment_entry_project FROM `tabPayment Entry` pe WHERE pe.form_payment_entry_project = %s AND pe.docstatus = 1 GROUP BY pe.form_payment_entry_project) pe
+				SET fpep.outstanding_amount = fpep.total_budget-pe.paid_amount
+				WHERE fpep.name = %s AND fpep.name = pe.form_payment_entry_project
+				""",
+				(self.form_payment_entry_project, self.form_payment_entry_project),
+				as_dict=True,
+			)
+			frappe.db.commit()
+		elif self.form_payment_entry:
+			frappe.db.sql(
+				"""UPDATE `tabForm Payment Entry` fpep, (SELECT SUM(pe.paid_amount) paid_amount, pe.form_payment_entry FROM `tabPayment Entry` pe WHERE pe.form_payment_entry = %s AND pe.docstatus = 1 GROUP BY pe.form_payment_entry) pe
+				SET fpep.outstanding_amount = fpep.total_budget-pe.paid_amount
+				WHERE fpep.name = %s AND fpep.name = pe.form_payment_entry
+				""",
+				(self.form_payment_entry, self.form_payment_entry),
+				as_dict=True,
+			)
+			frappe.db.commit()
 
 	def set_payment_req_status(self):
 		from erpnext.accounts.doctype.payment_request.payment_request import update_payment_req_status
@@ -809,13 +833,15 @@ class PaymentEntry(AccountsController):
 					"against": against_account,
 					"account_currency": self.party_account_currency,
 					"cost_center": self.cost_center,
+					"posting_date": self.giro_mundur_date if self.mode_of_payment == "Giro Mundur" else self.posting_date
 				},
 				item=self,
 			)
 
-			dr_or_cr = (
-				"credit" if erpnext.get_party_account_type(self.party_type) == "Receivable" else "debit"
-			)
+			dr_or_cr = "debit"
+			# dr_or_cr = (
+			# 	"credit" if erpnext.get_party_account_type(self.party_type) == "Receivable" else "debit"
+			# )
 
 			for d in self.get("references"):
 				cost_center = self.cost_center
@@ -870,6 +896,7 @@ class PaymentEntry(AccountsController):
 						"credit": self.base_paid_amount,
 						"cost_center": self.cost_center,
 						"post_net_value": True,
+						"posting_date": self.giro_mundur_date if self.mode_of_payment == "Giro Mundur" else self.posting_date
 					},
 					item=self,
 				)
@@ -884,6 +911,7 @@ class PaymentEntry(AccountsController):
 						"debit_in_account_currency": self.received_amount,
 						"debit": self.base_received_amount,
 						"cost_center": self.cost_center,
+						"posting_date": self.giro_mundur_date if self.mode_of_payment == "Giro Mundur" else self.posting_date
 					},
 					item=self,
 				)
@@ -919,6 +947,7 @@ class PaymentEntry(AccountsController):
 						else d.tax_amount,
 						"cost_center": d.cost_center,
 						"post_net_value": True,
+						"posting_date": self.giro_mundur_date if self.mode_of_payment == "Giro Mundur" else self.posting_date
 					},
 					account_currency,
 					item=d,
@@ -944,6 +973,7 @@ class PaymentEntry(AccountsController):
 							else d.tax_amount,
 							"cost_center": self.cost_center,
 							"post_net_value": True,
+							"posting_date": self.giro_mundur_date if self.mode_of_payment == "Giro Mundur" else self.posting_date
 						},
 						account_currency,
 						item=d,
@@ -966,6 +996,7 @@ class PaymentEntry(AccountsController):
 							"debit_in_account_currency": d.amount,
 							"debit": d.amount,
 							"cost_center": d.cost_center,
+							"posting_date": self.giro_mundur_date if self.mode_of_payment == "Giro Mundur" else self.posting_date
 						},
 						item=d,
 					)

@@ -110,7 +110,8 @@ frappe.ui.form.on('Material Request', {
 
 				if (frm.doc.material_request_type === "Material Transfer") {
 					add_create_pick_list_button();
-					frm.add_custom_button(__("Transfer Material"),
+					//frm.add_custom_button(__("Transfer Material"),
+					frm.add_custom_button(__("Transfer Antar Gudang"),
 						() => frm.events.make_stock_entry(frm), __('Create'));
 				}
 
@@ -392,7 +393,7 @@ frappe.ui.form.on("Material Request Item", {
 		item.rate = 0;
 		item.uom = '';
 		set_schedule_date(frm);
-		frm.events.get_item_data(frm, item, true);
+		frm.events.get_item_data(frm, item, false);
 	},
 
 	schedule_date: function(frm, cdt, cdn) {

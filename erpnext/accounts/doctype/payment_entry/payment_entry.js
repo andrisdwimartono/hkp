@@ -18,6 +18,14 @@ frappe.ui.form.on('Payment Entry', {
 	},
 
 	setup: function(frm) {
+		frm.set_query("paid_from", function() {
+			return {
+				filters: {
+					"is_group": 0,
+					"company": frm.doc.company
+				}
+			}
+		});
 		// frm.set_query("paid_from", function() {
 		// 	frm.events.validate_company(frm);
 
@@ -76,6 +84,14 @@ frappe.ui.form.on('Payment Entry', {
 			}
 		});
 
+		frm.set_query("paid_to", function() {
+			return {
+				filters: {
+					"is_group": 0,
+					"company": frm.doc.company
+				}
+			}
+		});
 		// frm.set_query("paid_to", function() {
 		// 	frm.events.validate_company(frm);
 
@@ -167,27 +183,57 @@ frappe.ui.form.on('Payment Entry', {
 			};
 		});
 
-		frm.set_query("budget_realization", function() {
+		frm.set_query("form_payment_entry_project", function() {
 			return {
 				filters: {
 					project: frm.doc.project,
+					use_payment_entry: 1,
+					docstatus: 1
+				}
+			}
+		});
+
+		frm.set_query("form_payment_entry", function() {
+			return {
+				filters: {
+					use_payment_entry: 1,
 					docstatus: 1
 				}
 			}
 		});
 	},
 
-	budget_realization: function(frm){
+	form_payment_entry_project: function(frm){
 		frappe.call({
-			method: 'erpnext.accounts.doctype.budget_realization.budget_realization.check_budget_realization',
+			method: 'erpnext.accounts.doctype.form_payment_entry_project.form_payment_entry_project.check_form_payment_entry_project',
 			args: {
-				'budget_realization': frm.doc.budget_realization
+				'form_payment_entry_project': frm.doc.form_payment_entry_project
 			},
 			callback: function(r) {
 				if(r.message){
 					var vals = r.message[0];
 					frm.set_value("paid_amount", vals.budget_amount);
+					frm.set_value("purpose", vals.purpose);
 					frm.refresh_field("paid_amount");
+					frm.trigger("paid_amount");
+				}
+			}
+		});
+	},
+
+	form_payment_entry: function(frm){
+		frappe.call({
+			method: 'erpnext.accounts.doctype.form_payment_entry_project.form_payment_entry_project.check_form_payment_entry',
+			args: {
+				'form_payment_entry': frm.doc.form_payment_entry
+			},
+			callback: function(r) {
+				if(r.message){
+					var vals = r.message[0];
+					frm.set_value("paid_amount", vals.budget_amount);
+					frm.set_value("purpose", vals.purpose);
+					frm.refresh_field("paid_amount");
+					frm.trigger("paid_amount");
 				}
 			}
 		});

@@ -1,0 +1,76 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-04-06 10:14:35.753291",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "pos_anggaran",
+  "peminta",
+  "total_budget",
+  "purpose",
+  "form_payment_entry_project",
+  "form_payment_entry",
+  "account"
+ ],
+ "fields": [
+  {
+   "fieldname": "pos_anggaran",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Pos Anggaran"
+  },
+  {
+   "fieldname": "peminta",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Peminta",
+   "options": "User"
+  },
+  {
+   "fieldname": "total_budget",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Budget",
+   "options": "Company:company:default_currency"
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Purpose"
+  },
+  {
+   "fieldname": "form_payment_entry_project",
+   "fieldtype": "Link",
+   "label": "Form Payment Entry Project",
+   "options": "Form Payment Entry Project"
+  },
+  {
+   "fieldname": "form_payment_entry",
+   "fieldtype": "Link",
+   "label": "Form Payment Entry",
+   "options": "Form Payment Entry"
+  },
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Account",
+   "mandatory_depends_on": "eval: doc.docstatus == 0",
+   "options": "Account"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-25 10:46:43.738691",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Budget Approval Plan Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

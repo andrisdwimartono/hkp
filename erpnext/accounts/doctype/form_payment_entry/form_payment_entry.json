@@ -7,16 +7,19 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "department",
   "purpose",
   "significant",
   "column_break_ni31z",
   "posting_date",
+  "required_date",
+  "use_payment_entry",
   "section_break_kqfpp",
   "details",
   "section_break_fkxbb",
   "total_budget",
   "column_break_oflkz",
-  "total_approved_budget",
+  "outstanding_amount",
   "section_break_73dp1",
   "keterangan",
   "amended_from"
@@ -47,8 +50,8 @@
   {
    "fieldname": "details",
    "fieldtype": "Table",
-   "label": "Form Payment Entry Detail",
-   "options": "Form Payment Entry Detail",
+   "label": "Form Payment Entry Non Project",
+   "options": "Form Payment Entry Non Project",
    "reqd": 1
   },
   {
@@ -91,22 +94,42 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "total_approved_budget",
+   "fieldname": "section_break_73dp1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "required_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Required Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "outstanding_amount",
    "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Total Approved Budget",
+   "label": "Outstanding Amount",
    "options": "Company:company:default_currency",
    "read_only": 1
   },
   {
-   "fieldname": "section_break_73dp1",
-   "fieldtype": "Section Break"
+   "default": "1",
+   "fieldname": "use_payment_entry",
+   "fieldtype": "Check",
+   "label": "Lewat Kasir"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-03-20 16:17:11.599415",
+ "modified": "2023-03-30 12:00:22.351869",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Form Payment Entry",
@@ -138,6 +161,9 @@
    "write": 1
   }
  ],
+ "search_fields": "purpose",
  "sort_field": "modified",
- "sort_order": "DESC"
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_views": 1
 }

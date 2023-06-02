@@ -12,6 +12,8 @@
   "due_date",
   "mode_of_payment",
   "column_break_5",
+  "payment_schedule_mode",
+  "invoice_percent_amount",
   "invoice_portion",
   "section_break_6",
   "discount_type",
@@ -46,28 +48,28 @@
    "label": "Description"
   },
   {
-   "columns": 2,
+   "columns": 1,
    "fieldname": "due_date",
    "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Due Date",
-   "reqd": 1
+   "hidden": 1,
+   "label": "Due Date"
   },
   {
    "columns": 2,
    "fieldname": "invoice_portion",
    "fieldtype": "Percent",
-   "in_list_view": 1,
-   "label": "Invoice Portion",
-   "print_hide": 1
+   "label": "Persentase Pembayaran",
+   "print_hide": 1,
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "columns": 2,
    "fieldname": "payment_amount",
    "fieldtype": "Currency",
-   "in_list_view": 1,
    "label": "Payment Amount",
    "options": "currency",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -155,12 +157,29 @@
    "fieldtype": "Currency",
    "label": "Payment Amount (Company Currency)",
    "options": "Company:company:default_currency"
+  },
+  {
+   "columns": 1,
+   "fieldname": "payment_schedule_mode",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Payment Schedule Mode",
+   "options": "Percent\nTotal"
+  },
+  {
+   "columns": 1,
+   "depends_on": "eval: doc.payment_schedule_mode",
+   "fieldname": "invoice_percent_amount",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Invoice Percent Amount",
+   "mandatory_depends_on": "eval: doc.payment_schedule_mode"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-09-16 13:57:06.382859",
+ "modified": "2023-05-09 11:27:13.330537",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Payment Schedule",
@@ -169,6 +188,5 @@
  "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
  "track_changes": 1
 }

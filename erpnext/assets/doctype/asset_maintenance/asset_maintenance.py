@@ -139,6 +139,12 @@ def get_team_members(doctype, txt, searchfield, start, page_len, filters):
 		"Maintenance Team Member", {"parent": filters.get("maintenance_team")}, "team_member"
 	)
 
+@frappe.whitelist()
+@frappe.validate_and_sanitize_search_inputs
+def get_team_members2(doctype, txt, searchfield, start, page_len, filters):
+	return frappe.db.get_values(
+		"Maintenance Team Member", {"parent": filters.get("maintenance_team")}, "employee"
+	)
 
 @frappe.whitelist()
 def get_maintenance_log(asset_name):
@@ -150,3 +156,36 @@ def get_maintenance_log(asset_name):
 		(asset_name),
 		as_dict=1,
 	)
+
+@frappe.whitelist()
+def create_asset_maintenance():
+	bulan_depan = getdate(add_months(nowdate(), 1))
+	amts = frappe.db.sql("""SELECT * FROM `tabAsset Maintenance Task` amt WHERE amt.next_due_date = '{0}' and amt.periodicity IN ('Monthly', 'Quarterly', 'Yearly', '2 Yearly')""".format(bulan_depan), as_dict=1)
+
+	amts2 = frappe.db.sql("""SELECT * FROM `tabAsset Maintenance Task` amt WHERE amt.next_due_date = '{0}' and amt.periodicity IN ('Weekly')""".format(getdate(add_days(nowdate(), 7))), as_dict=1)
+	amts = amts+amts2
+	amts3 = frappe.db.sql("""SELECT * FROM `tabAsset Maintenance Task` amt WHERE amt.next_due_date = '{0}' and amt.periodicity IN ('Daily')""".format(getdate(add_days(nowdate(), 1))), as_dict=1)
+	amts = amts+amts3
+	for amt in amts:
+		asset_maintenance_doc = frappe.get_doc("Asset Maintenance", amt.parent)
+		next_due_date = calculate_next_due_date(
+			amt.periodicity, start_date=amt.next_due_date, end_date=None, last_completion_date=None, next_due_date=None
+		)
+		last_completion_date = None
+		if amt.last_completion_date:
+			last_completion_date = calculate_next_due_date(
+				amt.periodicity, start_date=amt.last_completion_date, end_date=None, last_completion_date=None, next_due_date=None
+			)
+		asset_maintenance_doc.append("asset_maintenance_tasks", {
+			"maintenance_task": amt.maintenance_task,
+			"maintenance_status": "Planned",
+			"periodicity": amt.periodicity,
+			"start_date": amt.next_due_date,
+			"end_date": amt.last_completion_date,
+			"next_due_date": next_due_date,
+			"last_completion_date": last_completion_date,
+			"assign_to_employee": amt.assign_to_employee,
+			"assign_to": amt.assign_to,
+			"description": amt.description
+		})
+		asset_maintenance_doc.save()

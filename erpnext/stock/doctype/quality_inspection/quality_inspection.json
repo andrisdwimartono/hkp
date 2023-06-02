@@ -19,6 +19,7 @@
   "item_code",
   "item_serial_no",
   "batch_no",
+  "qty",
   "sample_size",
   "column_break1",
   "item_name",
@@ -32,6 +33,7 @@
   "verified_by",
   "column_break_17",
   "remarks",
+  "note",
   "amended_from"
  ],
  "fields": [
@@ -238,6 +240,18 @@
    "fieldname": "manual_inspection",
    "fieldtype": "Check",
    "label": "Manual Inspection"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Accepted Quantity",
+   "read_only": 1
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Text",
+   "label": "Note"
   }
  ],
  "icon": "fa fa-search",
@@ -245,11 +259,10 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-10-04 22:00:13.995221",
+ "modified": "2023-04-04 10:36:46.728636",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Quality Inspection",
- "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
@@ -270,6 +283,5 @@
  "search_fields": "item_code, report_date, reference_name",
  "show_name_in_global_search": 1,
  "sort_field": "modified",
- "sort_order": "ASC",
- "states": []
+ "sort_order": "ASC"
 }

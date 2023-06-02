@@ -7,19 +7,32 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "base_on",
+  "hand_over_progress",
+  "progress_sequence",
+  "sub_contract_hand_over",
+  "contractor_name",
+  "purchase_order",
+  "supplier_name",
   "project",
   "project_name",
+  "budget",
+  "department",
   "purpose",
   "significant",
   "column_break_ni31z",
   "posting_date",
+  "required_date",
+  "week_periode",
+  "use_payment_entry",
   "section_break_kqfpp",
   "details",
   "section_break_fkxbb",
   "total_budget",
   "column_break_oflkz",
-  "total_approved_budget",
+  "outstanding_amount",
   "section_break_73dp1",
+  "form_payment_entry_checklist",
   "keterangan",
   "amended_from"
  ],
@@ -57,8 +70,8 @@
   {
    "fieldname": "details",
    "fieldtype": "Table",
-   "label": "Form Payment Entry Detail",
-   "options": "Form Payment Entry Project Detail",
+   "label": "Form Payment Entry Account",
+   "options": "Form Payment Entry Account",
    "reqd": 1
   },
   {
@@ -75,13 +88,6 @@
   {
    "fieldname": "column_break_oflkz",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "total_approved_budget",
-   "fieldtype": "Currency",
-   "label": "Total Approved Budget",
-   "options": "Company:company:default_currency",
-   "read_only": 1
   },
   {
    "fieldname": "section_break_73dp1",
@@ -111,13 +117,14 @@
    "read_only": 1
   },
   {
+   "depends_on": "eval:doc.base_on == \"Budget\"||doc.base_on == \"Hand Over Progress\"",
    "fieldname": "project",
    "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Project",
-   "options": "Project",
-   "reqd": 1
+   "mandatory_depends_on": "eval:doc.base_on == \"Budget\"||doc.base_on == \"Hand Over Progress\"",
+   "options": "Project"
   },
   {
    "fetch_from": "project.project_name",
@@ -125,12 +132,112 @@
    "fieldtype": "Data",
    "label": "Project Name",
    "read_only": 1
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "depends_on": "eval:doc.base_on == \"Budget\"",
+   "fieldname": "budget",
+   "fieldtype": "Link",
+   "label": "Budget",
+   "mandatory_depends_on": "eval:doc.base_on == \"Budget\"",
+   "options": "Budget"
+  },
+  {
+   "fieldname": "required_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Required Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "outstanding_amount",
+   "fieldtype": "Currency",
+   "label": "Outstanding Amount",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "base_on",
+   "fieldtype": "Select",
+   "label": "Base On",
+   "options": "Budget\nPurchase Order\nHand Over Progress",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.base_on == \"Purchase Order\"",
+   "fieldname": "purchase_order",
+   "fieldtype": "Link",
+   "label": "Purchase Order",
+   "mandatory_depends_on": "eval:doc.base_on == \"Purchase Order\"",
+   "options": "Purchase Order"
+  },
+  {
+   "default": "1",
+   "fieldname": "week_periode",
+   "fieldtype": "Int",
+   "label": "Week Periode",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "use_payment_entry",
+   "fieldtype": "Check",
+   "label": "Lewat Kasir"
+  },
+  {
+   "depends_on": "eval:doc.base_on == \"Hand Over Progress\"",
+   "fieldname": "hand_over_progress",
+   "fieldtype": "Link",
+   "label": "Hand Over Progress",
+   "mandatory_depends_on": "eval:doc.base_on == \"Hand Over Progress\"",
+   "options": "Hand Over Progress"
+  },
+  {
+   "fetch_from": "hand_over_progress.contractor_name",
+   "fieldname": "contractor_name",
+   "fieldtype": "Data",
+   "label": "Contractor Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "hand_over_progress.sub_contract_hand_over",
+   "fieldname": "sub_contract_hand_over",
+   "fieldtype": "Link",
+   "label": "Sub Contract Hand Over",
+   "options": "Sub Contract Hand Over",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "purchase_order.supplier_name",
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "label": "Supplier Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "form_payment_entry_checklist",
+   "fieldtype": "Table",
+   "label": "Form Payment Entry Checklist",
+   "options": "Form Payment Entry Checklist"
+  },
+  {
+   "fetch_from": "hand_over_progress.progress_sequence",
+   "fieldname": "progress_sequence",
+   "fieldtype": "Int",
+   "label": "Progress Sequence"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-03-20 16:11:27.177659",
+ "modified": "2023-04-13 13:34:33.566840",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Form Payment Entry Project",
@@ -162,6 +269,9 @@
    "write": 1
   }
  ],
+ "search_fields": "purpose",
  "sort_field": "modified",
- "sort_order": "DESC"
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_views": 1
 }

@@ -1,0 +1,49 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2023-04-18 11:07:17.236423",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "date_from",
+   "fieldtype": "Date",
+   "label": "Tanggal",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "date_to",
+   "fieldtype": "Date",
+   "label": "Tanggal Sampai",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "KOP HKP",
+ "modified": "2023-04-18 11:15:50.356539",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Monitoring Penerimaan Barang",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\n\tx.parent as \"Purchase Order::140\",\n\tx.posting_date as \"Tanggal:Date:120\",\n\tx.item_code as \"Kode Barang:Link/Item:120\",\n\tx.item_name as \"Item Name:data:200\",\n\tx.uom as \"Satuan:Link/UOM:80\",\n\tx.qty as \"Vol SPB:Float:120\",\n\tx.received_qty as \"Vol Datang:Float:120\",\n\tx.qty_accepted as \"Vol Diterima:Float:120\",\n\tx.rejected_qty as \"Vol Ditolak:Float:120\",\n\tx.unfinished_qty as \"Vol Kurang:Float:120\",\n\tx.description \"Deskripsi::220\"\nFROM\n(SELECT \n\tconcat(\"<a href='/app/purchase-order/\", poi.parent,\"'><b>\", poi.parent, \"</b></a>\") parent,\n\tpo.transaction_date posting_date,\n\tpoi.parent as purchase_order,\n\tpoi.item_code,\n\tpoi.item_name,\n\tpoi.uom,\n\tSUM(poi.qty) qty,\n\tCOALESCE(pri.received_qty, 0) received_qty,\n\tCOALESCE(pri.qty, 0) qty_accepted,\n\tCOALESCE(pri.rejected_qty, 0) rejected_qty,\n\tSUM(poi.qty)-COALESCE(pri.received_qty, 0) unfinished_qty,\n\tCOALESCE(pri.description, \"\") description\nFROM\n\t`tabPurchase Order Item` poi\nINNER JOIN `tabPurchase Order` po ON po.name = poi.parent\nLEFT JOIN (SELECT \n    SUM(pri.received_qty) received_qty, \n    SUM(pri.qty) qty, \n    SUM(pri.rejected_qty) rejected_qty, \n    pri.purchase_order, \n    pri.item_code,\n    GROUP_CONCAT(pri.description separator ',') description,\n    GROUP_CONCAT(CONCAT(pr.posting_date, ': ', FORMAT(pri.qty, 2)) separator ',') detail\n    FROM `tabPurchase Receipt Item` pri \n    INNER JOIN `tabPurchase Receipt` pr ON pr.name = pri.parent\n    WHERE pri.docstatus = 1 AND pr.posting_date BETWEEN %(date_from)s AND %(date_to)s\n    GROUP BY pri.purchase_order, pri.item_code) pri \n        ON pri.purchase_order = poi.parent AND pri.item_code = poi.item_code\nWHERE\n\tpoi.docstatus = 1\nGROUP BY\n\tpoi.parent, poi.item_code\nUNION\nSELECT\n\tconcat(\"&nbsp;&nbsp;&nbsp;&nbsp;<a href='/app/purchase-receipt/\", pri.parent,\"'>\",pri.parent, \"</a>\") parent,\n\tpr.posting_date,\n\tpri.purchase_order,\n\tpri.item_code,\n\tpri.item_name,\n\tpri.uom,\n\t0 qty,\n\tCOALESCE(pri.received_qty, 0) received_qty,\n\tCOALESCE(pri.qty, 0) qty_accepted,\n\tCOALESCE(pri.rejected_qty, 0) rejected_qty,\n\t0 unfinished_qty,\n\tCOALESCE(pri.description, \"\") description\nFROM `tabPurchase Receipt Item` pri \nINNER JOIN `tabPurchase Receipt` pr ON pr.name = pri.parent\nWHERE pri.docstatus = 1 AND pr.posting_date BETWEEN %(date_from)s AND %(date_to)s\n) x\nORDER BY x.purchase_order , x.item_code, x.posting_date\n",
+ "ref_doctype": "Purchase Order",
+ "report_name": "Monitoring Penerimaan Barang",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Logistik"
+  }
+ ]
+}

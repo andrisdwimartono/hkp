@@ -8,7 +8,9 @@ import frappe
 from frappe import _, msgprint
 from frappe.desk.notifications import clear_doctype_notifications
 from frappe.model.mapper import get_mapped_doc
-from frappe.utils import cint, cstr, flt
+from frappe.utils import cint, cstr, flt, add_days, add_months, add_years, getdate, nowdate
+from datetime import timedelta, date
+import datetime
 
 from erpnext.accounts.doctype.sales_invoice.sales_invoice import (
 	unlink_inter_company_doc,
@@ -45,14 +47,47 @@ class PurchaseOrder(BuyingController):
 				"percent_join_field": "material_request",
 			}
 		]
+	def autoname(self):
+		if self.naming_series != None:
+			ser = self.naming_series.split("/")
+			if len(ser) <= 5:
+				return
+			series = """/{0}/{1}/{2}/""".format(ser[1], ser[2], ser[3])
+			nm = frappe.db.sql("""
+				SELECT count(*) ct FROM `tabPurchase Order` po WHERE po.docstatus != 2 AND po.name like '%{0}%'""".format(series),
+					as_dict=1
+				)
+			series_number = 1
+			if nm:
+				series_number = nm[0].ct + 1
+			self.name = """{0}/{1}/{2}/{3}/{4}/{5}""".format(series_number, ser[1], ser[2], ser[3], ser[4], ser[5])
+			nm2 = frappe.db.sql("""
+				SELECT count(*) ct FROM `tabPurchase Order` po WHERE po.name = '{0}'""".format(self.name),
+					as_dict=1
+				)
+			while nm2[0].ct != 0:
+				series_number = series_number+1
+				self.name = """{0}/{1}/{2}/{3}/{4}/{5}""".format(series_number, ser[1], ser[2], ser[3], ser[4], ser[5])
+				nm2 = frappe.db.sql("""
+					SELECT count(*) ct FROM `tabPurchase Order` po WHERE po.name = '{0}'""".format(self.name),
+						as_dict=1
+					)
 
 	def onload(self):
 		supplier_tds = frappe.db.get_value("Supplier", self.supplier, "tax_withholding_category")
 		self.set_onload("supplier_tds", supplier_tds)
 
+	def set_due_date(self):
+		n = 3
+		for d in self.payment_schedule:
+			end_date = getdate(add_months(self.transaction_date, 1))
+			if not d.due_date:
+				d.due_date = end_date
+				n = n+35
+
 	def validate(self):
 		super(PurchaseOrder, self).validate()
-
+		self.set_due_date()
 		self.set_status()
 
 		# apply tax withholding only if checked and applicable

@@ -2,13 +2,14 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "naming_series:",
+ "autoname": "ACC-ASS-.YYYY.-",
  "creation": "2016-03-01 17:01:27.920130",
  "doctype": "DocType",
  "document_type": "Document",
  "engine": "InnoDB",
  "field_order": [
   "company",
+  "item_created",
   "item_code",
   "item_name",
   "asset_owner",
@@ -22,6 +23,7 @@
   "naming_series",
   "asset_name",
   "asset_category",
+  "nomor_polisi",
   "location",
   "custodian",
   "department",
@@ -73,6 +75,7 @@
  ],
  "fields": [
   {
+   "default": "ACC-ASS-.YYYY.-",
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "Naming Series",
@@ -86,23 +89,23 @@
    "reqd": 1
   },
   {
+   "depends_on": "eval:doc.item_created == 1",
    "fieldname": "item_code",
    "fieldtype": "Link",
    "in_standard_filter": 1,
    "label": "Item Code",
-   "options": "Item",
-   "reqd": 1
+   "mandatory_depends_on": "eval:doc.item_created == 1",
+   "options": "Item"
   },
   {
    "depends_on": "item_code",
    "fetch_from": "item_code.item_name",
    "fieldname": "item_name",
    "fieldtype": "Read Only",
+   "hidden": 1,
    "label": "Item Name"
   },
   {
-   "depends_on": "item_code",
-   "fetch_from": "item_code.asset_category",
    "fieldname": "asset_category",
    "fieldtype": "Link",
    "in_global_search": 1,
@@ -110,7 +113,7 @@
    "in_standard_filter": 1,
    "label": "Asset Category",
    "options": "Asset Category",
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "asset_owner",
@@ -484,6 +487,18 @@
    "options": "\nSuccessful\nFailed",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "depends_on": "eval: doc.asset_category == \"Kendaraan\"",
+   "fieldname": "nomor_polisi",
+   "fieldtype": "Data",
+   "label": "Nomor Polisi"
+  },
+  {
+   "default": "0",
+   "fieldname": "item_created",
+   "fieldtype": "Check",
+   "label": "Sudah ada di Master Barang"
   }
  ],
  "idx": 72,
@@ -506,7 +521,7 @@
    "link_fieldname": "asset"
   }
  ],
- "modified": "2023-01-17 00:28:37.789345",
+ "modified": "2023-05-30 14:53:15.190512",
  "modified_by": "Administrator",
  "module": "Assets",
  "name": "Asset",

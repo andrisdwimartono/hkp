@@ -12,6 +12,12 @@
   "stock_entry_type",
   "outgoing_stock_entry",
   "purpose",
+  "material_request",
+  "is_material",
+  "is_alat_kerja",
+  "driver_name",
+  "vehicle_number",
+  "delivery_date",
   "add_to_transit",
   "work_order",
   "purchase_order",
@@ -60,6 +66,7 @@
   "address_display",
   "accounting_dimensions_section",
   "project",
+  "project_name",
   "dimension_col_break",
   "printing_settings",
   "select_print_heading",
@@ -612,6 +619,46 @@
    "no_copy": 1,
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "material_request",
+   "fieldtype": "Link",
+   "label": "Material Request",
+   "options": "Material Request"
+  },
+  {
+   "fieldname": "driver_name",
+   "fieldtype": "Data",
+   "label": "Driver Name"
+  },
+  {
+   "fieldname": "vehicle_number",
+   "fieldtype": "Data",
+   "label": "Vehicle Number"
+  },
+  {
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "label": "Delivery Date"
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_material",
+   "fieldtype": "Check",
+   "label": "Is Material"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_alat_kerja",
+   "fieldtype": "Check",
+   "label": "Is Alat Kerja"
   }
  ],
  "icon": "fa fa-file-text",
@@ -619,11 +666,10 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-02 05:21:39.060501",
+ "modified": "2023-04-18 10:16:24.927764",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Stock Entry",
- "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
@@ -690,7 +736,6 @@
  "show_name_in_global_search": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
  "title_field": "stock_entry_type",
  "track_changes": 1
 }

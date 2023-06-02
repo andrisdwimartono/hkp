@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "ABP-.YY.-.###.",
+ "creation": "2023-05-23 09:27:22.041048",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sub_section",
+  "material_type",
+  "types",
+  "materials",
+  "tools",
+  "services"
+ ],
+ "fields": [
+  {
+   "fieldname": "sub_section",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sub Section",
+   "options": "Project Sub Section",
+   "reqd": 1
+  },
+  {
+   "fieldname": "material_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Material Type",
+   "options": "Project Sub Section Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "types",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Jenis Harga Satuan",
+   "options": "Sub Section Material Type Materi\nSub Section Material Type Tool\nSub Section Material Type Service",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval: doc.types == \"Sub Section Material Type Materi\"",
+   "fieldname": "materials",
+   "fieldtype": "Table",
+   "label": "Sub Section Material Type Materi",
+   "mandatory_depends_on": "eval: doc.types == \"Sub Section Material Type Materi\"",
+   "options": "Sub Section Material Type Materials"
+  },
+  {
+   "depends_on": "eval:doc.types==\"Sub Section Material Type Tool\"",
+   "fieldname": "tools",
+   "fieldtype": "Table",
+   "label": "Sub Section Material Type Tool",
+   "mandatory_depends_on": "eval:doc.types==\"Sub Section Material Type Tool\"",
+   "options": "Sub Section Material Type Tools"
+  },
+  {
+   "depends_on": "eval:doc.types == \"Sub Section Material Type Service\"",
+   "fieldname": "services",
+   "fieldtype": "Table",
+   "label": "Sub Section Material Type Service",
+   "mandatory_depends_on": "eval:doc.types == \"Sub Section Material Type Service\"",
+   "options": "Sub Section Material Type Services"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-05-23 11:48:32.234559",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Sub Section Material Type",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Engineering",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

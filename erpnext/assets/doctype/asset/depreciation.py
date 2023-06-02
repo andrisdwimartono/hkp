@@ -31,6 +31,7 @@ def post_depreciation_entries(date=None):
 		except Exception as e:
 			frappe.db.rollback()
 			failed_asset_names.append(asset_name)
+			print(asset_name)
 
 	if failed_asset_names:
 		set_depr_entry_posting_status_for_failed_assets(failed_asset_names)
@@ -53,7 +54,7 @@ def get_depreciable_assets(date):
 @frappe.whitelist()
 def make_depreciation_entry(asset_name, date=None):
 	frappe.has_permission("Journal Entry", throw=True)
-
+	print("1x")
 	if not date:
 		date = today()
 
@@ -63,7 +64,7 @@ def make_depreciation_entry(asset_name, date=None):
 		accumulated_depreciation_account,
 		depreciation_expense_account,
 	) = get_depreciation_accounts(asset)
-
+	print("2x")
 	depreciation_cost_center, depreciation_series = frappe.get_cached_value(
 		"Company", asset.company, ["depreciation_cost_center", "series_for_depreciation_entry"]
 	)
@@ -71,7 +72,7 @@ def make_depreciation_entry(asset_name, date=None):
 	depreciation_cost_center = asset.cost_center or depreciation_cost_center
 
 	accounting_dimensions = get_checks_for_pl_and_bs_accounts()
-
+	print("3x")
 	for d in asset.get("schedules"):
 		if not d.journal_entry and getdate(d.schedule_date) <= getdate(date):
 			je = frappe.new_doc("Journal Entry")
@@ -101,6 +102,7 @@ def make_depreciation_entry(asset_name, date=None):
 				"reference_name": asset.name,
 				"cost_center": depreciation_cost_center,
 			}
+			print("4x")
 
 			for dimension in accounting_dimensions:
 				if asset.get(dimension["fieldname"]) or dimension.get("mandatory_for_bs"):
@@ -134,6 +136,7 @@ def make_depreciation_entry(asset_name, date=None):
 			finance_books = asset.get("finance_books")[idx - 1]
 			finance_books.value_after_depreciation -= d.depreciation_amount
 			finance_books.db_update()
+			print("5x")
 
 	frappe.db.set_value("Asset", asset_name, "depr_entry_posting_status", "Successful")
 
