@@ -36,7 +36,8 @@ frappe.query_reports["General Ledger"] = {
 		{
 			"fieldname":"account",
 			"label": __("Account"),
-			"fieldtype": "MultiSelectList",
+			//"fieldtype": "MultiSelectList",
+			"fieldtype": "Link",
 			"options": "Account",
 			get_data: function(txt) {
 				return frappe.db.get_link_options('Account', txt, {
@@ -136,6 +137,13 @@ frappe.query_reports["General Ledger"] = {
 			"label": __("Tax Id"),
 			"fieldtype": "Data",
 			"hidden": 1
+		},
+		{
+			"fieldname":"letter_head",
+			"label": __("Letter Head"),
+			"fieldtype": "Data",
+			"hidden": 1,
+			"default": "KOP HKP Simple"
 		},
 		{
 			"fieldname": "presentation_currency",

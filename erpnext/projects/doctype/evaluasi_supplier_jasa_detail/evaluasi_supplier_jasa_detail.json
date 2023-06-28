@@ -1,0 +1,57 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-06-13 09:45:45.722842",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "kriteria",
+  "value",
+  "bobot",
+  "keterangan"
+ ],
+ "fields": [
+  {
+   "fieldname": "value",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Value",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "bobot",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Bobot",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "kriteria",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Kriteria",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "keterangan",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Keterangan"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-06-13 10:06:44.326633",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Evaluasi Supplier Jasa Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -14,6 +14,11 @@
   "posting_date",
   "required_date",
   "use_payment_entry",
+  "section_break_2rhwe",
+  "type",
+  "employee",
+  "employee_name",
+  "party",
   "section_break_kqfpp",
   "details",
   "section_break_fkxbb",
@@ -124,12 +129,48 @@
    "fieldname": "use_payment_entry",
    "fieldtype": "Check",
    "label": "Lewat Kasir"
+  },
+  {
+   "fieldname": "section_break_2rhwe",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "Operasional Kantor",
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "mandatory_depends_on": "eval:doc.docstatus == 1",
+   "options": "Operasional Kantor\nPiutang Afiliasi\nPiutang Hubungan Istimewa\nPiutang Karyawan\nPiutang Proyek"
+  },
+  {
+   "depends_on": "eval: doc.type == \"Piutang Karyawan\"",
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "mandatory_depends_on": "eval: doc.type == \"Piutang Karyawan\"",
+   "options": "Employee"
+  },
+  {
+   "depends_on": "eval: doc.type == \"Piutang Karyawan\"",
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "mandatory_depends_on": "eval: doc.type == \"Piutang Karyawan\"",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval: doc.type != \"Piutang Karyawan\" && doc.type != \"Operasional Kantor\"",
+   "fieldname": "party",
+   "fieldtype": "Data",
+   "label": "Pihak",
+   "mandatory_depends_on": "eval: doc.type != \"Piutang Karyawan\" && doc.type != \"Operasional Kantor\""
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-03-30 12:00:22.351869",
+ "modified": "2023-06-20 10:28:45.940967",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Form Payment Entry",
@@ -148,6 +189,8 @@
    "write": 1
   },
   {
+   "amend": 1,
+   "cancel": 1,
    "create": 1,
    "email": 1,
    "export": 1,
@@ -156,8 +199,69 @@
    "report": 1,
    "role": "Kasir",
    "select": 1,
+   "set_user_permissions": 1,
    "share": 1,
    "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Operasional",
+   "select": 1,
+   "set_user_permissions": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Engineering",
+   "select": 1,
+   "set_user_permissions": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Logistik",
+   "select": 1,
+   "set_user_permissions": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "select": 1,
+   "set_user_permissions": 1,
+   "share": 1,
    "write": 1
   }
  ],

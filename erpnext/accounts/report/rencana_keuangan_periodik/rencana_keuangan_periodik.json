@@ -1,0 +1,77 @@
+{
+ "add_total_row": 0,
+ "columns": [
+  {
+   "fieldname": "type",
+   "fieldtype": "Data",
+   "label": "Tipe",
+   "width": 100
+  },
+  {
+   "fieldname": "name",
+   "fieldtype": "Data",
+   "label": "ID",
+   "width": 0
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Data",
+   "label": "Project",
+   "width": 200
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Data",
+   "label": "Purpose/Contractor",
+   "width": 200
+  },
+  {
+   "fieldname": "total_budget",
+   "fieldtype": "Float",
+   "label": "Total Budget",
+   "width": 0
+  }
+ ],
+ "creation": "2023-06-09 08:39:43.901129",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "date_from",
+   "fieldtype": "Date",
+   "label": "Date From",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "date_to",
+   "fieldtype": "Date",
+   "label": "Date To",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "KOP HKP",
+ "modified": "2023-06-09 10:34:28.553721",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Rencana Keuangan Periodik",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT \n    \"Kas Bon Proyek\" type, \n    CONCAT(\"<a href='/app/form-payment-entry-project/\", fpep.name, \"'>\", fpep.name, \"</a>\") name,\n    CONCAT(\"<a href='/app/project/\", p.name, \"'>\", p.project_name, \"</a>\") project,\n    fpep.purpose,\n    fpep.total_budget \n    FROM `tabForm Payment Entry Project` fpep\nINNER JOIN `tabProject` p ON p.name = fpep.project\nWHERE fpep.required_date BETWEEN %(date_from)s AND %(date_to)s AND fpep.docstatus = 1\nUNION\nSELECT \n    \"Slip Pembayaran Subkon atau Supplier\" type, \n    CONCAT(\"<a href='/app/hand-over-progress/\", hop.name, \"'>\", hop.name, \"</a>\") name,\n    CONCAT(\"<a href='/app/project/\", p.name, \"'>\", p.project_name, \"</a>\") project,\n    hop.contractor_name purpose,\n    hop.total_cost total_budget \n    FROM `tabHand Over Progress` hop\nINNER JOIN `tabProject` p ON p.name = hop.project\nWHERE hop.posting_date BETWEEN %(date_from)s AND %(date_to)s AND hop.docstatus = 1;",
+ "ref_doctype": "Form Payment Entry Project",
+ "report_name": "Rencana Keuangan Periodik",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Kasir"
+  }
+ ]
+}

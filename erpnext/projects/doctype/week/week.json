@@ -1,0 +1,68 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:M-{year}-{week}",
+ "creation": "2023-06-26 11:14:15.876655",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "year",
+  "week",
+  "start_week",
+  "end_week"
+ ],
+ "fields": [
+  {
+   "fieldname": "year",
+   "fieldtype": "Int",
+   "label": "Year",
+   "reqd": 1
+  },
+  {
+   "fieldname": "week",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Week",
+   "reqd": 1
+  },
+  {
+   "fieldname": "start_week",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Week",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_week",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "End Week",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-06-26 11:24:11.918145",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Week",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "week,start_week,end_week",
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

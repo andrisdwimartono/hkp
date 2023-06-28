@@ -247,6 +247,7 @@
    "allow_on_submit": 1,
    "fieldname": "schedule_date",
    "fieldtype": "Date",
+   "hidden": 1,
    "label": "Required By"
   },
   {
@@ -1192,7 +1193,8 @@
   {
    "fieldname": "submission_time",
    "fieldtype": "Data",
-   "label": "Submission Time"
+   "label": "Submission Time",
+   "length": 500
   },
   {
    "fieldname": "purchase_order_document_checklist",
@@ -1248,7 +1250,7 @@
  "idx": 105,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-05-09 11:30:57.546041",
+ "modified": "2023-06-22 13:42:00.474841",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Purchase Order",

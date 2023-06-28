@@ -1,0 +1,186 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "RPSJ-.YYYY.-.######.",
+ "creation": "2023-06-16 15:01:47.023766",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "posting_date",
+  "bulan",
+  "tahun",
+  "supplier",
+  "supplier_name",
+  "project",
+  "project_name",
+  "jenis_pekerjaan",
+  "kriteria_penilaian",
+  "details",
+  "total_nilai",
+  "peringkat",
+  "panduan_penilaian",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "default": "Januari",
+   "fieldname": "bulan",
+   "fieldtype": "Select",
+   "label": "Bulan",
+   "options": "Januari\nFebruari\nMaret\nApril\nMei\nJuni\nJuli\nAgustus\nSeptember\nOktober\nNovember\nDesember",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tahun",
+   "fieldtype": "Int",
+   "label": "Tahun",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Supplier",
+   "options": "Sub Contract",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "jenis_pekerjaan",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Jenis Pekerjaan"
+  },
+  {
+   "fieldname": "kriteria_penilaian",
+   "fieldtype": "Link",
+   "label": "Kriteria Penilaian",
+   "options": "Kriteria Penilaian",
+   "reqd": 1
+  },
+  {
+   "fieldname": "details",
+   "fieldtype": "Table",
+   "label": "Kriteria Penilaian",
+   "options": "Evaluasi Supplier Jasa Detail",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_nilai",
+   "fieldtype": "Float",
+   "label": "Total Nilai",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "peringkat",
+   "fieldtype": "Int",
+   "label": "Peringkat",
+   "read_only": 1
+  },
+  {
+   "fieldname": "panduan_penilaian",
+   "fieldtype": "Text Editor",
+   "label": "Panduan Penilaian"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "REKAPITULASI PENAWARAN SUPPLIER JASA",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "REKAPITULASI PENAWARAN SUPPLIER JASA",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fetch_from": "supplier.contractor_name",
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "label": "Supplier Name",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-06-27 09:32:21.323301",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "REKAPITULASI PENAWARAN SUPPLIER JASA",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Operasional",
+   "select": 1,
+   "set_user_permissions": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "dirut",
+   "select": 1,
+   "set_user_permissions": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

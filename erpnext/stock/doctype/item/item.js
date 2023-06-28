@@ -245,7 +245,7 @@ frappe.ui.form.on("Item", {
 	},
 
 	item_group: function(frm) {
-		if(frm.doc.item_group == "Tools"){
+		if(frm.doc.item_group == "Tools" || frm.doc.item_group == "Alat Bantu Kerja"){
 			frm.set_value("naming_series", "TOOLS.###.");
 		}
 

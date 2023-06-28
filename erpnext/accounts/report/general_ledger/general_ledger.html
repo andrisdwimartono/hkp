@@ -1,3 +1,69 @@
+{% if (filters.account != null && filters.account != "") { %}
+	<table class="text-left" style="font-size: 10px;" width="400px">
+		<tbody>
+			<tr>
+				<td width="20%"><img src="/files/HKP Logo18001d.jpeg"></td>
+				<td class="text-left" style="margin-top: 100px;" width="80%"><div style="font-weight: bold; font-size: 18px;">pt. hasta karya perdana</div><div>Jl. Gayung Kebonsari Manunggal 18</div><div>Surabaya</div></td>
+			</tr>
+		</tbody>
+	</table>
+	<hr>
+	<h2 class="text-center">BUKU BESAR</h2>
+	<table class="text-left">
+		<tr>
+			<td>No Rekening</td>
+			<td>: {%= filters.account %}</td>
+		</tr>
+		<tr>
+			<td>Tanggal</td>
+			<td>: {%= frappe.datetime.str_to_user(filters.from_date) %}
+				s/d
+				{%= frappe.datetime.str_to_user(filters.to_date) %}
+			</td>
+		</tr>
+	</table>
+	<table class="table table-bordered text">
+		<thead class="text-center">
+			<tr>
+				<th style="width: 12%">TANGGAL</th>
+				<th style="width: 15%">NOMOR BUKTI</th>
+				<th style="width: 25%">KETERANGAN</th>
+				<th style="width: 15%">DEBET (Rp)</th>
+				<th style="width: 15%">KREDIT (Rp)</th>
+				<th style="width: 18%">SALDO (Rp)</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for(var i=0, l=data.length; i<l; i++) { %}
+				<tr>
+				{% if(data[i].posting_date) { %}
+					<td class="text-left">{%= frappe.datetime.str_to_user(data[i].posting_date) %}</td>
+					<td class="text-left">{%= data[i].voucher_no %}</td>
+					<td class="text-left">{%= data[i].remarks %}
+						</td>
+						<td style="text-align: right">
+							{%= format_currency(data[i].debit, " ") %}</td>
+						<td style="text-align: right">
+							{%= format_currency(data[i].credit, " ") %}</td>
+				{% } else { %}
+					<td></td>
+					<td></td>
+					<td><b>{%= frappe.format(data[i].account, {fieldtype: "Link"}) || "&nbsp;" %}</b></td>
+					<td style="text-align: right">
+						{%= data[i].account && format_currency(data[i].debit, " ") %}
+					</td>
+					<td style="text-align: right">
+						{%= data[i].account && format_currency(data[i].credit, " ") %}
+					</td>
+				{% } %}
+					<td style="text-align: right">
+						{%= format_currency(data[i].balance, " ") %}
+					</td>
+				</tr>
+			{% } %}
+		</tbody>
+	</table>
+{% } else { %}
 <h2 class="text-center">{%= __("Statement of Account") %}</h2>
 <h4 class="text-center">
 	{% if (filters.party_name) { %}
@@ -73,3 +139,4 @@
 	</tbody>
 </table>
 <p class="text-right text-muted">Printed On {%= frappe.datetime.str_to_user(frappe.datetime.get_datetime_as_string()) %}</p>
+{% } %}

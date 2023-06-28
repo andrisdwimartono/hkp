@@ -1,0 +1,76 @@
+{
+ "add_total_row": 1,
+ "columns": [
+  {
+   "fieldname": "contractor_name",
+   "fieldtype": "Data",
+   "label": "Nama Supplier",
+   "width": 100
+  },
+  {
+   "fieldname": "jenis_spesialisasi",
+   "fieldtype": "Data",
+   "label": "Jenis Spesialisasi",
+   "width": 0
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Data",
+   "label": "Alamat",
+   "width": 100
+  },
+  {
+   "fieldname": "pic",
+   "fieldtype": "Data",
+   "label": "Kontak Personil",
+   "width": 200
+  },
+  {
+   "fieldname": "contact",
+   "fieldtype": "Data",
+   "label": "Telepon / HP / Email",
+   "width": 150
+  },
+  {
+   "fieldname": "keterangan",
+   "fieldtype": "Data",
+   "label": "Keterangan",
+   "width": 200
+  }
+ ],
+ "creation": "2023-06-27 10:33:06.251281",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "periode",
+   "fieldtype": "Int",
+   "label": "Periode",
+   "mandatory": 0,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "KOP HKP",
+ "modified": "2023-06-27 11:13:43.650126",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Daftar Supplier Jasa",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT sc.contractor_name,\n    scs.spesialisasi jenis_spesialisasi,\n    sc.address,\n    scc.pic,\n    CONCAT(scc.telepon, '-', scc.hp, '-', scc.email) contact,\n    '' keterangan\n    FROM `tabSub Contract` sc\nLEFT JOIN (SELECT parent, pic, telepon, hp, email FROM `tabSub Contract Contact` GROUP BY parent ORDER BY name ASC) scc ON scc.parent = sc.name\nleft join (SELECT parent, group_concat(spesialisasi) spesialisasi FROM `tabSub Contract Specialists` GROUP By parent) scs ON scs.parent = sc.name ;",
+ "ref_doctype": "Sub Contract",
+ "report_name": "Daftar Supplier Jasa",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Kasir"
+  }
+ ]
+}

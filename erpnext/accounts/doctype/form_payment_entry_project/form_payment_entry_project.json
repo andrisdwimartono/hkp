@@ -166,7 +166,7 @@
    "fieldname": "base_on",
    "fieldtype": "Select",
    "label": "Base On",
-   "options": "Budget\nPurchase Order\nHand Over Progress",
+   "options": "Budget",
    "reqd": 1
   },
   {
@@ -231,13 +231,14 @@
    "fetch_from": "hand_over_progress.progress_sequence",
    "fieldname": "progress_sequence",
    "fieldtype": "Int",
+   "hidden": 1,
    "label": "Progress Sequence"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-04-13 13:34:33.566840",
+ "modified": "2023-06-20 14:40:28.921499",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Form Payment Entry Project",
@@ -266,6 +267,21 @@
    "select": 1,
    "share": 1,
    "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "select": 1,
+   "set_user_permissions": 1,
+   "share": 1,
    "write": 1
   }
  ],

@@ -141,9 +141,9 @@
    "default": "0",
    "fieldname": "revision",
    "fieldtype": "Int",
+   "hidden": 1,
    "label": "Revision",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "default": "RFC",
@@ -233,23 +233,26 @@
   {
    "fieldname": "letter_no_submit",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Letter No"
   },
   {
    "fieldname": "return_date",
    "fieldtype": "Date",
+   "hidden": 1,
    "label": "Return Date"
   },
   {
    "fieldname": "letter_no_return",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Letter No"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-16 10:21:00.565647",
+ "modified": "2023-06-06 14:10:46.496721",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Design Detail",

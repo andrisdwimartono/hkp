@@ -2,9 +2,40 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Form Payment Entry Project', {
-	// refresh: function(frm) {
-
-	// },
+	refresh: function(frm) {
+		if(frm.doc.posting_date){
+			frappe.call({
+				method: 'erpnext.projects.doctype.sub_contract_weekly_progress.sub_contract_weekly_progress.check_week',
+				args: {
+					'posting_date': frm.doc.posting_date
+				},
+				callback: function(r) {
+					if(r.message){
+						var vals = r.message;
+						frm.set_value("week_periode", vals);
+						frm.refresh_field("week_periode");
+					}
+				}
+			});
+		}
+	},
+	posting_date: function(frm) {
+		if(frm.doc.posting_date){
+			frappe.call({
+				method: 'erpnext.projects.doctype.sub_contract_weekly_progress.sub_contract_weekly_progress.check_week',
+				args: {
+					'posting_date': frm.doc.posting_date
+				},
+				callback: function(r) {
+					if(r.message){
+						var vals = r.message;
+						frm.set_value("week_periode", vals);
+						frm.refresh_field("week_periode");
+					}
+				}
+			});
+		}
+	},
 	setup: function(frm) {
 		frm.set_query("budget", function() {
 			return {

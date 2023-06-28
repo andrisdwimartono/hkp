@@ -1,3 +1,163 @@
+{% if(report.report_name == "Trial Balance"){ %}
+{%
+	var report_columns = report.get_columns_for_print();
+	report_columns = report_columns.filter(col => !col.hidden);
+
+	if (report_columns.length > 8) {
+		frappe.throw(__("Too many columns. Export the report and print it using a spreadsheet application."));
+	}
+%}
+
+<style>
+	.financial-statements-important td {
+		font-weight: bold;
+	}
+
+	.financial-statements-blank-row td {
+		height: 37px;
+	}
+</style>
+
+<h2 class="text-center">{%= __(report.report_name) %}</h2>
+<table class="text-left">
+	<tr>
+		<td>Tanggal</td>
+		<td>: {%= frappe.datetime.str_to_user(filters.from_date) %}
+			s/d
+			{%= frappe.datetime.str_to_user(filters.to_date) %}
+		</td>
+	</tr>
+	{% if 'cost_center' in filters %}
+	<tr>
+		<td>Pusat Biaya</td>
+		<td>: {%= filters.cost_center %}
+		</td>
+	</tr>
+	{% endif %}
+</table>
+<hr>
+<table class="table table-bordered" width="100%">
+	<thead>
+		<tr>
+			<th style="text-align: center;" rowspan="2">Akun</th>
+			<th style="text-align: center;" colspan="2">Saldo Awal</th>
+			<th style="text-align: center;" colspan="2">Periode Ini</th>
+			<th style="text-align: center;" colspan="2">Saldo Akhir</th>
+		</tr>
+		<tr>
+			<th style="text-align: center;">Debet (Rp)</th>
+			<th style="text-align: center;">Kredit (Rp)</th>
+			<th style="text-align: center;">Debet (Rp)</th>
+			<th style="text-align: center;">Kredit (Rp)</th>
+			<th style="text-align: center;">Debet (Rp)</th>
+			<th style="text-align: center;">Kredit (Rp)</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for(let j=0, k=data.length; j<k; j++) { %}
+			{%
+				var row = data[j];
+				var row_class = data[j].parent_account ? "" : "financial-statements-important";
+				row_class += data[j].account_name ? "" : " financial-statements-blank-row";
+			%}
+			<tr class="{%= row_class %}">
+				<td>
+					<span style="padding-left: {%= cint(data[j].indent) * 1 %}em">{%= row.account_name %}</span>
+				</td>
+				{% for(let i=1, l=report_columns.length; i<l; i++) { %}
+					<td class="text-right">
+						{% const fieldname = report_columns[i].fieldname; %}
+						{% if (!is_null(row[fieldname])) { %}
+							{%= format_currency(row[fieldname], " ") %}
+						{% } %}
+					</td>
+				{% } %}
+			</tr>
+		{% } %}
+	</tbody>
+</table>
+<p class="text-right text-muted">
+	Printed On {%= frappe.datetime.str_to_user(frappe.datetime.get_datetime_as_string()) %}
+</p>
+{% }else if(report.report_name == "Balance Sheet"){ %}
+{%
+	var report_columns = report.get_columns_for_print();
+	report_columns = report_columns.filter(col => !col.hidden);
+
+	if (report_columns.length > 8) {
+		frappe.throw(__("Too many columns. Export the report and print it using a spreadsheet application."));
+	}
+%}
+
+<style>
+	.financial-statements-important td {
+		font-weight: bold;
+	}
+
+	.financial-statements-blank-row td {
+		height: 37px;
+	}
+</style>
+
+<h2 class="text-center">{%= __(report.report_name) %}</h2>
+<table class="text-left">
+	{% if(filters.filter_based_on == 'Date Range'){ %}
+	<tr>
+		<td>Tanggal</td>
+		<td>: {%= frappe.datetime.str_to_user(filters.period_start_date) %}
+			s/d
+			{%= frappe.datetime.str_to_user(filters.period_end_date) %}
+		</td>
+	</tr>
+	{% } %}
+	{% if(filters.filter_based_on == 'Fiscal Year'){ %}
+	<tr>
+		<td>Fiscal Year</td>
+		<td>: {%= filters.from_fiscal_year %}
+			s/d
+			{%= filters.to_fiscal_year %}
+		</td>
+	</tr>
+	{% } %}
+</table>
+<hr>
+<table class="table table-bordered" width="100%">
+	<thead>
+		<tr>
+			<th style="width: {%= 100 - (report_columns.length - 1) * 13 %}%"></th>
+			{% for (let i=1, l=report_columns.length; i<l; i++) { %}
+				<th class="text-right">{%= report_columns[i].label %} (Rp)</th>
+			{% } %}
+		</tr>
+	</thead>
+	<tbody>
+		{% for(let j=0, k=data.length; j<k; j++) { %}
+			{%
+				var row = data[j];
+				var row_class = data[j].parent_account ? "" : "financial-statements-important";
+				row_class += data[j].account_name ? "" : " financial-statements-blank-row";
+			%}
+			<tr class="{%= row_class %}">
+				<td>
+					<span style="padding-left: {%= cint(data[j].indent) * 1 %}em">{%= row.account_name %}</span>
+				</td>
+				{% for(let i=1, l=report_columns.length; i<l; i++) { %}
+					<td class="text-right">
+						{% const fieldname = report_columns[i].fieldname; %}
+						{% if (!is_null(row[fieldname])) { %}
+							{%= format_currency(row[fieldname], " ") %}
+						{% } %}
+					</td>
+				{% } %}
+			</tr>
+		{% } %}
+	</tbody>
+</table>
+<p class="text-right text-muted">
+	Printed On {%= frappe.datetime.str_to_user(frappe.datetime.get_datetime_as_string()) %}
+</p>
+{% }else{ %}
+
 {%
 	var report_columns = report.get_columns_for_print();
 	report_columns = report_columns.filter(col => !col.hidden);
@@ -69,3 +229,4 @@
 <p class="text-right text-muted">
 	Printed On {%= frappe.datetime.str_to_user(frappe.datetime.get_datetime_as_string()) %}
 </p>
+{% } %}

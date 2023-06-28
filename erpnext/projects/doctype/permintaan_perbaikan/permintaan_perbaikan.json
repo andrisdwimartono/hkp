@@ -1,0 +1,134 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "PP-.YYYY.-.#####.",
+ "creation": "2023-06-23 09:07:01.961059",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "employee_name",
+  "department",
+  "asset_name",
+  "asset_category",
+  "type",
+  "nopol",
+  "perbaikan",
+  "permintaan_perbaikan_detail",
+  "tindakan_permintaan_perbaikan",
+  "total_biaya",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "default": "Kendaraan",
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Type",
+   "options": "Kendaraan\nGedung",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.type == \"Kendaraan\"",
+   "fieldname": "nopol",
+   "fieldtype": "Data",
+   "label": "Nopol",
+   "mandatory_depends_on": "eval:doc.type == \"Kendaraan\""
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Permintaan Perbaikan",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "permintaan_perbaikan_detail",
+   "fieldtype": "Table",
+   "label": "Permintaan Perbaikan Detail",
+   "options": "Permintaan Perbaikan Detail"
+  },
+  {
+   "fieldname": "tindakan_permintaan_perbaikan",
+   "fieldtype": "Table",
+   "label": "Tindakan Permintaan Perbaikan",
+   "options": "Tindakan Permintaan Perbaikan"
+  },
+  {
+   "fieldname": "total_biaya",
+   "fieldtype": "Currency",
+   "label": "Total Biaya",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "default": "Internal",
+   "fieldname": "perbaikan",
+   "fieldtype": "Select",
+   "label": "Perbaikan",
+   "options": "Internal\nEksternal"
+  },
+  {
+   "fieldname": "asset_name",
+   "fieldtype": "Link",
+   "label": "Asset Name",
+   "options": "Asset",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "asset_name.asset_category",
+   "fieldname": "asset_category",
+   "fieldtype": "Data",
+   "label": "Asset Category",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-06-26 10:53:36.215467",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Permintaan Perbaikan",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

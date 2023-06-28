@@ -1,0 +1,77 @@
+<table width="100%">
+    <thead>
+        <tr>
+            <td class="text-center"><h1>Rencana Pengajuan Anggaran Proyek</h1></td>
+        </tr>
+        <tr>
+            <td class="text-center">Tanggal : {%= frappe.datetime.str_to_user(filters.date_from) %} s/d {%= frappe.datetime.str_to_user(filters.date_to) %}</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <table width="90%" border=1 style="margin-left: 5%;">
+                    <thead style="font-weight: bold;" class="text-center">
+                        <tr>
+                            <td>No</td>
+                            <!--<td>Dokumen</td>
+                            <td>ID</td>-->
+                            <td width="15%">Project</td>
+                            <td width="15%">Peminta</td>
+                            <td width="50%">Keperluan</td>
+                            <td width="20%">Total Piutang</td>
+                            <!--<td>Jenis</td>
+                            <td>Pihak</td>
+                            <td>Status</td>-->
+                            
+                        </tr>
+                    </thead>
+                    <tbody class="text-left">
+                        {% for(let i=0, k=data.length-1; i<k; i++) { %}
+                        <tr>
+                            <td>{%= i+1 %}</td>
+                            <!--<td>{%= data[i].typedoc %}</td>
+                            <td>{%= data[i].name %}</td>-->
+                            <td>{%= data[i].project %}</td>
+                            <td>{%= data[i].peminta %}</td>
+                            <td>{%= data[i].purpose %}</td>
+                            <td class="text-right">{%= format_currency(data[i].total_budget, "") %}</td>
+                            <!--<td>{%= data[i].type %}</td>
+                            <td>{%= data[i].party %}</td>
+                            <td>{%= data[i].docstatus %}</td>-->
+                        </tr>
+                        {% } %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <tr>
+                                <td colspan="4" class="text-center"><b>Total</b></td>
+                                <td class="text-right">{%= format_currency(data[(data.length-1)].total_budget, "") %}</td>
+                            </tr>
+                        </tr>
+                    </tfoot>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>
+                <table width="60%" border=1 style="margin-left: 35%;">
+                    <tr>
+                        <td width="50%">Disetujui Oleh</td>
+                        <td width="50%">Yang Mengajukan</td>
+                    </tr>
+                    <tr>
+                        <td height="70px"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Direktur Utama</td>
+                        <td>Kasir</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tfoot>
+</table>

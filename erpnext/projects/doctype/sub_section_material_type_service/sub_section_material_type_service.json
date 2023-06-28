@@ -7,6 +7,7 @@
  "field_order": [
   "sub_section",
   "material_type",
+  "sub_project_sub_section",
   "services"
  ],
  "fields": [
@@ -21,10 +22,9 @@
   {
    "fieldname": "material_type",
    "fieldtype": "Link",
-   "in_list_view": 1,
+   "hidden": 1,
    "label": "Material Type",
-   "options": "Sub Section Material Type",
-   "reqd": 1
+   "options": "Sub Section Material Type"
   },
   {
    "fieldname": "services",
@@ -32,11 +32,19 @@
    "label": "Services",
    "options": "Sub Section Material Type Services",
    "reqd": 1
+  },
+  {
+   "fieldname": "sub_project_sub_section",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sub Project Sub Section",
+   "options": "Sub Project Sub Section",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-23 10:28:29.619639",
+ "modified": "2023-06-13 13:59:23.169102",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Sub Section Material Type Service",
@@ -53,8 +61,37 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Engineering",
+   "select": 1,
+   "set_user_permissions": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Engineering Manager",
+   "select": 1,
+   "set_user_permissions": 1,
+   "share": 1,
+   "write": 1
   }
  ],
  "sort_field": "modified",
- "sort_order": "DESC"
+ "sort_order": "DESC",
+ "track_changes": 1
 }

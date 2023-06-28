@@ -1,42 +1,30 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "SSMTS-.YY.-.####.",
  "creation": "2023-05-23 10:27:16.009286",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "item_code",
-  "item_name",
+  "upah",
   "uom",
   "location",
   "year",
-  "price"
+  "price",
+  "description"
  ],
  "fields": [
   {
-   "fieldname": "item_code",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Item",
-   "options": "Item",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "item_code.item_name",
-   "fieldname": "item_name",
-   "fieldtype": "Data",
-   "label": "Item Name",
-   "read_only": 1
-  },
-  {
+   "columns": 1,
    "fieldname": "uom",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "UoM",
+   "label": "Satuan",
    "options": "UOM",
    "reqd": 1
   },
   {
+   "columns": 2,
    "fieldname": "location",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -45,6 +33,7 @@
    "reqd": 1
   },
   {
+   "columns": 1,
    "fieldname": "year",
    "fieldtype": "Int",
    "in_list_view": 1,
@@ -53,18 +42,35 @@
    "reqd": 1
   },
   {
+   "columns": 2,
    "fieldname": "price",
    "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Price",
    "options": "Company:company:default_currency",
    "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "upah",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Man Power",
+   "options": "Upah",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Keterangan"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-23 10:27:16.009286",
+ "modified": "2023-06-13 14:16:38.559743",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Sub Section Material Type Services",

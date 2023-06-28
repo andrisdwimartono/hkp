@@ -1,0 +1,136 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-06-27 09:51:40.519320",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project",
+  "project_name",
+  "contract_no",
+  "remark",
+  "work",
+  "column_break_p1ezh",
+  "project_address",
+  "posting_date",
+  "start",
+  "finish",
+  "section_break_jhot3",
+  "laporan_harian_detail",
+  "tidak_dapat_bekerja_karena",
+  "cuaca",
+  "catatan_penting_pekerjaan"
+ ],
+ "fields": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "project.contract_no",
+   "fieldname": "contract_no",
+   "fieldtype": "Data",
+   "label": "Contract No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Data",
+   "label": "Catatan"
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "work",
+   "fieldtype": "Data",
+   "label": "Pekerjaan"
+  },
+  {
+   "fetch_from": "project.project_address",
+   "fieldname": "project_address",
+   "fieldtype": "Small Text",
+   "label": "Project Address"
+  },
+  {
+   "fieldname": "start",
+   "fieldtype": "Time",
+   "label": "Start",
+   "reqd": 1
+  },
+  {
+   "fieldname": "finish",
+   "fieldtype": "Time",
+   "label": "Finish",
+   "reqd": 1
+  },
+  {
+   "fieldname": "laporan_harian_detail",
+   "fieldtype": "Table",
+   "label": "Laporan Harian Detail",
+   "options": "Laporan Harian Detail"
+  },
+  {
+   "fieldname": "column_break_p1ezh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_jhot3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "tidak_dapat_bekerja_karena",
+   "fieldtype": "Small Text",
+   "label": "Tidak Dapat Bekerja Karena"
+  },
+  {
+   "fieldname": "cuaca",
+   "fieldtype": "Small Text",
+   "label": "Cuaca"
+  },
+  {
+   "fieldname": "catatan_penting_pekerjaan",
+   "fieldtype": "Small Text",
+   "label": "Catatan Penting Pekerjaan/Perintah Direksi Lapangan"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-06-27 10:08:40.524188",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Laporan Harian",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -1,0 +1,83 @@
+{
+ "add_total_row": 1,
+ "columns": [
+  {
+   "fieldname": "type",
+   "fieldtype": "Data",
+   "label": "Tipe",
+   "width": 100
+  },
+  {
+   "fieldname": "name",
+   "fieldtype": "Data",
+   "label": "ID",
+   "width": 0
+  },
+  {
+   "fieldname": "peminta",
+   "fieldtype": "Data",
+   "label": "Peminta",
+   "width": 100
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Data",
+   "label": "Project",
+   "width": 200
+  },
+  {
+   "fieldname": "total_budget",
+   "fieldtype": "Float",
+   "label": "Jumlah Pengajuan",
+   "width": 150
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Data",
+   "label": "Keperluan",
+   "width": 400
+  }
+ ],
+ "creation": "2023-06-09 10:36:13.267644",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "date_from",
+   "fieldtype": "Date",
+   "label": "Date From",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "date_to",
+   "fieldtype": "Date",
+   "label": "Date To",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "KOP HKP",
+ "modified": "2023-06-22 06:27:09.967776",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Rencana Pengajuan Anggaran Proyek",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT \n    \"Kas Bon Proyek\" type, \n    CONCAT(\"<a href='/app/form-payment-entry-project/\", fpep.name, \"'>\", fpep.name, \"</a>\") name,\n    COALESCE(e.first_name, fpep.owner) peminta,\n    CONCAT(\"<a href='/app/project/\", p.name, \"'>\", p.project_name, \"</a>\") project,\n    fpep.total_budget,\n    \n    fpep.purpose,\n    pe.paid_amount paid_amount,\n    fpep.total_budget-COALESCE(pe.paid_amount, 0) outstanding_amount,\n    CASE WHEN fpep.total_budget-COALESCE(pe.paid_amount, 0) > 0 THEN \"<p class='text-danger'>Belum Lunas</p>\"\n    ELSE \"<p class='text-primary'>Lunas</p>\"\n    END status\n    FROM `tabForm Payment Entry Project` fpep\nINNER JOIN `tabProject` p ON p.name = fpep.project\nLEFT JOIN `tabEmployee` e ON e.user_id = fpep.owner\nLEFT JOIN (SELECT form_payment_entry_project, SUM(paid_amount) paid_amount FROM `tabPayment Entry` \n    WHERE docstatus = 1 and is_hand_over_progress = 0\n    GROUP BY form_payment_entry_project) pe ON pe.form_payment_entry_project = fpep.name\nWHERE fpep.required_date BETWEEN %(date_from)s AND %(date_to)s AND fpep.docstatus = 1\nUNION\nSELECT \n    \"Kas Bon Proyek\" type, \n    CONCAT(\"<a href='/app/form-payment-entry-project/\", fpep.name, \"'>\", fpep.name, \"</a>\") name,\n    COALESCE(e.first_name, fpep.owner) peminta,\n    CASE WHEN p.name THEN CONCAT(\"<a href='/app/project/\", p.name, \"'>\", p.project_name, \"</a>\") ELSE \"\" END project,\n    fpep.total_budget,\n    \n    fpep.purpose,\n    pe.paid_amount paid_amount,\n    fpep.total_budget-COALESCE(pe.paid_amount, 0) outstanding_amount,\n    CASE WHEN fpep.total_budget-COALESCE(pe.paid_amount, 0) > 0 THEN \"<p class='text-danger'>Belum Lunas</p>\"\n    ELSE \"<p class='text-primary'>Lunas</p>\"\n    END status\n    FROM `tabForm Payment Entry Supplier` fpep\nLEFT JOIN `tabProject` p ON p.name = fpep.project\nLEFT JOIN `tabEmployee` e ON e.user_id = fpep.owner\nLEFT JOIN (SELECT form_payment_entry_supplier, SUM(paid_amount) paid_amount FROM `tabPayment Entry` \n    WHERE docstatus = 1 and is_hand_over_progress = 0\n    GROUP BY form_payment_entry_supplier) pe ON pe.form_payment_entry_supplier = fpep.name\nWHERE fpep.required_date BETWEEN %(date_from)s AND %(date_to)s AND fpep.docstatus = 1\nUNION\nSELECT \n    \"Slip Pembayaran Subkon atau Supplier\" type, \n    CONCAT(\"<a href='/app/hand-over-progress/\", hop.name, \"'>\", hop.name, \"</a>\") name,\n    COALESCE(e.first_name, hop.owner) peminta,\n    CONCAT(\"<a href='/app/project/\", p.name, \"'>\", p.project_name, \"</a>\") project,\n    hop.total_cost total_budget,\n    pe.paid_amount paid_amount,\n    hop.total_cost-COALESCE(pe.paid_amount, 0) outstanding_amount,\n    CASE WHEN hop.total_cost-COALESCE(pe.paid_amount, 0) > 0 THEN \"<p class='text-danger'>Belum Lunas</p>\"\n    ELSE \"<p class='text-primary'>Lunas</p>\"\n    END status,\n    CONCAT(hop.contractor_name, \" \", hop.progress_sequence, \" \", FORMAT(hop.progress_achieved,2), \"&#37; \",  hop.job_name) purpose\n    FROM `tabHand Over Progress` hop\nINNER JOIN `tabProject` p ON p.name = hop.project\nLEFT JOIN `tabEmployee` e ON e.user_id = hop.owner\nLEFT JOIN (SELECT hand_over_progress, SUM(paid_amount) paid_amount FROM `tabPayment Entry` \n    WHERE docstatus = 1 and is_hand_over_progress = 1\n    GROUP BY hand_over_progress) pe ON pe.hand_over_progress = hop.name\nWHERE hop.posting_date BETWEEN %(date_from)s AND %(date_to)s AND hop.docstatus = 1;",
+ "ref_doctype": "Form Payment Entry Project",
+ "report_name": "Rencana Pengajuan Anggaran Proyek",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Kasir"
+  }
+ ]
+}

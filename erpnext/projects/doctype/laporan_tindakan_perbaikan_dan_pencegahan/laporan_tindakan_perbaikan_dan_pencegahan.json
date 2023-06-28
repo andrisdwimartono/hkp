@@ -1,0 +1,118 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-06-26 14:59:03.639659",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project",
+  "project_name",
+  "jenis",
+  "ketidaksesuaian",
+  "observasi",
+  "uraian",
+  "analisa_penyebab",
+  "tindakan_perbaikan_atau_tindakan_pencegahan",
+  "target_penyelesaian",
+  "penilaian_hasil_tindakan_perbaikan_atau_pencegahan",
+  "kesesuaian",
+  "saran"
+ ],
+ "fields": [
+  {
+   "default": "TINDAKAN PERBAIKAN",
+   "fieldname": "jenis",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Jenis",
+   "options": "TINDAKAN PERBAIKAN\nTINDAKAN PENCEGAHAN",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "ketidaksesuaian",
+   "fieldtype": "Check",
+   "label": "Ketidaksesuaian"
+  },
+  {
+   "default": "0",
+   "fieldname": "observasi",
+   "fieldtype": "Check",
+   "label": "Observasi"
+  },
+  {
+   "fieldname": "uraian",
+   "fieldtype": "Text Editor",
+   "label": "Uraian"
+  },
+  {
+   "fieldname": "analisa_penyebab",
+   "fieldtype": "Text Editor",
+   "label": "Analisa Penyebab"
+  },
+  {
+   "fieldname": "tindakan_perbaikan_atau_tindakan_pencegahan",
+   "fieldtype": "Text Editor",
+   "label": "Tindakan Perbaikan atau Tindakan Pencegahan"
+  },
+  {
+   "fieldname": "target_penyelesaian",
+   "fieldtype": "Date",
+   "label": "Target Penyelesaian"
+  },
+  {
+   "fieldname": "penilaian_hasil_tindakan_perbaikan_atau_pencegahan",
+   "fieldtype": "Text Editor",
+   "label": "Penilaian Hasil Tindakan Perbaikan atau Pencegahan"
+  },
+  {
+   "default": "Tidak Sesuai",
+   "fieldname": "kesesuaian",
+   "fieldtype": "Select",
+   "label": "Kesesuaian",
+   "options": "Sesuai\nTidak Sesuai"
+  },
+  {
+   "fieldname": "saran",
+   "fieldtype": "Text Editor",
+   "label": "Saran"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-06-26 15:06:17.990180",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "LAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -7,9 +7,17 @@ frappe.ui.form.on('Sub Section Material Type Tool', {
 	// }
 
 	setup: function(frm){
+		frm.set_query('sub_project_sub_section', function(doc) {
+			return {
+				'filters': {
+					'sub_section': doc.sub_section
+				}
+			};
+		});
+		
 		frm.set_query('item_code', 'tools', () => ({
 			filters: {
-				item_group: "Tools"
+				item_group: "Alat Bantu Kerja"
 			}
 		}));
 	}

@@ -34,39 +34,48 @@
   {
    "fieldname": "types",
    "fieldtype": "Select",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Jenis Harga Satuan",
-   "options": "Sub Section Material Type Materi\nSub Section Material Type Tool\nSub Section Material Type Service",
-   "reqd": 1
+   "options": "Sub Section Material Type Materi\nSub Section Material Type Tool\nSub Section Material Type Service"
   },
   {
    "depends_on": "eval: doc.types == \"Sub Section Material Type Materi\"",
    "fieldname": "materials",
    "fieldtype": "Table",
+   "hidden": 1,
    "label": "Sub Section Material Type Materi",
-   "mandatory_depends_on": "eval: doc.types == \"Sub Section Material Type Materi\"",
    "options": "Sub Section Material Type Materials"
   },
   {
    "depends_on": "eval:doc.types==\"Sub Section Material Type Tool\"",
    "fieldname": "tools",
    "fieldtype": "Table",
+   "hidden": 1,
    "label": "Sub Section Material Type Tool",
-   "mandatory_depends_on": "eval:doc.types==\"Sub Section Material Type Tool\"",
    "options": "Sub Section Material Type Tools"
   },
   {
    "depends_on": "eval:doc.types == \"Sub Section Material Type Service\"",
    "fieldname": "services",
    "fieldtype": "Table",
+   "hidden": 1,
    "label": "Sub Section Material Type Service",
-   "mandatory_depends_on": "eval:doc.types == \"Sub Section Material Type Service\"",
    "options": "Sub Section Material Type Services"
   }
  ],
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2023-05-23 11:48:32.234559",
+ "links": [
+  {
+   "link_doctype": "Sub Section Material Type Service",
+   "link_fieldname": "material_type"
+  },
+  {
+   "link_doctype": "Sub Section Material Type Tool",
+   "link_fieldname": "material_type"
+  }
+ ],
+ "modified": "2023-06-13 13:55:32.123534",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Sub Section Material Type",
@@ -97,6 +106,7 @@
    "write": 1
   }
  ],
+ "search_fields": "sub_section,material_type",
  "sort_field": "modified",
  "sort_order": "DESC"
 }

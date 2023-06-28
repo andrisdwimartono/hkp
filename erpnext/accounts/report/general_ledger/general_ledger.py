@@ -68,13 +68,15 @@ def validate_filters(filters, account_details):
 		)
 
 	if filters.get("account"):
-		filters.account = frappe.parse_json(filters.get("account"))
+		#filters.account = frappe.parse_json(filters.get("account"))
+		filters.account = [filters.get("account")]
 		for account in filters.account:
 			if not account_details.get(account):
 				frappe.throw(_("Account {0} does not exists").format(account))
 
 	if filters.get("account") and filters.get("group_by") == "Group by Account":
-		filters.account = frappe.parse_json(filters.get("account"))
+		#filters.account = frappe.parse_json(filters.get("account"))
+		filters.account = [filters.get("account")]
 		for account in filters.account:
 			if account_details[account].is_group == 0:
 				frappe.throw(_("Can not filter based on Child Account, if grouped by Account"))

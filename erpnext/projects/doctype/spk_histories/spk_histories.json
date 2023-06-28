@@ -1,0 +1,71 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-06-27 14:42:40.548642",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sub_contract_hand_over",
+  "project",
+  "project_name",
+  "job_name",
+  "start_work",
+  "finish_work",
+  "budget_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "job_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Job Name"
+  },
+  {
+   "fieldname": "start_work",
+   "fieldtype": "Date",
+   "label": "Start Work"
+  },
+  {
+   "fieldname": "finish_work",
+   "fieldtype": "Data",
+   "label": "Finish Work"
+  },
+  {
+   "fieldname": "budget_amount",
+   "fieldtype": "Currency",
+   "label": "Budget Amount"
+  },
+  {
+   "fieldname": "sub_contract_hand_over",
+   "fieldtype": "Data",
+   "label": "Sub Contract Hand Over",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-06-27 14:57:56.603820",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "SPK Histories",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

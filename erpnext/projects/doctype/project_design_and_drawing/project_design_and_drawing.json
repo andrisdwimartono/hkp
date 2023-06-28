@@ -44,10 +44,6 @@
  "index_web_pages_for_search": 1,
  "links": [
   {
-   "link_doctype": "Tender Drawing",
-   "link_fieldname": "project_design_and_drawing"
-  },
-  {
    "link_doctype": "Preliminary Design",
    "link_fieldname": "project_design_and_drawing"
   },
@@ -64,11 +60,12 @@
    "link_fieldname": "project_design_and_drawing"
   },
   {
+   "hidden": 1,
    "link_doctype": "Pengendalian Approval Drawing",
    "link_fieldname": "project_design_and_drawing"
   }
  ],
- "modified": "2023-05-16 10:42:06.734367",
+ "modified": "2023-06-06 14:39:09.825758",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Project Design and Drawing",

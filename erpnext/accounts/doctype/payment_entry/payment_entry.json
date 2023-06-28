@@ -19,8 +19,11 @@
   "accounting_dimensions_section",
   "project",
   "project_name",
+  "type",
   "form_payment_entry_project",
+  "form_payment_entry_supplier",
   "purpose",
+  "hand_over_progress",
   "dimension_col_break",
   "cost_center",
   "form_payment_entry",
@@ -124,7 +127,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Payment Type",
-   "options": "Receive\nPay\nInternal Transfer",
+   "options": "Pay\nReceive\nInternal Transfer",
    "print_hide": 1,
    "reqd": 1
   },
@@ -138,7 +141,7 @@
    "fieldname": "posting_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Posting Date",
+   "label": "Tanggal Bayar",
    "reqd": 1
   },
   {
@@ -737,11 +740,11 @@
    "read_only": 1
   },
   {
-   "depends_on": "eval:doc.project",
+   "depends_on": "eval:doc.project && doc.type == \"Form Payment Entry Project\"",
    "fieldname": "form_payment_entry_project",
    "fieldtype": "Link",
    "label": "Form Payment Entry Project",
-   "mandatory_depends_on": "eval:doc.project",
+   "mandatory_depends_on": "eval:doc.project && doc.type == \"Form Payment Entry Project\"",
    "options": "Form Payment Entry Project"
   },
   {
@@ -763,12 +766,37 @@
    "fieldtype": "Date",
    "label": "Tanggal Jatuh Tempo",
    "mandatory_depends_on": "eval:doc.mode_of_payment == \"Giro Mundur\""
+  },
+  {
+   "depends_on": "eval:doc.project && doc.type == \"Hand Over Progress\"",
+   "fieldname": "hand_over_progress",
+   "fieldtype": "Link",
+   "label": "Hand Over Progress",
+   "mandatory_depends_on": "eval:doc.project && doc.type == \"Hand Over Progress\"",
+   "options": "Hand Over Progress"
+  },
+  {
+   "default": "Form Payment Entry Project",
+   "depends_on": "eval:doc.project",
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "mandatory_depends_on": "eval:doc.project",
+   "options": "Form Payment Entry Project\nHand Over Progress\nForm Payment Entry Supplier"
+  },
+  {
+   "depends_on": "eval:doc.project && doc.type == \"Form Payment Entry Supplier\"",
+   "fieldname": "form_payment_entry_supplier",
+   "fieldtype": "Link",
+   "label": "Form Payment Entry Supplier",
+   "mandatory_depends_on": "eval:doc.project && doc.type == \"Form Payment Entry Supplier\"",
+   "options": "Form Payment Entry Supplier"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-05-04 09:50:35.002186",
+ "modified": "2023-06-22 06:18:17.027400",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Payment Entry",

@@ -29,6 +29,7 @@
   "section_break_6bkyx",
   "total_cost",
   "use_ppn",
+  "ppn_percentage",
   "pph_percentage",
   "column_break_0uorc",
   "rounded_cost",
@@ -146,6 +147,7 @@
    "default": "1",
    "fieldname": "progress_sequence",
    "fieldtype": "Int",
+   "in_list_view": 1,
    "label": "Progress Sequence",
    "read_only": 1,
    "read_only_depends_on": "eval: doc.progress_sequence!=1",
@@ -161,6 +163,7 @@
    "default": "0",
    "fieldname": "progress_achieved",
    "fieldtype": "Percent",
+   "in_list_view": 1,
    "label": "Progress Achieved",
    "precision": "2",
    "reqd": 1
@@ -206,11 +209,13 @@
    "default": "0",
    "fieldname": "use_ppn",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Use PPn 11%"
   },
   {
    "fieldname": "ppn",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "PPn",
    "options": "Company:company:default_currency",
    "read_only": 1
@@ -219,11 +224,13 @@
    "default": "0",
    "fieldname": "pph_percentage",
    "fieldtype": "Percent",
+   "hidden": 1,
    "label": "PPh Percentage"
   },
   {
    "fieldname": "pph",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "PPh",
    "options": "Company:company:default_currency",
    "read_only": 1
@@ -235,12 +242,19 @@
   {
    "fieldname": "section_break_6bkyx",
    "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "ppn_percentage",
+   "fieldtype": "Percent",
+   "hidden": 1,
+   "label": "PPn Percentage"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-04-13 13:55:10.996280",
+ "modified": "2023-06-22 11:49:13.330806",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Hand Over Progress",

@@ -12,7 +12,9 @@
   "location",
   "year",
   "price",
-  "tkdn"
+  "tkdn",
+  "tkdn_document",
+  "sumber"
  ],
  "fields": [
   {
@@ -75,12 +77,24 @@
    "fieldtype": "Percent",
    "label": "TKDN",
    "precision": "1"
+  },
+  {
+   "fieldname": "sumber",
+   "fieldtype": "Link",
+   "label": "Sumber",
+   "options": "Sumber",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tkdn_document",
+   "fieldtype": "Attach",
+   "label": "TKDN Document"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-23 10:12:46.236028",
+ "modified": "2023-06-06 13:22:53.829017",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Sub Section Material Type Materials",

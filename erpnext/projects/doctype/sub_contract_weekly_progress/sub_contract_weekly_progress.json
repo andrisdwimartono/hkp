@@ -1,0 +1,182 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "SCWP-.YYYY.-.######.",
+ "creation": "2023-06-15 14:46:22.718867",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sub_contract_hand_over",
+  "project",
+  "sub_contract",
+  "job_name",
+  "column_break_ax2ti",
+  "contractor_name",
+  "project_name",
+  "pic_name",
+  "posting_date",
+  "week",
+  "weekpicker1",
+  "week_no",
+  "start_week",
+  "end_week",
+  "budget_amount",
+  "section_break_iqn48",
+  "sub_contract_weekly_progress_detail",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "sub_contract_hand_over",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sub Contract Hand Over",
+   "options": "Sub Contract Hand Over",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.sub_contract",
+   "fieldname": "sub_contract",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sub Contract",
+   "options": "Sub Contract",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.job_name",
+   "fieldname": "job_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Job Name",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Sub Contract Weekly Progress",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ax2ti",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.contractor_name",
+   "fieldname": "contractor_name",
+   "fieldtype": "Data",
+   "label": "Contractor Name",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.project",
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.pic_name",
+   "fieldname": "pic_name",
+   "fieldtype": "Data",
+   "label": "PIC Name",
+   "reqd": 1
+  },
+  {
+   "default": "Now",
+   "fieldname": "posting_date",
+   "fieldtype": "Datetime",
+   "label": "Posting Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "week",
+   "fieldtype": "Link",
+   "label": "Week",
+   "options": "Week",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.budget_amount",
+   "fieldname": "budget_amount",
+   "fieldtype": "Currency",
+   "label": "Nilai Kontrak",
+   "options": "Company:company:default_currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_iqn48",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "sub_contract_weekly_progress_detail",
+   "fieldtype": "Table",
+   "label": "Sub Contract Weekly Progress Detail",
+   "options": "Sub Contract Weekly Progress Detail",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "week.week",
+   "fieldname": "week_no",
+   "fieldtype": "Int",
+   "label": "Week No",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "week.start_week",
+   "fieldname": "start_week",
+   "fieldtype": "Date",
+   "label": "Start Week"
+  },
+  {
+   "fetch_from": "week.end_week",
+   "fieldname": "end_week",
+   "fieldtype": "Date",
+   "label": "End Week"
+  },
+  {
+   "fieldname": "weekpicker1",
+   "fieldtype": "Data",
+   "label": "weekpicker1"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-06-26 11:45:10.301575",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Sub Contract Weekly Progress",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

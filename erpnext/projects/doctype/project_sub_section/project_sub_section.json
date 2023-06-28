@@ -20,8 +20,13 @@
   }
  ],
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2023-04-18 13:25:47.565071",
+ "links": [
+  {
+   "link_doctype": "Sub Project Sub Section",
+   "link_fieldname": "sub_section"
+  }
+ ],
+ "modified": "2023-06-06 11:51:48.037440",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Project Sub Section",
@@ -36,6 +41,28 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Engineering",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Engineering Manager",
+   "select": 1,
    "share": 1,
    "write": 1
   }

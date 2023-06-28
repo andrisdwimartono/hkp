@@ -236,10 +236,13 @@ class Item(Document):
 			
 			asset = frappe.db.get_all("Asset", filters={"item_code": self.name, "docstatus": 1}, limit=1)
 			if not asset:
-				frappe.get_doc("Asset", {
+				asset_doc = frappe.get_doc({
+					"doctype": "Asset",
 					"asset_name": self.item_name,
-					"asset_category": self.asset_category
+					"asset_category": self.asset_category,
+					"item_code": self.name
 				})
+				asset_doc.insert()
 
 		if not self.is_fixed_asset:
 			asset = frappe.db.get_all("Asset", filters={"item_code": self.name, "docstatus": 1}, limit=1)

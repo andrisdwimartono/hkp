@@ -10,6 +10,7 @@
  "field_order": [
   "naming_series",
   "project_name",
+  "contract_no",
   "project_address",
   "status",
   "project_type",
@@ -478,6 +479,11 @@
    "fieldtype": "Table",
    "label": "Project Team",
    "options": "Project Team"
+  },
+  {
+   "fieldname": "contract_no",
+   "fieldtype": "Data",
+   "label": "Contract No"
   }
  ],
  "icon": "fa fa-puzzle-piece",
@@ -485,7 +491,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "max_attachments": 4,
- "modified": "2023-05-25 08:43:19.952270",
+ "modified": "2023-06-27 09:50:17.292316",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Project",

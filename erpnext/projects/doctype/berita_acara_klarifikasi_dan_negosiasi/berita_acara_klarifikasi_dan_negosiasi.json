@@ -1,0 +1,186 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "BAKN-.YYYY.-.######.",
+ "creation": "2023-06-16 12:40:08.775545",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "posting_date",
+  "job_name",
+  "pic_negosiasi",
+  "sub_contract",
+  "contractor_name",
+  "pic_sub_contractor_negosiasi",
+  "dasar_negosiasi_section",
+  "jenis",
+  "no",
+  "tanggal",
+  "perihal",
+  "column_break_f31yl",
+  "jenis2",
+  "no2",
+  "tanggal2",
+  "perihal2",
+  "section_break_dm8yy",
+  "hasil_berita_acara_klarifikasi_dan_negosiasi",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Berita Acara Klarifikasi dan Negosiasi",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posing Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "job_name",
+   "fieldtype": "Data",
+   "label": "Job Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sub_contract",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sub Contract",
+   "options": "Sub Contract",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract.contractor_name",
+   "fieldname": "contractor_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Contractor Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "hasil_berita_acara_klarifikasi_dan_negosiasi",
+   "fieldtype": "Table",
+   "label": "Hasil Berita Acara Klarifikasi dan Negosiasi",
+   "options": "Hasil Berita Acara Klarifikasi dan Negosiasi",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pic_negosiasi",
+   "fieldtype": "Table",
+   "label": "PIC Negosiasi",
+   "options": "PIC Negosiasi",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pic_sub_contractor_negosiasi",
+   "fieldtype": "Table",
+   "label": "PIC Sub Contractor Negosiasi",
+   "options": "PIC Sub Contractor Negosiasi",
+   "reqd": 1
+  },
+  {
+   "default": "Surat",
+   "fieldname": "jenis",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Jenis",
+   "options": "Surat\nE-mail\nTelepon",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.jenis == \"Surat\"",
+   "fieldname": "no",
+   "fieldtype": "Data",
+   "label": "No",
+   "mandatory_depends_on": "eval:doc.jenis == \"Surat\""
+  },
+  {
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "label": "Tanggal",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.jenis == \"Surat\" || doc.jenis == \"E-mail\"",
+   "fieldname": "perihal",
+   "fieldtype": "Data",
+   "label": "Perihal",
+   "mandatory_depends_on": "eval:doc.jenis == \"Surat\" || doc.jenis == \"E-mail\""
+  },
+  {
+   "fieldname": "dasar_negosiasi_section",
+   "fieldtype": "Section Break",
+   "label": "Dasar Negosiasi"
+  },
+  {
+   "fieldname": "column_break_f31yl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Surat",
+   "fieldname": "jenis2",
+   "fieldtype": "Select",
+   "label": "Jenis",
+   "options": "Surat\nE-mail\nTelepon",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tanggal2",
+   "fieldtype": "Date",
+   "label": "Tanggal",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.jenis2 == \"Surat\" || doc.jenis2 == \"E-mail\"",
+   "fieldname": "perihal2",
+   "fieldtype": "Data",
+   "label": "Perihal",
+   "mandatory_depends_on": "eval:doc.jenis2 == \"Surat\" || doc.jenis2 == \"E-mail\""
+  },
+  {
+   "depends_on": "eval:doc.jenis2 == \"Surat\"",
+   "fieldname": "no2",
+   "fieldtype": "Data",
+   "label": "No",
+   "mandatory_depends_on": "eval:doc.jenis2 == \"Surat\""
+  },
+  {
+   "fieldname": "section_break_dm8yy",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-06-16 14:41:26.516014",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Berita Acara Klarifikasi dan Negosiasi",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

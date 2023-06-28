@@ -8,6 +8,8 @@
  "engine": "InnoDB",
  "field_order": [
   "items_section",
+  "sub_contract",
+  "bon_barang_upload",
   "naming_series",
   "stock_entry_type",
   "outgoing_stock_entry",
@@ -659,6 +661,19 @@
    "fieldname": "is_alat_kerja",
    "fieldtype": "Check",
    "label": "Is Alat Kerja"
+  },
+  {
+   "fieldname": "sub_contract",
+   "fieldtype": "Link",
+   "label": "Sub Contract",
+   "options": "Sub Contract"
+  },
+  {
+   "depends_on": "eval: doc.sub_contract != null",
+   "fieldname": "bon_barang_upload",
+   "fieldtype": "Attach",
+   "label": "Bon Barang Upload",
+   "mandatory_depends_on": "eval: doc.sub_contract != null"
   }
  ],
  "icon": "fa fa-file-text",
@@ -666,7 +681,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-04-18 10:16:24.927764",
+ "modified": "2023-06-27 16:03:26.022570",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Stock Entry",

@@ -5,6 +5,15 @@ frappe.ui.form.on('Hand Over Progress', {
 	// refresh: function(frm) {
 
 	// }
+	// setup: function(frm){
+	// 	frm.set_query("sub_contract_hand_over", function() {
+	// 		return {
+	// 			filters: {
+	// 				'docstatus': ["in", [0, 1]],
+	// 			}
+	// 		};
+	// 	});
+	// },
 	sub_contract_hand_over: function(frm){
 		frappe.call({
 			method: 'erpnext.buying.doctype.hand_over_progress.hand_over_progress.check_progress',
@@ -67,7 +76,7 @@ frappe.ui.form.on('Hand Over Progress', {
 
 		frm.doc.hand_over_progress_achieved[0].progress_amount=frm.doc.budget_amount*frm.doc.progress_achieved/100;
 		refresh_field("hand_over_progress_achieved");
-		frm.doc.hand_over_progress_achieved[1].progress_amount=frm.doc.hand_over_progress_achieved[0].progress_amount*0.05;
+		frm.doc.hand_over_progress_achieved[1].progress_amount=frm.doc.hand_over_progress_achieved[0].progress_amount*0.05*(-1);
 		refresh_field("hand_over_progress_achieved");
 		
 		var total_cost = 0;
@@ -83,7 +92,7 @@ frappe.ui.form.on('Hand Over Progress', {
 	progress_achieved: function(frm){
 		frm.doc.hand_over_progress_achieved[0].progress_amount=frm.doc.budget_amount*frm.doc.progress_achieved/100;
 		refresh_field("hand_over_progress_achieved");
-		frm.doc.hand_over_progress_achieved[1].progress_amount=frm.doc.hand_over_progress_achieved[0].progress_amount*0.05;
+		frm.doc.hand_over_progress_achieved[1].progress_amount=frm.doc.hand_over_progress_achieved[0].progress_amount*0.05*(-1);
 		refresh_field("hand_over_progress_achieved");
 
 		frm.set_value("down_payment", (frm.doc.down_payment_percent/100)*frm.doc.budget_amount);
@@ -115,6 +124,10 @@ frappe.ui.form.on('Hand Over Progress', {
 	},
 	use_ppn: function(frm){
 		frm.set_value("ppn", frm.doc.total_cost*11/100);
+		refresh_field("ppn");
+	},
+	ppn_percentage: function(frm){
+		frm.set_value("ppn", frm.doc.total_cost*frm.doc.ppn_percentage/100);
 		refresh_field("ppn");
 	},
 	pph_percentage: function(frm){

@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_events_in_timeline": 1,
  "allow_import": 1,
  "allow_rename": 1,
  "autoname": "naming_series:",
@@ -15,7 +14,10 @@
   "contractor_name",
   "country",
   "default_bank_account",
+  "bank_account",
   "tax_id",
+  "jenis_spesialisasi",
+  "list_spesialisasi",
   "tax_category",
   "tax_withholding_category",
   "is_transporter",
@@ -40,6 +42,11 @@
   "on_hold",
   "hold_type",
   "release_date",
+  "addresses_and_contacts",
+  "address",
+  "column_break_eoemc",
+  "contacts",
+  "sub_contract_contact",
   "address_contacts",
   "address_html",
   "column_break1",
@@ -59,7 +66,11 @@
   "sub_contract_details",
   "column_break_30",
   "language",
-  "is_frozen"
+  "is_frozen",
+  "section_break_y54zh",
+  "sub_contract_worker",
+  "sub_contract_tools",
+  "spk_histories"
  ],
  "fields": [
   {
@@ -85,7 +96,8 @@
    "fieldtype": "Data",
    "in_global_search": 1,
    "in_list_view": 1,
-   "label": "Contractor Name",
+   "in_preview": 1,
+   "label": "Nama Subkon",
    "no_copy": 1,
    "oldfieldname": "supplier_name",
    "oldfieldtype": "Data",
@@ -100,23 +112,26 @@
   {
    "fieldname": "default_bank_account",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Default Company Bank Account",
    "options": "Bank Account"
   },
   {
    "fieldname": "tax_id",
    "fieldtype": "Data",
-   "label": "Tax ID"
+   "label": "NPWP"
   },
   {
    "fieldname": "tax_category",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Tax Category",
    "options": "Tax Category"
   },
   {
    "fieldname": "tax_withholding_category",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Tax Withholding Category",
    "options": "Tax Withholding Category"
   },
@@ -124,12 +139,14 @@
    "default": "0",
    "fieldname": "is_transporter",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Is Transporter"
   },
   {
    "default": "0",
    "fieldname": "is_internal_supplier",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Is Internal Supplier"
   },
   {
@@ -157,7 +174,6 @@
    "default": "Company",
    "fieldname": "supplier_type",
    "fieldtype": "Select",
-   "in_list_view": 1,
    "label": "Supplier Type",
    "options": "Company\nIndividual",
    "reqd": 1
@@ -165,6 +181,7 @@
   {
    "fieldname": "pan",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "PAN"
   },
   {
@@ -180,7 +197,6 @@
    "label": "Allow Purchase Invoice Creation Without Purchase Receipt"
   },
   {
-   "bold": 1,
    "default": "0",
    "fieldname": "disabled",
    "fieldtype": "Check",
@@ -203,11 +219,13 @@
    "collapsible": 1,
    "fieldname": "section_break_7",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Currency and Price List"
   },
   {
    "fieldname": "default_currency",
    "fieldtype": "Link",
+   "hidden": 1,
    "ignore_user_permissions": 1,
    "label": "Billing Currency",
    "no_copy": 1,
@@ -220,6 +238,7 @@
   {
    "fieldname": "default_price_list",
    "fieldtype": "Link",
+   "hidden": 1,
    "ignore_user_permissions": 1,
    "label": "Price List",
    "options": "Price List"
@@ -228,6 +247,7 @@
    "collapsible": 1,
    "fieldname": "section_credit_limit",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Credit Limit"
   },
   {
@@ -264,6 +284,7 @@
    "depends_on": "eval:!doc.__islocal",
    "fieldname": "address_contacts",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Address and Contacts",
    "oldfieldtype": "Column Break",
    "options": "fa fa-map-marker"
@@ -288,6 +309,7 @@
   {
    "fieldname": "primary_address_and_contact_detail_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Primary Address and Contact Detail"
   },
   {
@@ -331,6 +353,7 @@
    "collapsible_depends_on": "accounts",
    "fieldname": "default_payable_accounts",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Default Payable Accounts"
   },
   {
@@ -384,6 +407,74 @@
    "fieldname": "is_frozen",
    "fieldtype": "Check",
    "label": "Is Frozen"
+  },
+  {
+   "fieldname": "bank_account",
+   "fieldtype": "Data",
+   "label": "Default Company Bank Account"
+  },
+  {
+   "fieldname": "addresses_and_contacts",
+   "fieldtype": "Section Break",
+   "label": "Address and Contacts"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Address"
+  },
+  {
+   "fieldname": "column_break_eoemc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contacts",
+   "fieldtype": "Data",
+   "label": "Contacts"
+  },
+  {
+   "fieldname": "jenis_spesialisasi",
+   "fieldtype": "Table",
+   "label": "Spesialisasi",
+   "options": "Sub Contract Specialists"
+  },
+  {
+   "fieldname": "sub_contract_contact",
+   "fieldtype": "Table",
+   "label": "PIC",
+   "options": "Sub Contract Contact"
+  },
+  {
+   "fieldname": "section_break_y54zh",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "sub_contract_worker",
+   "fieldtype": "Table",
+   "label": "Data Tenaga Kerja",
+   "options": "Sub Contract Worker"
+  },
+  {
+   "fieldname": "sub_contract_tools",
+   "fieldtype": "Table",
+   "label": "Data Alat",
+   "options": "Sub Contract Tools"
+  },
+  {
+   "fieldname": "list_spesialisasi",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Spesialisasi",
+   "read_only": 1
+  },
+  {
+   "fieldname": "spk_histories",
+   "fieldtype": "Table",
+   "label": "SPK Histories",
+   "options": "SPK Histories",
+   "read_only": 1
   }
  ],
  "icon": "fa fa-user",
@@ -395,7 +486,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2023-04-06 12:17:16.547097",
+ "modified": "2023-06-27 14:45:10.929641",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Sub Contract",
@@ -454,6 +545,7 @@
    "role": "Accounts Manager"
   }
  ],
+ "quick_entry": 1,
  "search_fields": "contractor_name",
  "show_name_in_global_search": 1,
  "sort_field": "modified",

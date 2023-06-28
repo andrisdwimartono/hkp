@@ -14,6 +14,14 @@ frappe.ui.form.on('Tender Drawing', {
 				]
 			};
 		});
+
+		frm.set_query('sub_section', "details", function(doc) {
+			return {
+				'filters': {
+					'name': ["!=", "UMUM"]
+				}
+			};
+		})
 	}
 	
 });

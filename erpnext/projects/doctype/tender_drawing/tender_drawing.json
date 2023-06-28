@@ -10,6 +10,8 @@
   "project_design_and_drawing",
   "project",
   "project_name",
+  "tender_project",
+  "nama_pekerjaan",
   "column_break_rqoeh",
   "posting_date",
   "section_break_ndqim",
@@ -20,14 +22,15 @@
    "fetch_from": "project_design_and_drawing.project",
    "fieldname": "project",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Project",
-   "options": "Project",
-   "reqd": 1
+   "options": "Project"
   },
   {
    "fetch_from": "project.project_name",
    "fieldname": "project_name",
    "fieldtype": "Data",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Project Name",
    "read_only": 1
@@ -57,14 +60,28 @@
   {
    "fieldname": "project_design_and_drawing",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Project Design and Drawing",
-   "options": "Project Design and Drawing",
+   "options": "Project Design and Drawing"
+  },
+  {
+   "fieldname": "tender_project",
+   "fieldtype": "Link",
+   "label": "Tender Project",
+   "options": "Tender Project",
    "reqd": 1
+  },
+  {
+   "fetch_from": "tender_project.nama_pekerjaan",
+   "fieldname": "nama_pekerjaan",
+   "fieldtype": "Data",
+   "label": "Nama Pekerjaan",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-16 10:37:50.371156",
+ "modified": "2023-06-06 14:06:06.075578",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Tender Drawing",

@@ -28,3 +28,12 @@ def get_last_discounts(sub_contract_hand_over = None):
 		ORDER BY hopd.idx ASC
 		""".format(sub_contract_hand_over), as_dict=1)
 	return None
+
+@frappe.whitelist()
+def check_hand_over_progress(hand_over_progress = None):
+    if hand_over_progress:
+        return frappe.db.sql("""
+        SELECT hop.total_cost budget_amount, concat(hop.contractor_name, ' ', hop.progress_achieved, '% ', hop.project_name)purpose FROM `tabHand Over Progress` hop
+        WHERE hop.name = '{0}' AND hop.docstatus = 1
+        """.format(hand_over_progress), as_dict=1)
+    return None

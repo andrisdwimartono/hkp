@@ -1,0 +1,148 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-06-15 15:02:23.175676",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "job_detail",
+  "obstacle",
+  "analysis",
+  "resolve",
+  "column_break_srvkp",
+  "pic",
+  "resolve_target",
+  "document",
+  "lkp_section",
+  "volume_plan_from_last_week",
+  "volume",
+  "uom",
+  "weight",
+  "plan_history",
+  "vol_next_week_plan",
+  "realitation_history",
+  "volume_cumulative_last_week",
+  "vol_this_week"
+ ],
+ "fields": [
+  {
+   "fieldname": "job_detail",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Uraian Pekerjaan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "obstacle",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Kendala"
+  },
+  {
+   "fieldname": "analysis",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Analisis"
+  },
+  {
+   "fieldname": "resolve",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Tindak Lanjut"
+  },
+  {
+   "fieldname": "column_break_srvkp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pic",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "PIC",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "resolve_target",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Target Penyelesaian"
+  },
+  {
+   "fieldname": "document",
+   "fieldtype": "Attach",
+   "in_list_view": 1,
+   "label": "Dokumentasi"
+  },
+  {
+   "fieldname": "lkp_section",
+   "fieldtype": "Section Break",
+   "label": "LKP"
+  },
+  {
+   "fieldname": "plan_history",
+   "fieldtype": "Text",
+   "hidden": 1,
+   "label": "History Rencana"
+  },
+  {
+   "fieldname": "vol_next_week_plan",
+   "fieldtype": "Float",
+   "label": "Vol Rencana Minggu Depan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "realitation_history",
+   "fieldtype": "Text",
+   "hidden": 1,
+   "label": "History Realisasi"
+  },
+  {
+   "fieldname": "vol_this_week",
+   "fieldtype": "Float",
+   "label": "Realisasi Minggu Ini",
+   "reqd": 1
+  },
+  {
+   "fieldname": "volume",
+   "fieldtype": "Float",
+   "label": "Volume",
+   "reqd": 1
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight",
+   "reqd": 1
+  },
+  {
+   "fieldname": "volume_plan_from_last_week",
+   "fieldtype": "Float",
+   "label": "Last Week Volume Plan",
+   "read_only": 1
+  },
+  {
+   "fieldname": "volume_cumulative_last_week",
+   "fieldtype": "Float",
+   "label": "Volume Cumulative Last Week",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-06-20 09:25:11.650321",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Sub Contract Weekly Progress Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

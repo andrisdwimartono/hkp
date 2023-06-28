@@ -188,6 +188,16 @@ frappe.ui.form.on('Payment Entry', {
 				filters: {
 					project: frm.doc.project,
 					use_payment_entry: 1,
+					docstatus: 1,
+					outstanding_amount: [">", 0]
+				}
+			}
+		});
+
+		frm.set_query("hand_over_progress", function() {
+			return {
+				filters: {
+					project: frm.doc.project,
 					docstatus: 1
 				}
 			}
@@ -208,6 +218,42 @@ frappe.ui.form.on('Payment Entry', {
 			method: 'erpnext.accounts.doctype.form_payment_entry_project.form_payment_entry_project.check_form_payment_entry_project',
 			args: {
 				'form_payment_entry_project': frm.doc.form_payment_entry_project
+			},
+			callback: function(r) {
+				if(r.message){
+					var vals = r.message[0];
+					frm.set_value("paid_amount", vals.budget_amount);
+					frm.set_value("purpose", vals.purpose);
+					frm.refresh_field("paid_amount");
+					frm.trigger("paid_amount");
+				}
+			}
+		});
+	},
+
+	hand_over_progress: function(frm){
+		frappe.call({
+			method: 'erpnext.buying.doctype.hand_over_progress.hand_over_progress.check_hand_over_progress',
+			args: {
+				'hand_over_progress': frm.doc.hand_over_progress
+			},
+			callback: function(r) {
+				if(r.message){
+					var vals = r.message[0];
+					frm.set_value("paid_amount", vals.budget_amount);
+					frm.set_value("purpose", vals.purpose);
+					frm.refresh_field("paid_amount");
+					frm.trigger("paid_amount");
+				}
+			}
+		});
+	},
+
+	form_payment_entry_supplier: function(frm){
+		frappe.call({
+			method: 'erpnext.accounts.doctype.form_payment_entry_supplier.form_payment_entry_supplier.check_form_payment_entry_supplier',
+			args: {
+				'form_payment_entry_supplier': frm.doc.form_payment_entry_supplier
 			},
 			callback: function(r) {
 				if(r.message){
