@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "LTBC-.YYYY.-.####.",
  "creation": "2023-06-26 14:59:03.639659",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -15,7 +16,6 @@
   "analisa_penyebab",
   "tindakan_perbaikan_atau_tindakan_pencegahan",
   "target_penyelesaian",
-  "penilaian_hasil_tindakan_perbaikan_atau_pencegahan",
   "kesesuaian",
   "saran"
  ],
@@ -62,11 +62,6 @@
    "label": "Target Penyelesaian"
   },
   {
-   "fieldname": "penilaian_hasil_tindakan_perbaikan_atau_pencegahan",
-   "fieldtype": "Text Editor",
-   "label": "Penilaian Hasil Tindakan Perbaikan atau Pencegahan"
-  },
-  {
    "default": "Tidak Sesuai",
    "fieldname": "kesesuaian",
    "fieldtype": "Select",
@@ -94,7 +89,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-26 15:06:17.990180",
+ "modified": "2023-07-08 17:10:35.032768",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "LAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN",

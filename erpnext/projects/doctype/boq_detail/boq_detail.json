@@ -1,0 +1,128 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-07-07 19:09:42.034450",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item",
+  "level",
+  "deskripsi",
+  "uom",
+  "qty",
+  "pengadaan_material_section",
+  "pengadaan_material_harga_satuan",
+  "pengadaan_material_harga_total",
+  "transportasi_dan_asuransi_material_section",
+  "transportasi_dan_asuransi_material_harga_satuan",
+  "transportasi_dan_asuransi_material_harga_total",
+  "pemasangan_dan_instalasi_section",
+  "pemasangan_dan_instalasi_section_harga_satuan",
+  "pemasangan_dan_instalasi_section_harga_total",
+  "total"
+ ],
+ "fields": [
+  {
+   "fieldname": "item",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "ITEM",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "level",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Level",
+   "reqd": 1
+  },
+  {
+   "fieldname": "deskripsi",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Deskripsi",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "UoM",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "label": "QTY",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pengadaan_material_section",
+   "fieldtype": "Section Break",
+   "label": " Pengadaan Material "
+  },
+  {
+   "fieldname": "pengadaan_material_harga_satuan",
+   "fieldtype": "Currency",
+   "label": " Harga Satuan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pengadaan_material_harga_total",
+   "fieldtype": "Currency",
+   "label": " Harga Total"
+  },
+  {
+   "fieldname": "transportasi_dan_asuransi_material_section",
+   "fieldtype": "Section Break",
+   "label": " Transportasi dan Asuransi  Material "
+  },
+  {
+   "fieldname": "transportasi_dan_asuransi_material_harga_satuan",
+   "fieldtype": "Currency",
+   "label": "Harga Satuan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "transportasi_dan_asuransi_material_harga_total",
+   "fieldtype": "Currency",
+   "label": "Harga Total"
+  },
+  {
+   "fieldname": "pemasangan_dan_instalasi_section",
+   "fieldtype": "Section Break",
+   "label": "Pemasangan dan Instalasi "
+  },
+  {
+   "fieldname": "pemasangan_dan_instalasi_section_harga_satuan",
+   "fieldtype": "Currency",
+   "label": "Harga Satuan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pemasangan_dan_instalasi_section_harga_total",
+   "fieldtype": "Currency",
+   "label": "Harga Total"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Currency",
+   "label": "TOTAL"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-07-07 19:22:58.909346",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "BOQ Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

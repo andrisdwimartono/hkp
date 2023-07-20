@@ -1,4 +1,5 @@
 frappe.listview_settings['Journal Entry'] = {
+	colwidths: {"user_remark": 4},
 	add_fields: ["voucher_type", "posting_date", "total_debit", "company", "user_remark"],
 	get_indicator: function(doc) {
 		if(doc.docstatus==0) {

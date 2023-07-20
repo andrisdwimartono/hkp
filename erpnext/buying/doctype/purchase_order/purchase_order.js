@@ -7,7 +7,13 @@ frappe.provide("erpnext.accounts.dimensions");
 
 frappe.ui.form.on("Purchase Order", {
 	setup: function(frm) {
-
+		//frm.set_value('transaction_date', '');
+		// var half_day_datepicker = frm.fields_dict.transaction_date.datepicker;
+		// half_day_datepicker.update({
+		// 	minDate: frappe.datetime.str_to_obj('2023-07-11'),
+		// 	maxDate: frappe.datetime.str_to_obj('2023-07-11')
+		// });
+		
 		frm.set_query("reserve_warehouse", "supplied_items", function() {
 			return {
 				filters: {

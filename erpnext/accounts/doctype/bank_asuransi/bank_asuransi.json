@@ -1,15 +1,12 @@
 {
  "actions": [],
- "autoname": "ACC-BG-.YYYY.-.#####",
- "creation": "2016-12-17 10:43:35.731631",
+ "autoname": "ACC-BA-.YYYY.-.#####",
+ "creation": "2023-07-10 20:48:21.773830",
  "doctype": "DocType",
  "document_type": "Document",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "bg_type",
-  "reference_doctype",
-  "reference_docname",
   "customer",
   "supplier",
   "project",
@@ -38,31 +35,10 @@
   "margin_money",
   "charges",
   "fixed_deposit_number",
+  "amended_from",
   "amended_from"
  ],
  "fields": [
-  {
-   "fieldname": "bg_type",
-   "fieldtype": "Select",
-   "label": "Bank Guarantee Type",
-   "options": "\nReceiving\nProviding",
-   "reqd": 1
-  },
-  {
-   "fieldname": "reference_doctype",
-   "fieldtype": "Link",
-   "hidden": 1,
-   "label": "Reference Document Type",
-   "options": "DocType",
-   "read_only": 1
-  },
-  {
-   "fieldname": "reference_docname",
-   "fieldtype": "Dynamic Link",
-   "hidden": 1,
-   "label": "Reference Document Name",
-   "options": "reference_doctype"
-  },
   {
    "depends_on": "eval: doc.bg_type == \"Receiving\"",
    "fieldname": "customer",
@@ -83,6 +59,19 @@
    "fieldtype": "Link",
    "label": "Project",
    "options": "Project"
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "project_value",
+   "fieldtype": "Currency",
+   "label": "Project Value",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_6",
@@ -221,25 +210,21 @@
    "read_only": 1
   },
   {
-   "fetch_from": "project.project_name",
-   "fieldname": "project_name",
-   "fieldtype": "Data",
-   "label": "Project Name",
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Bank Asuransi",
+   "print_hide": 1,
    "read_only": 1
-  },
-  {
-   "fieldname": "project_value",
-   "fieldtype": "Currency",
-   "label": "Project Value",
-   "reqd": 1
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2023-07-09 13:05:24.115698",
+ "modified": "2023-07-10 20:48:21.773830",
  "modified_by": "Administrator",
  "module": "Accounts",
- "name": "Bank Guarantee",
+ "name": "Bank Asuransi",
  "owner": "Administrator",
  "permissions": [
   {

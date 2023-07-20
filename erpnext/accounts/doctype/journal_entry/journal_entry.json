@@ -115,6 +115,7 @@
   {
    "fieldname": "posting_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Posting Date",
    "no_copy": 1,
    "oldfieldname": "posting_date",
@@ -164,8 +165,6 @@
   {
    "fieldname": "cheque_no",
    "fieldtype": "Data",
-   "in_global_search": 1,
-   "in_list_view": 1,
    "label": "Reference Number",
    "mandatory_depends_on": "eval:doc.voucher_type == \"Bank Entry\"",
    "no_copy": 1,
@@ -184,8 +183,10 @@
    "search_index": 1
   },
   {
+   "columns": 7,
    "fieldname": "user_remark",
    "fieldtype": "Small Text",
+   "in_list_view": 1,
    "label": "User Remark",
    "no_copy": 1,
    "oldfieldname": "user_remark",
@@ -211,6 +212,7 @@
   {
    "fieldname": "total_credit",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Total Credit",
    "no_copy": 1,
    "oldfieldname": "total_credit",
@@ -548,7 +550,7 @@
  "idx": 176,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-22 15:49:46.829068",
+ "modified": "2023-07-04 15:57:21.473123",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Journal Entry",
@@ -595,6 +597,5 @@
  "search_fields": "voucher_type,posting_date, due_date, cheque_no",
  "sort_field": "modified",
  "sort_order": "DESC",
- "title_field": "title",
  "track_changes": 1
 }

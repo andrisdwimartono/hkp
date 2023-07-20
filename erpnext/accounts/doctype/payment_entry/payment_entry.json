@@ -24,6 +24,7 @@
   "form_payment_entry_supplier",
   "purpose",
   "hand_over_progress",
+  "slip_pembayaran_subkon",
   "dimension_col_break",
   "cost_center",
   "form_payment_entry",
@@ -782,7 +783,7 @@
    "fieldtype": "Select",
    "label": "Type",
    "mandatory_depends_on": "eval:doc.project",
-   "options": "Form Payment Entry Project\nHand Over Progress\nForm Payment Entry Supplier"
+   "options": "Form Payment Entry Project\nSlip Pembayaran Subkon\nForm Payment Entry Supplier"
   },
   {
    "depends_on": "eval:doc.project && doc.type == \"Form Payment Entry Supplier\"",
@@ -791,12 +792,20 @@
    "label": "Form Payment Entry Supplier",
    "mandatory_depends_on": "eval:doc.project && doc.type == \"Form Payment Entry Supplier\"",
    "options": "Form Payment Entry Supplier"
+  },
+  {
+   "depends_on": "eval:doc.project && doc.type == \"Slip Pembayaran Subkon\"",
+   "fieldname": "slip_pembayaran_subkon",
+   "fieldtype": "Link",
+   "label": "Slip Pembayaran Subkon",
+   "mandatory_depends_on": "eval:doc.project && doc.type == \"Slip Pembayaran Subkon\"",
+   "options": "Slip Pembayaran Subkon"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-22 06:18:17.027400",
+ "modified": "2023-07-13 10:04:29.715890",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Payment Entry",

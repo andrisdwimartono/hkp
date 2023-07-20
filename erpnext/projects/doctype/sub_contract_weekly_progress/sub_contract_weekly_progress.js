@@ -6,21 +6,21 @@ frappe.ui.form.on('Sub Contract Weekly Progress', {
 		// frm.fields_dict.end_week.datepicker.update({
         //     maxDate: '2023-06-26'
         // });
-		// if(frm.doc.posting_date){
-		// 	frappe.call({
-		// 		method: 'erpnext.projects.doctype.sub_contract_weekly_progress.sub_contract_weekly_progress.check_week',
-		// 		args: {
-		// 			'posting_date': frm.doc.posting_date
-		// 		},
-		// 		callback: function(r) {
-		// 			if(r.message){
-		// 				var vals = r.message;
-		// 				frm.set_value("week", vals);
-		// 				frm.refresh_field("week");
-		// 			}
-		// 		}
-		// 	});
-		// }
+		if(frm.doc.posting_date && !frm.doc.week){
+			frappe.call({
+				method: 'erpnext.projects.doctype.sub_contract_weekly_progress.sub_contract_weekly_progress.check_week',
+				args: {
+					'posting_date': frm.doc.posting_date
+				},
+				callback: function(r) {
+					if(r.message){
+						var vals = r.message;
+						frm.set_value("week", vals);
+						frm.refresh_field("week");
+					}
+				}
+			});
+		}
 	},
 	sub_contract_hand_over: function(frm){
 		//get detail last week
@@ -50,19 +50,20 @@ frappe.ui.form.on('Sub Contract Weekly Progress', {
 			}
 		});
 	},
-	// posting_date: function(frm){
-	// 	frappe.call({
-	// 		method: 'erpnext.projects.doctype.sub_contract_weekly_progress.sub_contract_weekly_progress.check_week',
-	// 		args: {
-	// 			'posting_date': frm.doc.posting_date
-	// 		},
-	// 		callback: function(r) {
-	// 			if(r.message){
-	// 				var vals = r.message;
-	// 				frm.set_value("week", vals);
-	// 				frm.refresh_field("week");
-	// 			}
-	// 		}
-	// 	});
-	// }
+	posting_date: function(frm){
+		frappe.call({
+			method: 'erpnext.projects.doctype.sub_contract_weekly_progress.sub_contract_weekly_progress.check_week',
+			args: {
+				'posting_date': frm.doc.posting_date
+			},
+			callback: function(r) {
+				if(r.message){
+					var vals = r.message;
+					frm.set_value("week", vals);
+					frm.refresh_field("week");
+					frm.trigger("sub_contract_hand_over")
+				}
+			}
+		});
+	}
 });
