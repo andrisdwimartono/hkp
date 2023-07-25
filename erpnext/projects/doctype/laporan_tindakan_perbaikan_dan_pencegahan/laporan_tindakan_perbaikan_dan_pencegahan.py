@@ -17,7 +17,7 @@ class LAPORANTINDAKANPERBAIKANDANPENCEGAHAN(Document):
 				self.dibuat_oleh_nama = owner[0].employee_name
 				
 		if self.workflow_state == "Disetujui":
-			if self.disetujui_oleh_user and frappe.session.user:
+			if self.disetujui_oleh_user == frappe.session.user:
 				assigner = []
 				assigner.append(self.diperiksa_oleh_user)
 				assigner.append(self.disetujui_oleh_user)
