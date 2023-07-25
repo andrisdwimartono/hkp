@@ -17,7 +17,7 @@ class LAPORANTINDAKANPERBAIKANDANPENCEGAHAN(Document):
 				self.dibuat_oleh_nama = owner[0].employee_name
 				
 		if self.workflow_state == "Disetujui":
-			if self.disetujui_oleh_user and ltbc and ltbc[0].workflow_state == "Dibuat":
+			if self.disetujui_oleh_user and frappe.session.user:
 				assigner = []
 				assigner.append(self.diperiksa_oleh_user)
 				assigner.append(self.disetujui_oleh_user)
@@ -25,13 +25,13 @@ class LAPORANTINDAKANPERBAIKANDANPENCEGAHAN(Document):
 					"type": "Alert",
 					"document_type": self.doctype,
 					"document_name": self.name,
-					"subject": """Laporan {0} sudah perlu disetujui!""".format(self.name),
+					"subject": """Laporan {0} sudah disetujui!""".format(self.name),
 					"from_user": self.owner,
 				}
 				enqueue_create_notification(assigner, notification_doc)
 				self.disetujui_pada = now()
 			else:
-				frappe.throw("""Hanya bisa diperiksa oleh {0}""".format(self.diperiksa_oleh_user))
+				frappe.throw("""Hanya bisa disetujui oleh {0}""".format(self.disetujui_oleh_user))
 		if self.workflow_state == "Diperiksa":
 			if self.diperiksa_oleh_user == frappe.session.user:
 				self.diperiksa_pada = now()
