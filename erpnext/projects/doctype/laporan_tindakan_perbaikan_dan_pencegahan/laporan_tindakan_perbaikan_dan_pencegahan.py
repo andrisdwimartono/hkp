@@ -11,6 +11,11 @@ class LAPORANTINDAKANPERBAIKANDANPENCEGAHAN(Document):
 		ltbc = frappe.db.sql("""SELECT * FROM `tabLAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN` WHERE name = '{0}'""".format(self.name), as_dict=1)
 		if self.workflow_state == "Dibuat":
 			self.dibuat_pada = now()
+			owner = frappe.db.sql("""SELECT * FROM `tabEmployee` WHERE user_id = '{0}'""".format(self.owner), as_dict=1)
+			if owner:
+				self.dibuat_oleh = owner[0].name
+				self.dibuat_oleh_nama = owner[0].employee_name
+				
 		if self.workflow_state == "Disetujui":
 			if self.disetujui_oleh_user and ltbc and ltbc[0].workflow_state == "Dibuat":
 				assigner = []

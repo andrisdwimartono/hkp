@@ -13,6 +13,8 @@
   "ketidaksesuaian",
   "observasi",
   "uraian",
+  "dibuat_oleh",
+  "dibuat_oleh_nama",
   "dibuat_pada",
   "disetujui_oleh",
   "disetujui_oleh_nama",
@@ -158,11 +160,24 @@
    "mandatory_depends_on": "eval: doc.diperiksa_oleh",
    "options": "User",
    "read_only": 1
+  },
+  {
+   "fieldname": "dibuat_oleh",
+   "fieldtype": "Link",
+   "label": "Dibuat Oleh",
+   "options": "Employee",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dibuat_oleh_nama",
+   "fieldtype": "Data",
+   "label": "Dibuat Oleh (Nama)",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-25 09:42:23.350126",
+ "modified": "2023-07-25 12:47:08.576029",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "LAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN",
