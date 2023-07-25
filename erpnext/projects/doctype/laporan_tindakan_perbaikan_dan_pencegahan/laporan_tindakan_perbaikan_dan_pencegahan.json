@@ -117,7 +117,8 @@
    "fieldname": "disetujui_oleh",
    "fieldtype": "Link",
    "label": "Disetujui Oleh",
-   "options": "Employee"
+   "options": "Employee",
+   "reqd": 1
   },
   {
    "fetch_from": "disetujui_oleh.employee_name",
@@ -139,7 +140,8 @@
    "fieldname": "diperiksa_oleh",
    "fieldtype": "Link",
    "label": "Diperiksa Oleh",
-   "options": "Employee"
+   "options": "Employee",
+   "reqd": 1
   },
   {
    "fetch_from": "diperiksa_oleh.employee_name",
@@ -160,7 +162,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-24 21:56:41.726541",
+ "modified": "2023-07-25 09:42:23.350126",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "LAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN",
