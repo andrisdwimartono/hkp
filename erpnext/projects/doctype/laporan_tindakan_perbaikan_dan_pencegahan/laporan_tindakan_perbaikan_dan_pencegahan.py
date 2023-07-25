@@ -44,7 +44,7 @@ class LAPORANTINDAKANPERBAIKANDANPENCEGAHAN(Document):
 			else:
 				frappe.throw("""Hanya bisa diperiksa oleh {0}""".format(self.diperiksa_oleh_user))
 			
-		if self.disetujui_oleh_user:
+		if self.disetujui_oleh_user and not ltbc:
 			assigner = []
 			assigner.append(self.disetujui_oleh_user)
 			notification_doc = {
@@ -56,7 +56,7 @@ class LAPORANTINDAKANPERBAIKANDANPENCEGAHAN(Document):
 			}
 			enqueue_create_notification(assigner, notification_doc)
 			self.disetujui_pada = now()
-		if self.diperiksa_oleh_user:
+		if self.diperiksa_oleh_user and not ltbc:
 			assigner = []
 			assigner.append(self.diperiksa_oleh_user)
 			notification_doc = {
