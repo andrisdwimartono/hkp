@@ -76,7 +76,8 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Purpose",
-   "options": "Purchase\nMaterial Transfer\nMaterial Issue\nManufacture\nCustomer Provided",
+   "mandatory_depends_on": "eval: doc.docstatus == 1 && doc.__unsaved == 1",
+   "options": "\nPurchase\nMaterial Transfer\nMaterial Issue\nManufacture\nCustomer Provided",
    "reqd": 1
   },
   {
@@ -339,7 +340,7 @@
  "idx": 70,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-03-14 07:31:30.103891",
+ "modified": "2023-07-20 14:51:58.600763",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Material Request",

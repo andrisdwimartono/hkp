@@ -13,8 +13,17 @@
   "ketidaksesuaian",
   "observasi",
   "uraian",
+  "dibuat_pada",
+  "disetujui_oleh",
+  "disetujui_oleh_nama",
+  "disetujui_oleh_user",
+  "disetujui_pada",
   "analisa_penyebab",
   "tindakan_perbaikan_atau_tindakan_pencegahan",
+  "diperiksa_oleh",
+  "diperiksa_oleh_nama",
+  "diperiksa_oleh_user",
+  "diperiksa_pada",
   "target_penyelesaian",
   "kesesuaian",
   "saran"
@@ -85,11 +94,73 @@
    "fieldtype": "Data",
    "label": "Project Name",
    "read_only": 1
+  },
+  {
+   "fieldname": "diperiksa_pada",
+   "fieldtype": "Datetime",
+   "label": "Diperiksa Pada",
+   "read_only": 1
+  },
+  {
+   "fieldname": "disetujui_pada",
+   "fieldtype": "Datetime",
+   "label": "Disetujui Pada",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dibuat_pada",
+   "fieldtype": "Datetime",
+   "label": "Dibuat Pada",
+   "read_only": 1
+  },
+  {
+   "fieldname": "disetujui_oleh",
+   "fieldtype": "Link",
+   "label": "Disetujui Oleh",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "disetujui_oleh.employee_name",
+   "fieldname": "disetujui_oleh_nama",
+   "fieldtype": "Data",
+   "label": "Disetujui Oleh (Nama)",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "disetujui_oleh.user_id",
+   "fieldname": "disetujui_oleh_user",
+   "fieldtype": "Link",
+   "label": "Disetujui Oleh (User)",
+   "mandatory_depends_on": "eval:doc.disetujui_oleh",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "diperiksa_oleh",
+   "fieldtype": "Link",
+   "label": "Diperiksa Oleh",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "diperiksa_oleh.employee_name",
+   "fieldname": "diperiksa_oleh_nama",
+   "fieldtype": "Data",
+   "label": "Diperiksa Oleh (Nama)",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "diperiksa_oleh.user_id",
+   "fieldname": "diperiksa_oleh_user",
+   "fieldtype": "Link",
+   "label": "Diperiksa Oleh (User)",
+   "mandatory_depends_on": "eval: doc.diperiksa_oleh",
+   "options": "User",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-08 17:10:35.032768",
+ "modified": "2023-07-24 21:56:41.726541",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "LAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN",

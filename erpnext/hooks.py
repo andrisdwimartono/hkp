@@ -334,6 +334,10 @@ has_website_permission = {
 	"Patient": "erpnext.healthcare.web_form.personal_details.personal_details.has_website_permission",
 }
 
+permission_query_conditions = {
+    "LAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN": "erpnext.projects.doctype.laporan_tindakan_perbaikan_dan_pencegahan.laporan_tindakan_perbaikan_dan_pencegahan.get_permission_query_conditions",
+}
+
 before_tests = "erpnext.setup.utils.before_tests"
 
 standard_queries = {
