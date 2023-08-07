@@ -1,0 +1,80 @@
+<table class="table table-bordered assessment-result-tool">
+	<thead>
+		<tr>
+			<th class="text-center" style="width: 10px" rowspan="4">NO</th>
+			<th class="text-center" style="width: 90px" rowspan="4">URAIAN PEKERJAAN</th>
+			<th class="text-center" style="width: 35px" rowspan="4">VOLUME</th>
+			<th class="text-center" style="width: 334px" colspan="14">KEMAJUAN FISIK PEKERJAAN</th>
+		</tr>
+		<tr>
+			<th class="text-center" style="width: 35px" rowspan="3">SAT</th>
+			<th class="text-center" style="width: 35px" rowspan="3">BOBOT<br>(%)</th>
+			<th class="text-center" style="width: 88px" colspan="4">RENCANA</th>
+			<th class="text-center" style="width: 132px" colspan="6">REALISASI</th>
+			<th class="text-center" style="width: 44px" rowspan="2" colspan="2">DEVIASI</th>
+		</tr>
+		<tr>
+			<th class="text-center" style="width: 44px" colspan="2">MINGGU INI<br>M-{{ week }}</th>
+			<th class="text-center" style="width: 44px" colspan="2">MINGGU DEPAN<br>M-{{ next_week }}</th>
+			<th class="text-center" style="width: 44px" colspan="2">KUMULATIF MINGGU LALU<br>M-{{ last_week }}</th>
+			<th class="text-center" style="width: 44px" colspan="2">MINGGU INI<br>M-{{ week }}</th>
+			<th class="text-center" style="width: 44px" colspan="2">KUMULATIF MINGGU INI<br>M-{{ week }}</th>
+		</tr>
+		<tr>
+			<th class="text-center" style="width: 22px">VOL.</th>
+			<th class="text-center" style="width: 22px">%</th>
+			<th class="text-center" style="width: 22px">VOL.</th>
+			<th class="text-center" style="width: 22px">%</th>
+			<th class="text-center" style="width: 22px">VOL.</th>
+			<th class="text-center" style="width: 22px">%</th>
+			<th class="text-center" style="width: 22px">VOL.</th>
+			<th class="text-center" style="width: 22px">%</th>
+			<th class="text-center" style="width: 22px">VOL.</th>
+			<th class="text-center" style="width: 22px">%</th>
+			<th class="text-center" style="width: 22px">VOL.</th>
+			<th class="text-center" style="width: 22px">%</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for s in details %}
+		<tr data-name="{{s.name}}">
+			<td class="text-right">{{s.idx}}</td>
+			<td>
+				<input type="text" class="result-comment" value="{{s.job_detail}}" style="width:100%; float:left; margin: 0px; border: 1px solid rgb(212, 212, 212);" data-idx="{{s.idx}}" data-name="{{s.name}}" data-columnname="job_detail"/>
+			</td>
+			<td style="padding-left: 0px; padding-right: 0px;">
+				<input type="number" class="student-result-data" value="{{s.volume}}" style="width:100%; float:right; margin: 0px; border: 1px solid rgb(212, 212, 212);" data-idx="{{s.idx}}" data-name="{{s.name}}" data-columnname="volume"/>
+			</td>
+			<td>
+				<div class="frappe-control input-max-width" data-fieldtype="Link" data-fieldname="uom" title="uom">
+					<div class="form-group">
+						<div class="clearfix">
+						</div>
+						<div class="control-input-wrapper">
+							<div class="control-input">
+								<div class="link-field ui-front" style="position: relative;">
+									<div class="awesomplete">
+										<input type="text" class="input-with-feedback form-control" maxlength="140" data-fieldtype="Link" data-fieldname="uom" placeholder="" data-doctype="Laporan Mingguan Tool" data-target="UOM" autocomplete="off" aria-expanded="false" aria-owns="awesomplete_list_3" role="combobox" aria-activedescendant="awesomplete_list_3_item_0">
+										<ul role="listbox" id="awesomplete_list_3" hidden="">
+										</ul>
+										<span class="visually-hidden" role="status" aria-live="assertive" aria-atomic="true" hidden="">22 results found</span>
+									</div>
+									<span class="link-btn" style="display: none;">
+										<a class="btn-open no-decoration" title="Open Link">
+											<svg class="icon  icon-xs" style="">
+												<use class="" href="#icon-arrow-right"></use>
+											</svg>
+										</a>
+									</span>
+								</div>
+							</div>
+							<div class="control-value like-disabled-input" style="display: none;"></div>
+							<p class="help-box small text-muted"></p>
+						</div>
+					</div>
+				</div>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>

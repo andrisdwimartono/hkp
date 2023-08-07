@@ -42,3 +42,22 @@ def check_last_week(sub_contract_hand_over = None, week = None):
         ORDER BY b.idx
         """.format(sub_contract_hand_over, week), as_dict=1)
     return None
+
+@frappe.whitelist()
+def get_sub_contract_weekly_progress(week, sub_contract_hand_over):
+	if sub_contract_hand_over and week:
+		return frappe.db.sql("""
+       	SELECT * FROM `tabSub Contract Weekly Progress` WHERE week = '{0}' AND sub_contract_hand_over = '{1}'
+        """.format(week, sub_contract_hand_over), as_dict=1)
+	return None
+
+@frappe.whitelist()
+def get_sub_contract_weekly_progress_detail(week, sub_contract_hand_over):
+	if sub_contract_hand_over and week:
+		return frappe.db.sql("""
+       	SELECT b.job_detail, b.uom, b.volume, b.weight, b.volume_plan_from_last_week, b.vol_next_week_plan, b.volume_cumulative_last_week, b.vol_this_week, b.volume_cumulative_thist_week, b.deviasi FROM `tabSub Contract Weekly Progress` a
+		INNER JOIN `tabSub Contract Weekly Progress Detail` b ON b.parent = a.name
+		WHERE a.week = '{0}' AND a.sub_contract_hand_over = '{1}'
+        """.format(week, sub_contract_hand_over), as_dict=1)
+	return None
+

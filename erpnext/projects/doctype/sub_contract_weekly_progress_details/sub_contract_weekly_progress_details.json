@@ -1,0 +1,123 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-08-04 10:42:07.347769",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "job_detail",
+  "column_break_srvkp",
+  "lkp_section",
+  "volume",
+  "uom",
+  "weight",
+  "volume_plan_from_last_week",
+  "vol_next_week_plan",
+  "volume_cumulative_last_week",
+  "vol_this_week",
+  "volume_cumulative_thist_week",
+  "deviasi"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "job_detail",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Uraian Pekerjaan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_srvkp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "lkp_section",
+   "fieldtype": "Section Break",
+   "label": "LKP"
+  },
+  {
+   "columns": 1,
+   "fieldname": "volume_plan_from_last_week",
+   "fieldtype": "Float",
+   "label": "Rn Mng Ini",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "volume",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Volume",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "UOM",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Bobot (%)",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "vol_next_week_plan",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Rn Mng Dep",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "volume_cumulative_last_week",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Km Mng Lalu",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "vol_this_week",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Rs Minggu Ini",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "volume_cumulative_thist_week",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Km Mng ini",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "deviasi",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Deviasi"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-08-04 11:08:32.989086",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Sub Contract Weekly Progress Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
