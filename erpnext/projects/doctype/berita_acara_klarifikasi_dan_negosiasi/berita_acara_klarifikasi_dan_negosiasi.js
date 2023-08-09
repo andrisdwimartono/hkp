@@ -4,13 +4,20 @@
 frappe.ui.form.on('Berita Acara Klarifikasi dan Negosiasi', {
 	refresh: function(frm) {
 		if(frm.doc.__islocal){
-			var c = frm.add_child("dasar_berita_acara_klarifikasi_dan_negosiasi");
-			c.dasar = "Surat PT. Hasta Karya Perdana No  tanggal  perihal ";
-			var d = frm.add_child("dasar_berita_acara_klarifikasi_dan_negosiasi");
-			d.dasar = "E-mail  tanggal  perihal ";
-			var e = frm.add_child("dasar_berita_acara_klarifikasi_dan_negosiasi");
-			e.dasar = "Telepon  tanggal ";
-			refresh_field("dasar_berita_acara_klarifikasi_dan_negosiasi");
+			var c = frm.add_child("syarat_pembayaran");
+			c.hal = "Kwintasi";
+			var d = frm.add_child("syarat_pembayaran");
+			d.hal = "Laporan Kemajuan Phisik Lapangan.";
+			var e = frm.add_child("syarat_pembayaran");
+			e.hal = "Check List Pekerjaan.";
+			var f = frm.add_child("syarat_pembayaran");
+			f.hal = "B.A Pemeriksaan pekerjaan.";
+			var g = frm.add_child("syarat_pembayaran");
+			g.hal = "Foto Dokumentasi.";
+			frm.refresh_field("syarat_pembayaran");
+		}
+		if(frm.doc.syarat_pembayaran.length == 0){
+			
 		}
 	}
 });

@@ -24,7 +24,27 @@
   "tanggal2",
   "perihal2",
   "section_break_dm8yy",
-  "hasil_berita_acara_klarifikasi_dan_negosiasi",
+  "lingkup_pekerjaan",
+  "harga_pekerjaan",
+  "persyaratan_umum_dan_teknis_section",
+  "persyaratan_umum_dan_teknis",
+  "resource_tidak_disediakan_section",
+  "resource_tidak_disediakan",
+  "waktu__pelaksanaan_section",
+  "mulai_pelaksanaan",
+  "masa_pemeliharaan",
+  "column_break_9schf",
+  "selesai_pelaksanaan",
+  "cara_pembayaran_section",
+  "uang_muka",
+  "pembayaran_progres",
+  "retensi",
+  "column_break_pdksr",
+  "jaminan",
+  "jenis_jaminan",
+  "syarat_pembayaran_section",
+  "syarat_pembayaran",
+  "sanksi",
   "amended_from"
  ],
  "fields": [
@@ -66,13 +86,6 @@
    "in_list_view": 1,
    "label": "Contractor Name",
    "read_only": 1
-  },
-  {
-   "fieldname": "hasil_berita_acara_klarifikasi_dan_negosiasi",
-   "fieldtype": "Table",
-   "label": "Hasil Berita Acara Klarifikasi dan Negosiasi",
-   "options": "Hasil Berita Acara Klarifikasi dan Negosiasi",
-   "reqd": 1
   },
   {
    "fieldname": "pic_negosiasi",
@@ -156,13 +169,125 @@
   },
   {
    "fieldname": "section_break_dm8yy",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Hasil Berita Acara Klarifikasi dan Negosiasi"
+  },
+  {
+   "fieldname": "lingkup_pekerjaan",
+   "fieldtype": "Table",
+   "label": "Lingkup pekerjaan",
+   "options": "Lingkup Pekerjaan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "harga_pekerjaan",
+   "fieldtype": "Currency",
+   "label": "Harga Pekerjaan",
+   "options": "Company:company:default_currency"
+  },
+  {
+   "fieldname": "persyaratan_umum_dan_teknis_section",
+   "fieldtype": "Section Break",
+   "label": "Persyaratan Umum dan Teknis"
+  },
+  {
+   "fieldname": "persyaratan_umum_dan_teknis",
+   "fieldtype": "Table",
+   "label": "Persyaratan Umum dan Teknis",
+   "options": "Persyaratan Umum dan Teknis"
+  },
+  {
+   "fieldname": "resource_tidak_disediakan_section",
+   "fieldtype": "Section Break",
+   "label": "Resource TIdak Disediakan"
+  },
+  {
+   "fieldname": "resource_tidak_disediakan",
+   "fieldtype": "Table",
+   "label": "Resource TIdak Disediakan",
+   "options": "Resource TIdak Disediakan"
+  },
+  {
+   "fieldname": "waktu__pelaksanaan_section",
+   "fieldtype": "Section Break",
+   "label": "Waktu  Pelaksanaan"
+  },
+  {
+   "fieldname": "mulai_pelaksanaan",
+   "fieldtype": "Date",
+   "label": "Mulai Pelaksanaan"
+  },
+  {
+   "fieldname": "column_break_9schf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "selesai_pelaksanaan",
+   "fieldtype": "Date",
+   "label": "Selesai Pelaksanaan"
+  },
+  {
+   "fieldname": "masa_pemeliharaan",
+   "fieldtype": "Int",
+   "label": "Masa Pemeliharaan"
+  },
+  {
+   "fieldname": "cara_pembayaran_section",
+   "fieldtype": "Section Break",
+   "label": "Cara Pembayaran"
+  },
+  {
+   "fieldname": "uang_muka",
+   "fieldtype": "Percent",
+   "label": "Uang Muka"
+  },
+  {
+   "fieldname": "jaminan",
+   "fieldtype": "Select",
+   "label": "Jaminan",
+   "options": "Disertai Jaminan\nTanpa Jaminan"
+  },
+  {
+   "depends_on": "eval: doc.jaminan == \"Disertai Jaminan\"",
+   "fieldname": "jenis_jaminan",
+   "fieldtype": "Data",
+   "label": "Jenis Jaminan"
+  },
+  {
+   "fieldname": "column_break_pdksr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pembayaran_progres",
+   "fieldtype": "Data",
+   "label": "Pembayaran progres"
+  },
+  {
+   "fieldname": "retensi",
+   "fieldtype": "Percent",
+   "label": "Retensi"
+  },
+  {
+   "fieldname": "syarat_pembayaran_section",
+   "fieldtype": "Section Break",
+   "label": "Syarat Pembayaran"
+  },
+  {
+   "fieldname": "syarat_pembayaran",
+   "fieldtype": "Table",
+   "label": "Syarat Pembayaran",
+   "options": "Syarat Pembayaran"
+  },
+  {
+   "fieldname": "sanksi",
+   "fieldtype": "Text",
+   "label": "Sanksi"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-16 14:41:26.516014",
+ "modified": "2023-08-09 22:08:17.973957",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Berita Acara Klarifikasi dan Negosiasi",

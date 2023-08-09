@@ -73,7 +73,7 @@ def get_sub_contract_weekly_progress_detail(week, sub_contract_hand_over):
 	if sub_contract_hand_over and week:
 		last_week = int(week)-1
 		a = frappe.db.sql("""
-       	SELECT b.job_detail, b.uom, b.volume, b.weight, e.vol_next_week_plan volume_plan_from_last_week, b.vol_next_week_plan, h.volume_cumulative_last_week, b.vol_this_week, k.volume_cumulative_thist_week, 0 deviasi FROM `tabSub Contract Weekly Progress` a
+       	SELECT b.name, b.job_detail, b.uom, b.volume, b.weight, e.vol_next_week_plan volume_plan_from_last_week, b.vol_next_week_plan, h.volume_cumulative_last_week, b.vol_this_week, k.volume_cumulative_thist_week, 0 deviasi FROM `tabSub Contract Weekly Progress` a
 		INNER JOIN `tabSub Contract Weekly Progress Detail` b ON b.parent = a.name
 		LEFT JOIN (SELECT d.* FROM `tabSub Contract Weekly Progress` c
 			INNER JOIN `tabSub Contract Weekly Progress Detail` d ON d.parent = c.name
@@ -129,22 +129,37 @@ def saving(name, sub_contract_hand_over, project, sub_contract, job_name, postin
 		scwp.pic_name = pic_name
 		scwp.budget_amount = budget_amount
 		
-		for scwpd in scwp.sub_contract_weekly_progress_detail:
-			frappe.delete_doc("Sub Contract Weekly Progress Detail", scwpd.name)
+		# for scwpd in scwp.sub_contract_weekly_progress_detail:
+			# frappe.delete_doc("Sub Contract Weekly Progress Detail", scwpd.name)
 		for n in aaa:
-			scwp.append("sub_contract_weekly_progress_detail", {
-				"idx": n["idx"],
-				"job_detail": n["job_detail"],
-				"uom": n["uom"],
-				"volume": n["volume"],
-				"weight": n["weight"],
-				"volume_plan_from_last_week": n["volume_plan_from_last_week"],
-				"vol_next_week_plan": n["vol_next_week_plan"],
-				"volume_cumulative_last_week": n["volume_cumulative_last_week"],
-				"vol_this_week": n["vol_this_week"],
-				"volume_cumulative_thist_week": n["volume_cumulative_thist_week"],
-				"deviasi": n["deviasi"]
-			})
+			if n["namex"] and 'new-sub-contract-weekly-progress-detail' not in n["namex"]:
+				for xd in scwp.sub_contract_weekly_progress_detail:
+					if xd.name == n["namex"]:
+						xd.idx = n["idx"]
+						xd.job_detail = n["job_detail"]
+						xd.uom = n["uom"]
+						xd.volume = n["volume"]
+						xd.weight = n["weight"]
+						xd.volume_plan_from_last_week = n["volume_plan_from_last_week"]
+						xd.vol_next_week_plan = n["vol_next_week_plan"]
+						xd.volume_cumulative_last_week = n["volume_cumulative_last_week"]
+						xd.vol_this_week = n["vol_this_week"]
+						xd.volume_cumulative_thist_week = n["volume_cumulative_thist_week"]
+						xd.deviasi = n["deviasi"]
+			else:
+				scwp.append("sub_contract_weekly_progress_detail", {
+					"idx": n["idx"],
+					"job_detail": n["job_detail"],
+					"uom": n["uom"],
+					"volume": n["volume"],
+					"weight": n["weight"],
+					"volume_plan_from_last_week": n["volume_plan_from_last_week"],
+					"vol_next_week_plan": n["vol_next_week_plan"],
+					"volume_cumulative_last_week": n["volume_cumulative_last_week"],
+					"vol_this_week": n["vol_this_week"],
+					"volume_cumulative_thist_week": n["volume_cumulative_thist_week"],
+					"deviasi": n["deviasi"]
+				})
 		scwp.save()
 
 		return scwp.name
@@ -175,6 +190,98 @@ def saving(name, sub_contract_hand_over, project, sub_contract, job_name, postin
 				"vol_this_week": n["vol_this_week"],
 				"volume_cumulative_thist_week": n["volume_cumulative_thist_week"],
 				"deviasi": n["deviasi"]
+			})
+		scwp.insert(ignore_permissions=True)
+		return scwp.name
+
+@frappe.whitelist()
+def get_sub_contract_weekly_progress_detail2(week, sub_contract_hand_over):
+	if sub_contract_hand_over and week:
+		last_week = int(week)-1
+		a = frappe.db.sql("""
+       	SELECT b.name, b.job_detail, b.obstacle, b.analysis, b.resolve, b.pic, b.resolve_target, b.document FROM `tabSub Contract Weekly Progress` a
+		INNER JOIN `tabSub Contract Weekly Progress Detail` b ON b.parent = a.name
+		WHERE a.week = '{0}' AND a.sub_contract_hand_over = '{1}'
+        """.format(week, sub_contract_hand_over, last_week), as_dict=1)
+		if a:
+			return a
+		else:
+			return frappe.db.sql("""
+			SELECT b.job_detail, b.obstacle, b.analysis, b.resolve, b.pic, b.resolve_target, b.document FROM `tabSub Contract Weekly Progress` a
+			INNER JOIN `tabSub Contract Weekly Progress Detail` b ON b.parent = a.name
+			WHERE a.week = '{2}' AND a.sub_contract_hand_over = '{1}'
+			""".format(week, sub_contract_hand_over, last_week), as_dict=1)
+	return None
+
+@frappe.whitelist()
+def saving2(name, sub_contract_hand_over, project, sub_contract, job_name, posting_date, week, contractor_name, project_name, pic_name, budget_amount, sub_contract_weekly_progress, sub_contract_weekly_progress_last_week, sub_contract_weekly_progress_detail):
+	aaa = json.loads(sub_contract_weekly_progress_detail)
+	nm = check_is_exist(name, sub_contract_hand_over, project, sub_contract, job_name, posting_date, week, contractor_name, project_name, pic_name, budget_amount, sub_contract_weekly_progress, sub_contract_weekly_progress_last_week, sub_contract_weekly_progress_detail)
+	if nm:
+		scwp = frappe.get_doc("Sub Contract Weekly Progress", nm)
+		scwp.sub_contract_hand_over = sub_contract_hand_over
+		scwp.project = project
+		scwp.sub_contract = sub_contract
+		scwp.job_name = job_name
+		scwp.posting_date = posting_date
+		scwp.week = week
+		scwp.contractor_name = contractor_name
+		scwp.project_name = project_name
+		scwp.pic_name = pic_name
+		scwp.budget_amount = budget_amount
+		
+		# for scwpd in scwp.sub_contract_weekly_progress_detail:
+		# 	frappe.delete_doc("Sub Contract Weekly Progress Detail", scwpd.name)
+		for n in aaa:
+			if n["namex"] and 'new-sub-contract-weekly-progress-detail' not in n["namex"]:
+				for xd in scwp.sub_contract_weekly_progress_detail:
+					if xd.name == n["namex"]:
+						xd.idx = n["idx"]
+						xd.job_detail = n["job_detail"]
+						xd.obstacle = n["obstacle"]
+						xd.analysis = n["analysis"]
+						xd.resolve = n["resolve"]
+						xd.pic = n["pic"]
+						xd.resolve_target = n["resolve_target"]
+						xd.document = n["document"]
+			else:
+				scwp.append("sub_contract_weekly_progress_detail", {
+					"idx": n["idx"],
+					"job_detail": n["job_detail"],
+					"obstacle": n["obstacle"],
+					"analysis": n["analysis"],
+					"resolve": n["resolve"],
+					"pic": n["pic"],
+					"resolve_target": n["resolve_target"],
+					"document": n["document"]
+				})
+		scwp.save()
+
+		return scwp.name
+	else:
+		scwp = frappe.get_doc({
+			"doctype": "Sub Contract Weekly Progress",
+			"sub_contract_hand_over": sub_contract_hand_over,
+			"project": project,
+			"sub_contract": sub_contract,
+			"job_name": job_name,
+			"posting_date": posting_date,
+			"week": week,
+			"contractor_name": contractor_name,
+			"project_name": project_name,
+			"pic_name": pic_name,
+			"budget_amount": budget_amount,
+		})
+		
+		for n in aaa:
+			scwp.append("sub_contract_weekly_progress_detail", {
+				"job_detail": n["job_detail"],
+				"obstacle": n["obstacle"],
+				"analysis": n["analysis"],
+				"resolve": n["resolve"],
+				"pic": n["pic"],
+				"resolve_target": n["resolve_target"],
+				"document": n["document"]
 			})
 		scwp.insert(ignore_permissions=True)
 		return scwp.name

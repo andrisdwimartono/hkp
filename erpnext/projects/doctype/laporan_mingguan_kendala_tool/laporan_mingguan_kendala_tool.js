@@ -1,7 +1,7 @@
 // Copyright (c) 2016, Frappe Technologies Pvt. Ltd. and contributors
 // For license information, please see license.txt
 zoomout();
-frappe.ui.form.on('Laporan Mingguan Tool', {
+frappe.ui.form.on('Laporan Mingguan Kendala Tool', {
 	validate: function(frm){
 		
 	},
@@ -9,18 +9,14 @@ frappe.ui.form.on('Laporan Mingguan Tool', {
 		// frm.set_value("sub_contract_hand_over", "SPK-2023-000003");
 		// frm.refresh_field("sub_contract_hand_over");
 
-		//$(frm.fields_dict.abc.wrapper).html("<table><tr><td>ss</td></tr></table>aaa");
-		//frm.set_value("result_html", "<table><tr><td>ss</td></tr></table>aaa");
-		//frm.refresh_field("result_html");
 		frm.doc.show_submit = false;
-		//frm.doc.show_save = false;
 		frm.disable_save();
 		frm.add_custom_button('Simpan', function () {
 			frm.trigger("updating");
 		});
 		frm.add_custom_button('<svg class="icon  icon-sm" style=""><use class="" href="#icon-printer"></use></svg>', function () {
 			if(frm.doc.sub_contract_weekly_progress){
-				window.location.href = "/printview?doctype=Sub%20Contract%20Weekly%20Progress&name="+frm.doc.sub_contract_weekly_progress+"&format=LKP%20Desgin&no_letterhead=0&letterhead=KOP%20HKP&settings=%7B%7D&_lang=id";
+				window.location.href = "/printview?doctype=Sub%20Contract%20Weekly%20Progress&name="+frm.doc.sub_contract_weekly_progress+"&format=Kendala%20Design&no_letterhead=0&letterhead=KOP%20HKP&settings=%7B%7D&_lang=id";
 			}
 			
 		});
@@ -84,7 +80,7 @@ frappe.ui.form.on('Laporan Mingguan Tool', {
 		});
 
 		frappe.call({
-			method: 'erpnext.projects.doctype.sub_contract_weekly_progress.sub_contract_weekly_progress.get_sub_contract_weekly_progress_detail',
+			method: 'erpnext.projects.doctype.sub_contract_weekly_progress.sub_contract_weekly_progress.get_sub_contract_weekly_progress_detail2',
 			args: {
 				'week': frm.doc.week,
 				'sub_contract_hand_over': frm.doc.sub_contract_hand_over
@@ -96,20 +92,13 @@ frappe.ui.form.on('Laporan Mingguan Tool', {
 						frm.add_child('sub_contract_weekly_progress_detail', {
 							namex: r.message[i].name,
 							job_detail: r.message[i].job_detail,
-							uom: r.message[i].uom,
-							volume: r.message[i].volume,
-							weight: r.message[i].weight,
-							volume_plan_from_last_week: r.message[i].volume_plan_from_last_week,
-							vol_next_week_plan: r.message[i].vol_next_week_plan,
-							volume_cumulative_last_week: r.message[i].volume_cumulative_last_week,
-							vol_this_week: r.message[i].vol_this_week,
-							volume_cumulative_thist_week: r.message[i].volume_cumulative_thist_week,
-							deviasi : r.message[i].volume_plan_from_last_week-r.message[i].vol_this_week
+							obstacle: r.message[i].obstacle,
+							analysis: r.message[i].analysis,
+							resolve: r.message[i].resolve,
+							pic: r.message[i].pic,
+							resolve_target: r.message[i].resolve_target,
+							document: r.message[i].document
 						});
-						// $("div[data-fieldname='deviasi']").append("<input value='xxxxx' disabled class='input-with-feedback form-control input-sm'>");
-						// $("div[data-fieldname='deviasi']").removeClass("col-xs-1");
-						// $('[data-fieldname="sub_contract_weekly_progress_detail"]').html("aasdsss");
-						//$('[data-fieldname="job_detail"]').html("aasdsss");
 					}
 				}
 				frm.refresh_field('sub_contract_weekly_progress_detail');
@@ -153,19 +142,16 @@ frappe.ui.form.on('Laporan Mingguan Tool', {
 				"namex":frm.doc.sub_contract_weekly_progress_detail[i].namex?frm.doc.sub_contract_weekly_progress_detail[i].namex:null,
 				"idx": frm.doc.idx,
 				"job_detail":frm.doc.sub_contract_weekly_progress_detail[i].job_detail,
-				"uom":frm.doc.sub_contract_weekly_progress_detail[i].uom,
-				"volume":frm.doc.sub_contract_weekly_progress_detail[i].volume,
-				"weight":frm.doc.sub_contract_weekly_progress_detail[i].weight,
-				"volume_plan_from_last_week":frm.doc.sub_contract_weekly_progress_detail[i].volume_plan_from_last_week,
-				"vol_next_week_plan":frm.doc.sub_contract_weekly_progress_detail[i].vol_next_week_plan,
-				"volume_cumulative_last_week":frm.doc.sub_contract_weekly_progress_detail[i].volume_cumulative_last_week,
-				"vol_this_week":frm.doc.sub_contract_weekly_progress_detail[i].vol_this_week,
-				"volume_cumulative_thist_week":frm.doc.sub_contract_weekly_progress_detail[i].volume_cumulative_thist_week,
-				"deviasi":frm.doc.sub_contract_weekly_progress_detail[i].deviasi
+				"obstacle": frm.doc.sub_contract_weekly_progress_detail[i].obstacle,
+				"analysis": frm.doc.sub_contract_weekly_progress_detail[i].analysis,
+				"resolve": frm.doc.sub_contract_weekly_progress_detail[i].resolve,
+				"pic": frm.doc.sub_contract_weekly_progress_detail[i].pic,
+				"resolve_target": frm.doc.sub_contract_weekly_progress_detail[i].resolve_target,
+				"document": frm.doc.sub_contract_weekly_progress_detail[i].document
 			});
 		}
 		frappe.call({
-			method: 'erpnext.projects.doctype.sub_contract_weekly_progress.sub_contract_weekly_progress.saving',
+			method: 'erpnext.projects.doctype.sub_contract_weekly_progress.sub_contract_weekly_progress.saving2',
 			args: {
 				"name":frm.doc.name?frm.doc.name:null,
 				"sub_contract_hand_over":frm.doc.sub_contract_hand_over,
@@ -203,34 +189,11 @@ frappe.ui.form.on("Sub Contract Weekly Progress Details", {
 		
 		
 		//row-index
-    },
-	vol_this_week: function(frm, dt, dn) {
-		var d = locals[dt][dn];
-		d.deviasi = d.volume_plan_from_last_week-d.vol_this_week;
-		frm.refresh_field('sub_contract_weekly_progress_detail');
-		d.volume_cumulative_thist_week = d.volume_cumulative_last_week+d.vol_this_week;
-		frm.refresh_field('volume_cumulative_thist_week');
-	},
-	volume_plan_from_last_week: function(frm, dt, dn) {
-		var d = locals[dt][dn];
-		d.deviasi = d.volume_plan_from_last_week-d.vol_this_week;
-		frm.refresh_field('sub_contract_weekly_progress_detail');
-		d.volume_cumulative_thist_week = d.volume_cumulative_last_week+d.vol_this_week;
-		frm.refresh_field('volume_cumulative_thist_week');
-	}
+    }
 });
 
 function zoomout(){
 	$('.grid-static-col').css("font-size", "10px");
 	$('.row-index').css("font-size", "10px");
 	$('[data-doctype="Sub Contract Weekly Progress Details"]').css("font-size", "10px");
-
-	//ganti label
-	$('.grid-heading-row>.grid-row>.data-row>[data-fieldname="volume"]>.static-area').html("Volume");
-	$('.grid-heading-row>.grid-row>.data-row>[data-fieldname="uom"]>.static-area').html("Satuan");
-	$('.grid-heading-row>.grid-row>.data-row>[data-fieldname="volume_plan_from_last_week"]>.static-area').html("<div>Rencana</div><div>Minggu Ini</div>");
-	$('.grid-heading-row>.grid-row>.data-row>[data-fieldname="vol_next_week_plan"]>.static-area').html("<div>Rencana</div><div>Minggu Depan</div>");
-	$('.grid-heading-row>.grid-row>.data-row>[data-fieldname="volume_cumulative_last_week"]>.static-area').html("<div>Kumulatif</div><div>Minggu Lalu</div>");
-	$('.grid-heading-row>.grid-row>.data-row>[data-fieldname="vol_this_week"]>.static-area').html("<div>Realisasi</div><div>Minggu Ini</div>");
-	$('.grid-heading-row>.grid-row>.data-row>[data-fieldname="volume_cumulative_thist_week"]>.static-area').html("<div>Kumulatif</div><div>Minggu Ini</div>");
 }

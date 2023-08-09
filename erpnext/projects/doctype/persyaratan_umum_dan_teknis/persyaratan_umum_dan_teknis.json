@@ -1,0 +1,38 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-08-09 21:04:49.454819",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "hal",
+  "detail"
+ ],
+ "fields": [
+  {
+   "fieldname": "hal",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Hal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "detail",
+   "fieldtype": "Text Editor",
+   "in_list_view": 1,
+   "label": "Detail"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-08-09 21:04:49.454819",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Persyaratan Umum dan Teknis",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
