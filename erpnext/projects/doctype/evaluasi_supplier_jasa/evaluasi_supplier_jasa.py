@@ -41,7 +41,7 @@ class EvaluasiSupplierJasa(Document):
 def get_details(kriteria_penilaian):
 	if kriteria_penilaian:
 		fs = frappe.db.sql("""
-			SELECT * FROM `tabKriteria Penilaian Detail` WHERE parent = '{0}'
+			SELECT * FROM `tabKriteria Penilaian Detail` WHERE parent = '{0}' order by idx
 		""".format(kriteria_penilaian), as_dict=1)
 		return fs
 	

@@ -1,0 +1,110 @@
+{%
+	var letterhead = filters.letter_head || (frappe.get_doc(":Company", filters.company) && frappe.get_doc(":Company", filters.company).default_letter_head) || frappe.defaults.get_default("letter_head");
+	var report_columns = report.get_columns_for_print();
+%}
+<table width="100%">
+    <tr>
+        <td class="text-center" width="80%"><h4>REKAPITULASI PENAWARAN SUPPLIER JASA</h4></td>
+        <td width="20%">
+            <table style="font-size: 11px; border:1px solid black; margin: 0px; padding: 0px;">
+                <tr>
+                    <td>Dokumen</td>
+                    <td>: HKP-FI-DKD-03</td>
+                </tr>
+                <tr>
+                    <td>Revisi</td>
+                    <td>: 03</td>
+                </tr>
+                <tr>
+                    <td>Tgl Terbit</td>
+                    <td>: 25 Juli 2014</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    {% if(data.length > 0){ %}
+    <tr>
+        <td colspan="2"><b>PROYEK</b> : {%= data[0].project_name  %}</td>
+    </tr>
+    {% } %}
+</table>
+
+<table class="table table-bordered" width="100%" style="font-size: 11px; border:1px solid black; margin: 0px; padding: 0px;">
+	<thead>
+		<tr class="text-center">
+			<td rowspan="2" style="padding-top: 30px !important;"><b>NO</b></td>
+            <td rowspan="2" style="padding-top: 30px !important;"><b>NAMA SUPPLIER</b></td>
+            <td rowspan="2" style="padding-top: 20px !important;"><b>JENIS<br>PEKERJAAN</b></td>
+            <td rowspan="2" style="padding-top: 20px !important;"><b>HARGA<br>RAP</b></td>
+            <td colspan="6"><b>KRITERIA SELEKSI</b></td>
+            <td rowspan="2" style="padding-top: 30px !important;"><b>STATUS SELEKSI</b></td>
+		</tr>
+        <tr class="text-center">
+            <td colspan="2"><b>HARGA<br>PENAWARAN</b></td>
+            <td colspan="2"><b>KELENGKAPAN<br>PERALATAN</b></td>
+            <td colspan="2"><b>KEAHLIAN<br>TENAGA KERJA</b></td>
+        </tr>
+	</thead>
+	<tbody>
+        {% for(var j=0, k=data.length; j<k; j++) { %}
+        <tr>
+            <td class="text-right">
+                {%= j+1 %}
+            </td>
+            <td>
+                {%= data[j].supplier_name %}
+            </td>
+            <td>
+                {%= data[j].jenis_pekerjaan %}
+            </td>
+            <td class="text-right">
+                {%= data[j].harga_rap %}
+            </td>
+            <td>
+                {%= data[j].ket_penawaran %}
+            </td>
+            <td class="text-right">
+                {%= data[j].harga_penawaran %}
+            </td>
+            <td>
+                {%= data[j].ket_kelengkapan %}
+            </td>
+            <td class="text-right">
+                {%= data[j].kelengkapan_peralatan %}
+            </td>
+            <td>
+                {%= data[j].ket_keahlian %}
+            </td>
+            <td class="text-right">
+                {%= data[j].keahlian_tenaga_kerja %}
+            </td>
+            <td class="text-right">
+                {%= data[j].total_nilai %}
+            </td>
+        </tr>
+		{% } %}
+    </tbody>
+</table>
+
+<table width="100%" border="0" class="text-center">
+    <tr>
+        <td>Dibuat oleh,</td>
+        <td>Diperiksa oleh,</td>
+        <td>Disetujui oleh,</td>
+    </tr>
+    <tr>
+        <td height="80px"></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>(___________________)</td>
+        <td>(___________________)</td>
+        <td>(___________________)</td>
+    </tr>
+    <tr>
+        <td>Site Manager</td>
+        <td>Manager Operasi</td>
+        <td>Direktur Operasi</td>
+    </tr>
+</table>

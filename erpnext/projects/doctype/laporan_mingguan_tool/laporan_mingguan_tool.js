@@ -210,6 +210,7 @@ frappe.ui.form.on("Sub Contract Weekly Progress Details", {
 		frm.refresh_field('sub_contract_weekly_progress_detail');
 		d.volume_cumulative_thist_week = d.volume_cumulative_last_week+d.vol_this_week;
 		frm.refresh_field('volume_cumulative_thist_week');
+		zoomout();
 	},
 	volume_plan_from_last_week: function(frm, dt, dn) {
 		var d = locals[dt][dn];
@@ -217,6 +218,7 @@ frappe.ui.form.on("Sub Contract Weekly Progress Details", {
 		frm.refresh_field('sub_contract_weekly_progress_detail');
 		d.volume_cumulative_thist_week = d.volume_cumulative_last_week+d.vol_this_week;
 		frm.refresh_field('volume_cumulative_thist_week');
+		zoomout();
 	}
 });
 

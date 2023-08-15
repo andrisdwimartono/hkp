@@ -1,0 +1,117 @@
+{
+ "add_total_row": 0,
+ "columns": [
+  {
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project",
+   "width": 0
+  },
+  {
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "label": "Nama Supplier",
+   "width": 0
+  },
+  {
+   "fieldname": "jenis_pekerjaan",
+   "fieldtype": "Data",
+   "label": "Jenis Pekerjaan",
+   "width": 0
+  },
+  {
+   "fieldname": "harga_rap",
+   "fieldtype": "Float",
+   "label": "Harga RAP",
+   "width": 0
+  },
+  {
+   "fieldname": "ket_penawaran",
+   "fieldtype": "Data",
+   "label": "Ket Penawaran",
+   "width": 0
+  },
+  {
+   "fieldname": "harga_penawaran",
+   "fieldtype": "Float",
+   "label": "Harga Penawaran",
+   "width": 0
+  },
+  {
+   "fieldname": "ket_kelengkapan",
+   "fieldtype": "Data",
+   "label": "Ket Kelengkapan",
+   "width": 0
+  },
+  {
+   "fieldname": "kelengkapan_peralatan",
+   "fieldtype": "Float",
+   "label": "Kelengkapan Peralatan",
+   "width": 0
+  },
+  {
+   "fieldname": "ket_keahlian",
+   "fieldtype": "Data",
+   "label": "Ket Keahlian",
+   "width": 0
+  },
+  {
+   "fieldname": "keahlian_tenaga_kerja",
+   "fieldtype": "Float",
+   "label": "Keahlian Tenaga Kerja",
+   "width": 0
+  },
+  {
+   "fieldname": "total_nilai",
+   "fieldtype": "Float",
+   "label": "Total Nilai",
+   "width": 0
+  }
+ ],
+ "creation": "2023-08-14 14:02:06.729680",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "mandatory": 1,
+   "options": "Project",
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "jenis_pekerjaan",
+   "fieldtype": "Data",
+   "label": "Jenis Pekerjaan",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "KOP HKP",
+ "modified": "2023-08-15 10:39:07.041575",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "REKAPITULASI PENAWARAN SUPPLIER JASA",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT a.project_name, a.supplier_name, a.jenis_pekerjaan, a.harga_rap, b.keterangan ket_penawaran, b.value harga_penawaran, c.keterangan ket_kelengkapan, c.value kelengkapan_peralatan, d.keterangan ket_keahlian, d.value keahlian_tenaga_kerja, a.total_nilai FROM `tabREKAPITULASI PENAWARAN SUPPLIER JASA` a\nLEFT JOIN `tabEvaluasi Supplier Jasa Detail` b ON b.parent = a.name AND b.kriteria = 'HARGA PENAWARAN'\nLEFT JOIN `tabEvaluasi Supplier Jasa Detail` c ON c.parent = a.name AND c.kriteria = 'KELENGKAPAN PERALATAN'\nLEFT JOIN `tabEvaluasi Supplier Jasa Detail` d ON d.parent = a.name AND d.kriteria = 'KEAHLIAN TENAGA KERJA'\nWHERE project = %(project)s AND jenis_pekerjaan = %(jenis_pekerjaan)s;",
+ "ref_doctype": "REKAPITULASI PENAWARAN SUPPLIER JASA",
+ "report_name": "REKAPITULASI PENAWARAN SUPPLIER JASA",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Operasional"
+  },
+  {
+   "role": "dirut"
+  }
+ ]
+}

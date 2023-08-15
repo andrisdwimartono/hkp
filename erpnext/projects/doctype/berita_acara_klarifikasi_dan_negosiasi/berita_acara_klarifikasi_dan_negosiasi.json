@@ -26,6 +26,7 @@
   "section_break_dm8yy",
   "lingkup_pekerjaan",
   "harga_pekerjaan",
+  "ppn_type",
   "persyaratan_umum_dan_teknis_section",
   "persyaratan_umum_dan_teknis",
   "resource_tidak_disediakan_section",
@@ -45,6 +46,7 @@
   "syarat_pembayaran_section",
   "syarat_pembayaran",
   "sanksi",
+  "dokumen_pendukung",
   "amended_from"
  ],
  "fields": [
@@ -282,12 +284,25 @@
    "fieldname": "sanksi",
    "fieldtype": "Text",
    "label": "Sanksi"
+  },
+  {
+   "fieldname": "dokumen_pendukung",
+   "fieldtype": "Attach",
+   "label": "Dokumen Pendukung"
+  },
+  {
+   "default": "Tanpa PPn",
+   "fieldname": "ppn_type",
+   "fieldtype": "Select",
+   "label": "PPn",
+   "options": "Termasuk PPn\nTidak Permasuk PPn\nTanpa PPn",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-08-09 22:08:17.973957",
+ "modified": "2023-08-10 10:35:40.185038",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Berita Acara Klarifikasi dan Negosiasi",
