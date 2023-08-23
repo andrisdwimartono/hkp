@@ -20,6 +20,7 @@
   "total_nilai",
   "peringkat",
   "panduan_penilaian",
+  "pejabat",
   "amended_from"
  ],
  "fields": [
@@ -100,6 +101,7 @@
    "allow_on_submit": 1,
    "fieldname": "peringkat",
    "fieldtype": "Int",
+   "hidden": 1,
    "label": "Peringkat",
    "read_only": 1
   },
@@ -120,12 +122,17 @@
    "fieldtype": "Data",
    "label": "Supplier Name",
    "read_only": 1
+  },
+  {
+   "fieldname": "pejabat",
+   "fieldtype": "Table",
+   "label": "Pejabat",
+   "options": "Process Rule"
   }
  ],
  "index_web_pages_for_search": 1,
- "is_submittable": 1,
  "links": [],
- "modified": "2023-06-27 09:31:33.679260",
+ "modified": "2023-08-22 00:05:50.785098",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Evaluasi Supplier Jasa",
@@ -167,7 +174,6 @@
    "select": 1,
    "set_user_permissions": 1,
    "share": 1,
-   "submit": 1,
    "write": 1
   }
  ],

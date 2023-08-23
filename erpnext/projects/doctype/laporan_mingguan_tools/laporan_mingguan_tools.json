@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_copy": 1,
- "creation": "2023-08-01 09:49:57.436314",
+ "creation": "2023-08-22 01:21:49.877872",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -23,7 +23,9 @@
   "sub_contract_weekly_progress_last_week",
   "section_break_m9buk",
   "result_html",
-  "sub_contract_weekly_progress_detail"
+  "mode",
+  "sub_contract_weekly_progress_detail",
+  "sub_contract_weekly_progress_detail2"
  ],
  "fields": [
   {
@@ -34,34 +36,6 @@
    "label": "Sub Contract Hand Over",
    "options": "Sub Contract Hand Over",
    "reqd": 1
-  },
-  {
-   "fieldname": "column_break_2",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "Today",
-   "fieldname": "posting_date",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Posting Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "week",
-   "fieldtype": "Data",
-   "label": "Week",
-   "read_only": 1
-  },
-  {
-   "fieldname": "section_break_5",
-   "fieldtype": "Section Break"
-  },
-  {
-   "default": "aaa",
-   "fieldname": "result_html",
-   "fieldtype": "HTML",
-   "label": "Result HTML"
   },
   {
    "fetch_from": "sub_contract_hand_over.project",
@@ -83,6 +57,24 @@
    "fieldname": "job_name",
    "fieldtype": "Data",
    "label": "Job Name"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "week",
+   "fieldtype": "Data",
+   "label": "Week",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posting Date",
+   "reqd": 1
   },
   {
    "fetch_from": "sub_contract_hand_over.contractor_name",
@@ -110,18 +102,15 @@
    "options": "Company:company:default_currency"
   },
   {
+   "fieldname": "section_break_5",
+   "fieldtype": "Section Break"
+  },
+  {
    "fieldname": "sub_contract_weekly_progress",
    "fieldtype": "Link",
    "label": "Sub Contract Weekly Progress",
    "options": "Sub Contract Weekly Progress",
    "read_only": 1
-  },
-  {
-   "fieldname": "sub_contract_weekly_progress_detail",
-   "fieldtype": "Table",
-   "label": "KEMAJUAN FISIK PEKERJAAN",
-   "options": "Sub Contract Weekly Progress Details",
-   "reqd": 1
   },
   {
    "fieldname": "column_break_wbwel",
@@ -137,16 +126,43 @@
   {
    "fieldname": "section_break_m9buk",
    "fieldtype": "Section Break"
+  },
+  {
+   "default": "aaa",
+   "fieldname": "result_html",
+   "fieldtype": "HTML",
+   "label": "Result HTML"
+  },
+  {
+   "depends_on": "eval: doc.mode == \"Progress\"",
+   "fieldname": "sub_contract_weekly_progress_detail",
+   "fieldtype": "Table",
+   "label": "KEMAJUAN FISIK PEKERJAAN",
+   "options": "Sub Contract Weekly Progress Details"
+  },
+  {
+   "default": "Kendala",
+   "fieldname": "mode",
+   "fieldtype": "Select",
+   "label": "Mode",
+   "options": "Kendala\nProgress"
+  },
+  {
+   "depends_on": "eval: doc.mode == \"Kendala\"",
+   "fieldname": "sub_contract_weekly_progress_detail2",
+   "fieldtype": "Table",
+   "label": "KENDALA",
+   "options": "Sub Contract Weekly Progress Details2"
   }
  ],
  "hide_toolbar": 1,
  "in_create": 1,
  "issingle": 1,
  "links": [],
- "modified": "2023-08-22 01:21:18.151225",
+ "modified": "2023-08-22 01:24:19.808096",
  "modified_by": "Administrator",
  "module": "Projects",
- "name": "Laporan Mingguan Tool",
+ "name": "Laporan Mingguan Tools",
  "owner": "Administrator",
  "permissions": [
   {

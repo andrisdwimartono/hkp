@@ -3,8 +3,15 @@
 
 import frappe
 from frappe.model.document import Document
+from erpnext.projects.utils import notify_user
 
 class EvaluasiSupplierJasa(Document):
+	# def before_insert(self):
+	# 	for d in self.pejabat:
+	# 		if d.idx == 1:
+	# 			assigner = [d.user]
+	# 			notify_user(self.doctype, self.name, d.user, assigner, "{0} membutuhkan {1} dari anda setelah proses {2} oleh {3}".format(d.parent, d.aksi, d.aksi, d.employee_name))
+	
 	def validate(self):
 		esjs = frappe.db.sql("""
 			SELECT * FROM `tabEvaluasi Supplier Jasa` WHERE project = '{0}' AND supplier = '{1}' AND name != '{2}'
