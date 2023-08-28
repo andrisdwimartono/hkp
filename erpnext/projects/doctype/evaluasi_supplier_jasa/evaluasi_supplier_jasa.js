@@ -2,9 +2,100 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Evaluasi Supplier Jasa', {
-	// refresh: function(frm) {
+	refresh: function(frm) {
+		if (frm.doc.__unsaved == 1)	{
+			frm.clear_table("pejabat");
+			var x = ["Site Manager", "Manager Operasi", "Direktur Operasi"];
+			var y = ["SM", "M OPS", "DIR OPS"];
+			var z = ["Membuat", "Menyetujui", "Mengetahui"];
 
-	// },
+			// var x = ["Site Manager", "Manager Operasi", "Manager Operasi 2", "Direktur Operasi"];
+			// var y = ["SM", "M OPS", "M OPS 2", "DIR OPS"];
+			// var z = ["Membuat", "Menyetujui", "Memeriksa", "Mengetahui"];
+
+			for(var i = 0; i < x.length; i++){
+				let d = frm.add_child("pejabat");
+				d.jabatan = x[i];
+				d.jabatan_abbr = y[i];
+				d.aksi = z[i];
+			}
+			
+			frm.refresh_fields("pejabat");
+			frappe.db.get_value("Employee", {"user_id": cur_frm.doc.pejabat[0].user}, ["name", "user_id", "employee_name"]).then((value) => {
+				var vals = value.message;
+				var child = locals["Process Rule"][cur_frm.doc.pejabat[0].name];
+				child.user = vals.user_id;
+				child.employee = vals.name;
+				child.employee_name = vals.employee_name;
+				child.status = "Yes";
+				frm.refresh_fields("pejabat");
+			});
+			
+		}else{
+			frappe.call({
+				method: 'erpnext.projects.utils.get_next_process_rule',
+				args: {
+					'doctype': frm.doc.doctype,
+					'docname': frm.doc.name
+				},
+				callback: function(r) {
+					if(r.message){
+						var vals = r.message;
+						frm.add_custom_button(vals.aksi, function () {
+							frappe.prompt([
+								{
+									label: 'Status',
+									fieldname: 'status',
+									fieldtype: 'Select',
+									options: !["Mengetahui", "Membuat"].includes(vals.aksi)?["Yes", "No"]: ["Yes"],
+									default: "Yes",
+									reqd: 1
+								},
+								{
+									label: __('Comment'),
+									fieldname: 'comment',
+									fieldtype: 'Small Text'
+								},
+								{
+									label: 'process_rule_name',
+									fieldname: 'process_rule_name',
+									fieldtype: 'Data',
+									hidden: 1,
+									default: vals.name
+								},
+							], (values) => {
+								frappe.call({
+									method: 'erpnext.projects.utils.save_process_rule',
+									args: {
+										'docname': values.process_rule_name,
+										'status': values.status,
+										'comment': values.comment
+									},
+									callback: function(r) {
+										if(r.message){
+											frm.reload_doc();
+										}
+									}
+								});
+							},
+								vals.jabatan+' '+vals.aksi,
+								'Simpan'
+							);
+						}).removeClass("btn-default").addClass("btn-info");
+					}
+				}
+			});
+		}
+	},
+	onload: function(frm){
+		frm.set_query('employee', 'pejabat', function() {
+			return {
+				filters: {
+					user_id: ["!=", ""],
+				},
+			};
+		});
+	},
 	kriteria_penilaian: function(frm){
 		if (frm.doc.kriteria_penilaian) {
 			cur_frm.clear_table("details")

@@ -21,6 +21,7 @@
   "total_nilai",
   "peringkat",
   "panduan_penilaian",
+  "process_rules",
   "amended_from"
  ],
  "fields": [
@@ -135,12 +136,18 @@
    "fieldname": "harga_rap",
    "fieldtype": "Currency",
    "label": "Harga RAP"
+  },
+  {
+   "fieldname": "process_rules",
+   "fieldtype": "Table",
+   "label": "Process Rules",
+   "options": "Process Rules"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-08-14 14:11:54.049429",
+ "modified": "2023-08-24 20:49:41.851385",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "REKAPITULASI PENAWARAN SUPPLIER JASA",

@@ -1,0 +1,193 @@
+{
+ "actions": [],
+ "allow_copy": 1,
+ "creation": "2023-08-22 01:21:49.877872",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sub_contract_hand_over",
+  "project",
+  "sub_contract",
+  "job_name",
+  "column_break_2",
+  "week",
+  "posting_date",
+  "contractor_name",
+  "project_name",
+  "pic_name",
+  "budget_amount",
+  "section_break_5",
+  "sub_contract_weekly_progress",
+  "column_break_wbwel",
+  "sub_contract_weekly_progress_last_week",
+  "section_break_m9buk",
+  "result_html",
+  "mode",
+  "sub_contract_weekly_progress_detail",
+  "sub_contract_weekly_progress_detail2"
+ ],
+ "fields": [
+  {
+   "default": "SPK-2023-000003",
+   "fieldname": "sub_contract_hand_over",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sub Contract Hand Over",
+   "options": "Sub Contract Hand Over",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.project",
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.sub_contract",
+   "fieldname": "sub_contract",
+   "fieldtype": "Link",
+   "label": "Sub Contract",
+   "options": "Sub Contract"
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.job_name",
+   "fieldname": "job_name",
+   "fieldtype": "Data",
+   "label": "Job Name"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "week",
+   "fieldtype": "Data",
+   "label": "Week",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.contractor_name",
+   "fieldname": "contractor_name",
+   "fieldtype": "Data",
+   "label": "Contractor Name"
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name"
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.pic_name",
+   "fieldname": "pic_name",
+   "fieldtype": "Data",
+   "label": "PIC Name"
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.budget_amount",
+   "fieldname": "budget_amount",
+   "fieldtype": "Currency",
+   "label": "Nilai Kontrak",
+   "options": "Company:company:default_currency"
+  },
+  {
+   "fieldname": "section_break_5",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "sub_contract_weekly_progress",
+   "fieldtype": "Link",
+   "label": "Sub Contract Weekly Progress",
+   "options": "Sub Contract Weekly Progress",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_wbwel",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sub_contract_weekly_progress_last_week",
+   "fieldtype": "Link",
+   "label": "Sub Contract Weekly Progress Last Week",
+   "options": "Sub Contract Weekly Progress",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_m9buk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "aaa",
+   "fieldname": "result_html",
+   "fieldtype": "HTML",
+   "label": "Result HTML"
+  },
+  {
+   "depends_on": "eval: doc.mode == \"Progress\"",
+   "fieldname": "sub_contract_weekly_progress_detail",
+   "fieldtype": "Table",
+   "label": "KEMAJUAN FISIK PEKERJAAN",
+   "options": "Sub Contract Weekly Progress Details"
+  },
+  {
+   "default": "Kendala",
+   "fieldname": "mode",
+   "fieldtype": "Select",
+   "label": "Mode",
+   "options": "Kendala\nProgress"
+  },
+  {
+   "depends_on": "eval: doc.mode == \"Kendala\"",
+   "fieldname": "sub_contract_weekly_progress_detail2",
+   "fieldtype": "Table",
+   "label": "KENDALA",
+   "options": "Sub Contract Weekly Progress Details2"
+  }
+ ],
+ "hide_toolbar": 1,
+ "in_create": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2023-08-22 01:24:19.808096",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Laporan Mingguan Tools",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "read": 1,
+   "role": "Operasional",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "Engineering",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Engineering Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

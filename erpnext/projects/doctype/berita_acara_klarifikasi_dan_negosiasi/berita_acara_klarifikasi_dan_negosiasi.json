@@ -14,18 +14,25 @@
   "contractor_name",
   "pic_sub_contractor_negosiasi",
   "dasar_negosiasi_section",
+  "hkp_column",
   "jenis",
   "no",
   "tanggal",
   "perihal",
+  "lampiran",
+  "surat",
   "column_break_f31yl",
   "jenis2",
   "no2",
   "tanggal2",
   "perihal2",
+  "lampiran2",
+  "surat2",
   "section_break_dm8yy",
   "lingkup_pekerjaan",
+  "section_break_ej8gv",
   "harga_pekerjaan",
+  "column_break_qm5iw",
   "ppn_type",
   "persyaratan_umum_dan_teknis_section",
   "persyaratan_umum_dan_teknis",
@@ -33,20 +40,36 @@
   "resource_tidak_disediakan",
   "waktu__pelaksanaan_section",
   "mulai_pelaksanaan",
-  "masa_pemeliharaan",
+  "lama_pelaksanaan",
   "column_break_9schf",
   "selesai_pelaksanaan",
+  "masa_pemeliharaan",
   "cara_pembayaran_section",
+  "jenis_pembayaran",
   "uang_muka",
-  "pembayaran_progres",
+  "uang_muka_total",
+  "uang_muka_nominal",
+  "jangka_waktu_progress",
+  "jenis_retensi",
   "retensi",
+  "retensi_total",
+  "retensi_nominal",
   "column_break_pdksr",
+  "pembayaran_progres",
+  "bank_account",
+  "bank_account_no",
+  "bank",
+  "cabang",
+  "an_rekening",
   "jaminan",
   "jenis_jaminan",
   "syarat_pembayaran_section",
   "syarat_pembayaran",
   "sanksi",
   "dokumen_pendukung",
+  "kerusakan",
+  "syarat_serah_terima",
+  "email",
   "amended_from"
  ],
  "fields": [
@@ -90,13 +113,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "pic_negosiasi",
-   "fieldtype": "Table",
-   "label": "PIC Negosiasi",
-   "options": "PIC Negosiasi",
-   "reqd": 1
-  },
-  {
    "fieldname": "pic_sub_contractor_negosiasi",
    "fieldtype": "Table",
    "label": "PIC Sub Contractor Negosiasi",
@@ -114,12 +130,16 @@
   },
   {
    "depends_on": "eval:doc.jenis == \"Surat\"",
+   "fetch_from": "surat.no_surat",
+   "fetch_if_empty": 1,
    "fieldname": "no",
    "fieldtype": "Data",
    "label": "No",
    "mandatory_depends_on": "eval:doc.jenis == \"Surat\""
   },
   {
+   "fetch_from": "surat.tanggal",
+   "fetch_if_empty": 1,
    "fieldname": "tanggal",
    "fieldtype": "Date",
    "label": "Tanggal",
@@ -127,6 +147,8 @@
   },
   {
    "depends_on": "eval:doc.jenis == \"Surat\" || doc.jenis == \"E-mail\"",
+   "fetch_from": "surat.perihal",
+   "fetch_if_empty": 1,
    "fieldname": "perihal",
    "fieldtype": "Data",
    "label": "Perihal",
@@ -139,7 +161,8 @@
   },
   {
    "fieldname": "column_break_f31yl",
-   "fieldtype": "Column Break"
+   "fieldtype": "Column Break",
+   "label": "Supplier"
   },
   {
    "default": "Surat",
@@ -150,6 +173,8 @@
    "reqd": 1
   },
   {
+   "fetch_from": "surat2.tanggal",
+   "fetch_if_empty": 1,
    "fieldname": "tanggal2",
    "fieldtype": "Date",
    "label": "Tanggal",
@@ -157,6 +182,8 @@
   },
   {
    "depends_on": "eval:doc.jenis2 == \"Surat\" || doc.jenis2 == \"E-mail\"",
+   "fetch_from": "surat2.perihal",
+   "fetch_if_empty": 1,
    "fieldname": "perihal2",
    "fieldtype": "Data",
    "label": "Perihal",
@@ -164,6 +191,8 @@
   },
   {
    "depends_on": "eval:doc.jenis2 == \"Surat\"",
+   "fetch_from": "surat2.no_surat",
+   "fetch_if_empty": 1,
    "fieldname": "no2",
    "fieldtype": "Data",
    "label": "No",
@@ -185,7 +214,8 @@
    "fieldname": "harga_pekerjaan",
    "fieldtype": "Currency",
    "label": "Harga Pekerjaan",
-   "options": "Company:company:default_currency"
+   "options": "Company:company:default_currency",
+   "reqd": 1
   },
   {
    "fieldname": "persyaratan_umum_dan_teknis_section",
@@ -196,7 +226,8 @@
    "fieldname": "persyaratan_umum_dan_teknis",
    "fieldtype": "Table",
    "label": "Persyaratan Umum dan Teknis",
-   "options": "Persyaratan Umum dan Teknis"
+   "options": "Persyaratan Umum dan Teknis",
+   "reqd": 1
   },
   {
    "fieldname": "resource_tidak_disediakan_section",
@@ -207,7 +238,8 @@
    "fieldname": "resource_tidak_disediakan",
    "fieldtype": "Table",
    "label": "Resource TIdak Disediakan",
-   "options": "Resource TIdak Disediakan"
+   "options": "Resource TIdak Disediakan",
+   "reqd": 1
   },
   {
    "fieldname": "waktu__pelaksanaan_section",
@@ -217,7 +249,8 @@
   {
    "fieldname": "mulai_pelaksanaan",
    "fieldtype": "Date",
-   "label": "Mulai Pelaksanaan"
+   "label": "Mulai Pelaksanaan",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_9schf",
@@ -226,12 +259,14 @@
   {
    "fieldname": "selesai_pelaksanaan",
    "fieldtype": "Date",
-   "label": "Selesai Pelaksanaan"
+   "label": "Selesai Pelaksanaan",
+   "reqd": 1
   },
   {
    "fieldname": "masa_pemeliharaan",
    "fieldtype": "Int",
-   "label": "Masa Pemeliharaan"
+   "label": "Masa Pemeliharaan (Hari Kalender)",
+   "reqd": 1
   },
   {
    "fieldname": "cara_pembayaran_section",
@@ -239,21 +274,26 @@
    "label": "Cara Pembayaran"
   },
   {
+   "depends_on": "eval: doc.jenis_pembayaran == \"Persen\"",
    "fieldname": "uang_muka",
    "fieldtype": "Percent",
-   "label": "Uang Muka"
+   "label": "Uang Muka (%)",
+   "mandatory_depends_on": "eval: doc.jenis_pembayaran == \"Persen\""
   },
   {
    "fieldname": "jaminan",
    "fieldtype": "Select",
    "label": "Jaminan",
-   "options": "Disertai Jaminan\nTanpa Jaminan"
+   "options": "Disertai Jaminan\nTanpa Jaminan",
+   "reqd": 1
   },
   {
    "depends_on": "eval: doc.jaminan == \"Disertai Jaminan\"",
    "fieldname": "jenis_jaminan",
-   "fieldtype": "Data",
-   "label": "Jenis Jaminan"
+   "fieldtype": "Link",
+   "label": "Jenis Jaminan",
+   "options": "Jenis Jaminan",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_pdksr",
@@ -262,12 +302,16 @@
   {
    "fieldname": "pembayaran_progres",
    "fieldtype": "Data",
-   "label": "Pembayaran progres"
+   "label": "Pembayaran progres",
+   "reqd": 1
   },
   {
+   "depends_on": "eval: doc.jenis_retensi == \"Persen\"",
    "fieldname": "retensi",
    "fieldtype": "Percent",
-   "label": "Retensi"
+   "label": "Retensi (%)",
+   "mandatory_depends_on": "eval: doc.jenis_retensi == \"Persen\"",
+   "reqd": 1
   },
   {
    "fieldname": "syarat_pembayaran_section",
@@ -278,12 +322,14 @@
    "fieldname": "syarat_pembayaran",
    "fieldtype": "Table",
    "label": "Syarat Pembayaran",
-   "options": "Syarat Pembayaran"
+   "options": "Syarat Pembayaran",
+   "reqd": 1
   },
   {
    "fieldname": "sanksi",
    "fieldtype": "Text",
-   "label": "Sanksi"
+   "label": "Sanksi",
+   "reqd": 1
   },
   {
    "fieldname": "dokumen_pendukung",
@@ -297,12 +343,174 @@
    "label": "PPn",
    "options": "Termasuk PPn\nTidak Permasuk PPn\nTanpa PPn",
    "reqd": 1
+  },
+  {
+   "fieldname": "hkp_column",
+   "fieldtype": "Column Break",
+   "label": "HKP"
+  },
+  {
+   "description": "* 1 File ukuran maksimal 10 MB, Ekstensi hanya JPG, PDF, doc",
+   "fieldname": "lampiran",
+   "fieldtype": "Attach",
+   "label": "Lampiran",
+   "reqd": 1
+  },
+  {
+   "description": "* 1 File ukuran maksimal 10 MB, Ekstensi hanya JPG, PDF, doc",
+   "fieldname": "lampiran2",
+   "fieldtype": "Attach",
+   "label": "Lampiran",
+   "reqd": 1
+  },
+  {
+   "fieldname": "surat",
+   "fieldtype": "Link",
+   "label": "Surat Keluar",
+   "options": "Surat Keluar Masuk"
+  },
+  {
+   "fieldname": "surat2",
+   "fieldtype": "Link",
+   "label": "Surat Masuk",
+   "options": "Surat Keluar Masuk"
+  },
+  {
+   "fieldname": "lama_pelaksanaan",
+   "fieldtype": "Int",
+   "label": "Lama Pelaksanaan (Hari Kalender)",
+   "read_only": 1
+  },
+  {
+   "default": "Persen",
+   "fieldname": "jenis_pembayaran",
+   "fieldtype": "Select",
+   "label": "Jenis Uang Muka",
+   "options": "Persen\nNominal",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval: doc.jenis_pembayaran == \"Nominal\"",
+   "fieldname": "uang_muka_nominal",
+   "fieldtype": "Currency",
+   "label": "Uang Muka (Rp)",
+   "mandatory_depends_on": "eval: doc.jenis_pembayaran == \"Nominal\""
+  },
+  {
+   "depends_on": "eval: doc.jenis_pembayaran == \"Persen\"",
+   "fieldname": "uang_muka_total",
+   "fieldtype": "Currency",
+   "label": "Uang Muka (Rp)",
+   "read_only": 1
+  },
+  {
+   "default": "Persen",
+   "fieldname": "jenis_retensi",
+   "fieldtype": "Select",
+   "label": "Jenis Retensi",
+   "options": "Persen\nNominal"
+  },
+  {
+   "depends_on": "eval: doc.jenis_retensi == \"Persen\"",
+   "fieldname": "retensi_total",
+   "fieldtype": "Currency",
+   "label": "Retensi Total",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval: doc.jenis_retensi == \"Nominal\"",
+   "fieldname": "retensi_nominal",
+   "fieldtype": "Currency",
+   "label": "Retensi (Rp)",
+   "mandatory_depends_on": "eval: doc.jenis_retensi == \"Nominal\""
+  },
+  {
+   "fieldname": "jangka_waktu_progress",
+   "fieldtype": "Int",
+   "label": "Jangka Waktu Pembayaran (Hari Kalender)",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "bank_account.bank",
+   "fetch_if_empty": 1,
+   "fieldname": "bank",
+   "fieldtype": "Link",
+   "label": "Bank",
+   "options": "Bank",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bank_account",
+   "fieldtype": "Link",
+   "label": "Bank Account",
+   "options": "Bank Account",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "bank_account.branch_code",
+   "fetch_if_empty": 1,
+   "fieldname": "cabang",
+   "fieldtype": "Data",
+   "label": "Cabang",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "bank_account.account_name",
+   "fetch_if_empty": 1,
+   "fieldname": "an_rekening",
+   "fieldtype": "Data",
+   "label": "A/n Rekening",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_qm5iw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ej8gv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "bank_account.bank_account_no",
+   "fetch_if_empty": 1,
+   "fieldname": "bank_account_no",
+   "fieldtype": "Data",
+   "label": "Bank Account No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "pic_negosiasi",
+   "fieldtype": "Table",
+   "label": "PIC Negosiasi",
+   "options": "PIC Negosiasi",
+   "reqd": 1
+  },
+  {
+   "default": "Semua kerusakan dan kehilangan alat kerja serta material menjadi tanggung jawab pelaksanaan pekerjaan",
+   "fieldname": "kerusakan",
+   "fieldtype": "Small Text",
+   "label": "Kerusakan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "syarat_serah_terima",
+   "fieldtype": "Table",
+   "label": "Syarat Serah Terima",
+   "options": "Berita Acara Klarifikasi dan Negosiasi Serah Terima",
+   "reqd": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Table",
+   "label": "Email",
+   "options": "Berita Acara Klarifikasi dan Negosiasi Email",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-08-10 10:35:40.185038",
+ "modified": "2023-08-24 09:49:11.791880",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Berita Acara Klarifikasi dan Negosiasi",

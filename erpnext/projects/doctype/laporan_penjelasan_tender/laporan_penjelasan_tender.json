@@ -1,0 +1,133 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "LPT-.YY.-.#####.",
+ "creation": "2023-08-23 18:19:43.778106",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tanggal",
+  "informasi_pembuatan_penawaran",
+  "pelanggan",
+  "lingkup_pekerjaan",
+  "column_break_vxccu",
+  "atas_nama",
+  "rks",
+  "tanggal_rks",
+  "penjelasan",
+  "section_break_iofft",
+  "penjelasan_administrasi",
+  "penjelasan_teknis",
+  "peserta_tender"
+ ],
+ "fields": [
+  {
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "label": "Tanggal",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "informasi_pembuatan_penawaran.customer",
+   "fetch_if_empty": 1,
+   "fieldname": "pelanggan",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Pelanggan",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "informasi_pembuatan_penawaran.lingkup_pekerjaan",
+   "fetch_if_empty": 1,
+   "fieldname": "lingkup_pekerjaan",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Lingkup Pekerjaan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "atas_nama",
+   "fieldtype": "Data",
+   "label": "Atas Nama",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rks",
+   "fieldtype": "Data",
+   "label": "RKS",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tanggal_rks",
+   "fieldtype": "Date",
+   "label": "Tanggal RKS"
+  },
+  {
+   "fieldname": "penjelasan",
+   "fieldtype": "Select",
+   "label": "Penjelasan",
+   "options": "Kantor\nLapangan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "penjelasan_administrasi",
+   "fieldtype": "Small Text",
+   "label": "Penjelasan Administrasi",
+   "reqd": 1
+  },
+  {
+   "fieldname": "penjelasan_teknis",
+   "fieldtype": "Small Text",
+   "label": "Penjelasan Teknis",
+   "reqd": 1
+  },
+  {
+   "fieldname": "peserta_tender",
+   "fieldtype": "Table",
+   "label": "Peserta Tender",
+   "options": "LAPORAN PENJELASAN TENDER PESERTA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_vxccu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_iofft",
+   "fieldtype": "Section Break",
+   "label": "Penjelasan"
+  },
+  {
+   "fieldname": "informasi_pembuatan_penawaran",
+   "fieldtype": "Link",
+   "label": "Informasi Pembuatan Penawaran",
+   "options": "INFORMASI PEMBUATAN PENAWARAN",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-08-23 18:35:02.305361",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "LAPORAN PENJELASAN TENDER",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

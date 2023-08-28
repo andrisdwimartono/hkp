@@ -1,0 +1,103 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": ".###./IT/SAR/.MM./.YY.",
+ "creation": "2023-08-21 10:30:18.583883",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tanggal",
+  "usulan_mengikuti_tender",
+  "column_break_um95z",
+  "lingkup_pekerjaan",
+  "customer",
+  "section_break_nzsx7",
+  "pejabat",
+  "aktivitas",
+  "catatan"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Tanggal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "usulan_mengikuti_tender",
+   "fieldtype": "Link",
+   "label": "Usulan Mengikuti Tender",
+   "options": "USULAN MENGIKUTI TENDER",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "usulan_mengikuti_tender.lingkup_pekerjaan",
+   "fieldname": "lingkup_pekerjaan",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Lingkup",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "usulan_mengikuti_tender.customer",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Pelanggan",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "catatan",
+   "fieldtype": "Small Text",
+   "label": "Catatan"
+  },
+  {
+   "fieldname": "pejabat",
+   "fieldtype": "Table",
+   "label": "Pejabat",
+   "options": "Process Rule",
+   "reqd": 1
+  },
+  {
+   "fieldname": "aktivitas",
+   "fieldtype": "Table",
+   "label": "Aktivitas",
+   "options": "INFORMASI PEMBUATAN PENAWARAN AKTIVITAS",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_um95z",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_nzsx7",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-08-21 20:38:58.775924",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "INFORMASI PEMBUATAN PENAWARAN",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
