@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "tanggal",
+  "informasi_penawaran_tender",
   "pelanggan",
   "lingkup_pekerjaan",
   "common_divider",
@@ -37,12 +38,14 @@
    "reqd": 1
   },
   {
+   "fetch_from": "informasi_penawaran_tender.pelanggan",
    "fieldname": "pelanggan",
    "fieldtype": "Data",
    "label": "Pelanggan",
    "reqd": 1
   },
   {
+   "fetch_from": "informasi_penawaran_tender.lingkup_pekerjaan",
    "fieldname": "lingkup_pekerjaan",
    "fieldtype": "Data",
    "label": "Lingkup Pekerjaan",
@@ -146,11 +149,18 @@
    "fieldname": "saran_saran",
    "fieldtype": "Text",
    "label": "Saran-saran"
+  },
+  {
+   "fieldname": "informasi_penawaran_tender",
+   "fieldtype": "Link",
+   "label": "Informasi Penawaran Tender",
+   "options": "INFORMASI PEMBUKAAN TENDER",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-28 18:13:46.036694",
+ "modified": "2023-08-28 19:05:40.396969",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "LAPORAN PENJELASAN TENDER",

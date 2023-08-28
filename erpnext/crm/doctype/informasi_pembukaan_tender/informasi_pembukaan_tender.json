@@ -17,6 +17,7 @@
  ],
  "fields": [
   {
+   "fetch_from": "informasi_penawaran_tender.lingkup_pekerjaan",
    "fieldname": "lingkup_pekerjaan",
    "fieldtype": "Data",
    "label": "Lingkup Pekerjaan"
@@ -59,7 +60,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-26 20:03:19.338979",
+ "modified": "2023-08-28 19:04:38.875046",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "INFORMASI PEMBUKAAN TENDER",
