@@ -6,6 +6,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "laporan_penjelasan_tender",
   "nama_paket",
   "no_rks",
   "tanggal",
@@ -15,17 +16,22 @@
  ],
  "fields": [
   {
+   "fetch_from": "laporan_penjelasan_tender.lingkup_pekerjaan",
+   "fetch_if_empty": 1,
    "fieldname": "nama_paket",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Nama Paket",
    "width": "100%"
   },
   {
+   "fetch_from": "laporan_penjelasan_tender.rks",
    "fieldname": "no_rks",
    "fieldtype": "Data",
    "label": "No. RKS"
   },
   {
+   "fetch_from": "laporan_penjelasan_tender.tanggal_rks",
    "fieldname": "tanggal",
    "fieldtype": "Date",
    "label": "Tanggal"
@@ -42,13 +48,22 @@
   },
   {
    "fieldname": "checklist",
-   "fieldtype": "Data",
-   "label": "Checklist"
+   "fieldtype": "Table",
+   "label": "Checklist",
+   "options": "CHECKLIST DOKUMEN TENDER URAIAN"
+  },
+  {
+   "fieldname": "laporan_penjelasan_tender",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Laporan Penjelasan Tender",
+   "options": "LAPORAN PENJELASAN TENDER",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-26 20:03:08.745992",
+ "modified": "2023-08-28 18:04:14.500492",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "CHECKLIST DOKUMEN TENDER",
