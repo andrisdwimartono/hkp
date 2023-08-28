@@ -6,11 +6,22 @@ from frappe.model.document import Document
 
 class REKAPITULASIPENAWARANSUPPLIERJASA(Document):
 	def validate(self):
+		# frappe.msgprint(
+		# 	msg='This file does not exist',
+		# 	title='Error',
+		# 	raise_exception=FileNotFoundError,
+		# 	primary_action={
+		# 		'label': 'Perform Action',
+		# 		'server_action': 'erpnext.projects.utils.get_process_rules',
+		# 		#'client_action': 'erpnext.projects.utils.get_process_rules',
+		# 		#'args': args
+		# 	}
+		# )
 		esjs = frappe.db.sql("""
 			SELECT * FROM `tabREKAPITULASI PENAWARAN SUPPLIER JASA` WHERE project = '{0}' AND supplier = '{1}' AND name != '{2}'
 		""".format(self.project, self.supplier, self.name), as_dict=1)
-		for esj in esjs:
-			frappe.throw("Project dan Supplier sudah dibuat <a href='/app/rekapitulasi-penawaran-supplier-jasa/{0}'>{0}</a>".format(esj.name))
+		# for esj in esjs:
+		# 	frappe.throw("Project dan Supplier sudah dibuat <a href='/app/rekapitulasi-penawaran-supplier-jasa/{0}'>{0}</a>".format(esj.name))
 		total_nilai = 0
 		for d in self.details:
 			if d.value > 100 or d.value < 0:

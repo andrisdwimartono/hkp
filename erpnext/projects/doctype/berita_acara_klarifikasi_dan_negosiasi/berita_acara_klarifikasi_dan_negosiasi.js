@@ -15,7 +15,18 @@ frappe.ui.form.on('Berita Acara Klarifikasi dan Negosiasi', {
 			var g = frm.add_child("syarat_pembayaran");
 			g.hal = "Foto Dokumentasi.";
 			frm.refresh_field("syarat_pembayaran");
+			
+			var x = ["construction@hastaindonesia.com", "corporate@hastaindonesia.com", "satrio@hastaindonesia.com"];
+			var y = ["to", "cc", "cc"];
+			for(var i = 0; i < x.length; i++){
+				var c = frm.add_child("email");
+				c.pemilik = "HKP";
+				c.email = x[i];
+				c.jenis = y[i];
+			}
+			frm.refresh_field("email");
 		}
+		
 		if(frm.doc.syarat_pembayaran.length == 0){
 			
 		}

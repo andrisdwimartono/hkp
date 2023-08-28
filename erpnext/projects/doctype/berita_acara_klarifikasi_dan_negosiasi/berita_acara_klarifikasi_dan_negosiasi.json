@@ -67,6 +67,9 @@
   "syarat_pembayaran",
   "sanksi",
   "dokumen_pendukung",
+  "kerusakan",
+  "syarat_serah_terima",
+  "email",
   "amended_from"
  ],
  "fields": [
@@ -481,12 +484,33 @@
    "label": "PIC Negosiasi",
    "options": "PIC Negosiasi",
    "reqd": 1
+  },
+  {
+   "default": "Semua kerusakan dan kehilangan alat kerja serta material menjadi tanggung jawab pelaksanaan pekerjaan",
+   "fieldname": "kerusakan",
+   "fieldtype": "Small Text",
+   "label": "Kerusakan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "syarat_serah_terima",
+   "fieldtype": "Table",
+   "label": "Syarat Serah Terima",
+   "options": "Berita Acara Klarifikasi dan Negosiasi Serah Terima",
+   "reqd": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Table",
+   "label": "Email",
+   "options": "Berita Acara Klarifikasi dan Negosiasi Email",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-08-22 11:33:32.557727",
+ "modified": "2023-08-24 09:49:11.791880",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Berita Acara Klarifikasi dan Negosiasi",

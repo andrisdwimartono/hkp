@@ -119,3 +119,10 @@ def notify_user(doctype, docname, from_user, assigner, subject):
 		"from_user": from_user,
 	}
 	enqueue_create_notification(assigner, notification_doc)
+
+@frappe.whitelist()
+def get_process_rules(doctype):
+	return frappe.db.sql("""SELECT b.* FROM `tabWorkflow` a 
+	INNER JOIN `tabWorkflow Document State` b ON b.parent = a.name
+	WHERE a.document_type = '{0}' AND a.is_active = 1
+	ORDER BY b.idx ASC""".format(doctype), as_dict=1)
