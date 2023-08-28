@@ -136,9 +136,10 @@
   },
   {
    "fieldname": "peserta_tender",
-   "fieldtype": "Data",
+   "fieldtype": "Table",
    "label": "Peserta Tender",
    "length": 100,
+   "options": "LAPORAN PENJELASAN TENDER _ PESERTA TENDER",
    "reqd": 1
   },
   {
@@ -149,7 +150,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-26 20:02:53.327659",
+ "modified": "2023-08-28 18:13:46.036694",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "LAPORAN PENJELASAN TENDER",
