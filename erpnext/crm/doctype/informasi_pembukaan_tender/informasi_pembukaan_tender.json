@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-08-26 19:34:26.546769",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "lingkup_pekerjaan",
+  "pelanggan",
+  "column_break_zkexg",
+  "untuk",
+  "tembusan",
+  "section_break_dqbn1",
+  "hasil_pembukaan_tender",
+  "catatan"
+ ],
+ "fields": [
+  {
+   "fieldname": "lingkup_pekerjaan",
+   "fieldtype": "Data",
+   "label": "Lingkup Pekerjaan"
+  },
+  {
+   "fieldname": "pelanggan",
+   "fieldtype": "Data",
+   "label": "Pelanggan"
+  },
+  {
+   "fieldname": "column_break_zkexg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "untuk",
+   "fieldtype": "Select",
+   "label": "Untuk",
+   "options": "Direktur Operasi\nSekretariat\nEstimasi"
+  },
+  {
+   "fieldname": "tembusan",
+   "fieldtype": "Select",
+   "label": "Tembusan",
+   "options": "Direktur Utama"
+  },
+  {
+   "fieldname": "section_break_dqbn1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "hasil_pembukaan_tender",
+   "fieldtype": "Data",
+   "label": "Hasil Pembukaan Tender"
+  },
+  {
+   "fieldname": "catatan",
+   "fieldtype": "Text",
+   "label": "Catatan"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-08-26 20:03:19.338979",
+ "modified_by": "Administrator",
+ "module": "CRM",
+ "name": "INFORMASI PEMBUKAAN TENDER",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

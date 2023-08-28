@@ -1,0 +1,77 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-08-26 19:38:12.312732",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "lingkup_pekerjaan",
+  "pelanggan",
+  "no_surat",
+  "administrasi",
+  "teknis",
+  "harga",
+  "tindakan_perbaikan"
+ ],
+ "fields": [
+  {
+   "fieldname": "lingkup_pekerjaan",
+   "fieldtype": "Data",
+   "label": "Lingkup Pekerjaan"
+  },
+  {
+   "fieldname": "pelanggan",
+   "fieldtype": "Data",
+   "label": "Pelanggan"
+  },
+  {
+   "fieldname": "no_surat",
+   "fieldtype": "Data",
+   "label": "No Surat"
+  },
+  {
+   "fieldname": "administrasi",
+   "fieldtype": "Text",
+   "label": "Administrasi"
+  },
+  {
+   "fieldname": "teknis",
+   "fieldtype": "Text",
+   "label": "Teknis"
+  },
+  {
+   "fieldname": "harga",
+   "fieldtype": "Text",
+   "label": "Harga"
+  },
+  {
+   "fieldname": "tindakan_perbaikan",
+   "fieldtype": "Text",
+   "label": "Tindakan Perbaikan"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-08-26 20:03:30.634017",
+ "modified_by": "Administrator",
+ "module": "CRM",
+ "name": "ANALISA KETIDAKBERHASILAN",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
