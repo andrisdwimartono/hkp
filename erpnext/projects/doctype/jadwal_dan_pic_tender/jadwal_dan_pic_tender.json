@@ -1,0 +1,139 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-08-28 17:29:27.469840",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "informasi_pembuatan_penawaran",
+  "nama_paket",
+  "pagu",
+  "mulai_aanwijzig_kantor",
+  "selesai_aanwijzig_kantor",
+  "mulai_aanwijzig_lapangan",
+  "selesai_aanwijzig_lapangan",
+  "mulai_mempelajari_rks",
+  "selesai_mempelajari_rks",
+  "jenis",
+  "upload",
+  "waktu_upload",
+  "pemasukan_penawaran",
+  "pic_tender",
+  "koordinator_tender"
+ ],
+ "fields": [
+  {
+   "fieldname": "informasi_pembuatan_penawaran",
+   "fieldtype": "Link",
+   "label": "Informasi Pembuatan Penawaran",
+   "options": "INFORMASI PEMBUATAN PENAWARAN",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "informasi_pembuatan_penawaran.lingkup_pekerjaan",
+   "fetch_if_empty": 1,
+   "fieldname": "nama_paket",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nama Paket"
+  },
+  {
+   "fieldname": "pagu",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Pagu",
+   "reqd": 1
+  },
+  {
+   "fieldname": "mulai_aanwijzig_kantor",
+   "fieldtype": "Datetime",
+   "label": "Mulai Aanwijzig Kantor"
+  },
+  {
+   "fieldname": "selesai_aanwijzig_kantor",
+   "fieldtype": "Datetime",
+   "label": "Selesai Aanwijzig Kantor"
+  },
+  {
+   "fieldname": "mulai_aanwijzig_lapangan",
+   "fieldtype": "Datetime",
+   "label": "Mulai Aanwijzig Lapangan"
+  },
+  {
+   "fieldname": "selesai_aanwijzig_lapangan",
+   "fieldtype": "Datetime",
+   "label": "Selesai Aanwijzig Lapangan"
+  },
+  {
+   "fieldname": "mulai_mempelajari_rks",
+   "fieldtype": "Date",
+   "label": "Mulai Mempelajari RKS"
+  },
+  {
+   "fieldname": "selesai_mempelajari_rks",
+   "fieldtype": "Date",
+   "label": "Selesai Mempelajari RKS"
+  },
+  {
+   "default": "Offline",
+   "fieldname": "jenis",
+   "fieldtype": "Select",
+   "label": "Jenis",
+   "options": "Offline\nOnline",
+   "reqd": 1
+  },
+  {
+   "fieldname": "upload",
+   "fieldtype": "Attach",
+   "label": "Upload"
+  },
+  {
+   "depends_on": "eval: doc.jenis == \"Offline\"",
+   "fieldname": "waktu_upload",
+   "fieldtype": "Datetime",
+   "label": "Waktu Upload",
+   "mandatory_depends_on": "eval: doc.jenis == \"Offline\""
+  },
+  {
+   "fieldname": "pemasukan_penawaran",
+   "fieldtype": "Datetime",
+   "label": "Pemasukan Penawaran"
+  },
+  {
+   "fieldname": "pic_tender",
+   "fieldtype": "Table",
+   "label": "PIC Tender",
+   "options": "PIC Tender"
+  },
+  {
+   "fieldname": "koordinator_tender",
+   "fieldtype": "Table",
+   "label": "Koordinator Tender",
+   "options": "Koordinator Tender"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-08-28 17:38:20.663962",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Jadwal dan PIC Tender",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

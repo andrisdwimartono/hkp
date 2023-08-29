@@ -1,0 +1,184 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-08-26 17:31:47.958682",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tanggal",
+  "informasi_penawaran_tender",
+  "pelanggan",
+  "lingkup_pekerjaan",
+  "common_divider",
+  "atas_nama",
+  "rks",
+  "penjelasan",
+  "uraian_singkat_divider",
+  "penjelasan_administrasi",
+  "penjelasan_teknis",
+  "pengambilan_berita_acara",
+  "tanggal_pengambilan_berita_acara",
+  "pengambilan_berita_acara_column_break",
+  "jam_pengambilan_berita_acara",
+  "pemasukan_penawaran",
+  "tanggal_pemasukan_penawaran",
+  "pemasukan_penawaran_column_break",
+  "jam_pemasukan_penawaran",
+  "lain_lain",
+  "peserta_tender",
+  "saran_saran"
+ ],
+ "fields": [
+  {
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Tanggal",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "informasi_penawaran_tender.pelanggan",
+   "fieldname": "pelanggan",
+   "fieldtype": "Data",
+   "label": "Pelanggan",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "informasi_penawaran_tender.lingkup_pekerjaan",
+   "fieldname": "lingkup_pekerjaan",
+   "fieldtype": "Data",
+   "label": "Lingkup Pekerjaan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "common_divider",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "atas_nama",
+   "fieldtype": "Data",
+   "label": "Atas Nama",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rks",
+   "fieldtype": "Data",
+   "label": "RKS",
+   "reqd": 1
+  },
+  {
+   "fieldname": "penjelasan",
+   "fieldtype": "Select",
+   "label": "Penjelasan",
+   "options": "Kantor\nLapangan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "uraian_singkat_divider",
+   "fieldtype": "Section Break",
+   "label": "Uraian Singkat"
+  },
+  {
+   "fieldname": "penjelasan_administrasi",
+   "fieldtype": "Text",
+   "label": "Penjelasan Administrasi",
+   "reqd": 1
+  },
+  {
+   "fieldname": "penjelasan_teknis",
+   "fieldtype": "Text",
+   "label": "Penjelasan Teknis",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pengambilan_berita_acara",
+   "fieldtype": "Section Break",
+   "label": "Pengambilan Berita Acara"
+  },
+  {
+   "fieldname": "tanggal_pengambilan_berita_acara",
+   "fieldtype": "Date",
+   "label": "Tanggal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pengambilan_berita_acara_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "jam_pengambilan_berita_acara",
+   "fieldtype": "Time",
+   "label": "Jam"
+  },
+  {
+   "fieldname": "pemasukan_penawaran",
+   "fieldtype": "Section Break",
+   "label": "Pemasukan Penawaran"
+  },
+  {
+   "fieldname": "tanggal_pemasukan_penawaran",
+   "fieldtype": "Date",
+   "label": "Tanggal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pemasukan_penawaran_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "jam_pemasukan_penawaran",
+   "fieldtype": "Time",
+   "label": "Jam",
+   "reqd": 1
+  },
+  {
+   "fieldname": "lain_lain",
+   "fieldtype": "Section Break",
+   "label": "Lain-lain"
+  },
+  {
+   "fieldname": "peserta_tender",
+   "fieldtype": "Table",
+   "label": "Peserta Tender",
+   "length": 100,
+   "options": "LAPORAN PENJELASAN TENDER _ PESERTA TENDER",
+   "reqd": 1
+  },
+  {
+   "fieldname": "saran_saran",
+   "fieldtype": "Text",
+   "label": "Saran-saran"
+  },
+  {
+   "fieldname": "informasi_penawaran_tender",
+   "fieldtype": "Link",
+   "label": "Informasi Penawaran Tender",
+   "options": "INFORMASI PEMBUKAAN TENDER",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-08-28 19:05:40.396969",
+ "modified_by": "Administrator",
+ "module": "CRM",
+ "name": "LAPORAN PENJELASAN TENDER",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
