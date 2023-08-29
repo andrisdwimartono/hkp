@@ -17,53 +17,57 @@
  "fields": [
   {
    "fetch_from": "laporan_penjelasan_tender.lingkup_pekerjaan",
-   "fetch_if_empty": 1,
    "fieldname": "nama_paket",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "label": "Nama Paket",
+   "reqd": 1,
    "width": "100%"
   },
   {
    "fetch_from": "laporan_penjelasan_tender.rks",
    "fieldname": "no_rks",
    "fieldtype": "Data",
-   "label": "No. RKS"
+   "label": "No. RKS",
+   "reqd": 1
   },
   {
-   "fetch_from": "laporan_penjelasan_tender.tanggal_rks",
+   "fetch_from": "laporan_penjelasan_tender.tanggal",
    "fieldname": "tanggal",
    "fieldtype": "Date",
-   "label": "Tanggal"
+   "label": "Tanggal",
+   "reqd": 1
   },
   {
+   "fetch_from": "laporan_penjelasan_tender.tanggal_pemasukan_penawaran",
    "fieldname": "tanggal_pemasukan",
    "fieldtype": "Date",
-   "label": "Tanggal Pemasukan"
+   "label": "Tanggal Pemasukan",
+   "reqd": 1
   },
   {
    "fieldname": "tanggal_pengecekan",
    "fieldtype": "Date",
-   "label": "Tanggal Pengecekan"
+   "label": "Tanggal Pengecekan",
+   "reqd": 1
   },
   {
    "fieldname": "checklist",
    "fieldtype": "Table",
    "label": "Checklist",
-   "options": "CHECKLIST DOKUMEN TENDER URAIAN"
+   "options": "CHECKLIST DOKUMEN TENDER _ LIST"
   },
   {
    "fieldname": "laporan_penjelasan_tender",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Laporan Penjelasan Tender",
+   "label": "Laporan Penjelasan Tender Terkait",
    "options": "LAPORAN PENJELASAN TENDER",
    "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-28 18:04:14.500492",
+ "modified": "2023-08-29 20:50:44.566735",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "CHECKLIST DOKUMEN TENDER",
