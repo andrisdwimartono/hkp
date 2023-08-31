@@ -6,6 +6,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "informasi_pembuatan_penawaran_terkait",
   "lingkup_pekerjaan",
   "pelanggan",
   "no_surat",
@@ -16,11 +17,13 @@
  ],
  "fields": [
   {
+   "fetch_from": "informasi_pembuatan_penawaran_terkait.lingkup_pekerjaan",
    "fieldname": "lingkup_pekerjaan",
    "fieldtype": "Data",
    "label": "Lingkup Pekerjaan"
   },
   {
+   "fetch_from": "informasi_pembuatan_penawaran_terkait.pelanggan",
    "fieldname": "pelanggan",
    "fieldtype": "Data",
    "label": "Pelanggan"
@@ -49,11 +52,17 @@
    "fieldname": "tindakan_perbaikan",
    "fieldtype": "Text",
    "label": "Tindakan Perbaikan"
+  },
+  {
+   "fieldname": "informasi_pembuatan_penawaran_terkait",
+   "fieldtype": "Link",
+   "label": "Informasi Pembuatan Penawaran Terkait",
+   "options": "INFORMASI PEMBUKAAN TENDER"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-26 20:03:30.634017",
+ "modified": "2023-08-31 05:31:59.974328",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "ANALISA KETIDAKBERHASILAN",
