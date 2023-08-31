@@ -49,8 +49,9 @@
   },
   {
    "fieldname": "hasil_pembukaan_tender",
-   "fieldtype": "Data",
-   "label": "Hasil Pembukaan Tender"
+   "fieldtype": "Table",
+   "label": "Hasil Pembukaan Tender",
+   "options": "INFORMASI PEMBUKAAN TENDER _ PESERTA TENDER"
   },
   {
    "fieldname": "catatan",
@@ -60,7 +61,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-28 19:04:38.875046",
+ "modified": "2023-08-28 20:53:34.021187",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "INFORMASI PEMBUKAAN TENDER",

@@ -1,0 +1,45 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-08-28 20:52:39.294872",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "nama_peserta",
+  "harga_penawaran",
+  "keterangan"
+ ],
+ "fields": [
+  {
+   "fieldname": "nama_peserta",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nama Peserta",
+   "reqd": 1
+  },
+  {
+   "fieldname": "harga_penawaran",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Harga Penawaran",
+   "reqd": 1
+  },
+  {
+   "fieldname": "keterangan",
+   "fieldtype": "Data",
+   "label": "Keterangan"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-08-28 20:52:39.294872",
+ "modified_by": "Administrator",
+ "module": "CRM",
+ "name": "INFORMASI PEMBUKAAN TENDER _ PESERTA TENDER",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

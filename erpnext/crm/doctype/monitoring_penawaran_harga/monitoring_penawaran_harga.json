@@ -11,13 +11,14 @@
  "fields": [
   {
    "fieldname": "daftar",
-   "fieldtype": "Data",
-   "label": "Daftar"
+   "fieldtype": "Table",
+   "label": "Daftar",
+   "options": "MONITORING PENAWARAN HARGA _ LIST"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-26 20:03:41.171212",
+ "modified": "2023-08-28 21:01:12.681399",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "MONITORING PENAWARAN HARGA",
