@@ -37,7 +37,11 @@
   "persyaratan_umum_dan_teknis_section",
   "persyaratan_umum_dan_teknis",
   "resource_tidak_disediakan_section",
-  "resource_tidak_disediakan",
+  "tenaga_kerja",
+  "peralatan_kerja_section",
+  "peralatan_kerja",
+  "peralatan_k3_section",
+  "peralatan_k3",
   "waktu__pelaksanaan_section",
   "mulai_pelaksanaan",
   "lama_pelaksanaan",
@@ -232,14 +236,7 @@
   {
    "fieldname": "resource_tidak_disediakan_section",
    "fieldtype": "Section Break",
-   "label": "Resource TIdak Disediakan"
-  },
-  {
-   "fieldname": "resource_tidak_disediakan",
-   "fieldtype": "Table",
-   "label": "Resource TIdak Disediakan",
-   "options": "Resource TIdak Disediakan",
-   "reqd": 1
+   "label": "Tenaga Kerja"
   },
   {
    "fieldname": "waktu__pelaksanaan_section",
@@ -505,12 +502,41 @@
    "label": "Email",
    "options": "Berita Acara Klarifikasi dan Negosiasi Email",
    "reqd": 1
+  },
+  {
+   "fieldname": "tenaga_kerja",
+   "fieldtype": "Table",
+   "label": "Tenaga Kerja",
+   "options": "Resource TIdak Disediakan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "peralatan_kerja_section",
+   "fieldtype": "Section Break",
+   "label": "Peralatan Kerja"
+  },
+  {
+   "fieldname": "peralatan_kerja",
+   "fieldtype": "Table",
+   "label": "Peralatan Kerja",
+   "options": "Resource TIdak Disediakan"
+  },
+  {
+   "fieldname": "peralatan_k3_section",
+   "fieldtype": "Section Break",
+   "label": "Peralatan K3"
+  },
+  {
+   "fieldname": "peralatan_k3",
+   "fieldtype": "Table",
+   "label": "Peralatan K3",
+   "options": "Resource TIdak Disediakan"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-08-24 09:49:11.791880",
+ "modified": "2023-08-31 10:35:44.792559",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Berita Acara Klarifikasi dan Negosiasi",

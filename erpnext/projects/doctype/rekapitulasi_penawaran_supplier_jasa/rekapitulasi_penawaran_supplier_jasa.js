@@ -2,6 +2,15 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('REKAPITULASI PENAWARAN SUPPLIER JASA', {
+	validate: function(frm){
+		var tot = 0;
+		for(var i = 0; i < frm.doc.details.length; i++){
+			tot = tot+frm.doc.details[i].bobot;
+		}
+		if(tot != 100){
+			frappe.throw("Total bobot harus 100");
+		}
+	},
 	refresh: function(frm) {
 		if (frm.doc.__unsaved == 1)	{
 			if(!frm.doc.process_rules){
@@ -20,6 +29,7 @@ frappe.ui.form.on('REKAPITULASI PENAWARAN SUPPLIER JASA', {
 								pr.jabatan_abbr = vals[i].jabatan_abbr;
 								pr.state = vals[i].state;
 								pr.employee = vals[i].employee;
+								pr.initial = vals[i].initial;
 								pr.employee_name = vals[i].employee_name;
 								pr.user = vals[i].user;
 							}
@@ -31,6 +41,7 @@ frappe.ui.form.on('REKAPITULASI PENAWARAN SUPPLIER JASA', {
 		}else{
 			
 		}
+		cur_frm.fields_dict['process_rules'].$wrapper.find('.grid-add-row').addClass('d-none');
 	},
 	// before_save: function(frm){
 	// 	return new Promise(function (resolve, reject) {

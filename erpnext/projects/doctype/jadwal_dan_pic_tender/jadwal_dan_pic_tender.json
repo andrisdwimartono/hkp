@@ -68,12 +68,12 @@
   {
    "fieldname": "mulai_mempelajari_rks",
    "fieldtype": "Date",
-   "label": "Mulai Mempelajari RKS"
+   "label": "Mulai Menyusun Dokumen Tender"
   },
   {
    "fieldname": "selesai_mempelajari_rks",
    "fieldtype": "Date",
-   "label": "Selesai Mempelajari RKS"
+   "label": "Selesai Menyusun Dokumen Tender"
   },
   {
    "default": "Offline",
@@ -115,7 +115,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-28 17:38:20.663962",
+ "modified": "2023-08-30 12:37:48.116728",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Jadwal dan PIC Tender",
