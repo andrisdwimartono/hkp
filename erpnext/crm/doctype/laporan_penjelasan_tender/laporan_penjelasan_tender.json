@@ -13,6 +13,7 @@
   "common_divider",
   "atas_nama",
   "rks",
+  "tanggal_rks",
   "penjelasan",
   "uraian_singkat_divider",
   "penjelasan_administrasi",
@@ -156,11 +157,16 @@
    "label": "Informasi Penawaran Tender",
    "options": "INFORMASI PEMBUKAAN TENDER",
    "reqd": 1
+  },
+  {
+   "fieldname": "tanggal_rks",
+   "fieldtype": "Date",
+   "label": "Tanggal RKS"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-29 20:51:32.524369",
+ "modified": "2023-08-31 07:45:19.168360",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "LAPORAN PENJELASAN TENDER",
