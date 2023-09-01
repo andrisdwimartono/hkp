@@ -39,6 +39,7 @@
   },
   {
    "fetch_from": "laporan_penjelasan_tender.tanggal_pemasukan_penawaran",
+   "fetch_if_empty": 1,
    "fieldname": "tanggal_pemasukan",
    "fieldtype": "Date",
    "label": "Tanggal Pemasukan",
@@ -67,7 +68,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-29 20:50:44.566735",
+ "modified": "2023-08-31 12:13:34.488838",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "CHECKLIST DOKUMEN TENDER",
