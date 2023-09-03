@@ -6,26 +6,33 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "informasi_pembuatan_penawaran_terkait",
   "lingkup_pekerjaan",
   "pelanggan",
   "column_break_zkexg",
   "untuk",
   "tembusan",
+  "no_surat_penawaran",
+  "harga_penawaran_hkp",
   "section_break_dqbn1",
+  "keterangan",
   "hasil_pembukaan_tender",
   "catatan"
  ],
  "fields": [
   {
-   "fetch_from": "informasi_penawaran_tender.lingkup_pekerjaan",
+   "fetch_from": "informasi_pembuatan_penawaran_terkait.lingkup_pekerjaan",
    "fieldname": "lingkup_pekerjaan",
    "fieldtype": "Data",
-   "label": "Lingkup Pekerjaan"
+   "label": "Lingkup Pekerjaan",
+   "reqd": 1
   },
   {
+   "fetch_from": "informasi_pembuatan_penawaran_terkait.customer",
    "fieldname": "pelanggan",
    "fieldtype": "Data",
-   "label": "Pelanggan"
+   "label": "Pelanggan",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_zkexg",
@@ -57,11 +64,34 @@
    "fieldname": "catatan",
    "fieldtype": "Text",
    "label": "Catatan"
+  },
+  {
+   "fieldname": "informasi_pembuatan_penawaran_terkait",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Informasi Pembuatan Penawaran Terkait",
+   "options": "INFORMASI PEMBUATAN PENAWARAN",
+   "reqd": 1
+  },
+  {
+   "fieldname": "no_surat_penawaran",
+   "fieldtype": "Data",
+   "label": "No Surat Penawaran"
+  },
+  {
+   "fieldname": "harga_penawaran_hkp",
+   "fieldtype": "Int",
+   "label": "Harga Penawaran HKP"
+  },
+  {
+   "fieldname": "keterangan",
+   "fieldtype": "Text",
+   "label": "Keterangan"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-28 20:53:34.021187",
+ "modified": "2023-09-03 14:00:11.637884",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "INFORMASI PEMBUKAAN TENDER",

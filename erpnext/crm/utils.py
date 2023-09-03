@@ -25,3 +25,10 @@ def update_lead_phone_numbers(contact, method):
 			lead = frappe.get_doc("Lead", contact_lead)
 			lead.db_set("phone", phone)
 			lead.db_set("mobile_no", mobile_no)
+
+@frappe.whitelist()
+def get_hasil_pembukaan_tender(doctype):
+	return frappe.db.sql("""SELECT b.* FROM `tabWorkflow` a 
+	INNER JOIN `tabWorkflow Document State` b ON b.parent = a.name
+	WHERE a.document_type = '{0}' AND a.is_active = 1
+	ORDER BY b.idx ASC""".format(doctype), as_dict=1)
