@@ -10,9 +10,7 @@
   "nama_paket",
   "pagu",
   "mulai_aanwijzig_kantor",
-  "selesai_aanwijzig_kantor",
   "mulai_aanwijzig_lapangan",
-  "selesai_aanwijzig_lapangan",
   "mulai_mempelajari_rks",
   "selesai_mempelajari_rks",
   "jenis",
@@ -48,32 +46,23 @@
   {
    "fieldname": "mulai_aanwijzig_kantor",
    "fieldtype": "Datetime",
-   "label": "Mulai Aanwijzig Kantor"
-  },
-  {
-   "fieldname": "selesai_aanwijzig_kantor",
-   "fieldtype": "Datetime",
-   "label": "Selesai Aanwijzig Kantor"
+   "label": "Aanwijzig Kantor",
+   "reqd": 1
   },
   {
    "fieldname": "mulai_aanwijzig_lapangan",
    "fieldtype": "Datetime",
-   "label": "Mulai Aanwijzig Lapangan"
-  },
-  {
-   "fieldname": "selesai_aanwijzig_lapangan",
-   "fieldtype": "Datetime",
-   "label": "Selesai Aanwijzig Lapangan"
+   "label": "Aanwijzig Lapangan"
   },
   {
    "fieldname": "mulai_mempelajari_rks",
    "fieldtype": "Date",
-   "label": "Mulai Mempelajari RKS"
+   "label": "Mulai Menyusun Dokumen Tender"
   },
   {
    "fieldname": "selesai_mempelajari_rks",
    "fieldtype": "Date",
-   "label": "Selesai Mempelajari RKS"
+   "label": "Selesai Menyusun Dokumen Tender"
   },
   {
    "default": "Offline",
@@ -89,11 +78,11 @@
    "label": "Upload"
   },
   {
-   "depends_on": "eval: doc.jenis == \"Offline\"",
+   "depends_on": "eval: doc.jenis != \"Offline\"",
    "fieldname": "waktu_upload",
    "fieldtype": "Datetime",
    "label": "Waktu Upload",
-   "mandatory_depends_on": "eval: doc.jenis == \"Offline\""
+   "mandatory_depends_on": "eval: doc.jenis != \"Offline\""
   },
   {
    "fieldname": "pemasukan_penawaran",
@@ -115,7 +104,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-28 17:38:20.663962",
+ "modified": "2023-08-31 14:49:20.680381",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Jadwal dan PIC Tender",

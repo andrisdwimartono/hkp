@@ -1,0 +1,42 @@
+{%
+	var letterhead = filters.letter_head || (frappe.get_doc(":Company", filters.company) && frappe.get_doc(":Company", filters.company).default_letter_head) || frappe.defaults.get_default("letter_head");
+	var report_columns = report.get_columns_for_print();
+%}
+<table width="100%">
+    <tr>
+        <td class="text-center" width="100%"><h4>Jadwal dan PIC Tender</h4></td>
+    </tr>
+</table>
+
+<table class="table table-bordered" width="100%" style="font-size: 11px; border:1px solid black; margin: 0px; padding: 0px;">
+	<thead>
+		<tr class="text-center">
+			<td class="text-center">No</td>
+            {% for(let i=0, l=report_columns.length; i<l; i++) { %}
+            <td class="text-center">
+                {%= report_columns[i].label %}
+            </td>
+            {% } %}
+		</tr>
+	</thead>
+	<tbody>
+        {% for(let j=0, k=data.length; j<k; j++) { %}
+			{%
+				var row = data[j];
+			%}
+			<tr>
+                <td>{%= j+1 %}</td>
+				{% for(let i=0, l=report_columns.length; i<l; i++) { %}
+                <td class="text-left">
+                    {% const fieldname = report_columns[i].fieldname; %}
+                    {%= row[fieldname] %}
+                </td>
+				{% } %}
+			</tr>
+		{% } %}
+    </tbody>
+</table>
+
+<p class="text-right text-muted">
+	Printed On {%= frappe.datetime.str_to_user(frappe.datetime.get_datetime_as_string()) %}
+</p>
