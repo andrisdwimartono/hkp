@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "AK-.####",
  "creation": "2023-08-26 19:38:12.312732",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -62,7 +63,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-31 05:31:59.974328",
+ "modified": "2023-09-03 14:53:28.940249",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "ANALISA KETIDAKBERHASILAN",
