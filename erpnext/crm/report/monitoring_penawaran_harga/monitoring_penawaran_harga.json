@@ -1,6 +1,43 @@
 {
- "add_total_row": 0,
- "columns": [],
+ "add_total_row": 1,
+ "columns": [
+  {
+   "fieldname": "customer",
+   "fieldtype": "Data",
+   "label": "Pelanggan",
+   "width": 0
+  },
+  {
+   "fieldname": "lingkup_pekerjaan",
+   "fieldtype": "Data",
+   "label": "Lingkup Pekerjaan",
+   "width": 0
+  },
+  {
+   "fieldname": "tanggal_rks",
+   "fieldtype": "Date",
+   "label": "Tanggal",
+   "width": 0
+  },
+  {
+   "fieldname": "name",
+   "fieldtype": "Data",
+   "label": "No. Surat Penawaran",
+   "width": 0
+  },
+  {
+   "fieldname": "nilai_penawaran",
+   "fieldtype": "Int",
+   "label": "Nilai Penawaran (Dalam Ribuan)",
+   "width": 0
+  },
+  {
+   "fieldname": "catatan",
+   "fieldtype": "Data",
+   "label": "Keterangan",
+   "width": 0
+  }
+ ],
  "creation": "2023-08-31 08:27:03.668679",
  "disable_prepared_report": 0,
  "disabled": 0,
@@ -10,12 +47,13 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2023-08-31 08:27:40.707163",
+ "modified": "2023-09-05 22:07:52.482146",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "MONITORING PENAWARAN HARGA",
  "owner": "Administrator",
  "prepared_report": 0,
+ "query": "SELECT\n    main.customer, main.lingkup_pekerjaan, lpt.tanggal_rks, main.name, 0 AS nilai_penawaran, main.catatan\nFROM `tabINFORMASI PEMBUATAN PENAWARAN` AS main\nLEFT JOIN `tabLAPORAN PENJELASAN TENDER` AS lpt ON lpt.informasi_pembuatan_penawaran = main.name",
  "ref_doctype": "INFORMASI PEMBUKAAN TENDER",
  "report_name": "MONITORING PENAWARAN HARGA",
  "report_type": "Query Report",
