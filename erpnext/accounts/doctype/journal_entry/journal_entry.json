@@ -20,6 +20,8 @@
   "column_break1",
   "from_template",
   "company",
+  "project",
+  "project_name",
   "posting_date",
   "apply_tds",
   "2_add_edit_gl_entries",
@@ -544,13 +546,26 @@
    "fieldname": "turn_off_auto_balance",
    "fieldtype": "Check",
    "label": "Turn Off Auto Balance"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
   }
  ],
  "icon": "fa fa-file-text",
  "idx": 176,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-07-04 15:57:21.473123",
+ "modified": "2023-09-05 09:44:06.132097",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Journal Entry",

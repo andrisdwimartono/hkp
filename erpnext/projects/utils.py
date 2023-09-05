@@ -126,3 +126,16 @@ def get_process_rules(doctype):
 	INNER JOIN `tabWorkflow Document State` b ON b.parent = a.name
 	WHERE a.document_type = '{0}' AND a.is_active = 1
 	ORDER BY b.idx ASC""".format(doctype), as_dict=1)
+
+def set_default_process_rules(doc, method=None):
+	frappe.db.sql("""UPDATE `tabProcess Rules` SET process_time = now() WHERE parent = '{0}' AND idx = 1 AND state = 'Dibuat';""".format(doc.name))
+
+	prsn = frappe.db.sql("""SELECT * FROM `tabProcess Rules` WHERE parent = '{1}' AND parenttype = '{0}' AND idx=2;""".format(doc.doctype, doc.name), as_dict=1)
+	
+	if prsn:
+		prn = prsn[0]
+		assigner = [prn.user]
+		if frappe.flags.in_install:
+			return
+		notify_user(doc.doctype, doc.name, doc.owner, assigner, "{3} {0} membutuhkan {1} dari anda setelah proses {2}".format(prn.parent, prn.state, 'Dibuat', doc.doctype))
+		doc.add_comment('Edit', text='Notifikasi {0} terkirim ke {1}'.format(prn.state, prn.user))
