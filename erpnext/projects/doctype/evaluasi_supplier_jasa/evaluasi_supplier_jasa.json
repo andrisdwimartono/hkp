@@ -20,7 +20,7 @@
   "total_nilai",
   "peringkat",
   "panduan_penilaian",
-  "pejabat",
+  "process_rules",
   "amended_from"
  ],
  "fields": [
@@ -124,15 +124,15 @@
    "read_only": 1
   },
   {
-   "fieldname": "pejabat",
+   "fieldname": "process_rules",
    "fieldtype": "Table",
-   "label": "Pejabat",
-   "options": "Process Rule"
+   "label": "Process Rules",
+   "options": "Process Rules"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-22 00:05:50.785098",
+ "modified": "2023-09-06 12:44:25.910648",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Evaluasi Supplier Jasa",
