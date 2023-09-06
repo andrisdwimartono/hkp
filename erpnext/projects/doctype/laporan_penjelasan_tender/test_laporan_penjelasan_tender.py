@@ -4,5 +4,5 @@
 # import frappe
 import unittest
 
-class TestMONITORINGPENAWARANHARGA(unittest.TestCase):
+class TestLAPORANPENJELASANTENDER(unittest.TestCase):
 	pass
