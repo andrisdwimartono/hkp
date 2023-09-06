@@ -10,14 +10,14 @@
   "lingkup_pekerjaan",
   "pelanggan",
   "column_break_zkexg",
-  "untuk",
-  "tembusan",
+  "tanggal",
   "no_surat_penawaran",
   "harga_penawaran_hkp",
   "section_break_dqbn1",
   "keterangan",
   "hasil_pembukaan_tender",
-  "catatan"
+  "catatan",
+  "process_rules"
  ],
  "fields": [
   {
@@ -37,18 +37,6 @@
   {
    "fieldname": "column_break_zkexg",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "untuk",
-   "fieldtype": "Select",
-   "label": "Untuk",
-   "options": "Direktur Operasi\nSekretariat\nEstimasi"
-  },
-  {
-   "fieldname": "tembusan",
-   "fieldtype": "Select",
-   "label": "Tembusan",
-   "options": "Direktur Utama"
   },
   {
    "fieldname": "section_break_dqbn1",
@@ -87,11 +75,24 @@
    "fieldname": "keterangan",
    "fieldtype": "Text",
    "label": "Keterangan"
+  },
+  {
+   "default": "Today",
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "label": "Tanggal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "process_rules",
+   "fieldtype": "Table",
+   "label": "Process Rules",
+   "options": "Process Rules"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-03 14:00:11.637884",
+ "modified": "2023-09-06 23:51:40.483069",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "INFORMASI PEMBUKAAN TENDER",

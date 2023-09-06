@@ -1,0 +1,116 @@
+{
+ "add_total_row": 0,
+ "columns": [
+  {
+   "fieldname": "nama_paket",
+   "fieldtype": "Data",
+   "label": "Nama Paket",
+   "width": 0
+  },
+  {
+   "fieldname": "pagu",
+   "fieldtype": "Currency",
+   "label": "Pagu (Rp)",
+   "width": 0
+  },
+  {
+   "fieldname": "mulai_aanwijzig_kantor",
+   "fieldtype": "Datetime",
+   "label": "Mulai Aanwijzig Kantor",
+   "width": 0
+  },
+  {
+   "fieldname": "selesai_aanwijzig_kantor",
+   "fieldtype": "Datetime",
+   "label": "Selesai Aanwijzig Kantor",
+   "width": 0
+  },
+  {
+   "fieldname": "mulai_aanwijzig_lapangan",
+   "fieldtype": "Datetime",
+   "label": "Mulai Aanwijzig Lapangan",
+   "width": 0
+  },
+  {
+   "fieldname": "selesai_aanwijzig_lapangan",
+   "fieldtype": "Datetime",
+   "label": "Selesai Aanwijzig Lapangan",
+   "width": 0
+  },
+  {
+   "fieldname": "mulai_mempelajari_rks",
+   "fieldtype": "Date",
+   "label": "Mulai Menyusun Dokumen Tender",
+   "width": 0
+  },
+  {
+   "fieldname": "selesai_mempelajari_rks",
+   "fieldtype": "Date",
+   "label": "Selesai Menyusun Dokumen Tender",
+   "width": 0
+  },
+  {
+   "fieldname": "jenis",
+   "fieldtype": "Select",
+   "label": "Jenis",
+   "width": 0
+  },
+  {
+   "fieldname": "upload_link",
+   "fieldtype": "Data",
+   "label": "Upload",
+   "width": 0
+  },
+  {
+   "fieldname": "waktu_upload",
+   "fieldtype": "Datetime",
+   "label": "Waktu Upload",
+   "width": 0
+  },
+  {
+   "fieldname": "pemasukan_penawaran",
+   "fieldtype": "Datetime",
+   "label": "Pemasukan Penawaran",
+   "width": 0
+  },
+  {
+   "fieldname": "pics",
+   "fieldtype": "Data",
+   "label": "PIC",
+   "width": 200
+  },
+  {
+   "fieldname": "koors",
+   "fieldtype": "Data",
+   "label": "Koordinator",
+   "width": 0
+  }
+ ],
+ "creation": "2023-09-06 22:53:58.310633",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "KOP HKP",
+ "modified": "2023-09-06 22:53:58.310633",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "LAPORAN PEMBUKAAN TENDER",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT \n    j.nama_paket,\n    j.pagu,\n    j.mulai_aanwijzig_kantor,\n    j.selesai_aanwijzig_kantor,\n    j.mulai_aanwijzig_lapangan,\n    j.selesai_aanwijzig_lapangan,\n    j.mulai_mempelajari_rks,\n    j.selesai_mempelajari_rks,\n    j.jenis,\n    concat('<a href=\"', j.upload, '\">', j.upload, '</a>') upload_link,\n    j.waktu_upload,\n    j.pemasukan_penawaran,\n    p.pics,\n    k.koors\nFROM `tabJadwal dan PIC Tender` j\nLEFT JOIN (\n    SELECT group_concat(employee_name separator ', ') pics, parent \n    FROM `tabPIC Tender` GROUP BY parent) p ON p.parent = j.name\n    LEFT JOIN (\n    SELECT group_concat(employee_name separator ', ') koors, parent \n    FROM `tabKoordinator Tender` GROUP BY parent) k ON k.parent = j.name;",
+ "ref_doctype": "INFORMASI PEMBUATAN PENAWARAN",
+ "report_name": "LAPORAN PEMBUKAAN TENDER",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "Pemasaran"
+  },
+  {
+   "role": "Accounts User"
+  }
+ ]
+}
