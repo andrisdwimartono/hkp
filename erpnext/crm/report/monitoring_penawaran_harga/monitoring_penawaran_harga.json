@@ -1,5 +1,5 @@
 {
- "add_total_row": 1,
+ "add_total_row": 0,
  "columns": [
   {
    "fieldname": "customer",
@@ -27,7 +27,7 @@
   },
   {
    "fieldname": "nilai_penawaran",
-   "fieldtype": "Int",
+   "fieldtype": "Currency",
    "label": "Nilai Penawaran (Dalam Ribuan)",
    "width": 0
   },
@@ -47,13 +47,13 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2023-09-05 22:07:52.482146",
+ "modified": "2023-09-07 05:05:28.299396",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "MONITORING PENAWARAN HARGA",
  "owner": "Administrator",
  "prepared_report": 0,
- "query": "SELECT\n    main.customer, main.lingkup_pekerjaan, lpt.tanggal_rks, main.name, 0 AS nilai_penawaran, main.catatan\nFROM `tabINFORMASI PEMBUATAN PENAWARAN` AS main\nLEFT JOIN `tabLAPORAN PENJELASAN TENDER` AS lpt ON lpt.informasi_pembuatan_penawaran = main.name",
+ "query": "SELECT\n    main.customer, main.lingkup_pekerjaan, lpt.tanggal_rks, main.name, COALESCE(ipt.harga_penawaran_hkp/1000, 0) AS nilai_penawaran, COALESCE(ipt.keterangan, \"\") catatan\nFROM `tabINFORMASI PEMBUATAN PENAWARAN` AS main\nLEFT JOIN `tabLAPORAN PENJELASAN TENDER` AS lpt ON lpt.informasi_pembuatan_penawaran = main.name\nLEFT JOIN `tabINFORMASI PEMBUKAAN TENDER` AS ipt ON ipt.informasi_pembuatan_penawaran_terkait = main.name",
  "ref_doctype": "INFORMASI PEMBUKAAN TENDER",
  "report_name": "MONITORING PENAWARAN HARGA",
  "report_type": "Query Report",
