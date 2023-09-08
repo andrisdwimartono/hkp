@@ -1,0 +1,199 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-09-07 06:59:04.512592",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "a__proses_persiapan_pelaksanaan_section",
+  "proses_persiapan_pelaksanaan",
+  "b__pelaksanaan_pekerjaan_dan_serah_terima_pekerjaan_section",
+  "pelaksanaan_pekerjaan_dan_serah_terima_pekerjaan",
+  "c__akhir_pelaksanaan_pekerjaan_dan_sertipek_thp_2_section",
+  "akhir_pelaksanaan_pekerjaan_dan_serah_terima_pekerjaan",
+  "d_tambahan_section",
+  "kesediaan_mempromosikan_section",
+  "d1_question",
+  "d1_answer",
+  "d1_reason",
+  "pertimbangan_melaksanakan_proyek_section",
+  "d2_question",
+  "d2_1",
+  "d2_2",
+  "d2_3",
+  "d2_4",
+  "d2_5",
+  "d2_6",
+  "saran_section",
+  "d3_question",
+  "d3_answer",
+  "pengertian_gcg_section",
+  "d4_question",
+  "d4_answer"
+ ],
+ "fields": [
+  {
+   "fieldname": "a__proses_persiapan_pelaksanaan_section",
+   "fieldtype": "Section Break",
+   "label": "A.  PROSES PERSIAPAN PELAKSANAAN"
+  },
+  {
+   "fieldname": "proses_persiapan_pelaksanaan",
+   "fieldtype": "Table",
+   "label": "PROSES PERSIAPAN PELAKSANAAN",
+   "options": "Kuesioner Kepuasan Pelanggan Soal"
+  },
+  {
+   "fieldname": "b__pelaksanaan_pekerjaan_dan_serah_terima_pekerjaan_section",
+   "fieldtype": "Section Break",
+   "label": "B.  PELAKSANAAN PEKERJAAN DAN SERAH TERIMA PEKERJAAN"
+  },
+  {
+   "fieldname": "pelaksanaan_pekerjaan_dan_serah_terima_pekerjaan",
+   "fieldtype": "Table",
+   "label": "PELAKSANAAN PEKERJAAN DAN SERAH TERIMA PEKERJAAN",
+   "options": "Kuesioner Kepuasan Pelanggan Soal"
+  },
+  {
+   "fieldname": "c__akhir_pelaksanaan_pekerjaan_dan_sertipek_thp_2_section",
+   "fieldtype": "Section Break",
+   "label": "C.  AKHIR PELAKSANAAN PEKERJAAN DAN SERTIPEK THP 2"
+  },
+  {
+   "fieldname": "akhir_pelaksanaan_pekerjaan_dan_serah_terima_pekerjaan",
+   "fieldtype": "Table",
+   "label": "AKHIR PELAKSANAAN PEKERJAAN DAN SERAH TERIMA PEKERJAAN ",
+   "options": "Kuesioner Kepuasan Pelanggan Soal"
+  },
+  {
+   "fieldname": "d_tambahan_section",
+   "fieldtype": "Section Break",
+   "label": "D. TAMBAHAN"
+  },
+  {
+   "default": "Ya",
+   "fieldname": "d1_answer",
+   "fieldtype": "Select",
+   "options": "Ya\nTidak\nTidak ada pilihan"
+  },
+  {
+   "fieldname": "kesediaan_mempromosikan_section",
+   "fieldtype": "Section Break",
+   "label": "Kesediaan Mempromosikan"
+  },
+  {
+   "default": "Apakah Bapak/Ibu bersedia mempromosikan perusahaan kami kepada relasi Bapak/Ibu ?",
+   "fieldname": "d1_question",
+   "fieldtype": "Small Text",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.d1_answer == \"Ya\" || doc.d1_answer == \"Tidak\"",
+   "fieldname": "d1_reason",
+   "fieldtype": "Small Text",
+   "label": "Alasan",
+   "mandatory_depends_on": "eval:doc.d1_answer == \"Ya\" || doc.d1_answer == \"Tidak\""
+  },
+  {
+   "fieldname": "pertimbangan_melaksanakan_proyek_section",
+   "fieldtype": "Section Break",
+   "label": "Pertimbangan Melaksanakan Proyek"
+  },
+  {
+   "default": "Hal apakah yang paling Bapak/Ibu pertimbangkan di dalam melaksanakan proyek ini ?",
+   "fieldname": "d2_question",
+   "fieldtype": "Small Text",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "d2_1",
+   "fieldtype": "Check",
+   "label": "Kecepatan waktu"
+  },
+  {
+   "default": "0",
+   "fieldname": "d2_2",
+   "fieldtype": "Check",
+   "label": "Relationship"
+  },
+  {
+   "default": "0",
+   "fieldname": "d2_3",
+   "fieldtype": "Check",
+   "label": "Manajemen perusahaan"
+  },
+  {
+   "default": "0",
+   "fieldname": "d2_4",
+   "fieldtype": "Check",
+   "label": "Mutu secara keseluruhan"
+  },
+  {
+   "default": "0",
+   "fieldname": "d2_5",
+   "fieldtype": "Check",
+   "label": "Tenaga Kerja"
+  },
+  {
+   "default": "0",
+   "fieldname": "d2_6",
+   "fieldtype": "Check",
+   "label": "Kemampuan keuangan"
+  },
+  {
+   "fieldname": "saran_section",
+   "fieldtype": "Section Break",
+   "label": "Saran"
+  },
+  {
+   "default": "Bagaimana saran Bapak/Ibu agar kami lebih profesional dalam melaksanakan proyek ini ?",
+   "fieldname": "d3_question",
+   "fieldtype": "Small Text",
+   "read_only": 1
+  },
+  {
+   "fieldname": "d3_answer",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "pengertian_gcg_section",
+   "fieldtype": "Section Break",
+   "label": "Pengertian GCG"
+  },
+  {
+   "default": "Apa pengertian Bapak/Ibu tentang Good Corporate Government ?",
+   "fieldname": "d4_question",
+   "fieldtype": "Small Text",
+   "read_only": 1
+  },
+  {
+   "fieldname": "d4_answer",
+   "fieldtype": "Small Text"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-09-07 07:14:27.127601",
+ "modified_by": "Administrator",
+ "module": "CRM",
+ "name": "Kuesioner Keupasan Pelanggan",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

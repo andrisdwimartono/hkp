@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "HKP-IPB-.YY.-.#####.",
  "creation": "2023-08-26 19:43:59.520891",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -8,71 +9,62 @@
  "field_order": [
   "dari",
   "tanggal",
-  "nomor",
   "hal",
-  "column_break_1",
-  "untuk",
-  "tembusan",
   "section_break_bkkjn",
+  "project",
   "nama_proyek",
   "nama_pelanggan",
   "tanggal_penunjukankontrak",
   "no_spkkontrak",
   "nilai_proyek",
   "waktu_pelaksanaan",
-  "no_proyek",
-  "lain_lain"
+  "lain_lain",
+  "process_rules"
  ],
  "fields": [
   {
+   "default": "Bagian Pemasaran",
    "fieldname": "dari",
    "fieldtype": "Data",
-   "label": "Dari"
+   "in_list_view": 1,
+   "label": "Dari",
+   "reqd": 1
   },
   {
+   "default": "Today",
    "fieldname": "tanggal",
-   "fieldtype": "Data",
-   "label": "Tanggal"
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Tanggal",
+   "reqd": 1
   },
   {
-   "fieldname": "nomor",
-   "fieldtype": "Data",
-   "label": "Nomor"
-  },
-  {
+   "default": "Proyek Baru",
    "fieldname": "hal",
    "fieldtype": "Data",
-   "label": "Hal"
-  },
-  {
-   "fieldname": "column_break_1",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "untuk",
-   "fieldtype": "Data",
-   "label": "Untuk"
-  },
-  {
-   "default": "0",
-   "fieldname": "tembusan",
-   "fieldtype": "Check",
-   "label": "Tembusan",
-   "options": "Direktur Utama"
+   "in_list_view": 1,
+   "label": "Hal",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_bkkjn",
    "fieldtype": "Section Break"
   },
   {
+   "fetch_from": "project.project_name",
+   "fetch_if_empty": 1,
    "fieldname": "nama_proyek",
    "fieldtype": "Data",
    "label": "Nama Proyek"
   },
   {
+   "fetch_from": "project.customer",
+   "fetch_if_empty": 1,
    "fieldname": "nama_pelanggan",
-   "fieldtype": "Data",
-   "label": "Nama Pelanggan"
+   "fieldtype": "Link",
+   "label": "Nama Pelanggan",
+   "options": "Customer",
+   "reqd": 1
   },
   {
    "fieldname": "tanggal_penunjukankontrak",
@@ -80,34 +72,47 @@
    "label": "Tanggal Penunjukan/Kontrak"
   },
   {
+   "fetch_from": "project.contract_no",
+   "fetch_if_empty": 1,
    "fieldname": "no_spkkontrak",
    "fieldtype": "Data",
-   "label": "No. SPK/Kontrak"
+   "label": "No. SPK/Kontrak",
+   "reqd": 1
   },
   {
    "fieldname": "nilai_proyek",
-   "fieldtype": "Int",
-   "label": "Nilai Proyek"
+   "fieldtype": "Currency",
+   "label": "Nilai Proyek",
+   "reqd": 1
   },
   {
    "fieldname": "waktu_pelaksanaan",
-   "fieldtype": "Data",
-   "label": "Waktu Pelaksanaan"
-  },
-  {
-   "fieldname": "no_proyek",
-   "fieldtype": "Data",
-   "label": "No. Proyek"
+   "fieldtype": "Date",
+   "label": "Waktu Pelaksanaan",
+   "reqd": 1
   },
   {
    "fieldname": "lain_lain",
-   "fieldtype": "Text",
+   "fieldtype": "Small Text",
    "label": "Lain-lain"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "No Proyek",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "process_rules",
+   "fieldtype": "Table",
+   "label": "Process Rules",
+   "options": "Process Rules"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-26 20:02:31.033023",
+ "modified": "2023-09-07 10:22:42.350319",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "INFORMASI PEKERJAAN BARU",

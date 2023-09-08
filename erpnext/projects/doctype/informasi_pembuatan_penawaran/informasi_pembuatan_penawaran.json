@@ -79,7 +79,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-21 20:38:58.775924",
+ "modified": "2023-09-07 09:42:09.353772",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "INFORMASI PEMBUATAN PENAWARAN",
@@ -98,6 +98,7 @@
    "write": 1
   }
  ],
+ "search_fields": "lingkup_pekerjaan, customer",
  "sort_field": "modified",
  "sort_order": "DESC"
 }

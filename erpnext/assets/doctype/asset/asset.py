@@ -160,8 +160,9 @@ class Asset(AccountsController):
 		if not self.asset_category:
 			self.asset_category = frappe.get_cached_value("Item", self.item_code, "asset_category")
 
-		if not flt(self.gross_purchase_amount):
-			frappe.throw(_("Gross Purchase Amount is mandatory"), frappe.MandatoryError)
+		if not self.lewati_check_gross:
+			if not flt(self.gross_purchase_amount):
+				frappe.throw(_("Gross Purchase Amount is mandatory"), frappe.MandatoryError)
 
 		if is_cwip_accounting_enabled(self.asset_category):
 			if not self.is_existing_asset and not (self.purchase_receipt or self.purchase_invoice):

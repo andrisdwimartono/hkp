@@ -47,7 +47,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2023-09-07 05:05:28.299396",
+ "modified": "2023-09-07 09:57:14.704944",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "MONITORING PENAWARAN HARGA",
@@ -60,6 +60,9 @@
  "roles": [
   {
    "role": "System Manager"
+  },
+  {
+   "role": "Pemasaran"
   }
  ]
 }
