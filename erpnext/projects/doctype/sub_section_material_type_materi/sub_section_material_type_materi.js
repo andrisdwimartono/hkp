@@ -23,3 +23,13 @@ frappe.ui.form.on('Sub Section Material Type Materi', {
 		});
 	}
 });
+
+
+frappe.ui.form.on("Sub Section Material Type Materials", {
+    item_code: function (frm, cdt, cdn) {
+		var d = locals[cdt][cdn];
+       	frappe.db.get_value("Item Price", {'item_code': d.item_code, 'buying': 1}, ["price_list_rate"], (r) => {
+            frappe.model.set_value(cdt, cdn, "price", r.price_list_rate);
+		});
+ 	}
+});
