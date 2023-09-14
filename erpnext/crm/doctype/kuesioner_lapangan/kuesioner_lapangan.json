@@ -183,8 +183,9 @@
   },
   {
    "fieldname": "jabatan",
-   "fieldtype": "Data",
-   "label": "Jabatan"
+   "fieldtype": "Link",
+   "label": "Jabatan",
+   "options": "Designation"
   },
   {
    "fieldname": "column_break_ojhky",
@@ -236,7 +237,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-14 08:33:42.660965",
+ "modified": "2023-09-14 10:38:01.713789",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "KUESIONER LAPANGAN",

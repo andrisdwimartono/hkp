@@ -198,13 +198,14 @@
   },
   {
    "fieldname": "jabatan",
-   "fieldtype": "Data",
-   "label": "Jabatan"
+   "fieldtype": "Link",
+   "label": "Jabatan",
+   "options": "Designation"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-14 09:51:06.836862",
+ "modified": "2023-09-14 10:37:32.556440",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Kuesioner Keupasan Pelanggan",
