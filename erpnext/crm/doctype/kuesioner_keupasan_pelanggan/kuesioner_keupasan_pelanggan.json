@@ -6,6 +6,11 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "tanggal",
+  "proyek",
+  "column_break_konyf",
+  "nama_responden",
+  "jabatan",
   "a__proses_persiapan_pelaksanaan_section",
   "proses_persiapan_pelaksanaan",
   "b__pelaksanaan_pekerjaan_dan_serah_terima_pekerjaan_section",
@@ -171,11 +176,35 @@
   {
    "fieldname": "d4_answer",
    "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "label": "Tanggal"
+  },
+  {
+   "fieldname": "proyek",
+   "fieldtype": "Data",
+   "label": "Proyek"
+  },
+  {
+   "fieldname": "column_break_konyf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "nama_responden",
+   "fieldtype": "Data",
+   "label": "Nama Responden"
+  },
+  {
+   "fieldname": "jabatan",
+   "fieldtype": "Data",
+   "label": "Jabatan"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-07 07:14:27.127601",
+ "modified": "2023-09-14 09:51:06.836862",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Kuesioner Keupasan Pelanggan",
