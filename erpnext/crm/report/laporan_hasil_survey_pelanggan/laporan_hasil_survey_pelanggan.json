@@ -2,49 +2,49 @@
  "add_total_row": 1,
  "columns": [
   {
-   "fieldname": "customer",
+   "fieldname": "pertanyaan",
    "fieldtype": "Data",
-   "label": "Parameter Penilaian",
+   "label": "PARAMETER PENILAIAN",
    "width": 0
   },
   {
-   "fieldname": "lingkup_pekerjaan",
-   "fieldtype": "Data",
+   "fieldname": "baik_sekali",
+   "fieldtype": "Int",
    "label": "SB",
    "width": 0
   },
   {
-   "fieldname": "tanggal_rks",
-   "fieldtype": "Date",
+   "fieldname": "baik",
+   "fieldtype": "Int",
    "label": "B",
    "width": 0
   },
   {
-   "fieldname": "name",
-   "fieldtype": "Data",
+   "fieldname": "cukup",
+   "fieldtype": "Int",
    "label": "C",
    "width": 0
   },
   {
-   "fieldname": "nilai_penawaran",
-   "fieldtype": "Currency",
+   "fieldname": "kurang",
+   "fieldtype": "Int",
    "label": "K",
    "width": 0
   },
   {
-   "fieldname": "catatan",
-   "fieldtype": "Data",
+   "fieldname": "kurang_sekali",
+   "fieldtype": "Int",
    "label": "SK",
    "width": 0
   },
   {
-   "fieldname": "catatan",
-   "fieldtype": "Data",
+   "fieldname": "skor",
+   "fieldtype": "Float",
    "label": "SKOR",
    "width": 0
   },
   {
-   "fieldname": "catatan",
+   "fieldname": "status",
    "fieldtype": "Data",
    "label": "STATUS",
    "width": 0
@@ -55,17 +55,32 @@
  "disabled": 0,
  "docstatus": 0,
  "doctype": "Report",
- "filters": [],
+ "filters": [
+  {
+   "fieldname": "date_from",
+   "fieldtype": "Date",
+   "label": "Date From",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "date_to",
+   "fieldtype": "Date",
+   "label": "Date To",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  }
+ ],
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2023-09-14 09:46:45.145935",
+ "modified": "2023-09-15 20:02:05.360405",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "LAPORAN HASIL SURVEY PELANGGAN",
  "owner": "Administrator",
  "prepared_report": 0,
- "query": "SELECT\n    main.customer, main.lingkup_pekerjaan, lpt.tanggal_rks, main.name, COALESCE(ipt.harga_penawaran_hkp/1000, 0) AS nilai_penawaran, COALESCE(ipt.keterangan, \"\") catatan\nFROM `tabINFORMASI PEMBUATAN PENAWARAN` AS main\nLEFT JOIN `tabLAPORAN PENJELASAN TENDER` AS lpt ON lpt.informasi_pembuatan_penawaran = main.name\nLEFT JOIN `tabINFORMASI PEMBUKAAN TENDER` AS ipt ON ipt.informasi_pembuatan_penawaran_terkait = main.name",
+ "query": "SELECT\n    a.pertanyaan,\n    SUM(CASE WHEN a.jawaban = \"Baik Sekali\" THEN 1 ELSE 0 END) baik_sekali,\n    SUM(CASE WHEN a.jawaban = \"Baik\" THEN 1 ELSE 0 END) baik,\n    SUM(CASE WHEN a.jawaban = \"Cukup\" THEN 1 ELSE 0 END) cukup,\n    SUM(CASE WHEN a.jawaban = \"Kurang\" THEN 1 ELSE 0 END) kurang,\n    SUM(CASE WHEN a.jawaban = \"Kurang Sekali\" THEN 1 ELSE 0 END) kurang_sekali,\n    SUM(\n        CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n        WHEN a.jawaban = \"Baik\" THEN 3\n        WHEN a.jawaban = \"Cukup\" THEN 2\n        WHEN a.jawaban = \"Kurang\" THEN 1\n        WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n        ELSE 0 END)/COUNT(a.name) skor,\n    CASE WHEN\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) <= 4 AND\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) >= 3.2 THEN 'A'\n    WHEN\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) < 3.2 AND\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) >= 2 THEN 'B'\n    WHEN\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) < 2 THEN 'C'\n    END status\n    FROM `tabKuesioner Kepuasan Pelanggan Soal` a\n    INNER JOIN `tabKuesioner Keupasan Pelanggan` b ON b.name = a.parent\n    WHERE b.tanggal BETWEEN %(date_from)s AND %(date_to)s\n    GROUP BY a.pertanyaan\nUNION\nSELECT\n    a.pertanyaan,\n    SUM(CASE WHEN a.jawaban = \"Baik Sekali\" THEN 1 ELSE 0 END) baik_sekali,\n    SUM(CASE WHEN a.jawaban = \"Baik\" THEN 1 ELSE 0 END) baik,\n    SUM(CASE WHEN a.jawaban = \"Cukup\" THEN 1 ELSE 0 END) cukup,\n    SUM(CASE WHEN a.jawaban = \"Kurang\" THEN 1 ELSE 0 END) kurang,\n    SUM(CASE WHEN a.jawaban = \"Kurang Sekali\" THEN 1 ELSE 0 END) kurang_sekali,\n    SUM(\n        CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n        WHEN a.jawaban = \"Baik\" THEN 3\n        WHEN a.jawaban = \"Cukup\" THEN 2\n        WHEN a.jawaban = \"Kurang\" THEN 1\n        WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n        ELSE 0 END)/COUNT(a.name) skor,\n    CASE WHEN\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) <= 4 AND\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) >= 3.2 THEN 'A'\n    WHEN\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) < 3.2 AND\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) >= 2 THEN 'B'\n    WHEN\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) < 2 THEN 'C'\n    END status\n    FROM `tabKUESIONER LAPANGAN _ SOAL` a\n    INNER JOIN `tabKUESIONER LAPANGAN` b ON b.name = a.parent\n    WHERE b.tanggal BETWEEN %(date_from)s AND %(date_to)s\n    GROUP BY a.pertanyaan;",
  "ref_doctype": "Kuesioner Keupasan Pelanggan",
  "report_name": "LAPORAN HASIL SURVEY PELANGGAN",
  "report_type": "Query Report",

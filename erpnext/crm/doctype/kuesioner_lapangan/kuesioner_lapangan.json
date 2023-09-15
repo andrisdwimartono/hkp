@@ -7,7 +7,8 @@
  "engine": "InnoDB",
  "field_order": [
   "tanggal",
-  "proyek",
+  "project",
+  "project_name",
   "column_break_ojhky",
   "nama_responden",
   "jabatan",
@@ -172,11 +173,6 @@
    "label": "Tanggal"
   },
   {
-   "fieldname": "proyek",
-   "fieldtype": "Data",
-   "label": "Proyek"
-  },
-  {
    "fieldname": "nama_responden",
    "fieldtype": "Data",
    "label": "Nama Responden"
@@ -233,11 +229,24 @@
    "fieldtype": "Small Text",
    "label": "Alasan",
    "mandatory_depends_on": "eval:doc.kesediaan_mempromosikan_jawaban == \"Ya\" || doc.kesediaan_mempromosikan_jawaban == \"Tidak\""
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-14 10:38:01.713789",
+ "modified": "2023-09-15 19:37:21.751340",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "KUESIONER LAPANGAN",
