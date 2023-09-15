@@ -11,6 +11,7 @@
   "cost_center",
   "project",
   "project_name",
+  "duration",
   "cost_coefficient",
   "fiscal_year",
   "column_break_3",
@@ -28,6 +29,8 @@
   "applicable_on_booking_actual_expenses",
   "action_if_annual_budget_exceeded",
   "action_if_accumulated_monthly_budget_exceeded",
+  "section_break_oagdh",
+  "income_accounts",
   "section_break_21",
   "accounts",
   "total_budget_amount",
@@ -224,12 +227,28 @@
    "fieldtype": "Percent",
    "label": "Cost Coefficient",
    "read_only": 1
+  },
+  {
+   "fieldname": "section_break_oagdh",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "income_accounts",
+   "fieldtype": "Table",
+   "label": "Income Accounts",
+   "options": "Income Account"
+  },
+  {
+   "description": "* Hari",
+   "fieldname": "duration",
+   "fieldtype": "Int",
+   "label": "Duration"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-04-13 09:38:05.209777",
+ "modified": "2023-09-12 19:29:11.777569",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Budget",

@@ -7,11 +7,13 @@
  "engine": "InnoDB",
  "field_order": [
   "document_of_type",
+  "type",
   "item",
   "level",
   "deskripsi",
   "uom",
   "qty",
+  "duration",
   "pengadaan_material_section",
   "pengadaan_material_harga_satuan",
   "pengadaan_material_harga_total",
@@ -125,12 +127,28 @@
    "in_list_view": 1,
    "label": "Document of Type",
    "options": "Sub Section Material Type Entries"
+  },
+  {
+   "fetch_from": "document_of_type.type",
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "\nSub Section Material Type Materi\nSub Section Material Type Tool\nSub Section Material Type Service\nSub Section Material Type Jasa Konstruksi",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "* Hari",
+   "fieldname": "duration",
+   "fieldtype": "Int",
+   "label": "Duration",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-09-11 11:12:15.806283",
+ "modified": "2023-09-14 06:29:23.189093",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "BOQ Detail",

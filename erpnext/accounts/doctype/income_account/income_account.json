@@ -1,6 +1,6 @@
 {
  "actions": [],
- "creation": "2016-05-16 11:54:09.286135",
+ "creation": "2023-09-12 09:13:41.610114",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -12,32 +12,19 @@
   "duration",
   "volume",
   "unit_price",
-  "budget_amount",
+  "income_amount",
   "account",
   "cost_center",
   "description"
  ],
  "fields": [
   {
-   "columns": 1,
-   "depends_on": "eval: doc.group == 0",
-   "fieldname": "account",
-   "fieldtype": "Link",
+   "columns": 3,
+   "fieldname": "pos_rap",
+   "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Account",
-   "mandatory_depends_on": "eval: doc.group == 0",
-   "options": "Account"
-  },
-  {
-   "columns": 2,
-   "depends_on": "eval: doc.group == 0",
-   "fieldname": "budget_amount",
-   "fieldtype": "Currency",
-   "in_list_view": 1,
-   "label": "Budget Amount",
-   "options": "Company:company:default_currency",
-   "precision": "0",
-   "read_only": 1
+   "label": "POS RAP",
+   "reqd": 1
   },
   {
    "columns": 1,
@@ -73,17 +60,26 @@
    "precision": "0"
   },
   {
-   "fieldname": "description",
-   "fieldtype": "Small Text",
-   "label": "Description"
+   "columns": 2,
+   "depends_on": "eval: doc.group == 0",
+   "fieldname": "income_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Income Amount",
+   "mandatory_depends_on": "eval: doc.group == 0",
+   "options": "Company:company:default_currency",
+   "precision": "0",
+   "read_only": 1
   },
   {
-   "columns": 3,
-   "fieldname": "pos_rap",
-   "fieldtype": "Data",
+   "columns": 1,
+   "depends_on": "eval: doc.group == 0",
+   "fieldname": "account",
+   "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "POS RAP",
-   "reqd": 1
+   "label": "Account",
+   "mandatory_depends_on": "eval: doc.group == 0",
+   "options": "Account"
   },
   {
    "columns": 1,
@@ -92,6 +88,11 @@
    "in_list_view": 1,
    "label": "Cost Center",
    "options": "Cost Center"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
   },
   {
    "depends_on": "eval: doc.group == 0",
@@ -118,10 +119,10 @@
  ],
  "istable": 1,
  "links": [],
- "modified": "2023-09-12 19:58:31.628939",
+ "modified": "2023-09-12 19:41:25.128373",
  "modified_by": "Administrator",
  "module": "Accounts",
- "name": "Budget Account",
+ "name": "Income Account",
  "owner": "Administrator",
  "permissions": [],
  "quick_entry": 1,

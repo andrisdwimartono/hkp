@@ -59,3 +59,15 @@ frappe.ui.form.on("Budget Account", "unit_price", function(frm, cdt, cdn) {
     d.budget_amount = d.volume*d.unit_price;
 	refresh_field("accounts");
 });
+
+frappe.ui.form.on("Income Account", "volume", function(frm, cdt, cdn) {
+    var d = locals[cdt][cdn];
+    d.income_amount = d.volume*d.unit_price;
+	refresh_field("income_accounts");
+});
+
+frappe.ui.form.on("Income Account", "unit_price", function(frm, cdt, cdn) {
+    var d = locals[cdt][cdn];
+    d.income_amount = d.volume*d.unit_price;
+	refresh_field("income_accounts");
+});
