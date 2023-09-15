@@ -1,0 +1,261 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-09-12 14:20:12.191030",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tanggal",
+  "proyek",
+  "column_break_ojhky",
+  "nama_responden",
+  "jabatan",
+  "bagian_a",
+  "bagian_a_pertanyaan",
+  "bagian_b",
+  "bagian_b_pertanyaan",
+  "bagian_c",
+  "bagian_c_pertanyaan",
+  "bagian_d",
+  "bagian_d_pertanyaan",
+  "bagian_e",
+  "bagian_e_pertanyaan",
+  "bagian_f",
+  "bagian_f_pertanyaan",
+  "bagian_g",
+  "kesediaan_mempromosikan_section",
+  "kesediaan_mempromosikan_pertanyaan",
+  "kesediaan_mempromosikan_jawaban",
+  "kesediaan_alasan",
+  "pertimbangan_melaksanakan_proyek_section",
+  "pertimbangan_melaksanakan_proyek_pertanyaan",
+  "pertimbangan_ketepatan_waktu",
+  "pertimbangan_relationship",
+  "pertimbangan_manajemen_perusahaan",
+  "pertimbangan_mutu_secara_keseluruhan",
+  "pertimbangan_tenaga_kerja",
+  "pertimbangan_kemampuan_keuangan",
+  "saran_section",
+  "saran_pertanyaan",
+  "saran_jawaban",
+  "pengertian_gcg_section",
+  "pengertian_gcg_pertanyaan",
+  "pengertian_gcg_jawaban"
+ ],
+ "fields": [
+  {
+   "fieldname": "bagian_a",
+   "fieldtype": "Section Break",
+   "label": "A. TENAGA STAF DAN PEKERJA LAPANGAN"
+  },
+  {
+   "fieldname": "bagian_b",
+   "fieldtype": "Section Break",
+   "label": "B. MATERIAL"
+  },
+  {
+   "fieldname": "bagian_c",
+   "fieldtype": "Section Break",
+   "label": "C. SARANA KERJA DAN LINGKUNGAN"
+  },
+  {
+   "fieldname": "bagian_d",
+   "fieldtype": "Section Break",
+   "label": "D. METODE KERJA"
+  },
+  {
+   "fieldname": "bagian_e",
+   "fieldtype": "Section Break",
+   "label": "E. KEUANGAN"
+  },
+  {
+   "fieldname": "bagian_f",
+   "fieldtype": "Section Break",
+   "label": "F. ADMINISTRASI DAN MANAJERIAL"
+  },
+  {
+   "fieldname": "bagian_g",
+   "fieldtype": "Section Break",
+   "label": "G. LAIN-LAIN"
+  },
+  {
+   "fieldname": "bagian_a_pertanyaan",
+   "fieldtype": "Table",
+   "options": "KUESIONER LAPANGAN _ SOAL"
+  },
+  {
+   "fieldname": "bagian_b_pertanyaan",
+   "fieldtype": "Table",
+   "options": "KUESIONER LAPANGAN _ SOAL"
+  },
+  {
+   "fieldname": "bagian_c_pertanyaan",
+   "fieldtype": "Table",
+   "options": "KUESIONER LAPANGAN _ SOAL"
+  },
+  {
+   "fieldname": "bagian_d_pertanyaan",
+   "fieldtype": "Table",
+   "options": "KUESIONER LAPANGAN _ SOAL"
+  },
+  {
+   "fieldname": "bagian_e_pertanyaan",
+   "fieldtype": "Table",
+   "options": "KUESIONER LAPANGAN _ SOAL"
+  },
+  {
+   "fieldname": "bagian_f_pertanyaan",
+   "fieldtype": "Table",
+   "options": "KUESIONER LAPANGAN _ SOAL"
+  },
+  {
+   "fieldname": "saran_section",
+   "fieldtype": "Section Break",
+   "label": "Saran"
+  },
+  {
+   "fieldname": "pengertian_gcg_section",
+   "fieldtype": "Section Break",
+   "label": "Pengertian GCG"
+  },
+  {
+   "fieldname": "kesediaan_mempromosikan_section",
+   "fieldtype": "Section Break",
+   "label": "Kesediaan Mempromosikan"
+  },
+  {
+   "fieldname": "pertimbangan_melaksanakan_proyek_section",
+   "fieldtype": "Section Break",
+   "label": "Pertimbangan Melaksanakan Proyek"
+  },
+  {
+   "default": "Apakah Bapak/Ibu bersedia mempromosikan perusahaan kami kepada relasi Bapak/Ibu?",
+   "fieldname": "kesediaan_mempromosikan_pertanyaan",
+   "fieldtype": "Small Text",
+   "read_only": 1
+  },
+  {
+   "fieldname": "kesediaan_mempromosikan_jawaban",
+   "fieldtype": "Select",
+   "options": "Ya\nTidak\nTidak ada pilihan"
+  },
+  {
+   "default": "Hal apakah yang paling Bapak/Ibu pertimbangkan di dalam melaksanakan proyek ini?",
+   "fieldname": "pertimbangan_melaksanakan_proyek_pertanyaan",
+   "fieldtype": "Small Text",
+   "read_only": 1
+  },
+  {
+   "fieldname": "saran_jawaban",
+   "fieldtype": "Small Text"
+  },
+  {
+   "default": "Bagaimana saran Bapak/Ibu agar kami lebih profesional dalam melaksanakan proyek ini?",
+   "fieldname": "saran_pertanyaan",
+   "fieldtype": "Small Text",
+   "read_only": 1
+  },
+  {
+   "default": "Apa pengertian Bapak/Ibu tentang Good Corporate Government?",
+   "fieldname": "pengertian_gcg_pertanyaan",
+   "fieldtype": "Small Text",
+   "read_only": 1
+  },
+  {
+   "fieldname": "pengertian_gcg_jawaban",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "label": "Tanggal"
+  },
+  {
+   "fieldname": "proyek",
+   "fieldtype": "Data",
+   "label": "Proyek"
+  },
+  {
+   "fieldname": "nama_responden",
+   "fieldtype": "Data",
+   "label": "Nama Responden"
+  },
+  {
+   "fieldname": "jabatan",
+   "fieldtype": "Link",
+   "label": "Jabatan",
+   "options": "Designation"
+  },
+  {
+   "fieldname": "column_break_ojhky",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "pertimbangan_ketepatan_waktu",
+   "fieldtype": "Check",
+   "label": "Ketepatan waktu"
+  },
+  {
+   "default": "0",
+   "fieldname": "pertimbangan_relationship",
+   "fieldtype": "Check",
+   "label": "Relationship"
+  },
+  {
+   "default": "0",
+   "fieldname": "pertimbangan_manajemen_perusahaan",
+   "fieldtype": "Check",
+   "label": "Manajemen perusahaan"
+  },
+  {
+   "default": "0",
+   "fieldname": "pertimbangan_mutu_secara_keseluruhan",
+   "fieldtype": "Check",
+   "label": "Mutu secara keseluruhan"
+  },
+  {
+   "default": "0",
+   "fieldname": "pertimbangan_tenaga_kerja",
+   "fieldtype": "Check",
+   "label": "Tenaga kerja"
+  },
+  {
+   "default": "0",
+   "fieldname": "pertimbangan_kemampuan_keuangan",
+   "fieldtype": "Check",
+   "label": "Kemampuan keuangan"
+  },
+  {
+   "depends_on": "eval:doc.kesediaan_mempromosikan_jawaban == \"Ya\" || doc.kesediaan_mempromosikan_jawaban == \"Tidak\"",
+   "fieldname": "kesediaan_alasan",
+   "fieldtype": "Small Text",
+   "label": "Alasan",
+   "mandatory_depends_on": "eval:doc.kesediaan_mempromosikan_jawaban == \"Ya\" || doc.kesediaan_mempromosikan_jawaban == \"Tidak\""
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-09-14 10:38:01.713789",
+ "modified_by": "Administrator",
+ "module": "CRM",
+ "name": "KUESIONER LAPANGAN",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
