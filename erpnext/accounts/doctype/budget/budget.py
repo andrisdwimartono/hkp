@@ -28,7 +28,7 @@ class Budget(Document):
 	
 	def createposrap(self):
 		for d in self.accounts:
-			if not frappe.db.exists("POS RAP", d.pos_rap):
+			if not frappe.db.exists("POS RAP", d.pos_rap) and d.group == 0:
 				pos_rap_doc = frappe.get_doc({
 					"doctype": "POS RAP",
 					"pos_rap": d.pos_rap
@@ -53,20 +53,24 @@ class Budget(Document):
 	def set_total_budget_amount(self):
 		self.total_budget_amount = 0
 		for d in self.accounts:
-			self.total_budget_amount = self.total_budget_amount+d.budget_amount
+			if d.group == 0:
+				self.total_budget_amount = self.total_budget_amount+d.budget_amount
 
 	def validate_duplicate(self):
 		budget_against_field = frappe.scrub(self.budget_against)
 		budget_against = self.get(budget_against_field)
 
-		accounts = [d.account for d in self.accounts] or []
+		accounts = []
+		for d in self.accounts:
+			if d.group == 0:
+				accounts.append(d.account)
 		existing_budget = frappe.db.sql(
 			"""
 			select
 				b.name, ba.account from `tabBudget` b, `tabBudget Account` ba
 			where
 				ba.parent = b.name and b.docstatus < 2 and b.company = %s and %s=%s and
-				b.fiscal_year=%s and b.name != %s and ba.account in (%s) """
+				b.fiscal_year=%s and b.name != %s and ba.account in (%s) and ba.group = 0 """
 			% ("%s", budget_against_field, "%s", "%s", "%s", ",".join(["%s"] * len(accounts))),
 			(self.company, budget_against, self.fiscal_year, self.name) + tuple(accounts),
 			as_dict=1,
@@ -83,7 +87,7 @@ class Budget(Document):
 	def validate_accounts(self):
 		account_list = []
 		for d in self.get("accounts"):
-			if d.account:
+			if d.account and d.group == 0:
 				account_details = frappe.db.get_value(
 					"Account", d.account, ["is_group", "company", "report_type"], as_dict=1
 				)

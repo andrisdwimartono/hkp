@@ -1,0 +1,143 @@
+{
+ "actions": [],
+ "allow_copy": 1,
+ "creation": "2023-09-10 11:14:28.241305",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "type",
+  "document_of_name",
+  "sub_section",
+  "sub_project_sub_section",
+  "item",
+  "item_name",
+  "uom",
+  "location",
+  "year",
+  "price",
+  "transport_price",
+  "description",
+  "document_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Type",
+   "options": "\nSub Section Material Type Materi\nSub Section Material Type Tool\nSub Section Material Type Service\nSub Section Material Type Jasa Konstruksi",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval: doc.type",
+   "fieldname": "document_of_name",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "label": "Document of Name",
+   "mandatory_depends_on": "eval: doc.type",
+   "options": "type",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "document_of_name.sub_section",
+   "fieldname": "sub_section",
+   "fieldtype": "Link",
+   "label": "Sub Section",
+   "options": "Project Sub Section",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "document_of_name.sub_project_sub_section",
+   "fieldname": "sub_project_sub_section",
+   "fieldtype": "Link",
+   "label": "Sub Project Sub Section",
+   "options": "Sub Project Sub Section",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Data",
+   "label": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Link",
+   "label": "Location",
+   "options": "Location",
+   "reqd": 1
+  },
+  {
+   "fieldname": "year",
+   "fieldtype": "Int",
+   "label": "Year",
+   "reqd": 1
+  },
+  {
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "label": "Price",
+   "options": "Company:company:default_currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "transport_price",
+   "fieldtype": "Currency",
+   "label": "Transport Price",
+   "options": "Company:company:default_currency"
+  },
+  {
+   "fieldname": "document_name",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Document Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Name"
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-09-11 11:08:37.195957",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Sub Section Material Type Entries",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "read_only": 1,
+ "search_fields": "item_name, location, year, sub_section, sub_project_sub_section",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

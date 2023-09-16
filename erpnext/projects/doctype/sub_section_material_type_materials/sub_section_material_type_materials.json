@@ -12,6 +12,7 @@
   "location",
   "year",
   "price",
+  "transport_price",
   "tkdn",
   "tkdn_document",
   "sumber"
@@ -89,12 +90,20 @@
    "fieldname": "tkdn_document",
    "fieldtype": "Attach",
    "label": "TKDN Document"
+  },
+  {
+   "default": "0",
+   "fieldname": "transport_price",
+   "fieldtype": "Currency",
+   "label": "Transport Price",
+   "options": "Company:company:default_currency",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-06-06 13:22:53.829017",
+ "modified": "2023-09-10 10:22:00.814978",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Sub Section Material Type Materials",

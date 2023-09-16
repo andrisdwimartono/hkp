@@ -2,44 +2,44 @@
  "add_total_row": 1,
  "columns": [
   {
-   "fieldname": "parameter_penilaian",
+   "fieldname": "pertanyaan",
    "fieldtype": "Data",
-   "label": "Parameter Penilaian",
+   "label": "PARAMETER PENILAIAN",
    "width": 0
   },
   {
-   "fieldname": "bs",
-   "fieldtype": "Data",
-   "label": "BS",
+   "fieldname": "baik_sekali",
+   "fieldtype": "Int",
+   "label": "SB",
    "width": 0
   },
   {
-   "fieldname": "b",
-   "fieldtype": "Data",
+   "fieldname": "baik",
+   "fieldtype": "Int",
    "label": "B",
    "width": 0
   },
   {
-   "fieldname": "c",
-   "fieldtype": "Data",
+   "fieldname": "cukup",
+   "fieldtype": "Int",
    "label": "C",
    "width": 0
   },
   {
-   "fieldname": "k",
-   "fieldtype": "Data",
+   "fieldname": "kurang",
+   "fieldtype": "Int",
    "label": "K",
    "width": 0
   },
   {
-   "fieldname": "sk",
-   "fieldtype": "Data",
+   "fieldname": "kurang_sekali",
+   "fieldtype": "Int",
    "label": "SK",
    "width": 0
   },
   {
    "fieldname": "skor",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "label": "SKOR",
    "width": 0
   },
@@ -55,17 +55,32 @@
  "disabled": 0,
  "docstatus": 0,
  "doctype": "Report",
- "filters": [],
+ "filters": [
+  {
+   "fieldname": "date_from",
+   "fieldtype": "Date",
+   "label": "Date From",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "date_to",
+   "fieldtype": "Date",
+   "label": "Date To",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  }
+ ],
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2023-09-14 14:56:47.561093",
+ "modified": "2023-09-15 20:02:05.360405",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "LAPORAN HASIL SURVEY PELANGGAN",
  "owner": "Administrator",
  "prepared_report": 0,
- "query": "SELECT a.bs, a.b, a.c\nFROM (\n    SELECT\n    'Bagaimana komunikasi kami di dalam pelaksanaan proyek ini.' AS parameter_penilaian,\n    (\n        SELECT COUNT(*) FROM `tabKUESIONER LAPANGAN _ SOAL` WHERE pertanyaan = 'Bagaimana komunikasi kami di dalam pelaksanaan proyek ini.' AND jawaban = 'Baik Sekali'\n    ) AS bs,\n    (\n        SELECT COUNT(*) FROM `tabKUESIONER LAPANGAN _ SOAL` WHERE pertanyaan = 'Bagaimana komunikasi kami di dalam pelaksanaan proyek ini.' AND jawaban = 'Baik'\n    ) AS b,\n    (\n        SELECT COUNT(*) FROM `tabKUESIONER LAPANGAN _ SOAL` WHERE pertanyaan = 'Bagaimana komunikasi kami di dalam pelaksanaan proyek ini.' AND jawaban = 'Cukup'\n    ) AS c,\n    (\n        SELECT COUNT(*) FROM `tabKUESIONER LAPANGAN _ SOAL` WHERE pertanyaan = 'Bagaimana komunikasi kami di dalam pelaksanaan proyek ini.' AND jawaban = 'Kurang'\n    ) AS k,\n    (\n        SELECT COUNT(*) FROM `tabKUESIONER LAPANGAN _ SOAL` WHERE pertanyaan = 'Bagaimana komunikasi kami di dalam pelaksanaan proyek ini.' AND jawaban = 'Sangat Kurang'\n    ) AS sk\n) a\n",
+ "query": "SELECT\n    a.pertanyaan,\n    SUM(CASE WHEN a.jawaban = \"Baik Sekali\" THEN 1 ELSE 0 END) baik_sekali,\n    SUM(CASE WHEN a.jawaban = \"Baik\" THEN 1 ELSE 0 END) baik,\n    SUM(CASE WHEN a.jawaban = \"Cukup\" THEN 1 ELSE 0 END) cukup,\n    SUM(CASE WHEN a.jawaban = \"Kurang\" THEN 1 ELSE 0 END) kurang,\n    SUM(CASE WHEN a.jawaban = \"Kurang Sekali\" THEN 1 ELSE 0 END) kurang_sekali,\n    SUM(\n        CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n        WHEN a.jawaban = \"Baik\" THEN 3\n        WHEN a.jawaban = \"Cukup\" THEN 2\n        WHEN a.jawaban = \"Kurang\" THEN 1\n        WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n        ELSE 0 END)/COUNT(a.name) skor,\n    CASE WHEN\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) <= 4 AND\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) >= 3.2 THEN 'A'\n    WHEN\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) < 3.2 AND\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) >= 2 THEN 'B'\n    WHEN\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) < 2 THEN 'C'\n    END status\n    FROM `tabKuesioner Kepuasan Pelanggan Soal` a\n    INNER JOIN `tabKuesioner Keupasan Pelanggan` b ON b.name = a.parent\n    WHERE b.tanggal BETWEEN %(date_from)s AND %(date_to)s\n    GROUP BY a.pertanyaan\nUNION\nSELECT\n    a.pertanyaan,\n    SUM(CASE WHEN a.jawaban = \"Baik Sekali\" THEN 1 ELSE 0 END) baik_sekali,\n    SUM(CASE WHEN a.jawaban = \"Baik\" THEN 1 ELSE 0 END) baik,\n    SUM(CASE WHEN a.jawaban = \"Cukup\" THEN 1 ELSE 0 END) cukup,\n    SUM(CASE WHEN a.jawaban = \"Kurang\" THEN 1 ELSE 0 END) kurang,\n    SUM(CASE WHEN a.jawaban = \"Kurang Sekali\" THEN 1 ELSE 0 END) kurang_sekali,\n    SUM(\n        CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n        WHEN a.jawaban = \"Baik\" THEN 3\n        WHEN a.jawaban = \"Cukup\" THEN 2\n        WHEN a.jawaban = \"Kurang\" THEN 1\n        WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n        ELSE 0 END)/COUNT(a.name) skor,\n    CASE WHEN\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) <= 4 AND\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) >= 3.2 THEN 'A'\n    WHEN\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) < 3.2 AND\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) >= 2 THEN 'B'\n    WHEN\n        SUM(\n            CASE WHEN a.jawaban = \"Baik Sekali\" THEN 4\n            WHEN a.jawaban = \"Baik\" THEN 3\n            WHEN a.jawaban = \"Cukup\" THEN 2\n            WHEN a.jawaban = \"Kurang\" THEN 1\n            WHEN a.jawaban = \"Kurang Sekali\" THEN 0\n            ELSE 0 END)/COUNT(a.name) < 2 THEN 'C'\n    END status\n    FROM `tabKUESIONER LAPANGAN _ SOAL` a\n    INNER JOIN `tabKUESIONER LAPANGAN` b ON b.name = a.parent\n    WHERE b.tanggal BETWEEN %(date_from)s AND %(date_to)s\n    GROUP BY a.pertanyaan;",
  "ref_doctype": "Kuesioner Keupasan Pelanggan",
  "report_name": "LAPORAN HASIL SURVEY PELANGGAN",
  "report_type": "Query Report",

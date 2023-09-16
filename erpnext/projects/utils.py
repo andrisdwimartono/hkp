@@ -128,7 +128,6 @@ def get_process_rules(doctype):
 	ORDER BY b.idx ASC""".format(doctype), as_dict=1)
 
 def set_default_process_rules(doc, method=None):
-	return
 	frappe.db.sql("""UPDATE `tabProcess Rules` SET process_time = now() WHERE parent = '{0}' AND idx = 1 AND state = 'Dibuat';""".format(doc.name))
 
 	prsn = frappe.db.sql("""SELECT * FROM `tabProcess Rules` WHERE parent = '{1}' AND parenttype = '{0}' AND idx=2;""".format(doc.doctype, doc.name), as_dict=1)
