@@ -2,49 +2,49 @@
  "add_total_row": 1,
  "columns": [
   {
-   "fieldname": "customer",
+   "fieldname": "parameter_penilaian",
    "fieldtype": "Data",
    "label": "Parameter Penilaian",
    "width": 0
   },
   {
-   "fieldname": "lingkup_pekerjaan",
+   "fieldname": "bs",
    "fieldtype": "Data",
-   "label": "SB",
+   "label": "BS",
    "width": 0
   },
   {
-   "fieldname": "tanggal_rks",
-   "fieldtype": "Date",
+   "fieldname": "b",
+   "fieldtype": "Data",
    "label": "B",
    "width": 0
   },
   {
-   "fieldname": "name",
+   "fieldname": "c",
    "fieldtype": "Data",
    "label": "C",
    "width": 0
   },
   {
-   "fieldname": "nilai_penawaran",
-   "fieldtype": "Currency",
+   "fieldname": "k",
+   "fieldtype": "Data",
    "label": "K",
    "width": 0
   },
   {
-   "fieldname": "catatan",
+   "fieldname": "sk",
    "fieldtype": "Data",
    "label": "SK",
    "width": 0
   },
   {
-   "fieldname": "catatan",
+   "fieldname": "skor",
    "fieldtype": "Data",
    "label": "SKOR",
    "width": 0
   },
   {
-   "fieldname": "catatan",
+   "fieldname": "status",
    "fieldtype": "Data",
    "label": "STATUS",
    "width": 0
@@ -59,13 +59,13 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2023-09-14 09:46:45.145935",
+ "modified": "2023-09-14 14:56:47.561093",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "LAPORAN HASIL SURVEY PELANGGAN",
  "owner": "Administrator",
  "prepared_report": 0,
- "query": "SELECT\n    main.customer, main.lingkup_pekerjaan, lpt.tanggal_rks, main.name, COALESCE(ipt.harga_penawaran_hkp/1000, 0) AS nilai_penawaran, COALESCE(ipt.keterangan, \"\") catatan\nFROM `tabINFORMASI PEMBUATAN PENAWARAN` AS main\nLEFT JOIN `tabLAPORAN PENJELASAN TENDER` AS lpt ON lpt.informasi_pembuatan_penawaran = main.name\nLEFT JOIN `tabINFORMASI PEMBUKAAN TENDER` AS ipt ON ipt.informasi_pembuatan_penawaran_terkait = main.name",
+ "query": "SELECT a.bs, a.b, a.c\nFROM (\n    SELECT\n    'Bagaimana komunikasi kami di dalam pelaksanaan proyek ini.' AS parameter_penilaian,\n    (\n        SELECT COUNT(*) FROM `tabKUESIONER LAPANGAN _ SOAL` WHERE pertanyaan = 'Bagaimana komunikasi kami di dalam pelaksanaan proyek ini.' AND jawaban = 'Baik Sekali'\n    ) AS bs,\n    (\n        SELECT COUNT(*) FROM `tabKUESIONER LAPANGAN _ SOAL` WHERE pertanyaan = 'Bagaimana komunikasi kami di dalam pelaksanaan proyek ini.' AND jawaban = 'Baik'\n    ) AS b,\n    (\n        SELECT COUNT(*) FROM `tabKUESIONER LAPANGAN _ SOAL` WHERE pertanyaan = 'Bagaimana komunikasi kami di dalam pelaksanaan proyek ini.' AND jawaban = 'Cukup'\n    ) AS c,\n    (\n        SELECT COUNT(*) FROM `tabKUESIONER LAPANGAN _ SOAL` WHERE pertanyaan = 'Bagaimana komunikasi kami di dalam pelaksanaan proyek ini.' AND jawaban = 'Kurang'\n    ) AS k,\n    (\n        SELECT COUNT(*) FROM `tabKUESIONER LAPANGAN _ SOAL` WHERE pertanyaan = 'Bagaimana komunikasi kami di dalam pelaksanaan proyek ini.' AND jawaban = 'Sangat Kurang'\n    ) AS sk\n) a\n",
  "ref_doctype": "Kuesioner Keupasan Pelanggan",
  "report_name": "LAPORAN HASIL SURVEY PELANGGAN",
  "report_type": "Query Report",
