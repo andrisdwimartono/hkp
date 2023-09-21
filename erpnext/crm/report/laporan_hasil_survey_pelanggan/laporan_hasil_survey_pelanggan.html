@@ -1,0 +1,83 @@
+<table width="100%">
+    <thead>
+        <tr>
+            <td class="text-center text-uppercase">
+                <h1>Laporan Hasil Survey Lapangan</h1>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-uppercase">Periode Penilaian : {%= frappe.datetime.str_to_user(filters.date_from) %} s/d {%=
+                frappe.datetime.str_to_user(filters.date_to) %}</td>
+        </tr>
+        <tr>
+            <td class="text-uppercase">Jumlah Responden : {%= data.length %}</td>
+        </tr>
+        <tr>
+            <td class="text-uppercase">Lingkup Survey : </td>
+        </tr>
+        <tr>
+            <td class="text-uppercase">Hasil Survey : </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <table width="90%" border=1 style="margin-left: 5%;">
+                    <thead style="font-weight: bold;" class="text-center text-uppercase">
+                        <tr>
+                            <td>No</td>
+                            <td>Parameter Penilaian</td>
+                            <td>SB</td>
+                            <td>B</td>
+                            <td>C</td>
+                            <td>K</td>
+                            <td>SK</td>
+                            <td>Skor</td>
+                            <td>Status</td>
+                        </tr>
+                    </thead>
+                    <tbody class="text-left">
+                        {% for(let i=0, k=data.length-1; i<k; i++) { %} <tr>
+                            <td>{%= i+1 %}</td>
+                            <td>{%= data[i].pertanyaan %}</td>
+                            <td>{%= data[i].baik_sekali %}</td>
+                            <td>{%= data[i].baik %}</td>
+                            <td>{%= data[i].cukup %}</td>
+                            <td>{%= data[i].kurang %}</td>
+                            <td>{%= data[i].sangat_kurang %}</td>
+                            <td>{%= data[i].skor %}</td>
+                            <td>{%= data[i].status %}</td>
+        </tr>
+        {% } %}
+    </tbody>
+</table>
+</td>
+</tr>
+</tbody>
+<tfoot>
+    <tr>
+        <td>
+            <table width="60%" style="margin-left: 35%;">
+                <tr>
+                    <td width="50%"></td>
+                    <td width="50%" class="text-center">
+                        Surabaya, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+                        Diketahui Oleh
+                    </td>
+                </tr>
+                <tr>
+                    <td height="70px"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="text-center">
+                        (...................................)<br>
+                        MR
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</tfoot>
+</table>
