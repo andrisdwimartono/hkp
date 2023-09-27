@@ -14,7 +14,8 @@
   "employee_name",
   "user",
   "process_time",
-  "comment"
+  "comment",
+  "signature"
  ],
  "fields": [
   {
@@ -23,13 +24,13 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Jabatan",
-   "reqd": 1
+   "mandatory_depends_on": "eval: doc.state != \"Rejected\""
   },
   {
    "fieldname": "jabatan_abbr",
    "fieldtype": "Data",
    "label": "Jabatan Abbr",
-   "reqd": 1
+   "mandatory_depends_on": "eval: doc.state != \"Rejected\""
   },
   {
    "columns": 2,
@@ -45,8 +46,8 @@
    "fieldname": "employee",
    "fieldtype": "Link",
    "label": "Karyawan",
-   "options": "Employee",
-   "reqd": 1
+   "mandatory_depends_on": "eval: doc.state != \"Rejected\"",
+   "options": "Employee"
   },
   {
    "columns": 2,
@@ -54,6 +55,7 @@
    "fieldname": "employee_name",
    "fieldtype": "Data",
    "label": "Nama",
+   "mandatory_depends_on": "eval: doc.state != \"Rejected\"",
    "read_only": 1
   },
   {
@@ -62,9 +64,9 @@
    "fieldname": "user",
    "fieldtype": "Link",
    "label": "User",
+   "mandatory_depends_on": "eval: doc.state != \"Rejected\"",
    "options": "User",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "process_time",
@@ -86,12 +88,18 @@
    "fieldname": "initial",
    "fieldtype": "Data",
    "label": "Initial"
+  },
+  {
+   "fieldname": "signature",
+   "fieldtype": "Signature",
+   "label": "Signature",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-08-30 13:59:15.253644",
+ "modified": "2023-09-26 09:29:04.036184",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Process Rules",

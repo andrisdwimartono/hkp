@@ -51,7 +51,7 @@
   {
    "fieldname": "details",
    "fieldtype": "Table",
-   "label": "Details",
+   "label": "List Gambar",
    "options": "Preliminary Design Detail"
   },
   {
@@ -64,7 +64,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-16 10:38:15.438487",
+ "modified": "2023-09-21 13:58:29.635710",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Preliminary Design",

@@ -521,6 +521,8 @@ scheduler_events = {
 		"erpnext.accounts.doctype.process_statement_of_accounts.process_statement_of_accounts.send_auto_email",
 		"erpnext.non_profit.doctype.membership.membership.set_expired_status",
 		"erpnext.hr.doctype.interview.interview.send_daily_feedback_reminder",
+        "erpnext.hr.utils.get_employee_certificate_obsolete",
+        "erpnext.hr.utils.get_employee_contract_obsolete",
 	],
 	"daily_long": [
 		"erpnext.setup.doctype.email_digest.email_digest.send",

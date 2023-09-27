@@ -6,6 +6,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "designation",
   "employee",
   "employee_name",
   "user"
@@ -34,12 +35,20 @@
    "label": "User",
    "options": "User",
    "read_only": 1
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Designation",
+   "options": "Designation",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-25 08:40:03.513164",
+ "modified": "2023-09-25 11:23:03.360577",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Project Team",

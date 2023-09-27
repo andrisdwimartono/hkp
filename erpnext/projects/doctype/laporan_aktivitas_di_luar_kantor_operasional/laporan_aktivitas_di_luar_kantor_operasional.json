@@ -1,0 +1,182 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "LALKO-.YYYY.-.####.",
+ "creation": "2023-09-20 22:51:27.662771",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "jenis_aktivitas",
+  "jenis_aktivitas_lainnya",
+  "project",
+  "project_name",
+  "column_break_y7zwj",
+  "tanggal",
+  "jam_mulai",
+  "jam_selesai",
+  "section_break_gbeky",
+  "alamat",
+  "persons",
+  "uraian_aktivitas",
+  "judul_kegiatan",
+  "kepada",
+  "dasar_perjalanan",
+  "maksud",
+  "tujuan",
+  "waktu_berangkat",
+  "tanggal_pelaksanaan",
+  "tempat",
+  "waktu_kepulangan",
+  "hasil_kunjungan"
+ ],
+ "fields": [
+  {
+   "fieldname": "jenis_aktivitas",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Jenis Aktivitas",
+   "options": "Kunjungan Lapangan\nKunjungan Supplier\nKunjungan Pelanggan\nLainnya",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.jenis_aktivitas == \"Lainnya\"",
+   "fieldname": "jenis_aktivitas_lainnya",
+   "fieldtype": "Data",
+   "label": "Jenis Aktivitas Lainnya",
+   "mandatory_depends_on": "eval:doc.jenis_aktivitas == \"Lainnya\"",
+   "read_only_depends_on": "eval:doc.jenis_aktivitas != \"Lainnya\""
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Kode Proyek",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Proyek",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_y7zwj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Tanggal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "jam_mulai",
+   "fieldtype": "Time",
+   "label": "Jam Mulai"
+  },
+  {
+   "fieldname": "jam_selesai",
+   "fieldtype": "Time",
+   "label": "Jam Selesai"
+  },
+  {
+   "fieldname": "section_break_gbeky",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "project.project_address",
+   "fieldname": "alamat",
+   "fieldtype": "Small Text",
+   "label": "Lokasi"
+  },
+  {
+   "fieldname": "persons",
+   "fieldtype": "Table",
+   "label": "Nama yang Dikunjungi",
+   "options": "LAPORAN AKTIVITAS DI LUAR KANTOR PERSON"
+  },
+  {
+   "fieldname": "uraian_aktivitas",
+   "fieldtype": "Section Break",
+   "label": "Uraian Aktivitas"
+  },
+  {
+   "fieldname": "judul_kegiatan",
+   "fieldtype": "Data",
+   "label": "Judul Kegiatan"
+  },
+  {
+   "fieldname": "kepada",
+   "fieldtype": "Data",
+   "label": "Kepada"
+  },
+  {
+   "fieldname": "dasar_perjalanan",
+   "fieldtype": "Small Text",
+   "label": "Dasar Perjalanan"
+  },
+  {
+   "fieldname": "maksud",
+   "fieldtype": "Small Text",
+   "label": "Maksud"
+  },
+  {
+   "fieldname": "tujuan",
+   "fieldtype": "Small Text",
+   "label": "Tujuan"
+  },
+  {
+   "fieldname": "waktu_berangkat",
+   "fieldtype": "Date",
+   "label": "Waktu Berangkat"
+  },
+  {
+   "fieldname": "tanggal_pelaksanaan",
+   "fieldtype": "Date",
+   "label": "Tanggal Pelaksanaan"
+  },
+  {
+   "fieldname": "tempat",
+   "fieldtype": "Data",
+   "label": "Tempat"
+  },
+  {
+   "fieldname": "waktu_kepulangan",
+   "fieldtype": "Date",
+   "label": "Waktu Kepulangan"
+  },
+  {
+   "default": "<br>\n<b>A. Operasional</b>\n<br>\n<br>\n<b>B. Logistik</b>\n<br>\n<br>\n<b>C. Engineering</b>",
+   "fieldname": "hasil_kunjungan",
+   "fieldtype": "Text Editor",
+   "label": "Hasil Kunjungan"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-09-20 23:02:38.507040",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "LAPORAN AKTIVITAS DI LUAR KANTOR OPERASIONAL",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

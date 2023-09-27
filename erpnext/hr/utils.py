@@ -19,6 +19,8 @@ from frappe.utils import (
 	unique,
 )
 
+from frappe.desk.doctype.notification_log.notification_log import make_notification_logs
+
 import erpnext
 from erpnext.hr.doctype.employee.employee import (
 	InactiveEmployeeStatusError,
@@ -758,3 +760,52 @@ def validate_active_employee(employee):
 			),
 			InactiveEmployeeStatusError,
 		)
+
+@frappe.whitelist()
+def get_employee_certificate_obsolete():
+	x = add_days(today(), -90)
+	employees = frappe.db.sql("""SELECT ec.*, e.employee_name, e.user_id, date_format(ec.date_end, "%d-%m-%Y") dend FROM `tabEmployee Certificate` ec
+						   INNER JOIN `tabEmployee` e ON e.name = ec.parent
+						   WHERE ec.date_end = '{0}'""".format(x), as_dict=1)
+	for d in employees:
+		notification_doc = {
+			"type": "Alert",
+			"document_type": "Employee",
+			"document_name": d.parent,
+			"subject": "{0} memiliki sertifikasi {1} yang akan berakhir di tanggal {2}".format(d.employee_name, d.certificate, d.dend),
+			"from_user": d.user_id or "Administrator",
+		}
+		
+		assigner = [d.user_id]
+		hr_employees = frappe.db.sql("""SELECT DISTINCT u.name user_id FROM `tabHas Role` hr
+							   INNER JOIN tabUser u ON u.name = hr.parent
+							   WHERE hr.role IN ('HR Manager', 'HR User') AND hr.parenttype = 'User'""", as_dict=1)
+		for hr in hr_employees:
+			assigner.append(hr.user_id)
+		notification_doc = frappe._dict(notification_doc)
+		
+		make_notification_logs(notification_doc, assigner)
+
+@frappe.whitelist()
+def get_employee_contract_obsolete():
+	x = add_days(today(), -90)
+	employees = frappe.db.sql("""SELECT e.*, date_format(e.date_of_end_contract, "%d-%m-%Y") dend FROM tabEmployee e WHERE e.date_of_end_contract <= '{0}'""".format(x), as_dict=1)
+
+	for d in employees:
+		notification_doc = {
+			"type": "Alert",
+			"document_type": "Employee",
+			"document_name": d.name,
+			"subject": "Kontrak {0} akan berakhir di tanggal {1}".format(d.employee_name, d.dend),
+			"from_user": d.user_id or "Administrator",
+		}
+		
+		assigner = [d.user_id]
+		hr_employees = frappe.db.sql("""SELECT DISTINCT u.name user_id FROM `tabHas Role` hr
+							   INNER JOIN tabUser u ON u.name = hr.parent
+							   WHERE hr.role IN ('HR Manager', 'HR User') AND hr.parenttype = 'User'""", as_dict=1)
+		for hr in hr_employees:
+			assigner.append(hr.user_id)
+		notification_doc = frappe._dict(notification_doc)
+		
+		make_notification_logs(notification_doc, assigner)

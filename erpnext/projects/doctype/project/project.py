@@ -44,6 +44,15 @@ class Project(Document):
 		self.update_costing()
 		self.update_percent_complete()
 		self.update_project_joined()
+		self.check_project_team()
+
+	def check_project_team(self):
+		for d in self.project_team:
+			pro = frappe.db.sql("""SELECT p.* FROM `tabProject` p
+					INNER JOIN `tabProject Team` pt ON pt.parent = p.name
+					WHERE p.expected_end_date >= now() AND pt.employee = '{0}' AND p.name != '{1}'""".format(d.employee, self.name), as_dict=1)
+			for p in pro:
+				frappe.msgprint("""{0} masih berada di proyek {1}""".format(d.employee_name, p.project_name))
 
 	def update_project_joined(self):
 		if self.project_team and len(self.project_team) > 0:

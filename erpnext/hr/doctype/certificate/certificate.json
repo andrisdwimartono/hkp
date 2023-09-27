@@ -21,13 +21,14 @@
   },
   {
    "fieldname": "institution",
-   "fieldtype": "Data",
-   "label": "Institution"
+   "fieldtype": "Link",
+   "label": "Institution",
+   "options": "Institution"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-25 08:23:49.060137",
+ "modified": "2023-09-19 15:20:15.828276",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Certificate",

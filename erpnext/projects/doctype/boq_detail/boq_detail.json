@@ -6,6 +6,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "types",
   "document_of_type",
   "type",
   "item",
@@ -13,6 +14,7 @@
   "deskripsi",
   "uom",
   "qty",
+  "koefisien",
   "duration",
   "pengadaan_material_section",
   "pengadaan_material_harga_satuan",
@@ -27,6 +29,7 @@
  ],
  "fields": [
   {
+   "columns": 1,
    "fieldname": "item",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -37,12 +40,11 @@
    "default": "0",
    "fieldname": "level",
    "fieldtype": "Int",
-   "in_list_view": 1,
    "label": "Level",
    "reqd": 1
   },
   {
-   "fetch_from": "document_of_type.item_name",
+   "columns": 2,
    "fieldname": "deskripsi",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -51,6 +53,7 @@
    "reqd": 1
   },
   {
+   "columns": 1,
    "fieldname": "uom",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -59,8 +62,10 @@
    "reqd": 1
   },
   {
+   "columns": 1,
    "fieldname": "qty",
    "fieldtype": "Float",
+   "in_list_view": 1,
    "label": "QTY",
    "reqd": 1
   },
@@ -70,17 +75,17 @@
    "label": " Pengadaan Material "
   },
   {
-   "fetch_from": "document_of_type.price",
-   "fetch_if_empty": 1,
    "fieldname": "pengadaan_material_harga_satuan",
    "fieldtype": "Currency",
    "label": " Harga Satuan",
    "reqd": 1
   },
   {
+   "columns": 1,
    "fieldname": "pengadaan_material_harga_total",
    "fieldtype": "Currency",
-   "label": " Harga Total"
+   "in_list_view": 1,
+   "label": " Harga Total Material"
   },
   {
    "fieldname": "transportasi_dan_asuransi_material_section",
@@ -88,17 +93,17 @@
    "label": " Transportasi dan Asuransi  Material "
   },
   {
-   "fetch_from": "document_of_type.transport_price",
-   "fetch_if_empty": 1,
    "fieldname": "transportasi_dan_asuransi_material_harga_satuan",
    "fieldtype": "Currency",
    "label": "Harga Satuan",
    "reqd": 1
   },
   {
+   "columns": 1,
    "fieldname": "transportasi_dan_asuransi_material_harga_total",
    "fieldtype": "Currency",
-   "label": "Harga Total"
+   "in_list_view": 1,
+   "label": "Harga Total Transportasi dan Asuransi Material"
   },
   {
    "fieldname": "pemasangan_dan_instalasi_section",
@@ -112,24 +117,27 @@
    "reqd": 1
   },
   {
+   "columns": 1,
    "fieldname": "pemasangan_dan_instalasi_section_harga_total",
    "fieldtype": "Currency",
-   "label": "Harga Total"
+   "in_list_view": 1,
+   "label": "Harga Total Pemasangan dan Instalasi"
   },
   {
+   "columns": 1,
    "fieldname": "total",
    "fieldtype": "Currency",
-   "label": "TOTAL"
+   "in_list_view": 1,
+   "label": "TOTAL",
+   "read_only": 1
   },
   {
    "fieldname": "document_of_type",
-   "fieldtype": "Link",
-   "in_list_view": 1,
+   "fieldtype": "Dynamic Link",
    "label": "Document of Type",
-   "options": "Sub Section Material Type Entries"
+   "options": "types"
   },
   {
-   "fetch_from": "document_of_type.type",
    "fieldname": "type",
    "fieldtype": "Select",
    "label": "Type",
@@ -143,12 +151,27 @@
    "fieldtype": "Int",
    "label": "Duration",
    "reqd": 1
+  },
+  {
+   "default": "Sub Section Material Type Entries",
+   "fieldname": "types",
+   "fieldtype": "Select",
+   "label": "Is Analisa Harga Satuan",
+   "options": "Analisa Harga Satuan\nSub Section Material Type Entries"
+  },
+  {
+   "columns": 1,
+   "default": "1",
+   "fieldname": "koefisien",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Koefisien"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-09-14 06:29:23.189093",
+ "modified": "2023-09-21 13:40:30.744059",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "BOQ Detail",

@@ -6,6 +6,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "no_gambar",
   "sub_section",
   "sub_section_last",
   "sub_section_history",
@@ -97,6 +98,7 @@
    "fieldname": "date_last",
    "fieldtype": "Date",
    "hidden": 1,
+   "in_list_view": 1,
    "label": "Date Last"
   },
   {
@@ -151,7 +153,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Progress",
-   "options": "RFC\nNEN/APPROVE\nEN\nFI",
+   "options": "PROSES REVIEW\nRFC\nNEN/APPROVE\nEN\nFI",
    "reqd": 1
   },
   {
@@ -243,12 +245,19 @@
    "fieldname": "letter_no_return",
    "fieldtype": "Data",
    "label": "Letter No"
+  },
+  {
+   "columns": 1,
+   "fieldname": "no_gambar",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "No Gambar"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-16 10:11:58.713847",
+ "modified": "2023-09-21 13:59:31.977743",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Preliminary Design Detail",

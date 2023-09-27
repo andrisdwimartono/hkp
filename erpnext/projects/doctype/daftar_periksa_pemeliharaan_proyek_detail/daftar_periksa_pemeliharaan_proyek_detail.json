@@ -1,0 +1,61 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-09-21 09:24:52.357630",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "jenis_pekerjaan",
+  "lokasi_pemeriksaan",
+  "parameter_pemeriksaan",
+  "status",
+  "uraian_ketidaksesuaian"
+ ],
+ "fields": [
+  {
+   "fieldname": "jenis_pekerjaan",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Jenis Pekerjaan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "lokasi_pemeriksaan",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Lokasi Pemeriksaan"
+  },
+  {
+   "fieldname": "parameter_pemeriksaan",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Parameter Pemeriksaan"
+  },
+  {
+   "default": "Setuju",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Setuju\nTidak Setuju"
+  },
+  {
+   "fieldname": "uraian_ketidaksesuaian",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Uraian Ketidaksesuaian"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-09-21 09:24:52.357630",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Daftar Periksa Pemeliharaan Proyek Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

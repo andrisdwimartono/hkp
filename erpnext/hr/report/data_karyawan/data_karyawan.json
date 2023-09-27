@@ -1,0 +1,209 @@
+{
+ "add_total_row": 0,
+ "columns": [
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Nama",
+   "width": 0
+  },
+  {
+   "fieldname": "initial",
+   "fieldtype": "Data",
+   "label": "Inisial",
+   "width": 0
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "Jabatan",
+   "width": 0
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "Departemen",
+   "width": 0
+  },
+  {
+   "fieldname": "position",
+   "fieldtype": "Data",
+   "label": "Posisi",
+   "width": 0
+  },
+  {
+   "fieldname": "pendidikan",
+   "fieldtype": "Data",
+   "label": "Pendidikan",
+   "width": 0
+  },
+  {
+   "fieldname": "grade",
+   "fieldtype": "Float",
+   "label": "IPK",
+   "width": 0
+  },
+  {
+   "fieldname": "maj_opt_subj",
+   "fieldtype": "Data",
+   "label": "Bidang",
+   "width": 0
+  },
+  {
+   "fieldname": "school_univ",
+   "fieldtype": "Data",
+   "label": "Nama Instansi Pendidikan",
+   "width": 0
+  },
+  {
+   "fieldname": "iq",
+   "fieldtype": "Int",
+   "label": "IQ",
+   "width": 0
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "Jabatan",
+   "width": 0
+  },
+  {
+   "fieldname": "score",
+   "fieldtype": "Float",
+   "label": "Score",
+   "width": 0
+  },
+  {
+   "fieldname": "kategori",
+   "fieldtype": "Data",
+   "label": "Kategori",
+   "width": 0
+  },
+  {
+   "fieldname": "saran",
+   "fieldtype": "Data",
+   "label": "Saran",
+   "width": 0
+  },
+  {
+   "fieldname": "place_of_birth",
+   "fieldtype": "Data",
+   "label": "Tempat Lahir",
+   "width": 0
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Tanggal Lahir",
+   "width": 0
+  },
+  {
+   "fieldname": "usia",
+   "fieldtype": "Int",
+   "label": "Usia",
+   "width": 0
+  },
+  {
+   "fieldname": "marital_status",
+   "fieldtype": "Data",
+   "label": "Menikah",
+   "width": 0
+  },
+  {
+   "fieldname": "anak",
+   "fieldtype": "Int",
+   "label": "Anak",
+   "width": 0
+  },
+  {
+   "fieldname": "current_address",
+   "fieldtype": "Data",
+   "label": "Alamat",
+   "width": 0
+  },
+  {
+   "fieldname": "cell_number",
+   "fieldtype": "Data",
+   "label": "No. HP",
+   "width": 0
+  },
+  {
+   "fieldname": "prefered_email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "width": 0
+  },
+  {
+   "fieldname": "school_univ",
+   "fieldtype": "Currency",
+   "label": "Universitas/Sekolah",
+   "width": 0
+  },
+  {
+   "fieldname": "date_of_joining",
+   "fieldtype": "Date",
+   "label": "Mulai Bekerja",
+   "width": 0
+  },
+  {
+   "fieldname": "masa_kerja",
+   "fieldtype": "Data",
+   "label": "Masa Kerja",
+   "width": 0
+  },
+  {
+   "fieldname": "employment_type",
+   "fieldtype": "Data",
+   "label": "Kontrak Kerja",
+   "width": 0
+  },
+  {
+   "fieldname": "date_of_end_contract",
+   "fieldtype": "Date",
+   "label": "Berakhirnya Kontrak Kerja",
+   "width": 0
+  }
+ ],
+ "creation": "2023-09-18 15:23:54.604320",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "KOP HKP",
+ "modified": "2023-09-19 10:58:22.046224",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "DATA KARYAWAN",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\n    e.employee_name,\n    e.initial,\n    e.designation,\n    e.department,\n    e.position,\n    ee.pendidikan,\n    ee.grade,\n    ee.maj_opt_subj,\n    ee.school_univ,\n    hp.iq,\n    hp.designation,\n    hp.score,\n    hp.kategori,\n    hp.saran,\n    e.place_of_birth,\n    e.date_of_birth,\n    CASE WHEN e.date_of_birth is not null THEN TIMESTAMPDIFF(year, e.date_of_birth, now() ) ELSE 0 END usia,\n    e.marital_status,\n    COALESCE(ef.count, 0) anak,\n    e.current_address,\n    e.cell_number,\n    e.prefered_email,\n    ee.school_univ,\n    e.date_of_joining,\n    CASE WHEN e.date_of_joining is not null THEN \n        CONCAT(TIMESTAMPDIFF(year, e.date_of_joining, now()), \" Tahun \", MOD(TIMESTAMPDIFF(month, e.date_of_joining, now()), 12), \" Bulan\") ELSE 0 END masa_kerja,\n    e.employment_type,\n    e.date_of_end_contract\nFROM `tabEmployee` e \nLEFT JOIN (\n            SELECT \n                ee.parent, MAX(ee.idx) idx\n            FROM `tabEmployee Education` ee\n            GROUP BY ee.parent\n            ) ee2 ON ee2.parent = e.name\nLEFT JOIN (\n            SELECT \n                ee.parent, ee.pendidikan, ee.grade, ee.maj_opt_subj, ee.school_univ, ee.idx\n            FROM `tabEmployee Education` ee\n            ) ee ON ee.parent = e.name AND ee.idx = ee2.idx\nLEFT JOIN (\n            SELECT\n                hp.employee, hp.iq, hp.designation, hp.score, hp.kategori, hp.saran\n            FROM `tabHasil Psikotes` hp\n            GROUP BY hp.employee\n            ORDER BY hp.creation DESC\n            ) hp ON hp.employee = e.name\nLEFT JOIN (\n            SELECT ef.parent, SUM(ef.count) count FROM `tabEmployee Family` ef\n            WHERE ef.family_type = \"Anak\"\n            GROUP BY ef.parent\n            ) ef ON ef.parent = e.name;",
+ "ref_doctype": "Employee",
+ "report_name": "DATA KARYAWAN",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "Employee"
+  },
+  {
+   "role": "HR Manager"
+  },
+  {
+   "role": "HR User"
+  },
+  {
+   "role": "Employee Self Service"
+  },
+  {
+   "role": "Kasir"
+  },
+  {
+   "role": "Operasional"
+  },
+  {
+   "role": "Engineering"
+  }
+ ]
+}

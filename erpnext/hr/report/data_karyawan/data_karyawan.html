@@ -1,0 +1,41 @@
+{%
+	var report_columns = report.get_columns_for_print();
+%}
+<table width="100%">
+    <tr>
+        <td class="text-center" width="100%"><h4>DAFTAR KARYAWAN</h4></td>
+    </tr>
+</table>
+
+<table class="table table-bordered" width="100%" style="font-size: 11px; border:1px solid black; margin: 0px; padding: 0px;">
+	<thead>
+		<tr class="text-center">
+			<td class="text-center"><b>No</b></td>
+            {% for(let i=0, l=report_columns.length; i<l; i++) { %}
+            <td class="text-center">
+                <b>{%= report_columns[i].label %}</b>
+            </td>
+            {% } %}
+		</tr>
+	</thead>
+	<tbody>
+        {% for(let j=0, k=data.length; j<k; j++) { %}
+			{%
+				var row = data[j];
+			%}
+			<tr>
+                <td>{%= j+1 %}</td>
+				{% for(let i=0, l=report_columns.length; i<l; i++) { %}
+                    {% const fieldname = report_columns[i].fieldname; %}
+                    <td>
+                    {%= frappe.format(row[fieldname], report_columns[i], {}, row) %}
+                    </td>
+				{% } %}
+			</tr>
+		{% } %}
+    </tbody>
+</table>
+
+<p class="text-right text-muted">
+	Printed On {%= frappe.datetime.str_to_user(frappe.datetime.get_datetime_as_string()) %}
+</p>

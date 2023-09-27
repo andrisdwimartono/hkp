@@ -10,6 +10,7 @@
   "posting_date",
   "bulan",
   "tahun",
+  "sub_contract_hand_over",
   "supplier",
   "supplier_name",
   "project",
@@ -25,18 +26,23 @@
  ],
  "fields": [
   {
+   "fetch_from": "sub_contract_hand_over.sub_contract",
    "fieldname": "supplier",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Supplier",
    "options": "Sub Contract",
+   "read_only": 1,
    "reqd": 1
   },
   {
+   "fetch_from": "sub_contract_hand_over.project",
    "fieldname": "project",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Project",
    "options": "Project",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -57,7 +63,6 @@
    "fetch_from": "project.project_name",
    "fieldname": "project_name",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "label": "Project Name",
    "read_only": 1
   },
@@ -86,10 +91,12 @@
    "read_only": 1
   },
   {
+   "fetch_from": "sub_contract_hand_over.job_name",
    "fieldname": "jenis_pekerjaan",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Jenis Pekerjaan"
+   "label": "Jenis Pekerjaan",
+   "read_only": 1
   },
   {
    "fieldname": "total_nilai",
@@ -120,6 +127,7 @@
    "fetch_from": "supplier.contractor_name",
    "fieldname": "supplier_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Supplier Name",
    "read_only": 1
   },
@@ -128,11 +136,18 @@
    "fieldtype": "Table",
    "label": "Process Rules",
    "options": "Process Rules"
+  },
+  {
+   "fieldname": "sub_contract_hand_over",
+   "fieldtype": "Link",
+   "label": "Sub Contract Hand Over",
+   "options": "Sub Contract Hand Over",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-06 12:44:25.910648",
+ "modified": "2023-09-21 10:29:41.472761",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Evaluasi Supplier Jasa",
@@ -177,7 +192,7 @@
    "write": 1
   }
  ],
- "sort_field": "modified",
+ "sort_field": "project",
  "sort_order": "DESC",
  "track_changes": 1
 }

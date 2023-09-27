@@ -1,0 +1,75 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-09-20 23:31:04.826172",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "uraian",
+  "kriteria",
+  "hasil_pemeriksaan",
+  "tindakan_yang_harus_dilakukan",
+  "tenggat_waktu",
+  "keterangan"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "uraian",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Uraian"
+  },
+  {
+   "columns": 2,
+   "fieldname": "kriteria",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Kriteria"
+  },
+  {
+   "columns": 1,
+   "default": "Tidak Ada",
+   "fieldname": "hasil_pemeriksaan",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Hasil Pemeriksaan",
+   "options": "Ada\nTidak Ada"
+  },
+  {
+   "columns": 1,
+   "fieldname": "tindakan_yang_harus_dilakukan",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Tindakan yang harus dilakukan"
+  },
+  {
+   "columns": 1,
+   "default": "Today",
+   "fieldname": "tenggat_waktu",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Tenggat waktu",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "keterangan",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Keterangan"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-09-26 22:04:16.483887",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "DAFTAR PERIKSA SAAT KUNJUNGAN LAPANGAN DETAIL",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

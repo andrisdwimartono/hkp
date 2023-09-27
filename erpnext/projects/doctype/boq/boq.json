@@ -9,7 +9,8 @@
  "field_order": [
   "sub_section",
   "job_name",
-  "boq_detail"
+  "boq_detail",
+  "grand_total"
  ],
  "fields": [
   {
@@ -33,11 +34,17 @@
    "label": "BOQ Detail",
    "options": "BOQ Detail",
    "reqd": 1
+  },
+  {
+   "fieldname": "grand_total",
+   "fieldtype": "Float",
+   "label": "Grand Total",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-07 19:22:47.649311",
+ "modified": "2023-09-21 13:25:50.985860",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "BOQ",

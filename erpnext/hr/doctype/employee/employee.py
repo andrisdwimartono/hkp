@@ -66,6 +66,45 @@ class Employee(NestedSet):
 
 		self.update_to_date_in_work_history()
 
+		self.set_desgnation_history()
+	
+	def set_desgnation_history(self):
+		last_desgnation = None
+		if len(self.designation_histories) > 0:
+			last_desgnation = self.designation_histories[len(self.designation_histories)-1].designation
+		else:
+			if self.designation:
+				self.append("designation_histories", {
+					"designation": self.designation,
+					"tanggal_mulai": today()
+				})
+		if self.designation != last_desgnation and last_desgnation != None:
+			self.designation_histories[len(self.designation_histories)-1].tanggal_selesai = today()
+			self.append("designation_histories", {
+				"designation": self.designation,
+				"tanggal_mulai": today()
+			})
+		
+		last_desgnation = None
+		if len(self.internal_work_history) > 0:
+			last_desgnation = self.internal_work_history[len(self.internal_work_history)-1].designation
+		else:
+			if self.designation:
+				self.append("internal_work_history", {
+					"designation": self.designation,
+					"department": self.department,
+					"branch": self.branch,
+					"from_date": today()
+				})
+		if self.designation != last_desgnation and last_desgnation != None:
+			self.internal_work_history[len(self.internal_work_history)-1].to_date = today()
+			self.append("internal_work_history", {
+				"designation": self.designation,
+				"department": self.department,
+				"branch": self.branch,
+				"from_date": today()
+			})
+
 	def after_rename(self, old, new, merge):
 		self.db_set("employee", new)
 
