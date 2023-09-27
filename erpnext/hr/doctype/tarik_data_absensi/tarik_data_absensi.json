@@ -53,14 +53,13 @@
    "fieldname": "absences",
    "fieldtype": "Table",
    "label": "Absences",
-   "options": "Absences",
-   "read_only": 1
+   "options": "Absences"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-09-27 12:50:42.394398",
+ "modified": "2023-09-27 13:42:13.282660",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Tarik Data Absensi",
