@@ -128,6 +128,7 @@ def get_process_rules(doctype):
 	ORDER BY b.idx ASC""".format(doctype), as_dict=1)
 
 def set_default_process_rules(doc, method=None):
+	return
 	prs = frappe.db.sql("""
 		SELECT wds.* FROM `tabWorkflow` w
 		INNER JOIN `tabWorkflow Document State` wds ON wds.parent = w.name
