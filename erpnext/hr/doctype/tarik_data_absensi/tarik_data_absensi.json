@@ -9,6 +9,7 @@
   "start_date",
   "end_date",
   "ringkasan_absensi_karyawan",
+  "absences",
   "detail_data_absensi",
   "amended_from"
  ],
@@ -47,12 +48,19 @@
    "fieldtype": "Table",
    "label": "Detail Data Absensi",
    "options": "Detail Data Absensi"
+  },
+  {
+   "fieldname": "absences",
+   "fieldtype": "Table",
+   "label": "Absences",
+   "options": "Absences",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-09-27 11:34:22.962471",
+ "modified": "2023-09-27 12:50:42.394398",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Tarik Data Absensi",

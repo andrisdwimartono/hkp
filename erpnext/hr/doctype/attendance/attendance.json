@@ -17,6 +17,8 @@
   "leave_application",
   "column_break0",
   "attendance_date",
+  "attendance_time",
+  "leave_time",
   "company",
   "department",
   "attendance_request",
@@ -199,13 +201,23 @@
   {
    "fieldname": "column_break_18",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "attendance_time",
+   "fieldtype": "Time",
+   "label": "Attendance Time"
+  },
+  {
+   "fieldname": "leave_time",
+   "fieldtype": "Time",
+   "label": "Leave Time"
   }
  ],
  "icon": "fa fa-ok",
  "idx": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2020-09-18 17:26:09.703215",
+ "modified": "2023-09-27 12:49:28.480620",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Attendance",

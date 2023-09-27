@@ -45,17 +45,20 @@
   {
    "fieldname": "att_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Tanggal Kehadiran"
   },
   {
    "fieldname": "punch_time",
    "fieldtype": "Time",
+   "in_list_view": 1,
    "label": "Waktu"
   },
   {
    "default": "Check In",
    "fieldname": "punch_state",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Jenis",
    "options": "Check In\nCheck Out"
   },
@@ -73,7 +76,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-09-27 11:33:36.844043",
+ "modified": "2023-09-27 12:19:32.688351",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Detail Data Absensi",
