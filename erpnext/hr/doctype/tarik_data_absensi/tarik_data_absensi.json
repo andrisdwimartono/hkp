@@ -41,25 +41,28 @@
    "fieldname": "ringkasan_absensi_karyawan",
    "fieldtype": "Table",
    "label": "Ringkasan Absensi Karyawan",
-   "options": "Ringkasan Absensi Karyawan"
+   "options": "Ringkasan Absensi Karyawan",
+   "read_only": 1
   },
   {
    "fieldname": "detail_data_absensi",
    "fieldtype": "Table",
    "label": "Detail Data Absensi",
-   "options": "Detail Data Absensi"
+   "options": "Detail Data Absensi",
+   "read_only": 1
   },
   {
    "fieldname": "absences",
    "fieldtype": "Table",
    "label": "Absences",
-   "options": "Absences"
+   "options": "Absences",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-09-27 13:42:13.282660",
+ "modified": "2023-09-29 10:33:14.758258",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Tarik Data Absensi",

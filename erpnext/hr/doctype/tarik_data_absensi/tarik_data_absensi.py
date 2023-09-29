@@ -5,9 +5,13 @@ import frappe
 from frappe.model.document import Document
 from erpnext.hr.apifacerecognition import get_transaction
 from datetime import datetime
+from frappe.utils import (
+	time_diff_in_seconds,
+)
 
 class TarikDataAbsensi(Document):
 	def validate(self):
+		self.set("ringkasan_absensi_karyawan", [])
 		if len(self.ringkasan_absensi_karyawan) <= 0:
 			for e in frappe.db.sql("""SELECT * FROM `tabEmployee` e""", as_dict=1):
 				self.append("ringkasan_absensi_karyawan", {
@@ -25,7 +29,7 @@ class TarikDataAbsensi(Document):
 				emp = None
 				if str(t["emp_code"]) in map_emp_code:
 					emp = map_emp_code[str(t["emp_code"])]
-					if t["punch_state"] == "Check In":
+					if t["punch_state"] == "Check In" and not frappe.db.sql("""SELECT * FROM `tabAttendance` WHERE emoloyee = '{0}' AND attendance_date = '{1}' AND docstatus != 2""".format(emp[0], t["att_date"]), as_dict=1):
 						self.append("absences",{
 							"employee": emp[0],
 							"employee_name": emp[1],
@@ -53,7 +57,22 @@ class TarikDataAbsensi(Document):
 				for e in self.detail_data_absensi:
 					if e.punch_state == "Check Out" and d.employee == e.employee and d.attendance_date == e.att_date:
 						d.leave_time = e.punch_time
-						s1 = datetime.strptime(d.attendance_time, '%H:%M').time()
-						s2 = datetime.strptime(d.leave_time, '%H:%M').time()
-						delta = s2-s1
-						d.working_hours = delta.strftime('%H')
+						s1 = datetime.strptime(d.attendance_time, '%H:%M')
+						s2 = datetime.strptime(d.leave_time, '%H:%M')
+						delta = time_diff_in_seconds(d.leave_time, d.attendance_time)
+						d.working_hours = float(delta/3600)
+		
+	def on_submit(self):
+		for d in self.absences:
+			attendance_doc = frappe.get_doc({
+				"doctype": "Attendance",
+				"employee": d.employee,
+				"employee_name": d.employee_name,
+				"working_hours": d.working_hours,
+				"status": "Present",
+				"attendance_date": d.attendance_date,
+				"attendance_time": d.attendance_time,
+				"leave_time": d.leave_time
+			})
+			attendance_doc.save()
+			attendance_doc.submit()
