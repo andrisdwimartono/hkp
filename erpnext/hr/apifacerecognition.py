@@ -3,7 +3,7 @@ import requests
 import frappe
 
 def get_token():
-    url = "http://192.168.18.250:8091/jwt-api-token-auth/"
+    url = "http://192.168.18.65:8091/jwt-api-token-auth/"
     headers = {
         "Content-Type": "application/json",
     }
@@ -22,7 +22,7 @@ def get_token():
 
 def get_all_department(token):
     try:
-        url = "http://192.168.18.250:8091/personnel/api/departments/?page_size=20"
+        url = "http://192.168.18.65:8091/personnel/api/departments/?page_size=20"
         headers = {
             "Content-Type": "application/json",
             "Authorization": "JWT {0}".format(token["token"])
@@ -44,7 +44,7 @@ def get_transaction(start_date=None, end_date=None):
         departments = get_all_department(token)
         alldata = []
         for dept in departments["data"]:
-            url = "http://192.168.18.250:8091/att/api/transactionReport/?start_date="+start_date+"&end_date="+end_date+"&departments="+str(dept["id"])
+            url = "http://192.168.18.65:8091/att/api/transactionReport/?start_date="+start_date+"&end_date="+end_date+"&departments="+str(dept["id"])
             headers = {
                 "Content-Type": "application/json",
                 "Authorization": "JWT {0}".format(token["token"])
