@@ -29,7 +29,7 @@ class TarikDataAbsensi(Document):
 				emp = None
 				if str(t["emp_code"]) in map_emp_code:
 					emp = map_emp_code[str(t["emp_code"])]
-					if t["punch_state"] == "Check In" and not frappe.db.sql("""SELECT * FROM `tabAttendance` WHERE employee = '{0}' AND attendance_date = '{1}' AND docstatus != 2""".format(emp[0], t["att_date"]), as_dict=1):
+					if t["punch_state"] == "Check In" and not frappe.db.sql("""SELECT * FROM `tabAttendance` WHERE employee = '{0}' AND attendance_date = '{1}'""".format(emp[0], t["att_date"]), as_dict=1):
 						self.append("absences",{
 							"employee": emp[0],
 							"employee_name": emp[1],
@@ -64,15 +64,31 @@ class TarikDataAbsensi(Document):
 		
 	def on_submit(self):
 		for d in self.absences:
-			attendance_doc = frappe.get_doc({
-				"doctype": "Attendance",
-				"employee": d.employee,
-				"employee_name": d.employee_name,
-				"working_hours": d.working_hours,
-				"status": "Present",
-				"attendance_date": d.attendance_date,
-				"attendance_time": d.attendance_time,
-				"leave_time": d.leave_time
-			})
-			attendance_doc.save()
-			attendance_doc.submit()
+			atts = frappe.db.sql("""SELECT * FROM `tabAttendance` WHERE employee = '{0}' AND attendance_date = '{1}'""".format(d.employee, d.attendance_date), as_dict=1)
+			if not atts:
+				attendance_doc = frappe.get_doc({
+					"doctype": "Attendance",
+					"employee": d.employee,
+					"employee_name": d.employee_name,
+					"working_hours": d.working_hours,
+					"status": "Present",
+					"attendance_date": d.attendance_date,
+					"attendance_time": d.attendance_time,
+					"leave_time": d.leave_time
+				})
+				attendance_doc.save()
+				attendance_doc.submit()
+			else:
+				if atts[0].docstatus == 2:
+					attendance_doc = frappe.get_doc({
+						"doctype": "Attendance",
+						"employee": d.employee,
+						"employee_name": d.employee_name,
+						"working_hours": d.working_hours,
+						"status": "Present",
+						"attendance_date": d.attendance_date,
+						"attendance_time": d.attendance_time,
+						"leave_time": d.leave_time
+					})
+					attendance_doc.save()
+					attendance_doc.submit()
