@@ -29,7 +29,7 @@ class TarikDataAbsensi(Document):
 				emp = None
 				if str(t["emp_code"]) in map_emp_code:
 					emp = map_emp_code[str(t["emp_code"])]
-					if t["punch_state"] == "Check In" and not frappe.db.sql("""SELECT * FROM `tabAttendance` WHERE emoloyee = '{0}' AND attendance_date = '{1}' AND docstatus != 2""".format(emp[0], t["att_date"]), as_dict=1):
+					if t["punch_state"] == "Check In" and not frappe.db.sql("""SELECT * FROM `tabAttendance` WHERE employee = '{0}' AND attendance_date = '{1}' AND docstatus != 2""".format(emp[0], t["att_date"]), as_dict=1):
 						self.append("absences",{
 							"employee": emp[0],
 							"employee_name": emp[1],
