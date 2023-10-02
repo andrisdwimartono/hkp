@@ -53,12 +53,12 @@ class TarikDataAbsensi(Document):
 			for d in self.absences:
 				for k in self.ringkasan_absensi_karyawan:
 					if k.employee == d.employee:
-						k.total_kehadiran = k.total_kehadiran+1
+						k.total_kehadiran = k.total_kehadiran+1 if k.total_kehadiran else 1
 				for e in self.detail_data_absensi:
 					if e.punch_state == "Check Out" and d.employee == e.employee and d.attendance_date == e.att_date:
 						d.leave_time = e.punch_time
-						s1 = datetime.strptime(d.attendance_time, '%H:%M')
-						s2 = datetime.strptime(d.leave_time, '%H:%M')
+						# s1 = datetime.strptime(d.attendance_time, '%H:%M')
+						# s2 = datetime.strptime(d.leave_time, '%H:%M')
 						delta = time_diff_in_seconds(d.leave_time, d.attendance_time)
 						d.working_hours = float(delta/3600)
 		
