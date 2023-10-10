@@ -1,0 +1,45 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-05 04:43:33.130964",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "no_hp",
+  "nama_peserta",
+  "designation"
+ ],
+ "fields": [
+  {
+   "fieldname": "no_hp",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "No HP"
+  },
+  {
+   "fieldname": "nama_peserta",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nama Peserta",
+   "reqd": 1
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Designation"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-10-05 04:43:33.130964",
+ "modified_by": "Administrator",
+ "module": "Support",
+ "name": "Peserta Rapat External",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

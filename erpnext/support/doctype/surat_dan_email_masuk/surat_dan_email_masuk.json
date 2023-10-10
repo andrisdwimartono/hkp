@@ -1,0 +1,136 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "SEM-.YY.-.#####.",
+ "creation": "2023-10-04 10:46:21.653518",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "type",
+  "tanggal",
+  "customer",
+  "email_address",
+  "nomer_surat",
+  "perihal",
+  "column_break_3eopo",
+  "tanggal_terima_surat",
+  "kode_ordner",
+  "section_break_dxku4",
+  "description",
+  "notifikasi",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Tanggal Surat",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nama Perusahaan",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.type == \"Surat\"",
+   "fieldname": "nomer_surat",
+   "fieldtype": "Data",
+   "label": "Nomer Surat",
+   "mandatory_depends_on": "eval:doc.type == \"Surat\""
+  },
+  {
+   "fieldname": "perihal",
+   "fieldtype": "Data",
+   "label": "Perihal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_3eopo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "tanggal_terima_surat",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Tanggal Terima Surat",
+   "reqd": 1
+  },
+  {
+   "fieldname": "kode_ordner",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Kode Ordner",
+   "options": "Ordner"
+  },
+  {
+   "fieldname": "section_break_dxku4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "default": "Surat",
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Surat\nEmail",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.type == \"Email\"",
+   "fieldname": "email_address",
+   "fieldtype": "Data",
+   "label": "Email Address",
+   "mandatory_depends_on": "eval:doc.type == \"Email\""
+  },
+  {
+   "fieldname": "notifikasi",
+   "fieldtype": "Table",
+   "label": "Notifikasi",
+   "options": "Notifikasi"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Surat dan Email Masuk",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-10-05 11:13:00.362493",
+ "modified_by": "Administrator",
+ "module": "Support",
+ "name": "Surat dan Email Masuk",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

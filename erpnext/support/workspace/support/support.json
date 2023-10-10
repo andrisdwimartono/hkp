@@ -10,9 +10,99 @@
  "hide_custom": 0,
  "icon": "support",
  "idx": 0,
+ "is_default": 0,
  "is_standard": 1,
  "label": "Support",
  "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Dokumen Perusahaan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Dokumen Perusahaan",
+   "link_to": "Company Document",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Peminjaman Dokumen",
+   "link_to": "Peminjaman Dokumen",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Surat dan Email Masuk",
+   "link_to": "Surat dan Email Masuk",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Risalah Rapat",
+   "link_to": "Risalah Rapat",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Schedule Aktivitas",
+   "link_to": "Schedule Aktivitas",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Photo Dokumentasi",
+   "link_to": "Photo Dokumentasi",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Dokumen Tender",
+   "link_to": "Dokumen Tender",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Manajemen File Administrasi",
+   "link_to": "Manajemen File Administrasi",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Keikut Sertaan Tender",
+   "link_to": "Jadwal dan PIC Tender",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
   {
    "hidden": 0,
    "is_query_report": 0,
@@ -156,7 +246,7 @@
    "type": "Link"
   }
  ],
- "modified": "2020-12-01 13:38:37.073482",
+ "modified": "2023-10-05 14:34:35.428830",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Support",

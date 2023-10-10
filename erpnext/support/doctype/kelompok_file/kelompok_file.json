@@ -1,0 +1,51 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:kelompok_file",
+ "creation": "2023-10-05 13:38:20.842530",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "kelompok_file",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "kelompok_file",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Kelompok File",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-10-05 13:38:20.842530",
+ "modified_by": "Administrator",
+ "module": "Support",
+ "name": "Kelompok File",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

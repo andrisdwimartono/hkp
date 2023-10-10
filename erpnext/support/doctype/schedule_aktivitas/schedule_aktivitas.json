@@ -1,0 +1,123 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "SCHH-.YY.-.####.",
+ "creation": "2023-10-05 05:20:59.363487",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "personal_name",
+  "lokasi",
+  "agenda",
+  "column_break_ivi08",
+  "tanggal",
+  "jam",
+  "color",
+  "section_break_kh3uf",
+  "description",
+  "peserta_rapat",
+  "peserta_rapat_external"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Tanggal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Personal",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "personal_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Personal Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "jam",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Jam",
+   "reqd": 1
+  },
+  {
+   "fieldname": "lokasi",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Lokasi"
+  },
+  {
+   "fieldname": "agenda",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nama Agenda",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "peserta_rapat",
+   "fieldtype": "Table",
+   "label": "Peserta Rapat",
+   "options": "Peserta Rapat"
+  },
+  {
+   "fieldname": "peserta_rapat_external",
+   "fieldtype": "Table",
+   "label": "Peserta Rapat External",
+   "options": "Peserta Rapat External"
+  },
+  {
+   "fieldname": "column_break_ivi08",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_kh3uf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "color",
+   "fieldtype": "Color",
+   "label": "Color"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-10-05 05:27:43.627990",
+ "modified_by": "Administrator",
+ "module": "Support",
+ "name": "Schedule Aktivitas",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

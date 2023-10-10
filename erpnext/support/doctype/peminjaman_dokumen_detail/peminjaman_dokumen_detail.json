@@ -1,0 +1,92 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-04 21:35:34.081837",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "document",
+  "uom",
+  "volume",
+  "description",
+  "kondisi_awal",
+  "kondisi_awal_lain",
+  "kondisi_kembali",
+  "kondisi_kembali_lain"
+ ],
+ "fields": [
+  {
+   "fieldname": "document",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company Document",
+   "options": "Company Document",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "document.uom",
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "UoM",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "volume",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Volume",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "default": "Baik",
+   "fieldname": "kondisi_awal",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Kondisi Awal",
+   "options": "Baik\nRusak\nLain - lain",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval: doc.kondisi_awal == \"Lain - lain\"",
+   "fieldname": "kondisi_awal_lain",
+   "fieldtype": "Small Text",
+   "label": "Kondisi Awal Lain",
+   "mandatory_depends_on": "eval: doc.kondisi_awal == \"Lain - lain\""
+  },
+  {
+   "depends_on": "eval:!doc.__islocal",
+   "fieldname": "kondisi_kembali",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Kondisi Kembali",
+   "mandatory_depends_on": "eval:!doc.__islocal",
+   "options": "\nBaik\nRusak\nLain - lain"
+  },
+  {
+   "depends_on": "eval: doc.kondisi_kembali == \"Lain - lain\"",
+   "fieldname": "kondisi_kembali_lain",
+   "fieldtype": "Small Text",
+   "label": "Kondisi Kembali Lain",
+   "mandatory_depends_on": "eval: doc.kondisi_kembali == \"Lain - lain\""
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-10-04 22:46:20.155448",
+ "modified_by": "Administrator",
+ "module": "Support",
+ "name": "Peminjaman Dokumen Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

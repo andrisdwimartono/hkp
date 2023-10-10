@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "PHDOK-.YY.-.####.",
+ "creation": "2023-10-05 08:30:15.886966",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tanggal",
+  "jenis_foto",
+  "project",
+  "project_name",
+  "nama_event",
+  "nama_material__alat_kerja",
+  "nama_foto",
+  "upload_dokumen"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "label": "Tanggal",
+   "reqd": 1
+  },
+  {
+   "default": "Event",
+   "fieldname": "jenis_foto",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Jenis Foto",
+   "options": "Event\nProject\nMaterial / Alat Kerja\nLain-lain",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval: doc.jenis_foto == \"Project\"",
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "mandatory_depends_on": "eval: doc.jenis_foto == \"Project\"",
+   "options": "Project"
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval: doc.jenis_foto == \"Event\"",
+   "fieldname": "nama_event",
+   "fieldtype": "Data",
+   "label": "Nama Event",
+   "mandatory_depends_on": "eval: doc.jenis_foto == \"Event\""
+  },
+  {
+   "depends_on": "eval: doc.jenis_foto == \"Material / Alat Kerja\"",
+   "fieldname": "nama_material__alat_kerja",
+   "fieldtype": "Data",
+   "label": "Nama Material / Alat Kerja",
+   "mandatory_depends_on": "eval: doc.jenis_foto == \"Material / Alat Kerja\""
+  },
+  {
+   "fieldname": "nama_foto",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nama Foto",
+   "reqd": 1
+  },
+  {
+   "fieldname": "upload_dokumen",
+   "fieldtype": "Table",
+   "label": "Upload Dokumen",
+   "options": "Upload Dokumen"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-10-05 08:31:36.207129",
+ "modified_by": "Administrator",
+ "module": "Support",
+ "name": "Photo Dokumentasi",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

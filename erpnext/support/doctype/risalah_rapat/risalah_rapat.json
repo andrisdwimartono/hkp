@@ -1,0 +1,160 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "RRAP-.YY.-.####.",
+ "creation": "2023-10-05 04:38:07.196809",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project",
+  "perihal",
+  "tempat",
+  "nama_aktivitas",
+  "column_break_i0fst",
+  "tanggal",
+  "jam_mulai",
+  "jam_selesai",
+  "pimpinan_rapat",
+  "nama_pimpinan_rapat",
+  "user_pimpinan_rapat",
+  "section_break_tdjwd",
+  "deskripsi",
+  "peserta_rapat",
+  "peserta_rapat_external",
+  "upload_dokumen",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Tanggal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "perihal",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Perihal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tempat",
+   "fieldtype": "Data",
+   "label": "Tempat"
+  },
+  {
+   "fieldname": "nama_aktivitas",
+   "fieldtype": "Data",
+   "label": "Nama Aktivitas",
+   "reqd": 1
+  },
+  {
+   "fieldname": "deskripsi",
+   "fieldtype": "Small Text",
+   "label": "Hasil Pembahasan"
+  },
+  {
+   "fieldname": "pimpinan_rapat",
+   "fieldtype": "Link",
+   "label": "Notulis",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "pimpinan_rapat.employee_name",
+   "fieldname": "nama_pimpinan_rapat",
+   "fieldtype": "Data",
+   "label": "Nama Notulis",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "pimpinan_rapat.user_id",
+   "fetch_if_empty": 1,
+   "fieldname": "user_pimpinan_rapat",
+   "fieldtype": "Link",
+   "label": "User Notulis",
+   "options": "User"
+  },
+  {
+   "fieldname": "peserta_rapat",
+   "fieldtype": "Table",
+   "label": "Peserta Rapat Internal",
+   "options": "Peserta Rapat",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_i0fst",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_tdjwd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "peserta_rapat_external",
+   "fieldtype": "Table",
+   "label": "Peserta Rapat External",
+   "options": "Peserta Rapat External"
+  },
+  {
+   "fieldname": "upload_dokumen",
+   "fieldtype": "Table",
+   "label": "Upload Dokumen",
+   "options": "Upload Dokumen"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Risalah Rapat",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "jam_mulai",
+   "fieldtype": "Time",
+   "label": "Jam Mulai",
+   "reqd": 1
+  },
+  {
+   "fieldname": "jam_selesai",
+   "fieldtype": "Time",
+   "label": "Jam Selesai",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Data",
+   "label": "Project"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-10-08 19:08:14.759227",
+ "modified_by": "Administrator",
+ "module": "Support",
+ "name": "Risalah Rapat",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

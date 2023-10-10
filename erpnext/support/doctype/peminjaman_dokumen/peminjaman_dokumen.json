@@ -1,0 +1,116 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "PDOK-.YY.-.####.",
+ "creation": "2023-10-04 15:52:46.061535",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tanggal_pinjam",
+  "employee",
+  "user",
+  "column_break_sn2hz",
+  "tanggal_mengembalikan",
+  "nama_peminta",
+  "section_break_fxhom",
+  "peminjaman_dokumen_detail",
+  "process_rules",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "tanggal_pinjam",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Tanggal Pinjam",
+   "reqd": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Peminta",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_sn2hz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tanggal_mengembalikan",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Tanggal Mengembalikan",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "nama_peminta",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nama Peminta",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_fxhom",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "peminjaman_dokumen_detail",
+   "fieldtype": "Table",
+   "label": "List Dokumen",
+   "options": "Peminjaman Dokumen Detail",
+   "reqd": 1
+  },
+  {
+   "fieldname": "process_rules",
+   "fieldtype": "Table",
+   "label": "Process Rules",
+   "options": "Process Rules"
+  },
+  {
+   "fetch_from": "employee.user_id",
+   "fetch_if_empty": 1,
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Peminjaman Dokumen",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-10-04 22:42:36.592746",
+ "modified_by": "Administrator",
+ "module": "Support",
+ "name": "Peminjaman Dokumen",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -764,9 +764,10 @@ def validate_active_employee(employee):
 @frappe.whitelist()
 def get_employee_certificate_obsolete():
 	x = add_days(today(), -90)
+	y = add_days(today(), -60)
 	employees = frappe.db.sql("""SELECT ec.*, e.employee_name, e.user_id, date_format(ec.date_end, "%d-%m-%Y") dend FROM `tabEmployee Certificate` ec
 						   INNER JOIN `tabEmployee` e ON e.name = ec.parent
-						   WHERE ec.date_end = '{0}'""".format(x), as_dict=1)
+						   WHERE ec.date_end <= '{0}'""".format(x, y), as_dict=1)
 	for d in employees:
 		notification_doc = {
 			"type": "Alert",
@@ -789,7 +790,8 @@ def get_employee_certificate_obsolete():
 @frappe.whitelist()
 def get_employee_contract_obsolete():
 	x = add_days(today(), -90)
-	employees = frappe.db.sql("""SELECT e.*, date_format(e.date_of_end_contract, "%d-%m-%Y") dend FROM tabEmployee e WHERE e.date_of_end_contract <= '{0}'""".format(x), as_dict=1)
+	y = add_days(today(), -60)
+	employees = frappe.db.sql("""SELECT e.*, date_format(e.date_of_end_contract, "%d-%m-%Y") dend FROM tabEmployee e WHERE e.date_of_end_contract <= '{0}'""".format(x, y), as_dict=1)
 
 	for d in employees:
 		notification_doc = {
@@ -808,4 +810,5 @@ def get_employee_contract_obsolete():
 			assigner.append(hr.user_id)
 		notification_doc = frappe._dict(notification_doc)
 		
-		make_notification_logs(notification_doc, assigner)
+		#make_notification_logs(notification_doc, assigner)
+		print(assigner)

@@ -1,0 +1,70 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "DTEN-.YY.-.#####.",
+ "creation": "2023-10-05 08:49:48.416937",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tanggal",
+  "informasi_pembukaan_tender",
+  "lingkup_pekerjaan",
+  "upload_dokumen"
+ ],
+ "fields": [
+  {
+   "fieldname": "informasi_pembukaan_tender",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Informasi Pembukaan Tender",
+   "options": "INFORMASI PEMBUKAAN TENDER",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "informasi_pembukaan_tender.lingkup_pekerjaan",
+   "fetch_if_empty": 1,
+   "fieldname": "lingkup_pekerjaan",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Lingkup Pekerjaan"
+  },
+  {
+   "fieldname": "upload_dokumen",
+   "fieldtype": "Table",
+   "label": "Upload Dokumen",
+   "options": "Upload Dokumen"
+  },
+  {
+   "default": "Today",
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Tanggal",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-10-05 08:51:11.967009",
+ "modified_by": "Administrator",
+ "module": "Support",
+ "name": "Dokumen Tender",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

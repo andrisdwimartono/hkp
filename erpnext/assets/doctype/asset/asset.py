@@ -160,7 +160,7 @@ class Asset(AccountsController):
 		if not self.asset_category:
 			self.asset_category = frappe.get_cached_value("Item", self.item_code, "asset_category")
 
-		if not self.lewati_check_gross:
+		if hasattr(self, 'lewati_check_gross') and not self.lewati_check_gross:
 			if not flt(self.gross_purchase_amount):
 				frappe.throw(_("Gross Purchase Amount is mandatory"), frappe.MandatoryError)
 
