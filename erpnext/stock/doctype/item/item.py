@@ -99,7 +99,6 @@ class Item(Document):
 
 		if not strip_html(cstr(self.description)).strip():
 			self.description = self.item_name
-
 		self.validate_uom()
 		self.validate_description()
 		self.add_default_uom_in_conversion_factor_table()
@@ -113,7 +112,7 @@ class Item(Document):
 		self.validate_warehouse_for_reorder()
 		self.update_bom_item_desc()
 		self.synced_with_hub = 0
-
+		
 		self.validate_has_variants()
 		self.validate_attributes_in_variants()
 		self.validate_stock_exists_for_template_item()
@@ -234,15 +233,16 @@ class Item(Document):
 			if self.stock_ledger_created():
 				frappe.throw(_("Cannot be a fixed asset item as Stock Ledger is created."))
 			
-			asset = frappe.db.get_all("Asset", filters={"item_code": self.name, "docstatus": 1}, limit=1)
-			if not asset:
-				asset_doc = frappe.get_doc({
-					"doctype": "Asset",
-					"asset_name": self.item_name,
-					"asset_category": self.asset_category,
-					"item_code": self.name
-				})
-				asset_doc.insert()
+			if not hasattr(self, "from_asset"):
+				asset = frappe.db.get_all("Asset", filters={"item_code": self.name, "docstatus": 1}, limit=1)
+				if not asset:
+					asset_doc = frappe.get_doc({
+						"doctype": "Asset",
+						"asset_name": self.item_name,
+						"asset_category": self.asset_category,
+						"item_code": self.name
+					})
+					asset_doc.insert()
 
 		if not self.is_fixed_asset:
 			asset = frappe.db.get_all("Asset", filters={"item_code": self.name, "docstatus": 1}, limit=1)

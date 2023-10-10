@@ -46,9 +46,11 @@ class Asset(AccountsController):
 				"is_sales_item": 0,
 				"is_stock_item": 0,
 				"include_item_in_manufacturing": 0,
-				"asset_category": self.asset_category
+				"asset_category": self.asset_category,
+				"from_asset": True
 			})
-			item_doc.insert()
+			item_doc.insert(ignore_permissions=True, ignore_mandatory=True)
+			
 			frappe.db.commit()
 			self.item_code = item_doc.name
 			self.item_name = self.asset_name
@@ -162,7 +164,8 @@ class Asset(AccountsController):
 
 		if hasattr(self, 'lewati_check_gross') and not self.lewati_check_gross:
 			if not flt(self.gross_purchase_amount):
-				frappe.throw(_("Gross Purchase Amount is mandatory"), frappe.MandatoryError)
+				self.gross_purchase_amount = 0
+				#frappe.throw(_("Gross Purchase Amount is mandatory"), frappe.MandatoryError)
 
 		if is_cwip_accounting_enabled(self.asset_category):
 			if not self.is_existing_asset and not (self.purchase_receipt or self.purchase_invoice):
