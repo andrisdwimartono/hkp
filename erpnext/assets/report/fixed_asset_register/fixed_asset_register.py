@@ -129,12 +129,12 @@ def get_asset_value(asset, finance_book=None):
 	finance_book_filter = ["finance_book", "is", "not set"]
 	if finance_book:
 		finance_book_filter = ["finance_book", "=", finance_book]
-
-	return frappe.db.get_value(
-		doctype="Asset Finance Book",
-		filters=[["parent", "=", asset.asset_id], finance_book_filter],
-		fieldname="value_after_depreciation",
-	)
+	
+	x = frappe.db.sql("""SELECT value_after_depreciation FROM `tabAsset Finance Book` WHERE parent = '{0}' AND ({1})""".format(asset.asset_id, "finance_book = '{0}'".format(finance_book) if finance_book else "finance_book = '' OR finance_book is null"), as_dict=1)
+	if x:
+		return x[0]
+	else:
+		return None
 
 
 def prepare_chart_data(data, filters):
@@ -160,8 +160,8 @@ def prepare_chart_data(data, filters):
 		date = d.get(date_field)
 		belongs_to_month = formatdate(date, "MMM YYYY")
 
-		labels_values_map[belongs_to_month].asset_value += d.get("asset_value")
-		labels_values_map[belongs_to_month].depreciated_amount += d.get("depreciated_amount")
+		labels_values_map[belongs_to_month].asset_value += (d.get("asset_value") if d.get("asset_value") else 0)
+		labels_values_map[belongs_to_month].depreciated_amount += (d.get("depreciated_amount") if d.get("depreciated_amount") else 0)
 
 	return {
 		"data": {
