@@ -20,7 +20,8 @@
   "laporan_harian_detail",
   "tidak_dapat_bekerja_karena",
   "cuaca",
-  "catatan_penting_pekerjaan"
+  "catatan_penting_pekerjaan",
+  "process_rules"
  ],
  "fields": [
   {
@@ -108,11 +109,17 @@
    "fieldname": "catatan_penting_pekerjaan",
    "fieldtype": "Small Text",
    "label": "Catatan Penting Pekerjaan/Perintah Direksi Lapangan"
+  },
+  {
+   "fieldname": "process_rules",
+   "fieldtype": "Table",
+   "label": "Process Rules",
+   "options": "Process Rules"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-27 10:08:40.524188",
+ "modified": "2023-10-10 18:32:53.517930",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Laporan Harian",

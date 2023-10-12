@@ -1,7 +1,7 @@
 // Copyright (c) 2023, Frappe Technologies Pvt. Ltd. and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on('Laporan Harian', {
+frappe.ui.form.on('Checklist Pekerjaan', {
 	refresh: function(frm) {
 		if (frm.doc.__unsaved == 1)	{
 			if(!frm.doc.process_rules){

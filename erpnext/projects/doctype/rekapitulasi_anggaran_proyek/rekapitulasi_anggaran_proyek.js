@@ -1,7 +1,7 @@
 // Copyright (c) 2023, Frappe Technologies Pvt. Ltd. and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on('Laporan Harian', {
+frappe.ui.form.on('Rekapitulasi Anggaran Proyek', {
 	refresh: function(frm) {
 		if (frm.doc.__unsaved == 1)	{
 			if(!frm.doc.process_rules){
@@ -33,5 +33,22 @@ frappe.ui.form.on('Laporan Harian', {
 			
 		}
 		cur_frm.fields_dict['process_rules'].$wrapper.find('.grid-add-row').addClass('d-none');
+	}
+});
+
+frappe.ui.form.on('Rekapitulasi Anggaran Proyek Detail', {
+	pengajuan: function(frm, dt, dn){
+		let d = locals[dt][dn];
+		if(d.pengajuan && d.realisasi){
+			d.saldo = d.pengajuan-d.realisasi;
+		}
+		frm.refresh_field("detail");
+	},
+	realisasi: function(frm, dt, dn){
+		let d = locals[dt][dn];
+		if(d.pengajuan && d.realisasi){
+			d.saldo = d.pengajuan-d.realisasi;
+		}
+		frm.refresh_field("detail");
 	}
 });

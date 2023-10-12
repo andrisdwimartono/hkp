@@ -1,0 +1,111 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-11 23:05:56.416682",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sub_contract_hand_over",
+  "sub_contract",
+  "project",
+  "project_name",
+  "project_address",
+  "column_break_zrsni",
+  "tanggal",
+  "section_break_myatb",
+  "detail",
+  "process_rules"
+ ],
+ "fields": [
+  {
+   "fieldname": "sub_contract_hand_over",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sub Contract Hand Over",
+   "options": "Sub Contract Hand Over",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.sub_contract",
+   "fieldname": "sub_contract",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sub Contract",
+   "options": "Sub Contract",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.project",
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Name"
+  },
+  {
+   "fetch_from": "project.project_address",
+   "fieldname": "project_address",
+   "fieldtype": "Data",
+   "label": "Project Address"
+  },
+  {
+   "default": "Today",
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Tanggal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_zrsni",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_myatb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "detail",
+   "fieldtype": "Table",
+   "label": "Detail",
+   "options": "Checklist Pekerjaan Detail"
+  },
+  {
+   "fieldname": "process_rules",
+   "fieldtype": "Table",
+   "label": "Process Rules",
+   "options": "Process Rules"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-10-11 23:09:02.645786",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Checklist Pekerjaan",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
