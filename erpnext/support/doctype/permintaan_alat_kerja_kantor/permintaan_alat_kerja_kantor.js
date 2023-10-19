@@ -1,7 +1,7 @@
 // Copyright (c) 2023, Frappe Technologies Pvt. Ltd. and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on('Berita Acara Pemusnahan Dokumen', {
+frappe.ui.form.on('PERMINTAAN ALAT KERJA KANTOR', {
 	refresh: function(frm) {
 		if (frm.doc.__unsaved == 1)	{
 			if(!frm.doc.process_rules){
@@ -33,5 +33,5 @@ frappe.ui.form.on('Berita Acara Pemusnahan Dokumen', {
 			
 		}
 		cur_frm.fields_dict['process_rules'].$wrapper.find('.grid-add-row').addClass('d-none');
-	}
+	},
 });

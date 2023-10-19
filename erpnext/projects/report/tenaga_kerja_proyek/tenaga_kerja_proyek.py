@@ -6,12 +6,17 @@ import frappe
 
 def execute(filters=None):
 	columns, data = [], []
-	columns = get_column(columns)
+	columns = get_column(columns, filters.project)
 	data = get_data(columns, data)
 	return columns, data
 
-def get_column(columns):
-	xx = frappe.db.sql("""SELECT name, project_name FROM tabProject ORDER BY name ASC""", as_dict=1)
+def get_column(columns, project):
+	where = ""
+	if project:
+		where = "WHERE name = '{0}'".format(project)
+	xx = frappe.db.sql("""SELECT name, project_name FROM tabProject
+					{0}
+					ORDER BY name ASC""".format(where), as_dict=1)
 	if xx:
 		columns.append({
 			"fieldname": "designation",
@@ -28,7 +33,8 @@ def get_column(columns):
 	return columns
 
 def get_data(columns, data):
-	dess = frappe.db.sql("""SELECT DISTINCT designation FROM `tabProject Team` pt ORDER BY designation ASC""", as_dict=1)
+	dess = frappe.db.sql("""SELECT DISTINCT designation FROM `tabProject Team` pt
+					  ORDER BY pt.designation ASC""", as_dict=1)
 	for des in dess:
 		dt = {
 			"designation": des.designation

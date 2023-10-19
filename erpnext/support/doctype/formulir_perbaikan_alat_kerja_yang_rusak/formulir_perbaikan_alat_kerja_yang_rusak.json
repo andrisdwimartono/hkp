@@ -1,18 +1,18 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "BAPD-.YY.-.#####.",
- "creation": "2023-10-09 10:10:06.265399",
+ "autoname": "FPAKYR-.YY.-.####.",
+ "creation": "2023-10-18 19:38:24.804945",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "tanggal",
-  "detail",
-  "process_rules"
+  "detail"
  ],
  "fields": [
   {
+   "default": "Today",
    "fieldname": "tanggal",
    "fieldtype": "Date",
    "in_list_view": 1,
@@ -23,22 +23,16 @@
    "fieldname": "detail",
    "fieldtype": "Table",
    "label": "Detail",
-   "options": "Berita Acara Pemusnahan Dokumen Detail",
+   "options": "Formulir Perbaikan Alat Kerja Yang Rusak Detail",
    "reqd": 1
-  },
-  {
-   "fieldname": "process_rules",
-   "fieldtype": "Table",
-   "label": "Process Rules",
-   "options": "Process Rules"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-17 09:34:18.768305",
+ "modified": "2023-10-18 19:41:08.604448",
  "modified_by": "Administrator",
  "module": "Support",
- "name": "Berita Acara Pemusnahan Dokumen",
+ "name": "Formulir Perbaikan Alat Kerja Yang Rusak",
  "owner": "Administrator",
  "permissions": [
   {

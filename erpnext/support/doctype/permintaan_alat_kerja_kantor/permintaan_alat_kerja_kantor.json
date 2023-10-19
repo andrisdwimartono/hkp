@@ -1,0 +1,94 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-18 15:23:33.283002",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "employee_name",
+  "user",
+  "column_break_y3wf1",
+  "posting_date",
+  "section_break_pdclb",
+  "detail",
+  "process_rules"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Peminta",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nama Peminta",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.user_id",
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User Peminta",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_y3wf1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_pdclb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "detail",
+   "fieldtype": "Table",
+   "label": "Peralatan",
+   "options": "PERMINTAAN ALAT KERJA KANTOR DETAIL"
+  },
+  {
+   "fieldname": "process_rules",
+   "fieldtype": "Table",
+   "label": "Process Rules",
+   "options": "Process Rules"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-10-18 15:44:15.265998",
+ "modified_by": "Administrator",
+ "module": "Support",
+ "name": "PERMINTAAN ALAT KERJA KANTOR",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

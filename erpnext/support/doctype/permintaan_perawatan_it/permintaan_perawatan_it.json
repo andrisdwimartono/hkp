@@ -1,0 +1,109 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "PPIT-.YY.-.####.",
+ "creation": "2023-10-18 20:00:56.494653",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "no_inventaris",
+  "tanggal",
+  "alat_yang_rusak",
+  "employee",
+  "employee_name",
+  "bagian",
+  "deskripsi",
+  "perbaikan",
+  "prioritas"
+ ],
+ "fields": [
+  {
+   "fieldname": "no_inventaris",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "No. Inventaris",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Tanggal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "alat_yang_rusak",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Alat Yang Rusak",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bagian",
+   "fieldtype": "Data",
+   "label": "Bagian"
+  },
+  {
+   "fieldname": "deskripsi",
+   "fieldtype": "Small Text",
+   "label": "Deskripsi Permintaan Perawatan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "perbaikan",
+   "fieldtype": "Small Text",
+   "label": "Perbaikan",
+   "reqd": 1
+  },
+  {
+   "default": "Biasa",
+   "fieldname": "prioritas",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Prioritas",
+   "options": "Biasa\nMedium\nMendesak",
+   "reqd": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Peminta",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nama Peminta",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-10-18 20:07:33.839760",
+ "modified_by": "Administrator",
+ "module": "Support",
+ "name": "Permintaan Perawatan IT",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

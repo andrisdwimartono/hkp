@@ -16,6 +16,7 @@
  ],
  "fields": [
   {
+   "columns": 1,
    "default": "0",
    "fieldname": "vol_tenaga_kerja",
    "fieldtype": "Int",
@@ -23,42 +24,49 @@
    "label": "Jumlah Tenaga Kerja"
   },
   {
+   "columns": 2,
    "fieldname": "keahlian",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Keahlian"
   },
   {
+   "columns": 1,
    "fieldname": "material_didatangkan",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Material Didatangkan"
   },
   {
+   "columns": 1,
    "fieldname": "material_diterima",
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Material Diterima"
   },
   {
+   "columns": 1,
    "fieldname": "material_ditolak",
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Material Ditolak"
   },
   {
+   "columns": 1,
    "fieldname": "jenis_dan_kapasitas",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Jenis dan Kapasitas"
   },
   {
+   "columns": 1,
    "fieldname": "jumlah",
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Jumlah"
   },
   {
+   "columns": 2,
    "fieldname": "pekerjaan_yang_dilakukan",
    "fieldtype": "Small Text",
    "in_list_view": 1,
@@ -68,7 +76,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-06-27 10:07:31.018496",
+ "modified": "2023-10-19 11:01:31.520630",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Laporan Harian Detail",

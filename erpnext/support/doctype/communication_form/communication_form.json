@@ -1,0 +1,93 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "CF-.YY.-.####.",
+ "creation": "2023-10-18 19:05:32.853370",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "to",
+  "from",
+  "subject",
+  "column_break_0eosr",
+  "type",
+  "section_break_spamr",
+  "target_penyelesaian",
+  "date"
+ ],
+ "fields": [
+  {
+   "fieldname": "to",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "To",
+   "reqd": 1
+  },
+  {
+   "fieldname": "from",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Subject",
+   "reqd": 1
+  },
+  {
+   "default": "MEMO",
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Type",
+   "options": "MEMO\nQUICK NOTE\nYOUR INFORMATION\nPLEASE RETURN WITH YOUR COMMENT\nPLEASE ACTION\nPLEASE DISCUSS",
+   "reqd": 1
+  },
+  {
+   "fieldname": "target_penyelesaian",
+   "fieldtype": "Small Text",
+   "label": "Target Penyelesaian"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "column_break_0eosr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_spamr",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-10-18 19:09:35.920610",
+ "modified_by": "Administrator",
+ "module": "Support",
+ "name": "Communication Form",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

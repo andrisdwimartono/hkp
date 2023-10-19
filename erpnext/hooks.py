@@ -525,6 +525,7 @@ scheduler_events = {
         "erpnext.hr.utils.get_employee_contract_obsolete",
         "erpnext.support.doctype.peminjaman_dokumen.peminjaman_dokumen.alert_kembalikan",
         "erpnext.support.doctype.company_document.company_document.get_company_document_obsolete",
+        "erpnext.projects.utils.notifikasi_schedule_aktivitas",
 	],
 	"daily_long": [
 		"erpnext.setup.doctype.email_digest.email_digest.send",

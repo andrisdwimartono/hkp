@@ -25,6 +25,15 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Memo",
+   "link_to": "Memo",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Dokumen Perusahaan",
    "link_to": "Company Document",
    "link_type": "DocType",
@@ -43,8 +52,8 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Surat dan Email Masuk",
-   "link_to": "Surat dan Email Masuk",
+   "label": "Surat dan Email",
+   "link_to": "Surat dan Email",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -244,9 +253,71 @@
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Dokumen",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Berita Acara Pemusnahan Dokumen",
+   "link_to": "Berita Acara Pemusnahan Dokumen",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Permintaan Alat Kerja Kantor",
+   "link_to": "PERMINTAAN ALAT KERJA KANTOR",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Communication Form",
+   "link_to": "Communication Form",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Kartu Pemeliharaan AC",
+   "link_to": "Kartu Pemeliharaan AC",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Formulir Perbaikan Alat Kerja Yang Rusak",
+   "link_to": "Formulir Perbaikan Alat Kerja Yang Rusak",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Permintaan Perawatan IT",
+   "link_to": "Permintaan Perawatan IT",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2023-10-05 14:34:35.428830",
+ "modified": "2023-10-18 20:41:24.067160",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Support",

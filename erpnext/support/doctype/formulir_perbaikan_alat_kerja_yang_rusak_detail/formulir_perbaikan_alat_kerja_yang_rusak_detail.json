@@ -1,0 +1,77 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-18 19:40:46.655169",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tanggal",
+  "alat_yang_rusak",
+  "no_inventaris",
+  "kerusakan",
+  "perbaikan",
+  "keterangan"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "default": "Today",
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Tanggal",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "alat_yang_rusak",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Alat Yang Rusak",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "no_inventaris",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "No. Inventaris",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "kerusakan",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Kerusakan",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "perbaikan",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Perbaikan",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "keterangan",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Keterangan"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-10-18 19:46:33.585171",
+ "modified_by": "Administrator",
+ "module": "Support",
+ "name": "Formulir Perbaikan Alat Kerja Yang Rusak Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -9,12 +9,14 @@
  "field_order": [
   "employee",
   "personal_name",
+  "user",
   "lokasi",
   "agenda",
   "column_break_ivi08",
   "tanggal",
   "jam",
   "color",
+  "tanggal_notifikasi",
   "section_break_kh3uf",
   "description",
   "peserta_rapat",
@@ -32,6 +34,7 @@
   {
    "fieldname": "employee",
    "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "Personal",
    "options": "Employee"
   },
@@ -92,11 +95,25 @@
    "fieldname": "color",
    "fieldtype": "Color",
    "label": "Color"
+  },
+  {
+   "default": "Today",
+   "fieldname": "tanggal_notifikasi",
+   "fieldtype": "Date",
+   "label": "Tanggal Notifikasi",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.user_id",
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-05 05:27:43.627990",
+ "modified": "2023-10-18 22:05:20.565331",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Schedule Aktivitas",

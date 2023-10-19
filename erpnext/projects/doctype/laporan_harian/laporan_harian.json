@@ -21,6 +21,7 @@
   "tidak_dapat_bekerja_karena",
   "cuaca",
   "catatan_penting_pekerjaan",
+  "upload_dokumen",
   "process_rules"
  ],
  "fields": [
@@ -115,11 +116,17 @@
    "fieldtype": "Table",
    "label": "Process Rules",
    "options": "Process Rules"
+  },
+  {
+   "fieldname": "upload_dokumen",
+   "fieldtype": "Table",
+   "label": "Upload Dokumen",
+   "options": "Upload Dokumen"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-10 18:32:53.517930",
+ "modified": "2023-10-19 10:55:43.484943",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Laporan Harian",

@@ -5,7 +5,11 @@
 
 
 import frappe
-from frappe.desk.doctype.notification_log.notification_log import enqueue_create_notification
+from frappe.desk.doctype.notification_log.notification_log import enqueue_create_notification, make_notification_logs
+from frappe.utils import (
+	today,
+)\
+
 
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
@@ -155,3 +159,25 @@ def set_default_process_rules(doc, method=None):
 			return
 		notify_user(doc.doctype, doc.name, doc.owner, assigner, "{3} {0} membutuhkan {1} dari anda setelah proses {2}".format(prn.parent, prn.state, 'Dibuat', doc.doctype))
 		doc.add_comment('Edit', text='Notifikasi {0} terkirim ke {1}'.format(prn.state, prn.user))
+
+@frappe.whitelist()
+def notifikasi_schedule_aktivitas():
+	employees = frappe.db.sql("""SELECT ec.*, e.employee_name, e.user_id, date_format(ec.tanggal, "%d-%m-%Y") dend FROM `tabSchedule Aktivitas` ec
+						   INNER JOIN `tabEmployee` e ON e.name = ec.employee
+						   WHERE ec.tanggal_notifikasi = '{0}'""".format(today()), as_dict=1)
+	
+	for d in employees:
+		notification_doc = {
+			"type": "Alert",
+			"document_type": "Schedule Aktivitas",
+			"document_name": d.name,
+			"subject": "Schedule aktivitas {1} yang akan dilaksanakan di tanggal {2}".format(d.employee_name, d.agenda, d.dend),
+			"from_user": d.user_id or "Administrator",
+		}
+		
+		assigner = [d.user_id]
+		for x in frappe.db.sql("""SELECT * FROM `tabPeserta Rapat` WHERE parent = '{0}'""".format(d.name), as_dict=1):
+			assigner.append(x.user)
+		notification_doc = frappe._dict(notification_doc)
+		
+		make_notification_logs(notification_doc, assigner)

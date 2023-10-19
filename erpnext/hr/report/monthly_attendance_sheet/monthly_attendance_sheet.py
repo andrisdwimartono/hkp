@@ -11,11 +11,14 @@ from frappe.utils import cint, cstr, getdate
 status_map = {
 	"Absent": "A",
 	"Half Day": "HD",
-	"Holiday": "<b>H</b>",
+	"Holiday": "<b>Ho</b>",
 	"Weekly Off": "<b>WO</b>",
 	"On Leave": "L",
-	"Present": "P",
+	"Present": "H",
 	"Work From Home": "WFH",
+	"Cuti": "C",
+	"Izin": "I",
+	"Sakit": "S",
 }
 
 day_abbr = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -266,7 +269,7 @@ def get_columns(filters):
 def get_attendance_list(conditions, filters):
 	attendance_list = frappe.db.sql(
 		"""select employee, day(attendance_date) as day_of_month,
-		status from tabAttendance where docstatus = 1 %s order by employee, attendance_date"""
+		status, leave_type from tabAttendance where docstatus = 1 %s order by employee, attendance_date"""
 		% conditions,
 		filters,
 		as_dict=1,
@@ -277,6 +280,8 @@ def get_attendance_list(conditions, filters):
 
 	att_map = {}
 	for d in attendance_list:
+		if d.status == "On Leave" and d.leave_type:
+			d.status = d.leave_type
 		att_map.setdefault(d.employee, frappe._dict()).setdefault(d.day_of_month, "")
 		att_map[d.employee][d.day_of_month] = d.status
 

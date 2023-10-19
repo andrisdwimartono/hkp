@@ -1,0 +1,195 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-17 09:57:34.990493",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sub_contract_hand_over",
+  "tanggal_spk",
+  "termin",
+  "sub_contract",
+  "contractor_name",
+  "job_name",
+  "periode",
+  "finish_work",
+  "rencana",
+  "realisasi",
+  "deviasi",
+  "column_break_r7gnh",
+  "tanggal",
+  "project",
+  "project_name",
+  "project_address",
+  "section_break_0vlv4",
+  "detail",
+  "document",
+  "process_rules",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "sub_contract_hand_over",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "No. Kontrak",
+   "options": "Sub Contract Hand Over",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.sub_contract",
+   "fieldname": "sub_contract",
+   "fieldtype": "Link",
+   "label": "Sub Contract",
+   "options": "Sub Contract",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract.contractor_name",
+   "fieldname": "contractor_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Contractor Name"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Laporan Pengajuan Penagihan",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.project",
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Name"
+  },
+  {
+   "fetch_from": "project.project_address",
+   "fieldname": "project_address",
+   "fieldtype": "Data",
+   "label": "Project Address"
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.job_name",
+   "fieldname": "job_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Job Name"
+  },
+  {
+   "fieldname": "periode",
+   "fieldtype": "Int",
+   "label": "Periode"
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.finish_work",
+   "fieldname": "finish_work",
+   "fieldtype": "Date",
+   "label": "Finish Work"
+  },
+  {
+   "default": "0",
+   "fieldname": "rencana",
+   "fieldtype": "Percent",
+   "label": "Rencana",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "realisasi",
+   "fieldtype": "Percent",
+   "label": "Realisasi",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "deviasi",
+   "fieldtype": "Percent",
+   "label": "Deviasi",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "termin",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Termin",
+   "read_only": 1
+  },
+  {
+   "fieldname": "detail",
+   "fieldtype": "Table",
+   "label": "Detail",
+   "options": "Laporan Pengajuan Penagihan Detail"
+  },
+  {
+   "fieldname": "column_break_r7gnh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "label": "Tanggal"
+  },
+  {
+   "fieldname": "section_break_0vlv4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "process_rules",
+   "fieldtype": "Table",
+   "label": "Process Rules",
+   "options": "Process Rules"
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.posting_date",
+   "fieldname": "tanggal_spk",
+   "fieldtype": "Date",
+   "label": "Tanggal SPK"
+  },
+  {
+   "fieldname": "document",
+   "fieldtype": "Attach",
+   "label": "Document"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-10-19 09:59:00.219872",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Laporan Pengajuan Penagihan",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

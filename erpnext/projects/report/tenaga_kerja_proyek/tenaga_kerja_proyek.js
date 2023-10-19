@@ -4,6 +4,11 @@
 
 frappe.query_reports["TENAGA KERJA PROYEK"] = {
 	"filters": [
-
+		{
+			fieldname:"project",
+			label: __("Project"),
+			fieldtype: "Link",
+			options: "Project"
+		},
 	]
 };
