@@ -49,11 +49,54 @@ class LaporanPengajuanPenagihan(Document):
 		if bobot_total != 100:
 			frappe.throw("Total Bobot harus 100")
 
+# @frappe.whitelist()
+# def get_termin(sub_contract_hand_over):
+# 	termin = 0
+# 	periode = ''
+# 	lpps = frappe.db.sql("""SELECT MAX(termin) termin, periode FROM `tabLaporan Pengajuan Penagihan` WHERE sub_contract_hand_over = '{0}' AND workflow_state = 'Disetujui Direktur Operasi'""".format(sub_contract_hand_over), as_dict=1)
+# 	if lpps:
+# 		if lpps[0].termin:
+# 			termin = lpps[0].termin
+# 		if lpps[0].periode:
+# 			periode = lpps[0].periode
+# 	return termin+1, periode
+
+# @frappe.whitelist()
+# def get_detail(sub_contract_hand_over, termin):
+# 	lpps = frappe.db.sql("""SELECT lppd.* FROM `tabLaporan Pengajuan Penagihan` lpp
+# 					  INNER JOIN `tabLaporan Pengajuan Penagihan Detail` lppd ON lpp.name = lppd.parent
+# 					  WHERE lpp.sub_contract_hand_over = '{0}' AND lpp.termin = '{1}'
+# 					  ORDER BY lppd.idx ASC
+# 					  """.format(sub_contract_hand_over, termin), as_dict=1)
+# 	if lpps:
+# 		return lpps
+# 	else:
+# 		lpps2 = frappe.db.sql("""SELECT 
+# 							lppd.group,
+# 							lppd.item_pekerjaan,
+# 							lppd.uom,
+# 							lppd.vol_kontrak,
+# 							lppd.bobot,
+# 							lppd.vol_terpasang_sd_saat_ini vol_terpasang_lalu,
+# 							0 vol_terpasang_saat_ini,
+# 							lppd.vol_terpasang_sd_saat_ini,
+# 							lppd.bobot_terpasang_sd_saat_ini bobot_terpasang_lalu,
+# 							0 bobot_terpasang_saat_ini,
+# 							lppd.bobot_terpasang_sd_saat_ini
+# 						 FROM `tabLaporan Pengajuan Penagihan` lpp
+# 					  INNER JOIN `tabLaporan Pengajuan Penagihan Detail` lppd ON lpp.name = lppd.parent
+# 					  WHERE lpp.sub_contract_hand_over = '{0}' AND lpp.termin = '{1}'
+# 					  ORDER BY lppd.idx ASC
+# 					  """.format(sub_contract_hand_over, int(termin)-1), as_dict=1)
+# 		if lpps2:
+# 			return lpps2
+# 	return None
+
 @frappe.whitelist()
-def get_termin(sub_contract_hand_over):
+def get_termin_pekerjaan(master_item_pekerjaan):
 	termin = 0
 	periode = ''
-	lpps = frappe.db.sql("""SELECT MAX(termin) termin, periode FROM `tabLaporan Pengajuan Penagihan` WHERE sub_contract_hand_over = '{0}' AND workflow_state = 'Disetujui Direktur Operasi'""".format(sub_contract_hand_over), as_dict=1)
+	lpps = frappe.db.sql("""SELECT MAX(termin) termin, periode FROM `tabLaporan Pengajuan Penagihan` WHERE master_item_pekerjaan = '{0}'""".format(master_item_pekerjaan), as_dict=1)
 	if lpps:
 		if lpps[0].termin:
 			termin = lpps[0].termin
@@ -62,21 +105,21 @@ def get_termin(sub_contract_hand_over):
 	return termin+1, periode
 
 @frappe.whitelist()
-def get_detail(sub_contract_hand_over, termin):
+def get_detail_pekerjaan(master_item_pekerjaan, termin):
 	lpps = frappe.db.sql("""SELECT lppd.* FROM `tabLaporan Pengajuan Penagihan` lpp
 					  INNER JOIN `tabLaporan Pengajuan Penagihan Detail` lppd ON lpp.name = lppd.parent
-					  WHERE lpp.sub_contract_hand_over = '{0}' AND lpp.termin = '{1}'
+					  WHERE lpp.master_item_pekerjaan = '{0}' AND lpp.termin = '{1}'
 					  ORDER BY lppd.idx ASC
-					  """.format(sub_contract_hand_over, termin), as_dict=1)
+					  """.format(master_item_pekerjaan, termin), as_dict=1)
 	if lpps:
 		return lpps
 	else:
 		lpps2 = frappe.db.sql("""SELECT 
-							lppd.group,
-							lppd.item_pekerjaan,
-							lppd.uom,
-							lppd.vol_kontrak,
-							lppd.bobot,
+							mipd.group,
+							mipd.item_pekerjaan,
+							mipd.uom,
+							mipd.vol_kontrak,
+							mipd.bobot,
 							lppd.vol_terpasang_sd_saat_ini vol_terpasang_lalu,
 							0 vol_terpasang_saat_ini,
 							lppd.vol_terpasang_sd_saat_ini,
@@ -84,10 +127,16 @@ def get_detail(sub_contract_hand_over, termin):
 							0 bobot_terpasang_saat_ini,
 							lppd.bobot_terpasang_sd_saat_ini
 						 FROM `tabLaporan Pengajuan Penagihan` lpp
-					  INNER JOIN `tabLaporan Pengajuan Penagihan Detail` lppd ON lpp.name = lppd.parent
-					  WHERE lpp.sub_contract_hand_over = '{0}' AND lpp.termin = '{1}'
-					  ORDER BY lppd.idx ASC
-					  """.format(sub_contract_hand_over, int(termin)-1), as_dict=1)
+					 INNER JOIN `tabMaster Item Pekerjaan Detail` mipd ON lpp.master_item_pekerjaan = mipd.parent
+					  LEFT JOIN `tabLaporan Pengajuan Penagihan Detail` lppd ON lpp.name = lppd.parent AND lppd.item_pekerjaan = mipd.item_pekerjaan
+					  WHERE lpp.master_item_pekerjaan = '{0}' AND lpp.termin = '{1}'
+					  ORDER BY mipd.idx ASC
+					  """.format(master_item_pekerjaan, int(termin)-1), as_dict=1)
 		if lpps2:
 			return lpps2
-	return None
+		else:
+			return frappe.db.sql("""SELECT mipd.*, 0 vol_terpasang_lalu, 0 vol_terpasang_sd_saat_ini FROM `tabMaster Item Pekerjaan` mip
+					  INNER JOIN `tabMaster Item Pekerjaan Detail` mipd ON mip.name = mipd.parent
+					  WHERE mip.name = '{0}'
+					  ORDER BY mipd.idx ASC
+					  """.format(master_item_pekerjaan), as_dict=1)

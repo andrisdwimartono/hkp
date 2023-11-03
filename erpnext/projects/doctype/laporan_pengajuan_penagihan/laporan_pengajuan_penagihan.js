@@ -48,11 +48,58 @@ frappe.ui.form.on('Laporan Pengajuan Penagihan', {
 		}
 		frm.set_value("deviasi", deviasi);
 	},
-	sub_contract_hand_over: function(frm){
+	// sub_contract_hand_over: function(frm){
+	// 	frappe.call({
+	// 		method: 'erpnext.projects.doctype.laporan_pengajuan_penagihan.laporan_pengajuan_penagihan.get_termin',
+	// 		args: {
+	// 			'sub_contract_hand_over': frm.doc.sub_contract_hand_over
+	// 		},
+	// 		callback: function(r) {
+	// 			if(r.message){
+	// 				var vals = r.message;
+	// 				frm.set_value("termin", vals[0]);
+	// 				frm.refresh_field("termin");
+	// 				frm.set_value("periode", vals[1]);
+	// 				frm.refresh_field("periode");
+
+	// 				frm.clear_table("detail");
+	// 				frm.refresh_field("detail");
+	// 				frappe.call({
+	// 					method: 'erpnext.projects.doctype.laporan_pengajuan_penagihan.laporan_pengajuan_penagihan.get_detail',
+	// 					args: {
+	// 						'sub_contract_hand_over': frm.doc.sub_contract_hand_over,
+	// 						'termin': vals[0]
+	// 					},
+	// 					callback: function(r) {
+	// 						var vals = r.message;
+	// 						if(r.message){
+	// 							for(var i = 0; i < vals.length; i++){
+	// 								var pr = frm.add_child("detail");
+	// 								pr.group = vals[i].group;
+	// 								pr.item_pekerjaan = vals[i].item_pekerjaan;
+	// 								pr.uom = vals[i].uom;
+	// 								pr.vol_kontrak = vals[i].vol_kontrak;
+	// 								pr.bobot = vals[i].bobot;
+	// 								pr.vol_terpasang_lalu = vals[i].vol_terpasang_lalu;
+	// 								pr.vol_terpasang_saat_ini = vals[i].vol_terpasang_saat_ini;
+	// 								pr.vol_terpasang_sd_saat_ini = vals[i].vol_terpasang_sd_saat_ini;
+	// 								pr.bobot_terpasang_lalu = vals[i].bobot_terpasang_lalu;
+	// 								pr.bobot_terpasang_saat_ini = vals[i].bobot_terpasang_saat_ini;
+	// 								pr.bobot_terpasang_sd_saat_ini = vals[i].bobot_terpasang_sd_saat_ini;
+	// 							}
+	// 							frm.refresh_field("detail");
+	// 						}
+	// 					}
+	// 				});
+	// 			}
+	// 		}
+	// 	});
+	// }
+	master_item_pekerjaan: function(frm){
 		frappe.call({
-			method: 'erpnext.projects.doctype.laporan_pengajuan_penagihan.laporan_pengajuan_penagihan.get_termin',
+			method: 'erpnext.projects.doctype.laporan_pengajuan_penagihan.laporan_pengajuan_penagihan.get_termin_pekerjaan',
 			args: {
-				'sub_contract_hand_over': frm.doc.sub_contract_hand_over
+				'master_item_pekerjaan': frm.doc.master_item_pekerjaan
 			},
 			callback: function(r) {
 				if(r.message){
@@ -65,9 +112,9 @@ frappe.ui.form.on('Laporan Pengajuan Penagihan', {
 					frm.clear_table("detail");
 					frm.refresh_field("detail");
 					frappe.call({
-						method: 'erpnext.projects.doctype.laporan_pengajuan_penagihan.laporan_pengajuan_penagihan.get_detail',
+						method: 'erpnext.projects.doctype.laporan_pengajuan_penagihan.laporan_pengajuan_penagihan.get_detail_pekerjaan',
 						args: {
-							'sub_contract_hand_over': frm.doc.sub_contract_hand_over,
+							'master_item_pekerjaan': frm.doc.master_item_pekerjaan,
 							'termin': vals[0]
 						},
 						callback: function(r) {

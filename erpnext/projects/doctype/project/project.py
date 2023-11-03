@@ -67,7 +67,7 @@ class Project(Document):
 							"project": self.name,
 							"project_name": self.project_name
 						})
-						employee_doc.save()
+						employee_doc.save(ignore_permissions=True)
 
 	def copy_from_template(self):
 		"""

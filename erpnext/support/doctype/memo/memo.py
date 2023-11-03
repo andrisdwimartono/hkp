@@ -9,28 +9,58 @@ class Memo(Document):
 	def on_submit(self):
 		if self.kepada:
 			assigner = []
-			if self.dari:
-				users = frappe.db.sql("""SELECT u.name FROM tabUser u
-				INNER JOIN tabEmployee e ON e.user_id = u.name
-				WHERE e.designation = '{0}'""".format(self.dari), as_dict=1)
-				for x in users:
-					assigner.append(x.name)
-				self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(self.dari))
-			for d in self.kepada:
-				if d.designation:
+			if self.dari_merupakan_karyawan == 1:
+				if self.dari_user_id:
 					users = frappe.db.sql("""SELECT u.name FROM tabUser u
 					INNER JOIN tabEmployee e ON e.user_id = u.name
-					WHERE e.designation = '{0}'""".format(d.designation), as_dict=1)
+					WHERE e.user_id = '{0}'""".format(self.dari_user_id), as_dict=1)
 					for x in users:
 						assigner.append(x.name)
-					self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(d.designation))
-			if self.tembusan:
-				users = frappe.db.sql("""SELECT u.name FROM tabUser u
-				INNER JOIN tabEmployee e ON e.user_id = u.name
-				WHERE e.designation = '{0}'""".format(self.tembusan), as_dict=1)
-				for x in users:
-					assigner.append(x.name)
-				self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(self.tembusan))
+					self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(self.dari_user_id))
+			else:
+				if self.dari_designation:
+					users = frappe.db.sql("""SELECT u.name FROM tabUser u
+					INNER JOIN tabEmployee e ON e.user_id = u.name
+					WHERE e.designation = '{0}'""".format(self.dari_designation), as_dict=1)
+					for x in users:
+						assigner.append(x.name)
+					self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(self.dari_designation))
+			
+			for d in self.kepada:
+				if d.kepada_merupakan_karyawan == 1:
+					if d.user_id:
+						users = frappe.db.sql("""SELECT u.name FROM tabUser u
+						INNER JOIN tabEmployee e ON e.user_id = u.name
+						WHERE e.user_id = '{0}'""".format(d.user_id), as_dict=1)
+						for x in users:
+							assigner.append(x.name)
+						self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(d.user_id))
+				else:
+					if d.designation:
+						users = frappe.db.sql("""SELECT u.name FROM tabUser u
+						INNER JOIN tabEmployee e ON e.user_id = u.name
+						WHERE e.designation = '{0}'""".format(d.designation), as_dict=1)
+						for x in users:
+							assigner.append(x.name)
+						self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(d.designation))
+			
+			if self.tembusan_merupakan_karyawan == 1:
+				if self.tembusan_user_id:
+					users = frappe.db.sql("""SELECT u.name FROM tabUser u
+					INNER JOIN tabEmployee e ON e.user_id = u.name
+					WHERE e.user_id = '{0}'""".format(self.tembusan_user_id), as_dict=1)
+					for x in users:
+						assigner.append(x.name)
+					self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(self.tembusan_user_id))
+			else:
+				if self.tembusan_designation:
+					users = frappe.db.sql("""SELECT u.name FROM tabUser u
+					INNER JOIN tabEmployee e ON e.user_id = u.name
+					WHERE e.designation = '{0}'""".format(self.tembusan_designation), as_dict=1)
+					for x in users:
+						assigner.append(x.name)
+					self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(self.tembusan_designation))
+
 			notification_doc = {
 				"type": "Alert",
 				"document_type": self.doctype,
@@ -46,28 +76,58 @@ class Memo(Document):
 	def on_cancel(self):
 		if self.kepada:
 			assigner = []
-			if self.dari:
-				users = frappe.db.sql("""SELECT u.name FROM tabUser u
-				INNER JOIN tabEmployee e ON e.user_id = u.name
-				WHERE e.designation = '{0}'""".format(self.dari), as_dict=1)
-				for x in users:
-					assigner.append(x.name)
-				self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(self.dari))
-			for d in self.kepada:
-				if d.designation:
+			if self.dari_merupakan_karyawan == 1:
+				if self.dari_user_id:
 					users = frappe.db.sql("""SELECT u.name FROM tabUser u
 					INNER JOIN tabEmployee e ON e.user_id = u.name
-					WHERE e.designation = '{0}'""".format(d.designation), as_dict=1)
+					WHERE e.user_id = '{0}'""".format(self.dari_user_id), as_dict=1)
 					for x in users:
 						assigner.append(x.name)
-					self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(d.designation))
-			if self.tembusan:
-				users = frappe.db.sql("""SELECT u.name FROM tabUser u
-				INNER JOIN tabEmployee e ON e.user_id = u.name
-				WHERE e.designation = '{0}'""".format(self.tembusan), as_dict=1)
-				for x in users:
-					assigner.append(x.name)
-				self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(self.tembusan))
+					self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(self.dari_user_id))
+			else:
+				if self.dari_designation:
+					users = frappe.db.sql("""SELECT u.name FROM tabUser u
+					INNER JOIN tabEmployee e ON e.user_id = u.name
+					WHERE e.designation = '{0}'""".format(self.dari_designation), as_dict=1)
+					for x in users:
+						assigner.append(x.name)
+					self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(self.dari_designation))
+			
+			for d in self.kepada:
+				if d.kepada_merupakan_karyawan == 1:
+					if d.user_id:
+						users = frappe.db.sql("""SELECT u.name FROM tabUser u
+						INNER JOIN tabEmployee e ON e.user_id = u.name
+						WHERE e.user_id = '{0}'""".format(d.user_id), as_dict=1)
+						for x in users:
+							assigner.append(x.name)
+						self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(d.user_id))
+				else:
+					if d.designation:
+						users = frappe.db.sql("""SELECT u.name FROM tabUser u
+						INNER JOIN tabEmployee e ON e.user_id = u.name
+						WHERE e.designation = '{0}'""".format(d.designation), as_dict=1)
+						for x in users:
+							assigner.append(x.name)
+						self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(d.designation))
+			
+			if self.tembusan_merupakan_karyawan == 1:
+				if self.tembusan_user_id:
+					users = frappe.db.sql("""SELECT u.name FROM tabUser u
+					INNER JOIN tabEmployee e ON e.user_id = u.name
+					WHERE e.user_id = '{0}'""".format(self.tembusan_user_id), as_dict=1)
+					for x in users:
+						assigner.append(x.name)
+					self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(self.tembusan_user_id))
+			else:
+				if self.tembusan_designation:
+					users = frappe.db.sql("""SELECT u.name FROM tabUser u
+					INNER JOIN tabEmployee e ON e.user_id = u.name
+					WHERE e.designation = '{0}'""".format(self.tembusan_designation), as_dict=1)
+					for x in users:
+						assigner.append(x.name)
+					self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(self.tembusan_designation))
+
 			notification_doc = {
 				"type": "Alert",
 				"document_type": self.doctype,

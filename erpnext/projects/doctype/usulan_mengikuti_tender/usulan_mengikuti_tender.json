@@ -18,7 +18,8 @@
   "tinjauan",
   "keterangan",
   "keputusan",
-  "catatan_direktur"
+  "catatan_direktur",
+  "process_rules"
  ],
  "fields": [
   {
@@ -52,11 +53,12 @@
    "label": "Keterangan"
   },
   {
-   "default": "Tidak Diikuti",
    "fieldname": "keputusan",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Keputusan",
-   "options": "Diikuti\nTidak Diikuti"
+   "options": "\nDiikuti\nTidak Diikuti",
+   "read_only": 1
   },
   {
    "fieldname": "tinjauan",
@@ -67,6 +69,7 @@
   {
    "fieldname": "catatan_direktur",
    "fieldtype": "Small Text",
+   "in_list_view": 1,
    "label": "Catatan Direktur"
   },
   {
@@ -88,11 +91,18 @@
    "label": "Pelanggan",
    "options": "Customer",
    "reqd": 1
+  },
+  {
+   "fieldname": "process_rules",
+   "fieldtype": "Table",
+   "label": "Process Rules",
+   "options": "Process Rules",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-21 10:40:18.867527",
+ "modified": "2023-10-20 19:49:47.747365",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "USULAN MENGIKUTI TENDER",

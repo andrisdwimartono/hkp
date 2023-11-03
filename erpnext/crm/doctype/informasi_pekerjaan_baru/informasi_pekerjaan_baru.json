@@ -112,7 +112,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-07 10:22:42.350319",
+ "modified": "2023-10-29 20:50:09.512472",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "INFORMASI PEKERJAAN BARU",
@@ -131,6 +131,7 @@
    "write": 1
   }
  ],
+ "search_fields": "dari, hal, nama_proyek",
  "sort_field": "modified",
  "sort_order": "DESC"
 }

@@ -526,6 +526,7 @@ scheduler_events = {
         "erpnext.support.doctype.peminjaman_dokumen.peminjaman_dokumen.alert_kembalikan",
         "erpnext.support.doctype.company_document.company_document.get_company_document_obsolete",
         "erpnext.projects.utils.notifikasi_schedule_aktivitas",
+        "erpnext.projects.utils.get_jadwal_dan_pic_tender",
 	],
 	"daily_long": [
 		"erpnext.setup.doctype.email_digest.email_digest.send",

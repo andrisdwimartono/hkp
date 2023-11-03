@@ -21,6 +21,10 @@
   "company",
   "project",
   "project_name",
+  "sub_contract_request",
+  "sub_contract_hand_over",
+  "sub_contract",
+  "contractor_name",
   "amended_from",
   "warehouse_section",
   "set_from_warehouse",
@@ -334,13 +338,43 @@
    "fieldtype": "Data",
    "label": "Project Name",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.project",
+   "fieldname": "sub_contract_request",
+   "fieldtype": "Check",
+   "label": "Permintaan Subkon"
+  },
+  {
+   "depends_on": "eval: doc.sub_contract_request == 1",
+   "fieldname": "sub_contract_hand_over",
+   "fieldtype": "Link",
+   "label": "Sub Contract Hand Over",
+   "mandatory_depends_on": "eval: doc.sub_contract_request == 1",
+   "options": "Sub Contract Hand Over"
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.sub_contract",
+   "fieldname": "sub_contract",
+   "fieldtype": "Link",
+   "label": "Sub Contract",
+   "options": "Sub Contract",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.contractor_name",
+   "fieldname": "contractor_name",
+   "fieldtype": "Data",
+   "label": "Contractor Name",
+   "read_only": 1
   }
  ],
  "icon": "fa fa-ticket",
  "idx": 70,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-07-20 14:51:58.600763",
+ "modified": "2023-10-29 13:27:55.710268",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Material Request",

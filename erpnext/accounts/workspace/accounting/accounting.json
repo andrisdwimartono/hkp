@@ -455,16 +455,16 @@
    "type": "Link"
   },
   {
-    "dependencies": "GL Entry",
-    "hidden": 0,
-    "is_query_report": 1,
-    "label": "KSA VAT Report",
-    "link_to": "KSA VAT",
-    "link_type": "Report",
-    "onboard": 0,
-    "only_for": "Saudi Arabia",
-    "type": "Link"
-   },
+   "dependencies": "GL Entry",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "KSA VAT Report",
+   "link_to": "KSA VAT",
+   "link_type": "Report",
+   "onboard": 0,
+   "only_for": "Saudi Arabia",
+   "type": "Link"
+  },
   {
    "hidden": 0,
    "is_query_report": 0,
@@ -1046,15 +1046,15 @@
    "type": "Link"
   },
   {
-    "hidden": 0,
-    "is_query_report": 0,
-    "label": "KSA VAT Setting",
-    "link_to": "KSA VAT Setting",
-    "link_type": "DocType",
-    "onboard": 0,
-    "only_for": "Saudi Arabia",
-    "type": "Link"
-   },
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "KSA VAT Setting",
+   "link_to": "KSA VAT Setting",
+   "link_type": "DocType",
+   "onboard": 0,
+   "only_for": "Saudi Arabia",
+   "type": "Link"
+  },
   {
    "hidden": 0,
    "is_query_report": 0,
@@ -1103,7 +1103,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-08-26 13:15:52.872470",
+ "modified": "2023-10-23 14:17:43.989855",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Accounting",
@@ -1133,7 +1133,7 @@
    "type": "DocType"
   },
   {
-   "label": "Payment Entry",
+   "label": "Pembayaran Hutang",
    "link_to": "Payment Entry",
    "type": "DocType"
   },

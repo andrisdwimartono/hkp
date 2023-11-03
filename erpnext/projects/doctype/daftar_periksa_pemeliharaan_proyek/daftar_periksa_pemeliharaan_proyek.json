@@ -15,6 +15,7 @@
   "posting_date",
   "section_break_v4zog",
   "detail",
+  "lampiran",
   "process_rules"
  ],
  "fields": [
@@ -79,11 +80,16 @@
    "fieldtype": "Table",
    "label": "Process Rules",
    "options": "Process Rules"
+  },
+  {
+   "fieldname": "lampiran",
+   "fieldtype": "Attach",
+   "label": "Lampiran"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-26 10:53:15.980908",
+ "modified": "2023-11-02 14:11:49.687319",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Daftar Periksa Pemeliharaan Proyek",

@@ -6,6 +6,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "master_item_pekerjaan",
   "sub_contract_hand_over",
   "tanggal_spk",
   "termin",
@@ -14,14 +15,14 @@
   "job_name",
   "periode",
   "finish_work",
-  "rencana",
-  "realisasi",
-  "deviasi",
   "column_break_r7gnh",
   "tanggal",
   "project",
   "project_name",
   "project_address",
+  "rencana",
+  "realisasi",
+  "deviasi",
   "section_break_0vlv4",
   "detail",
   "document",
@@ -30,6 +31,7 @@
  ],
  "fields": [
   {
+   "fetch_from": "master_item_pekerjaan.sub_contract_hand_over",
    "fieldname": "sub_contract_hand_over",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -166,12 +168,19 @@
    "fieldname": "document",
    "fieldtype": "Attach",
    "label": "Document"
+  },
+  {
+   "fieldname": "master_item_pekerjaan",
+   "fieldtype": "Link",
+   "label": "Master Item Pekerjaan",
+   "options": "Master Item Pekerjaan",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-10-19 09:59:00.219872",
+ "modified": "2023-11-01 10:07:03.056933",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Laporan Pengajuan Penagihan",
@@ -190,6 +199,7 @@
    "write": 1
   }
  ],
+ "search_fields": "sub_contract_hand_over,termin,contractor_name,job_name,project_name",
  "sort_field": "modified",
  "sort_order": "DESC"
 }

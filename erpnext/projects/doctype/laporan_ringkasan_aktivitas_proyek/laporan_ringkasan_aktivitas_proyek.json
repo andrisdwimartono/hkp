@@ -1,0 +1,152 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-26 09:48:28.549673",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project",
+  "project_name",
+  "start_date",
+  "finish_date",
+  "section_break_9i8iw",
+  "detail",
+  "section_break_zcbmu",
+  "rencana",
+  "column_break_kxxbb",
+  "realisasi",
+  "column_break_fcnyf",
+  "deviasi",
+  "section_break_hvrok",
+  "prediksi_permasalahan",
+  "lampiran",
+  "process_rules",
+  "notifikasi"
+ ],
+ "fields": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "finish_date",
+   "fieldtype": "Date",
+   "label": "Finish Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "detail",
+   "fieldtype": "Table",
+   "label": "Detail",
+   "options": "Laporan Ringkasan Aktivitas Proyek Detail"
+  },
+  {
+   "default": "0",
+   "fieldname": "rencana",
+   "fieldtype": "Percent",
+   "label": "Rencana",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_zcbmu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_kxxbb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "realisasi",
+   "fieldtype": "Percent",
+   "label": "Realisasi",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_fcnyf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "deviasi",
+   "fieldtype": "Percent",
+   "label": "Deviasi",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_hvrok",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "prediksi_permasalahan",
+   "fieldtype": "Table",
+   "label": "Prediksi Permasalahan",
+   "options": "Laporan Ringkasan Aktivitas Proyek Prediksi Permasalahan"
+  },
+  {
+   "fieldname": "section_break_9i8iw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "process_rules",
+   "fieldtype": "Table",
+   "label": "Process Rules",
+   "options": "Process Rules"
+  },
+  {
+   "fieldname": "notifikasi",
+   "fieldtype": "Table",
+   "label": "Notifikasi",
+   "options": "Notifikasi"
+  },
+  {
+   "fieldname": "lampiran",
+   "fieldtype": "Attach",
+   "label": "Lampiran"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-11-02 14:00:56.920205",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Laporan Ringkasan Aktivitas Proyek",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

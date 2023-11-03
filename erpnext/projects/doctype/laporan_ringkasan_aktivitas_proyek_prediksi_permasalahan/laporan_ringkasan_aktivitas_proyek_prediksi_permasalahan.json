@@ -1,0 +1,39 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-27 11:00:16.107937",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "uraian_permasalahan",
+  "rencana_penyelesaian"
+ ],
+ "fields": [
+  {
+   "fieldname": "uraian_permasalahan",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Uraian Permasalahan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rencana_penyelesaian",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Rencana Penyelesaian",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-10-27 11:01:04.993907",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Laporan Ringkasan Aktivitas Proyek Prediksi Permasalahan",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

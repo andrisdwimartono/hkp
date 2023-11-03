@@ -1,0 +1,165 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-24 15:06:31.999583",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "document_name",
+  "no_gambar",
+  "sub_section",
+  "drawing",
+  "document_no",
+  "date",
+  "project_material_item",
+  "document",
+  "revision",
+  "completeness",
+  "drawing_number",
+  "information",
+  "column_break_vuabg",
+  "submit_date",
+  "letter_no_submit",
+  "return_date",
+  "letter_no_return"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "fieldname": "no_gambar",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "No Gambar"
+  },
+  {
+   "columns": 1,
+   "fieldname": "sub_section",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sub Section",
+   "options": "Project Sub Section"
+  },
+  {
+   "columns": 2,
+   "fieldname": "drawing",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project Material",
+   "options": "Drawing"
+  },
+  {
+   "fetch_from": "drawing.document_no",
+   "fieldname": "document_no",
+   "fieldtype": "Data",
+   "label": "Document No"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "mandatory_depends_on": "eval: doc.project_document_type == \"Preliminary design\""
+  },
+  {
+   "fieldname": "project_material_item",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Project Material Item",
+   "options": "Project Material Item"
+  },
+  {
+   "columns": 1,
+   "fieldname": "document",
+   "fieldtype": "Attach",
+   "in_list_view": 1,
+   "label": "Document"
+  },
+  {
+   "default": "0",
+   "fieldname": "revision",
+   "fieldtype": "Int",
+   "label": "Revision",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "default": "RFC",
+   "fieldname": "completeness",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Progress",
+   "options": "PROSES REVIEW\nRFC\nNEN/APPROVE\nEN\nFI",
+   "reqd": 1
+  },
+  {
+   "fieldname": "drawing_number",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Drawing Number"
+  },
+  {
+   "fieldname": "information",
+   "fieldtype": "Small Text",
+   "label": "Information"
+  },
+  {
+   "fieldname": "column_break_vuabg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "submit_date",
+   "fieldtype": "Date",
+   "label": "Submit Date"
+  },
+  {
+   "fieldname": "letter_no_submit",
+   "fieldtype": "Data",
+   "label": "Letter No"
+  },
+  {
+   "fieldname": "return_date",
+   "fieldtype": "Date",
+   "label": "Return Date"
+  },
+  {
+   "fieldname": "letter_no_return",
+   "fieldtype": "Data",
+   "label": "Letter No"
+  },
+  {
+   "fieldname": "document_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "document_name",
+   "read_only": 1,
+   "reqd": 1
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-10-24 16:06:22.689135",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Preliminary Design Detail2",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

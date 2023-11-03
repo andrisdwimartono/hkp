@@ -1,0 +1,72 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-26 09:51:40.942127",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "uraian_aktivitas",
+  "target",
+  "realisasi",
+  "deviasi",
+  "target_selanjutnya",
+  "keterangan"
+ ],
+ "fields": [
+  {
+   "fieldname": "uraian_aktivitas",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Uraian Aktivitas",
+   "reqd": 1
+  },
+  {
+   "fieldname": "target",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Target Saat Ini",
+   "reqd": 1
+  },
+  {
+   "fieldname": "realisasi",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Realisasi",
+   "reqd": 1
+  },
+  {
+   "fieldname": "deviasi",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Deviasi",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "keterangan",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Keterangan"
+  },
+  {
+   "columns": 2,
+   "fieldname": "target_selanjutnya",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Target Selanjutnya",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-10-28 21:16:07.141973",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Laporan Ringkasan Aktivitas Proyek Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

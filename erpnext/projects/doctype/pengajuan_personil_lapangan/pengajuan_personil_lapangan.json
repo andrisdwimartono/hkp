@@ -1,0 +1,140 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-29 20:21:17.588797",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project",
+  "project_name",
+  "contract_no",
+  "jenis",
+  "column_break_uqunf",
+  "tanggal",
+  "tanggal_dibutuhkan",
+  "informasi_pekerjaan_baru",
+  "tanggal_informasi",
+  "section_break_jilxe",
+  "detail",
+  "process_rules",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "project.contract_no",
+   "fieldname": "contract_no",
+   "fieldtype": "Data",
+   "label": "Contract No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_uqunf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Tanggal",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "tanggal_dibutuhkan",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Tanggal Dibutuhkan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Pengajuan Personil Lapangan",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "default": "Pengajuan",
+   "fieldname": "jenis",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Jenis",
+   "options": "Pengajuan\nPenambahan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_jilxe",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "detail",
+   "fieldtype": "Table",
+   "label": "Detail",
+   "options": "Pengajuan Personil Lapangan Personil"
+  },
+  {
+   "fieldname": "process_rules",
+   "fieldtype": "Table",
+   "label": "Process Rules",
+   "options": "Process Rules"
+  },
+  {
+   "depends_on": "eval: doc.jenis == \"Pengajuan\"",
+   "fieldname": "informasi_pekerjaan_baru",
+   "fieldtype": "Link",
+   "label": "Informasi Pekerjaan Baru",
+   "mandatory_depends_on": "eval: doc.jenis == \"Pengajuan\"",
+   "options": "INFORMASI PEKERJAAN BARU"
+  },
+  {
+   "fetch_from": "informasi_pekerjaan_baru.tanggal",
+   "fieldname": "tanggal_informasi",
+   "fieldtype": "Date",
+   "label": "Tanggal Informasi",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-10-29 20:48:38.503369",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Pengajuan Personil Lapangan",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -1,0 +1,46 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-26 09:53:41.293037",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "uraian_aktivitas",
+  "target",
+  "keterangan"
+ ],
+ "fields": [
+  {
+   "fieldname": "uraian_aktivitas",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Uraian Aktivitas",
+   "reqd": 1
+  },
+  {
+   "fieldname": "target",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Target",
+   "reqd": 1
+  },
+  {
+   "fieldname": "keterangan",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Keterangan"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-10-26 09:53:41.293037",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Laporan Ringkasan Aktivitas Proyek Rencana",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

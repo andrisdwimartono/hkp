@@ -13,22 +13,12 @@
   "ketidaksesuaian",
   "observasi",
   "uraian",
-  "dibuat_oleh",
-  "dibuat_oleh_nama",
-  "dibuat_pada",
-  "disetujui_oleh",
-  "disetujui_oleh_nama",
-  "disetujui_oleh_user",
-  "disetujui_pada",
   "analisa_penyebab",
   "tindakan_perbaikan_atau_tindakan_pencegahan",
-  "diperiksa_oleh",
-  "diperiksa_oleh_nama",
-  "diperiksa_oleh_user",
-  "diperiksa_pada",
   "target_penyelesaian",
   "kesesuaian",
-  "saran"
+  "saran",
+  "process_rules"
  ],
  "fields": [
   {
@@ -38,57 +28,72 @@
    "in_list_view": 1,
    "label": "Jenis",
    "options": "TINDAKAN PERBAIKAN\nTINDAKAN PENCEGAHAN",
+   "read_only_depends_on": "eval: doc.workflow_state == \"Diperiksa\" ||\ndoc.workflow_state == \"Disetujui\" ||\ndoc.workflow_state == \"Rejected\"",
    "reqd": 1
   },
   {
    "default": "0",
    "fieldname": "ketidaksesuaian",
    "fieldtype": "Check",
-   "label": "Ketidaksesuaian"
+   "label": "Ketidaksesuaian",
+   "read_only_depends_on": "eval: doc.workflow_state == \"Diperiksa\" ||\ndoc.workflow_state == \"Disetujui\" ||\ndoc.workflow_state == \"Rejected\""
   },
   {
    "default": "0",
    "fieldname": "observasi",
    "fieldtype": "Check",
-   "label": "Observasi"
+   "label": "Observasi",
+   "read_only_depends_on": "eval: doc.workflow_state == \"Diperiksa\" ||\ndoc.workflow_state == \"Disetujui\" ||\ndoc.workflow_state == \"Rejected\""
   },
   {
    "fieldname": "uraian",
    "fieldtype": "Text Editor",
-   "label": "Uraian"
+   "label": "Uraian",
+   "read_only_depends_on": "eval: doc.workflow_state == \"Diperiksa\" ||\ndoc.workflow_state == \"Disetujui\" ||\ndoc.workflow_state == \"Rejected\""
   },
   {
+   "depends_on": "eval: doc.workflow_state == \"Diperiksa\"",
    "fieldname": "analisa_penyebab",
    "fieldtype": "Text Editor",
-   "label": "Analisa Penyebab"
+   "label": "Analisa Penyebab",
+   "read_only_depends_on": "eval: doc.workflow_state == \"Dibuat\" ||\ndoc.workflow_state == \"Disetujui\" ||\ndoc.workflow_state == \"Rejected\""
   },
   {
+   "depends_on": "eval: doc.workflow_state == \"Diperiksa\"",
    "fieldname": "tindakan_perbaikan_atau_tindakan_pencegahan",
    "fieldtype": "Text Editor",
-   "label": "Tindakan Perbaikan atau Tindakan Pencegahan"
+   "label": "Tindakan Perbaikan atau Tindakan Pencegahan",
+   "read_only_depends_on": "eval: doc.workflow_state == \"Dibuat\" ||\ndoc.workflow_state == \"Disetujui\" ||\ndoc.workflow_state == \"Rejected\""
   },
   {
+   "depends_on": "eval: doc.workflow_state == \"Diperiksa\"",
    "fieldname": "target_penyelesaian",
    "fieldtype": "Date",
-   "label": "Target Penyelesaian"
+   "label": "Target Penyelesaian",
+   "read_only_depends_on": "eval: doc.workflow_state == \"Dibuat\" ||\ndoc.workflow_state == \"Disetujui\" ||\ndoc.workflow_state == \"Rejected\""
   },
   {
    "default": "Tidak Sesuai",
+   "depends_on": "eval: doc.workflow_state == \"Disetujui\"",
    "fieldname": "kesesuaian",
    "fieldtype": "Select",
    "label": "Kesesuaian",
-   "options": "Sesuai\nTidak Sesuai"
+   "options": "Sesuai\nTidak Sesuai",
+   "read_only_depends_on": "eval: doc.workflow_state == \"Diperiksa\" ||\ndoc.workflow_state == \"Dibuat\" ||\ndoc.workflow_state == \"Rejected\""
   },
   {
+   "depends_on": "eval: doc.workflow_state == \"Disetujui\"",
    "fieldname": "saran",
    "fieldtype": "Text Editor",
-   "label": "Saran"
+   "label": "Saran",
+   "read_only_depends_on": "eval: doc.workflow_state == \"Diperiksa\" ||\ndoc.workflow_state == \"Dibuat\" ||\ndoc.workflow_state == \"Rejected\""
   },
   {
    "fieldname": "project",
    "fieldtype": "Link",
    "label": "Project",
-   "options": "Project"
+   "options": "Project",
+   "read_only_depends_on": "eval: doc.workflow_state == \"Diperiksa\" ||\ndoc.workflow_state == \"Disetujui\" ||\ndoc.workflow_state == \"Rejected\""
   },
   {
    "fetch_from": "project.project_name",
@@ -98,86 +103,15 @@
    "read_only": 1
   },
   {
-   "fieldname": "diperiksa_pada",
-   "fieldtype": "Datetime",
-   "label": "Diperiksa Pada",
-   "read_only": 1
-  },
-  {
-   "fieldname": "disetujui_pada",
-   "fieldtype": "Datetime",
-   "label": "Disetujui Pada",
-   "read_only": 1
-  },
-  {
-   "fieldname": "dibuat_pada",
-   "fieldtype": "Datetime",
-   "label": "Dibuat Pada",
-   "read_only": 1
-  },
-  {
-   "fieldname": "disetujui_oleh",
-   "fieldtype": "Link",
-   "label": "Disetujui Oleh",
-   "options": "Employee",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "disetujui_oleh.employee_name",
-   "fieldname": "disetujui_oleh_nama",
-   "fieldtype": "Data",
-   "label": "Disetujui Oleh (Nama)",
-   "read_only": 1
-  },
-  {
-   "fetch_from": "disetujui_oleh.user_id",
-   "fieldname": "disetujui_oleh_user",
-   "fieldtype": "Link",
-   "label": "Disetujui Oleh (User)",
-   "mandatory_depends_on": "eval:doc.disetujui_oleh",
-   "options": "User",
-   "read_only": 1
-  },
-  {
-   "fieldname": "diperiksa_oleh",
-   "fieldtype": "Link",
-   "label": "Diperiksa Oleh",
-   "options": "Employee",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "diperiksa_oleh.employee_name",
-   "fieldname": "diperiksa_oleh_nama",
-   "fieldtype": "Data",
-   "label": "Diperiksa Oleh (Nama)",
-   "read_only": 1
-  },
-  {
-   "fetch_from": "diperiksa_oleh.user_id",
-   "fieldname": "diperiksa_oleh_user",
-   "fieldtype": "Link",
-   "label": "Diperiksa Oleh (User)",
-   "mandatory_depends_on": "eval: doc.diperiksa_oleh",
-   "options": "User",
-   "read_only": 1
-  },
-  {
-   "fieldname": "dibuat_oleh",
-   "fieldtype": "Link",
-   "label": "Dibuat Oleh",
-   "options": "Employee",
-   "read_only": 1
-  },
-  {
-   "fieldname": "dibuat_oleh_nama",
-   "fieldtype": "Data",
-   "label": "Dibuat Oleh (Nama)",
-   "read_only": 1
+   "fieldname": "process_rules",
+   "fieldtype": "Table",
+   "label": "Process Rules",
+   "options": "Process Rules"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-10 11:49:18.031377",
+ "modified": "2023-11-02 08:34:06.854128",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "LAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN",

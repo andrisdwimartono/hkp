@@ -8,8 +8,8 @@ import frappe
 from frappe.desk.doctype.notification_log.notification_log import enqueue_create_notification, make_notification_logs
 from frappe.utils import (
 	today,
-)\
-
+	add_days,
+)
 
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
@@ -178,6 +178,156 @@ def notifikasi_schedule_aktivitas():
 		assigner = [d.user_id]
 		for x in frappe.db.sql("""SELECT * FROM `tabPeserta Rapat` WHERE parent = '{0}'""".format(d.name), as_dict=1):
 			assigner.append(x.user)
+		notification_doc = frappe._dict(notification_doc)
+		
+		make_notification_logs(notification_doc, assigner)
+
+@frappe.whitelist()
+def get_jadwal_dan_pic_tender():
+	x = add_days(today(), -7)
+	y = add_days(today(), -3)
+	#mulai_aanwijzig_kantor
+	assigner = []
+	adu_employees = frappe.db.sql("""SELECT DISTINCT u.name user_id FROM `tabHas Role` hr
+							INNER JOIN tabUser u ON u.name = hr.parent
+							WHERE hr.role IN ('ADU') AND hr.parenttype = 'User'""", as_dict=1)
+	for adu in adu_employees:
+		assigner.append(adu.user_id)
+
+	employees = frappe.db.sql("""SELECT ec.*, e.employee_name, e.user_id, date_format(ec.mulai_aanwijzig_kantor, "%d-%m-%Y") dend FROM `tabJadwal dan PIC Tender` ec
+						   LEFT JOIN `tabPIC Tender` pt ON pt.parent = ec.name
+						   INNER JOIN `tabEmployee` e ON e.name = pt.employee
+						   LEFT JOIN `tabKoordinator Tender` kt ON kt.parent = ec.name
+						   INNER JOIN `tabEmployee` e2 ON e2.name = kt.employee
+						   WHERE date_format(ec.mulai_aanwijzig_kantor, "%Y-%m-%d") = '{0}'""".format(x, y), as_dict=1)
+	
+	for d in employees:
+		notification_doc = {
+			"type": "Alert",
+			"document_type": "Jadwal dan PIC Tender",
+			"document_name": d.name,
+			"subject": "Mulai Aanwijzig di tanggal {0} untuk {1}".format(d.dend, d.nama_paket),
+			"from_user": d.user_id or "Administrator",
+		}
+		
+		assigner.append(d.user_id)
+		
+		notification_doc = frappe._dict(notification_doc)
+		
+		make_notification_logs(notification_doc, assigner)
+
+	#mulai_aanwijzig_lapangan
+	assigner = []
+	adu_employees = frappe.db.sql("""SELECT DISTINCT u.name user_id FROM `tabHas Role` hr
+							INNER JOIN tabUser u ON u.name = hr.parent
+							WHERE hr.role IN ('ADU') AND hr.parenttype = 'User'""", as_dict=1)
+	for adu in adu_employees:
+		assigner.append(adu.user_id)
+		
+	employees = frappe.db.sql("""SELECT ec.*, e.employee_name, e.user_id, date_format(ec.mulai_aanwijzig_lapangan, "%d-%m-%Y") dend FROM `tabJadwal dan PIC Tender` ec
+						   LEFT JOIN `tabPIC Tender` pt ON pt.parent = ec.name
+						   INNER JOIN `tabEmployee` e ON e.name = pt.employee
+						   LEFT JOIN `tabKoordinator Tender` kt ON kt.parent = ec.name
+						   INNER JOIN `tabEmployee` e2 ON e2.name = kt.employee
+						   WHERE date_format(ec.mulai_aanwijzig_lapangan, "%Y-%m-%d") = '{0}'""".format(x, y), as_dict=1)
+	for d in employees:
+		notification_doc = {
+			"type": "Alert",
+			"document_type": "Jadwal dan PIC Tender",
+			"document_name": d.name,
+			"subject": "Mulai Aanwijzig Lapangan di tanggal {0} untuk {1}".format(d.dend, d.nama_paket),
+			"from_user": d.user_id or "Administrator",
+		}
+		
+		assigner.append(d.user_id)
+		
+		notification_doc = frappe._dict(notification_doc)
+		
+		make_notification_logs(notification_doc, assigner)
+
+	#mulai_mempelajari_rks
+	assigner = []
+	adu_employees = frappe.db.sql("""SELECT DISTINCT u.name user_id FROM `tabHas Role` hr
+							INNER JOIN tabUser u ON u.name = hr.parent
+							WHERE hr.role IN ('ADU') AND hr.parenttype = 'User'""", as_dict=1)
+	for adu in adu_employees:
+		assigner.append(adu.user_id)
+		
+	employees = frappe.db.sql("""SELECT ec.*, e.employee_name, e.user_id, date_format(ec.mulai_mempelajari_rks, "%d-%m-%Y") dend FROM `tabJadwal dan PIC Tender` ec
+						   LEFT JOIN `tabPIC Tender` pt ON pt.parent = ec.name
+						   INNER JOIN `tabEmployee` e ON e.name = pt.employee
+						   LEFT JOIN `tabKoordinator Tender` kt ON kt.parent = ec.name
+						   INNER JOIN `tabEmployee` e2 ON e2.name = kt.employee
+						   WHERE date_format(ec.mulai_mempelajari_rks, "%Y-%m-%d") = '{0}'""".format(x, y), as_dict=1)
+	for d in employees:
+		notification_doc = {
+			"type": "Alert",
+			"document_type": "Jadwal dan PIC Tender",
+			"document_name": d.name,
+			"subject": "Mulai Memelajari RKS di tanggal {0} untuk {1}".format(d.dend, d.nama_paket),
+			"from_user": d.user_id or "Administrator",
+		}
+		
+		assigner.append(d.user_id)
+		
+		notification_doc = frappe._dict(notification_doc)
+		
+		make_notification_logs(notification_doc, assigner)
+
+	#selesai_mempelajari_rks
+	assigner = []
+	adu_employees = frappe.db.sql("""SELECT DISTINCT u.name user_id FROM `tabHas Role` hr
+							INNER JOIN tabUser u ON u.name = hr.parent
+							WHERE hr.role IN ('ADU') AND hr.parenttype = 'User'""", as_dict=1)
+	for adu in adu_employees:
+		assigner.append(adu.user_id)
+		
+	employees = frappe.db.sql("""SELECT ec.*, e.employee_name, e.user_id, date_format(ec.selesai_mempelajari_rks, "%d-%m-%Y") dend FROM `tabJadwal dan PIC Tender` ec
+						   LEFT JOIN `tabPIC Tender` pt ON pt.parent = ec.name
+						   INNER JOIN `tabEmployee` e ON e.name = pt.employee
+						   LEFT JOIN `tabKoordinator Tender` kt ON kt.parent = ec.name
+						   INNER JOIN `tabEmployee` e2 ON e2.name = kt.employee
+						   WHERE date_format(ec.selesai_mempelajari_rks, "%Y-%m-%d") = '{0}'""".format(x, y), as_dict=1)
+	for d in employees:
+		notification_doc = {
+			"type": "Alert",
+			"document_type": "Jadwal dan PIC Tender",
+			"document_name": d.name,
+			"subject": "Selesai Memelajari RKS di tanggal {0} untuk {1}".format(d.dend, d.nama_paket),
+			"from_user": d.user_id or "Administrator",
+		}
+		
+		assigner.append(d.user_id)
+		
+		notification_doc = frappe._dict(notification_doc)
+		
+		make_notification_logs(notification_doc, assigner)
+
+	#pemasukan_penawaran
+	assigner = []
+	adu_employees = frappe.db.sql("""SELECT DISTINCT u.name user_id FROM `tabHas Role` hr
+							INNER JOIN tabUser u ON u.name = hr.parent
+							WHERE hr.role IN ('ADU') AND hr.parenttype = 'User'""", as_dict=1)
+	for adu in adu_employees:
+		assigner.append(adu.user_id)
+		
+	employees = frappe.db.sql("""SELECT ec.*, e.employee_name, e.user_id, date_format(ec.pemasukan_penawaran, "%d-%m-%Y") dend FROM `tabJadwal dan PIC Tender` ec
+						   LEFT JOIN `tabPIC Tender` pt ON pt.parent = ec.name
+						   INNER JOIN `tabEmployee` e ON e.name = pt.employee
+						   LEFT JOIN `tabKoordinator Tender` kt ON kt.parent = ec.name
+						   INNER JOIN `tabEmployee` e2 ON e2.name = kt.employee
+						   WHERE date_format(ec.pemasukan_penawaran, "%Y-%m-%d") = '{0}'""".format(x, y), as_dict=1)
+	for d in employees:
+		notification_doc = {
+			"type": "Alert",
+			"document_type": "Jadwal dan PIC Tender",
+			"document_name": d.name,
+			"subject": "Pemasukan Penawaran di tanggal {0} untuk {1}".format(d.dend, d.nama_paket),
+			"from_user": d.user_id or "Administrator",
+		}
+		
+		assigner.append(d.user_id)
+		
 		notification_doc = frappe._dict(notification_doc)
 		
 		make_notification_logs(notification_doc, assigner)

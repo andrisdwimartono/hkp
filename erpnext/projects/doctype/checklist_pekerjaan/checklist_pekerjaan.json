@@ -6,26 +6,20 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "laporan_pengajuan_penagihan",
   "sub_contract_hand_over",
   "sub_contract",
   "project",
   "project_name",
   "project_address",
   "column_break_zrsni",
+  "termin",
   "tanggal",
   "section_break_myatb",
   "detail",
   "process_rules"
  ],
  "fields": [
-  {
-   "fieldname": "sub_contract_hand_over",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Sub Contract Hand Over",
-   "options": "Sub Contract Hand Over",
-   "reqd": 1
-  },
   {
    "fetch_from": "sub_contract_hand_over.sub_contract",
    "fieldname": "sub_contract",
@@ -61,7 +55,7 @@
    "fieldname": "tanggal",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Tanggal",
+   "label": "Tanggal Periksa",
    "reqd": 1
   },
   {
@@ -83,11 +77,32 @@
    "fieldtype": "Table",
    "label": "Process Rules",
    "options": "Process Rules"
+  },
+  {
+   "fieldname": "laporan_pengajuan_penagihan",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Laporan Pengajuan Penagihan",
+   "options": "Laporan Pengajuan Penagihan",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "laporan_pengajuan_penagihan.termin",
+   "fieldname": "termin",
+   "fieldtype": "Int",
+   "label": "Termin"
+  },
+  {
+   "fetch_from": "laporan_pengajuan_penagihan.sub_contract_hand_over",
+   "fieldname": "sub_contract_hand_over",
+   "fieldtype": "Link",
+   "label": "Sub Contract Hand Over",
+   "options": "Sub Contract Hand Over"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-11 23:09:02.645786",
+ "modified": "2023-11-02 10:48:10.828955",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Checklist Pekerjaan",

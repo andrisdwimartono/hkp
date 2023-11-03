@@ -1,0 +1,106 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-31 09:55:21.283252",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sub_contract_hand_over",
+  "sub_contract",
+  "contractor_name",
+  "project",
+  "project_name",
+  "revisi",
+  "section_break_9i8iw",
+  "detail",
+  "detail_revisi"
+ ],
+ "fields": [
+  {
+   "fetch_from": "sub_contract_hand_over.project",
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_9i8iw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "detail",
+   "fieldtype": "Table",
+   "label": "Detail",
+   "options": "Master Item Pekerjaan Detail"
+  },
+  {
+   "default": "0",
+   "fieldname": "revisi",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Amandemen",
+   "read_only": 1
+  },
+  {
+   "fieldname": "detail_revisi",
+   "fieldtype": "Table",
+   "label": "Detail Amandemen",
+   "options": "Master Item Pekerjaan Revisi"
+  },
+  {
+   "fieldname": "sub_contract_hand_over",
+   "fieldtype": "Link",
+   "label": "Sub Contract Hand Over",
+   "options": "Sub Contract Hand Over",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.sub_contract",
+   "fieldname": "sub_contract",
+   "fieldtype": "Link",
+   "label": "Sub Contract",
+   "options": "Sub Contract"
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.contractor_name",
+   "fieldname": "contractor_name",
+   "fieldtype": "Data",
+   "label": "Contractor Name"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-11-03 09:43:34.417947",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Master Item Pekerjaan",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "sub_contract_hand_over, contractor_name, project, project_name, revisi",
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -11,7 +11,12 @@
   "from",
   "subject",
   "column_break_0eosr",
-  "type",
+  "memo",
+  "quick_note",
+  "your_information",
+  "please_return_with_your_comment",
+  "please_action",
+  "please_discuss",
   "section_break_spamr",
   "target_penyelesaian",
   "date"
@@ -39,15 +44,6 @@
    "reqd": 1
   },
   {
-   "default": "MEMO",
-   "fieldname": "type",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Type",
-   "options": "MEMO\nQUICK NOTE\nYOUR INFORMATION\nPLEASE RETURN WITH YOUR COMMENT\nPLEASE ACTION\nPLEASE DISCUSS",
-   "reqd": 1
-  },
-  {
    "fieldname": "target_penyelesaian",
    "fieldtype": "Small Text",
    "label": "Target Penyelesaian"
@@ -65,11 +61,47 @@
   {
    "fieldname": "section_break_spamr",
    "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "memo",
+   "fieldtype": "Check",
+   "label": "MEMO"
+  },
+  {
+   "default": "0",
+   "fieldname": "quick_note",
+   "fieldtype": "Check",
+   "label": "QUICK NOTE"
+  },
+  {
+   "default": "0",
+   "fieldname": "your_information",
+   "fieldtype": "Check",
+   "label": "YOUR INFORMATION"
+  },
+  {
+   "default": "0",
+   "fieldname": "please_return_with_your_comment",
+   "fieldtype": "Check",
+   "label": "PLEASE RETURN WITH YOUR COMMENT"
+  },
+  {
+   "default": "0",
+   "fieldname": "please_action",
+   "fieldtype": "Check",
+   "label": "PLEASE ACTION"
+  },
+  {
+   "default": "0",
+   "fieldname": "please_discuss",
+   "fieldtype": "Check",
+   "label": "PLEASE DISCUSS"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-18 19:09:35.920610",
+ "modified": "2023-10-23 11:08:40.227843",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Communication Form",

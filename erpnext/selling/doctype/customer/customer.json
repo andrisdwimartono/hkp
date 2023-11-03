@@ -22,6 +22,10 @@
   "lead_name",
   "opportunity_name",
   "image",
+  "jenis_notifikasi",
+  "hari_notifikasi",
+  "tanggal_notifikasi",
+  "notifikasi_di_tanggal",
   "column_break0",
   "account_manager",
   "customer_group",
@@ -505,6 +509,36 @@
    "no_copy": 1,
    "options": "Opportunity",
    "print_hide": 1
+  },
+  {
+   "fieldname": "jenis_notifikasi",
+   "fieldtype": "Select",
+   "label": "Jenis Notifikasi",
+   "options": "\nMingguan\nBulanan\nCustom"
+  },
+  {
+   "default": "Monday",
+   "depends_on": "eval: doc.jenis_notifikasi == \"Mingguan\"",
+   "fieldname": "hari_notifikasi",
+   "fieldtype": "Select",
+   "label": "Hari Notifikasi",
+   "mandatory_depends_on": "eval: doc.jenis_notifikasi == \"Mingguan\"",
+   "options": "Sunday\nMonday\nTuesday\nWednesday\nThursday\nFriday\nSaturday"
+  },
+  {
+   "depends_on": "eval: doc.jenis_notifikasi == \"Bulanan\"",
+   "fieldname": "tanggal_notifikasi",
+   "fieldtype": "Int",
+   "label": "Tanggal Notifikasi",
+   "mandatory_depends_on": "eval: doc.jenis_notifikasi == \"Bulanan\""
+  },
+  {
+   "default": "Today",
+   "depends_on": "eval: doc.jenis_notifikasi == \"Custom\"",
+   "fieldname": "notifikasi_di_tanggal",
+   "fieldtype": "Date",
+   "label": "Notifikasi di Tanggal",
+   "mandatory_depends_on": "eval: doc.jenis_notifikasi == \"Custom\""
   }
  ],
  "icon": "fa fa-user",
@@ -518,7 +552,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2023-05-25 10:54:57.111617",
+ "modified": "2023-10-20 09:47:29.231346",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Customer",

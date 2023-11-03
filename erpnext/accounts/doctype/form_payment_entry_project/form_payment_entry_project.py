@@ -12,6 +12,8 @@ class FormPaymentEntryProject(Document):
 		self.total_budget = 0
 		for d in self.details:
 			self.total_budget = self.total_budget+d.budget_amount
+		if not self.total_budget_first:
+			self.total_budget_first = self.total_budget
 		if self.docstatus == 0:
 			self.outstanding_amount = self.total_budget
 	def on_submit(self):
@@ -26,7 +28,9 @@ class FormPaymentEntryProject(Document):
 			"form_payment_entry_project": self.name
 		})
 		budget_approval_plan_doc.save()
-                
+		frappe.db.sql("""UPDATE `tabForm Payment Entry Project` SET submitted_date = '{0}' WHERE name = '{1}'""".format(today(), self.name))
+		frappe.db.commit()
+
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
 def get_pos_rap(doctype, txt, searchfield, start, page_len, filters):

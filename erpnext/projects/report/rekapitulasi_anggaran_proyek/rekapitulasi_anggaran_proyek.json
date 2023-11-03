@@ -1,0 +1,123 @@
+{
+ "add_total_row": 0,
+ "columns": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project",
+   "width": 100
+  },
+  {
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "width": 250
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Data",
+   "label": "Uraian",
+   "options": "POS RAP",
+   "width": 200
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Tanggal Pengajuan",
+   "width": 125
+  },
+  {
+   "fieldname": "total_budget_first",
+   "fieldtype": "Currency",
+   "label": "Pengajuan (Rp)",
+   "width": 175
+  },
+  {
+   "fieldname": "submitted_date",
+   "fieldtype": "Date",
+   "label": "Tanggal Disetujui",
+   "width": 125
+  },
+  {
+   "fieldname": "total_budget",
+   "fieldtype": "Currency",
+   "label": "Disetujui (Rp)",
+   "width": 175
+  },
+  {
+   "fieldname": "tanggal_realisasi",
+   "fieldtype": "Date",
+   "label": "Tanggal Realisasi",
+   "width": 125
+  },
+  {
+   "fieldname": "paid_amount",
+   "fieldtype": "Currency",
+   "label": "Realisasi (Rp)",
+   "width": 175
+  },
+  {
+   "fieldname": "keterangan",
+   "fieldtype": "Data",
+   "label": "Keterangan",
+   "width": 200
+  }
+ ],
+ "creation": "2023-10-25 10:15:33.761868",
+ "disable_prepared_report": 0,
+ "disabled": 1,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "mandatory": 1,
+   "options": "Project",
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "finish_date",
+   "fieldtype": "Date",
+   "label": "Finish Date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "KOP HKP",
+ "modified": "2023-10-25 15:05:57.877895",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Rekapitulasi Anggaran Proyek",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\n    a.project,\n    a.project_name,\n    a.purpose,\n    a.posting_date,\n    a.total_budget_first,\n    a.submitted_date,\n    a.total_budget,\n    b.posting_date tanggal_realisasi,\n    b.paid_amount,\n    a.keterangan \n    FROM `tabForm Payment Entry Project` a\nLEFT JOIN `tabPayment Entry` b ON b.type = 'Form Payment Entry Project' AND a.name = b.form_payment_entry_project\nWHERE a.project = %(project)s AND a.posting_date BETWEEN %(start_date)s AND %(finish_date)s;",
+ "ref_doctype": "Project",
+ "report_name": "Rekapitulasi Anggaran Proyek",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Kasir"
+  },
+  {
+   "role": "dirut"
+  },
+  {
+   "role": "All"
+  }
+ ]
+}

@@ -8,7 +8,8 @@
  "field_order": [
   "project",
   "project_name",
-  "periode",
+  "start_date",
+  "finish_date",
   "column_break_kxrmn",
   "posting_date",
   "section_break_sxlt0",
@@ -30,12 +31,6 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Project Name"
-  },
-  {
-   "fieldname": "periode",
-   "fieldtype": "Int",
-   "in_list_view": 1,
-   "label": "Periode"
   },
   {
    "default": "Today",
@@ -63,11 +58,26 @@
    "fieldtype": "Table",
    "label": "Process Rules",
    "options": "Process Rules"
+  },
+  {
+   "default": "Today",
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "finish_date",
+   "fieldtype": "Date",
+   "label": "Finish Date",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-11 22:25:45.230285",
+ "modified": "2023-10-25 14:52:08.818643",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Rekapitulasi Anggaran Proyek",
