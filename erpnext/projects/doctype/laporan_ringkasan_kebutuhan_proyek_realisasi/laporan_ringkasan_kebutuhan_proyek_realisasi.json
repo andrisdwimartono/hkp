@@ -1,0 +1,65 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-07 10:06:18.696560",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "uraian_material",
+  "uom",
+  "rencana",
+  "realisasi",
+  "keterangan"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "uraian_material",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Uraian Material",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "UoM",
+   "options": "UOM"
+  },
+  {
+   "columns": 1,
+   "fieldname": "rencana",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Rencana"
+  },
+  {
+   "columns": 1,
+   "fieldname": "realisasi",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Realisasi"
+  },
+  {
+   "columns": 2,
+   "fieldname": "keterangan",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Keterangan"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-07 10:06:18.696560",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Laporan Ringkasan Kebutuhan Proyek Realisasi",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

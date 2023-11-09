@@ -1,13 +1,12 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "SCWP-.YYYY.-.######.",
- "creation": "2023-06-15 14:46:22.718867",
+ "autoname": "MSCWP-.YYYY.-.######.",
+ "creation": "2023-11-09 07:35:21.275605",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "master_sub_contract_weekly_progress",
   "sub_contract_hand_over",
   "project",
   "sub_contract",
@@ -15,26 +14,25 @@
   "column_break_ax2ti",
   "contractor_name",
   "project_name",
-  "pic_name",
-  "posting_date",
-  "week",
-  "week_no",
-  "start_week",
-  "end_week",
   "budget_amount",
   "section_break_iqn48",
-  "sub_contract_weekly_progress_detail",
-  "amended_from"
+  "sub_contract_weekly_progress_detail"
  ],
  "fields": [
   {
-   "fetch_from": "master_sub_contract_weekly_progress.sub_contract_hand_over",
    "fieldname": "sub_contract_hand_over",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Sub Contract Hand Over",
    "options": "Sub Contract Hand Over",
-   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.project",
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project",
    "reqd": 1
   },
   {
@@ -56,15 +54,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Sub Contract Weekly Progress",
-   "print_hide": 1,
-   "read_only": 1
-  },
-  {
    "fieldname": "column_break_ax2ti",
    "fieldtype": "Column Break"
   },
@@ -76,38 +65,10 @@
    "reqd": 1
   },
   {
-   "fetch_from": "sub_contract_hand_over.project",
-   "fieldname": "project",
-   "fieldtype": "Link",
-   "label": "Project",
-   "options": "Project",
-   "reqd": 1
-  },
-  {
    "fetch_from": "sub_contract_hand_over.project_name",
    "fieldname": "project_name",
    "fieldtype": "Data",
    "label": "Project Name",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "sub_contract_hand_over.pic_name",
-   "fieldname": "pic_name",
-   "fieldtype": "Data",
-   "label": "PIC Name"
-  },
-  {
-   "default": "Today",
-   "fieldname": "posting_date",
-   "fieldtype": "Date",
-   "label": "Posting Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "week",
-   "fieldtype": "Data",
-   "label": "Week",
-   "read_only": 1,
    "reqd": 1
   },
   {
@@ -126,43 +87,16 @@
    "fieldname": "sub_contract_weekly_progress_detail",
    "fieldtype": "Table",
    "label": "Sub Contract Weekly Progress Detail",
-   "options": "Sub Contract Weekly Progress Detail",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "week.week",
-   "fieldname": "week_no",
-   "fieldtype": "Int",
-   "hidden": 1,
-   "label": "Week No",
-   "read_only": 1
-  },
-  {
-   "fetch_from": "week.start_week",
-   "fieldname": "start_week",
-   "fieldtype": "Date",
-   "label": "Start Week"
-  },
-  {
-   "fetch_from": "week.end_week",
-   "fieldname": "end_week",
-   "fieldtype": "Date",
-   "label": "End Week"
-  },
-  {
-   "fieldname": "master_sub_contract_weekly_progress",
-   "fieldtype": "Link",
-   "label": "Master Sub Contract Weekly Progress",
-   "options": "Master Sub Contract Weekly Progress",
+   "options": "Master Sub Contract Weekly Progress Detail",
    "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-11-09 07:52:45.359439",
+ "modified": "2023-11-09 07:51:38.059288",
  "modified_by": "Administrator",
  "module": "Projects",
- "name": "Sub Contract Weekly Progress",
+ "name": "Master Sub Contract Weekly Progress",
  "owner": "Administrator",
  "permissions": [
   {
@@ -178,6 +112,7 @@
    "write": 1
   }
  ],
+ "search_fields": "sub_contract_hand_over, project, job_name, contractor_name, project_name",
  "sort_field": "modified",
  "sort_order": "DESC"
 }

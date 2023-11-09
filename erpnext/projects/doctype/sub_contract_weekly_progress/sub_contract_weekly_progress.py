@@ -39,26 +39,36 @@ def check_week(posting_date = None):
 	d2 = datetime.strptime(posting_date, "%Y-%m-%d")
 	monday1 = (d1 - timedelta(days=d1.weekday()))
 	monday2 = (d2 - timedelta(days=d2.weekday()))
-
+	
 	week = (monday2 - monday1).days / 7
 	return week
 
 @frappe.whitelist()
-def check_last_week(sub_contract_hand_over = None, week = None):
-    if sub_contract_hand_over and week:
-        return frappe.db.sql("""
-       	SELECT b.*, e.tot_vol_this_week FROM `tabSub Contract Weekly Progress Detail` b
-        INNER JOIN (SELECT * FROM `tabSub Contract Weekly Progress` a 
-        WHERE a.sub_contract_hand_over = '{0}' AND a.week < '{1}'
-        ORDER BY a.week desc
-        LIMIT 1) c ON c.name = b.parent
-        LEFT JOIN (SELECT  e.job_detail, SUM(e.vol_this_week) tot_vol_this_week FROM `tabSub Contract Weekly Progress Detail` e
-			INNER JOIN (SELECT * FROM `tabSub Contract Weekly Progress` f 
-			WHERE f.sub_contract_hand_over = '{0}' AND f.week <= '{1}') f ON f.name = e.parent
-            GROUP BY e.job_detail) e ON e.job_detail = b.job_detail
-        ORDER BY b.idx
-        """.format(sub_contract_hand_over, week), as_dict=1)
-    return None
+def check_last_week(master_sub_contract_weekly_progress = None, sub_contract_hand_over = None, week = None):
+	if sub_contract_hand_over and week:
+		x = frappe.db.sql("""
+			SELECT x.job_detail, b.*, e.tot_vol_this_week FROM `tabMaster Sub Contract Weekly Progress Detail` x
+			INNER JOIN (SELECT * FROM `tabSub Contract Weekly Progress` a 
+			WHERE a.sub_contract_hand_over = '{0}' AND a.week < '{1}' AND a.master_sub_contract_weekly_progress = '{2}'
+			ORDER BY a.week desc
+			LIMIT 1) c ON c.master_sub_contract_weekly_progress = x.parent
+			LEFT JOIN `tabSub Contract Weekly Progress Detail` b ON b.parent = c.name
+			LEFT JOIN (SELECT  e.job_detail, SUM(e.vol_this_week) tot_vol_this_week FROM `tabSub Contract Weekly Progress Detail` e
+				INNER JOIN (SELECT * FROM `tabSub Contract Weekly Progress` f 
+				WHERE f.sub_contract_hand_over = '{0}' AND f.week <= '{1}') f ON f.name = e.parent
+				GROUP BY e.job_detail) e ON e.job_detail = b.job_detail
+			ORDER BY x.idx
+        """.format(sub_contract_hand_over, week, master_sub_contract_weekly_progress), as_dict=1)
+		if x:
+			return x
+		else:
+			return frappe.db.sql("""
+       	SELECT x.job_detail, b.*, 0 tot_vol_this_week FROM `tabMaster Sub Contract Weekly Progress Detail` x
+        INNER JOIN `tabMaster Sub Contract Weekly Progress` b ON x.parent = b.name
+						WHERE b.name = '{2}'
+        ORDER BY x.idx
+        """.format(sub_contract_hand_over, week, master_sub_contract_weekly_progress), as_dict=1)
+	return None
 
 @frappe.whitelist()
 def get_sub_contract_weekly_progress(week, sub_contract_hand_over):
@@ -69,12 +79,13 @@ def get_sub_contract_weekly_progress(week, sub_contract_hand_over):
 	return None
 
 @frappe.whitelist()
-def get_sub_contract_weekly_progress_detail(week, sub_contract_hand_over):
+def get_sub_contract_weekly_progress_detail(master_sub_contract_weekly_progress, week, sub_contract_hand_over):
 	if sub_contract_hand_over and week:
 		last_week = int(week)-1
 		a = frappe.db.sql("""
-       	SELECT b.name, b.job_detail, b.uom, b.volume, b.weight, e.vol_next_week_plan volume_plan_from_last_week, b.vol_next_week_plan, h.volume_cumulative_last_week, b.vol_this_week, k.volume_cumulative_thist_week, 0 deviasi FROM `tabSub Contract Weekly Progress` a
-		INNER JOIN `tabSub Contract Weekly Progress Detail` b ON b.parent = a.name
+       	SELECT b.name, x.job_detail, b.uom, b.volume, b.weight, e.vol_next_week_plan volume_plan_from_last_week, b.vol_next_week_plan, h.volume_cumulative_last_week, b.vol_this_week, k.volume_cumulative_thist_week, 0 deviasi FROM `tabSub Contract Weekly Progress` a
+		INNER JOIN `tabMaster Sub Contract Weekly Progress Detail` x ON x.parent = a.master_sub_contract_weekly_progress
+		LEFT JOIN `tabSub Contract Weekly Progress Detail` b ON b.parent = a.name AND x.job_detail = b.job_detail
 		LEFT JOIN (SELECT d.* FROM `tabSub Contract Weekly Progress` c
 			INNER JOIN `tabSub Contract Weekly Progress Detail` d ON d.parent = c.name
 			WHERE c.week = '{2}' AND c.sub_contract_hand_over = '{1}'
@@ -90,14 +101,15 @@ def get_sub_contract_weekly_progress_detail(week, sub_contract_hand_over):
 			WHERE i.week <= '{0}' AND i.sub_contract_hand_over = '{1}'
 			GROUP BY j.job_detail
 			) k ON k.job_detail = b.job_detail
-		WHERE a.week = '{0}' AND a.sub_contract_hand_over = '{1}'
-        """.format(week, sub_contract_hand_over, last_week), as_dict=1)
+		WHERE a.week = '{0}' AND a.sub_contract_hand_over = '{1}' AND a.master_sub_contract_weekly_progress = '{3}'
+        """.format(week, sub_contract_hand_over, last_week, master_sub_contract_weekly_progress), as_dict=1)
 		if a:
 			return a
 		else:
 			return frappe.db.sql("""
-			SELECT b.job_detail, b.uom, b.volume, b.weight, b.vol_next_week_plan volume_plan_from_last_week, 0 vol_next_week_plan, h.volume_cumulative_last_week, 0 vol_this_week, k.volume_cumulative_thist_week, 0 deviasi FROM `tabSub Contract Weekly Progress` a
-			INNER JOIN `tabSub Contract Weekly Progress Detail` b ON b.parent = a.name
+			SELECT x.job_detail, b.uom, b.volume, b.weight, b.vol_next_week_plan volume_plan_from_last_week, 0 vol_next_week_plan, h.volume_cumulative_last_week, 0 vol_this_week, k.volume_cumulative_thist_week, 0 deviasi FROM `tabSub Contract Weekly Progress` a
+			INNER JOIN `tabMaster Sub Contract Weekly Progress Detail` x ON x.parent = a.master_sub_contract_weekly_progress
+			LEFT JOIN `tabSub Contract Weekly Progress Detail` b ON b.parent = a.name
 			LEFT JOIN (SELECT g.job_detail, SUM(g.vol_this_week) volume_cumulative_last_week FROM `tabSub Contract Weekly Progress` f
 				INNER JOIN `tabSub Contract Weekly Progress Detail` g ON g.parent = f.name
 				WHERE f.week <= '{2}' AND f.sub_contract_hand_over = '{1}'
@@ -108,8 +120,8 @@ def get_sub_contract_weekly_progress_detail(week, sub_contract_hand_over):
 				WHERE i.week <= '{0}' AND i.sub_contract_hand_over = '{1}'
 				GROUP BY j.job_detail
 				) k ON k.job_detail = b.job_detail
-			WHERE a.week = '{2}' AND a.sub_contract_hand_over = '{1}'
-			""".format(week, sub_contract_hand_over, last_week), as_dict=1)
+			WHERE a.week = '{2}' AND a.sub_contract_hand_over = '{1}' AND a.master_sub_contract_weekly_progress = '{3}'
+			""".format(week, sub_contract_hand_over, last_week, master_sub_contract_weekly_progress), as_dict=1)
 	return None
 
 @frappe.whitelist()
@@ -195,22 +207,24 @@ def saving(name, sub_contract_hand_over, project, sub_contract, job_name, postin
 		return scwp.name
 
 @frappe.whitelist()
-def get_sub_contract_weekly_progress_detail2(week, sub_contract_hand_over):
+def get_sub_contract_weekly_progress_detail2(master_sub_contract_weekly_progress, week, sub_contract_hand_over):
 	if sub_contract_hand_over and week:
 		last_week = int(week)-1
 		a = frappe.db.sql("""
        	SELECT b.name, b.job_detail, b.obstacle, b.analysis, b.resolve, b.pic, b.resolve_target, b.document FROM `tabSub Contract Weekly Progress` a
-		INNER JOIN `tabSub Contract Weekly Progress Detail` b ON b.parent = a.name
-		WHERE a.week = '{0}' AND a.sub_contract_hand_over = '{1}'
-        """.format(week, sub_contract_hand_over, last_week), as_dict=1)
+		INNER JOIN `tabMaster Sub Contract Weekly Progress Detail` x ON x.parent = a.master_sub_contract_weekly_progress
+		LEFT JOIN `tabSub Contract Weekly Progress Detail` b ON b.parent = a.name
+		WHERE a.week = '{0}' AND a.sub_contract_hand_over = '{1}' AND a.master_sub_contract_weekly_progress = '{3}'
+        """.format(week, sub_contract_hand_over, last_week, master_sub_contract_weekly_progress), as_dict=1)
 		if a:
 			return a
 		else:
 			return frappe.db.sql("""
 			SELECT b.job_detail, b.obstacle, b.analysis, b.resolve, b.pic, b.resolve_target, b.document FROM `tabSub Contract Weekly Progress` a
-			INNER JOIN `tabSub Contract Weekly Progress Detail` b ON b.parent = a.name
-			WHERE a.week = '{2}' AND a.sub_contract_hand_over = '{1}'
-			""".format(week, sub_contract_hand_over, last_week), as_dict=1)
+			INNER JOIN `tabMaster Sub Contract Weekly Progress Detail` x ON x.parent = a.master_sub_contract_weekly_progress
+			LEFT JOIN `tabSub Contract Weekly Progress Detail` b ON b.parent = a.name
+			WHERE a.week = '{2}' AND a.sub_contract_hand_over = '{1}' AND a.master_sub_contract_weekly_progress = '{3}'
+			""".format(week, sub_contract_hand_over, last_week, master_sub_contract_weekly_progress), as_dict=1)
 	return None
 
 @frappe.whitelist()

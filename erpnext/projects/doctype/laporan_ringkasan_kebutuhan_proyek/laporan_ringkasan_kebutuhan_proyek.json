@@ -1,0 +1,136 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-07 09:57:59.933580",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project",
+  "project_name",
+  "tanggal",
+  "column_break_upzkn",
+  "week_periode",
+  "start_date",
+  "finish_date",
+  "sisa_waktu",
+  "section_break_ovsuk",
+  "realisasi",
+  "rencana",
+  "realisasi_anggaran",
+  "rencana_anggaran",
+  "process_rules"
+ ],
+ "fields": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "label": "Tgl ST 1",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sisa_waktu",
+   "fieldtype": "Int",
+   "label": "Sisa Waktu"
+  },
+  {
+   "default": "0",
+   "fieldname": "week_periode",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Week Periode",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_upzkn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ovsuk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "realisasi",
+   "fieldtype": "Table",
+   "label": "Realisasi",
+   "options": "Laporan Ringkasan Kebutuhan Proyek Realisasi"
+  },
+  {
+   "fieldname": "rencana",
+   "fieldtype": "Table",
+   "label": "Rencana",
+   "options": "Laporan Ringkasan Kebutuhan Proyek Rencana"
+  },
+  {
+   "fieldname": "rencana_anggaran",
+   "fieldtype": "Table",
+   "label": "Rencana Anggaran",
+   "options": "Laporan Ringkasan Kebutuhan Proyek Rencana Anggaran"
+  },
+  {
+   "default": "Today",
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "default": "Today",
+   "fieldname": "finish_date",
+   "fieldtype": "Date",
+   "label": "Finish Date"
+  },
+  {
+   "fieldname": "realisasi_anggaran",
+   "fieldtype": "Table",
+   "label": "Realisasi Anggaran",
+   "options": "Rekapitulasi Anggaran Proyek Detail"
+  },
+  {
+   "fieldname": "process_rules",
+   "fieldtype": "Table",
+   "label": "Process Rules",
+   "options": "Process Rules"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-11-07 15:28:01.332218",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Laporan Ringkasan Kebutuhan Proyek",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

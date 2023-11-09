@@ -1,0 +1,46 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-09 07:35:59.135807",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "job_detail",
+  "pic",
+  "pic_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "job_detail",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Uraian Pekerjaan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pic",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "PIC",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "pic.employee_name",
+   "fieldname": "pic_name",
+   "fieldtype": "Data",
+   "label": "PIC Name"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-09 07:37:52.099915",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Master Sub Contract Weekly Progress Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -44,3 +44,30 @@ frappe.ui.form.on('Pengajuan Personil Lapangan', {
 		});
 	}
 });
+
+frappe.ui.form.on('Pengajuan Personil Lapangan Personil', {
+	employee: function(frm, dt, dn){
+		var d = locals[dt][dn];
+		frappe.call({
+			method: 'erpnext.projects.doctype.pengajuan_personil_lapangan.pengajuan_personil_lapangan.get_history',
+			args: {
+				'employee': d.employee
+			},
+			callback: function(r) {
+				
+			}
+		});
+	},
+	riwayat: function(frm, dt, dn){
+		var d = locals[dt][dn];
+		frappe.call({
+			method: 'erpnext.projects.doctype.pengajuan_personil_lapangan.pengajuan_personil_lapangan.get_history',
+			args: {
+				'employee': d.employee
+			},
+			callback: function(r) {
+				
+			}
+		});
+	},
+});
