@@ -46,6 +46,7 @@ frappe.ui.form.on('Rekapitulasi Anggaran Proyek', {
 				},
 				callback: function(r) {
 					if(r.message){
+						console.log(r.message)
 						var vals = r.message;
 						for(var i = 0; i < vals.length; i++){
 							var pr = frm.add_child("detail");
@@ -55,9 +56,9 @@ frappe.ui.form.on('Rekapitulasi Anggaran Proyek', {
 							pr.tanggal_pengajuan = vals[i].posting_date;
 							pr.total_budget_first = vals[i].total_budget_first;
 							pr.tanggal_disetujui = vals[i].submitted_date;
-							pr.total_budget = vals[i].total_budget;
+							pr.disetujui = vals[i].total_budget;
 							pr.tanggal_realisasi = vals[i].tanggal_realisasi;
-							pr.paid_amount = vals[i].paid_amount;
+							pr.realisasi = vals[i].paid_amount;
 							pr.keterangan = vals[i].keterangan;
 						}
 						frm.refresh_field("detail");
@@ -85,11 +86,13 @@ frappe.ui.form.on('Rekapitulasi Anggaran Proyek', {
 							pr.project_name = vals[i].project_name;
 							pr.uraian = vals[i].purpose;
 							pr.tanggal_pengajuan = vals[i].posting_date;
-							pr.total_budget_first = vals[i].total_budget_first;
+							pr.pengajuan = vals[i].total_budget_first;
 							pr.tanggal_disetujui = vals[i].submitted_date;
-							pr.total_budget = vals[i].total_budget;
+							pr.disetujui = vals[i].total_budget;
+							pr.tanggal_terbayar = vals[i].tanggal_terbayar;
+							pr.terbayar = vals[i].paid_amount;
 							pr.tanggal_realisasi = vals[i].tanggal_realisasi;
-							pr.paid_amount = vals[i].paid_amount;
+							pr.realisasi = vals[i].realisasi;
 							pr.keterangan = vals[i].keterangan;
 						}
 						frm.refresh_field("detail");

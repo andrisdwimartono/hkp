@@ -9,6 +9,14 @@ frappe.ui.form.on("Journal Entry", {
 	setup: function(frm) {
 		frm.add_fetch("bank_account", "account", "account");
 		frm.ignore_doctypes_on_cancel_all = ['Sales Invoice', 'Purchase Invoice'];
+
+		frm.set_query("form_payment_entry_project", function() {
+			return {
+				filters: {
+					'project': frm.doc.project
+				}
+			};
+		});
 	},
 
 	refresh: function(frm) {
@@ -50,6 +58,11 @@ frappe.ui.form.on("Journal Entry", {
 					frm.trigger("make_inter_company_journal_entry");
 				}, __('Make'));
 		}
+	},
+
+	project: function(frm){
+		frm.set_value("form_payment_entry_project", null);
+		frm.refresh_field("form_payment_entry_project");
 	},
 
 	make_inter_company_journal_entry: function(frm) {

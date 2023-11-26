@@ -3,29 +3,22 @@
  "allow_rename": 1,
  "creation": "2023-06-15 15:02:23.175676",
  "doctype": "DocType",
+ "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "job_detail",
-  "obstacle",
-  "analysis",
-  "resolve",
-  "column_break_srvkp",
-  "pic",
-  "resolve_target",
-  "document",
-  "lkp_section",
+  "uom",
+  "vol_kontrak",
+  "weight",
   "volume_plan_from_last_week",
   "volume",
-  "uom",
-  "weight",
-  "plan_history",
-  "vol_next_week_plan",
-  "realitation_history",
   "volume_cumulative_last_week",
-  "vol_this_week"
+  "vol_this_week",
+  "vol_next_week_plan"
  ],
  "fields": [
   {
+   "columns": 2,
    "fieldname": "job_detail",
    "fieldtype": "Small Text",
    "in_list_view": 1,
@@ -33,106 +26,72 @@
    "reqd": 1
   },
   {
-   "fieldname": "obstacle",
-   "fieldtype": "Small Text",
-   "in_list_view": 1,
-   "label": "Kendala"
-  },
-  {
-   "fieldname": "analysis",
-   "fieldtype": "Small Text",
-   "in_list_view": 1,
-   "label": "Analisis"
-  },
-  {
-   "fieldname": "resolve",
-   "fieldtype": "Small Text",
-   "in_list_view": 1,
-   "label": "Tindak Lanjut"
-  },
-  {
-   "fieldname": "column_break_srvkp",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "pic",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "PIC",
-   "options": "Employee"
-  },
-  {
-   "fieldname": "resolve_target",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Target Penyelesaian"
-  },
-  {
-   "fieldname": "document",
-   "fieldtype": "Attach",
-   "in_list_view": 1,
-   "label": "Dokumentasi"
-  },
-  {
-   "fieldname": "lkp_section",
-   "fieldtype": "Section Break",
-   "label": "LKP"
-  },
-  {
-   "fieldname": "plan_history",
-   "fieldtype": "Text",
-   "hidden": 1,
-   "label": "History Rencana"
-  },
-  {
+   "columns": 1,
    "fieldname": "vol_next_week_plan",
    "fieldtype": "Float",
-   "label": "Vol Rencana Minggu Depan"
+   "in_list_view": 1,
+   "label": "Volume<br>Periode Depan"
   },
   {
-   "fieldname": "realitation_history",
-   "fieldtype": "Text",
-   "hidden": 1,
-   "label": "History Realisasi"
-  },
-  {
+   "columns": 1,
    "fieldname": "vol_this_week",
    "fieldtype": "Float",
-   "label": "Realisasi Minggu Ini"
+   "in_list_view": 1,
+   "label": "Volume Total<br>Saat Ini",
+   "read_only": 1
   },
   {
-   "fieldname": "volume",
-   "fieldtype": "Float",
-   "label": "Volume"
-  },
-  {
+   "columns": 1,
    "fieldname": "uom",
    "fieldtype": "Link",
-   "label": "UOM",
+   "in_list_view": 1,
+   "label": "Satuan",
    "options": "UOM"
   },
   {
+   "columns": 1,
    "fieldname": "weight",
    "fieldtype": "Float",
-   "label": "Weight"
+   "in_list_view": 1,
+   "label": "Bobot",
+   "read_only": 1
   },
   {
+   "columns": 1,
    "fieldname": "volume_plan_from_last_week",
    "fieldtype": "Float",
-   "label": "Last Week Volume Plan",
+   "in_list_view": 1,
+   "label": "Rencana<br>Periode Lalu",
    "read_only": 1
   },
   {
+   "columns": 1,
    "fieldname": "volume_cumulative_last_week",
    "fieldtype": "Float",
-   "label": "Volume Cumulative Last Week",
+   "in_list_view": 1,
+   "label": "Volume Total<br>Periode Lalu",
    "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "vol_kontrak",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Vol Kontrak",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "volume",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Volume<br>Saat Ini"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-08-09 12:20:02.896136",
+ "modified": "2023-11-16 09:57:59.864531",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Sub Contract Weekly Progress Detail",

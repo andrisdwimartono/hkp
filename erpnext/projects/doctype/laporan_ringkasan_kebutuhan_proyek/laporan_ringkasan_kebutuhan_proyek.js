@@ -69,11 +69,13 @@ frappe.ui.form.on('Laporan Ringkasan Kebutuhan Proyek', {
 							pr.project_name = vals[i].project_name;
 							pr.uraian = vals[i].purpose;
 							pr.tanggal_pengajuan = vals[i].posting_date;
-							pr.total_budget_first = vals[i].total_budget_first;
+							pr.pengajuan = vals[i].total_budget_first;
 							pr.tanggal_disetujui = vals[i].submitted_date;
-							pr.total_budget = vals[i].total_budget;
+							pr.disetujui = vals[i].total_budget;
+							pr.tanggal_terbayar = vals[i].tanggal_terbayar;
+							pr.terbayar = vals[i].paid_amount;
 							pr.tanggal_realisasi = vals[i].tanggal_realisasi;
-							pr.paid_amount = vals[i].paid_amount;
+							pr.realisasi = vals[i].realisasi;
 							pr.keterangan = vals[i].keterangan;
 						}
 						frm.refresh_field("realisasi_anggaran");
@@ -82,7 +84,19 @@ frappe.ui.form.on('Laporan Ringkasan Kebutuhan Proyek', {
 			});
 		}
 	},
+	tanggal: function(frm){
+		if(frm.doc.start_date && frm.doc.tanggal){
+			var sisa_waktu = frappe.datetime.get_day_diff(frm.doc.tanggal,frm.doc.start_date);
+			frm.set_value("sisa_waktu", sisa_waktu);
+			frm.refresh_field("sisa_waktu");
+		}
+	},
 	start_date: function(frm){
+		if(frm.doc.start_date && frm.doc.tanggal){
+			var sisa_waktu = frappe.datetime.get_day_diff(frm.doc.tanggal,frm.doc.start_date);
+			frm.set_value("sisa_waktu", sisa_waktu);
+			frm.refresh_field("sisa_waktu");
+		}
 		if(frm.doc.start_date){
 			frappe.call({
 				method: 'erpnext.projects.doctype.sub_contract_weekly_progress.sub_contract_weekly_progress.check_week',
@@ -140,11 +154,13 @@ frappe.ui.form.on('Laporan Ringkasan Kebutuhan Proyek', {
 							pr.project_name = vals[i].project_name;
 							pr.uraian = vals[i].purpose;
 							pr.tanggal_pengajuan = vals[i].posting_date;
-							pr.total_budget_first = vals[i].total_budget_first;
+							pr.pengajuan = vals[i].total_budget_first;
 							pr.tanggal_disetujui = vals[i].submitted_date;
-							pr.total_budget = vals[i].total_budget;
+							pr.disetujui = vals[i].total_budget;
+							pr.tanggal_terbayar = vals[i].tanggal_terbayar;
+							pr.terbayar = vals[i].paid_amount;
 							pr.tanggal_realisasi = vals[i].tanggal_realisasi;
-							pr.paid_amount = vals[i].paid_amount;
+							pr.realisasi = vals[i].realisasi;
 							pr.keterangan = vals[i].keterangan;
 						}
 						frm.refresh_field("realisasi_anggaran");
@@ -175,8 +191,10 @@ frappe.ui.form.on('Laporan Ringkasan Kebutuhan Proyek', {
 							pr.pengajuan = vals[i].total_budget_first;
 							pr.tanggal_disetujui = vals[i].submitted_date;
 							pr.disetujui = vals[i].total_budget;
+							pr.tanggal_terbayar = vals[i].tanggal_terbayar;
+							pr.terbayar = vals[i].paid_amount;
 							pr.tanggal_realisasi = vals[i].tanggal_realisasi;
-							pr.realisasi = vals[i].paid_amount;
+							pr.realisasi = vals[i].realisasi;
 							pr.keterangan = vals[i].keterangan;
 						}
 						frm.refresh_field("realisasi_anggaran");

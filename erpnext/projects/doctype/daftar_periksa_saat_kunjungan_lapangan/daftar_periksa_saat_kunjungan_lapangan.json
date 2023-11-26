@@ -112,7 +112,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-20 23:36:18.971965",
+ "modified": "2023-11-20 12:45:03.634376",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "DAFTAR PERIKSA SAAT KUNJUNGAN LAPANGAN",
@@ -131,6 +131,7 @@
    "write": 1
   }
  ],
+ "search_fields": "project, proyek, lokasi",
  "sort_field": "modified",
  "sort_order": "DESC"
 }

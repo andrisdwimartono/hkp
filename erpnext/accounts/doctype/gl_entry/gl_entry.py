@@ -75,7 +75,6 @@ class GLEntry(Document):
 		for k in mandatory:
 			if not self.get(k):
 				frappe.throw(_("{0} is required").format(_(self.meta.get_label(k))))
-
 		if not (self.party_type and self.party):
 			account_type = frappe.get_cached_value("Account", self.account, "account_type")
 			if account_type == "Receivable":

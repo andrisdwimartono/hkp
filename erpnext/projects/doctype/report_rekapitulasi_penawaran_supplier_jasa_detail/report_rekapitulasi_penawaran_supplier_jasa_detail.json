@@ -1,0 +1,87 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-14 14:35:30.900117",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "penawaran",
+  "bulan",
+  "tahun",
+  "jenis_pekerjaan",
+  "harga_rap",
+  "total_nilai",
+  "peringkat"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "fieldname": "penawaran",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Penawaran",
+   "options": "REKAPITULASI PENAWARAN SUPPLIER JASA",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "bulan",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Bulan",
+   "options": "Januari\nFebruari\nMaret\nApril\nMei\nJuni\nJuli\nAgustus\nSeptember\nOktober\nNovember\nDesember",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "tahun",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Tahun",
+   "read_only": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "jenis_pekerjaan",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Jenis Pekerjaan",
+   "read_only": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "harga_rap",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Harga RAP"
+  },
+  {
+   "columns": 1,
+   "fieldname": "total_nilai",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Total Nilai",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "peringkat",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Peringkat",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-14 21:28:06.214774",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Report REKAPITULASI PENAWARAN SUPPLIER JASA Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

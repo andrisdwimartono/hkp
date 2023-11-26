@@ -1,0 +1,181 @@
+{
+ "actions": [],
+ "allow_copy": 1,
+ "allow_import": 1,
+ "allow_rename": 1,
+ "creation": "2023-11-16 09:50:42.640179",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "parent_upload_dokumen_operasional",
+  "is_group",
+  "project",
+  "project_name",
+  "ruang",
+  "ruang_1",
+  "ruang_2",
+  "ruang_3",
+  "lft",
+  "rgt",
+  "old_parent",
+  "document_name",
+  "detail",
+  "document"
+ ],
+ "fields": [
+  {
+   "allow_in_quick_entry": 1,
+   "fetch_from": "parent_upload_dokumen_operasional.project",
+   "fetch_if_empty": 1,
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "mandatory_depends_on": "eval: !doc.parent_upload_dokumen_operasional",
+   "options": "Project",
+   "read_only_depends_on": "eval: doc.parent_upload_dokumen_operasional"
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "lft",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Left",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "rgt",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Right",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "default": "0",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Apakah Folder?"
+  },
+  {
+   "fieldname": "old_parent",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Old Parent",
+   "options": "Upload Dokumen Operasional"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "parent_upload_dokumen_operasional",
+   "fieldtype": "Link",
+   "label": "Folder Induk",
+   "options": "Upload Dokumen Operasional"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "depends_on": "eval: doc.is_group == 0",
+   "fieldname": "detail",
+   "fieldtype": "Table",
+   "hidden": 1,
+   "label": "Detail",
+   "mandatory_depends_on": "//eval: doc.is_group == 0",
+   "options": "Dokumen Operasional Detail"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "depends_on": "eval: doc.is_group != 1",
+   "fieldname": "document_name",
+   "fieldtype": "Data",
+   "label": "Document Name",
+   "mandatory_depends_on": "eval: doc.is_group != 1"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "depends_on": "eval: doc.parent_upload_dokumen_operasional",
+   "fetch_from": "parent_upload_dokumen_operasional.ruang",
+   "fetch_if_empty": 1,
+   "fieldname": "ruang",
+   "fieldtype": "Select",
+   "label": "Ruang",
+   "options": "\nIzin Kerja\nRencana Kerja\nLaporan"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "depends_on": "eval: doc.ruang == \"Izin Kerja\"",
+   "fetch_from": "parent_upload_dokumen_operasional.ruang_1",
+   "fetch_if_empty": 1,
+   "fieldname": "ruang_1",
+   "fieldtype": "Select",
+   "label": "Izin Kerja",
+   "mandatory_depends_on": "eval: doc.ruang == \"Izin Kerja\"",
+   "options": "\nWorking Permit"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "depends_on": "eval: doc.ruang == \"Rencana Kerja\"",
+   "fetch_from": "parent_upload_dokumen_operasional.ruang_2",
+   "fetch_if_empty": 1,
+   "fieldname": "ruang_2",
+   "fieldtype": "Select",
+   "label": "Rencana Kerja",
+   "mandatory_depends_on": "eval: doc.ruang == \"Rencana Kerja\"",
+   "options": "\nIKP\nSOP\nMK"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "depends_on": "eval: doc.ruang == \"Laporan\"",
+   "fetch_from": "parent_upload_dokumen_operasional.ruang_3",
+   "fetch_if_empty": 1,
+   "fieldname": "ruang_3",
+   "fieldtype": "Select",
+   "label": "Laporan",
+   "mandatory_depends_on": "eval: doc.ruang == \"Laporan\"",
+   "options": "\nK3"
+  },
+  {
+   "depends_on": "eval: doc.is_group == 0",
+   "fieldname": "document",
+   "fieldtype": "Attach",
+   "label": "Document",
+   "mandatory_depends_on": "eval: doc.is_group == 0"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_tree": 1,
+ "links": [],
+ "modified": "2023-11-26 20:14:44.532729",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Upload Dokumen Operasional",
+ "nsm_parent_field": "parent_upload_dokumen_operasional",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "document_name,project,project_name",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "document_name"
+}

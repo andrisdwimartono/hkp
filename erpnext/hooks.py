@@ -62,6 +62,7 @@ treeviews = [
 	"Territory",
 	"Assessment Group",
 	"Department",
+    "Upload Dokumen Operasional",
 ]
 
 # website

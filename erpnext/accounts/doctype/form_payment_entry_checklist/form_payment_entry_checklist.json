@@ -23,14 +23,14 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Status",
-   "options": "AVAILABLE\nNOT AVAILABLE\nNOT COMPLETE",
+   "options": "AVAILABLE\nNOT COMPLETE",
    "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-04-13 12:45:15.029246",
+ "modified": "2023-11-22 09:40:12.931814",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Form Payment Entry Checklist",

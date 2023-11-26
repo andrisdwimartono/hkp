@@ -22,6 +22,7 @@
   "company",
   "project",
   "project_name",
+  "form_payment_entry_project",
   "posting_date",
   "apply_tds",
   "2_add_edit_gl_entries",
@@ -559,13 +560,21 @@
    "fieldtype": "Data",
    "label": "Project Name",
    "read_only": 1
+  },
+  {
+   "depends_on": "eval: doc.project",
+   "description": "* Pilih Kas Bon Proyek yang sudah realisasi/akan dipertanggung jawabkan",
+   "fieldname": "form_payment_entry_project",
+   "fieldtype": "Link",
+   "label": "Form Payment Entry Project",
+   "options": "Form Payment Entry Project"
   }
  ],
  "icon": "fa fa-file-text",
  "idx": 176,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-09-05 09:44:06.132097",
+ "modified": "2023-11-10 20:26:24.106626",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Journal Entry",

@@ -106,6 +106,7 @@
    "options": "INFORMASI PEKERJAAN BARU"
   },
   {
+   "depends_on": "eval: doc.jenis == \"Pengajuan\"",
    "fetch_from": "informasi_pekerjaan_baru.tanggal",
    "fieldname": "tanggal_informasi",
    "fieldtype": "Date",
@@ -116,7 +117,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-10-29 20:48:38.503369",
+ "modified": "2023-11-09 10:12:13.633309",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Pengajuan Personil Lapangan",

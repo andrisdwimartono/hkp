@@ -50,10 +50,10 @@ def get_history(employee):
 			no = no+1
 			msg = msg+"""
 					<tr>
-				   		<td class="text-right">{0}</td>
-						<td>{1}</td>
+				   		<td class="text-center">{0}</td>
+						<td class="text-center">{1}</td>
 						<td>{2}</td>
-						<td>{3}</td>
+						<td class="text-center">{3}</td>
 				   	</tr>
 			""".format(no, e.parent, e.project_name, e.designation)
 	if es:
@@ -83,8 +83,8 @@ def get_history(employee):
 			no = no+1
 			msg = msg+"""
 					<tr>
-				   		<td class="text-right">{0}</td>
-						<td>{1}</td>
+				   		<td class="text-center">{0}</td>
+						<td class="text-center">{1}</td>
 						<td>{2}</td>
 						<td class="text-right">{3}</td>
 				   	</tr>

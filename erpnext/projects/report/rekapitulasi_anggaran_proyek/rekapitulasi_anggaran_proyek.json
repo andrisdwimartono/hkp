@@ -1,5 +1,5 @@
 {
- "add_total_row": 0,
+ "add_total_row": 1,
  "columns": [
   {
    "fieldname": "project",
@@ -66,7 +66,7 @@
  ],
  "creation": "2023-10-25 10:15:33.761868",
  "disable_prepared_report": 0,
- "disabled": 1,
+ "disabled": 0,
  "docstatus": 0,
  "doctype": "Report",
  "filters": [
@@ -79,33 +79,26 @@
    "wildcard_filter": 0
   },
   {
-   "fieldname": "start_date",
-   "fieldtype": "Date",
-   "label": "Start Date",
+   "fieldname": "purpose",
+   "fieldtype": "Data",
+   "label": "Purpose",
    "mandatory": 1,
-   "wildcard_filter": 0
-  },
-  {
-   "fieldname": "finish_date",
-   "fieldtype": "Date",
-   "label": "Finish Date",
-   "mandatory": 1,
-   "wildcard_filter": 0
+   "wildcard_filter": 1
   }
  ],
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2023-10-25 15:05:57.877895",
+ "modified": "2023-11-23 09:57:02.765579",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Rekapitulasi Anggaran Proyek",
  "owner": "Administrator",
  "prepared_report": 0,
- "query": "SELECT\n    a.project,\n    a.project_name,\n    a.purpose,\n    a.posting_date,\n    a.total_budget_first,\n    a.submitted_date,\n    a.total_budget,\n    b.posting_date tanggal_realisasi,\n    b.paid_amount,\n    a.keterangan \n    FROM `tabForm Payment Entry Project` a\nLEFT JOIN `tabPayment Entry` b ON b.type = 'Form Payment Entry Project' AND a.name = b.form_payment_entry_project\nWHERE a.project = %(project)s AND a.posting_date BETWEEN %(start_date)s AND %(finish_date)s;",
+ "query": "SELECT\n    a.project,\n    a.project_name,\n    a.purpose,\n    a.posting_date,\n    a.total_budget_first,\n    a.submitted_date,\n    a.total_budget,\n    b.posting_date tanggal_realisasi,\n    b.paid_amount,\n    a.keterangan \n    FROM `tabForm Payment Entry Project` a\nLEFT JOIN `tabPayment Entry` b ON b.type = 'Form Payment Entry Project' AND a.name = b.form_payment_entry_project\nWHERE a.project = %(project)s AND a.purpose LIKE %(purpose)s;",
  "ref_doctype": "Project",
  "report_name": "Rekapitulasi Anggaran Proyek",
- "report_type": "Query Report",
+ "report_type": "Script Report",
  "roles": [
   {
    "role": "System Manager"
@@ -118,6 +111,12 @@
   },
   {
    "role": "All"
+  },
+  {
+   "role": "Operasional"
+  },
+  {
+   "role": "Direktur Operasi"
   }
  ]
 }

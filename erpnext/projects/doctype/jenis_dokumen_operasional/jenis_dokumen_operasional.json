@@ -10,7 +10,8 @@
   "jenis",
   "ruang",
   "ruang_1",
-  "ruang_2"
+  "ruang_2",
+  "ruang_3"
  ],
  "fields": [
   {
@@ -24,39 +25,48 @@
   },
   {
    "columns": 2,
-   "default": "Ruang 1",
+   "default": "Izin Kerja",
    "fieldname": "ruang",
    "fieldtype": "Select",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Ruang",
-   "options": "Ruang 1\nRuang 2",
+   "options": "Izin Kerja\nRencana Kerja\nLaporan",
    "reqd": 1
   },
   {
    "columns": 2,
-   "depends_on": "eval: doc.ruang == \"Ruang 1\"",
+   "depends_on": "eval: doc.ruang == \"Izin Kerja\"",
    "fieldname": "ruang_1",
    "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "Ruang 1",
-   "mandatory_depends_on": "eval: doc.ruang == \"Ruang 1\"",
+   "label": "Izin Kerja",
+   "mandatory_depends_on": "eval: doc.ruang == \"Izin Kerja\"",
    "options": "\nWorking Permit"
   },
   {
    "columns": 2,
-   "depends_on": "eval: doc.ruang == \"Ruang 2\"",
+   "depends_on": "eval: doc.ruang == \"Rencana Kerja\"",
    "fieldname": "ruang_2",
    "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "Ruang 2",
-   "mandatory_depends_on": "eval: doc.ruang == \"Ruang 2\"",
+   "label": "Rencana Kerja",
+   "mandatory_depends_on": "eval: doc.ruang == \"Rencana Kerja\"",
    "options": "\nIKP\nSOP\nMK"
+  },
+  {
+   "depends_on": "eval: doc.ruang == \"Laporan\"",
+   "fieldname": "ruang_3",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Laporan",
+   "mandatory_depends_on": "eval: doc.ruang == \"Laporan\"",
+   "options": "\nK3"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-11-07 09:45:07.273716",
+ "modified": "2023-11-09 10:59:21.235734",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Jenis Dokumen Operasional",

@@ -248,7 +248,7 @@ frappe.ui.form.on('DAFTAR PERIKSA SAAT KUNJUNGAN LAPANGAN', {
 					callback: function(r) {
 						if(r.message){
 							frappe.show_alert({message:"Berhasil buat Verifikasi", indicator:'green'});
-							frappe.set_route("List", "DAFTAR PERIKSA SAAT VERIFIKASI KUNJUNGAN LAPANGAN", {"name": r.message});
+							window.location.href = "/app/daftar-periksa-saat-verifikasi-kunjungan-lapangan/"+r.message;
 						}
 					}
 				});

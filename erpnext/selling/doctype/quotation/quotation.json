@@ -143,7 +143,7 @@
    "set_only_once": 1
   },
   {
-   "default": "Customer",
+   "default": "Supplier",
    "fieldname": "quotation_to",
    "fieldtype": "Link",
    "in_standard_filter": 1,
@@ -965,7 +965,7 @@
  "idx": 82,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-03-14 02:38:35.208614",
+ "modified": "2023-11-21 11:04:40.246794",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Quotation",
