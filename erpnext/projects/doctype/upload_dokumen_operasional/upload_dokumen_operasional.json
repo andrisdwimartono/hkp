@@ -9,6 +9,8 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "posting_date",
+  "perihal",
   "parent_upload_dokumen_operasional",
   "is_group",
   "project",
@@ -149,12 +151,23 @@
    "fieldtype": "Attach",
    "label": "Document",
    "mandatory_depends_on": "eval: doc.is_group == 0"
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "fieldname": "perihal",
+   "fieldtype": "Data",
+   "label": "Perihal"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2023-11-26 20:14:44.532729",
+ "modified": "2023-11-29 15:37:25.288034",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Upload Dokumen Operasional",

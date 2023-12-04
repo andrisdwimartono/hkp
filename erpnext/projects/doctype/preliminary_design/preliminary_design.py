@@ -6,6 +6,25 @@ from frappe.model.document import Document
 from datetime import datetime
 
 class PreliminaryDesign(Document):
+	def remind_user(self, document_name=None):
+		notification_doc = {
+			"type": "Alert",
+			"document_type": self.doctype,
+			"document_name": self.name,
+			"subject": "Perubahan Preliminary Design untuk dokumen no {0} di {1}".format(document_name, self.name),
+			"from_user": self.owner or "Administrator",
+		}
+		
+		assigner = [self.owner]
+		adu_employees = frappe.db.sql("""SELECT DISTINCT u.name user_id FROM `tabHas Role` hr
+							INNER JOIN tabUser u ON u.name = hr.parent
+							WHERE hr.role IN ('Operasional', 'Direktur Operasi') AND hr.parenttype = 'User'""", as_dict=1)
+		for hr in adu_employees:
+			assigner.append(hr.user_id)
+		notification_doc = frappe._dict(notification_doc)
+		from frappe.desk.doctype.notification_log.notification_log import make_notification_logs
+		make_notification_logs(notification_doc, assigner)
+
 	def validate(self):
 		#detail_lasts = frappe.db.sql("""SELECT * FROM `tabPreliminary Design Detail` WHERE parent = '{0}'""".format(self.name), as_dict=1)
 		#frappe.throw(str(detail_lasts[0]["name"]))
@@ -75,6 +94,7 @@ class PreliminaryDesign(Document):
 						ignore_permissions=True
 					)
 					frappe.db.commit()
+					self.remind_user(document_name=d.document_no)
 			else:
 				d.revision = 0
 				frappe.get_doc({
@@ -99,6 +119,7 @@ class PreliminaryDesign(Document):
 					ignore_permissions=True
 				)
 				frappe.db.commit()
+				self.remind_user(document_name=d.document_no)
 		# is_changed = False
 		# for d in self.details:
 		# 	if (d.document != d.document_last and d.document != None and d.document != ""):

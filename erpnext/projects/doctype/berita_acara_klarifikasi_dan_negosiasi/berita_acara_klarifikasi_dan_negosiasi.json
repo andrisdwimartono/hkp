@@ -9,6 +9,8 @@
  "field_order": [
   "posting_date",
   "rekapitulasi_penawaran_supplier_jasa",
+  "project",
+  "project_name",
   "job_name",
   "pic_negosiasi",
   "sub_contract",
@@ -541,12 +543,27 @@
    "fieldtype": "Link",
    "label": "Rekapitulasi Penawaran Supplier Jasa",
    "options": "REKAPITULASI PENAWARAN SUPPLIER JASA"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-09-21 08:09:52.192338",
+ "modified": "2023-11-30 09:47:33.280228",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Berita Acara Klarifikasi dan Negosiasi",

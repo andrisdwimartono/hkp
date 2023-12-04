@@ -7,6 +7,26 @@ from datetime import datetime, timedelta
 import json
 
 class SubContractWeeklyProgress(Document):
+	def autoname(self):
+		roman = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"]
+		mydate = datetime.strptime(self.posting_date, '%Y-%m-%d')
+		bulan = roman[int(mydate.month)]
+		
+
+		a = frappe.db.sql("""SELECT COUNT(*) cnt FROM `tabSub Contract Weekly Progress` WHERE name like '%/{2}/{0}/{1}'""".format(bulan, mydate.year, self.project), as_dict=1)
+		if a:
+			urut = a[0].cnt+1
+			urut2 = ""
+			if urut < 9:
+				urut2 = "00{0}".format(urut)
+			elif urut < 99:
+				urut2 = "0{0}".format(urut)
+			else:
+				urut2 = "{0}".format(urut)
+			self.name = "LM/{5}/{4}/{3}/{0}/{1}".format(bulan, mydate.year, urut2, self.project, self.week, self.sub_contract)
+		else:
+			self.name = "LM/{4}/{3}/{2}/{0}/{1}".format(bulan, mydate.year, self.project, self.week, self.sub_contract)
+
 	def validate(self):
 		lists = frappe.db.sql("""SELECT * FROM `tabSub Contract Weekly Progress` a
 			WHERE a.week > '{0}' AND a.sub_contract_hand_over = '{1}'""".format(self.week, self.sub_contract_hand_over), as_dict=1)

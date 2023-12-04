@@ -2,15 +2,14 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "naming_series:",
+ "autoname": "SJ-.YYYY.-.######",
  "creation": "2023-04-06 12:17:16.547097",
- "description": "Supplier of Goods or Services.",
+ "description": "Supplier of Services.",
  "doctype": "DocType",
  "document_type": "Setup",
  "engine": "InnoDB",
  "field_order": [
   "basic_info",
-  "naming_series",
   "contractor_name",
   "country",
   "default_bank_account",
@@ -34,6 +33,7 @@
   "allow_purchase_invoice_creation_without_purchase_order",
   "allow_purchase_invoice_creation_without_purchase_receipt",
   "disabled",
+  "document",
   "allowed_to_transact_section",
   "companies",
   "section_break_7",
@@ -83,16 +83,6 @@
    "label": "Name and Type",
    "oldfieldtype": "Section Break",
    "options": "fa fa-user"
-  },
-  {
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "label": "Series",
-   "no_copy": 1,
-   "oldfieldname": "naming_series",
-   "oldfieldtype": "Select",
-   "options": "SUC-.YYYY.-",
-   "set_only_once": 1
   },
   {
    "bold": 1,
@@ -501,6 +491,11 @@
    "fieldname": "cabang",
    "fieldtype": "Data",
    "label": "Cabang"
+  },
+  {
+   "fieldname": "document",
+   "fieldtype": "Attach",
+   "label": "Document"
   }
  ],
  "icon": "fa fa-user",
@@ -512,7 +507,8 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2023-11-16 10:28:45.406497",
+ "make_attachments_public": 1,
+ "modified": "2023-11-30 05:01:24.530884",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Sub Contract",

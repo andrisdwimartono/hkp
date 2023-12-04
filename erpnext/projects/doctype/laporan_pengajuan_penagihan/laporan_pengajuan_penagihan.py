@@ -3,8 +3,29 @@
 
 import frappe
 from frappe.model.document import Document
+from datetime import datetime
 
 class LaporanPengajuanPenagihan(Document):
+	def autoname(self):
+		roman = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"]
+		mydate = datetime.strptime(self.tanggal, '%Y-%m-%d')
+		bulan = roman[int(mydate.month)]
+		
+
+		a = frappe.db.sql("""SELECT COUNT(*) cnt FROM `tabLaporan Pengajuan Penagihan` WHERE name like '%/{3}/{2}/{0}/{1}'""".format(bulan, mydate.year, self.project, self.sub_contract), as_dict=1)
+		if a:
+			urut = a[0].cnt+1
+			urut2 = ""
+			if urut < 9:
+				urut2 = "00{0}".format(urut)
+			elif urut < 99:
+				urut2 = "0{0}".format(urut)
+			else:
+				urut2 = "{0}".format(urut)
+			self.name = "LPP/{2}/{5}/{3}/{0}/{1}".format(bulan, mydate.year, urut2, self.project, "", self.sub_contract)
+		else:
+			self.name = "LPP/001/{4}/{2}/{0}/{1}".format(bulan, mydate.year, self.project, "", self.sub_contract)
+
 	def validate(self):
 		bobot_total = 0
 		bobot_total_gr = 0

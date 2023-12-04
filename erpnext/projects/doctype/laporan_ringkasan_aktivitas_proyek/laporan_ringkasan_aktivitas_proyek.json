@@ -8,8 +8,12 @@
  "field_order": [
   "project",
   "project_name",
+  "week_periode",
   "start_date",
   "finish_date",
+  "column_break_6cm1c",
+  "posting_date",
+  "perihal",
   "section_break_9i8iw",
   "detail",
   "section_break_zcbmu",
@@ -124,11 +128,33 @@
    "fieldname": "lampiran",
    "fieldtype": "Attach",
    "label": "Lampiran"
+  },
+  {
+   "fieldname": "column_break_6cm1c",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "fieldname": "perihal",
+   "fieldtype": "Data",
+   "label": "Perihal"
+  },
+  {
+   "default": "0",
+   "fieldname": "week_periode",
+   "fieldtype": "Int",
+   "label": "Week Periode",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-11-02 14:00:56.920205",
+ "modified": "2023-11-30 11:44:16.292829",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Laporan Ringkasan Aktivitas Proyek",

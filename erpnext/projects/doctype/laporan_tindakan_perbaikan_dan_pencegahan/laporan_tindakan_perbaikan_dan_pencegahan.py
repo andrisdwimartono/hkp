@@ -3,11 +3,31 @@
 
 import frappe
 from frappe.model.document import Document
-from frappe.utils import now, today
+from frappe.utils import today
 from frappe.desk.doctype.notification_log.notification_log import enqueue_create_notification
+import datetime
 
 class LAPORANTINDAKANPERBAIKANDANPENCEGAHAN(Document):
-	pass
+	def autoname(self):
+		roman = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"]
+		mydate = datetime.datetime.strptime(today(), '%Y-%m-%d')
+		bulan = roman[int(mydate.month)]
+		
+
+		a = frappe.db.sql("""SELECT COUNT(*) cnt FROM `tabLAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN` WHERE name like '%/{2}/{0}/{1}'""".format(bulan, mydate.year, self.project), as_dict=1)
+		if a:
+			urut = a[0].cnt+1
+			urut2 = ""
+			if urut < 9:
+				urut2 = "00{0}".format(urut)
+			elif urut < 99:
+				urut2 = "0{0}".format(urut)
+			else:
+				urut2 = "{0}".format(urut)
+			self.name = "LTBC/{2}/{3}/{0}/{1}".format(bulan, mydate.year, urut2, self.project)
+		else:
+			self.name = "LTBC/001/{2}/{0}/{1}".format(bulan, mydate.year, self.project)
+
 	# def validate(self):
 	# 	ltbc = frappe.db.sql("""SELECT * FROM `tabLAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN` WHERE name = '{0}'""".format(self.name), as_dict=1)
 	# 	if self.workflow_state == "Dibuat":

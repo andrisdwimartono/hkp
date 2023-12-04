@@ -61,8 +61,7 @@
    "fieldname": "pimpinan_rapat",
    "fieldtype": "Link",
    "label": "Notulis",
-   "options": "Employee",
-   "reqd": 1
+   "options": "Employee"
   },
   {
    "fetch_from": "pimpinan_rapat.employee_name",
@@ -136,7 +135,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-10-08 19:08:14.759227",
+ "modified": "2023-12-01 16:05:18.196282",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Risalah Rapat",

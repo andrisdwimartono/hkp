@@ -5,14 +5,17 @@ frappe.treeview_settings["Upload Dokumen Operasional"] = {
 	title: __("Upload Dokumen Operasional"),
 	fields: [
 		{
+			fieldtype: 'Date', fieldname: 'posting_date', label: __('Tanggal'), default: "Today"
+		},
+		{
+			fieldtype: 'Data', fieldname: 'perihal', label: __('Perihal')
+		},
+		{
 			fieldtype: 'Check', fieldname: 'is_group', label: __('Apakah Folder?'),
 			description: __("Jika di-check, maka akan berbentuk folder")
 		},
 		{
-			fieldtype: 'Link', fieldname: 'project', label: __('Project'), options: 'Project', fetch_from: "parent_upload_dokumen_operasional.project", fetch_if_empty: 1
-		},
-		{
-			fieldtype: 'Select', fieldname: 'ruang', label: __('Ruang'), options: "\nIzin Kerja\nRencana Kerja\nLaporan", fetch_from: "parent_upload_dokumen_operasional.ruang", fetch_if_empty: 1
+			fieldtype: 'Select', fieldname: 'ruang', label: __('Ruang'), options: "\nIzin Kerja\nRencana Kerja\nLaporan", depends_on: "eval: doc.is_group == 1", mandatory_depends_on: "eval: doc.is_group == 1"
 		},
 		{
 			fieldtype: 'Select', fieldname: 'ruang_1', label: __('Izin Kerja'), options: "\nWorking Permit", fetch_from: "parent_upload_dokumen_operasional.ruang_1", fetch_if_empty: 1, depends_on: "eval: doc.ruang == 'Izin Kerja'", mandatory_depends_on: "eval: doc.ruang == 'Izin Kerja'"

@@ -238,7 +238,7 @@ frappe.ui.form.on('DAFTAR PERIKSA SAAT KUNJUNGAN LAPANGAN', {
 			}
 		}
 
-		if (frm.doc.workflow_state == "Diketahui") {
+		//if (frm.doc.workflow_state == "Diketahui") {
 			frm.add_custom_button(__('Buat Verifikasi'), function () {
 				frappe.call({
 					method: "erpnext.projects.doctype.daftar_periksa_saat_kunjungan_lapangan.daftar_periksa_saat_kunjungan_lapangan.create_verifikasi",
@@ -253,6 +253,6 @@ frappe.ui.form.on('DAFTAR PERIKSA SAAT KUNJUNGAN LAPANGAN', {
 					}
 				});
 			});
-		}
+		//}
 	}
 });

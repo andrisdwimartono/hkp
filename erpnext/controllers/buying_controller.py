@@ -197,6 +197,8 @@ class BuyingController(StockController, Subcontracting):
 			else:
 				amount = abs(self.base_grand_total)
 			self.base_in_words = money_in_words(amount, self.company_currency)
+			if self.base_in_words:
+				self.base_in_words = self.base_in_words.replace(' only.', ' rupiah.').replace(' saja.', ' rupiah.').replace('IDR ', '')
 
 		if self.meta.get_field("in_words"):
 			if self.meta.get_field("rounded_total") and not self.is_rounded_total_disabled():
@@ -205,6 +207,8 @@ class BuyingController(StockController, Subcontracting):
 				amount = abs(self.grand_total)
 
 			self.in_words = money_in_words(amount, self.currency)
+			if self.in_words:
+				self.in_words = self.in_words.replace(' only.', ' rupiah.').replace(' saja.', ' rupiah.').replace('IDR ', '')
 
 	# update valuation rate
 	def update_valuation_rate(self, reset_outgoing_rate=True):

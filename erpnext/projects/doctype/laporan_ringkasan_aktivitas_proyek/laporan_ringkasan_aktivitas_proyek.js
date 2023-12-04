@@ -3,6 +3,22 @@
 
 frappe.ui.form.on('Laporan Ringkasan Aktivitas Proyek', {
 	refresh: function(frm) {
+		if(frm.doc.start_date){
+			frappe.call({
+				method: 'erpnext.projects.doctype.sub_contract_weekly_progress.sub_contract_weekly_progress.check_week',
+				args: {
+					'posting_date': frm.doc.start_date
+				},
+				callback: function(r) {
+					if(r.message){
+						var vals = r.message;
+						frm.set_value("week_periode", vals);
+						frm.refresh_field("week_periode");
+					}
+				}
+			});
+		}
+		
 		if (frm.doc.__unsaved == 1)	{
 			if(!frm.doc.process_rules){
 				frm.clear_table("process_rules");
@@ -83,6 +99,22 @@ frappe.ui.form.on('Laporan Ringkasan Aktivitas Proyek', {
 						frm.refresh_field("detail");
 						frm.set_value("rencana", total_target);
 						frm.refresh_field("rencana");
+					}
+				}
+			});
+		}
+
+		if(frm.doc.start_date){
+			frappe.call({
+				method: 'erpnext.projects.doctype.sub_contract_weekly_progress.sub_contract_weekly_progress.check_week',
+				args: {
+					'posting_date': frm.doc.start_date
+				},
+				callback: function(r) {
+					if(r.message){
+						var vals = r.message;
+						frm.set_value("week_periode", vals);
+						frm.refresh_field("week_periode");
 					}
 				}
 			});

@@ -46,14 +46,12 @@
    "fieldname": "tanggal",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Tanggal",
-   "reqd": 1
+   "label": "Tanggal"
   },
   {
    "fieldname": "waktu_mulai",
    "fieldtype": "Time",
-   "label": "Waktu Mulai",
-   "reqd": 1
+   "label": "Waktu Mulai"
   },
   {
    "fieldname": "waktu_selesai",
@@ -174,7 +172,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-10-23 19:29:21.807524",
+ "modified": "2023-12-01 14:39:32.129842",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Memo",

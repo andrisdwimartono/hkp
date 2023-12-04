@@ -8,6 +8,9 @@ from frappe.utils import (
 )
 
 class MasterItemPekerjaan(Document):
+	def autoname(self):
+		self.name = """MK/{0}""".format(self.sub_contract_hand_over)
+
 	def validate(self):
 		dts = frappe.db.sql("""SELECT * FROM `tabMaster Item Pekerjaan` WHERE sub_contract_hand_over = '{0}' AND name != '{1}'""".format(self.sub_contract_hand_over, self.name), as_dict=1)
 		if dts:

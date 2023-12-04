@@ -275,7 +275,7 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 		} else if(doc.docstatus===0) {
 			cur_frm.cscript.add_from_mappers();
 		}
-		if(!cur_frm.doc.purchase_order_document_checklist){
+		if(cur_frm.doc.__unsaved == 1 && !cur_frm.doc.purchase_order_document_checklist){
 			var checklists = ["Certificate of Origin", "Certificate of Lading", "Hasil Routine Test Material", "Hasil Type Test Material Sejenis", "Certificate of Manufacture", "Certificate of Waranty", "Technical Particular Guarantee", "Sertifikat IQC"];
 			for(var i = 0; i < checklists.length; i++){
 				var c = cur_frm.add_child("purchase_order_document_checklist");

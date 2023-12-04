@@ -115,7 +115,7 @@ frappe.ui.form.on('Laporan Ringkasan Kebutuhan Proyek', {
 		if(frm.doc.project && frm.doc.start_date && frm.doc.finish_date){
 			frm.clear_table("realisasi");
 			frappe.call({
-				method: 'erpnext.projects.doctype.laporan_ringkasan_kebutuhan_proyek.laporan_ringkasan_kebutuhan_proyek.get_rekap_material',
+				method: 'erpnext.projects.doctype.laporan_ringkasan_kebutuhan_proyek.laporan_ringkasan_kebutuhan_proyek.get_rekap_materi',
 				args: {
 					'project': frm.doc.project,
 					'start_date': frm.doc.start_date,
@@ -129,6 +129,7 @@ frappe.ui.form.on('Laporan Ringkasan Kebutuhan Proyek', {
 							pr.uraian_material = vals[i].uraian_material;
 							pr.uom = vals[i].uom;
 							pr.rencana = vals[i].rencana;
+							pr.realisasi = vals[i].realisasi;
 							pr.keterangan = vals[i].keterangan;
 						}
 						frm.refresh_field("realisasi");
