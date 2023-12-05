@@ -5,7 +5,11 @@ import frappe
 from frappe.model.document import Document
 
 class HandOverProgress(Document):
-	pass
+    pass
+	# def on_submit(self):
+	# 	if self.sub_contract_hand_over:
+			
+              
 
 @frappe.whitelist()
 def check_progress(sub_contract_hand_over = None):

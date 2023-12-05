@@ -30,6 +30,7 @@
   "budget_amount",
   "column_break_vasuy",
   "sub_contract_hand_over_document",
+  "status",
   "amended_from"
  ],
  "fields": [
@@ -188,11 +189,17 @@
    "hidden": 1,
    "label": "Unit Price",
    "options": "Company:company:default_currency"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Belum Diproses\nSedang Diproses\nSelesai"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-22 12:24:28.786710",
+ "modified": "2023-12-05 11:26:13.471097",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Sub Contract Hand Over",
