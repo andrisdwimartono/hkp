@@ -5,11 +5,12 @@ import frappe
 from frappe.model.document import Document
 
 class HandOverProgress(Document):
-    pass
-	# def on_submit(self):
-	# 	if self.sub_contract_hand_over:
-			
-              
+	def on_submit(self):
+		if self.sub_contract_hand_over:
+			if self.progress_achieved < 100:
+				frappe.db.sql("""UPDATE `tabSub Contract Hand Over` SET status = 'Sedang Diproses' WHERE name = '{0}'""".format(self.sub_contract_hand_over))
+			else:
+				frappe.db.sql("""UPDATE `tabSub Contract Hand Over` SET status = 'Selesai' WHERE name = '{0}'""".format(self.sub_contract_hand_over))
 
 @frappe.whitelist()
 def check_progress(sub_contract_hand_over = None):
