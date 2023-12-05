@@ -161,6 +161,7 @@
    "options": "Cost Center"
   },
   {
+   "default": "Cash",
    "fieldname": "mode_of_payment",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -805,7 +806,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-07-13 10:04:29.715890",
+ "modified": "2023-12-05 10:35:45.162066",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Payment Entry",

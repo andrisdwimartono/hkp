@@ -213,6 +213,28 @@ frappe.ui.form.on('Payment Entry', {
 		});
 	},
 
+	project: function(frm){
+		if(cur_frm.doc.project){
+			if(!cur_frm.doc.paid_from){
+				frm.set_value("paid_from", "1.01.01.01.01 - Kas - HKP");
+				frm.refresh_field("paid_from");
+			}
+			if(!cur_frm.doc.paid_to){
+				frm.set_value("paid_to", "1.01.01.01.02 - Kas Proyek - HKP");
+				frm.refresh_field("paid_to");
+			}
+		}else{
+			if(!cur_frm.doc.paid_from){
+				frm.set_value("paid_from", "1.01.01.01.01 - Kas - HKP");
+				frm.refresh_field("paid_from");
+			}
+			if(!cur_frm.doc.paid_to){
+				frm.set_value("paid_to", "1.01.01.01.03 - Kas Operasional - HKP");
+				frm.refresh_field("paid_to");
+			}
+		}
+	},
+
 	form_payment_entry_project: function(frm){
 		frappe.call({
 			method: 'erpnext.accounts.doctype.form_payment_entry_project.form_payment_entry_project.check_form_payment_entry_project',
