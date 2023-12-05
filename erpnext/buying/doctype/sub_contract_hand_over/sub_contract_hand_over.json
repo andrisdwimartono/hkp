@@ -28,6 +28,8 @@
   "unit_price",
   "budget_value",
   "budget_amount",
+  "total_terbayar",
+  "sisa",
   "column_break_vasuy",
   "sub_contract_hand_over_document",
   "status",
@@ -198,11 +200,25 @@
    "label": "Status",
    "options": "Belum Diproses\nSedang Diproses\nSelesai",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_terbayar",
+   "fieldtype": "Currency",
+   "label": "Total Terbayar",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "sisa",
+   "fieldtype": "Currency",
+   "label": "Sisa",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-05 13:17:54.529413",
+ "modified": "2023-12-05 14:31:18.668237",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Sub Contract Hand Over",

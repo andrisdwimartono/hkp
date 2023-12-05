@@ -20,3 +20,4 @@ class SubContractHandOver(Document):
 			})
 			sub_contract_doc.save(ignore_permissions=True)
 			frappe.db.commit()
+		self.sisa = self.budget_amount-self.total_terbayar

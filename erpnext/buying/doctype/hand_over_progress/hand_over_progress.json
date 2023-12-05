@@ -25,7 +25,9 @@
   "progress_sequence",
   "progress_achieved",
   "hand_over_progress_achieved",
+  "total_achieved",
   "hand_over_progress_discount",
+  "total_discount",
   "section_break_6bkyx",
   "total_cost",
   "use_ppn",
@@ -249,12 +251,24 @@
    "fieldtype": "Percent",
    "hidden": 1,
    "label": "PPn Percentage"
+  },
+  {
+   "fieldname": "total_achieved",
+   "fieldtype": "Currency",
+   "label": "Total Achieved",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_discount",
+   "fieldtype": "Currency",
+   "label": "Total Potongan",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-12-05 11:26:28.983684",
+ "modified": "2023-12-05 14:20:07.255097",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Hand Over Progress",

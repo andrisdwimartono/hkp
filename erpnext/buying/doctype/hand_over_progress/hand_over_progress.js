@@ -40,7 +40,7 @@ frappe.ui.form.on('Hand Over Progress', {
 		cur_frm.clear_table("hand_over_progress_achieved");
 		refresh_field("hand_over_progress_achieved");
 		var c = frm.add_child("hand_over_progress_achieved");
-		c.remarks = "Progres phisik sampai minggu ini";
+		c.remarks = "Progres fisik sampai minggu ini";
 		c.progress_amount = 0;
 		refresh_field("hand_over_progress_achieved");
 		var d = frm.add_child("hand_over_progress_achieved");
