@@ -2202,3 +2202,8 @@ def make_payment_order(source_name, target_doc=None):
 	)
 
 	return doclist
+
+def get_permission_query_conditions(user):
+	for r in frappe.db.sql("""SELECT role_profile_name FROM `tabUser` WHERE name = '{0}'""".format(frappe.session.user), as_dict=1):
+		if r.role_profile_name == "Kasir":
+			return """(`tabPayment Entry`.`mode_of_payment` = 'Cash')"""

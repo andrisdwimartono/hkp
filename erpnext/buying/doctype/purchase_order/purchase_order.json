@@ -152,7 +152,8 @@
   "party_account_currency",
   "is_internal_supplier",
   "represents_company",
-  "inter_company_order_reference"
+  "inter_company_order_reference",
+  "status_document"
  ],
  "fields": [
   {
@@ -1244,13 +1245,23 @@
    "fieldname": "catatan_payment_schedule",
    "fieldtype": "Small Text",
    "label": "Catatan Jadwal Pembayaran"
+  },
+  {
+   "default": "Belum Diproses",
+   "fieldname": "status_document",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Belum Diproses\nSedang Diproses\nSelesai",
+   "read_only": 1
   }
  ],
  "icon": "fa fa-file-text",
  "idx": 105,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-22 13:42:00.474841",
+ "modified": "2023-12-06 09:55:32.410604",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Purchase Order",

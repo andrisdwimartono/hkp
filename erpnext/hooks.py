@@ -337,6 +337,7 @@ has_website_permission = {
 
 permission_query_conditions = {
     "LAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN": "erpnext.projects.doctype.laporan_tindakan_perbaikan_dan_pencegahan.laporan_tindakan_perbaikan_dan_pencegahan.get_permission_query_conditions",
+    "Payment Entry": "erpnext.accounts.doctype.payment_entry.payment_entry.get_permission_query_conditions",
 }
 
 before_tests = "erpnext.setup.utils.before_tests"
