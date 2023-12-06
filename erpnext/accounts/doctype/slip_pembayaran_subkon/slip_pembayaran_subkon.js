@@ -4,7 +4,7 @@
 frappe.ui.form.on('Slip Pembayaran Subkon', {
 	refresh: function(frm) {
 		if(frm.doc.__islocal){
-			var x = ["SPB / SPBJ / MEMO BON", "NOTA / KWITANSI", "TANDA TERIMA BARANG", "FAKTUR PAJAK"];
+			var x = ["Kontrak Kerja / SPK", "Kwitansi / Progres Fisik", "Checklist / LKPP / Berita Acara", "Faktur Pajak"];
 			for(var i = 0; i < x.length; i++){
 				var c = frm.add_child("form_payment_entry_checklist");
 				c.remark = x[i];

@@ -11,6 +11,13 @@ frappe.query_reports['Rencana Pengajuan Anggaran Non Proyek'] = {
         "label":__("Date To"),
         "fieldtype": "Date",
         "default": "Today"
+       },
+       {
+        "fieldname":"status",
+        "label":__("Status"),
+        "fieldtype": "Select",
+        "default": "Not Approved",
+        "options": ["Not Approved", "Approved"]
        }
     ]
 }

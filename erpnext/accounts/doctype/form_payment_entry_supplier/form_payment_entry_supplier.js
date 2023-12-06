@@ -3,6 +3,14 @@
 
 frappe.ui.form.on('Form Payment Entry Supplier', {
 	refresh: function(frm) {
+		if(frm.doc.__islocal){
+			var x = ["SPB / SPBJ / Memo Bon", "Nota / Kwitansi", "Tanda Terima Barang", "Faktur Pajak"];
+			for(var i = 0; i < x.length; i++){
+				var c = frm.add_child("form_payment_entry_checklist");
+				c.remark = x[i];
+			}
+			frm.refresh_field("form_payment_entry_checklist");
+		}
 		if(frm.doc.posting_date){
 			frappe.call({
 				method: 'erpnext.projects.doctype.sub_contract_weekly_progress.sub_contract_weekly_progress.check_week',

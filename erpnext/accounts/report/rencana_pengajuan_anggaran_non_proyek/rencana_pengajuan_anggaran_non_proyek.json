@@ -71,18 +71,26 @@
    "mandatory": 0,
    "options": "",
    "wildcard_filter": 0
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "mandatory": 0,
+   "options": "Not Approved\nApproved",
+   "wildcard_filter": 0
   }
  ],
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2023-06-20 13:57:20.663072",
+ "modified": "2023-12-05 15:59:20.870060",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Rencana Pengajuan Anggaran Non Proyek",
  "owner": "Administrator",
  "prepared_report": 0,
- "query": "SELECT \n    \"Kas Bon Non Proyek\" typedoc, \n    CONCAT(\"<a href='/app/form-payment-entry/\", fpe.name, \"'>\", fpe.name, \"</a>\") name,\n    CONCAT(COALESCE(e.first_name, fpe.owner), \" - \", fpe.department) peminta,\n    fpe.total_budget,\n    fpe.type,\n    CASE WHEN fpe.type = \"Piutang Karyawan\" THEN fpe.employee_name\n        WHEN fpe.type = \"Operasional Kantor\" THEN \"Kantor\"\n        ELSE fpe.party END party,\n    CASE WHEN fpe.docstatus = 0 THEN \"<p class='text-danger'>Not Approved</p>\"\n        WHEN fpe.docstatus = 1 THEN \"<p class='text-primary'>Approved</p>\"\n        ELSE \"\" END docstatus,\n    \n    fpe.purpose,\n    pe.paid_amount paid_amount,\n    fpe.total_budget-COALESCE(pe.paid_amount, 0) outstanding_amount,\n    CASE WHEN fpe.total_budget-COALESCE(pe.paid_amount, 0) > 0 THEN \"<p class='text-danger'>Belum Lunas</p>\"\n    ELSE \"<p class='text-primary'>Lunas</p>\"\n    END status\n    FROM `tabForm Payment Entry` fpe\nLEFT JOIN `tabEmployee` e ON e.user_id = fpe.owner\nLEFT JOIN (SELECT form_payment_entry, SUM(paid_amount) paid_amount FROM `tabPayment Entry` \n    WHERE docstatus = 1 and project is null\n    GROUP BY form_payment_entry) pe ON pe.form_payment_entry = fpe.name\nWHERE fpe.required_date BETWEEN %(date_from)s AND %(date_to)s AND fpe.docstatus IN (0, 1);",
+ "query": "SELECT \n    \"Kas Bon Non Proyek\" typedoc, \n    CONCAT(\"<a href='/app/form-payment-entry/\", fpe.name, \"'>\", fpe.name, \"</a>\") name,\n    CONCAT(COALESCE(e.first_name, fpe.owner), \" - \", fpe.department) peminta,\n    fpe.total_budget,\n    fpe.type,\n    CASE WHEN fpe.type = \"Piutang Karyawan\" THEN fpe.employee_name\n        WHEN fpe.type = \"Operasional Kantor\" THEN \"Kantor\"\n        ELSE fpe.party END party,\n    CASE WHEN fpe.docstatus = 0 THEN \"<p class='text-danger'>Not Approved</p>\"\n        WHEN fpe.docstatus = 1 THEN \"<p class='text-primary'>Approved</p>\"\n        ELSE \"\" END docstatus,\n    \n    fpe.purpose,\n    pe.paid_amount paid_amount,\n    fpe.total_budget-COALESCE(pe.paid_amount, 0) outstanding_amount,\n    CASE WHEN fpe.total_budget-COALESCE(pe.paid_amount, 0) > 0 THEN \"<p class='text-danger'>Belum Lunas</p>\"\n    ELSE \"<p class='text-primary'>Lunas</p>\"\n    END status\n    FROM `tabForm Payment Entry` fpe\nLEFT JOIN `tabEmployee` e ON e.user_id = fpe.owner\nLEFT JOIN (SELECT form_payment_entry, SUM(paid_amount) paid_amount FROM `tabPayment Entry` \n    WHERE docstatus = 1 and project is null\n    GROUP BY form_payment_entry) pe ON pe.form_payment_entry = fpe.name\nWHERE fpe.required_date BETWEEN %(date_from)s AND %(date_to)s AND fpe.docstatus = (CASE WHEN %(status)s = \"Approved\" THEN 1 ELSE 0 END);",
  "ref_doctype": "Form Payment Entry",
  "report_name": "Rencana Pengajuan Anggaran Non Proyek",
  "report_type": "Query Report",
