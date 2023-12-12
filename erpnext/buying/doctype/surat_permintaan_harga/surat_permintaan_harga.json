@@ -1,0 +1,109 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-12-08 13:06:00.253000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "posting_date",
+  "project",
+  "project_name",
+  "laporan_permintaan_harga_supplier",
+  "penawaran",
+  "surat_permintaan_harga_dokumen",
+  "target_terima_surat",
+  "surat_permintaan_harga_kirim",
+  "surat_permintaan_harga_lampiran"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "penawaran",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Penawaran",
+   "reqd": 1
+  },
+  {
+   "fieldname": "target_terima_surat",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Target Terima Surat",
+   "reqd": 1
+  },
+  {
+   "fieldname": "surat_permintaan_harga_dokumen",
+   "fieldtype": "Table",
+   "label": "Surat Permintaan Harga Dokumen",
+   "options": "Surat Permintaan Harga Dokumen",
+   "reqd": 1
+  },
+  {
+   "fieldname": "surat_permintaan_harga_kirim",
+   "fieldtype": "Table",
+   "label": "Surat Permintaan Harga Kirim",
+   "options": "Surat Permintaan Harga Kirim",
+   "reqd": 1
+  },
+  {
+   "fieldname": "surat_permintaan_harga_lampiran",
+   "fieldtype": "Table",
+   "label": "Surat Permintaan Harga Lampiran",
+   "options": "Surat Permintaan Harga Lampiran",
+   "reqd": 1
+  },
+  {
+   "fieldname": "laporan_permintaan_harga_supplier",
+   "fieldtype": "Table",
+   "label": "Laporan Permintaan Harga Supplier",
+   "options": "Laporan Permintaan Harga Supplier",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-12-08 15:01:58.398900",
+ "modified_by": "Administrator",
+ "module": "Buying",
+ "name": "Surat Permintaan Harga",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

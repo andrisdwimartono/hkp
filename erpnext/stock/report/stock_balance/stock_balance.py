@@ -127,7 +127,7 @@ def get_columns(filters):
 			"width": 90,
 		},
 		{
-			"label": _("Balance Qty"),
+			"label": _("Vol Stock"),
 			"fieldname": "bal_qty",
 			"fieldtype": "Float",
 			"width": 100,
@@ -141,7 +141,7 @@ def get_columns(filters):
 			"options": "currency",
 		},
 		{
-			"label": _("Opening Qty"),
+			"label": "Vol Awal",
 			"fieldname": "opening_qty",
 			"fieldtype": "Float",
 			"width": 100,

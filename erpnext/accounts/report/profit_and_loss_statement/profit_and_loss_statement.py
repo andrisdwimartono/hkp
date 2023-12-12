@@ -8,6 +8,7 @@ from frappe.utils import flt
 
 from erpnext.accounts.report.financial_statements import (
 	get_columns,
+	get_columns2,
 	get_data,
 	get_filtered_list_for_consolidated_report,
 	get_period_list,
@@ -57,7 +58,7 @@ def execute(filters=None):
 	if net_profit_loss:
 		data.append(net_profit_loss)
 
-	columns = get_columns(
+	columns = get_columns2(
 		filters.periodicity, period_list, filters.accumulated_values, filters.company
 	)
 

@@ -43,6 +43,7 @@
   "section_addresses",
   "supplier_address",
   "address_display",
+  "up",
   "contact_person",
   "contact_display",
   "contact_mobile",
@@ -1255,13 +1256,18 @@
    "label": "Status",
    "options": "Belum Diproses\nSedang Diproses\nSelesai",
    "read_only": 1
+  },
+  {
+   "fieldname": "up",
+   "fieldtype": "Data",
+   "label": "Up"
   }
  ],
  "icon": "fa fa-file-text",
  "idx": 105,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-12-06 09:55:32.410604",
+ "modified": "2023-12-12 11:37:21.527287",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Purchase Order",

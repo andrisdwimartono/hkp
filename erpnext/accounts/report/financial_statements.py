@@ -170,7 +170,6 @@ def get_data(
 		return None
 
 	accounts, accounts_by_name, parent_children_map = filter_accounts(accounts)
-
 	company_currency = get_appropriate_currency(company, filters)
 
 	gl_entries_by_account = {}
@@ -208,6 +207,61 @@ def get_data(
 
 	return out
 
+def get_data2(
+	company,
+	root_type,
+	balance_must_be,
+	period_list,
+	filters=None,
+	accumulated_values=1,
+	only_current_fiscal_year=True,
+	ignore_closing_entries=False,
+	ignore_accumulated_values_for_fy=False,
+	total=True,
+):
+
+	accounts = get_accounts(company, root_type)
+	if not accounts:
+		return None
+
+	accounts, accounts_by_name, parent_children_map = filter_accounts(accounts)
+
+	company_currency = get_appropriate_currency(company, filters)
+
+	gl_entries_by_account = {}
+	for root in frappe.db.sql(
+		"""select lft, rgt from tabAccount
+			where root_type=%s and ifnull(parent_account, '') = ''""",
+		root_type,
+		as_dict=1,
+	):
+
+		set_gl_entries_by_account(
+			company,
+			period_list[0]["year_start_date"] if only_current_fiscal_year else None,
+			period_list[-1]["to_date"],
+			root.lft,
+			root.rgt,
+			filters,
+			gl_entries_by_account,
+			ignore_closing_entries=ignore_closing_entries,
+		)
+
+	calculate_values(
+		accounts_by_name,
+		gl_entries_by_account,
+		period_list,
+		accumulated_values,
+		ignore_accumulated_values_for_fy,
+	)
+	accumulate_values_into_parents(accounts, accounts_by_name, period_list)
+	out = prepare_data(accounts, balance_must_be, period_list, company_currency)
+	out = filter_out_zero_value_rows(out, parent_children_map)
+
+	if out and total:
+		add_total_row(out, root_type, balance_must_be, period_list, company_currency)
+
+	return out
 
 def get_appropriate_currency(company, filters=None):
 	if filters and filters.get("presentation_currency"):
@@ -285,6 +339,7 @@ def prepare_data(accounts, balance_must_be, period_list, company_currency):
 					if d.account_number
 					else _(d.account_name)
 				),
+				"account_name2": d.account_name,
 			}
 		)
 		for period in period_list:
@@ -325,8 +380,9 @@ def filter_out_zero_value_rows(data, parent_children_map, show_zero_values=False
 
 def add_total_row(out, root_type, balance_must_be, period_list, company_currency):
 	total_row = {
-		"account_name": _("Total {0} ({1})").format(_(root_type), _(balance_must_be)),
-		"account": _("Total {0} ({1})").format(_(root_type), _(balance_must_be)),
+		"account_name": _("Total {0}").format(_(root_type), _(balance_must_be)),
+		"account_name2": _("Total {0}").format(_(root_type), _(balance_must_be)),
+		"account": _("Total {0}").format(_(root_type), _(balance_must_be)),
 		"currency": company_currency,
 		"opening_balance": 0.0,
 	}
@@ -598,6 +654,42 @@ def get_columns(periodicity, period_list, accumulated_values=1, company=None):
 
 	return columns
 
+def get_columns2(periodicity, period_list, accumulated_values=1, company=None):
+	columns = [
+		{
+			"fieldname": "account",
+			"label": _("Account"),
+			"fieldtype": "Data",
+			"width": 300,
+		}
+	]
+	if company:
+		columns.append(
+			{
+				"fieldname": "currency",
+				"label": _("Currency"),
+				"fieldtype": "Link",
+				"options": "Currency",
+				"hidden": 1,
+			}
+		)
+	for period in period_list:
+		columns.append(
+			{
+				"fieldname": period.key,
+				"label": "{0} (Rp)".format(period.label),
+				"fieldtype": "Currency",
+				"options": "currency",
+				"width": 150,
+			}
+		)
+	if periodicity != "Yearly":
+		if not accumulated_values:
+			columns.append(
+				{"fieldname": "total", "label": _("Total"), "fieldtype": "Currency", "width": 150}
+			)
+
+	return columns
 
 def get_filtered_list_for_consolidated_report(filters, period_list):
 	filtered_summary_list = []

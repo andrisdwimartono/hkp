@@ -13,9 +13,29 @@ from erpnext.controllers.queries import get_filters_cond
 from erpnext.education.doctype.student_attendance.student_attendance import get_holiday_list
 from erpnext.hr.doctype.daily_work_summary.daily_work_summary import get_users_email
 from erpnext.hr.doctype.holiday_list.holiday_list import is_holiday
-
+import datetime
 
 class Project(Document):
+	# def autoname(self):
+	# 	roman = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"]
+	# 	mydate = datetime.datetime.strptime(today(), '%Y-%m-%d')
+	# 	bulan = roman[int(mydate.month)]
+		
+
+	# 	a = frappe.db.sql("""SELECT COUNT(*) cnt FROM `tabProject` WHERE name like '{0}-%'""".format(mydate.year-2000), as_dict=1)
+	# 	if a:
+	# 		urut = a[0].cnt+1
+	# 		urut2 = ""
+	# 		if urut < 9:
+	# 			urut2 = "00{0}".format(urut)
+	# 		elif urut < 99:
+	# 			urut2 = "0{0}".format(urut)
+	# 		else:
+	# 			urut2 = "{0}".format(urut)
+	# 		self.name = "{0}-{1}".format(mydate.year-2000, urut2)
+	# 	else:
+	# 		self.name = "{0}-001".format(mydate.year-2000)
+
 	def get_feed(self):
 		return "{0}: {1}".format(_(self.status), frappe.safe_decode(self.project_name))
 

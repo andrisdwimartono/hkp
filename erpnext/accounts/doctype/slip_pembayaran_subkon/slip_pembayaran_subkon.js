@@ -86,8 +86,8 @@ frappe.ui.form.on('Slip Pembayaran Subkon', {
 	},
 	pph_percent: function(frm){
 		if(frm.doc.paid){
-			frm.set_value("ppn", frm.doc.ppn_percent*frm.doc.paid/100);
-			frm.refresh_field("ppn");
+			frm.set_value("pph", frm.doc.pph_percent*frm.doc.paid/100);
+			frm.refresh_field("pph");
 
 			frm.set_value("total", frm.doc.paid+frm.doc.ppn-frm.doc.potongan);
 			frm.refresh_field("total");

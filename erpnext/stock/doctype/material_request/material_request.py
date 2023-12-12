@@ -18,11 +18,32 @@ from erpnext.controllers.buying_controller import BuyingController
 from erpnext.manufacturing.doctype.work_order.work_order import get_item_details
 from erpnext.stock.doctype.item.item import get_item_defaults
 from erpnext.stock.stock_balance import get_indented_qty, update_bin_qty
+import datetime
 
 form_grid_templates = {"items": "templates/form_grid/material_request_grid.html"}
 
 
 class MaterialRequest(BuyingController):
+	def autoname(self):
+		roman = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"]
+		mydate = datetime.datetime.strptime(self.transaction_date, '%Y-%m-%d')
+		bulan = roman[int(mydate.month)]
+		
+
+		a = frappe.db.sql("""SELECT COUNT(*) cnt FROM `tabMaterial Request` WHERE project = '{0}' AND {1}""".format(self.project, "type = 'Barang'" if self.type == "Barang" else "type != 'Barang'"), as_dict=1)
+		if a:
+			urut = a[0].cnt+1
+			urut2 = ""
+			if urut < 9:
+				urut2 = "00{0}".format(urut)
+			elif urut < 99:
+				urut2 = "0{0}".format(urut)
+			else:
+				urut2 = "{0}".format(urut)
+			self.name = "{2}/LOG-{4}/{3}/{0}/{1}".format("0{0}".format(mydate.month) if mydate.month < 10 else mydate.month, mydate.year-2000, urut2, self.project, "SPA" if self.type != "Barang" else "SPRB")
+		else:
+			self.name = "001/LOG-{3}/{2}/{0}/{1}".format("0{0}".format(mydate.month) if mydate.month < 10 else mydate.month, mydate.year-2000, self.project, "SPA" if self.type != "Barang" else "SPRB")
+
 	def get_feed(self):
 		return
 

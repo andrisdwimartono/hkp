@@ -3,7 +3,7 @@
  "allow_auto_repeat": 1,
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "field:naming_series",
+ "autoname": "JU/.MM./.YY.-.####.",
  "creation": "2022-01-25 10:29:58.717206",
  "doctype": "DocType",
  "document_type": "Document",
@@ -12,7 +12,8 @@
   "entry_type_and_date",
   "title",
   "voucher_type",
-  "naming_series",
+  "nomor_bukti",
+  "user_remark",
   "finance_book",
   "process_deferred_accounting",
   "reversal_of",
@@ -31,7 +32,6 @@
   "section_break99",
   "cheque_no",
   "cheque_date",
-  "user_remark",
   "column_break99",
   "total_debit",
   "total_credit",
@@ -96,18 +96,6 @@
    "options": "Journal Entry\nInter Company Journal Entry\nBank Entry\nCash Entry\nCredit Card Entry\nDebit Note\nCredit Note\nContra Entry\nExcise Entry\nWrite Off Entry\nOpening Entry\nDepreciation Entry\nExchange Rate Revaluation\nDeferred Revenue\nDeferred Expense",
    "reqd": 1,
    "search_index": 1
-  },
-  {
-   "fieldname": "naming_series",
-   "fieldtype": "Data",
-   "label": "Series",
-   "no_copy": 1,
-   "oldfieldname": "naming_series",
-   "oldfieldtype": "Select",
-   "print_hide": 1,
-   "reqd": 1,
-   "set_only_once": 1,
-   "unique": 1
   },
   {
    "fieldname": "column_break1",
@@ -190,11 +178,13 @@
    "fieldname": "user_remark",
    "fieldtype": "Small Text",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "User Remark",
    "no_copy": 1,
    "oldfieldname": "user_remark",
    "oldfieldtype": "Small Text",
-   "print_hide": 1
+   "print_hide": 1,
+   "width": "800px"
   },
   {
    "fieldname": "column_break99",
@@ -568,13 +558,20 @@
    "fieldtype": "Link",
    "label": "Form Payment Entry Project",
    "options": "Form Payment Entry Project"
+  },
+  {
+   "fieldname": "nomor_bukti",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nomor Bukti",
+   "reqd": 1
   }
  ],
  "icon": "fa fa-file-text",
  "idx": 176,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-11-10 20:26:24.106626",
+ "modified": "2023-12-06 11:21:29.940376",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Journal Entry",
@@ -621,5 +618,6 @@
  "search_fields": "voucher_type,posting_date, due_date, cheque_no",
  "sort_field": "modified",
  "sort_order": "DESC",
+ "title_field": "nomor_bukti",
  "track_changes": 1
 }

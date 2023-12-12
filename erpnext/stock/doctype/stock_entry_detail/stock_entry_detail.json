@@ -30,6 +30,7 @@
   "image_view",
   "quantity_section",
   "qty",
+  "volume_huruf",
   "transfer_qty",
   "retain_sample",
   "column_break_20",
@@ -556,13 +557,18 @@
    "fieldname": "condition",
    "fieldtype": "Data",
    "label": "Condition"
+  },
+  {
+   "fieldname": "volume_huruf",
+   "fieldtype": "Small Text",
+   "label": "Volume Huruf"
   }
  ],
  "idx": 1,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-04-11 11:37:33.336246",
+ "modified": "2023-12-11 15:22:18.433293",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Stock Entry Detail",

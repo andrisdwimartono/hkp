@@ -453,7 +453,7 @@
    "fieldtype": "Select",
    "label": "Series",
    "no_copy": 1,
-   "options": ".YY.-.#.\nPROJ-.####",
+   "options": ".YY.-.###.\nPROJ-.####",
    "print_hide": 1,
    "reqd": 1,
    "set_only_once": 1
@@ -498,7 +498,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "max_attachments": 4,
- "modified": "2023-12-05 15:28:49.413629",
+ "modified": "2023-12-07 11:57:46.350868",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Project",

@@ -1,0 +1,86 @@
+{%
+	var report_columns = report.get_columns_for_print();
+%}
+<table width="100%">
+    <tr>
+        <td class="text-center" width="100%"><h4>LAPORAN STOK GUDANG</h4></td>
+    </tr>
+    {% if(filters.warehouse){ %}
+    <tr>
+        <td class="text-center" style="padding: 0px !important; padding-bottom: 20px !important;">
+            {%= filters.warehouse %}
+        </td>
+    </tr>
+    {% } %}
+    <tr>
+        <td class="text-center" style="padding: 0px !important; padding-bottom: 20px !important;">
+            Tanggal : {%= frappe.datetime.str_to_user(filters.from_date) %}
+			s/d
+			{%= frappe.datetime.str_to_user(filters.to_date) %}
+        </td>
+    </tr>
+</table>
+
+<table class="table table-bordered" width="100%" style="font-size: 10px; border:1px solid black; margin-left: 30px; padding: 0px;">
+	<thead>
+		<tr class="text-center">
+			<th class="text-center" width="4%"><b>No</b></th>
+            <th class="text-center" width="30%"><b>Nama Barang</b></th>
+            <th class="text-center" width="5%"><b>Sat</b></th>
+            <th class="text-center" width="33%"><b>Lokasi Gudang</b></th>
+            <th class="text-center" width="7%"><b>Vol Awal</b></th>
+            <th class="text-center" width="7%"><b>Vol Masuk</b></th>
+            <th class="text-center" width="7%"><b>Vol Keluar</b></th>
+            <th class="text-center" width="7%"><b>Vol Stock</b></th>
+		</tr>
+	</thead>
+	<tbody>
+        {% for(let j=0, k=data.length; j<k; j++) { %}
+			{%
+				var row = data[j];
+			%}
+			<tr>
+                <td class="text-right">{%= j+1 %}</td>
+                <td>
+                    {%= row.item_name %}
+                </td>
+                <td class="text-center">{%= row.stock_uom %}</td>
+                <td class="text-left">{%= row.warehouse %}</td>
+                <td class="text-right">{{ frappe.format(row.opening_qty, 'Float') }}</td>
+                <td class="text-right">{{ frappe.format(row.in_qty, 'Float') }}</td>
+                <td class="text-right">{{ frappe.format(row.out_qty, 'Float') }}</td>
+                <td class="text-right">{{ frappe.format(row.bal_qty, 'Float') }}</td>
+			</tr>
+		{% } %}
+    </tbody>
+</table>
+
+<table style="margin-top: 20px; padding: 0px !important; font-size: 7px;" width="100%">
+    <tr>
+        <td width="20%" style="padding: 0px !important;">
+            <table border=1 style="font-size: 7px; margin-left: 0px !important;" class="text-center" width="100%">
+                <tr>
+                    <td style="padding: 2px !important;" width="33%"><b>DIBUAT</b></td>
+                    <td style="padding: 2px !important;" width="33%"><b>DIPERIKSA</b></td>
+                    <td style="padding: 2px !important;" width="34%"><b>DISETUJUI</b></td>
+                </tr>
+                <tr>
+                    <td height="25px"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr style="font-size: 6px">
+                    <td style="padding: 2px !important;">&nbsp;</td>
+                    <td style="padding: 2px !important;"></td>
+                    <td style="padding: 2px !important;"></td>
+                </tr>
+            </table>
+        </td>
+        <td width="80%">
+        </td>
+    </tr>
+</table>
+
+<p class="text-right text-muted" style="margin-top: 25px; font-size: 7px;">
+	Printed On {%= frappe.datetime.str_to_user(frappe.datetime.get_datetime_as_string()) %}
+</p>

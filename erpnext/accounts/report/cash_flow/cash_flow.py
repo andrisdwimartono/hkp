@@ -113,7 +113,8 @@ def execute(filters=None):
 		)
 
 	add_total_row_account(
-		data, data, _("Net Change in Cash"), period_list, company_currency, summary_data, filters
+		# data, data, _("Net Change in Cash"), period_list, company_currency, summary_data, filters
+		data, data, _("KENAIKAN (PENURUNAN) NETO KAS DAN SETARA KAS"), period_list, company_currency, summary_data, filters
 	)
 	columns = get_columns(
 		filters.periodicity, period_list, filters.accumulated_values, filters.company

@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "SPK-.YYYY.-.######.",
+ "autoname": "SPK-.YYYY.-.###.",
  "creation": "2023-04-06 12:24:34.156516",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -10,13 +10,18 @@
   "sub_contract",
   "project",
   "budget",
-  "job_name",
   "pos_rap",
+  "job_name",
+  "lokasi_pekerjaan",
   "column_break_kqwfs",
   "contractor_name",
   "project_name",
-  "pic_name",
   "posting_date",
+  "berdasarkan",
+  "pic_section",
+  "pic_name",
+  "no_telp",
+  "alamat",
   "section_break_cenbf",
   "start_work",
   "warranty_end",
@@ -33,6 +38,10 @@
   "column_break_vasuy",
   "sub_contract_hand_over_document",
   "status",
+  "uraian_pekerjaan",
+  "cara_pembayaran_section",
+  "cara_pembayaran",
+  "syarat_dan_ketentuan",
   "amended_from"
  ],
  "fields": [
@@ -214,11 +223,58 @@
    "fieldtype": "Currency",
    "label": "Sisa",
    "read_only": 1
+  },
+  {
+   "fieldname": "alamat",
+   "fieldtype": "Small Text",
+   "label": "Alamat"
+  },
+  {
+   "fieldname": "no_telp",
+   "fieldtype": "Data",
+   "label": "No Telp"
+  },
+  {
+   "fieldname": "berdasarkan",
+   "fieldtype": "Small Text",
+   "label": "Berdasarkan"
+  },
+  {
+   "fieldname": "uraian_pekerjaan",
+   "fieldtype": "Small Text",
+   "label": "Uraian Pekerjaan"
+  },
+  {
+   "fieldname": "pic_section",
+   "fieldtype": "Section Break",
+   "label": "PIC"
+  },
+  {
+   "fieldname": "lokasi_pekerjaan",
+   "fieldtype": "Small Text",
+   "label": "Lokasi Pekerjaan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cara_pembayaran_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cara_pembayaran",
+   "fieldtype": "Small Text",
+   "label": "Cara Pembayaran",
+   "reqd": 1
+  },
+  {
+   "fieldname": "syarat_dan_ketentuan",
+   "fieldtype": "Small Text",
+   "label": "Syarat dan Ketentuan"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-05 14:31:18.668237",
+ "make_attachments_public": 1,
+ "modified": "2023-12-11 11:16:40.746843",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Sub Contract Hand Over",

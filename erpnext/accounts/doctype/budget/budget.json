@@ -103,6 +103,7 @@
   {
    "fieldname": "section_break_6",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Control Action"
   },
   {
@@ -165,6 +166,7 @@
    "default": "0",
    "fieldname": "applicable_on_booking_actual_expenses",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Applicable on booking actual expenses"
   },
   {
@@ -248,7 +250,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-09-12 19:29:11.777569",
+ "modified": "2023-12-12 13:33:14.597404",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Budget",

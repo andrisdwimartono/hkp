@@ -60,6 +60,13 @@ frappe.ui.form.on("Journal Entry", {
 		}
 	},
 
+	user_remark: function(frm){
+		for(var i = 0; i <= frm.doc.accounts.length; i++){
+			frappe.model.set_value("Journal Entry Account", frm.doc.accounts[i].name, "user_remark", frm.doc.user_remark);
+		}
+		frm.refresh_field("user_remark");
+	},
+
 	project: function(frm){
 		frm.set_value("form_payment_entry_project", null);
 		frm.refresh_field("form_payment_entry_project");

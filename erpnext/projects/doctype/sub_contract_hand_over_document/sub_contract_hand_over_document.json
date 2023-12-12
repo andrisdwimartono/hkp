@@ -7,27 +7,40 @@
  "engine": "InnoDB",
  "field_order": [
   "remark",
+  "status",
   "document"
  ],
  "fields": [
   {
+   "columns": 2,
    "fieldname": "remark",
    "fieldtype": "Small Text",
    "in_list_view": 1,
    "label": "Remark"
   },
   {
+   "columns": 2,
    "fieldname": "document",
    "fieldtype": "Attach",
    "in_list_view": 1,
    "label": "Document",
+   "mandatory_depends_on": "eval: doc.status == \"Ada\""
+  },
+  {
+   "columns": 2,
+   "default": "Ada",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Ada\nTidak Ada",
    "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-06-22 11:08:33.136515",
+ "modified": "2023-12-07 14:24:51.237421",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Sub Contract Hand Over Document",

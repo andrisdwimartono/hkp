@@ -7,6 +7,7 @@ from frappe import _
 from frappe.model.document import Document
 from frappe.model.mapper import get_mapped_doc
 from frappe.utils import cint, cstr, flt
+import datetime
 
 from erpnext.stock.doctype.quality_inspection_template.quality_inspection_template import (
 	get_template_details,
@@ -14,6 +15,34 @@ from erpnext.stock.doctype.quality_inspection_template.quality_inspection_templa
 
 
 class QualityInspection(Document):
+	def autoname(self):
+		roman = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"]
+		mydate = datetime.datetime.strptime(self.report_date, '%Y-%m-%d')
+		bulan = roman[int(mydate.month)]
+		project = ""
+		x = frappe.db.sql("""SELECT * FROM `tab{0}` WHERE name = '{1}'""".format(self.reference_type, self.reference_name), as_dict=1)
+		if x:
+			if x[0].project:
+				project = x[0].project
+		if project == "":
+			frappe.throw("Referensi tidak ada proyek")
+
+		a = frappe.db.sql("""SELECT COUNT(*) cnt FROM `tabQuality Inspection` 
+					INNER JOIN `tab{1}` ON `tab{1}`.name = `tabQuality Inspection`.reference_name
+					WHERE `tabQuality Inspection`.reference_name = '{2}'""".format(project, self.reference_type, self.reference_name), as_dict=1)
+		if a:
+			urut = a[0].cnt+1
+			urut2 = ""
+			if urut < 9:
+				urut2 = "00{0}".format(urut)
+			elif urut < 99:
+				urut2 = "0{0}".format(urut)
+			else:
+				urut2 = "{0}".format(urut)
+			self.name = "{2}/LOG-LHPB/{3}/{0}/{1}".format("0{0}".format(mydate.month) if mydate.month < 10 else mydate.month, mydate.year-2000, urut2, project)
+		else:
+			self.name = "001/LOG-LHPB/{2}/{0}/{1}".format("0{0}".format(mydate.month) if mydate.month < 10 else mydate.month, mydate.year-2000, project)
+
 	def validate(self):
 		if not self.readings and self.item_code:
 			self.get_item_specification_details()
