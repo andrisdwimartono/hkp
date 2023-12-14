@@ -257,7 +257,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Dokumen",
+   "label": "Forms",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -315,9 +315,26 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Master",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Master Ordner",
+   "link_to": "Ordner",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2023-10-18 20:41:24.067160",
+ "modified": "2023-12-14 20:19:17.357130",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Support",

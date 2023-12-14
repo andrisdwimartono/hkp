@@ -19,7 +19,8 @@
   "please_discuss",
   "section_break_spamr",
   "target_penyelesaian",
-  "date"
+  "date",
+  "abbr"
  ],
  "fields": [
   {
@@ -97,11 +98,18 @@
    "fieldname": "please_discuss",
    "fieldtype": "Check",
    "label": "PLEASE DISCUSS"
+  },
+  {
+   "fieldname": "abbr",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Abbr",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-23 11:08:40.227843",
+ "modified": "2023-12-14 20:55:03.888280",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Communication Form",

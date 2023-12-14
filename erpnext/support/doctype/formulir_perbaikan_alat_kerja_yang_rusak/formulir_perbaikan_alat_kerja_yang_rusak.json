@@ -8,7 +8,8 @@
  "engine": "InnoDB",
  "field_order": [
   "tanggal",
-  "detail"
+  "detail",
+  "abbr"
  ],
  "fields": [
   {
@@ -25,11 +26,18 @@
    "label": "Detail",
    "options": "Formulir Perbaikan Alat Kerja Yang Rusak Detail",
    "reqd": 1
+  },
+  {
+   "fieldname": "abbr",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Abbr",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-18 19:41:08.604448",
+ "modified": "2023-12-14 21:04:14.954585",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Formulir Perbaikan Alat Kerja Yang Rusak",

@@ -7,6 +7,8 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "parent_company_document",
+  "is_group",
   "document_name",
   "uom",
   "pemilik_dokumen",
@@ -21,7 +23,10 @@
   "tanggal_terbit",
   "tanggal_expired",
   "document",
-  "description"
+  "description",
+  "lft",
+  "rgt",
+  "old_parent"
  ],
  "fields": [
   {
@@ -119,14 +124,51 @@
    "fieldname": "document",
    "fieldtype": "Attach",
    "label": "Document"
+  },
+  {
+   "fieldname": "lft",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Left",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "rgt",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Right",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Folder?"
+  },
+  {
+   "fieldname": "old_parent",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Old Parent",
+   "options": "Company Document"
+  },
+  {
+   "fieldname": "parent_company_document",
+   "fieldtype": "Link",
+   "label": "Parent",
+   "options": "Company Document"
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_tree": 1,
  "links": [],
- "modified": "2023-10-05 13:52:47.111188",
+ "modified": "2023-12-13 14:22:43.499380",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Company Document",
+ "nsm_parent_field": "parent_company_document",
  "owner": "Administrator",
  "permissions": [
   {

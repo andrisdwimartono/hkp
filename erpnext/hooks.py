@@ -63,6 +63,9 @@ treeviews = [
 	"Assessment Group",
 	"Department",
     "Upload Dokumen Operasional",
+    "Company Document",
+    "Dokumen Tender",
+    "Manajemen File Administrasi",
 ]
 
 # website
@@ -80,6 +83,7 @@ calendars = [
 	"Sales Order",
 	"Holiday List",
 	"Course Schedule",
+    "Schedule Aktivitas"
 ]
 
 domains = {
@@ -338,6 +342,17 @@ has_website_permission = {
 permission_query_conditions = {
     "LAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN": "erpnext.projects.doctype.laporan_tindakan_perbaikan_dan_pencegahan.laporan_tindakan_perbaikan_dan_pencegahan.get_permission_query_conditions",
     "Payment Entry": "erpnext.accounts.doctype.payment_entry.payment_entry.get_permission_query_conditions",
+    "Risalah Rapat": "erpnext.support.doctype.risalah_rapat.risalah_rapat.get_permission_query_conditions",
+    "Surat dan Email": "erpnext.support.doctype.surat_dan_email.surat_dan_email.get_permission_query_conditions",
+    "Photo Dokumentasi": "erpnext.support.doctype.photo_dokumentasi.photo_dokumentasi.get_permission_query_conditions",
+	"Manajemen File Administrasi": "erpnext.support.doctype.manajemen_file_administrasi.manajemen_file_administrasi.get_permission_query_conditions",
+    "Memo": "erpnext.support.doctype.memo.memo.get_permission_query_conditions",
+    "Berita Acara Pemusnahan Dokumen": "erpnext.support.doctype.berita_acara_pemusnahan_dokumen.berita_acara_pemusnahan_dokumen.get_permission_query_conditions",
+    "PERMINTAAN ALAT KERJA KANTOR": "erpnext.support.doctype.permintaan_alat_kerja_kantor.permintaan_alat_kerja_kantor.get_permission_query_conditions",
+    "Communication Form": "erpnext.support.doctype.communication_form.communication_form.get_permission_query_conditions",
+    "Kartu Pemeliharaan AC": "erpnext.support.doctype.kartu_pemeliharaan_ac.kartu_pemeliharaan_ac.get_permission_query_conditions",
+    "Formulir Perbaikan Alat Kerja Yang Rusak": "erpnext.support.doctype.formulir_perbaikan_alat_kerja_yang_rusak.formulir_perbaikan_alat_kerja_yang_rusak.get_permission_query_conditions",
+    "Permintaan Perawatan IT": "erpnext.support.doctype.permintaan_perawatan_it.permintaan_perawatan_it.get_permission_query_conditions",
 }
 
 before_tests = "erpnext.setup.utils.before_tests"

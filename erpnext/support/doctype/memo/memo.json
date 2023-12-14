@@ -14,17 +14,24 @@
   "dari_emoloyee_name",
   "dari_user_id",
   "kepada",
+  "tembusan",
+  "section_break_9nrco",
   "tembusan_merupakan_karyawan",
   "tembusan_designation",
   "tembusan_employee",
   "tembusan_employee_name",
   "tembusan_user_id",
+  "pesan_1",
   "tanggal",
+  "dengan_waktu",
   "waktu_mulai",
   "waktu_selesai",
+  "pesan_2",
+  "column_break_jhoa3",
   "tempat",
   "agenda",
   "keterangan",
+  "process_rules",
   "amended_from"
  ],
  "fields": [
@@ -49,20 +56,23 @@
    "label": "Tanggal"
   },
   {
+   "depends_on": "eval: doc.dengan_waktu == 1",
    "fieldname": "waktu_mulai",
    "fieldtype": "Time",
-   "label": "Waktu Mulai"
+   "label": "Waktu Mulai",
+   "mandatory_depends_on": "eval: doc.dengan_waktu == 1"
   },
   {
+   "depends_on": "eval: doc.dengan_waktu == 1",
    "fieldname": "waktu_selesai",
    "fieldtype": "Time",
-   "label": "Waktu Selesai"
+   "label": "Waktu Selesai",
+   "mandatory_depends_on": "eval: doc.dengan_waktu == 1"
   },
   {
    "fieldname": "tempat",
    "fieldtype": "Data",
-   "label": "Tempat",
-   "reqd": 1
+   "label": "Tempat"
   },
   {
    "fieldname": "agenda",
@@ -119,12 +129,14 @@
    "default": "0",
    "fieldname": "tembusan_merupakan_karyawan",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Tembusan Merupakan Karyawan"
   },
   {
    "depends_on": "eval: doc.tembusan_merupakan_karyawan != 1",
    "fieldname": "tembusan_designation",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Tembusan",
    "options": "Designation"
   },
@@ -149,6 +161,7 @@
    "depends_on": "eval: doc.tembusan_merupakan_karyawan == 1",
    "fieldname": "tembusan_employee",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Tembusan",
    "options": "Employee"
   },
@@ -167,12 +180,52 @@
    "label": "User ID",
    "options": "User",
    "read_only": 1
+  },
+  {
+   "fieldname": "column_break_jhoa3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "dengan_waktu",
+   "fieldtype": "Check",
+   "label": "Dengan Waktu"
+  },
+  {
+   "fieldname": "section_break_9nrco",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "process_rules",
+   "fieldtype": "Table",
+   "label": "Process Rules",
+   "options": "Process Rules"
+  },
+  {
+   "default": "Kami mengharapkan kehadiran Saudara/i pada:",
+   "fieldname": "pesan_1",
+   "fieldtype": "Small Text",
+   "label": "Pesan 1",
+   "reqd": 1
+  },
+  {
+   "default": "Kami harapkan kehadiran Saudara/i tepat waktu dan terima kasih.",
+   "fieldname": "pesan_2",
+   "fieldtype": "Small Text",
+   "label": "Pesan 2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tembusan",
+   "fieldtype": "Table",
+   "label": "Tembusan",
+   "options": "Memo Kepada"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-12-01 14:39:32.129842",
+ "modified": "2023-12-13 10:50:06.852042",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Memo",
@@ -192,5 +245,8 @@
   }
  ],
  "sort_field": "modified",
- "sort_order": "DESC"
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }

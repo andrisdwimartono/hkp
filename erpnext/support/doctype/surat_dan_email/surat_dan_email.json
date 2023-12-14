@@ -17,10 +17,13 @@
   "column_break_3eopo",
   "tanggal_terima_surat",
   "kode_ordner",
+  "project",
+  "project_name",
   "section_break_dxku4",
   "description",
   "notifikasi",
   "process_rules",
+  "abbr",
   "amended_from"
  ],
  "fields": [
@@ -92,7 +95,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Kode Ordner",
-   "options": "Ordner"
+   "options": "Ordner",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_dxku4",
@@ -133,12 +137,32 @@
    "fieldtype": "Table",
    "label": "Process Rules",
    "options": "Process Rules"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "abbr",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Abbr",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-10-18 21:45:03.791399",
+ "modified": "2023-12-13 12:00:12.362858",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Surat dan Email",

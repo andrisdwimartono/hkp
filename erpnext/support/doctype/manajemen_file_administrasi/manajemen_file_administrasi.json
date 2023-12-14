@@ -1,17 +1,27 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "MFA-.YY.-.#####.",
+ "autoname": "field:document_name",
  "creation": "2023-10-05 08:58:17.137618",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "parent_manajemen_file_administrasi",
+  "is_group",
+  "document_name",
   "tanggal",
   "perihal",
-  "folder",
   "kelompok_file",
-  "upload_dokumen"
+  "column_break_jg1le",
+  "project",
+  "project_name",
+  "section_break_6ecll",
+  "document",
+  "abbr",
+  "lft",
+  "rgt",
+  "old_parent"
  ],
  "fields": [
   {
@@ -28,12 +38,6 @@
    "label": "Perihal"
   },
   {
-   "fieldname": "upload_dokumen",
-   "fieldtype": "Table",
-   "label": "Upload Dokumen",
-   "options": "Upload Dokumen"
-  },
-  {
    "fieldname": "kelompok_file",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -42,21 +46,92 @@
    "options": "Kelompok File"
   },
   {
-   "fieldname": "folder",
+   "fieldname": "column_break_jg1le",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "project",
    "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_6ecll",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "abbr",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Abbr",
+   "read_only": 1
+  },
+  {
+   "fieldname": "document_name",
+   "fieldtype": "Data",
    "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Folder",
-   "options": "Folder",
+   "label": "Document Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "lft",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Left",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "rgt",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Right",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Folder?"
+  },
+  {
+   "fieldname": "old_parent",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Old Parent",
+   "options": "Manajemen File Administrasi",
+   "read_only": 1
+  },
+  {
+   "fieldname": "parent_manajemen_file_administrasi",
+   "fieldtype": "Link",
+   "label": "Induk",
+   "options": "Manajemen File Administrasi"
+  },
+  {
+   "fieldname": "document",
+   "fieldtype": "Attach",
+   "label": "Document",
    "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_tree": 1,
  "links": [],
- "modified": "2023-10-05 14:09:53.262589",
+ "modified": "2023-12-13 15:31:28.188829",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Manajemen File Administrasi",
+ "nsm_parent_field": "parent_manajemen_file_administrasi",
  "owner": "Administrator",
  "permissions": [
   {

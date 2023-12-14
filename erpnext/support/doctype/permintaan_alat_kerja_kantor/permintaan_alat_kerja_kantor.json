@@ -13,7 +13,8 @@
   "posting_date",
   "section_break_pdclb",
   "detail",
-  "process_rules"
+  "process_rules",
+  "abbr"
  ],
  "fields": [
   {
@@ -66,11 +67,18 @@
    "fieldtype": "Table",
    "label": "Process Rules",
    "options": "Process Rules"
+  },
+  {
+   "fieldname": "abbr",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Abbr",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-18 15:44:15.265998",
+ "modified": "2023-12-14 20:52:13.027671",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "PERMINTAAN ALAT KERJA KANTOR",

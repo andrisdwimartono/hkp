@@ -8,6 +8,7 @@
  "engine": "InnoDB",
  "field_order": [
   "project",
+  "project_name",
   "perihal",
   "tempat",
   "nama_aktivitas",
@@ -23,6 +24,7 @@
   "peserta_rapat",
   "peserta_rapat_external",
   "upload_dokumen",
+  "abbr",
   "amended_from"
  ],
  "fields": [
@@ -128,14 +130,30 @@
   },
   {
    "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
    "fieldtype": "Data",
-   "label": "Project"
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "default": "ADU",
+   "fieldname": "abbr",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Abbr",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-12-01 16:05:18.196282",
+ "modified": "2023-12-13 15:04:39.803481",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Risalah Rapat",

@@ -18,7 +18,9 @@
   "waktu_upload",
   "pemasukan_penawaran",
   "pic_tender",
-  "koordinator_tender"
+  "koordinator_tender",
+  "column_break_hqiru",
+  "posting_date"
  ],
  "fields": [
   {
@@ -100,11 +102,22 @@
    "fieldtype": "Table",
    "label": "Koordinator Tender",
    "options": "Koordinator Tender"
+  },
+  {
+   "fieldname": "column_break_hqiru",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-31 14:49:20.680381",
+ "modified": "2023-12-13 15:38:58.894902",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Jadwal dan PIC Tender",

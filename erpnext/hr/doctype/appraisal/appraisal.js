@@ -59,10 +59,23 @@ frappe.ui.form.on('Appraisal', {
 });
 
 frappe.ui.form.on('Appraisal Goal', {
+	level: function(frm, cdt, cdn) {
+		var d = locals[cdt][cdn];
+		if(d.level == "Ya"){
+			d.score = 3;
+		}else if(d.level == "Kadang"){
+			d.score = 2;
+		}else{
+			d.score = 1;
+		}
+		refresh_field('score', d.name, 'goals');
+		refresh_field("goals");
+		frm.trigger('set_score_earned');
+	},
 	score: function(frm, cdt, cdn) {
 		var d = locals[cdt][cdn];
-		if (flt(d.score) > 5) {
-			frappe.msgprint(__("Score must be less than or equal to 5"));
+		if (flt(d.score) > 3) {
+			frappe.msgprint(__("Score must be less than or equal to 3"));
 			d.score = 0;
 			refresh_field('score', d.name, 'goals');
 		}

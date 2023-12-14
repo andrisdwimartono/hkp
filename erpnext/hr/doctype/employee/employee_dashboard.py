@@ -41,6 +41,6 @@ def get_data():
 				"label": _("Training"),
 				"items": ["Training Event", "Training Result", "Training Feedback", "Employee Skill Map"],
 			},
-			{"label": _("Evaluation"), "items": ["Appraisal", "Hasil Psikotes"]},
+			{"label": _("Evaluation"), "items": ["Appraisal", "Hasil Psikotes", "Penilaian Karyawan Kontrak", "KPI Karyawan"]},
 		],
 	}

@@ -9,7 +9,32 @@ from frappe.utils import (
 )
 
 class CompanyDocument(Document):
-	pass
+	def validate(self):
+		if self.employee and self.check_is_sertifikat_karyawan(self.parent_company_document):
+			xs = frappe.db.sql("""SELECT * FROM `tabEmployee Certificate` WHERE parent = '{0}' AND company_document = '{1}'""".format(self.employee, self.name), as_dict=1)
+			if xs:
+				emp_doc = frappe.db.sql("""update `tabEmployee Certificate` set document = '{0}', date_accquired = '{1}', date_end = '{2}' where name = '{3}'""".format(self.document, self.tanggal_terbit, self.tanggal_expired, self.name))
+			else:
+				emp_doc = frappe.get_doc("Employee", self.employee)
+				emp_doc.append("employee_certificate", {
+					"certificate": "K3-Ketinggian-Tower Latice",
+					"company_document": self.name,
+					"document": self.document,
+					"date_accquired": self.tanggal_terbit,
+					"date_end": self.tanggal_expired
+				})
+				emp_doc.save(ignore_permissions=True)
+			frappe.db.commit()
+			
+
+	def check_is_sertifikat_karyawan(self, docname):
+		docs = frappe.db.sql("""SELECT * FROM `tabCompany Document` WHERE name = '{0}'""".format(docname), as_dict=1)
+		while docs and docs[0].parent_company_document != None and docs[0].parent_company_document != "":
+			if docs[0].parent_company_document == "Sertifikat Karyawan":
+				return True
+			docs = frappe.db.sql("""SELECT * FROM `tabCompany Document` WHERE name = '{0}'""".format(docs[0].parent_company_document), as_dict=1)
+		return False
+
 
 @frappe.whitelist()
 def get_company_document_obsolete():

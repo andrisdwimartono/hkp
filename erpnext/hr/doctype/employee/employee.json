@@ -657,12 +657,14 @@
    "collapsible": 1,
    "fieldname": "history_in_company",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "History In Company",
    "options": "Simple"
   },
   {
    "fieldname": "internal_work_history",
    "fieldtype": "Table",
+   "hidden": 1,
    "label": "Internal Work History",
    "options": "Employee Internal Work History"
   },
@@ -914,9 +916,13 @@
    "group": "Allowed Items",
    "link_doctype": "Party Specific Item",
    "link_fieldname": "party"
+  },
+  {
+   "link_doctype": "Penilaian Karyawan Kontrak",
+   "link_fieldname": "employee"
   }
  ],
- "modified": "2023-11-30 14:14:47.836783",
+ "modified": "2023-12-14 14:19:05.902283",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Employee",

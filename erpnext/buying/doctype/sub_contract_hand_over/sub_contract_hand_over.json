@@ -117,7 +117,7 @@
    "fieldtype": "Currency",
    "label": "Total Nilai Kontrak",
    "options": "Company:company:default_currency",
-   "read_only_depends_on": "eval:doc.ppn_type == \"Termasuk PPn\"",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -172,7 +172,6 @@
    "fieldtype": "Currency",
    "label": "Nilai Kontrak",
    "options": "Company:company:default_currency",
-   "read_only_depends_on": "eval:doc.ppn_type == \"Tidak Termasuk PPn\" || doc.ppn_type == \"Tanpa PPn\"",
    "reqd": 1
   },
   {
@@ -274,7 +273,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "make_attachments_public": 1,
- "modified": "2023-12-11 11:16:40.746843",
+ "modified": "2023-12-12 14:23:22.856175",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Sub Contract Hand Over",

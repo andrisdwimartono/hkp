@@ -7,13 +7,15 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "tanggal",
   "jenis_ac",
   "merk",
   "type",
   "kapasitas",
   "ruanganlokasi",
   "detail",
-  "catatan"
+  "catatan",
+  "abbr"
  ],
  "fields": [
   {
@@ -56,11 +58,25 @@
    "label": "Detail",
    "options": "Kartu Pemeliharaan AC Detail",
    "reqd": 1
+  },
+  {
+   "fieldname": "abbr",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Abbr",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "label": "Tanggal",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-18 19:26:41.861193",
+ "modified": "2023-12-14 21:02:16.977884",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Kartu Pemeliharaan AC",

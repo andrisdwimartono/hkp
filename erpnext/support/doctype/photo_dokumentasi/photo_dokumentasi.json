@@ -14,7 +14,8 @@
   "nama_event",
   "nama_material__alat_kerja",
   "nama_foto",
-  "upload_dokumen"
+  "upload_dokumen",
+  "abbr"
  ],
  "fields": [
   {
@@ -74,11 +75,18 @@
    "fieldtype": "Table",
    "label": "Upload Dokumen",
    "options": "Upload Dokumen"
+  },
+  {
+   "fieldname": "abbr",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Abbr",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-05 08:31:36.207129",
+ "modified": "2023-12-13 13:16:47.686366",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Photo Dokumentasi",

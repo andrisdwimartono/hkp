@@ -65,11 +65,11 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
+   "is_query_report": 1,
    "label": "Tenaga Kerja Proyek",
    "link_to": "TENAGA KERJA PROYEK",
    "link_type": "Report",
-   "onboard": 0,
+   "onboard": 1,
    "type": "Link"
   },
   {
@@ -138,6 +138,24 @@
    "is_query_report": 0,
    "label": "Employee Health Insurance",
    "link_to": "Employee Health Insurance",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Penilaian Karyawan Kontrak",
+   "link_to": "Penilaian Karyawan Kontrak",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "KPI Karyawan",
+   "link_to": "KPI Karyawan",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -568,7 +586,7 @@
    "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Job Opening",
+   "label": "Lowongan Pekerjaan Terseleksi",
    "link_to": "Job Opening",
    "link_type": "DocType",
    "onboard": 1,
@@ -913,11 +931,11 @@
    "type": "Link"
   }
  ],
- "modified": "2023-10-12 11:46:05.353410",
+ "modified": "2023-12-14 15:30:19.579372",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "HR",
- "onboarding": "Human Resource",
+ "onboarding": "",
  "owner": "Administrator",
  "pin_to_bottom": 0,
  "pin_to_top": 0,

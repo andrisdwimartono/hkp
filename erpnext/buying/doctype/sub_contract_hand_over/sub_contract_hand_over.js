@@ -89,6 +89,25 @@ frappe.ui.form.on('Sub Contract Hand Over', {
 			frm.refresh_field("budget_amount");
 		}
 	},
+	budget_value: function(frm){
+		if(frm.doc.ppn_type == "Tidak Termasuk PPn"){
+			var budget_value = frm.doc.budget_value;
+			var ppn = frm.doc.budget_value*frm.doc.ppn_percent/100;
+			frm.set_value("budget_amount", budget_value+ppn);
+			frm.refresh_field("budget_amount");
+		}else if(frm.doc.ppn_type == "Termasuk PPn"){
+			var budget_value = frm.doc.budget_value;
+			// var ppn = frm.doc.budget_value*frm.doc.ppn_percent/100;
+			
+			// frm.set_value("budget_amount", budget_value-ppn);
+			frm.set_value("budget_amount", budget_value);
+			frm.refresh_field("budget_amount");
+		}else{
+
+			frm.set_value("budget_amount", frm.doc.budget_value);
+			frm.refresh_field("budget_amount");
+		}
+	},
 	// budget_amount: function(frm){
 	// 	if(frm.doc.ppn_type == "Termasuk PPn"){
 	// 		var budget_value = frm.doc.budget_amount;
@@ -102,6 +121,22 @@ frappe.ui.form.on('Sub Contract Hand Over', {
 	// 	// }
 	// },
 	ppn_type: function(frm){
-		frm.triger("unit_price");
+		if(frm.doc.ppn_type == "Tidak Termasuk PPn"){
+			var budget_value = frm.doc.budget_value;
+			var ppn = frm.doc.budget_value*frm.doc.ppn_percent/100;
+			frm.set_value("budget_amount", budget_value+ppn);
+			frm.refresh_field("budget_amount");
+		}else if(frm.doc.ppn_type == "Termasuk PPn"){
+			var budget_value = frm.doc.budget_value;
+			// var ppn = frm.doc.budget_value*frm.doc.ppn_percent/100;
+			
+			// frm.set_value("budget_amount", budget_value-ppn);
+			frm.set_value("budget_amount", budget_value);
+			frm.refresh_field("budget_amount");
+		}else{
+
+			frm.set_value("budget_amount", frm.doc.budget_value);
+			frm.refresh_field("budget_amount");
+		}
 	},
 });

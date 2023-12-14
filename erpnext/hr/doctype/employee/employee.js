@@ -51,6 +51,14 @@ frappe.ui.form.on('Employee', {
 				}
 			};
 		});
+
+		frm.set_query("company_document", "employee_certificate", function(doc, cdt, cdn) {
+			return {
+				filters: [
+					['Company Document', 'employee', '=', cur_frm.doc.name],
+				]
+			};
+		});
 	},
 	onload: function (frm) {
 		frm.set_query("department", function() {

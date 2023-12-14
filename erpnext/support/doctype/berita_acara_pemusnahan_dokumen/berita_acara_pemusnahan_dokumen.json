@@ -9,7 +9,8 @@
  "field_order": [
   "tanggal",
   "detail",
-  "process_rules"
+  "process_rules",
+  "abbr"
  ],
  "fields": [
   {
@@ -31,11 +32,18 @@
    "fieldtype": "Table",
    "label": "Process Rules",
    "options": "Process Rules"
+  },
+  {
+   "fieldname": "abbr",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Abbr",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-17 09:34:18.768305",
+ "modified": "2023-12-14 20:22:52.210383",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Berita Acara Pemusnahan Dokumen",
