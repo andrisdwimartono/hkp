@@ -1,0 +1,119 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-12-15 11:09:45.260813",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tanggal_pengajuan",
+  "employee",
+  "employee_name",
+  "agenda_rapat",
+  "jumlah_peserta",
+  "tanggal_rapat",
+  "waktu_mulai_rapat",
+  "waktu_selesai_rapat",
+  "ruang_rapat",
+  "detail",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "tanggal_pengajuan",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Tanggal Pengajuan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Pemohon",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nama Pemohon",
+   "read_only": 1
+  },
+  {
+   "fieldname": "agenda_rapat",
+   "fieldtype": "Data",
+   "label": "Agenda Rapat"
+  },
+  {
+   "fieldname": "jumlah_peserta",
+   "fieldtype": "Int",
+   "label": "Jumlah Peserta"
+  },
+  {
+   "fieldname": "tanggal_rapat",
+   "fieldtype": "Date",
+   "label": "Tanggal Rapat",
+   "reqd": 1
+  },
+  {
+   "fieldname": "waktu_mulai_rapat",
+   "fieldtype": "Time",
+   "label": "Waktu Mulai Rapat",
+   "reqd": 1
+  },
+  {
+   "fieldname": "waktu_selesai_rapat",
+   "fieldtype": "Time",
+   "label": "Waktu Selesai Rapat",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ruang_rapat",
+   "fieldtype": "Select",
+   "label": "Ruang Rapat",
+   "mandatory_depends_on": "eval: doc.__unsaved != 1",
+   "options": "\nGIS\nSUTET\nGITET"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Permohonan Penyediaan Ruang Rapat",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "detail",
+   "fieldtype": "Table",
+   "label": "Detail",
+   "options": "Permohonan Penyediaan Ruang Rapat Detail"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-12-15 13:54:38.668382",
+ "modified_by": "Administrator",
+ "module": "Support",
+ "name": "Permohonan Penyediaan Ruang Rapat",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

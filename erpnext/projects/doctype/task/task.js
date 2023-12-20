@@ -59,3 +59,21 @@ frappe.ui.form.on("Task", {
 			frm.doc.project);
 	}
 });
+
+
+frappe.ui.form.on("Task Progress", {
+	rencana: function (frm, dt, dn) {
+		var d = locals[dt][dn];
+		d.deviasi = d.rencana-d.realisasi;
+		frm.refresh_field("task_progress");
+		frm.set_value("progress", d.realisasi);
+		frm.refresh_field("progress");
+	},
+	realisasi: function (frm, dt, dn) {
+		var d = locals[dt][dn];
+		d.deviasi = d.rencana-d.realisasi;
+		frm.refresh_field("task_progress");
+		frm.set_value("progress", d.realisasi);
+		frm.refresh_field("progress");
+	},
+});

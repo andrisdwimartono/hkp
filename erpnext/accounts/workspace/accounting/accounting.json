@@ -1,4 +1,5 @@
 {
+ "cards_label": "Menu",
  "category": "Modules",
  "charts": [
   {
@@ -8,11 +9,11 @@
  ],
  "creation": "2020-03-02 15:41:59.515192",
  "developer_mode_only": 0,
- "disable_user_customization": 0,
+ "disable_user_customization": 1,
  "docstatus": 0,
  "doctype": "Workspace",
  "extends_another_page": 0,
- "hide_custom": 0,
+ "hide_custom": 1,
  "icon": "accounting",
  "idx": 0,
  "is_default": 0,
@@ -21,6 +22,156 @@
  "links": [
   {
    "hidden": 0,
+   "is_query_report": 0,
+   "label": "Magister Akuntansi",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Perusahaan",
+   "link_to": "Company",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "\u2060Bagan Akun",
+   "link_to": "Account",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Pengaturan Akun",
+   "link_to": "Accounts Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tahun fiskal",
+   "link_to": "Fiscal Year",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Buku Keuangan",
+   "link_to": "Finance Book",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Mata uang",
+   "link_to": "Currency",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Kurs Mata Uang",
+   "link_to": "Currency Exchange",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Bookeeping",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Jurnal Entri",
+   "link_to": "Journal Entry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Rekonsiliasi",
+   "link_to": "Bank Reconciliation Tool",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "General Ledger",
+   "link_to": "General Ledger",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Laporan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Trial Balance",
+   "link_to": "Trial Balance",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Neraca",
+   "link_to": "Balance Sheet",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Laba Rugi",
+   "link_to": "Profit and Loss Statement",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Arus Kas",
+   "link_to": "Cash Flow",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 1,
    "is_query_report": 0,
    "label": "Accounting Masters",
    "onboard": 0,
@@ -107,7 +258,7 @@
    "type": "Link"
   },
   {
-   "hidden": 0,
+   "hidden": 1,
    "is_query_report": 0,
    "label": "General Ledger",
    "onboard": 0,
@@ -164,7 +315,7 @@
    "type": "Link"
   },
   {
-   "hidden": 0,
+   "hidden": 1,
    "is_query_report": 0,
    "label": "Accounts Receivable",
    "onboard": 0,
@@ -271,7 +422,7 @@
    "type": "Link"
   },
   {
-   "hidden": 0,
+   "hidden": 1,
    "is_query_report": 0,
    "label": "Accounts Payable",
    "onboard": 0,
@@ -368,7 +519,7 @@
    "type": "Link"
   },
   {
-   "hidden": 0,
+   "hidden": 1,
    "is_query_report": 0,
    "label": "Reports",
    "onboard": 0,
@@ -466,7 +617,7 @@
    "type": "Link"
   },
   {
-   "hidden": 0,
+   "hidden": 1,
    "is_query_report": 0,
    "label": "Financial Statements",
    "onboard": 0,
@@ -523,7 +674,7 @@
    "type": "Link"
   },
   {
-   "hidden": 0,
+   "hidden": 1,
    "is_query_report": 0,
    "label": "Multi Currency",
    "onboard": 0,
@@ -560,7 +711,7 @@
    "type": "Link"
   },
   {
-   "hidden": 0,
+   "hidden": 1,
    "is_query_report": 0,
    "label": "Settings",
    "onboard": 0,
@@ -597,7 +748,7 @@
    "type": "Link"
   },
   {
-   "hidden": 0,
+   "hidden": 1,
    "is_query_report": 0,
    "label": "Banking and Payments",
    "onboard": 0,
@@ -672,7 +823,7 @@
    "type": "Link"
   },
   {
-   "hidden": 0,
+   "hidden": 1,
    "is_query_report": 0,
    "label": "Subscription Management",
    "onboard": 0,
@@ -709,7 +860,7 @@
    "type": "Link"
   },
   {
-   "hidden": 0,
+   "hidden": 1,
    "is_query_report": 0,
    "label": "Goods and Services Tax (GST India)",
    "onboard": 0,
@@ -838,7 +989,7 @@
    "type": "Link"
   },
   {
-   "hidden": 0,
+   "hidden": 1,
    "is_query_report": 0,
    "label": "Share Management",
    "onboard": 0,
@@ -885,7 +1036,7 @@
    "type": "Link"
   },
   {
-   "hidden": 0,
+   "hidden": 1,
    "is_query_report": 0,
    "label": "Cost Center and Budgeting",
    "onboard": 0,
@@ -942,7 +1093,7 @@
    "type": "Link"
   },
   {
-   "hidden": 0,
+   "hidden": 1,
    "is_query_report": 0,
    "label": "Opening and Closing",
    "onboard": 0,
@@ -979,7 +1130,7 @@
    "type": "Link"
   },
   {
-   "hidden": 0,
+   "hidden": 1,
    "is_query_report": 0,
    "label": "Taxes",
    "onboard": 0,
@@ -1056,7 +1207,7 @@
    "type": "Link"
   },
   {
-   "hidden": 0,
+   "hidden": 1,
    "is_query_report": 0,
    "label": "Profitability",
    "onboard": 0,
@@ -1103,7 +1254,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-10-23 14:17:43.989855",
+ "modified": "2023-12-18 14:07:55.215410",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Accounting",
@@ -1111,51 +1262,5 @@
  "owner": "Administrator",
  "pin_to_bottom": 0,
  "pin_to_top": 0,
- "shortcuts": [
-  {
-   "label": "Chart of Accounts",
-   "link_to": "Account",
-   "type": "DocType"
-  },
-  {
-   "label": "Sales Invoice",
-   "link_to": "Sales Invoice",
-   "type": "DocType"
-  },
-  {
-   "label": "Purchase Invoice",
-   "link_to": "Purchase Invoice",
-   "type": "DocType"
-  },
-  {
-   "label": "Journal Entry",
-   "link_to": "Journal Entry",
-   "type": "DocType"
-  },
-  {
-   "label": "Pembayaran Hutang",
-   "link_to": "Payment Entry",
-   "type": "DocType"
-  },
-  {
-   "label": "Accounts Receivable",
-   "link_to": "Accounts Receivable",
-   "type": "Report"
-  },
-  {
-   "label": "General Ledger",
-   "link_to": "General Ledger",
-   "type": "Report"
-  },
-  {
-   "label": "Trial Balance",
-   "link_to": "Trial Balance",
-   "type": "Report"
-  },
-  {
-   "label": "Dashboard",
-   "link_to": "Accounts",
-   "type": "Dashboard"
-  }
- ]
+ "shortcuts": []
 }

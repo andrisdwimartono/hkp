@@ -105,6 +105,7 @@
    "fieldname": "customer_name",
    "fieldtype": "Data",
    "in_global_search": 1,
+   "in_list_view": 1,
    "label": "Full Name",
    "no_copy": 1,
    "oldfieldname": "customer_name",
@@ -179,14 +180,11 @@
   {
    "fieldname": "territory",
    "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Territory",
+   "label": "Area Pelanggan",
    "oldfieldname": "territory",
    "oldfieldtype": "Link",
    "options": "Territory",
-   "print_hide": 1,
-   "reqd": 1
+   "print_hide": 1
   },
   {
    "fieldname": "tax_id",
@@ -552,7 +550,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2023-10-20 09:47:29.231346",
+ "modified": "2023-12-15 15:48:18.864784",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Customer",

@@ -1,0 +1,46 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-12-15 11:10:51.511998",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "perlengkapan",
+  "ceklist",
+  "keterangan"
+ ],
+ "fields": [
+  {
+   "fieldname": "perlengkapan",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Perlengkapan"
+  },
+  {
+   "default": "Tidak",
+   "fieldname": "ceklist",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Ceklist",
+   "options": "Ya\nTidak"
+  },
+  {
+   "fieldname": "keterangan",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Keterangan"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-12-15 13:47:15.026592",
+ "modified_by": "Administrator",
+ "module": "Support",
+ "name": "Permohonan Penyediaan Ruang Rapat Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

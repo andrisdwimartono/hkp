@@ -59,6 +59,8 @@
   {
    "fieldname": "customer",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Customer",
    "options": "Customer",
    "reqd": 1
@@ -101,7 +103,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-07 10:43:13.610749",
+ "modified": "2023-12-15 15:35:30.604432",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "LAPORAN AKTIVITAS DI LUAR KANTOR",

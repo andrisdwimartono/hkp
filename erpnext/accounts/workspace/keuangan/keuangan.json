@@ -186,6 +186,15 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Anggaran Belanja",
+   "link_to": "Budget",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Keuangan",
    "link_type": "DocType",
    "onboard": 0,
@@ -309,7 +318,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-12-06 10:30:15.030434",
+ "modified": "2023-12-18 10:42:45.398576",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Keuangan",

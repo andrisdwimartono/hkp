@@ -15,7 +15,9 @@
   "bagian",
   "deskripsi",
   "perbaikan",
-  "prioritas"
+  "prioritas",
+  "document",
+  "abbr"
  ],
  "fields": [
   {
@@ -81,11 +83,23 @@
    "in_list_view": 1,
    "label": "Nama Peminta",
    "read_only": 1
+  },
+  {
+   "fieldname": "document",
+   "fieldtype": "Attach",
+   "label": "Document"
+  },
+  {
+   "fieldname": "abbr",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Abbr",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-18 20:07:33.839760",
+ "modified": "2023-12-15 14:02:52.908069",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Permintaan Perawatan IT",

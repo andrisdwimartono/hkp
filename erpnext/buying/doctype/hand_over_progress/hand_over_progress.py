@@ -27,7 +27,7 @@ def check_progress(sub_contract_hand_over = None):
     if sub_contract_hand_over:
         return frappe.db.sql("""
         SELECT COUNT(*)+1 progress_sequence, max(down_payment_percent) down_payment_percent, max(down_payment) down_payment FROM `tabHand Over Progress` hop 
-        WHERE hop.sub_contract_hand_over = '{0}' AND hop.docstatus = 1
+        WHERE hop.sub_contract_hand_over = '{0}' AND hop.docstatus = 1 AND progress_sequence != 0
         """.format(sub_contract_hand_over), as_dict=1)
     return 0
 

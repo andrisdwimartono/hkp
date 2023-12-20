@@ -14,6 +14,7 @@
   "section_break_pdclb",
   "detail",
   "process_rules",
+  "document",
   "abbr"
  ],
  "fields": [
@@ -74,11 +75,16 @@
    "hidden": 1,
    "label": "Abbr",
    "read_only": 1
+  },
+  {
+   "fieldname": "document",
+   "fieldtype": "Attach",
+   "label": "Document"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-14 20:52:13.027671",
+ "modified": "2023-12-15 14:01:36.212177",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "PERMINTAAN ALAT KERJA KANTOR",

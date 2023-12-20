@@ -1,4 +1,5 @@
 {
+ "cards_label": "Support",
  "category": "Modules",
  "charts": [],
  "creation": "2020-03-02 15:48:23.224699",
@@ -17,7 +18,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Dokumen Perusahaan",
+   "label": "Menu",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -88,8 +89,8 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Dokumen Tender",
-   "link_to": "Dokumen Tender",
+   "label": "Checklist Dokumen Tender",
+   "link_to": "CHECKLIST DOKUMEN TENDER",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -106,7 +107,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Keikut Sertaan Tender",
+   "label": "Jadwal Tender",
    "link_to": "Jadwal dan PIC Tender",
    "link_type": "DocType",
    "onboard": 0,
@@ -172,23 +173,6 @@
    "is_query_report": 0,
    "label": "Maintenance Visit",
    "link_to": "Maintenance Visit",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Service Level Agreement",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "dependencies": "",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Service Level Agreement",
-   "link_to": "Service Level Agreement",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -319,6 +303,33 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Permohonan Penyediaan Ruang Rapat",
+   "link_to": "Permohonan Penyediaan Ruang Rapat",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Daftar dan Evaluasi Pemenuhan Peraturan",
+   "link_to": "Daftar dan Evaluasi Pemenuhan Peraturan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sosialisasi Peraturan Perusahaan dan Budaya Perusahaan",
+   "link_to": "Sosialisasi Peraturan Perusahaan dan Budaya Perusahaan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Master",
    "link_type": "DocType",
    "onboard": 0,
@@ -334,7 +345,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-12-14 20:19:17.357130",
+ "modified": "2023-12-18 10:39:12.477868",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Support",
@@ -353,11 +364,6 @@
   {
    "label": "Maintenance Visit",
    "link_to": "Maintenance Visit",
-   "type": "DocType"
-  },
-  {
-   "label": "Service Level Agreement",
-   "link_to": "Service Level Agreement",
    "type": "DocType"
   }
  ]

@@ -9,6 +9,7 @@
  "field_order": [
   "tanggal",
   "detail",
+  "document",
   "abbr"
  ],
  "fields": [
@@ -33,11 +34,16 @@
    "hidden": 1,
    "label": "Abbr",
    "read_only": 1
+  },
+  {
+   "fieldname": "document",
+   "fieldtype": "Attach",
+   "label": "Document"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-14 21:04:14.954585",
+ "modified": "2023-12-15 14:01:58.256909",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Formulir Perbaikan Alat Kerja Yang Rusak",

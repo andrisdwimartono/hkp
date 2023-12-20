@@ -7,6 +7,17 @@ frappe.ui.form.on('Tarik Data Absensi', {
 	},
 	get_data: function(frm){
 		// $.ajax({
+		// 	method: "GET",
+		// 	url: "http://localhost:8003/index3.php",
+		// 	dataType: "json",
+		// 	success: function(data) {
+		// 		console.log("token");
+		// 		console.log(data);
+		// 	}
+		// });
+
+
+		// $.ajax({
 		// 	method: "POST",
 		// 	url: "http://192.168.18.250:8091/jwt-api-token-auth/",
 		// 	dataType: "json",

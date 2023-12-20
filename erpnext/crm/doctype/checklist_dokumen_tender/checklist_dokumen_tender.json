@@ -13,6 +13,7 @@
   "tanggal",
   "tanggal_pemasukan",
   "tanggal_pengecekan",
+  "document",
   "checklist"
  ],
  "fields": [
@@ -64,11 +65,16 @@
    "label": "Laporan Penjelasan Tender Terkait",
    "options": "LAPORAN PENJELASAN TENDER",
    "reqd": 1
+  },
+  {
+   "fieldname": "document",
+   "fieldtype": "Attach",
+   "label": "Document"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-05 21:28:30.848810",
+ "modified": "2023-12-15 15:27:01.879720",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "CHECKLIST DOKUMEN TENDER",

@@ -1,0 +1,49 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-12-18 10:25:20.064658",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "nomor",
+  "judul",
+  "keterangan"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "fieldname": "nomor",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nomor",
+   "reqd": 1
+  },
+  {
+   "columns": 3,
+   "fieldname": "judul",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Judul",
+   "reqd": 1
+  },
+  {
+   "columns": 3,
+   "fieldname": "keterangan",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Keterangan"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-12-18 10:26:17.570100",
+ "modified_by": "Administrator",
+ "module": "Support",
+ "name": "Daftar dan Evaluasi Pemenuhan Peraturan Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

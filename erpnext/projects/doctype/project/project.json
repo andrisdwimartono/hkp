@@ -266,6 +266,7 @@
    "collapsible": 1,
    "fieldname": "project_details",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Costing and Billing",
    "oldfieldtype": "Section Break",
    "options": "fa fa-money"
@@ -342,6 +343,7 @@
    "collapsible": 1,
    "fieldname": "margin",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Margin",
    "oldfieldtype": "Column Break",
    "width": "50%"
@@ -371,6 +373,7 @@
    "collapsible": 1,
    "fieldname": "monitor_progress",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Monitor Progress"
   },
   {
@@ -498,7 +501,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "max_attachments": 4,
- "modified": "2023-12-07 11:57:46.350868",
+ "modified": "2023-12-19 11:33:05.935366",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Project",

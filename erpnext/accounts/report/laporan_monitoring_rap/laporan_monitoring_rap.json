@@ -1,0 +1,90 @@
+{
+ "add_total_row": 0,
+ "columns": [
+  {
+   "fieldname": "pos_rap",
+   "fieldtype": "Link",
+   "label": "Uraian",
+   "options": "POS RAP",
+   "width": 300
+  },
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "label": "Akun",
+   "options": "Account",
+   "width": 150
+  },
+  {
+   "fieldname": "rencana",
+   "fieldtype": "Currency",
+   "label": "Rencana",
+   "width": 0
+  },
+  {
+   "fieldname": "realisasi",
+   "fieldtype": "Currency",
+   "label": "Realisasi",
+   "width": 0
+  },
+  {
+   "fieldname": "sisa",
+   "fieldtype": "Currency",
+   "label": "Sisa",
+   "width": 0
+  },
+  {
+   "fieldname": "keterangan",
+   "fieldtype": "Data",
+   "label": "Keterangan",
+   "width": 0
+  }
+ ],
+ "creation": "2023-12-18 11:27:19.604085",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "mandatory": 1,
+   "options": "Project",
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "Sampai Tanggal",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{}",
+ "letter_head": "KOP HKP",
+ "modified": "2023-12-18 11:56:46.067963",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Laporan Monitoring RAP",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT \n    b.pos_rap, \n    b.account, \n    b.budget_amount rencana, \n    coalesce(c.realisasi, 0) realisasi, \n    b.budget_amount-coalesce(c.realisasi, 0) sisa,\n    case when b.budget_amount-coalesce(c.realisasi, 0) >= 0 then 'Terkendali'\n    else 'Tidak Terkendali' END keterangan,\n    a.project_name\n    FROM `tabBudget Account` b\nINNER JOIN `tabBudget` a ON a.name = b.parent\nLEFT JOIN (\n    SELECT SUM(c.debit-c.credit) realisasi, c.account FROM `tabGL Entry` c \n    WHERE c.posting_date <= %(end_date)s\n    GROUP BY c.account) c ON c.account = b.account\nWHERE a.project = %(project)s\nORDER BY b.idx;",
+ "ref_doctype": "Budget",
+ "report_name": "Laporan Monitoring RAP",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Kasir"
+  },
+  {
+   "role": "Logistik"
+  }
+ ]
+}

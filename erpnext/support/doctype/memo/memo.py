@@ -231,5 +231,6 @@ def get_permission_query_conditions(user):
 		for x3 in a3:
 			n=n+1
 			stri = "{0}{1}".format(stri, " {1} `tabMemo`.`name` = '{0}'".format(x3.name, "OR" if n > 1 else ""))
-
+	if stri == "":
+		stri = "0=1"
 	return """{0}""".format(stri)

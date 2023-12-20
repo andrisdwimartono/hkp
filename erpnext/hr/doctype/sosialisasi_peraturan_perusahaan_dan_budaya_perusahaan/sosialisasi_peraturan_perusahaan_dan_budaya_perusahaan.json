@@ -1,0 +1,65 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-12-18 10:37:24.980018",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_1fcdu",
+  "peserta",
+  "kinerja_karyawan",
+  "peraturan_perusahaan",
+  "budaya_perusahaan"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_1fcdu",
+   "fieldtype": "Section Break",
+   "label": "Lampiran"
+  },
+  {
+   "fieldname": "peserta",
+   "fieldtype": "Attach",
+   "label": "Daftar Hadir"
+  },
+  {
+   "fieldname": "kinerja_karyawan",
+   "fieldtype": "Attach",
+   "label": "Kinerja Karyawan"
+  },
+  {
+   "fieldname": "peraturan_perusahaan",
+   "fieldtype": "Attach",
+   "label": "Peraturan Perusahaan"
+  },
+  {
+   "fieldname": "budaya_perusahaan",
+   "fieldtype": "Attach",
+   "label": "Budaya Perusahaan"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-12-18 10:37:24.980018",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "Sosialisasi Peraturan Perusahaan dan Budaya Perusahaan",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

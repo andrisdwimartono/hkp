@@ -1,0 +1,73 @@
+{%
+	var letterhead = filters.letter_head || (frappe.get_doc(":Company", filters.company) && frappe.get_doc(":Company", filters.company).default_letter_head) || frappe.defaults.get_default("letter_head");
+	var report_columns = report.get_columns_for_print();
+%}
+<table width="100%">
+    <tr>
+        <td class="text-center" width="100%"><h4>LAPORAN MONITORING RAP</h4></td>
+        <!-- <td width="20%">
+            <table style="font-size: 11px; border:1px solid black; margin: 0px; padding: 0px;">
+                <tr>
+                    <td>Dokumen</td>
+                    <td>: HKP-FI-SAR-08</td>
+                </tr>
+                <tr>
+                    <td>Revisi</td>
+                    <td>: 01</td>
+                </tr>
+                <tr>
+                    <td>Tgl. Terbit</td>
+                    <td>: 25 juli 2014</td>
+                </tr>
+            </table>
+        </td> -->
+    </tr>
+</table>
+<table>
+    {% if(filters.project){ %}
+    <tr>
+        <td>Proyek </td>
+        <td>: {{filters.project}}</td>
+    </tr>
+    {% } %}
+    <tr>
+        <td>Sampai Tanggal </td>
+        <td>: {%= frappe.datetime.str_to_user(filters.end_date) %}</td>
+    </tr>
+</table>
+<table class="table table-bordered" width="100%" style="font-size: 11px; border:1px solid black; margin: 0px; padding: 0px;">
+	<thead>
+		<tr class="text-center">
+			<td style="padding-top: 30px !important;" width="7%"><b>No</b></td>
+            <td style="padding-top: 30px !important;" width="31%"><b>Uraian</b></td>
+            <td style="padding-top: 30px !important;" width="15%"><b>Rencana</b></td>
+            <td style="padding-top: 30px !important;" width="15%"><b>Realisasi</b></td>
+            <td style="padding-top: 30px !important;" width="15%"><b>Sisa</b></td>
+            <td style="padding-top: 30px !important;" width="16%"><b>Keterangan</b></td>
+		</tr>
+	</thead>
+	<tbody>
+        {% for(var j=0, k=data.length; j<k; j++) { %}
+        <tr>
+            <td class="text-center">
+                {%= j+1 %}
+            </td>
+            <td>
+                {%= data[j].pos_rap %}
+            </td>
+            <td class="text-right">
+                {%= format_currency(data[j].rencana, ' ') %}
+            </td>
+            <td class="text-right">
+                {%= format_currency(data[j].realisasi, ' ') %}
+            </td>
+            <td class="text-right">
+                {%= format_currency(data[j].sisa, ' ') %}
+            </td>
+            <td>
+                {%= data[j].keterangan %}
+            </td>
+        </tr>
+		{% } %}
+    </tbody>
+</table>

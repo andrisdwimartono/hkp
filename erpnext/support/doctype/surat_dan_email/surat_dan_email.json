@@ -31,6 +31,7 @@
    "default": "Masuk",
    "fieldname": "direction",
    "fieldtype": "Select",
+   "in_standard_filter": 1,
    "label": "Direction",
    "options": "Masuk\nKeluar",
    "reqd": 1
@@ -75,6 +76,8 @@
   {
    "fieldname": "perihal",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Perihal",
    "reqd": 1
   },
@@ -94,6 +97,7 @@
    "fieldname": "kode_ordner",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Kode Ordner",
    "options": "Ordner",
    "reqd": 1
@@ -141,6 +145,7 @@
   {
    "fieldname": "project",
    "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "Project",
    "options": "Project"
   },
@@ -162,7 +167,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-12-13 12:00:12.362858",
+ "modified": "2023-12-20 11:33:25.862618",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Surat dan Email",

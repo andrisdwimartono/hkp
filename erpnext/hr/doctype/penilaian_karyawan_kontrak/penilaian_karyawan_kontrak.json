@@ -6,20 +6,31 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "karyawan_yang_diuji_section",
+  "calon",
+  "nama_calon_karyawan",
   "employee",
+  "column_break_namou",
   "employee_name",
-  "document"
+  "section_break_1fcdu",
+  "document",
+  "materi_ujian",
+  "peserta",
+  "kinerja_karyawan"
  ],
  "fields": [
   {
+   "depends_on": "eval: doc.calon != 1",
    "fieldname": "employee",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Employee",
+   "mandatory_depends_on": "eval: doc.calon != 1",
    "options": "Employee",
    "reqd": 1
   },
   {
+   "depends_on": "eval: doc.calon != 1",
    "fetch_from": "employee.employee_name",
    "fieldname": "employee_name",
    "fieldtype": "Data",
@@ -30,13 +41,54 @@
    "fieldname": "document",
    "fieldtype": "Attach",
    "in_list_view": 1,
-   "label": "Document",
-   "reqd": 1
+   "label": "Document"
+  },
+  {
+   "fieldname": "peserta",
+   "fieldtype": "Attach",
+   "label": "Daftar Hadir"
+  },
+  {
+   "fieldname": "column_break_namou",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_1fcdu",
+   "fieldtype": "Section Break",
+   "label": "Lampiran"
+  },
+  {
+   "fieldname": "karyawan_yang_diuji_section",
+   "fieldtype": "Section Break",
+   "label": "Evaluasi Karyawan"
+  },
+  {
+   "fieldname": "kinerja_karyawan",
+   "fieldtype": "Attach",
+   "label": "Kinerja Karyawan"
+  },
+  {
+   "fieldname": "materi_ujian",
+   "fieldtype": "Attach",
+   "label": "Materi Ujian"
+  },
+  {
+   "default": "0",
+   "fieldname": "calon",
+   "fieldtype": "Check",
+   "label": "Calon Karyawan?"
+  },
+  {
+   "depends_on": "eval: doc.calon == 1",
+   "fieldname": "nama_calon_karyawan",
+   "fieldtype": "Data",
+   "label": "Nama Calon Karyawan",
+   "mandatory_depends_on": "eval: doc.calon == 1"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-14 14:14:14.885033",
+ "modified": "2023-12-18 10:17:48.482951",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Penilaian Karyawan Kontrak",
