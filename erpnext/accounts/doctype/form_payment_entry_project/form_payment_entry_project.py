@@ -8,6 +8,23 @@ from time import gmtime, strftime, strptime
 from frappe.utils import today
 
 class FormPaymentEntryProject(Document):
+	def after_insert(self):
+		assigner = []
+		for d in self.pejabat:
+			if d.user:
+				assigner.append(d.user)
+				self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(d.user))
+			notification_doc = {
+				"type": "Alert",
+				"document_type": self.doctype,
+				"document_name": self.name,
+				"subject": "Kas Bon Proyek baru {0}".format(self.name),
+				"from_user": self.owner,
+			}
+			
+			notification_doc = frappe._dict(notification_doc)
+			from frappe.desk.doctype.notification_log.notification_log import make_notification_logs
+			make_notification_logs(notification_doc, assigner)
 	def validate(self):
 		self.total_budget = 0
 		for d in self.details:
@@ -103,3 +120,10 @@ def check_form_payment_entry(form_payment_entry = None):
         WHERE br.name = '{0}' AND br.docstatus = 1
         """.format(form_payment_entry), as_dict=1)
     return None
+
+def get_permission_query_conditions(user):
+	usr = frappe.db.sql("""SELECT * FROM `tabUser` where name = '{0}'""".format(frappe.session.user), as_dict=1)
+	if usr and usr[0].role_profile_name == "Site Manager":
+		return """(`tabForm Payment Entry Project`.project in (SELECT parent FROM `tabProject Team` WHERE user = '{0}'))""".format(frappe.session.user)
+	else:
+		return ""

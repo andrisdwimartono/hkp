@@ -5,16 +5,60 @@ frappe.ui.form.on('Tarik Data Absensi', {
 	refresh: function(frm) {
 
 	},
+	start_date: function(frm){
+		if(frm.doc.start_date && frm.doc.end_date){
+			frm.clear_table("detail_data_absensi");
+			$.ajax({
+				method: "GET",
+				url: "http://192.168.18.250:8099?start_date="+cur_frm.doc.start_date+"&end_date="+cur_frm.doc.end_date,
+				dataType: "json",
+				success: function(data) {
+					for(var i = 0; i < data.length; i++){
+						console.log(data[i].emp_code)
+						var pr = frm.add_child("detail_data_absensi");
+						// pr.employee = data[i].employee;
+						pr.employee_name = data[i].first_name;
+						pr.emp_code = data[i].emp_code;
+						pr.id = data[i].id;
+						pr.att_date = data[i].att_date;
+						pr.punch_time = data[i].punch_time;
+						pr.punch_state = data[i].punch_state;
+						pr.verify_type = data[i].verify_type;
+						pr.source = data[i].source;
+					}
+					frm.refresh_field("detail_data_absensi");
+				}
+			});
+		}
+	},
+	end_date: function(frm){
+		if(frm.doc.start_date && frm.doc.end_date){
+			frm.clear_table("detail_data_absensi");
+			$.ajax({
+				method: "GET",
+				url: "http://192.168.18.250:8099?start_date="+cur_frm.doc.start_date+"&end_date="+cur_frm.doc.end_date,
+				dataType: "json",
+				success: function(data) {
+					for(var i = 0; i < data.length; i++){
+						console.log(data[i].emp_code)
+						var pr = frm.add_child("detail_data_absensi");
+						// pr.employee = data[i].employee;
+						pr.employee_name = data[i].first_name;
+						pr.emp_code = data[i].emp_code;
+						pr.id = data[i].id;
+						pr.att_date = data[i].att_date;
+						pr.punch_time = data[i].punch_time;
+						pr.punch_state = data[i].punch_state;
+						pr.verify_type = data[i].verify_type;
+						pr.source = data[i].source;
+					}
+					frm.refresh_field("detail_data_absensi");
+				}
+			});
+		}
+	},
 	get_data: function(frm){
-		// $.ajax({
-		// 	method: "GET",
-		// 	url: "http://localhost:8003/index3.php",
-		// 	dataType: "json",
-		// 	success: function(data) {
-		// 		console.log("token");
-		// 		console.log(data);
-		// 	}
-		// });
+		
 
 
 		// $.ajax({

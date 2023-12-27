@@ -8,8 +8,8 @@
  "engine": "InnoDB",
  "field_order": [
   "no_inventaris",
-  "tanggal",
   "alat_yang_rusak",
+  "tanggal",
   "employee",
   "employee_name",
   "bagian",
@@ -22,9 +22,10 @@
  "fields": [
   {
    "fieldname": "no_inventaris",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "No. Inventaris",
+   "label": "Inventaris",
+   "options": "Asset",
    "reqd": 1
   },
   {
@@ -36,10 +37,12 @@
    "reqd": 1
   },
   {
+   "fetch_from": "no_inventaris.asset_name",
    "fieldname": "alat_yang_rusak",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Alat Yang Rusak",
+   "label": "Nama Alat Yang Rusak",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -99,7 +102,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-15 14:02:52.908069",
+ "modified": "2023-12-20 13:37:52.040329",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Permintaan Perawatan IT",

@@ -23,6 +23,7 @@
   "emp_code",
   "employment_type",
   "contract_number",
+  "contract_document",
   "image",
   "column_break1",
   "company",
@@ -32,6 +33,7 @@
   "place_of_birth",
   "date_of_birth",
   "date_of_joining",
+  "date_of_start_contract",
   "date_of_end_contract",
   "employee_number",
   "emergency_contact_details",
@@ -847,18 +849,18 @@
    "label": "Certificates"
   },
   {
-   "depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\"",
+   "depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\" || doc.employment_type == \"PKWT\" || doc.employment_type == \"Intern\"",
    "fieldname": "date_of_end_contract",
    "fieldtype": "Date",
    "label": "Date of End Contract",
-   "mandatory_depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\""
+   "mandatory_depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\" || doc.employment_type == \"PKWT\" || doc.employment_type == \"Intern\""
   },
   {
-   "depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\"",
+   "depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\" || doc.employment_type == \"PKWT\" || doc.employment_type == \"Intern\"",
    "fieldname": "contract_number",
    "fieldtype": "Data",
    "label": "Contract Number",
-   "mandatory_depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\""
+   "mandatory_depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\" || doc.employment_type == \"PKWT\" || doc.employment_type == \"Intern\""
   },
   {
    "fieldname": "employee_family",
@@ -906,6 +908,19 @@
    "fieldname": "emp_code",
    "fieldtype": "Data",
    "label": "Kode Absensi"
+  },
+  {
+   "depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\" || doc.employment_type == \"PKWT\" || doc.employment_type == \"Intern\"",
+   "fieldname": "contract_document",
+   "fieldtype": "Attach",
+   "label": "Contract Document"
+  },
+  {
+   "depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\" || doc.employment_type == \"PKWT\" || doc.employment_type == \"Intern\"",
+   "fieldname": "date_of_start_contract",
+   "fieldtype": "Date",
+   "label": "Date of Start Contract",
+   "mandatory_depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\" || doc.employment_type == \"PKWT\" || doc.employment_type == \"Intern\""
   }
  ],
  "icon": "fa fa-user",
@@ -922,7 +937,7 @@
    "link_fieldname": "employee"
   }
  ],
- "modified": "2023-12-14 14:19:05.902283",
+ "modified": "2023-12-20 14:20:36.502562",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Employee",
@@ -966,8 +981,8 @@
  ],
  "search_fields": "employee_name, user_id",
  "show_name_in_global_search": 1,
- "sort_field": "modified",
- "sort_order": "DESC",
+ "sort_field": "employee_name",
+ "sort_order": "ASC",
  "title_field": "employee_name",
  "track_changes": 1
 }

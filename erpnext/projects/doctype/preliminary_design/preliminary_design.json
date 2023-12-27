@@ -59,12 +59,13 @@
    "fieldtype": "Link",
    "label": "Project Design and Drawing",
    "options": "Project Design and Drawing",
+   "read_only": 1,
    "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-21 13:58:29.635710",
+ "modified": "2023-12-22 14:15:02.741465",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Preliminary Design",

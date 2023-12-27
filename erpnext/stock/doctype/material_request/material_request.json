@@ -45,7 +45,9 @@
   "tc_name",
   "terms",
   "reference",
-  "job_card"
+  "job_card",
+  "section_break_3mseo",
+  "process_rules"
  ],
  "fields": [
   {
@@ -378,13 +380,23 @@
    "label": "Jenis Permintaan",
    "options": "Barang\nAlat Kerja\nInventaris",
    "reqd": 1
+  },
+  {
+   "fieldname": "process_rules",
+   "fieldtype": "Table",
+   "label": "Process Rules",
+   "options": "Process Rules"
+  },
+  {
+   "fieldname": "section_break_3mseo",
+   "fieldtype": "Section Break"
   }
  ],
  "icon": "fa fa-ticket",
  "idx": 70,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-12-08 15:41:16.503946",
+ "modified": "2023-12-21 13:49:31.608009",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Material Request",

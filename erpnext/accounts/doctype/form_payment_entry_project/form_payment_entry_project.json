@@ -36,6 +36,7 @@
   "section_break_73dp1",
   "form_payment_entry_checklist",
   "keterangan",
+  "pejabat",
   "amended_from"
  ],
  "fields": [
@@ -249,12 +250,18 @@
    "label": "Total Budget First",
    "options": "Company:company:default_currency",
    "read_only": 1
+  },
+  {
+   "fieldname": "pejabat",
+   "fieldtype": "Table",
+   "label": "Pejabat",
+   "options": "Process Rule"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-10-25 11:06:46.838051",
+ "modified": "2023-12-21 13:48:48.852959",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Form Payment Entry Project",

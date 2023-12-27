@@ -12,7 +12,8 @@ frappe.ui.form.on('Preliminary Design', {
 			let d = locals[cdt][cdn];
 			return {
 				filters: [
-					['Drawing', 'sub_section', '=', d.sub_section]
+					['Drawing', 'sub_section', '=', d.sub_section],
+					['Drawing', 'project', '=', cur_frm.doc.project]
 				]
 			};
 		});

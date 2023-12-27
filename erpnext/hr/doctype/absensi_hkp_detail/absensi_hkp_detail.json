@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2023-09-27 11:33:36.844043",
+ "creation": "2023-12-20 13:39:20.168844",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -35,7 +35,8 @@
    "fieldname": "emp_code",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Kode Absensi"
+   "label": "Kode Absensi",
+   "reqd": 1
   },
   {
    "fieldname": "id",
@@ -57,9 +58,10 @@
   {
    "default": "Check In",
    "fieldname": "punch_state",
-   "fieldtype": "Data",
+   "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "Jenis"
+   "label": "Jenis",
+   "options": "Check In\nCheck Out"
   },
   {
    "fieldname": "verify_type",
@@ -73,14 +75,26 @@
   }
  ],
  "index_web_pages_for_search": 1,
- "istable": 1,
  "links": [],
- "modified": "2023-12-22 13:46:51.913950",
+ "modified": "2023-12-20 13:39:35.768900",
  "modified_by": "Administrator",
  "module": "HR",
- "name": "Detail Data Absensi",
+ "name": "Absensi HKP Detail",
  "owner": "Administrator",
- "permissions": [],
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
  "sort_field": "modified",
  "sort_order": "DESC"
 }

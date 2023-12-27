@@ -6,6 +6,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "status_pengajuan",
   "tanggal_pengajuan",
   "employee",
   "employee_name",
@@ -90,12 +91,23 @@
    "fieldtype": "Table",
    "label": "Detail",
    "options": "Permohonan Penyediaan Ruang Rapat Detail"
+  },
+  {
+   "default": "Pengajuan",
+   "fieldname": "status_pengajuan",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status Pengajuan",
+   "options": "Pengajuan\nDiterima\nDitolak",
+   "read_only": 1,
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-12-15 13:54:38.668382",
+ "modified": "2023-12-20 11:42:36.751207",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Permohonan Penyediaan Ruang Rapat",

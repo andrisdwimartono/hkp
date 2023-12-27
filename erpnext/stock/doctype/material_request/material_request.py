@@ -742,3 +742,10 @@ def create_pick_list(source_name, target_doc=None):
 	doc.set_item_locations()
 
 	return doc
+
+def get_permission_query_conditions(user):
+	usr = frappe.db.sql("""SELECT * FROM `tabUser` where name = '{0}'""".format(frappe.session.user), as_dict=1)
+	if usr and usr[0].role_profile_name == "Site Manager":
+		return """(`tabMaterial Request`.project in (SELECT parent FROM `tabProject Team` WHERE user = '{0}'))""".format(frappe.session.user)
+	else:
+		return ""

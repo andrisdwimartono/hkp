@@ -49,7 +49,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Sub Section",
-   "options": "Project Sub Section"
+   "options": "Project Sub Section",
+   "reqd": 1
   },
   {
    "fieldname": "sub_section_last",
@@ -88,7 +89,7 @@
    "fetch_from": "drawing.document_no",
    "fieldname": "document_no",
    "fieldtype": "Data",
-   "label": "Document No"
+   "label": "Drawing Number"
   },
   {
    "default": "Today",
@@ -255,6 +256,7 @@
    "columns": 1,
    "fieldname": "no_gambar",
    "fieldtype": "Data",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "No Gambar"
   },
@@ -268,7 +270,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-10-23 20:45:10.278905",
+ "modified": "2023-12-22 15:05:44.040776",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Preliminary Design Detail",

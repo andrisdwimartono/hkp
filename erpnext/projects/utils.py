@@ -49,6 +49,22 @@ def get_next_process_rule(doctype, docname):
 			return None
 	else:
 		return None
+	
+@frappe.whitelist()
+def get_oke_process_rule(doctype, docname):
+	nprs = frappe.db.sql("""
+	SELECT * FROM `tabProcess Rule` pr
+	WHERE pr.parenttype = '{0}' AND pr.parent = '{1}' AND (pr.status = 'Unprocessed' or pr.status = 'No')
+	ORDER BY pr.idx ASC
+	LIMIT 1
+	""".format(doctype, docname), as_dict=1)
+	if nprs:
+		if nprs[0].user == frappe.session.user:
+			return nprs[0]
+		else:
+			return None
+	else:
+		return None
 
 @frappe.whitelist()
 def save_process_rule(docname, status, comment=""):
@@ -132,7 +148,6 @@ def get_process_rules(doctype):
 	ORDER BY b.idx ASC""".format(doctype), as_dict=1)
 
 def set_default_process_rules(doc, method=None):
-	return
 	prs = frappe.db.sql("""
 		SELECT wds.* FROM `tabWorkflow` w
 		INNER JOIN `tabWorkflow Document State` wds ON wds.parent = w.name

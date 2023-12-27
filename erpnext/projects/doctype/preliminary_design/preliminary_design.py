@@ -6,25 +6,6 @@ from frappe.model.document import Document
 from datetime import datetime
 
 class PreliminaryDesign(Document):
-	def remind_user(self, document_name=None):
-		notification_doc = {
-			"type": "Alert",
-			"document_type": self.doctype,
-			"document_name": self.name,
-			"subject": "Perubahan Preliminary Design untuk dokumen no {0} di {1}".format(document_name, self.name),
-			"from_user": self.owner or "Administrator",
-		}
-		
-		assigner = [self.owner]
-		adu_employees = frappe.db.sql("""SELECT DISTINCT u.name user_id FROM `tabHas Role` hr
-							INNER JOIN tabUser u ON u.name = hr.parent
-							WHERE hr.role IN ('Operasional', 'Direktur Operasi') AND hr.parenttype = 'User'""", as_dict=1)
-		for hr in adu_employees:
-			assigner.append(hr.user_id)
-		notification_doc = frappe._dict(notification_doc)
-		from frappe.desk.doctype.notification_log.notification_log import make_notification_logs
-		make_notification_logs(notification_doc, assigner)
-
 	def validate(self):
 		#detail_lasts = frappe.db.sql("""SELECT * FROM `tabPreliminary Design Detail` WHERE parent = '{0}'""".format(self.name), as_dict=1)
 		#frappe.throw(str(detail_lasts[0]["name"]))
@@ -32,7 +13,7 @@ class PreliminaryDesign(Document):
 		for d in self.details:
 			is_changed = False
 			detail_last = frappe.db.sql("""SELECT * FROM `tabPreliminary Design Detail` WHERE parent = '{0}' AND name = '{1}'""".format(self.name, d.name), as_dict=1)
-
+			
 			if detail_last:
 				if str(d.no_gambar) != str(detail_last[0].no_gambar):
 					is_changed = True
@@ -45,7 +26,7 @@ class PreliminaryDesign(Document):
 					
 				if str(d.document_no) != str(detail_last[0].document_no):
 					is_changed = True
-					
+				
 				if str(d.date) != str(detail_last[0].date):
 					is_changed = True
 					
@@ -94,7 +75,7 @@ class PreliminaryDesign(Document):
 						ignore_permissions=True
 					)
 					frappe.db.commit()
-					self.remind_user(document_name=d.document_no)
+					remind_user(self.name, document_name=d.document_no)
 			else:
 				d.revision = 0
 				frappe.get_doc({
@@ -119,7 +100,7 @@ class PreliminaryDesign(Document):
 					ignore_permissions=True
 				)
 				frappe.db.commit()
-				self.remind_user(document_name=d.document_no)
+				# remind_user(self.name, document_name=d.document_no)
 		# is_changed = False
 		# for d in self.details:
 		# 	if (d.document != d.document_last and d.document != None and d.document != ""):
@@ -151,14 +132,6 @@ def get_histories(docname):
 			frappe.msgprint("""
 					<div class='row'>
 					<div class='col-3'>
-						No Gambar
-					</div>
-					<div class='col-9'>
-						: {0}
-					</div>
-					</div>
-					<div class='row'>
-					<div class='col-3'>
 						Sub Section
 					</div>
 					<div class='col-9'>
@@ -175,7 +148,7 @@ def get_histories(docname):
 					</div>
 					<div class='row'>
 					<div class='col-3'>
-						Document No
+						No Gambar
 					</div>
 					<div class='col-9'>
 						: {3}
@@ -256,3 +229,26 @@ def get_histories(docname):
 			""".format(d.no_gambar or "", d.sub_section or "", d.drawing or "", d.document_no or "", d.date or "", d.project_material_item or "", d.document or "", d.revision or "", d.completeness or "", d.drawing_number or "", d.information or "", d.submit_date or "", d.letter_no_submit or "", d.return_date or "", d.letter_no_return or ""))
 	else:
 		frappe.msgprint("Belum ada data")
+
+def remind_user(docname, document_name=None):
+	predes = None
+	doc2 = frappe.db.sql("""SELECT * FROM `tabPreliminary Design` WHERE name = '{0}' limit 1""".format(docname), as_dict=1)
+	if doc2:
+		predes=doc2[0]
+	notification_doc = {
+		"type": "Alert",
+		"document_type": predes.doctype,
+		"document_name": predes.name,
+		"subject": "Perubahan Preliminary Design untuk dokumen no {0} di {1}".format(document_name, predes.name),
+		"from_user": predes.owner or "Administrator",
+	}
+	
+	assigner = [predes.owner]
+	adu_employees = frappe.db.sql("""SELECT DISTINCT u.name user_id FROM `tabHas Role` hr
+						INNER JOIN tabUser u ON u.name = hr.parent
+						WHERE hr.role IN ('Operasional', 'Direktur Operasi') AND hr.parenttype = 'User'""", as_dict=1)
+	for hr in adu_employees:
+		assigner.append(hr.user_id)
+	notification_doc = frappe._dict(notification_doc)
+	from frappe.desk.doctype.notification_log.notification_log import make_notification_logs
+	make_notification_logs(notification_doc, assigner)

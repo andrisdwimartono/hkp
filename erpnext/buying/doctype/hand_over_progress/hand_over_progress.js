@@ -113,12 +113,20 @@ frappe.ui.form.on('Hand Over Progress', {
 		// refresh_field("rounded_cost");
 
 		var total_cost = 0;
+		var total_achieved = 0;
 		for(var i = 0; i < frm.doc.hand_over_progress_achieved.length; i++){
 			total_cost = total_cost+frm.doc.hand_over_progress_achieved[i].progress_amount;
+			total_achieved = total_achieved+frm.doc.hand_over_progress_achieved[i].progress_amount;
 		}
+		frm.set_value("total_achieved", total_achieved);
+		refresh_field("total_achieved");
+		var total_discount = 0;
 		for(var i = 0; i < frm.doc.hand_over_progress_discount.length; i++){
 			total_cost = total_cost-frm.doc.hand_over_progress_discount[i].progress_discount;
+			total_discount = total_discount-frm.doc.hand_over_progress_discount[i].progress_discount;
 		}
+		frm.set_value("total_discount", total_discount);
+		refresh_field("total_discount");
 		frm.set_value("total_cost", total_cost);
 		refresh_field("total_cost");
 	},
@@ -153,13 +161,21 @@ frappe.ui.form.on('Hand Over Progress', {
 		// refresh_field("rounded_cost");
 
 		var total_cost = 0;
+		var total_achieved = 0;
 		for(var i = 0; i < frm.doc.hand_over_progress_achieved.length; i++){
 			total_cost = total_cost+frm.doc.hand_over_progress_achieved[i].progress_amount;
+			total_achieved = total_achieved+frm.doc.hand_over_progress_achieved[i].progress_amount;
 		}
+		frm.set_value("total_achieved", total_achieved);
+		refresh_field("total_achieved");
+		var total_discount = 0;
 		for(var i = 0; i < frm.doc.hand_over_progress_discount.length; i++){
 			total_cost = total_cost-frm.doc.hand_over_progress_discount[i].progress_discount;
+			total_discount = total_discount-frm.doc.hand_over_progress_discount[i].progress_discount;
 		}
+		frm.set_value("total_discount", total_discount);
+		refresh_field("total_discount");
 		frm.set_value("total_cost", total_cost);
 		refresh_field("total_cost");
-	},
+	}
 });

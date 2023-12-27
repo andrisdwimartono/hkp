@@ -9,7 +9,7 @@ import datetime
 class PermohonanPenyediaanRuangRapat(Document):
 	def on_submit(self):
 		x = frappe.db.sql("""SELECT * FROM `tabPermohonan Penyediaan Ruang Rapat` WHERE name != '{0}' AND tanggal_rapat = '{1}' AND ruang_rapat = '{4}' AND ('{2}' BETWEEN waktu_mulai_rapat AND waktu_selesai_rapat OR '{3}' BETWEEN waktu_mulai_rapat AND waktu_selesai_rapat)""".format(self.name, self.tanggal_rapat, self.waktu_mulai_rapat, self.waktu_selesai_rapat, self.ruang_rapat), as_dict=1)
-		if x:
+		if x and self.status_pengajuan != "Ditolak":
 			frappe.throw("Ada agenda rapat <a href='/app/permohonan-penyediaan-ruang-rapat/{0}'>{1}</a> di jam {2} s.d {3}".format(self.name, self.agenda_rapat, self.waktu_mulai_rapat, self.waktu_selesai_rapat))
 			
 	def validate(self):
@@ -41,4 +41,21 @@ def tolak_pengajuan(docname):
 		frappe.throw("Hanya bisa dilakukan oleh ADU")
 	a = frappe.db.sql("""SELECT * FROM `tabPermohonan Penyediaan Ruang Rapat` WHERE name = '{0}'""".format(docname), as_dict=1)
 	if a:
-		frappe.db.sql("""UPDATE `tabPermohonan Penyediaan Ruang Rapat` SET docstatus = 2 WHERE name = '{0}'""".format(docname), as_dict=1)
+		x = frappe.get_doc("Permohonan Penyediaan Ruang Rapat", docname)
+		x.status_pengajuan = "Ditolak"
+		x.save()
+		x.submit()
+		frappe.db.commit()
+
+@frappe.whitelist()
+def terima_pengajuan(docname):
+	if not frappe.db.sql("""SELECT * FROM `tabUser` WHERE name = '{0}' AND role_profile_name = 'UMUM'""".format(frappe.session.user), as_dict=1):
+		frappe.throw("Hanya bisa dilakukan oleh ADU")
+	a = frappe.db.sql("""SELECT * FROM `tabPermohonan Penyediaan Ruang Rapat` WHERE name = '{0}'""".format(docname), as_dict=1)
+	if a:
+		x = frappe.get_doc("Permohonan Penyediaan Ruang Rapat", docname)
+		x.status_pengajuan = "Diterima"
+		x.save()
+		x.submit()
+		frappe.db.commit()
+		#frappe.db.sql("""UPDATE `tabPermohonan Penyediaan Ruang Rapat` SET docstatus = 2 WHERE name = '{0}'""".format(docname), as_dict=1)

@@ -79,6 +79,33 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Kas Bon Proyek",
+   "link_to": "Form Payment Entry Project",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Anggaran Belanja",
+   "link_to": "Budget",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Surat Permintaan Barang",
+   "link_to": "Material Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Time Tracking",
    "onboard": 0,
    "type": "Card Break"
@@ -181,7 +208,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-04-25 16:27:16.548780",
+ "modified": "2023-12-21 11:54:54.017443",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Projects",

@@ -180,6 +180,33 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Master Aset",
+   "link_to": "Asset",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Pemeliharaan Aset",
+   "link_to": "Asset Maintenance",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Perbaikan Aset",
+   "link_to": "Asset Repair",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Warranty",
    "onboard": 0,
    "type": "Card Break"
@@ -345,7 +372,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-12-18 10:39:12.477868",
+ "modified": "2023-12-20 12:00:43.009071",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Support",

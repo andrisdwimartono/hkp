@@ -7,7 +7,9 @@ from datetime import datetime
 
 class ProjectDesignandDrawing(Document):
 	def validate(self):
-		return
+		pr = frappe.db.sql("""SELECT * FROM `tabProject Design and Drawing` WHERE project = '{0}' AND name != '{1}'""".format(self.project, self.name), as_dict=1)
+		if pr:
+			frappe.throw("Design and Drawing untuk proyek ini sudah ada")
 		# is_changed = False
 		# for d in self.preliminary_design:
 		# 	#hanya kalau upload ulang, baru dianggap ada perubahan

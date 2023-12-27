@@ -422,3 +422,10 @@ def validate_project_dates(project_end_date, task, task_start, task_end, actual_
 		frappe.throw(
 			_("Task's {0} End Date cannot be after Project's End Date.").format(actual_or_expected_date)
 		)
+
+def get_permission_query_conditions(user):
+	usr = frappe.db.sql("""SELECT * FROM `tabUser` where name = '{0}'""".format(frappe.session.user), as_dict=1)
+	if usr and usr[0].role_profile_name == "Site Manager":
+		return """(`tabTask`.project in (SELECT parent FROM `tabProject Team` WHERE user = '{0}'))""".format(frappe.session.user)
+	else:
+		return ""

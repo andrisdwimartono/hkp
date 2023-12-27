@@ -7,8 +7,8 @@
  "engine": "InnoDB",
  "field_order": [
   "tanggal",
-  "alat_yang_rusak",
   "no_inventaris",
+  "alat_yang_rusak",
   "kerusakan",
   "perbaikan",
   "keterangan"
@@ -25,18 +25,20 @@
   },
   {
    "columns": 2,
+   "fetch_from": "no_inventaris.asset_name",
    "fieldname": "alat_yang_rusak",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Alat Yang Rusak",
-   "reqd": 1
+   "label": "Nama Alat Yang Rusak",
+   "read_only": 1
   },
   {
    "columns": 1,
    "fieldname": "no_inventaris",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "No. Inventaris",
+   "label": "Inventaris",
+   "options": "Asset",
    "reqd": 1
   },
   {
@@ -66,7 +68,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-10-18 19:46:33.585171",
+ "modified": "2023-12-20 13:33:39.447580",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Formulir Perbaikan Alat Kerja Yang Rusak Detail",

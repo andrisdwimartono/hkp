@@ -31,33 +31,10 @@
  ],
  "fields": [
   {
-   "fieldname": "keterangan",
-   "fieldtype": "Small Text",
-   "label": "Keterangan"
-  },
-  {
-   "fieldname": "amended_from",
+   "fieldname": "department",
    "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Form Payment Entry",
-   "print_hide": 1,
-   "read_only": 1
-  },
-  {
-   "default": "Today",
-   "fieldname": "posting_date",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Tanggal",
-   "reqd": 1
-  },
-  {
-   "fieldname": "details",
-   "fieldtype": "Table",
-   "label": "Form Payment Entry Non Project",
-   "options": "Form Payment Entry Non Project",
-   "reqd": 1
+   "label": "Department",
+   "options": "Department"
   },
   {
    "fieldname": "purpose",
@@ -79,34 +56,12 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "section_break_kqfpp",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "section_break_fkxbb",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "total_budget",
-   "fieldtype": "Currency",
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Total Budget",
-   "options": "Company:company:default_currency",
-   "read_only": 1
-  },
-  {
-   "fieldname": "column_break_oflkz",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_73dp1",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "department",
-   "fieldtype": "Link",
-   "label": "Department",
-   "options": "Department"
+   "label": "Tanggal",
+   "reqd": 1
   },
   {
    "fieldname": "required_date",
@@ -115,14 +70,6 @@
    "in_standard_filter": 1,
    "label": "Required Date",
    "reqd": 1
-  },
-  {
-   "fieldname": "outstanding_amount",
-   "fieldtype": "Currency",
-   "in_list_view": 1,
-   "label": "Outstanding Amount",
-   "options": "Company:company:default_currency",
-   "read_only": 1
   },
   {
    "default": "1",
@@ -165,14 +112,67 @@
    "fieldtype": "Data",
    "label": "Pihak",
    "mandatory_depends_on": "eval: doc.type != \"Piutang Karyawan\" && doc.type != \"Operasional Kantor\""
+  },
+  {
+   "fieldname": "section_break_kqfpp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "details",
+   "fieldtype": "Table",
+   "label": "Form Payment Entry Non Project",
+   "options": "Form Payment Entry Non Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_fkxbb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_budget",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Budget",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_oflkz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "outstanding_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Outstanding Amount",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_73dp1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "keterangan",
+   "fieldtype": "Small Text",
+   "label": "Keterangan"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Form Payment Entry",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-12-22 10:30:42.882232",
+ "modified": "2023-12-22 10:30:27.102677",
  "modified_by": "Administrator",
- "module": "Accounts",
+ "module": "Keuangan",
  "name": "Form Payment Entry",
  "owner": "Administrator",
  "permissions": [

@@ -2,12 +2,14 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "ACC-ASS-.YYYY.-",
+ "autoname": "field:kode_inventaris",
  "creation": "2016-03-01 17:01:27.920130",
  "doctype": "DocType",
  "document_type": "Document",
  "engine": "InnoDB",
  "field_order": [
+  "kode_inventaris",
+  "naming_series",
   "company",
   "item_created",
   "item_code",
@@ -20,7 +22,6 @@
   "image",
   "journal_entry_for_scrap",
   "column_break_3",
-  "naming_series",
   "asset_name",
   "asset_category",
   "nomor_polisi",
@@ -74,13 +75,6 @@
   "amended_from"
  ],
  "fields": [
-  {
-   "default": "ACC-ASS-.YYYY.-",
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "label": "Naming Series",
-   "options": "ACC-ASS-.YYYY.-"
-  },
   {
    "fieldname": "asset_name",
    "fieldtype": "Data",
@@ -499,6 +493,20 @@
    "fieldname": "item_created",
    "fieldtype": "Check",
    "label": "Sudah ada di Master Barang"
+  },
+  {
+   "fieldname": "kode_inventaris",
+   "fieldtype": "Data",
+   "label": "Kode Inventaris",
+   "reqd": 1,
+   "set_only_once": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming Series"
   }
  ],
  "idx": 72,
@@ -521,7 +529,7 @@
    "link_fieldname": "asset"
   }
  ],
- "modified": "2023-05-30 14:53:15.190512",
+ "modified": "2023-12-20 15:11:23.515926",
  "modified_by": "Administrator",
  "module": "Assets",
  "name": "Asset",

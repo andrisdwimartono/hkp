@@ -24,36 +24,47 @@ class TarikDataAbsensi(Document):
 			for d in self.ringkasan_absensi_karyawan:
 				map_emp_code[d.emp_code] = [d.employee, d.employee_name]
 		if self.start_date and self.end_date and len(self.ringkasan_absensi_karyawan) > 0:
-			transactions = get_transaction(self.start_date, self.end_date)
-			for t in transactions:
+			#transactions = get_transaction(self.start_date, self.end_date)
+			for t in self.detail_data_absensi:
 				emp = None
-				if str(t["emp_code"]) in map_emp_code:
-					emp = map_emp_code[str(t["emp_code"])]
-					if t["punch_state"] == "Check In" and not frappe.db.sql("""SELECT * FROM `tabAttendance` WHERE employee = '{0}' AND attendance_date = '{1}'""".format(emp[0], t["att_date"]), as_dict=1):
+				if str(t.emp_code) in map_emp_code:
+					emp = map_emp_code[str(t.emp_code)]
+					if t.punch_state == "Check In" and not frappe.db.sql("""SELECT * FROM `tabAttendance` WHERE employee = '{0}' AND attendance_date = '{1}'""".format(emp[0], t.att_date), as_dict=1):
 						self.append("absences",{
 							"employee": emp[0],
 							"employee_name": emp[1],
-							"attendance_date": t["att_date"],
-							"attendance_time": t["punch_time"],
+							"attendance_date": t.att_date,
+							"attendance_time": t.punch_time,
 							"status": "Present"
 						})
-				self.append("detail_data_absensi", {
-					"employee": emp[0] if emp else None,
-					"employee_name": emp[1] if emp else None,
-					"emp_code": t["emp_code"],
-					"id": t["id"],
-					"att_date": t["att_date"],
-					"punch_time": t["punch_time"],
-					"punch_state": t["punch_state"],
-					"verify_type": t["verify_type"],
-					"source": t["source"]
-				})
+						t.employee = emp[0]
+				# self.append("detail_data_absensi", {
+				# 	"employee": emp[0] if emp else None,
+				# 	"employee_name": emp[1] if emp else None,
+				# 	"emp_code": t["emp_code"],
+				# 	"id": t["id"],
+				# 	"att_date": t["att_date"],
+				# 	"punch_time": t["punch_time"],
+				# 	"punch_state": t["punch_state"],
+				# 	"verify_type": t["verify_type"],
+				# 	"source": t["source"]
+				# })
 
 		if len(self.absences) > 0 and len(self.detail_data_absensi) > 0:
+			for k in self.ringkasan_absensi_karyawan:
+				k.total_kehadiran = 0
+			kar = None
+			total_kehadiran = 0
 			for d in self.absences:
+				if kar != d.employee:
+					kar = d.employee
+					total_kehadiran = 1
+				else:
+					total_kehadiran = total_kehadiran+1
 				for k in self.ringkasan_absensi_karyawan:
 					if k.employee == d.employee:
-						k.total_kehadiran = k.total_kehadiran+1 if k.total_kehadiran else 1
+						# k.total_kehadiran = k.total_kehadiran+1 if k.total_kehadiran else 1
+						k.total_kehadiran = total_kehadiran
 				for e in self.detail_data_absensi:
 					if e.punch_state == "Check Out" and d.employee == e.employee and d.attendance_date == e.att_date:
 						d.leave_time = e.punch_time

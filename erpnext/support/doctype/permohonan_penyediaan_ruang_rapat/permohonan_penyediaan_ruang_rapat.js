@@ -15,5 +15,16 @@ frappe.ui.form.on('Permohonan Penyediaan Ruang Rapat', {
 					}
 				});
 			});
+			frm.add_custom_button(__('Terima'), function () {
+				frappe.call({
+					method: 'erpnext.support.doctype.permohonan_penyediaan_ruang_rapat.permohonan_penyediaan_ruang_rapat.terima_pengajuan',
+					args: {
+						'docname': frm.doc.name
+					},
+					callback: function(r) {
+						location.reload();
+					}
+				});
+			});
 	}
 });

@@ -6,20 +6,22 @@ frappe.ui.form.on('Sub Section Material Type Materi', {
 
 	// },
 	setup: function(frm){
-		frm.set_query('sub_section', function(doc) {
-			return {
-				'filters': {
-					'name': ["!=", "UMUM"]
-				}
-			};
-		})
+		// frm.set_query('sub_section', function(doc) {
+		// 	return {
+		// 		'filters': {
+		// 			'name': ["!=", "UMUM"]
+		// 		}
+		// 	};
+		// })
 
 		frm.set_query('sub_project_sub_section', function(doc) {
-			return {
-				'filters': {
-					'sub_section': doc.sub_section
-				}
-			};
+			if(doc.sub_section){
+				return {
+					'filters': {
+						'sub_section': doc.sub_section
+					}
+				};
+			}
 		});
 	}
 });

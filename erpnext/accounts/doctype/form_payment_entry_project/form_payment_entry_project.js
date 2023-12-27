@@ -18,6 +18,108 @@ frappe.ui.form.on('Form Payment Entry Project', {
 				}
 			});
 		}
+
+		// if (frm.doc.__unsaved == 1)	{
+		// 	frm.clear_table("pejabat");
+		// 	var x = ["Direktur Operasi", "Estimasi", "Manager Logistik", "Manager Sekretariat", "Manager Keuangan"];
+		// 	var y = ["DIR. OPS", "EST", "LOG", "SEK", "KEU"];
+		// 	var z = ["Mengetahui", "Mengetahui", "Mengetahui", "Mengetahui", "Mengetahui"];
+		// 	for(var i = 0; i < x.length; i++){
+		// 		let d = frm.add_child("pejabat");
+		// 		d.jabatan = x[i];
+		// 		d.jabatan_abbr = y[i];
+		// 		d.aksi = z[i];
+		// 		d.employee = "HR-EMP-00044";
+		// 		d.user = "opshkp@gmail.com";
+		// 	}
+		// 	frm.refresh_fields("pejabat");
+		// }else{
+		// 	frm.disable_save();
+		// 	frappe.call({
+		// 		method: 'erpnext.projects.utils.get_next_process_rule',
+		// 		args: {
+		// 			'doctype': frm.doc.doctype,
+		// 			'docname': frm.doc.name
+		// 		},
+		// 		callback: function(r) {
+		// 			if(r.message){
+		// 				var vals = r.message;
+		// 				frm.add_custom_button(vals.aksi, function () {
+		// 					frappe.prompt([
+		// 						{
+		// 							label: 'Status',
+		// 							fieldname: 'status',
+		// 							fieldtype: 'Select',
+		// 							options: ["Yes", "No"],
+		// 							default: "Yes",
+		// 							reqd: 1
+		// 						},
+		// 						{
+		// 							label: __('Comment'),
+		// 							fieldname: 'comment',
+		// 							fieldtype: 'Small Text'
+		// 						},
+		// 						{
+		// 							label: 'process_rule_name',
+		// 							fieldname: 'process_rule_name',
+		// 							fieldtype: 'Data',
+		// 							hidden: 1,
+		// 							default: vals.name
+		// 						},
+		// 					], (values) => {
+		// 						frappe.call({
+		// 							method: 'erpnext.projects.utils.save_process_rule',
+		// 							args: {
+		// 								'docname': values.process_rule_name,
+		// 								'status': values.status,
+		// 								'comment': values.comment
+		// 							},
+		// 							callback: function(r) {
+		// 								if(r.message){
+		// 									frm.reload_doc();
+		// 								}
+		// 							}
+		// 						});
+		// 					},
+		// 						vals.jabatan+' '+vals.aksi,
+		// 						'Simpan'
+		// 					);
+		// 				}).removeClass("btn-default").addClass("btn-info");
+		// 			}
+		// 		}
+		// 	});
+		// }
+
+		if (frm.doc.__unsaved == 1)	{
+			if(!frm.doc.process_rules){
+				frm.clear_table("process_rules");
+				frappe.call({
+					method: 'erpnext.projects.utils.get_process_rules',
+					args: {
+						'doctype': frm.doc.doctype
+					},
+					callback: function(r) {
+						if(r.message){
+							var vals = r.message;
+							for(var i = 0; i < vals.length; i++){
+								var pr = frm.add_child("process_rules");
+								pr.jabatan = vals[i].jabatan;
+								pr.jabatan_abbr = vals[i].jabatan_abbr;
+								pr.state = vals[i].state;
+								pr.employee = vals[i].employee;
+								pr.initial = vals[i].initial;
+								pr.employee_name = vals[i].employee_name;
+								pr.user = vals[i].user;
+							}
+							frm.refresh_field("process_rules");
+						}
+					}
+				});
+			}
+		}else{
+			
+		}
+		cur_frm.fields_dict['process_rules'].$wrapper.find('.grid-add-row').addClass('d-none');
 	},
 	posting_date: function(frm) {
 		if(frm.doc.posting_date){

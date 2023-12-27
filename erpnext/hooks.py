@@ -353,6 +353,9 @@ permission_query_conditions = {
     "Kartu Pemeliharaan AC": "erpnext.support.doctype.kartu_pemeliharaan_ac.kartu_pemeliharaan_ac.get_permission_query_conditions",
     "Formulir Perbaikan Alat Kerja Yang Rusak": "erpnext.support.doctype.formulir_perbaikan_alat_kerja_yang_rusak.formulir_perbaikan_alat_kerja_yang_rusak.get_permission_query_conditions",
     "Permintaan Perawatan IT": "erpnext.support.doctype.permintaan_perawatan_it.permintaan_perawatan_it.get_permission_query_conditions",
+    "Project": "erpnext.projects.doctype.project.project.get_permission_query_conditions",
+    "Form Payment Entry Project": "erpnext.accounts.doctype.form_payment_entry_project.form_payment_entry_project.get_permission_query_conditions",
+    "Material Request": "erpnext.stock.doctype.material_request.material_request.get_permission_query_conditions",
 }
 
 before_tests = "erpnext.setup.utils.before_tests"
