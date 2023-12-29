@@ -58,7 +58,7 @@
    "fieldname": "pejabat",
    "fieldtype": "Table",
    "label": "Pejabat",
-   "options": "Process Rule",
+   "options": "Process Rule2",
    "reqd": 1
   },
   {
@@ -79,7 +79,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-07 09:42:09.353772",
+ "modified": "2023-12-27 13:40:01.274685",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "INFORMASI PEMBUATAN PENAWARAN",

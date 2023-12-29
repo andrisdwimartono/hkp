@@ -560,6 +560,7 @@
    "options": "Form Payment Entry Project"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "nomor_bukti",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -571,7 +572,7 @@
  "idx": 176,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-12-06 11:21:29.940376",
+ "modified": "2023-12-28 13:58:43.761084",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Journal Entry",

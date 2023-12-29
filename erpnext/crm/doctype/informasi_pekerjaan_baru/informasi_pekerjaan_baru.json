@@ -19,7 +19,7 @@
   "nilai_proyek",
   "waktu_pelaksanaan",
   "lain_lain",
-  "process_rules"
+  "pejabat"
  ],
  "fields": [
   {
@@ -104,15 +104,15 @@
    "reqd": 1
   },
   {
-   "fieldname": "process_rules",
+   "fieldname": "pejabat",
    "fieldtype": "Table",
-   "label": "Process Rules",
-   "options": "Process Rules"
+   "label": "Pejabat",
+   "options": "Process Rule2"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-29 20:50:09.512472",
+ "modified": "2023-12-27 14:39:54.714482",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "INFORMASI PEKERJAAN BARU",

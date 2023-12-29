@@ -23,7 +23,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Magister Akuntansi",
+   "label": "Master Akuntansi",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -1254,7 +1254,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-12-18 14:07:55.215410",
+ "modified": "2023-12-29 10:55:30.893223",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Accounting",

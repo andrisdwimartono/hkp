@@ -18,8 +18,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Project",
-   "options": "Project",
-   "reqd": 1
+   "options": "Project"
   },
   {
    "fetch_from": "project.project_name",
@@ -54,7 +53,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-05 22:22:05.854691",
+ "modified": "2023-12-28 14:56:28.226638",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "TINJAUAN TERHADAP PERSYARATAN DALAM DOKUMEN KONTRAK",

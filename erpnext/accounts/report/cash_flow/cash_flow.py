@@ -6,6 +6,7 @@ import frappe
 from frappe import _
 from frappe.utils import cint, cstr
 from six import iteritems
+from datetime import datetime, timedelta
 
 from erpnext.accounts.report.financial_statements import (
 	get_columns,
@@ -19,6 +20,128 @@ from erpnext.accounts.report.profit_and_loss_statement.profit_and_loss_statement
 )
 from erpnext.accounts.utils import get_fiscal_year
 
+def get_saldo_awal(filtering):
+	to_fiscal_year = filtering.to_fiscal_year
+	fil = filtering
+	is_nol = False
+	if filtering.filter_based_on == "Fiscal Year":
+		fil.period_start_date = filtering.period_start_date
+		fil.period_end_date = filtering.period_end_date
+		if filtering.from_fiscal_year != "2023":
+			fil.from_fiscal_year = "2023"
+			fil.to_fiscal_year = str(int(filtering.to_fiscal_year)-1)
+		else:
+			is_nol = True
+	else:
+		return {}
+		fil.period_start_date = "2023-01-01"
+		fil.period_end_date = datetime.strptime(filtering.period_start_date, "%Y-%m-%d") + timedelta(days=(-1))
+		fil.from_fiscal_year = filtering.from_fiscal_year
+		fil.to_fiscal_year = filtering.to_fiscal_year
+	
+	period_list2 = get_period_list(
+		fil.from_fiscal_year,
+		fil.to_fiscal_year,
+		fil.period_start_date,
+		fil.period_end_date,
+		fil.filter_based_on,
+		fil.periodicity,
+		company=fil.company,
+	)
+
+	cash_flow_accounts2 = get_cash_flow_accounts()
+
+	# compute net profit / loss
+	income2 = get_data(
+		fil.company,
+		"Income",
+		"Credit",
+		period_list2,
+		filters=fil,
+		accumulated_values=fil.accumulated_values,
+		ignore_closing_entries=True,
+		ignore_accumulated_values_for_fy=True,
+	)
+	expense2 = get_data(
+		fil.company,
+		"Expense",
+		"Debit",
+		period_list2,
+		filters=fil,
+		accumulated_values=fil.accumulated_values,
+		ignore_closing_entries=True,
+		ignore_accumulated_values_for_fy=True,
+	)
+
+	net_profit_loss = get_net_profit_loss(income2, expense2, period_list2, fil.company)
+
+	data2 = []
+	summary_data2 = {}
+	company_currency = frappe.get_cached_value("Company", fil.company, "default_currency")
+
+	for cash_flow_account in cash_flow_accounts2:
+		section_data2 = []
+		data2.append(
+			{
+				"account_name": cash_flow_account["section_header"],
+				"parent_account": None,
+				"indent": 0.0,
+				"account": cash_flow_account["section_header"],
+			}
+		)
+
+		if len(data2) == 1:
+			# add first net income in operations section
+			if net_profit_loss:
+				net_profit_loss.update(
+					{"indent": 1, "parent_account": cash_flow_accounts2[0]["section_header"]}
+				)
+				data2.append(net_profit_loss)
+				section_data2.append(net_profit_loss)
+
+		for account in cash_flow_account["account_types"]:
+			account_data = get_account_type_based_data(
+				fil.company, account["account_type"], period_list2, fil.accumulated_values, fil
+			)
+			account_data.update(
+				{
+					"account_name": account["label"],
+					"account": account["label"],
+					"indent": 1,
+					"parent_account": cash_flow_account["section_header"],
+					"currency": company_currency,
+				}
+			)
+			data2.append(account_data)
+			section_data2.append(account_data)
+
+		add_total_row_account(
+			data2,
+			section_data2,
+			cash_flow_account["section_footer"],
+			period_list2,
+			company_currency,
+			summary_data2,
+			fil,
+		)
+
+	add_total_row_account(
+		# data2, data2, _("Net Change in Cash"), period_list, company_currency, summary_data2, fil
+		data2, data2, _("Saldo Awal"), period_list2, company_currency, summary_data2, fil
+	)
+
+	x = data2[len(data2)-2]
+	
+	if is_nol:
+		x.update({
+			"total": 0,
+			"dec_{0}".format(to_fiscal_year): 0
+		})
+	else:
+		x.update({
+			"dec_{0}".format(to_fiscal_year): x.get("total")
+		})
+	return x
 
 def execute(filters=None):
 	if cint(frappe.db.get_single_value("Accounts Settings", "use_custom_cash_flow")):
@@ -112,10 +235,12 @@ def execute(filters=None):
 			filters,
 		)
 
+	
 	add_total_row_account(
 		# data, data, _("Net Change in Cash"), period_list, company_currency, summary_data, filters
 		data, data, _("KENAIKAN (PENURUNAN) NETO KAS DAN SETARA KAS"), period_list, company_currency, summary_data, filters
 	)
+
 	columns = get_columns(
 		filters.periodicity, period_list, filters.accumulated_values, filters.company
 	)
@@ -124,6 +249,19 @@ def execute(filters=None):
 
 	report_summary = get_report_summary(summary_data, company_currency)
 
+	total3 = 0
+	b = get_saldo_awal(filtering=filters)
+	data.append(b)
+	total3 = total3+b.get("total")
+	a = data[len(data)-3]
+	data.append(a)
+	# total3 = total3
+	# a.update({
+	# 	"total": total3
+	# })
+	# data.append({
+	# 	a
+	# })
 	return columns, data, None, chart, report_summary
 
 

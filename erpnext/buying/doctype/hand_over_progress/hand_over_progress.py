@@ -16,6 +16,8 @@ class HandOverProgress(Document):
 			for d in self.hand_over_progress_discount:
 				self.total_discount = self.total_discount+d.progress_discount
 		self.total_cost = self.total_achieved-self.total_discount+self.rounded_cost
+		if self.progress_sequence == 0:
+			self.total_cost = self.total_cost+self.down_payment
 	def on_submit(self):
 		if self.sub_contract_hand_over:
 			if self.progress_achieved < 100:

@@ -127,3 +127,7 @@ def get_permission_query_conditions(user):
 		return """(`tabForm Payment Entry Project`.project in (SELECT parent FROM `tabProject Team` WHERE user = '{0}'))""".format(frappe.session.user)
 	else:
 		return ""
+      
+@frappe.whitelist()
+def get_detail(form_payment_entry_project):
+      return frappe.db.sql("""SELECT * FROM `tabForm Payment Entry Account` WHERE parent = '{0}'""".format(form_payment_entry_project), as_dict=1)

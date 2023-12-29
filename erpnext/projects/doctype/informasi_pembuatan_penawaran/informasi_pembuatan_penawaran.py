@@ -5,6 +5,18 @@ import frappe
 from frappe.model.document import Document
 
 class INFORMASIPEMBUATANPENAWARAN(Document):
+	def validate(self):
+		row = 0
+		for d in self.pejabat:
+			row = row+1
+			if not d.employee:
+				frappe.throw("Pejabat di baris ke {0} harus diisi".format(row))
+		row = 0
+		for d in self.aktivitas:
+			row = row+1
+			if not d.target:
+				frappe.throw("Sasaran di baris ke {0} harus diisi".format(row))
+				
 	def after_insert(self):
 		assigner = []
 		for d in self.pejabat:
@@ -22,3 +34,7 @@ class INFORMASIPEMBUATANPENAWARAN(Document):
 			notification_doc = frappe._dict(notification_doc)
 			from frappe.desk.doctype.notification_log.notification_log import make_notification_logs
 			make_notification_logs(notification_doc, assigner)
+
+@frappe.whitelist()
+def view_doc(docname):
+	frappe.db.sql("UPDATE `tabProcess Rule2` SET status = 'Viewed' WHERE parent = '{0}' AND parenttype = 'Informasi Pembuatan Penawaran' AND user = '{1}'".format(docname, frappe.session.user))

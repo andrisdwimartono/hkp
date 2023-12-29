@@ -1,0 +1,84 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-12-27 13:39:08.522289",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "jabatan",
+  "jabatan_abbr",
+  "status",
+  "employee",
+  "employee_name",
+  "user",
+  "process_time"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "jabatan",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Jabatan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "jabatan_abbr",
+   "fieldtype": "Data",
+   "label": "Jabatan Abbr",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "default": "Unprocessed",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Unprocessed\nViewed",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Karyawan",
+   "options": "Employee"
+  },
+  {
+   "columns": 2,
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Nama",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fetch_from": "employee.user_id",
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "process_time",
+   "fieldtype": "Datetime",
+   "label": "Waktu",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-12-28 14:28:23.489025",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Process Rule2",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

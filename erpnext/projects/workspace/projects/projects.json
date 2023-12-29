@@ -88,6 +88,15 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Realisasi Anggaran Proyek",
+   "link_to": "Realisasi Anggaran Proyek",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Anggaran Belanja",
    "link_to": "Budget",
    "link_type": "DocType",
@@ -208,7 +217,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-12-21 11:54:54.017443",
+ "modified": "2023-12-27 11:49:03.215161",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Projects",

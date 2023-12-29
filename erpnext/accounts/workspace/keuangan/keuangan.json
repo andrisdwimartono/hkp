@@ -194,6 +194,15 @@
   },
   {
    "hidden": 0,
+   "is_query_report": 1,
+   "label": "Laporan Monitoring RAP",
+   "link_to": "Laporan Monitoring RAP",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
    "is_query_report": 0,
    "label": "Keuangan",
    "link_type": "DocType",
@@ -318,7 +327,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-12-18 10:42:45.398576",
+ "modified": "2023-12-29 10:46:11.875575",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Keuangan",

@@ -45,7 +45,7 @@ class Task(NestedSet):
 	
 	def validate_deviasi(self):
 		for d in self.task_progress:
-			d.deviasi = d.rencana-d.realisasi
+			d.deviasi = float(d.rencana)-float(d.realisasi)
 
 	def validate_dates(self):
 		if (

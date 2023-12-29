@@ -4,6 +4,7 @@
 frappe.ui.form.on('USULAN MENGIKUTI TENDER', {
 	refresh: function(frm) {
 		if (frm.doc.__unsaved == 1)	{
+			frm.clear_table("tinjauan");
 			var x = ["ADMINISTRASI", "TEKNIS", "PERALATAN", "SPESIFIKASI MATERIAL", "TENAGA KERJA", "PENGALAMAN KERJA", "PERSAINGAN", "LOKASI"];
 			for(var i = 0; i < x.length; i++){
 				let d = frm.add_child("tinjauan");

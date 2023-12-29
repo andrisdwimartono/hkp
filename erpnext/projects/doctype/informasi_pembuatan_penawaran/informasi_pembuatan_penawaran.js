@@ -26,60 +26,69 @@ frappe.ui.form.on('INFORMASI PEMBUATAN PENAWARAN', {
 			}
 			frm.refresh_fields("aktivitas");
 		}else{
-			frm.disable_save();
 			frappe.call({
-				method: 'erpnext.projects.utils.get_next_process_rule',
+				method: 'erpnext.projects.doctype.informasi_pembuatan_penawaran.informasi_pembuatan_penawaran.view_doc',
 				args: {
-					'doctype': frm.doc.doctype,
 					'docname': frm.doc.name
 				},
 				callback: function(r) {
-					if(r.message){
-						var vals = r.message;
-						frm.add_custom_button(vals.aksi, function () {
-							frappe.prompt([
-								{
-									label: 'Status',
-									fieldname: 'status',
-									fieldtype: 'Select',
-									options: ["Yes", "No"],
-									default: "Yes",
-									reqd: 1
-								},
-								{
-									label: __('Comment'),
-									fieldname: 'comment',
-									fieldtype: 'Small Text'
-								},
-								{
-									label: 'process_rule_name',
-									fieldname: 'process_rule_name',
-									fieldtype: 'Data',
-									hidden: 1,
-									default: vals.name
-								},
-							], (values) => {
-								frappe.call({
-									method: 'erpnext.projects.utils.save_process_rule',
-									args: {
-										'docname': values.process_rule_name,
-										'status': values.status,
-										'comment': values.comment
-									},
-									callback: function(r) {
-										if(r.message){
-											frm.reload_doc();
-										}
-									}
-								});
-							},
-								vals.jabatan+' '+vals.aksi,
-								'Simpan'
-							);
-						}).removeClass("btn-default").addClass("btn-info");
-					}
+					
 				}
 			});
+			// frm.disable_save();
+			// frappe.call({
+			// 	method: 'erpnext.projects.utils.get_next_process_rule',
+			// 	args: {
+			// 		'doctype': frm.doc.doctype,
+			// 		'docname': frm.doc.name
+			// 	},
+			// 	callback: function(r) {
+			// 		if(r.message){
+			// 			var vals = r.message;
+			// 			frm.add_custom_button(vals.aksi, function () {
+			// 				frappe.prompt([
+			// 					{
+			// 						label: 'Status',
+			// 						fieldname: 'status',
+			// 						fieldtype: 'Select',
+			// 						options: ["Yes", "No"],
+			// 						default: "Yes",
+			// 						reqd: 1
+			// 					},
+			// 					{
+			// 						label: __('Comment'),
+			// 						fieldname: 'comment',
+			// 						fieldtype: 'Small Text'
+			// 					},
+			// 					{
+			// 						label: 'process_rule_name',
+			// 						fieldname: 'process_rule_name',
+			// 						fieldtype: 'Data',
+			// 						hidden: 1,
+			// 						default: vals.name
+			// 					},
+			// 				], (values) => {
+			// 					frappe.call({
+			// 						method: 'erpnext.projects.utils.save_process_rule',
+			// 						args: {
+			// 							'docname': values.process_rule_name,
+			// 							'status': values.status,
+			// 							'comment': values.comment
+			// 						},
+			// 						callback: function(r) {
+			// 							if(r.message){
+			// 								frm.reload_doc();
+			// 							}
+			// 						}
+			// 					});
+			// 				},
+			// 					vals.jabatan+' '+vals.aksi,
+			// 					'Simpan'
+			// 				);
+			// 			}).removeClass("btn-default").addClass("btn-info");
+			// 		}
+			// 	}
+			// });
 		}
 	},
 	onload: function(frm){

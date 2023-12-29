@@ -66,6 +66,8 @@
    "fetch_from": "hand_over_progress.sub_contract_hand_over",
    "fieldname": "sub_contract_hand_over",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Sub Contract Hand Over",
    "options": "Sub Contract Hand Over",
    "read_only": 1
@@ -237,6 +239,7 @@
   {
    "fieldname": "total",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Total",
    "options": "Company:company:default_currency",
    "read_only": 1
@@ -258,7 +261,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-07-04 14:56:54.575711",
+ "modified": "2023-12-27 10:07:09.282876",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Slip Pembayaran Subkon",

@@ -25,8 +25,7 @@
    "fieldname": "target",
    "fieldtype": "Datetime",
    "in_list_view": 1,
-   "label": "Target",
-   "reqd": 1
+   "label": "Target"
   },
   {
    "fieldname": "keterangan",
@@ -45,7 +44,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-08-21 11:15:24.201568",
+ "modified": "2023-12-28 14:28:46.738301",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "INFORMASI PEMBUATAN PENAWARAN AKTIVITAS",

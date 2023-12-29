@@ -29,13 +29,6 @@
    "reqd": 1
   },
   {
-   "fieldname": "informasi_pembuatan_penawaran",
-   "fieldtype": "Link",
-   "label": "Informasi Pembuatan Penawaran",
-   "options": "INFORMASI PEMBUATAN PENAWARAN",
-   "reqd": 1
-  },
-  {
    "fetch_from": "informasi_pembuatan_penawaran.customer",
    "fetch_if_empty": 1,
    "fieldname": "pelanggan",
@@ -105,11 +98,18 @@
    "label": "Peserta Tender",
    "options": "LAPORAN PENJELASAN TENDER _ PESERTA TENDER",
    "reqd": 1
+  },
+  {
+   "fieldname": "informasi_pembuatan_penawaran",
+   "fieldtype": "Link",
+   "label": "Informasi Pembuatan Penawaran",
+   "options": "INFORMASI PEMBUATAN PENAWARAN",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-05 21:58:45.700700",
+ "modified": "2023-12-28 15:29:13.349938",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "LAPORAN PENJELASAN TENDER",
