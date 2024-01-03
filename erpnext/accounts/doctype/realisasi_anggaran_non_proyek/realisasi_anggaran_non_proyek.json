@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-01-03 10:10:38.305878",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "form_payment_entry",
+  "purpose",
+  "posting_date",
+  "week_periode",
+  "detail",
+  "process_rules"
+ ],
+ "fields": [
+  {
+   "fetch_from": "form_payment_entry.purpose",
+   "fieldname": "purpose",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Purpose",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "week_periode",
+   "fieldtype": "Int",
+   "label": "Week Periode",
+   "reqd": 1
+  },
+  {
+   "fieldname": "detail",
+   "fieldtype": "Table",
+   "label": "Detail",
+   "options": "Form Payment Entry Non Project Realisasi"
+  },
+  {
+   "fieldname": "process_rules",
+   "fieldtype": "Table",
+   "label": "Process Rules",
+   "options": "Process Rules"
+  },
+  {
+   "fieldname": "form_payment_entry",
+   "fieldtype": "Link",
+   "label": "Form Payment Entry",
+   "options": "Form Payment Entry",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-03 10:24:38.181007",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Realisasi Anggaran Non Proyek",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

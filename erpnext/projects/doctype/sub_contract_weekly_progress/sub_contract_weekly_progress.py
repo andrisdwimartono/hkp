@@ -55,7 +55,7 @@ class SubContractWeeklyProgress(Document):
 
 @frappe.whitelist()
 def check_week(posting_date = None):
-	d1 = datetime.strptime("{0}-01-01".format(datetime.now().year), "%Y-%m-%d")
+	d1 = datetime.strptime("{0}-01-01".format(datetime.strptime(posting_date, "%Y-%m-%d").year), "%Y-%m-%d")
 	d2 = datetime.strptime(posting_date, "%Y-%m-%d")
 	monday1 = (d1 - timedelta(days=d1.weekday()))
 	monday2 = (d2 - timedelta(days=d2.weekday()))

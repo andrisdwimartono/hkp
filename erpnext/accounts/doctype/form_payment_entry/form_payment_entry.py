@@ -25,3 +25,7 @@ class FormPaymentEntry(Document):
 			"form_payment_entry": self.name
 		})
 		budget_approval_plan_doc.save()
+
+@frappe.whitelist()
+def get_detail(form_payment_entry):
+      return frappe.db.sql("""SELECT * FROM `tabForm Payment Entry Non Project` WHERE parent = '{0}'""".format(form_payment_entry), as_dict=1)

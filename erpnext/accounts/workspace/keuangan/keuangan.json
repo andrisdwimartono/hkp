@@ -325,9 +325,27 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Realisasi Anggaran Proyek",
+   "link_to": "Realisasi Anggaran Proyek",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Realisasi Anggaran Non Proyek",
+   "link_to": "Realisasi Anggaran Non Proyek",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2023-12-29 10:46:11.875575",
+ "modified": "2024-01-03 10:33:56.089205",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Keuangan",

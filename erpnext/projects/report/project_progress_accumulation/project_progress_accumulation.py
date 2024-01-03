@@ -8,9 +8,9 @@ from datetime import datetime, timedelta
 def execute(filters=None):
 	columns = get_columns(filters)
 	data = get_data(filters, columns)
-	return columns, data
-	# charts = get_chart_data(columns, data)
-	# return columns, data, None, charts
+	#return columns, data
+	charts = get_chart_data(columns, data)
+	return columns, data, None, charts
 
 def get_columns(filters):
 	columns = [
@@ -29,45 +29,37 @@ def get_columns(filters):
 		},
 	]
 
-	from_week = check_week(posting_date=filters.get("from_date"))
-	finish_week = check_week(posting_date=filters.get("finish_date"))
+	from datetime import date, timedelta
 
-	from_day = check_day(posting_date=filters.get("from_date"))
-	from_last_day = datetime.strptime(filters.get("from_date"), "%Y-%m-%d") + timedelta(days=(6-from_day))
-
-	columns.append({
-		"week_periode": from_week,
-		"start_week": datetime.strptime(filters.get("from_date"), "%Y-%m-%d").strftime('%d/%m/%Y'),
-		"end_week": from_last_day.strftime('%d/%m/%Y'),
-		"fieldname": from_week,
-		"label": "{0} | {1} s/d {2}".format(from_week, datetime.strptime(filters.get("from_date"), "%Y-%m-%d").strftime('%d/%m/%Y'), from_last_day.strftime('%d/%m/%Y')),
-		"fieldtype": "Percent",
-		"width": 300,
-	})
-	for n in range((finish_week)-(from_week+1)):
-		columns.append({
-			"week_periode": n+from_week+1,
-			"start_week": (from_last_day + timedelta(days=((n*7)+1))).strftime('%d/%m/%Y'),
-			"end_week": (from_last_day + timedelta(days=((n*7)+7))).strftime('%d/%m/%Y'),
-			"fieldname": n+from_week+1,
-			"label": "{0} | {1} s/d {2}".format(n+from_week+1, (from_last_day + timedelta(days=((n*7)+1))).strftime('%d/%m/%Y'), (from_last_day + timedelta(days=((n*7)+7))).strftime('%d/%m/%Y')),
-			"fieldtype": "Percent",
-			"width": 300,
-		})
-	columns.append({
-		"week_periode": finish_week,
-		"start_week": (from_last_day + timedelta(days=((((finish_week)-(from_week+1))*7)+1))).strftime('%d/%m/%Y'),
-		"end_week": datetime.strptime(filters.get("finish_date"), "%Y-%m-%d").strftime('%d/%m/%Y'),
-		"fieldname": finish_week,
-		"label": "{0} | {1} s/d {2}".format(finish_week, (from_last_day + timedelta(days=((((finish_week)-(from_week+1))*7)+1))).strftime('%d/%m/%Y'), datetime.strptime(filters.get("finish_date"), "%Y-%m-%d").strftime('%d/%m/%Y')),
-		"fieldtype": "Percent",
-		"width": 300,
-	})
-
+	start_date = datetime.strptime(filters.get("from_date"), "%Y-%m-%d")
+	end_date = datetime.strptime(filters.get("finish_date"), "%Y-%m-%d")
+	delta = timedelta(days=1)
+	weeknum = 0
+	dt = []
+	while start_date <= end_date:
+		if weeknum != check_week(posting_date=start_date.strftime("%Y-%m-%d")):
+			weeknum = check_week(posting_date=start_date.strftime("%Y-%m-%d"))
+			if len(dt) > 0:
+				dt[len(dt)-1]["end_week"] = (start_date + timedelta(days=-1)).strftime('%Y-%m-%d')
+				dt[len(dt)-1]["label"] = "{0} | {1} s/d {2}".format(dt[len(dt)-1].get("week_periode"), datetime.strptime(dt[len(dt)-1].get("start_week"), "%Y-%m-%d").strftime('%d/%m/%Y'), (start_date + timedelta(days=-1)).strftime('%d/%m/%Y'))
+			dt.append({
+				"week_periode": weeknum,
+				"start_week": start_date.strftime('%Y-%m-%d'),
+				#"end_week": last_date.strftime('%Y-%m-%d'),
+				"fieldname": weeknum,
+				#"label": "{0} | {1} s/d {2}".format(weeknum, start_date.strftime('%d/%m/%Y'), last_date.strftime('%d/%m/%Y')),
+				"fieldtype": "Percent",
+				"width": 300,
+			})
+		start_date += delta
+		if start_date == end_date:
+			dt[len(dt)-1]["end_week"] = (start_date + timedelta(days=-1)).strftime('%Y-%m-%d')
+			dt[len(dt)-1]["label"] = "{0} | {1} s/d {2}".format(dt[len(dt)-1].get("week_periode"), datetime.strptime(dt[len(dt)-1].get("start_week"), "%Y-%m-%d").strftime('%d/%m/%Y'), end_date.strftime('%d/%m/%Y'))
+	columns = columns+dt
 	return columns
 
 def get_data(filters, columns):
-	return [
+	data = [
 		{
 			"subject": "Rencana"
 		},
@@ -77,30 +69,41 @@ def get_data(filters, columns):
 		{
 			"subject": "Deviasi"
 		},
-		]
-
-	return frappe.db.sql("""
-				SELECT 
-					`tabTask`.name task,
-					`tabTask`.subject,
-					`tabTask Progress`.rencana,
-					`tabTask Progress`.realisasi,
-					`tabTask Progress`.deviasi
-			    FROM `tabTask`
-				INNER JOIN (
-					  SELECT
-					  	`tabTask Progress`.parent,
-						max(`tabTask Progress`.tanggal) tanggal
-					  FROM `tabTask Progress`
-					  WHERE `tabTask Progress`.tanggal <= '{1}'
-					  GROUP BY `tabTask Progress`.parent
-					  ORDER BY `tabTask Progress`.tanggal DESC
-					  ) as `tp1` ON `tp1`.parent = `tabTask`.name
-				INNER JOIN `tabTask Progress` ON `tabTask Progress`.tanggal = tp1.tanggal AND `tabTask Progress`.parent = tp1.parent
-					  WHERE `tabTask`.project = '{0}'""".format(filters.get("project"), filters.get("finish_date")), as_dict=1)
+	]
+	for d in columns:
+		x = frappe.db.sql("""
+			SELECT 
+				SUM(COALESCE(`tabTask Progress`.rencana*`tabTask`.task_weight/100, 0)) rencana,
+				SUM(COALESCE(`tabTask Progress`.realisasi*`tabTask`.task_weight/100, 0)) realisasi,
+				SUM(COALESCE(`tabTask Progress`.deviasi*`tabTask`.task_weight/100, 0)) deviasi 
+			FROM `tabTask`
+			INNER JOIN `tabTask Progress` ON `tabTask Progress`.tanggal BETWEEN '{1}' AND '{2}' AND `tabTask Progress`.parent = `tabTask`.name
+			WHERE `tabTask`.project = '{0}'
+		""".format(filters.get("project"), d.get("start_week"), d.get("end_week")), as_dict=1)
+		if x:
+			data[0][d.get("fieldname")] = x[0].rencana
+			data[1][d.get("fieldname")] = x[0].realisasi
+			data[2][d.get("fieldname")] = x[0].deviasi
+		else:
+			data[0][d.get("fieldname")] = 0
+			data[1][d.get("fieldname")] = 0
+			data[2][d.get("fieldname")] = 0
+	data[0]["subject"] = "Rencana"
+	data[1]["subject"] = "Realisasi"
+	data[2]["subject"] = "Deviasi"
+	return data
 
 def get_chart_data(columns, data):
-	labels = [d.subject for d in data]
+	labels = []
+	datasets = []
+	rencana = []
+	realisasi = []
+	deviasi = []
+	for d in columns[1:]:
+		labels.append(d.get("week_periode"))
+		rencana.append(data[0][d.get("week_periode")])
+		realisasi.append(data[1][d.get("week_periode")])
+		deviasi.append(data[2][d.get("week_periode")])
 	# datasets = [
 	# 	{
 	# 		"name": account.get("account").replace("'", ""),
@@ -110,14 +113,7 @@ def get_chart_data(columns, data):
 	# 	if account.get("parent_account") == None and account.get("currency")
 	# ]
 	# datasets = datasets[:-1]
-	datasets = []
-	rencana = []
-	realisasi = []
-	deviasi = []
-	for d in data:
-		rencana.append(d.rencana)
-		realisasi.append(d.realisasi)
-		deviasi.append(d.deviasi)
+	
 	datasets.append({
 		"name": "Rencana",
 		"values": rencana
@@ -131,12 +127,12 @@ def get_chart_data(columns, data):
 		"values": deviasi
 	})
 
-	chart = {"data": {"labels": labels, "datasets": datasets}, "type": "bar", "colors":["#449CF0", "#29CD42", "#CB2929"],}
+	chart = {"data": {"labels": labels, "datasets": datasets}, "type": "line", "colors":["#449CF0", "#29CD42", "#CB2929"],}
 
 	return chart
 
 def check_week(posting_date = None):
-	d1 = datetime.strptime("{0}-01-01".format(datetime.now().year), "%Y-%m-%d")
+	d1 = datetime.strptime("{0}-01-01".format(datetime.strptime(posting_date, "%Y-%m-%d").year), "%Y-%m-%d")
 	d2 = datetime.strptime(posting_date, "%Y-%m-%d")
 	monday1 = (d1 - timedelta(days=d1.weekday()))
 	monday2 = (d2 - timedelta(days=d2.weekday()))
