@@ -1,0 +1,225 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-01-04 14:53:32.569824",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project",
+  "customer",
+  "project_name",
+  "project_address",
+  "no_telp__fax",
+  "keluhan",
+  "pelapor_section",
+  "nama_pelapor",
+  "column_break_qwudj",
+  "jabatan_pelapor",
+  "column_break_9dqi0",
+  "tanggal_pelapor",
+  "penerima_laporan_section",
+  "penerima",
+  "nama_penerima",
+  "column_break_2nlkb",
+  "jabatan_penerima",
+  "column_break_lsvkh",
+  "tanggal_penerima",
+  "section_break_8t8k2",
+  "analisa_keluhan",
+  "tindak_lanjut",
+  "keterangan",
+  "disetujui_oleh_section",
+  "disetujui",
+  "disetujui_nama",
+  "column_break_k4s7s",
+  "tanggal_disetujui",
+  "section_break_kr2w1",
+  "tanggal_verifikasi_ulang"
+ ],
+ "fields": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.customer",
+   "fetch_if_empty": 1,
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name"
+  },
+  {
+   "fetch_from": "project.project_address",
+   "fieldname": "project_address",
+   "fieldtype": "Small Text",
+   "label": "Project Address"
+  },
+  {
+   "fieldname": "no_telp__fax",
+   "fieldtype": "Data",
+   "label": "No Telp / Fax"
+  },
+  {
+   "fieldname": "keluhan",
+   "fieldtype": "Small Text",
+   "label": "Keluhan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pelapor_section",
+   "fieldtype": "Section Break",
+   "label": "Pelapor"
+  },
+  {
+   "fieldname": "nama_pelapor",
+   "fieldtype": "Data",
+   "label": "Nama Pelapor"
+  },
+  {
+   "fieldname": "column_break_qwudj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "jabatan_pelapor",
+   "fieldtype": "Data",
+   "label": "Jabatan"
+  },
+  {
+   "fieldname": "column_break_9dqi0",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tanggal_pelapor",
+   "fieldtype": "Date",
+   "label": "Tanggal"
+  },
+  {
+   "fieldname": "penerima_laporan_section",
+   "fieldtype": "Section Break",
+   "label": "Penerima Laporan"
+  },
+  {
+   "fetch_from": "penerima.employee_name",
+   "fieldname": "nama_penerima",
+   "fieldtype": "Data",
+   "label": "Penerima Laporan"
+  },
+  {
+   "fieldname": "column_break_2nlkb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "jabatan_penerima",
+   "fieldtype": "Data",
+   "label": "Jabatan"
+  },
+  {
+   "fieldname": "column_break_lsvkh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tanggal_penerima",
+   "fieldtype": "Date",
+   "label": "Tanggal"
+  },
+  {
+   "fieldname": "section_break_8t8k2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "analisa_keluhan",
+   "fieldtype": "Small Text",
+   "label": "Analisa Keluhan"
+  },
+  {
+   "default": "Diperbaiki",
+   "fieldname": "tindak_lanjut",
+   "fieldtype": "Select",
+   "label": "Tindak Lanjut",
+   "options": "Diperbaiki\nDibongkar"
+  },
+  {
+   "fieldname": "keterangan",
+   "fieldtype": "Small Text",
+   "label": "Keterangan"
+  },
+  {
+   "fieldname": "disetujui_oleh_section",
+   "fieldtype": "Section Break",
+   "label": "Disetujui Oleh"
+  },
+  {
+   "fieldname": "disetujui",
+   "fieldtype": "Link",
+   "label": "Disetujui Oleh",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "disetujui.employee_name",
+   "fieldname": "disetujui_nama",
+   "fieldtype": "Data",
+   "label": "Nama"
+  },
+  {
+   "fieldname": "column_break_k4s7s",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tanggal_disetujui",
+   "fieldtype": "Data",
+   "label": "Tanggal"
+  },
+  {
+   "fieldname": "penerima",
+   "fieldtype": "Link",
+   "label": "Penerima",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "section_break_kr2w1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "tanggal_verifikasi_ulang",
+   "fieldtype": "Date",
+   "label": "Tanggal Verifikasi Ulang"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-04 15:10:14.747761",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Laporan Pengendalian Pekerjaan Tidak Sesuai",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

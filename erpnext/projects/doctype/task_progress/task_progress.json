@@ -7,13 +7,15 @@
  "engine": "InnoDB",
  "field_order": [
   "tanggal",
+  "rencana_mingguan",
   "rencana",
+  "realisasi_mingguan",
   "realisasi",
   "deviasi"
  ],
  "fields": [
   {
-   "columns": 2,
+   "columns": 1,
    "fieldname": "tanggal",
    "fieldtype": "Date",
    "in_list_view": 1,
@@ -26,7 +28,7 @@
    "fieldname": "rencana",
    "fieldtype": "Percent",
    "in_list_view": 1,
-   "label": "Rencana",
+   "label": "Rencana Komulatif",
    "reqd": 1
   },
   {
@@ -35,11 +37,11 @@
    "fieldname": "realisasi",
    "fieldtype": "Percent",
    "in_list_view": 1,
-   "label": "Realisasi",
+   "label": "Realisasi Komulatif",
    "reqd": 1
   },
   {
-   "columns": 2,
+   "columns": 1,
    "default": "0",
    "fieldname": "deviasi",
    "fieldtype": "Percent",
@@ -47,12 +49,29 @@
    "label": "Deviasi",
    "read_only": 1,
    "reqd": 1
+  },
+  {
+   "columns": 2,
+   "default": "0",
+   "fieldname": "rencana_mingguan",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Rencana Mingguan",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "default": "0",
+   "fieldname": "realisasi_mingguan",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Realisasi Mingguan"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-12-19 11:06:04.888839",
+ "modified": "2024-01-04 13:58:28.442016",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Task Progress",

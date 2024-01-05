@@ -27,10 +27,11 @@
   "start",
   "column_break_11",
   "exp_end_date",
-  "task_progress",
   "progress",
   "duration",
   "is_milestone",
+  "progress_section",
+  "task_progress",
   "sb_details",
   "description",
   "sb_depends_on",
@@ -397,6 +398,11 @@
    "fieldtype": "Table",
    "label": "Task Progress",
    "options": "Task Progress"
+  },
+  {
+   "fieldname": "progress_section",
+   "fieldtype": "Section Break",
+   "label": "Progress"
   }
  ],
  "icon": "fa fa-check",
@@ -404,7 +410,7 @@
  "is_tree": 1,
  "links": [],
  "max_attachments": 5,
- "modified": "2023-12-19 11:07:00.720128",
+ "modified": "2024-01-04 13:54:53.699959",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Task",

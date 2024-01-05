@@ -10,7 +10,9 @@ from frappe.desk.form.assign_to import clear, close_all_assignments
 from frappe.model.mapper import get_mapped_doc
 from frappe.utils import add_days, cstr, date_diff, flt, get_link_to_form, getdate, today
 from frappe.utils.nestedset import NestedSet
-
+from frappe.utils import (
+	today,
+)
 
 class CircularReferenceError(frappe.ValidationError):
 	pass
@@ -45,6 +47,12 @@ class Task(NestedSet):
 	
 	def validate_deviasi(self):
 		for d in self.task_progress:
+			if not d.realisasi:
+				d.realisasi = 0
+			if not d.realisasi_mingguan:
+				d.realisasi_mingguan = 0
+			if d.tanggal > today() and d.realisasi > 0 and d.realisasi_mingguan > 0:
+				frappe.throw("Baris ke-{0} belum bisa diisi!".format(d.idx))
 			d.deviasi = float(d.rencana)-float(d.realisasi)
 
 	def validate_dates(self):
