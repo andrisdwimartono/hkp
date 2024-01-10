@@ -14,6 +14,26 @@ frappe.ui.form.on('Budget', {
 			};
 		});
 
+		frm.set_query("account_pdp", "accounts", function() {
+			return {
+				filters: {
+					company: frm.doc.company,
+					account_type: "PDP",
+					is_group: 0
+				}
+			};
+		});
+
+		frm.set_query("account", "income_accounts", function() {
+			return {
+				filters: {
+					company: frm.doc.company,
+					report_type: "Profit and Loss",
+					is_group: 0
+				}
+			};
+		});
+
 		frm.set_query("monthly_distribution", function() {
 			return {
 				filters: {

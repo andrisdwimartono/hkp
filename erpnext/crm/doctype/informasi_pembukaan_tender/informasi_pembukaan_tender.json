@@ -68,8 +68,9 @@
   },
   {
    "fieldname": "harga_penawaran_hkp",
-   "fieldtype": "Int",
-   "label": "Harga Penawaran HKP"
+   "fieldtype": "Currency",
+   "label": "Harga Penawaran HKP",
+   "width": "50"
   },
   {
    "fieldname": "keterangan",
@@ -92,7 +93,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-06 23:51:40.483069",
+ "modified": "2024-01-05 15:18:13.413149",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "INFORMASI PEMBUKAAN TENDER",

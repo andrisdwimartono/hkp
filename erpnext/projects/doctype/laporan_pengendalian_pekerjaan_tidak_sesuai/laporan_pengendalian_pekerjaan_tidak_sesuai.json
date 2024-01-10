@@ -35,7 +35,14 @@
   "column_break_k4s7s",
   "tanggal_disetujui",
   "section_break_kr2w1",
-  "tanggal_verifikasi_ulang"
+  "tanggal_verifikasi_ulang",
+  "hasil_verifikasi",
+  "diverifikasi_oleh_section",
+  "manager_operasi",
+  "nama_manager_operasi",
+  "tanggal_verifikasi",
+  "pelanggan",
+  "tanggal_verifikasi_pelanggan"
  ],
  "fields": [
   {
@@ -180,7 +187,7 @@
   },
   {
    "fieldname": "tanggal_disetujui",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
    "label": "Tanggal"
   },
   {
@@ -197,11 +204,49 @@
    "fieldname": "tanggal_verifikasi_ulang",
    "fieldtype": "Date",
    "label": "Tanggal Verifikasi Ulang"
+  },
+  {
+   "fieldname": "hasil_verifikasi",
+   "fieldtype": "Small Text",
+   "label": "Hasil Verifikasi"
+  },
+  {
+   "fieldname": "diverifikasi_oleh_section",
+   "fieldtype": "Section Break",
+   "label": "Diverifikasi Oleh"
+  },
+  {
+   "fieldname": "manager_operasi",
+   "fieldtype": "Link",
+   "label": "Manager Operasi",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "manager_operasi.employee_name",
+   "fieldname": "nama_manager_operasi",
+   "fieldtype": "Data",
+   "label": "Nama Manager Operasi",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tanggal_verifikasi",
+   "fieldtype": "Date",
+   "label": "Tanggal Verifikasi"
+  },
+  {
+   "fieldname": "pelanggan",
+   "fieldtype": "Data",
+   "label": "Pelanggan"
+  },
+  {
+   "fieldname": "tanggal_verifikasi_pelanggan",
+   "fieldtype": "Date",
+   "label": "Tanggal Verifikasi Pelanggan"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-04 15:10:14.747761",
+ "modified": "2024-01-10 11:37:46.416729",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Laporan Pengendalian Pekerjaan Tidak Sesuai",

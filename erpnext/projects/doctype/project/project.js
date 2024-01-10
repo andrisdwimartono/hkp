@@ -60,6 +60,50 @@ frappe.ui.form.on("Project", {
 			frm.trigger('show_dashboard');
 		}
 		frm.events.set_buttons(frm);
+
+		if(frm.doc.expected_start_date){
+			var endDate = new Date();
+			var startDate = new Date(frm.doc.expected_start_date);
+
+			var millisecondsPerDay = 24 * 60 * 60 * 1000;
+			$(`div[data-fieldname="day_count_up"]`).html("<h4 class='text-center'>"+(((endDate - startDate) / millisecondsPerDay) < 0? "Belum Dimulai": "Hari Ke-"+Math.ceil((endDate - startDate) / millisecondsPerDay))+"</h4>");
+		}else{
+			$(`div[data-fieldname="day_count_up"]`).html("");
+		}
+
+		if(frm.doc.expected_end_date){
+			var startDate = new Date();
+			var endDate = new Date(frm.doc.expected_end_date);
+
+			var millisecondsPerDay = 24 * 60 * 60 * 1000;
+			$(`div[data-fieldname="day_count_down"]`).html("<h4 class='text-center'>"+(((endDate - startDate) / millisecondsPerDay) < 0? "Sudah Melewati "+Math.floor((endDate - startDate) / millisecondsPerDay*(-1))+" Hari": "Kurang "+Math.ceil((endDate - startDate) / millisecondsPerDay)+" Hari")+"</h4>");
+		}else{
+			$(`div[data-fieldname="day_count_down"]`).html("");
+		}
+	},
+
+	expected_start_date: function(frm){
+		if(frm.doc.expected_start_date){
+			var endDate = new Date();
+			var startDate = new Date(frm.doc.expected_start_date);
+
+			var millisecondsPerDay = 24 * 60 * 60 * 1000;
+			$(`div[data-fieldname="day_count_up"]`).html("<h4 class='text-center'>"+(((endDate - startDate) / millisecondsPerDay) < 0? "Belum Dimulai": "Hari Ke-"+Math.ceil((endDate - startDate) / millisecondsPerDay))+"</h4>");
+		}else{
+			$(`div[data-fieldname="day_count_up"]`).html("");
+		}
+	},
+
+	expected_end_date: function(frm){
+		if(frm.doc.expected_end_date){
+			var startDate = new Date();
+			var endDate = new Date(frm.doc.expected_end_date);
+
+			var millisecondsPerDay = 24 * 60 * 60 * 1000;
+			$(`div[data-fieldname="day_count_down"]`).html("<h4 class='text-center'>"+(((endDate - startDate) / millisecondsPerDay) < 0? "Sudah Melewati "+Math.floor((endDate - startDate) / millisecondsPerDay*(-1))+" Hari": "Kurang "+Math.ceil((endDate - startDate) / millisecondsPerDay)+" Hari")+"</h4>");
+		}else{
+			$(`div[data-fieldname="day_count_down"]`).html("");
+		}
 	},
 
 	set_buttons: function(frm) {

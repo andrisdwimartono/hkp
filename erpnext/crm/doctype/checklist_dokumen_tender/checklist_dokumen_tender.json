@@ -33,14 +33,13 @@
    "reqd": 1
   },
   {
-   "fetch_from": "laporan_penjelasan_tender.tanggal",
+   "fetch_from": "laporan_penjelasan_tender.tanggal_rks",
    "fieldname": "tanggal",
    "fieldtype": "Date",
-   "label": "Tanggal",
+   "label": "Tanggal RKS",
    "reqd": 1
   },
   {
-   "fetch_from": "laporan_penjelasan_tender.tanggal_pemasukan_penawaran",
    "fieldname": "tanggal_pemasukan",
    "fieldtype": "Date",
    "label": "Tanggal Pemasukan",
@@ -74,7 +73,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-15 15:27:01.879720",
+ "modified": "2024-01-05 15:05:27.076242",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "CHECKLIST DOKUMEN TENDER",

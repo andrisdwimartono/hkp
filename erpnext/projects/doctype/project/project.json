@@ -22,7 +22,9 @@
   "column_break_5",
   "project_template",
   "expected_start_date",
+  "day_count_up",
   "expected_end_date",
+  "day_count_down",
   "priority",
   "department",
   "customer_details",
@@ -494,6 +496,16 @@
    "fieldtype": "Data",
    "label": "Project Nick Name",
    "unique": 1
+  },
+  {
+   "fieldname": "day_count_up",
+   "fieldtype": "HTML",
+   "label": "Day Count Up"
+  },
+  {
+   "fieldname": "day_count_down",
+   "fieldtype": "HTML",
+   "label": "Day Count Down"
   }
  ],
  "icon": "fa fa-puzzle-piece",
@@ -501,7 +513,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "max_attachments": 4,
- "modified": "2023-12-19 11:33:05.935366",
+ "modified": "2024-01-05 15:55:13.173416",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Project",

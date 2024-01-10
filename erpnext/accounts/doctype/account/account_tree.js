@@ -168,6 +168,16 @@ frappe.treeview_settings["Account"] = {
 	},
 	toolbar: [
 		{
+			condition: function(node) {
+				return !node.root && frappe.boot.user.can_read.indexOf("GL Entry") !== -1
+			},
+			label: __("Ubah ->"),
+			click: function(node, btn) {
+				window.open("/app/account/"+node.label, '_blank');
+			},
+			btnClass: "hidden-xs"
+		},
+		{
 			label:__("Add Child"),
 			condition: function(node) {
 				return frappe.boot.user.can_create.indexOf("Account") !== -1
@@ -194,6 +204,63 @@ frappe.treeview_settings["Account"] = {
 					"company": frappe.treeview_settings['Account'].treeview.page.fields_dict.company.get_value()
 				};
 				frappe.set_route("query-report", "General Ledger");
+			},
+			btnClass: "hidden-xs"
+		},
+		{
+			condition: function(node) {
+				return !node.root && frappe.boot.user.can_read.indexOf("GL Entry") !== -1
+			},
+			label: __("Perbarui Nama/Nomor Akun"),
+			click: function(node, btn) {
+				console.log(node)
+				var d = new frappe.ui.Dialog({
+					title: __('Update Account Number / Name'),
+					fields: [
+						{
+							"label": "Account Name",
+							"fieldname": "account_name",
+							"fieldtype": "Data",
+							"reqd": 1,
+							"default": node.data.account_name
+						},
+						{
+							"label": "Account Number",
+							"fieldname": "account_number",
+							"fieldtype": "Data",
+							"default": node.data.account_number
+						}
+					],
+					primary_action: function() {
+						var data = d.get_values();
+						if(data.account_number === node.data.account_number && data.account_name === node.data.account_name) {
+							d.hide();
+							return;
+						}
+		
+						frappe.call({
+							method: "erpnext.accounts.doctype.account.account.update_account_number",
+							args: {
+								account_number: data.account_number,
+								account_name: data.account_name,
+								name: node.data.value
+							},
+							callback: function(r) {
+								if(!r.exc) {
+									if(r.message) {
+										// frappe.set_route("Form", "Account", r.message);
+									} else {
+										frm.set_value("account_number", data.account_number);
+										frm.set_value("account_name", data.account_name);
+									}
+									d.hide();
+								}
+							}
+						});
+					},
+					primary_action_label: __('Update')
+				});
+				d.show();
 			},
 			btnClass: "hidden-xs"
 		}

@@ -8,6 +8,7 @@
  "engine": "InnoDB",
  "field_order": [
   "tanggal",
+  "usulan_mengikuti_tender",
   "informasi_pembuatan_penawaran",
   "pelanggan",
   "lingkup_pekerjaan",
@@ -29,7 +30,7 @@
    "reqd": 1
   },
   {
-   "fetch_from": "informasi_pembuatan_penawaran.customer",
+   "fetch_from": "usulan_mengikuti_tender.customer",
    "fetch_if_empty": 1,
    "fieldname": "pelanggan",
    "fieldtype": "Link",
@@ -39,7 +40,7 @@
    "reqd": 1
   },
   {
-   "fetch_from": "informasi_pembuatan_penawaran.lingkup_pekerjaan",
+   "fetch_from": "usulan_mengikuti_tender.lingkup_pekerjaan",
    "fetch_if_empty": 1,
    "fieldname": "lingkup_pekerjaan",
    "fieldtype": "Data",
@@ -102,14 +103,22 @@
   {
    "fieldname": "informasi_pembuatan_penawaran",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Informasi Pembuatan Penawaran",
-   "options": "INFORMASI PEMBUATAN PENAWARAN",
+   "options": "INFORMASI PEMBUATAN PENAWARAN"
+  },
+  {
+   "fieldname": "usulan_mengikuti_tender",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Usulan Mengikuti Tender",
+   "options": "USULAN MENGIKUTI TENDER",
    "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-28 15:29:13.349938",
+ "modified": "2024-01-05 15:06:26.297969",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "LAPORAN PENJELASAN TENDER",
@@ -128,6 +137,7 @@
    "write": 1
   }
  ],
+ "search_fields": "lingkup_pekerjaan, pelanggan, rks, tanggal_rks",
  "sort_field": "modified",
  "sort_order": "DESC"
 }

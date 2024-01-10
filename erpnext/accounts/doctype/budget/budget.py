@@ -55,6 +55,11 @@ class Budget(Document):
 		for d in self.accounts:
 			if d.group == 0:
 				self.total_budget_amount = self.total_budget_amount+d.budget_amount
+		
+		self.total_income_amount = 0
+		for d in self.income_accounts:
+			if d.group == 0:
+				self.total_income_amount = self.total_income_amount+d.income_amount
 
 	def validate_duplicate(self):
 		budget_against_field = frappe.scrub(self.budget_against)

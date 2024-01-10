@@ -12,11 +12,14 @@ from erpnext.accounts.report.financial_statements import (
 	get_columns,
 	get_cost_centers_with_children,
 	get_data,
+	get_data3,
 	get_filtered_list_for_consolidated_report,
 	get_period_list,
+	get_period_list2,
 )
 from erpnext.accounts.report.profit_and_loss_statement.profit_and_loss_statement import (
 	get_net_profit_loss,
+	get_net_profit_loss2,
 )
 from erpnext.accounts.utils import get_fiscal_year
 
@@ -39,7 +42,7 @@ def get_saldo_awal(filtering):
 		fil.from_fiscal_year = filtering.from_fiscal_year
 		fil.to_fiscal_year = filtering.to_fiscal_year
 	
-	period_list2 = get_period_list(
+	period_list2 = get_period_list2(
 		fil.from_fiscal_year,
 		fil.to_fiscal_year,
 		fil.period_start_date,
@@ -49,10 +52,10 @@ def get_saldo_awal(filtering):
 		company=fil.company,
 	)
 
-	cash_flow_accounts2 = get_cash_flow_accounts()
+	cash_flow_accounts2 = get_cash_flow_accounts2()
 
 	# compute net profit / loss
-	income2 = get_data(
+	income2 = get_data3(
 		fil.company,
 		"Income",
 		"Credit",
@@ -62,7 +65,7 @@ def get_saldo_awal(filtering):
 		ignore_closing_entries=True,
 		ignore_accumulated_values_for_fy=True,
 	)
-	expense2 = get_data(
+	expense2 = get_data3(
 		fil.company,
 		"Expense",
 		"Debit",
@@ -73,7 +76,7 @@ def get_saldo_awal(filtering):
 		ignore_accumulated_values_for_fy=True,
 	)
 
-	net_profit_loss = get_net_profit_loss(income2, expense2, period_list2, fil.company)
+	net_profit_loss = get_net_profit_loss2(income2, expense2, period_list2, fil.company)
 
 	data2 = []
 	summary_data2 = {}
@@ -100,7 +103,7 @@ def get_saldo_awal(filtering):
 				section_data2.append(net_profit_loss)
 
 		for account in cash_flow_account["account_types"]:
-			account_data = get_account_type_based_data(
+			account_data = get_account_type_based_data2(
 				fil.company, account["account_type"], period_list2, fil.accumulated_values, fil
 			)
 			account_data.update(
@@ -115,7 +118,7 @@ def get_saldo_awal(filtering):
 			data2.append(account_data)
 			section_data2.append(account_data)
 
-		add_total_row_account(
+		add_total_row_account2(
 			data2,
 			section_data2,
 			cash_flow_account["section_footer"],
@@ -125,7 +128,7 @@ def get_saldo_awal(filtering):
 			fil,
 		)
 
-	add_total_row_account(
+	add_total_row_account2(
 		# data2, data2, _("Net Change in Cash"), period_list, company_currency, summary_data2, fil
 		data2, data2, _("Saldo Awal"), period_list2, company_currency, summary_data2, fil
 	)
@@ -255,6 +258,16 @@ def execute(filters=None):
 	total3 = total3+b.get("total")
 	a = data[len(data)-3]
 	data.append(a)
+
+	c = {
+		"account_name": "Saldo Akhir",
+		"account": None,
+		"currency": b["currency"]
+	}
+	for key in b:
+		if key not in ('account_name', 'account', 'currency'):
+			c[key] = b[key]+a[key]
+	data.append(c)
 	# total3 = total3
 	# a.update({
 	# 	"total": total3
@@ -295,6 +308,35 @@ def get_cash_flow_accounts():
 	# combine all cash flow accounts for iteration
 	return [operation_accounts, investing_accounts, financing_accounts]
 
+def get_cash_flow_accounts2():
+	operation_accounts = {
+		"section_name": "Operations",
+		"section_footer": _("Net Cash from Operations"),
+		"section_header": _("Cash Flow from Operations"),
+		"account_types": [
+			{"account_type": "Depreciation", "label": _("Depreciation")},
+			{"account_type": "Receivable", "label": _("Net Change in Accounts Receivable")},
+			{"account_type": "Payable", "label": _("Net Change in Accounts Payable")},
+			{"account_type": "Stock", "label": _("Net Change in Inventory")},
+		],
+	}
+
+	investing_accounts = {
+		"section_name": "Investing",
+		"section_footer": _("Net Cash from Investing"),
+		"section_header": _("Cash Flow from Investing"),
+		"account_types": [{"account_type": "Fixed Asset", "label": _("Net Change in Fixed Asset")}],
+	}
+
+	financing_accounts = {
+		"section_name": "Financing",
+		"section_footer": _("Net Cash from Financing"),
+		"section_header": _("Cash Flow from Financing"),
+		"account_types": [{"account_type": "Equity", "label": _("Net Change in Equity")}],
+	}
+
+	# combine all cash flow accounts for iteration
+	return [operation_accounts, investing_accounts, financing_accounts]
 
 def get_account_type_based_data(company, account_type, period_list, accumulated_values, filters):
 	data = {}
@@ -316,6 +358,25 @@ def get_account_type_based_data(company, account_type, period_list, accumulated_
 	data["total"] = total
 	return data
 
+def get_account_type_based_data2(company, account_type, period_list, accumulated_values, filters):
+	data = {}
+	total = 0
+	for period in period_list:
+		start_date = get_start_date(period, accumulated_values, company)
+		filters.start_date = start_date
+		filters.end_date = period["to_date"]
+		filters.account_type = account_type
+
+		amount = get_account_type_based_gl_data(company, filters)
+
+		if amount and account_type == "Depreciation":
+			amount *= -1
+
+		total += amount
+		data.setdefault(period["key"], amount)
+
+	data["total"] = total
+	return data
 
 def get_account_type_based_gl_data(company, filters=None):
 	cond = ""
@@ -393,6 +454,34 @@ def add_total_row_account(
 	out.append(total_row)
 	out.append({})
 
+def add_total_row_account2(
+	out, data, label, period_list, currency, summary_data, filters, consolidated=False
+):
+	total_row = {
+		"account_name": "'" + _("{0}").format(label) + "'",
+		"account": "'" + _("{0}").format(label) + "'",
+		"currency": currency,
+	}
+
+	summary_data[label] = 0
+
+	# from consolidated financial statement
+	if filters.get("accumulated_in_group_company"):
+		period_list = get_filtered_list_for_consolidated_report(filters, period_list)
+
+	for row in data:
+		if row.get("parent_account"):
+			for period in period_list:
+				key = period if consolidated else period["key"]
+				total_row.setdefault(key, 0.0)
+				total_row[key] += row.get(key, 0.0)
+				summary_data[label] += row.get(key)
+
+			total_row.setdefault("total", 0.0)
+			total_row["total"] += row["total"]
+
+	out.append(total_row)
+	out.append({})
 
 def get_report_summary(summary_data, currency):
 	report_summary = []

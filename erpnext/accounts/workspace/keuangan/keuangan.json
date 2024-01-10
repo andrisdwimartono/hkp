@@ -186,7 +186,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Anggaran Belanja",
+   "label": "Rencana Anggaran Proyek",
    "link_to": "Budget",
    "link_type": "DocType",
    "onboard": 0,
@@ -345,7 +345,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-01-03 10:33:56.089205",
+ "modified": "2024-01-10 13:13:11.211942",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Keuangan",

@@ -1,0 +1,73 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-01-09 11:27:17.832151",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "pos_rap",
+  "account",
+  "rencana",
+  "account2",
+  "realisasi",
+  "sisa",
+  "keterangan"
+ ],
+ "fields": [
+  {
+   "fieldname": "pos_rap",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "POS RAP",
+   "options": "POS RAP"
+  },
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "label": "Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "rencana",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Rencana"
+  },
+  {
+   "fieldname": "realisasi",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Realisasi"
+  },
+  {
+   "fieldname": "sisa",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Sisa"
+  },
+  {
+   "fieldname": "keterangan",
+   "fieldtype": "Small Text",
+   "label": "Keterangan"
+  },
+  {
+   "fieldname": "account2",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Akun Realisasi 2",
+   "options": "Account"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-09 11:29:23.029707",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Laporan Monitoring RAP Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -978,7 +978,7 @@ def get_children(doctype, parent, company, is_root=False):
 	from erpnext.accounts.report.financial_statements import sort_accounts
 
 	parent_fieldname = "parent_" + doctype.lower().replace(" ", "_")
-	fields = ["name as value", "is_group as expandable"]
+	fields = ["name as value", "is_group as expandable", "account_number", "account_name"]
 	filters = [["docstatus", "<", 2]]
 
 	filters.append(['ifnull(`{0}`,"")'.format(parent_fieldname), "=", "" if is_root else parent])

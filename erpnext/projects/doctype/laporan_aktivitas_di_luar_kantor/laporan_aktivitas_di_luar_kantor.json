@@ -66,8 +66,10 @@
    "reqd": 1
   },
   {
+   "fetch_from": "customer.primary_address",
+   "fetch_if_empty": 1,
    "fieldname": "alamat",
-   "fieldtype": "Small Text",
+   "fieldtype": "Text",
    "label": "Lokasi"
   },
   {
@@ -103,7 +105,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-15 15:35:30.604432",
+ "modified": "2024-01-05 14:48:18.286886",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "LAPORAN AKTIVITAS DI LUAR KANTOR",

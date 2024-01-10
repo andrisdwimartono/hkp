@@ -31,6 +31,7 @@
   "action_if_accumulated_monthly_budget_exceeded",
   "section_break_oagdh",
   "income_accounts",
+  "total_income_amount",
   "section_break_21",
   "accounts",
   "total_budget_amount",
@@ -245,12 +246,19 @@
    "fieldname": "duration",
    "fieldtype": "Int",
    "label": "Duration"
+  },
+  {
+   "fieldname": "total_income_amount",
+   "fieldtype": "Currency",
+   "label": "Total Income Amount",
+   "options": "Company:company:default_currency",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-12-12 13:33:14.597404",
+ "modified": "2024-01-10 10:45:14.727117",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Budget",

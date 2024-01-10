@@ -9,11 +9,18 @@
    "width": 300
   },
   {
-   "fieldname": "account",
+   "fieldname": "account_1",
    "fieldtype": "Link",
-   "label": "Akun",
+   "label": "Akun 1",
    "options": "Account",
-   "width": 150
+   "width": 180
+  },
+  {
+   "fieldname": "account_2",
+   "fieldtype": "Link",
+   "label": "Akun 2",
+   "options": "Account",
+   "width": 180
   },
   {
    "fieldname": "rencana",
@@ -66,13 +73,13 @@
  "is_standard": "Yes",
  "json": "{}",
  "letter_head": "KOP HKP",
- "modified": "2023-12-18 11:56:46.067963",
+ "modified": "2024-01-10 11:03:09.736099",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Laporan Monitoring RAP",
  "owner": "Administrator",
  "prepared_report": 0,
- "query": "SELECT \n    b.pos_rap, \n    b.account, \n    b.budget_amount rencana, \n    coalesce(c.realisasi, 0) realisasi, \n    b.budget_amount-coalesce(c.realisasi, 0) sisa,\n    case when b.budget_amount-coalesce(c.realisasi, 0) >= 0 then 'Terkendali'\n    else 'Tidak Terkendali' END keterangan,\n    a.project_name\n    FROM `tabBudget Account` b\nINNER JOIN `tabBudget` a ON a.name = b.parent\nLEFT JOIN (\n    SELECT SUM(c.debit-c.credit) realisasi, c.account FROM `tabGL Entry` c \n    WHERE c.posting_date <= %(end_date)s\n    GROUP BY c.account) c ON c.account = b.account\nWHERE a.project = %(project)s\nORDER BY b.idx;",
+ "query": "SELECT \n    b.pos_rap, \n    b.account account_1,\n    b.account_um account_2,\n    b.income_amount rencana, \n    (coalesce(c.realisasi, 0)++coalesce(d.realisasi, 0)) realisasi, \n    b.income_amount-(coalesce(c.realisasi, 0)++coalesce(d.realisasi, 0)) sisa,\n    case when b.income_amount-(coalesce(c.realisasi, 0)++coalesce(d.realisasi, 0)) >= 0 then 'Terkendali'\n    else 'Tidak Terkendali' END keterangan,\n    a.project_name\n    FROM `tabIncome Account` b\nINNER JOIN `tabBudget` a ON a.name = b.parent\nLEFT JOIN (\n    SELECT SUM(c.credit-c.debit) realisasi, c.account FROM `tabGL Entry` c \n    WHERE c.posting_date <= %(end_date)s\n    GROUP BY c.account) c ON c.account = b.account\nLEFT JOIN (\n    SELECT SUM(d.credit-d.debit) realisasi, d.account FROM `tabGL Entry` d\n    WHERE d.posting_date <= %(end_date)s\n    GROUP BY d.account) d ON d.account = b.account_um\nWHERE a.project = %(project)s AND a.docstatus = 1\n\nUNION\n\nSELECT \n    b.pos_rap, \n    b.account account_1,\n    b.account_pdp account_2,\n    b.budget_amount rencana, \n    (coalesce(c.realisasi, 0)+coalesce(d.realisasi, 0)) realisasi, \n    b.budget_amount-(coalesce(c.realisasi, 0)+coalesce(d.realisasi, 0)) sisa,\n    case when b.budget_amount-(coalesce(c.realisasi, 0)+coalesce(d.realisasi, 0)) >= 0 then 'Terkendali'\n    else 'Tidak Terkendali' END keterangan,\n    a.project_name\n    FROM `tabBudget Account` b\nINNER JOIN `tabBudget` a ON a.name = b.parent\nLEFT JOIN (\n    SELECT SUM(c.debit-c.credit) realisasi, c.account FROM `tabGL Entry` c \n    WHERE c.posting_date <= %(end_date)s\n    GROUP BY c.account) c ON c.account = b.account\nLEFT JOIN (\n    SELECT SUM(d.debit-d.credit) realisasi, d.account FROM `tabGL Entry` d\n    WHERE d.posting_date <= %(end_date)s\n    GROUP BY d.account) d ON d.account = b.account_pdp\nWHERE a.project = %(project)s AND a.docstatus = 1",
  "ref_doctype": "Budget",
  "report_name": "Laporan Monitoring RAP",
  "report_type": "Query Report",
