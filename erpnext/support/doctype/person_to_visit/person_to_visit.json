@@ -1,0 +1,166 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-01-19 10:02:42.711901",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "visitor_form",
+  "nama",
+  "perusahaan",
+  "keperluan",
+  "column_break_fxuqr",
+  "posting_date",
+  "section_break_biuuj",
+  "employee",
+  "user",
+  "column_break_myxgz",
+  "employee_name",
+  "column_break_awgi2",
+  "department",
+  "section_break_uky5x",
+  "jam_masuk",
+  "column_break_ic4zn",
+  "jam_keluar",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "depends_on": "eval:!doc.__islocal",
+   "description": "Ketik nama anda atau perusahaan atau keperluan",
+   "fieldname": "visitor_form",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Visitor Form",
+   "mandatory_depends_on": "eval:!doc.__islocal",
+   "options": "Visitor Form"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Person To Visit",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fetch_from": "visitor_form.nama",
+   "fieldname": "nama",
+   "fieldtype": "Data",
+   "label": "Nama",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "visitor_form.keperluan",
+   "fieldname": "keperluan",
+   "fieldtype": "Small Text",
+   "label": "Keperluan",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "depends_on": "eval:!doc.__islocal",
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Yang Dikunjungi",
+   "mandatory_depends_on": "eval:!doc.__islocal",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Nama yang Dikunjungi",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Bagian",
+   "options": "Department",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "jam_masuk",
+   "fieldtype": "Time",
+   "label": "Jam Masuk"
+  },
+  {
+   "default": "Today",
+   "fieldname": "jam_keluar",
+   "fieldtype": "Time",
+   "label": "Jam Keluar"
+  },
+  {
+   "fieldname": "column_break_myxgz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_awgi2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_uky5x",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_biuuj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_fxuqr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ic4zn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "visitor_form.perusahaan",
+   "fieldname": "perusahaan",
+   "fieldtype": "Data",
+   "label": "Perusahaan"
+  },
+  {
+   "fetch_from": "employee.user_id",
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-02-01 14:05:49.095682",
+ "modified_by": "Administrator",
+ "module": "Support",
+ "name": "Person To Visit",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

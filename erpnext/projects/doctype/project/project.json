@@ -513,7 +513,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "max_attachments": 4,
- "modified": "2024-01-05 15:55:13.173416",
+ "modified": "2024-01-24 13:25:22.980267",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Project",
@@ -549,7 +549,7 @@
    "write": 1
   }
  ],
- "search_fields": "project_name,customer, status, priority, is_active",
+ "search_fields": "project_name",
  "show_name_in_global_search": 1,
  "sort_field": "modified",
  "sort_order": "DESC",

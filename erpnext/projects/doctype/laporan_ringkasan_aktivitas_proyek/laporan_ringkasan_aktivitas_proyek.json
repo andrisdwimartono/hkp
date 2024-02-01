@@ -69,8 +69,7 @@
    "default": "0",
    "fieldname": "rencana",
    "fieldtype": "Percent",
-   "label": "Rencana",
-   "read_only": 1
+   "label": "Rencana"
   },
   {
    "fieldname": "section_break_zcbmu",
@@ -84,8 +83,7 @@
    "default": "0",
    "fieldname": "realisasi",
    "fieldtype": "Percent",
-   "label": "Realisasi",
-   "read_only": 1
+   "label": "Realisasi"
   },
   {
    "fieldname": "column_break_fcnyf",
@@ -154,7 +152,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-11-30 11:44:16.292829",
+ "modified": "2024-01-24 14:03:49.422814",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Laporan Ringkasan Aktivitas Proyek",

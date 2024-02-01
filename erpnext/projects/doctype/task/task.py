@@ -51,8 +51,8 @@ class Task(NestedSet):
 				d.realisasi = 0
 			if not d.realisasi_mingguan:
 				d.realisasi_mingguan = 0
-			if d.tanggal > today() and d.realisasi > 0 and d.realisasi_mingguan > 0:
-				frappe.throw("Baris ke-{0} belum bisa diisi!".format(d.idx))
+			# if d.tanggal > today() and d.realisasi > 0 and d.realisasi_mingguan > 0:
+			# 	frappe.throw("Baris ke-{0} belum bisa diisi!".format(d.idx))
 			d.deviasi = float(d.rencana)-float(d.realisasi)
 
 	def validate_dates(self):

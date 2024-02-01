@@ -47,7 +47,7 @@ class AssetRepair(AccountsController):
 				self.decrease_stock_quantity()
 
 			if self.get("capitalize_repair_cost"):
-				self.make_gl_entries()
+				# self.make_gl_entries()
 
 				if (
 					frappe.db.get_value("Asset", self.asset, "calculate_depreciation")
@@ -70,7 +70,7 @@ class AssetRepair(AccountsController):
 
 			if self.get("capitalize_repair_cost"):
 				self.ignore_linked_doctypes = ("GL Entry", "Stock Ledger Entry")
-				self.make_gl_entries(cancel=True)
+				# self.make_gl_entries(cancel=True)
 
 				if (
 					frappe.db.get_value("Asset", self.asset, "calculate_depreciation")

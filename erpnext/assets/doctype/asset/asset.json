@@ -483,7 +483,7 @@
    "read_only": 1
   },
   {
-   "depends_on": "eval: doc.asset_category == \"Kendaraan\"",
+   "depends_on": "eval: doc.asset_category == \"Kendaraan Roda 2\" || doc.asset_category == \"Kendaraan Roda 4\"",
    "fieldname": "nomor_polisi",
    "fieldtype": "Data",
    "label": "Nomor Polisi"
@@ -529,7 +529,7 @@
    "link_fieldname": "asset"
   }
  ],
- "modified": "2023-12-20 15:11:23.515926",
+ "modified": "2024-01-24 14:42:55.924416",
  "modified_by": "Administrator",
  "module": "Assets",
  "name": "Asset",

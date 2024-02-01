@@ -119,13 +119,44 @@ frappe.ui.form.on('Laporan Ringkasan Aktivitas Proyek', {
 				}
 			});
 		}
+	},
+	rencana: function(frm){
+		var rencana = frm.doc.rencana;
+		var realisasi = frm.doc.realisasi;
+		frm.set_value("deviasi", realisasi-rencana);
+		refresh_field("deviasi");
+	},
+	realisasi: function(frm){
+		var rencana = frm.doc.rencana;
+		var realisasi = frm.doc.realisasi;
+		frm.set_value("deviasi", realisasi-rencana);
+		refresh_field("deviasi");
 	}
 });
 
 frappe.ui.form.on('Laporan Ringkasan Aktivitas Proyek Detail', {
 	realisasi: function(frm, dt, dn){
 		var d = locals[dt][dn];
-		d.deviasi = d.target-d.realisasi;
+		d.deviasi = d.realisasi+d.target;
+		frm.refresh_field("detail");
+		var total_target = 0;
+		var total_realisasi = 0;
+		var total_deviasi = 0;
+		for(var i = 0; i < frm.doc.detail.length; i++){
+			total_target = total_target+frm.doc.detail[i].target;
+			total_realisasi = total_realisasi+frm.doc.detail[i].realisasi;
+			total_deviasi = total_deviasi+frm.doc.detail[i].deviasi;
+		}
+		frm.set_value("rencana", total_target);
+		frm.refresh_field("rencana");
+		frm.set_value("realisasi", total_realisasi);
+		frm.refresh_field("realisasi");
+		frm.set_value("deviasi", total_deviasi);
+		frm.refresh_field("deviasi");
+	},
+	target: function(frm, dt, dn){
+		var d = locals[dt][dn];
+		d.deviasi = d.realisasi+d.target;
 		frm.refresh_field("detail");
 		var total_target = 0;
 		var total_realisasi = 0;

@@ -20,6 +20,7 @@
   "project",
   "project_name",
   "type",
+  "type2",
   "form_payment_entry_project",
   "form_payment_entry_supplier",
   "purpose",
@@ -195,14 +196,6 @@
    "options": "party_type"
   },
   {
-   "allow_on_submit": 1,
-   "depends_on": "eval:in_list([\"Receive\", \"Pay\"], doc.payment_type) && doc.party_type",
-   "fieldname": "party_name",
-   "fieldtype": "Data",
-   "in_global_search": 1,
-   "label": "Party Name"
-  },
-  {
    "fieldname": "column_break_11",
    "fieldtype": "Column Break"
   },
@@ -230,6 +223,7 @@
    "depends_on": "party",
    "fieldname": "party_balance",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Party Balance",
    "print_hide": 1,
    "read_only": 1
@@ -370,12 +364,14 @@
   {
    "fieldname": "references",
    "fieldtype": "Table",
+   "hidden": 1,
    "label": "Payment References",
    "options": "Payment Entry Reference"
   },
   {
    "fieldname": "section_break_34",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Writeoff"
   },
   {
@@ -438,6 +434,7 @@
   {
    "fieldname": "deductions",
    "fieldtype": "Table",
+   "hidden": 1,
    "label": "Payment Deductions or Loss",
    "options": "Payment Entry Deduction"
   },
@@ -756,7 +753,7 @@
    "read_only": 1
   },
   {
-   "depends_on": "eval:!doc.project",
+   "depends_on": "eval:!doc.project && doc.type2 == \"Form Payment Entry\"",
    "fieldname": "form_payment_entry",
    "fieldtype": "Link",
    "label": "Form Payment Entry",
@@ -795,18 +792,31 @@
    "options": "Form Payment Entry Supplier"
   },
   {
-   "depends_on": "eval:doc.project && doc.type == \"Slip Pembayaran Subkon\"",
+   "depends_on": "eval:doc.type2 == \"Slip Pembayaran Subkon\" || doc.type == \"Slip Pembayaran Subkon\"",
    "fieldname": "slip_pembayaran_subkon",
    "fieldtype": "Link",
    "label": "Slip Pembayaran Subkon",
-   "mandatory_depends_on": "eval:doc.project && doc.type == \"Slip Pembayaran Subkon\"",
+   "mandatory_depends_on": "eval:doc.type2 == \"Slip Pembayaran Subkon\" || doc.type == \"Slip Pembayaran Subkon\"",
    "options": "Slip Pembayaran Subkon"
+  },
+  {
+   "depends_on": "eval: !doc.project",
+   "fieldname": "type2",
+   "fieldtype": "Select",
+   "label": "Type",
+   "mandatory_depends_on": "eval: !doc.project",
+   "options": "Form Payment Entry\nSlip Pembayaran Subkon"
+  },
+  {
+   "fieldname": "party_name",
+   "fieldtype": "Data",
+   "label": "Party Name"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-12-05 10:35:45.162066",
+ "modified": "2024-01-31 15:20:18.841333",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Payment Entry",

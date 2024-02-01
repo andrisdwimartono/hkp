@@ -1,0 +1,158 @@
+{
+ "actions": [],
+ "allow_guest_to_view": 1,
+ "allow_rename": 1,
+ "autoname": "VF-.DD.MM.YYYY.-.##.",
+ "creation": "2024-01-18 10:27:26.071047",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "start_date",
+  "nama",
+  "perusahaan",
+  "column_break_o9ni9",
+  "finish_date",
+  "posting_date",
+  "status",
+  "safety_induction_list",
+  "safety_induction",
+  "section_break_9nxr9",
+  "alamat",
+  "no_kendaraan",
+  "no_telepon",
+  "keperluan",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "default": "Today",
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "finish_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Finish Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "nama",
+   "fieldtype": "Data",
+   "ignore_user_permissions": 1,
+   "in_list_view": 1,
+   "label": "Nama",
+   "reqd": 1
+  },
+  {
+   "fieldname": "perusahaan",
+   "fieldtype": "Data",
+   "label": "Perusahaan"
+  },
+  {
+   "fieldname": "alamat",
+   "fieldtype": "Small Text",
+   "label": "Alamat"
+  },
+  {
+   "fieldname": "no_kendaraan",
+   "fieldtype": "Data",
+   "label": "No Kendaraan"
+  },
+  {
+   "fieldname": "no_telepon",
+   "fieldtype": "Data",
+   "label": "No Telepon"
+  },
+  {
+   "fieldname": "keperluan",
+   "fieldtype": "Small Text",
+   "label": "Keperluan"
+  },
+  {
+   "fieldname": "column_break_o9ni9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_9nxr9",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Visitor Form",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "default": "Diajukan",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Diajukan\nTerima\nTolak"
+  },
+  {
+   "default": "0",
+   "fieldname": "safety_induction",
+   "fieldtype": "Check",
+   "label": "Safety Induction"
+  },
+  {
+   "fieldname": "safety_induction_list",
+   "fieldtype": "HTML",
+   "label": "Safety Induction List"
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-01-31 11:41:26.627035",
+ "modified_by": "Administrator",
+ "module": "Support",
+ "name": "Visitor Form",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Guest",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "route": "formulir-kunjungan",
+ "search_fields": "nama, perusahaan, keperluan, posting_date",
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

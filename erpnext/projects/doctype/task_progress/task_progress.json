@@ -11,11 +11,12 @@
   "rencana",
   "realisasi_mingguan",
   "realisasi",
-  "deviasi"
+  "deviasi",
+  "task_weight"
  ],
  "fields": [
   {
-   "columns": 1,
+   "columns": 2,
    "fieldname": "tanggal",
    "fieldtype": "Date",
    "in_list_view": 1,
@@ -23,21 +24,21 @@
    "reqd": 1
   },
   {
-   "columns": 2,
+   "columns": 1,
    "default": "0",
    "fieldname": "rencana",
    "fieldtype": "Percent",
    "in_list_view": 1,
-   "label": "Rencana Komulatif",
+   "label": "Rc Komulatif",
    "reqd": 1
   },
   {
-   "columns": 2,
+   "columns": 1,
    "default": "0",
    "fieldname": "realisasi",
    "fieldtype": "Percent",
    "in_list_view": 1,
-   "label": "Realisasi Komulatif",
+   "label": "Rl Komulatif",
    "reqd": 1
   },
   {
@@ -51,27 +52,35 @@
    "reqd": 1
   },
   {
-   "columns": 2,
+   "columns": 1,
    "default": "0",
    "fieldname": "rencana_mingguan",
    "fieldtype": "Percent",
    "in_list_view": 1,
-   "label": "Rencana Mingguan",
+   "label": "Rc Mingguan",
    "reqd": 1
   },
   {
-   "columns": 2,
+   "columns": 1,
    "default": "0",
    "fieldname": "realisasi_mingguan",
    "fieldtype": "Percent",
    "in_list_view": 1,
-   "label": "Realisasi Mingguan"
+   "label": "Rl Mingguan"
+  },
+  {
+   "columns": 1,
+   "fieldname": "task_weight",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Bobot",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-01-04 13:58:28.442016",
+ "modified": "2024-01-16 14:18:11.468015",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Task Progress",

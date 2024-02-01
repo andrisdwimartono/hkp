@@ -62,6 +62,16 @@ frappe.ui.form.on("Task", {
 
 
 frappe.ui.form.on("Task Progress", {
+	task_progress_add: function(frm, dt, dn){
+		var d = locals[dt][dn];
+		for(var i = cur_frm.doc.task_progress.length-1; i >= 0; i--){
+			if(cur_frm.doc.task_progress[i].idx == d.idx-1){
+				d.task_weight = cur_frm.doc.task_progress[i].task_weight;
+				break;
+			}
+		}
+		frm.refresh_field("task_progress");
+	},
 	rencana_mingguan: function (frm, dt, dn) {
 		var d = locals[dt][dn];
 		var sebelumnya = 0;

@@ -235,6 +235,31 @@ frappe.ui.form.on('Payment Entry', {
 		}
 	},
 
+	slip_pembayaran_subkon: function(frm){
+		frappe.call({
+			method: 'erpnext.accounts.doctype.slip_pembayaran_subkon.slip_pembayaran_subkon.check_slip_pembayaran_subkon',
+			args: {
+				'slip_pembayaran_subkon': frm.doc.slip_pembayaran_subkon
+			},
+			callback: function(r) {
+				if(r.message){
+					var vals = r.message[0];
+					frm.set_value("party_type", "Sub Contract");
+					frm.refresh_field("party_type");
+					frm.set_value("party", vals.party);
+					frm.refresh_field("party");
+					frm.set_value("party_name", vals.party_name);
+					frm.refresh_field("party_name");
+					
+					frm.set_value("paid_amount", vals.budget_amount);
+					frm.set_value("purpose", vals.purpose);
+					frm.refresh_field("paid_amount");
+					frm.trigger("paid_amount");
+				}
+			}
+		});
+	},
+
 	form_payment_entry_project: function(frm){
 		frappe.call({
 			method: 'erpnext.accounts.doctype.form_payment_entry_project.form_payment_entry_project.check_form_payment_entry_project',

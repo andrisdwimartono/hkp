@@ -434,7 +434,7 @@
    "reqd": 1
   },
   {
-   "fetch_from": "bank_account.bank",
+   "fetch_from": "sub_contract.bank",
    "fetch_if_empty": 1,
    "fieldname": "bank",
    "fieldtype": "Link",
@@ -443,14 +443,15 @@
    "read_only": 1
   },
   {
+   "fetch_from": "sub_contract.nama_akun_bank",
+   "fetch_if_empty": 1,
    "fieldname": "bank_account",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Bank Account",
-   "options": "Bank Account",
    "reqd": 1
   },
   {
-   "fetch_from": "bank_account.branch_code",
+   "fetch_from": "sub_contract.cabang",
    "fetch_if_empty": 1,
    "fieldname": "cabang",
    "fieldtype": "Data",
@@ -458,7 +459,7 @@
    "reqd": 1
   },
   {
-   "fetch_from": "bank_account.account_name",
+   "fetch_from": "sub_contract.nama_akun_bank",
    "fetch_if_empty": 1,
    "fieldname": "an_rekening",
    "fieldtype": "Data",
@@ -474,12 +475,11 @@
    "fieldtype": "Section Break"
   },
   {
-   "fetch_from": "bank_account.bank_account_no",
+   "fetch_from": "sub_contract.no_rekening",
    "fetch_if_empty": 1,
    "fieldname": "bank_account_no",
    "fieldtype": "Data",
-   "label": "Bank Account No",
-   "read_only": 1
+   "label": "Bank Account No"
   },
   {
    "fieldname": "pic_negosiasi",
@@ -563,7 +563,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-11-30 09:47:33.280228",
+ "modified": "2024-01-24 13:35:46.539454",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Berita Acara Klarifikasi dan Negosiasi",

@@ -73,13 +73,14 @@ def get_data(filters, columns):
 	for d in columns:
 		x = frappe.db.sql("""
 			SELECT 
-				SUM(COALESCE(`tabTask Progress`.rencana*`tabTask`.task_weight/100, 0)) rencana,
-				SUM(COALESCE(`tabTask Progress`.realisasi*`tabTask`.task_weight/100, 0)) realisasi,
-				SUM(COALESCE(`tabTask Progress`.deviasi*`tabTask`.task_weight/100, 0)) deviasi 
+				SUM(COALESCE(`tabTask Progress`.rencana*`tabTask Progress`.task_weight/100, 0)) rencana,
+				SUM(COALESCE(`tabTask Progress`.realisasi*`tabTask Progress`.task_weight/100, 0)) realisasi,
+				SUM(COALESCE(`tabTask Progress`.deviasi*`tabTask Progress`.task_weight/100, 0)) deviasi 
 			FROM `tabTask`
 			INNER JOIN `tabTask Progress` ON `tabTask Progress`.tanggal BETWEEN '{1}' AND '{2}' AND `tabTask Progress`.parent = `tabTask`.name
 			WHERE `tabTask`.project = '{0}'
 		""".format(filters.get("project"), d.get("start_week"), d.get("end_week")), as_dict=1)
+		
 		if x:
 			data[0][d.get("fieldname")] = x[0].rencana
 			data[1][d.get("fieldname")] = x[0].realisasi
@@ -138,7 +139,7 @@ def check_week(posting_date = None):
 	monday2 = (d2 - timedelta(days=d2.weekday()))
 	
 	week = (monday2 - monday1).days / 7
-	return int(week)
+	return int(week)+1
 
 def check_day(posting_date = None):
 	d2 = datetime.strptime(posting_date, "%Y-%m-%d")

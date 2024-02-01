@@ -189,3 +189,32 @@ def create_asset_maintenance():
 			"description": amt.description
 		})
 		asset_maintenance_doc.save()
+
+@frappe.whitelist()
+def get_asset_maintenance_task():
+	next_due_date = getdate(add_days(nowdate(), 7))
+	amts = frappe.db.sql("""SELECT * FROM `tabAsset Maintenance Task` WHERE next_due_date = '{0}'""".format(next_due_date), as_dict=1)
+	if amts:
+		for amt in amts:
+			assigner = []
+			x = frappe.get_doc("Asset Maintenance", amt.parent)
+			log_employees = frappe.db.sql("""SELECT DISTINCT u.name user_id FROM `tabHas Role` hr
+							INNER JOIN tabUser u ON u.name = hr.parent
+							WHERE hr.role IN ('Logistik') AND hr.parenttype = 'User'""", as_dict=1)
+			for adu in log_employees:
+				assigner.append(adu.user_id)
+				x.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(adu.user_id))
+
+			assigner.append(amt.assign_to)
+			x.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(amt.assign_to))
+			notification_doc = {
+				"type": "Alert",
+				"document_type": amt.parenttype,
+				"document_name": amt.parent,
+				"subject": "{1} di tanggal {0}".format(amt.parent, amt.maintenance_task),
+				"from_user": amt.owner,
+			}
+			
+			notification_doc = frappe._dict(notification_doc)
+			from frappe.desk.doctype.notification_log.notification_log import make_notification_logs
+			make_notification_logs(notification_doc, assigner)

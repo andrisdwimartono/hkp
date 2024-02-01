@@ -213,7 +213,7 @@ class PaymentEntry(AccountsController):
 				frappe.throw(_("Party is mandatory"))
 
 			_party_name = (
-				"title" if self.party_type in ("Student", "Shareholder") else self.party_type.lower() + "_name"
+				"title" if self.party_type in ("Student", "Shareholder") else "contractor_name" if self.party_type in ("Sub Contract") else self.party_type.lower() + "_name"
 			)
 			self.party_name = frappe.db.get_value(self.party_type, self.party, _party_name)
 
@@ -1543,7 +1543,7 @@ def get_party_details(company, party_type, party, date, cost_center=None):
 	account_currency = get_account_currency(party_account)
 	account_balance = get_balance_on(party_account, date, cost_center=cost_center)
 	_party_name = (
-		"title" if party_type in ("Student", "Shareholder") else party_type.lower() + "_name"
+		"title" if party_type in ("Student", "Shareholder") else "contractor_name" if party_type in ("Sub Contract") else party_type.lower() + "_name"
 	)
 	party_name = frappe.db.get_value(party_type, party, _party_name)
 	party_balance = get_balance_on(party_type=party_type, party=party, cost_center=cost_center)

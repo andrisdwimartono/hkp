@@ -11,6 +11,7 @@
  "field_order": [
   "basic_info",
   "contractor_name",
+  "sub_contract_name",
   "country",
   "default_bank_account",
   "bank_account",
@@ -496,6 +497,12 @@
    "fieldname": "document",
    "fieldtype": "Attach",
    "label": "Document"
+  },
+  {
+   "fieldname": "sub_contract_name",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Sub Contract Name"
   }
  ],
  "icon": "fa fa-user",
@@ -508,7 +515,7 @@
   }
  ],
  "make_attachments_public": 1,
- "modified": "2023-11-30 05:01:24.530884",
+ "modified": "2024-01-31 14:21:51.055354",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Sub Contract",

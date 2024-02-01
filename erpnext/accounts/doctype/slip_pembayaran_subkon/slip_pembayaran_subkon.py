@@ -51,3 +51,13 @@ def get_total(hand_over_progress):
 	if total2 :
 		tot= tot-total2[0].total
 	return tot
+
+@frappe.whitelist()
+def check_slip_pembayaran_subkon(slip_pembayaran_subkon):
+	if slip_pembayaran_subkon:
+		return frappe.db.sql("""
+        SELECT br.paid budget_amount, br.keterangan purpose, b2.sub_contract party, b2.contractor_name party_name FROM `tabSlip Pembayaran Subkon` br
+			INNER JOIN `tabSub Contract Hand Over` b2 ON b2.name = br.sub_contract_hand_over
+        WHERE br.name = '{0}' AND br.docstatus = 1
+        """.format(slip_pembayaran_subkon), as_dict=1)
+	return None
