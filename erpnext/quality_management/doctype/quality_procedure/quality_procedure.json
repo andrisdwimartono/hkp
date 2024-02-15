@@ -17,7 +17,8 @@
   "is_group",
   "rgt",
   "lft",
-  "old_parent"
+  "old_parent",
+  "document"
  ],
  "fields": [
   {
@@ -90,6 +91,13 @@
    "hidden": 1,
    "label": "Process Owner Full Name",
    "print_hide": 1
+  },
+  {
+   "depends_on": "eval: doc.is_group != 1",
+   "fieldname": "document",
+   "fieldtype": "Attach",
+   "label": "Document",
+   "mandatory_depends_on": "eval: doc.is_group != 1"
   }
  ],
  "is_tree": 1,
@@ -115,7 +123,7 @@
    "link_fieldname": "procedure"
   }
  ],
- "modified": "2020-10-26 15:25:39.316088",
+ "modified": "2024-02-02 14:06:09.445181",
  "modified_by": "Administrator",
  "module": "Quality Management",
  "name": "Quality Procedure",

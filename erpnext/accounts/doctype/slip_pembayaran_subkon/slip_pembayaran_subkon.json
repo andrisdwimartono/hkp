@@ -11,6 +11,7 @@
   "hand_over_progress",
   "progress_sequence",
   "sub_contract_hand_over",
+  "job_name",
   "contractor_name",
   "purchase_order",
   "supplier_name",
@@ -256,13 +257,20 @@
    "fieldname": "keterangan_potongan",
    "fieldtype": "Small Text",
    "label": "Keterangan Potongan"
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.job_name",
+   "fieldname": "job_name",
+   "fieldtype": "Data",
+   "label": "Job Name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
  "make_attachments_public": 1,
- "modified": "2024-01-31 13:50:44.941309",
+ "modified": "2024-02-02 15:12:13.353958",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Slip Pembayaran Subkon",

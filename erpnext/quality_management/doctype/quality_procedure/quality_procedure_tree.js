@@ -1,5 +1,14 @@
 frappe.treeview_settings["Quality Procedure"] = {
 	ignore_fields:["parent_quality_procedure"],
+	fields: [
+		{
+			fieldtype: 'Check', fieldname: 'is_group', label: __('Apakah Folder?'),
+			description: __("Jika di-check, maka akan berbentuk folder")
+		},
+		{
+			fieldtype: 'Attach', fieldname: 'document', label: __('Document'), depends_on: "eval: doc.is_group != 1", mandatory_depends_on: "eval: doc.is_group != 1"
+		}
+	],
 	get_tree_nodes: 'erpnext.quality_management.doctype.quality_procedure.quality_procedure.get_children',
 	add_tree_node: 'erpnext.quality_management.doctype.quality_procedure.quality_procedure.add_node',
 	filters: [
@@ -31,4 +40,19 @@ frappe.treeview_settings["Quality Procedure"] = {
 	onload: function(treeview) {
 		treeview.make_tree();
 	},
+	toolbar: [
+		{
+			condition: function(node) {
+				return !node.expandable
+			},
+			label: __("Download File"),
+			click: function(node, btn) {
+				frappe.db.get_value("Quality Procedure", {"name": node.data.value}, "document", function(value) {
+					window.location.href = value.document;
+				});
+			},
+			btnClass: "hidden-xs"
+		}
+	],
+	extend_toolbar: true
 };

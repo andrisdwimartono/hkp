@@ -6,7 +6,7 @@ import frappe
 from frappe import _, throw
 from frappe.desk.form import assign_to
 from frappe.model.document import Document
-from frappe.utils import add_days, add_months, add_years, getdate, nowdate
+from frappe.utils import add_days, add_months, add_years, getdate, nowdate, formatdate
 
 
 class AssetMaintenance(Document):
@@ -192,7 +192,7 @@ def create_asset_maintenance():
 
 @frappe.whitelist()
 def get_asset_maintenance_task():
-	next_due_date = getdate(add_days(nowdate(), 7))
+	next_due_date = getdate(add_days(nowdate(), 14))
 	amts = frappe.db.sql("""SELECT * FROM `tabAsset Maintenance Task` WHERE next_due_date = '{0}'""".format(next_due_date), as_dict=1)
 	if amts:
 		for amt in amts:
@@ -211,7 +211,7 @@ def get_asset_maintenance_task():
 				"type": "Alert",
 				"document_type": amt.parenttype,
 				"document_name": amt.parent,
-				"subject": "{1} di tanggal {0}".format(amt.parent, amt.maintenance_task),
+				"subject": "{1} di tanggal {0} untuk aset {2}".format(next_due_date, amt.maintenance_task, x.item_name),
 				"from_user": amt.owner,
 			}
 			

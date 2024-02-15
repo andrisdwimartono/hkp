@@ -11,9 +11,13 @@
   "process_owner",
   "full_name",
   "column_break_4",
+  "posting_date",
   "status",
+  "department",
+  "target_penyelesaian",
   "section_break_4",
   "details",
+  "akar_permasalahan",
   "corrective_action",
   "preventive_action"
  ],
@@ -77,11 +81,36 @@
    "fieldname": "preventive_action",
    "fieldtype": "Text Editor",
    "label": "Preventive Action"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department",
+   "reqd": 1
+  },
+  {
+   "fieldname": "akar_permasalahan",
+   "fieldtype": "Text Editor",
+   "label": "Akar Permasalahan"
+  },
+  {
+   "fieldname": "target_penyelesaian",
+   "fieldtype": "Date",
+   "label": "Waktu Penyelesaian",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-02-26 15:27:47.247814",
+ "modified": "2024-02-02 14:32:10.566418",
  "modified_by": "Administrator",
  "module": "Quality Management",
  "name": "Non Conformance",
