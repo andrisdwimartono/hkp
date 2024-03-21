@@ -9,21 +9,28 @@
  "filters": [],
  "idx": 2,
  "is_standard": "Yes",
- "modified": "2023-05-04 13:53:06.469285",
+ "modified": "2024-03-07 09:31:26.445864",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Asset Depreciation Ledger",
  "owner": "Administrator",
  "prepared_report": 0,
+ "query": "",
  "ref_doctype": "Asset",
  "report_name": "Asset Depreciation Ledger",
  "report_type": "Script Report",
  "roles": [
   {
-   "role": "Accounts User"
+   "role": "Kasir"
   },
   {
-   "role": "Kasir"
+   "role": "Manager Akuntansi"
+  },
+  {
+   "role": "Admin Akuntansi"
+  },
+  {
+   "role": "Keuangan Pajak"
   }
  ]
 }

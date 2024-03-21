@@ -149,9 +149,9 @@
    "type": "Link"
   },
   {
-   "dependencies": "Asset Maintenance",
+   "dependencies": "",
    "hidden": 0,
-   "is_query_report": 0,
+   "is_query_report": 1,
    "label": "Asset Maintenance",
    "link_to": "Asset Maintenance",
    "link_type": "Report",
@@ -168,7 +168,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-12-08 14:20:44.168937",
+ "modified": "2024-03-07 13:41:59.505587",
  "modified_by": "Administrator",
  "module": "Assets",
  "name": "Assets",

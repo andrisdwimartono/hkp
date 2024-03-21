@@ -7,15 +7,16 @@
  "docstatus": 0,
  "doctype": "Report",
  "filters": [],
- "idx": 0,
+ "idx": 1,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2023-12-28 20:53:29.315643",
+ "modified": "2024-03-19 08:50:17.368767",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Project Progress",
  "owner": "Administrator",
  "prepared_report": 0,
+ "query": "",
  "ref_doctype": "Project",
  "report_name": "Project Progress",
  "report_type": "Script Report",
@@ -25,9 +26,6 @@
   },
   {
    "role": "Projects User"
-  },
-  {
-   "role": "Employee Self Service"
   },
   {
    "role": "Engineering"
@@ -48,9 +46,6 @@
    "role": "Operasional"
   },
   {
-   "role": "All"
-  },
-  {
    "role": "HR User"
   },
   {
@@ -64,6 +59,12 @@
   },
   {
    "role": "Site Manager"
+  },
+  {
+   "role": "Pengendalian Proyek"
+  },
+  {
+   "role": "Staff - Pelaksana"
   }
  ]
 }

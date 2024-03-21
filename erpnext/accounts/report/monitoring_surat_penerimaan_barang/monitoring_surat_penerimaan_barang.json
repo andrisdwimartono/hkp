@@ -25,7 +25,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2023-04-18 11:06:16.668082",
+ "modified": "2024-03-18 11:16:37.927041",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Monitoring Surat Penerimaan Barang",
@@ -37,13 +37,22 @@
  "report_type": "Query Report",
  "roles": [
   {
-   "role": "Accounts Manager"
-  },
-  {
-   "role": "Accounts User"
+   "role": "Manajer Logistik"
   },
   {
    "role": "Logistik"
+  },
+  {
+   "role": "Pengendalian Biaya"
+  },
+  {
+   "role": "Logistik Asset"
+  },
+  {
+   "role": "Pengendalian Proyek"
+  },
+  {
+   "role": "Site Manager"
   }
  ]
 }

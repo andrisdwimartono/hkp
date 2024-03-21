@@ -10,7 +10,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2023-04-11 12:19:24.355308",
+ "modified": "2024-03-07 13:09:35.029055",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "LAPORAN HARIAN BARANG KELUAR",
@@ -22,10 +22,10 @@
  "report_type": "Query Report",
  "roles": [
   {
-   "role": "Accounts Manager"
+   "role": "Logistik Asset"
   },
   {
-   "role": "Accounts User"
+   "role": "Logistik Gudang"
   },
   {
    "role": "Logistik"

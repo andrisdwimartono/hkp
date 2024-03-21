@@ -9,7 +9,7 @@
  "filters": [],
  "idx": 2,
  "is_standard": "Yes",
- "modified": "2023-03-20 16:00:31.026927",
+ "modified": "2024-03-14 10:38:16.333178",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Balance Sheet",
@@ -20,16 +20,19 @@
  "report_type": "Script Report",
  "roles": [
   {
-   "role": "Accounts User"
+   "role": "Admin Akuntansi"
   },
   {
-   "role": "Accounts Manager"
-  },
-  {
-   "role": "Auditor"
+   "role": "Manager Akuntansi"
   },
   {
    "role": "Kasir"
+  },
+  {
+   "role": "Keuangan Pajak"
+  },
+  {
+   "role": "Manajer Keuangan"
   }
  ]
 }

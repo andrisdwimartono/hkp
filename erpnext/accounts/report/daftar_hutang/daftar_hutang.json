@@ -80,7 +80,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2023-06-22 06:24:53.331757",
+ "modified": "2024-03-07 08:24:58.955096",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Daftar Hutang",
@@ -96,6 +96,24 @@
   },
   {
    "role": "Kasir"
+  },
+  {
+   "role": "Manager Akuntansi"
+  },
+  {
+   "role": "Administrasi Keuangan"
+  },
+  {
+   "role": "Manajer Keuangan"
+  },
+  {
+   "role": "Admin Akuntansi"
+  },
+  {
+   "role": "Admin Logistik"
+  },
+  {
+   "role": "Keuangan Pajak"
   }
  ]
 }

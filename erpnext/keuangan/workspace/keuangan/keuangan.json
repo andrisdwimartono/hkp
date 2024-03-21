@@ -8,7 +8,7 @@
  "docstatus": 0,
  "doctype": "Workspace",
  "extends_another_page": 0,
- "hide_custom": 0,
+ "hide_custom": 1,
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
@@ -27,24 +27,6 @@
    "is_query_report": 0,
    "label": "Tanda Terima Kas Bon",
    "link_to": "Payment Entry",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Kas Bon Proyek",
-   "link_to": "Form Payment Entry Project",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Kas Bon Non Proyek",
-   "link_to": "Form Payment Entry",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -105,24 +87,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Kas Bon Proyek",
-   "link_to": "Form Payment Entry Project",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Kas Bon Non Proyek",
-   "link_to": "Form Payment Entry",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Progress Subkon",
    "link_to": "Hand Over Progress",
    "link_type": "DocType",
@@ -176,118 +140,182 @@
   },
   {
    "hidden": 0,
+   "is_query_report": 0,
+   "label": "Rencana Anggaran Proyek",
+   "link_to": "Budget",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Laporan Monitoring RAP",
+   "link_to": "Laporan Monitoring RAP",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Keuangan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Kas Bon Proyek",
+   "link_to": "Form Payment Entry Project",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Kas Bon Non Proyek",
+   "link_to": "Form Payment Entry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Kas Bon Belum Realisasi",
+   "link_to": "Kas Bon Belum Realisasi",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Deposito",
+   "link_to": "Deposite",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Daftar Deposito",
+   "link_to": "Daftar Deposito",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
    "is_query_report": 1,
    "label": "Daftar Hutang",
    "link_to": "Daftar Hutang",
    "link_type": "Report",
    "onboard": 1,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Daftar Piutang",
+   "link_to": "Daftar Piutang",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Rencana Pengajuan Anggaran Proyek",
+   "link_to": "Rencana Pengajuan Anggaran Proyek",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Rencana Pengajuan Anggaran Non Proyek",
+   "link_to": "Rencana Pengajuan Anggaran Non Proyek",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Jurnal Entri",
+   "link_to": "Journal Entry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Daftar Giro Mundur",
+   "link_to": "Daftar Giro Mundur",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Realisasi Pengajuan Anggaran",
+   "link_to": "Realisasi Pengajuan Anggaran",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tanda Terima Kas Bon",
+   "link_to": "Payment Entry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Realisasi Anggaran Proyek",
+   "link_to": "Realisasi Anggaran Proyek",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Realisasi Anggaran Non Proyek",
+   "link_to": "Realisasi Anggaran Non Proyek",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Bank Garansi",
+   "link_to": "Bank Guarantee",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2023-12-06 10:20:55.143453",
+ "modified": "2024-03-06 10:22:09.552772",
  "modified_by": "Administrator",
  "module": "Keuangan",
  "name": "Keuangan",
  "owner": "Administrator",
  "pin_to_bottom": 0,
  "pin_to_top": 1,
- "shortcuts": [
-  {
-   "doc_view": "List",
-   "label": "Tanda Terima Kas Bon",
-   "link_to": "Payment Entry",
-   "type": "DocType"
-  },
-  {
-   "doc_view": "List",
-   "label": "Jurnal Entri",
-   "link_to": "Journal Entry",
-   "type": "DocType"
-  },
-  {
-   "doc_view": "List",
-   "label": "Kas Bon Proyek",
-   "link_to": "Form Payment Entry Project",
-   "type": "DocType"
-  },
-  {
-   "doc_view": "List",
-   "label": "Kas Bon Non Proyek",
-   "link_to": "Form Payment Entry",
-   "type": "DocType"
-  },
-  {
-   "doc_view": "",
-   "label": "Kas Bon Belum Realisasi",
-   "link_to": "Kas Bon Belum Realisasi",
-   "type": "Report"
-  },
-  {
-   "doc_view": "List",
-   "label": "SPK Subkon",
-   "link_to": "Sub Contract Hand Over",
-   "type": "DocType"
-  },
-  {
-   "doc_view": "List",
-   "label": "Progress Subkon",
-   "link_to": "Hand Over Progress",
-   "type": "DocType"
-  },
-  {
-   "doc_view": "",
-   "label": "Slip Pembayaran Subkon",
-   "link_to": "Slip Pembayaran Subkon",
-   "type": "DocType"
-  },
-  {
-   "doc_view": "",
-   "label": "Slip Pembayaran Supplier",
-   "link_to": "Form Payment Entry Supplier",
-   "type": "DocType"
-  },
-  {
-   "doc_view": "List",
-   "label": "Deposito",
-   "link_to": "Deposite",
-   "type": "DocType"
-  },
-  {
-   "doc_view": "",
-   "label": "Daftar Deposito",
-   "link_to": "Daftar Deposito",
-   "type": "Report"
-  },
-  {
-   "doc_view": "",
-   "label": "Rencana Pengajuan Anggaran Proyek",
-   "link_to": "Rencana Pengajuan Anggaran Proyek",
-   "type": "Report"
-  },
-  {
-   "doc_view": "",
-   "label": "Rencana Pengajuan Anggaran Non Proyek",
-   "link_to": "Rencana Pengajuan Anggaran Non Proyek",
-   "type": "Report"
-  },
-  {
-   "doc_view": "",
-   "label": "Daftar Piutang",
-   "link_to": "Daftar Piutang",
-   "type": "Report"
-  },
-  {
-   "doc_view": "",
-   "label": "Daftar Hutang",
-   "link_to": "Daftar Hutang",
-   "type": "Report"
-  },
-  {
-   "doc_view": "",
-   "label": "Realisasi Pengajuan Anggaran",
-   "link_to": "Realisasi Pengajuan Anggaran",
-   "type": "Report"
-  }
- ],
- "shortcuts_label": "Menu Kasir"
+ "shortcuts": [],
+ "shortcuts_label": ""
 }

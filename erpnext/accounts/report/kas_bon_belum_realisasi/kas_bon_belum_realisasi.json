@@ -10,7 +10,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2023-04-06 11:57:34.596530",
+ "modified": "2024-03-01 09:58:47.991010",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Kas Bon Belum Realisasi",
@@ -29,6 +29,18 @@
   },
   {
    "role": "Kasir"
+  },
+  {
+   "role": "Manager Akuntansi"
+  },
+  {
+   "role": "Administrasi Keuangan"
+  },
+  {
+   "role": "Kasir HKP"
+  },
+  {
+   "role": "Admin Akuntansi"
   }
  ]
 }

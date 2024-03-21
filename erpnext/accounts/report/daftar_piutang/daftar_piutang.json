@@ -94,7 +94,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2023-06-20 11:01:44.311447",
+ "modified": "2024-03-07 08:25:15.884767",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Daftar Piutang",
@@ -110,6 +110,21 @@
   },
   {
    "role": "Kasir"
+  },
+  {
+   "role": "Manager Akuntansi"
+  },
+  {
+   "role": "Administrasi Keuangan"
+  },
+  {
+   "role": "Manajer Keuangan"
+  },
+  {
+   "role": "Admin Akuntansi"
+  },
+  {
+   "role": "Keuangan Pajak"
   }
  ]
 }

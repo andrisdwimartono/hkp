@@ -9,7 +9,7 @@
  "filters": [],
  "idx": 3,
  "is_standard": "Yes",
- "modified": "2023-04-11 12:29:30.918850",
+ "modified": "2024-03-18 10:19:06.204625",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Stock Ledger",
@@ -21,13 +21,16 @@
  "report_type": "Script Report",
  "roles": [
   {
-   "role": "Stock User"
+   "role": "Manajer Logistik"
   },
   {
-   "role": "Accounts Manager"
+   "role": "Logistik Asset"
   },
   {
    "role": "Logistik"
+  },
+  {
+   "role": "Operasional"
   }
  ]
 }

@@ -9,7 +9,7 @@
  "filters": [],
  "idx": 2,
  "is_standard": "Yes",
- "modified": "2023-12-07 15:16:57.930684",
+ "modified": "2024-03-14 11:46:13.873969",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Stock Balance",
@@ -20,12 +20,6 @@
  "report_name": "Stock Balance",
  "report_type": "Script Report",
  "roles": [
-  {
-   "role": "Stock User"
-  },
-  {
-   "role": "Accounts Manager"
-  },
   {
    "role": "Logistik"
   }

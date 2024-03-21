@@ -33,24 +33,6 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
-   "label": "Kas Bon Proyek",
-   "link_to": "Form Payment Entry Project",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Kas Bon Non Proyek",
-   "link_to": "Form Payment Entry",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
    "is_query_report": 1,
    "label": "Rencana Pengajuan Anggaran Proyek",
    "link_to": "Rencana Pengajuan Anggaran Proyek",
@@ -105,24 +87,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Kas Bon Proyek",
-   "link_to": "Form Payment Entry Project",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Kas Bon Non Proyek",
-   "link_to": "Form Payment Entry",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Progress Subkon",
    "link_to": "Hand Over Progress",
    "link_type": "DocType",
@@ -170,15 +134,6 @@
    "is_query_report": 1,
    "label": "Realisasi Pengajuan Anggaran",
    "link_to": "Realisasi Pengajuan Anggaran",
-   "link_type": "Report",
-   "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Daftar Hutang",
-   "link_to": "Daftar Hutang",
    "link_type": "Report",
    "onboard": 1,
    "type": "Link"
@@ -343,9 +298,18 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Bank Garansi",
+   "link_to": "Bank Guarantee",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-01-10 13:13:11.211942",
+ "modified": "2024-03-06 10:22:44.994754",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Keuangan",

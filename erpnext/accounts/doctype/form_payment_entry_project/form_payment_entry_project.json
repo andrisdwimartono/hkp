@@ -37,6 +37,7 @@
   "form_payment_entry_checklist",
   "keterangan",
   "pejabat",
+  "process_rules",
   "amended_from"
  ],
  "fields": [
@@ -256,12 +257,18 @@
    "fieldtype": "Table",
    "label": "Pejabat",
    "options": "Process Rule"
+  },
+  {
+   "fieldname": "process_rules",
+   "fieldtype": "Table",
+   "label": "Process Rules",
+   "options": "Process Rules"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-12-21 13:48:48.852959",
+ "modified": "2024-02-29 11:39:24.947614",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Form Payment Entry Project",

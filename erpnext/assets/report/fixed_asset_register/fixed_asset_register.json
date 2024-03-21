@@ -9,7 +9,7 @@
  "filters": [],
  "idx": 0,
  "is_standard": "Yes",
- "modified": "2023-12-08 14:18:56.091701",
+ "modified": "2024-03-06 11:34:36.968628",
  "modified_by": "Administrator",
  "module": "Assets",
  "name": "Fixed Asset Register",
@@ -20,10 +20,7 @@
  "report_type": "Script Report",
  "roles": [
   {
-   "role": "Accounts User"
-  },
-  {
-   "role": "Quality Manager"
+   "role": "Manajer Logistik"
   },
   {
    "role": "Logistik"

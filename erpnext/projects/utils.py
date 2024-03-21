@@ -108,6 +108,13 @@ def save_process_rule(docname, status, comment=""):
 			WHERE name = '{0}'
 			""".format(npr.name))
 	frappe.msgprint("Anda telah {0}".format(status))
+	# args = {
+	#         "assign_to": [],
+	#         "doctype": ,
+	#         "name": ,
+	#         "description": ,
+	#         "assignment_rule":
+	# }
 	return True
 
 def get_a_process_rule(name, seq):

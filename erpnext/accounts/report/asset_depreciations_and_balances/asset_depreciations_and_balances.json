@@ -9,7 +9,7 @@
  "filters": [],
  "idx": 2,
  "is_standard": "Yes",
- "modified": "2023-05-04 13:53:28.063283",
+ "modified": "2024-03-07 09:32:07.076447",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Asset Depreciations and Balances",
@@ -20,10 +20,16 @@
  "report_type": "Script Report",
  "roles": [
   {
-   "role": "Accounts User"
+   "role": "Kasir"
   },
   {
-   "role": "Kasir"
+   "role": "Manager Akuntansi"
+  },
+  {
+   "role": "Keuangan Pajak"
+  },
+  {
+   "role": "Admin Akuntansi"
   }
  ]
 }

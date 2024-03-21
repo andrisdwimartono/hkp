@@ -29,3 +29,5 @@ Telephony
 E-commerce
 Keuangan
 HKP
+Operasional
+Engineering

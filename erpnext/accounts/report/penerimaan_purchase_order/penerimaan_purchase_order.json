@@ -9,7 +9,7 @@
  "filters": [],
  "idx": 0,
  "is_standard": "Yes",
- "modified": "2023-03-21 07:35:39.602586",
+ "modified": "2024-03-18 11:09:55.570579",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Penerimaan Purchase Order",
@@ -21,13 +21,22 @@
  "report_type": "Query Report",
  "roles": [
   {
-   "role": "Accounts Manager"
-  },
-  {
-   "role": "Accounts User"
+   "role": "Manajer Logistik"
   },
   {
    "role": "Logistik"
+  },
+  {
+   "role": "Logistik Asset"
+  },
+  {
+   "role": "Logistik Gudang"
+  },
+  {
+   "role": "Operasional"
+  },
+  {
+   "role": "Site Manager"
   }
  ]
 }
