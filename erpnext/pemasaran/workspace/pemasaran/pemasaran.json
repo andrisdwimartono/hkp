@@ -1,0 +1,238 @@
+{
+ "cards_label": "Menu Pemasaran",
+ "category": "Modules",
+ "charts": [],
+ "creation": "2023-03-14 02:12:26.468164",
+ "developer_mode_only": 0,
+ "disable_user_customization": 1,
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "extends_another_page": 0,
+ "hide_custom": 0,
+ "icon": "",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "label": "Pemasaran",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Akivitas",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Laporan Aktivitas Di Luar Kantor",
+   "link_to": "LAPORAN AKTIVITAS DI LUAR KANTOR",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Usulan Mengikuti Tender",
+   "link_to": "USULAN MENGIKUTI TENDER",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Laporan Penjelasan Tender",
+   "link_to": "LAPORAN PENJELASAN TENDER",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Informasi Pembuatan Penawaran",
+   "link_to": "INFORMASI PEMBUATAN PENAWARAN",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Checklist Dokumen Tender",
+   "link_to": "CHECKLIST DOKUMEN TENDER",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Informasi Pembukaan Tender",
+   "link_to": "INFORMASI PEMBUKAAN TENDER",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Analisa Ketidak Berhasilan",
+   "link_to": "ANALISA KETIDAKBERHASILAN",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tinjauan Terhadap Persyaratan Dalam Dokumen Kontrak",
+   "link_to": "TINJAUAN TERHADAP PERSYARATAN DALAM DOKUMEN KONTRAK",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Informasi Pekerjaan Baru",
+   "link_to": "INFORMASI PEKERJAAN BARU",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Jadwal Tender",
+   "link_to": "Jadwal dan PIC Tender",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Master",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Master Pelanggan",
+   "link_to": "Customer",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Master Proyek",
+   "link_to": "Project",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Laporan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "LAPORAN PEMBUKAAN TENDER",
+   "link_to": "LAPORAN PEMBUKAAN TENDER",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Monitoring Penawaran Harga",
+   "link_to": "MONITORING PENAWARAN HARGA",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Laporan Hasil Survey Pelanggan",
+   "link_to": "LAPORAN HASIL SURVEY PELANGGAN",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "CRM",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Kuesioner Lapangan",
+   "link_to": "KUESIONER LAPANGAN",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Kuesioner Kepuasan Pelanggan",
+   "link_to": "Kuesioner Keupasan Pelanggan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2024-04-01 13:22:48.274198",
+ "modified_by": "Administrator",
+ "module": "Pemasaran",
+ "name": "Pemasaran",
+ "onboarding": "",
+ "owner": "Administrator",
+ "pin_to_bottom": 0,
+ "pin_to_top": 1,
+ "shortcuts": [
+  {
+   "doc_view": "List",
+   "label": "Prospek",
+   "link_to": "Lead",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Penawaran",
+   "link_to": "Quotation",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Proyek",
+   "link_to": "Project",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Barang",
+   "link_to": "Item",
+   "type": "DocType"
+  }
+ ]
+}

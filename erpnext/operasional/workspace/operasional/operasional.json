@@ -363,35 +363,9 @@
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Keuangan",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Kas Bon Proyek",
-   "link_to": "Form Payment Entry Project",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "KPI Karyawan",
-   "link_to": "KPI Karyawan",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
   }
  ],
- "modified": "2024-03-21 10:39:57.361858",
+ "modified": "2024-04-02 08:43:04.899740",
  "modified_by": "Administrator",
  "module": "Operasional",
  "name": "Operasional",

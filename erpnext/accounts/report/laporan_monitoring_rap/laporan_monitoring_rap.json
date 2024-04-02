@@ -73,7 +73,7 @@
  "is_standard": "Yes",
  "json": "{}",
  "letter_head": "KOP HKP",
- "modified": "2024-03-15 13:50:36.081419",
+ "modified": "2024-04-01 09:52:37.899384",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Laporan Monitoring RAP",
@@ -104,6 +104,9 @@
   },
   {
    "role": "Pengendalian Proyek"
+  },
+  {
+   "role": "Operasional"
   }
  ]
 }

@@ -1,0 +1,171 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-09-21 11:41:37.088319",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "kunjungan",
+  "project",
+  "proyek",
+  "lokasi",
+  "tanggal",
+  "manajerial",
+  "sdm",
+  "k3l",
+  "kelengkapan_organisasi",
+  "sarana_kerja_teknologi",
+  "sarana_kerja_prasarana",
+  "sarana_transportasi",
+  "alat_kerja",
+  "gudang",
+  "kebersihan_dan_kenyamanan",
+  "notifikasi",
+  "process_rules",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "kunjungan",
+   "fieldtype": "Link",
+   "label": "Kunjungan",
+   "options": "DAFTAR PERIKSA SAAT KUNJUNGAN LAPANGAN",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "kunjungan.project",
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Kode Proyek",
+   "options": "Project",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "proyek",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Proyek"
+  },
+  {
+   "fetch_from": "project.project_address",
+   "fieldname": "lokasi",
+   "fieldtype": "Data",
+   "label": "Lokasi"
+  },
+  {
+   "default": "Today",
+   "fieldname": "tanggal",
+   "fieldtype": "Date",
+   "label": "Tanggal"
+  },
+  {
+   "fieldname": "manajerial",
+   "fieldtype": "Table",
+   "label": "MANAJERIAL",
+   "options": "DAFTAR PERIKSA SAAT VERIFIKASI KUNJUNGAN LAPANGAN DETAIL"
+  },
+  {
+   "fieldname": "sdm",
+   "fieldtype": "Table",
+   "label": "SDM",
+   "options": "DAFTAR PERIKSA SAAT VERIFIKASI KUNJUNGAN LAPANGAN DETAIL"
+  },
+  {
+   "fieldname": "k3l",
+   "fieldtype": "Table",
+   "label": "K3L",
+   "options": "DAFTAR PERIKSA SAAT VERIFIKASI KUNJUNGAN LAPANGAN DETAIL"
+  },
+  {
+   "fieldname": "kelengkapan_organisasi",
+   "fieldtype": "Table",
+   "label": "KELENGKAPAN ORGANISASI",
+   "options": "DAFTAR PERIKSA SAAT VERIFIKASI KUNJUNGAN LAPANGAN DETAIL"
+  },
+  {
+   "fieldname": "sarana_kerja_teknologi",
+   "fieldtype": "Table",
+   "label": "Sarana kerja teknologi",
+   "options": "DAFTAR PERIKSA SAAT VERIFIKASI KUNJUNGAN LAPANGAN DETAIL"
+  },
+  {
+   "fieldname": "sarana_kerja_prasarana",
+   "fieldtype": "Table",
+   "label": "Sarana kerja prasarana",
+   "options": "DAFTAR PERIKSA SAAT VERIFIKASI KUNJUNGAN LAPANGAN DETAIL"
+  },
+  {
+   "fieldname": "sarana_transportasi",
+   "fieldtype": "Table",
+   "label": "Sarana transportasi",
+   "options": "DAFTAR PERIKSA SAAT VERIFIKASI KUNJUNGAN LAPANGAN DETAIL"
+  },
+  {
+   "fieldname": "alat_kerja",
+   "fieldtype": "Table",
+   "label": "ALAT KERJA",
+   "options": "DAFTAR PERIKSA SAAT VERIFIKASI KUNJUNGAN LAPANGAN DETAIL"
+  },
+  {
+   "fieldname": "gudang",
+   "fieldtype": "Table",
+   "label": "GUDANG",
+   "options": "DAFTAR PERIKSA SAAT VERIFIKASI KUNJUNGAN LAPANGAN DETAIL"
+  },
+  {
+   "fieldname": "kebersihan_dan_kenyamanan",
+   "fieldtype": "Table",
+   "label": "KEBERSIHAN DAN KENYAMANAN",
+   "options": "DAFTAR PERIKSA SAAT VERIFIKASI KUNJUNGAN LAPANGAN DETAIL"
+  },
+  {
+   "fieldname": "notifikasi",
+   "fieldtype": "Table",
+   "label": "Notifikasi",
+   "options": "Notifikasi"
+  },
+  {
+   "fieldname": "process_rules",
+   "fieldtype": "Table",
+   "label": "Process Rules",
+   "options": "Process Rules"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "DAFTAR PERIKSA SAAT VERIFIKASI KUNJUNGAN LAPANGAN",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-03-21 11:28:57.042020",
+ "modified_by": "Administrator",
+ "module": "Pengendalian Proyek",
+ "name": "DAFTAR PERIKSA SAAT VERIFIKASI KUNJUNGAN LAPANGAN",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

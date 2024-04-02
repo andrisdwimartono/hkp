@@ -68,7 +68,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2024-03-07 15:07:47.847073",
+ "modified": "2024-03-26 10:19:20.750191",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Rencana Pengajuan Anggaran Proyek",
@@ -87,6 +87,12 @@
   },
   {
    "role": "Manager Akuntansi"
+  },
+  {
+   "role": "Pengendalian Biaya"
+  },
+  {
+   "role": "Kasir HKP"
   }
  ]
 }

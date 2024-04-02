@@ -1,0 +1,147 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "RK-.YYYY.-.######.",
+ "creation": "2023-05-09 14:56:50.320692",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project",
+  "project_name",
+  "posting_date",
+  "pekerjaan",
+  "jenis_pekerjaan",
+  "customer",
+  "kriteria_metode_kerja",
+  "catatan",
+  "rencana_kerja_pendahuluan",
+  "rencana_kerja_informasi_proyek",
+  "rencana_kerja_uraian_rencana_kerja_proyek",
+  "rencana_kerja_rencana_biaya_pelaksanaan",
+  "rencana_kerja_pengendalian",
+  "rencana_kerja_kajian_resiko"
+ ],
+ "fields": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pekerjaan",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Pekerjaan",
+   "options": "Pekerjaan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "jenis_pekerjaan",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Jenis Pekerjaan",
+   "options": "Jenis Pekerjaan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Owner",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "kriteria_metode_kerja",
+   "fieldtype": "Link",
+   "label": "Kriteria Metode Kerja",
+   "options": "Kriteria Metode Kerja",
+   "reqd": 1
+  },
+  {
+   "fieldname": "catatan",
+   "fieldtype": "Small Text",
+   "label": "Catatan"
+  },
+  {
+   "fieldname": "rencana_kerja_pendahuluan",
+   "fieldtype": "Table",
+   "label": "Rencana Kerja Pendahuluan",
+   "options": "Rencana Kerja Pendahuluan"
+  },
+  {
+   "fieldname": "rencana_kerja_informasi_proyek",
+   "fieldtype": "Table",
+   "label": "Rencana Kerja Informasi Proyek",
+   "options": "Rencana Kerja Informasi Proyek"
+  },
+  {
+   "fieldname": "rencana_kerja_uraian_rencana_kerja_proyek",
+   "fieldtype": "Table",
+   "label": "Rencana Kerja Uraian Rencana Kerja Proyek",
+   "options": "Rencana Kerja Uraian Rencana Kerja Proyek"
+  },
+  {
+   "fieldname": "rencana_kerja_rencana_biaya_pelaksanaan",
+   "fieldtype": "Table",
+   "label": "Rencana Kerja Rencana Biaya Pelaksanaan",
+   "options": "Rencana Kerja Rencana Biaya Pelaksanaan"
+  },
+  {
+   "fieldname": "rencana_kerja_pengendalian",
+   "fieldtype": "Table",
+   "label": "Rencana Kerja Pengendalian",
+   "options": "Rencana Kerja Pengendalian"
+  },
+  {
+   "fieldname": "rencana_kerja_kajian_resiko",
+   "fieldtype": "Table",
+   "label": "Rencana Kerja Kajian Resiko",
+   "options": "Rencana Kerja Kajian Resiko"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-04-01 14:12:00.582830",
+ "modified_by": "Administrator",
+ "module": "Operasional",
+ "name": "Rencana Kerja",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_views": 1
+}

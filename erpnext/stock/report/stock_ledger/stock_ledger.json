@@ -9,7 +9,7 @@
  "filters": [],
  "idx": 3,
  "is_standard": "Yes",
- "modified": "2024-03-18 10:19:06.204625",
+ "modified": "2024-03-28 08:53:05.626984",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Stock Ledger",
@@ -31,6 +31,9 @@
   },
   {
    "role": "Operasional"
+  },
+  {
+   "role": "Logistik Gudang"
   }
  ]
 }

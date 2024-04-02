@@ -19,7 +19,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2023-12-14 15:22:29.851177",
+ "modified": "2024-03-25 11:20:19.216024",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "TENAGA KERJA PROYEK",
@@ -34,9 +34,6 @@
   },
   {
    "role": "Projects User"
-  },
-  {
-   "role": "Employee Self Service"
   },
   {
    "role": "Engineering"
@@ -55,9 +52,6 @@
   },
   {
    "role": "Operasional"
-  },
-  {
-   "role": "All"
   },
   {
    "role": "HR Manager"

@@ -31,3 +31,7 @@ Keuangan
 HKP
 Operasional
 Engineering
+Pemasaran
+Kasir
+Pengendalian Biaya
+Pengendalian Proyek

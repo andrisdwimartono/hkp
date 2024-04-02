@@ -1,0 +1,324 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "SPS.##.",
+ "creation": "2023-07-04 13:46:11.346662",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "base_on",
+  "hand_over_progress",
+  "progress_sequence",
+  "sub_contract_hand_over",
+  "job_name",
+  "contractor_name",
+  "purchase_order",
+  "supplier_name",
+  "project",
+  "project_name",
+  "budget",
+  "column_break_ni31z",
+  "posting_date",
+  "required_date",
+  "week_periode",
+  "use_payment_entry",
+  "section_break_kqfpp",
+  "total_cost",
+  "outstanding_amount",
+  "paid",
+  "total",
+  "column_break_ajfyw",
+  "ppn_percent",
+  "ppn",
+  "pph_percent",
+  "pph",
+  "potongan",
+  "keterangan_potongan",
+  "section_break_73dp1",
+  "form_payment_entry_checklist",
+  "keterangan",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "base_on",
+   "fieldtype": "Select",
+   "label": "Base On",
+   "options": "Hand Over Progress",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.base_on == \"Hand Over Progress\"",
+   "fieldname": "hand_over_progress",
+   "fieldtype": "Link",
+   "label": "Hand Over Progress",
+   "mandatory_depends_on": "eval:doc.base_on == \"Hand Over Progress\"",
+   "options": "Hand Over Progress"
+  },
+  {
+   "fetch_from": "hand_over_progress.progress_sequence",
+   "fieldname": "progress_sequence",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Progress Sequence"
+  },
+  {
+   "fetch_from": "hand_over_progress.sub_contract_hand_over",
+   "fieldname": "sub_contract_hand_over",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Sub Contract Hand Over",
+   "options": "Sub Contract Hand Over",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "sub_contract_hand_over.job_name",
+   "fieldname": "job_name",
+   "fieldtype": "Data",
+   "label": "Job Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "hand_over_progress.contractor_name",
+   "fieldname": "contractor_name",
+   "fieldtype": "Data",
+   "label": "Contractor Name",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.base_on == \"Purchase Order\"",
+   "fieldname": "purchase_order",
+   "fieldtype": "Link",
+   "label": "Purchase Order",
+   "mandatory_depends_on": "eval:doc.base_on == \"Purchase Order\"",
+   "options": "Purchase Order"
+  },
+  {
+   "fetch_from": "purchase_order.supplier_name",
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "label": "Supplier Name",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.base_on == \"Budget\"||doc.base_on == \"Hand Over Progress\"",
+   "fetch_from": "hand_over_progress.project",
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project",
+   "mandatory_depends_on": "eval:doc.base_on == \"Budget\"",
+   "options": "Project"
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.base_on == \"Budget\"",
+   "fieldname": "budget",
+   "fieldtype": "Link",
+   "label": "Budget",
+   "mandatory_depends_on": "eval:doc.base_on == \"Budget\"",
+   "options": "Budget"
+  },
+  {
+   "fieldname": "column_break_ni31z",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Tanggal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "required_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Required Date",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "week_periode",
+   "fieldtype": "Int",
+   "label": "Week Periode",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "use_payment_entry",
+   "fieldtype": "Check",
+   "label": "Lewat Kasir"
+  },
+  {
+   "fieldname": "section_break_kqfpp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_cost",
+   "fieldtype": "Currency",
+   "label": "Total Cost",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "outstanding_amount",
+   "fieldtype": "Currency",
+   "label": "Outstanding Amount",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "paid",
+   "fieldtype": "Currency",
+   "label": "Paid",
+   "options": "Company:company:default_currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ajfyw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.paid > 0",
+   "fieldname": "ppn_percent",
+   "fieldtype": "Percent",
+   "label": "PPn Percent"
+  },
+  {
+   "default": "0",
+   "fieldname": "ppn",
+   "fieldtype": "Currency",
+   "label": "PPn",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.paid > 0",
+   "fieldname": "pph_percent",
+   "fieldtype": "Percent",
+   "label": "PPh Percent"
+  },
+  {
+   "default": "0",
+   "fieldname": "pph",
+   "fieldtype": "Currency",
+   "label": "PPh",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "potongan",
+   "fieldtype": "Currency",
+   "label": "Potongan",
+   "options": "Company:company:default_currency"
+  },
+  {
+   "depends_on": "eval:doc.potongan > 0",
+   "fieldname": "keterangan_potongan",
+   "fieldtype": "Small Text",
+   "label": "Keterangan Potongan"
+  },
+  {
+   "fieldname": "section_break_73dp1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "form_payment_entry_checklist",
+   "fieldtype": "Table",
+   "label": "Form Payment Entry Checklist",
+   "options": "Form Payment Entry Checklist"
+  },
+  {
+   "fieldname": "keterangan",
+   "fieldtype": "Small Text",
+   "label": "Keterangan"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Slip Pembayaran Subkon",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "make_attachments_public": 1,
+ "modified": "2024-03-21 11:22:47.483330",
+ "modified_by": "Administrator",
+ "module": "Pengendalian Biaya",
+ "name": "Slip Pembayaran Subkon",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Kasir",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "select": 1,
+   "set_user_permissions": 1,
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_views": 1
+}

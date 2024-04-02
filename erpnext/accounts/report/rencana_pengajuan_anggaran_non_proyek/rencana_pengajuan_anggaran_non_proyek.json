@@ -76,7 +76,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2024-02-29 13:47:48.205212",
+ "modified": "2024-03-26 10:19:35.208505",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Rencana Pengajuan Anggaran Non Proyek",
@@ -95,6 +95,9 @@
   },
   {
    "role": "Manager Akuntansi"
+  },
+  {
+   "role": "Kasir HKP"
   }
  ]
 }
