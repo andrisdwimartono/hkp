@@ -107,24 +107,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Laporan Mingguan",
-   "link_to": "Sub Contract Weekly Progresses",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Laporan Mingguan Kendala",
-   "link_to": "Sub Contract Weekly Progress",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Berita Acara Klarifikasi dan Negosiasi",
    "link_to": "Berita Acara Klarifikasi dan Negosiasi",
    "link_type": "DocType",
@@ -331,41 +313,14 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Realisasi Anggaran Proyek",
-   "link_to": "Realisasi Anggaran Proyek",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Realisasi Anggaran Non Proyek",
-   "link_to": "Realisasi Anggaran Non Proyek",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Visitor Form",
    "link_to": "Visitor Form",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Monitoring Surat Penerimaan Barang",
-   "link_to": "Monitoring Surat Penerimaan Barang",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
   }
  ],
- "modified": "2024-04-02 08:43:04.899740",
+ "modified": "2024-04-05 14:37:03.878399",
  "modified_by": "Administrator",
  "module": "Operasional",
  "name": "Operasional",

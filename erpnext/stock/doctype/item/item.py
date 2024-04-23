@@ -130,14 +130,14 @@ class Item(Document):
 		self.cant_change()
 		self.validate_item_tax_net_rate_range()
 		set_item_tax_from_hsn_code(self)
-		if not frappe.db.exists("POS RAP", self.name):
-			pos_rap_doc = frappe.get_doc({
-				"doctype": "POS RAP",
-				"pos_rap": self.name,
-				"description": self.item_name
-			})
-			pos_rap_doc.save()
-			frappe.db.commit()
+		# if not frappe.db.exists("POS RAP", self.name):
+		# 	pos_rap_doc = frappe.get_doc({
+		# 		"doctype": "POS RAP",
+		# 		"pos_rap": self.name,
+		# 		"description": self.item_name
+		# 	})
+		# 	pos_rap_doc.save()
+		# 	frappe.db.commit()
 
 		if not self.is_new():
 			self.old_item_group = frappe.db.get_value(self.doctype, self.name, "item_group")

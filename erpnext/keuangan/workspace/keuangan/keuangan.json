@@ -1,7 +1,16 @@
 {
  "cards_label": "Menu",
  "category": "Modules",
- "charts": [],
+ "charts": [
+  {
+   "chart_name": "Slip Pembayaran Subkon",
+   "label": "Slip Pembayaran Subkon"
+  },
+  {
+   "chart_name": "Pembayaran Supplier",
+   "label": "Slip Pembayaran Supplier"
+  }
+ ],
  "creation": "2023-05-04 09:05:24.656236",
  "developer_mode_only": 0,
  "disable_user_customization": 1,
@@ -17,19 +26,10 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Keuangan",
+   "label": "Pengajuan Anggaran Operasional",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Kas Bon Non Proyek",
-   "link_to": "Form Payment Entry",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
   },
   {
    "hidden": 0,
@@ -42,47 +42,11 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 1,
-   "label": "Kas Bon Belum Realisasi",
-   "link_to": "Kas Bon Belum Realisasi",
-   "link_type": "Report",
-   "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
    "is_query_report": 0,
-   "label": "Deposito",
-   "link_to": "Deposite",
+   "label": "Kas Bon Non Proyek",
+   "link_to": "Form Payment Entry",
    "link_type": "DocType",
    "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Daftar Deposito",
-   "link_to": "Daftar Deposito",
-   "link_type": "Report",
-   "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Daftar Hutang",
-   "link_to": "Daftar Hutang",
-   "link_type": "Report",
-   "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Daftar Piutang",
-   "link_to": "Daftar Piutang",
-   "link_type": "Report",
-   "onboard": 1,
    "type": "Link"
   },
   {
@@ -105,29 +69,28 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 1,
-   "label": "Daftar Giro Mundur",
-   "link_to": "Daftar Giro Mundur",
-   "link_type": "Report",
-   "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Realisasi Pengajuan Anggaran",
-   "link_to": "Realisasi Pengajuan Anggaran",
-   "link_type": "Report",
-   "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
    "is_query_report": 0,
    "label": "Tanda Terima Kas Bon",
    "link_to": "Payment Entry",
    "link_type": "DocType",
    "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Realisasi Pengajuan Anggaran",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Kas Bon Belum Realisasi",
+   "link_to": "Kas Bon Belum Realisasi",
+   "link_type": "Report",
+   "onboard": 1,
    "type": "Link"
   },
   {
@@ -151,8 +114,16 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Bank Garansi",
-   "link_to": "Bank Guarantee",
+   "label": "Pengajuan Supplier Subkont",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Progress Subkon",
+   "link_to": "Hand Over Progress",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -178,8 +149,43 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Laporan Monitoring RAP",
-   "link_to": "Laporan Monitoring RAP",
+   "label": "Administrasi Keuangan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Deposito",
+   "link_to": "Deposite",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Daftar Deposito",
+   "link_to": "Daftar Deposito",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Daftar Giro Mundur",
+   "link_to": "Daftar Giro Mundur",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Jurnal Entri",
+   "link_to": "Journal Entry",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -187,8 +193,16 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Progress Subkon",
-   "link_to": "Hand Over Progress",
+   "label": "Monitoring Proyek",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Bank Garansi",
+   "link_to": "Bank Guarantee",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -201,9 +215,44 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Laporan Monitoring RAP",
+   "link_to": "Laporan Monitoring RAP",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Laporan Hutang & Piutang",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Daftar Piutang",
+   "link_to": "Daftar Piutang",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Daftar Hutang",
+   "link_to": "Daftar Hutang",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
   }
  ],
- "modified": "2024-04-01 10:05:13.198204",
+ "modified": "2024-04-05 13:14:20.316713",
  "modified_by": "Administrator",
  "module": "Keuangan",
  "name": "Keuangan",

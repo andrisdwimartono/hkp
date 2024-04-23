@@ -95,7 +95,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2023-09-06 22:53:58.310633",
+ "modified": "2024-04-05 13:55:34.274633",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "LAPORAN PEMBUKAAN TENDER",
@@ -110,7 +110,10 @@
    "role": "Pemasaran"
   },
   {
-   "role": "Accounts User"
+   "role": "HKP"
+  },
+  {
+   "role": "Manajer Keuangan"
   }
  ]
 }

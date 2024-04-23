@@ -242,9 +242,18 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Monitoring Surat Penerimaan Barang",
+   "link_to": "Monitoring Surat Penerimaan Barang",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-03-06 14:46:21.929214",
+ "modified": "2024-04-05 10:22:45.528466",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Logistik",

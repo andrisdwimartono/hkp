@@ -19,12 +19,13 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2024-03-25 11:20:19.216024",
+ "modified": "2024-04-04 10:13:04.216646",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "TENAGA KERJA PROYEK",
  "owner": "Administrator",
  "prepared_report": 0,
+ "query": "",
  "ref_doctype": "Project",
  "report_name": "TENAGA KERJA PROYEK",
  "report_type": "Script Report",
@@ -34,9 +35,6 @@
   },
   {
    "role": "Projects User"
-  },
-  {
-   "role": "Engineering"
   },
   {
    "role": "Logistik"
@@ -61,6 +59,9 @@
   },
   {
    "role": "HR User"
+  },
+  {
+   "role": "ADU"
   }
  ]
 }
