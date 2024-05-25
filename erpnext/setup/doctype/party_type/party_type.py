@@ -14,9 +14,9 @@ class PartyType(Document):
 @frappe.validate_and_sanitize_search_inputs
 def get_party_type(doctype, txt, searchfield, start, page_len, filters):
 	cond = ""
-	if filters and filters.get("account"):
-		account_type = frappe.db.get_value("Account", filters.get("account"), "account_type")
-		cond = "and account_type = '%s'" % account_type
+	# if filters and filters.get("account"):
+	# 	account_type = frappe.db.get_value("Account", filters.get("account"), "account_type")
+	# 	cond = "and account_type = '%s'" % account_type
 
 	return frappe.db.sql(
 		"""select name from `tabParty Type`

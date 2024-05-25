@@ -31,9 +31,9 @@
    "read_only": 1
   },
   {
-   "default": "Today",
+   "default": "Now",
    "fieldname": "posting_date",
-   "fieldtype": "Date",
+   "fieldtype": "Datetime",
    "label": "Posting Date",
    "reqd": 1
   },
@@ -54,7 +54,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-14 14:49:19.134476",
+ "modified": "2024-05-14 05:59:19.119108",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "KPI Karyawan",

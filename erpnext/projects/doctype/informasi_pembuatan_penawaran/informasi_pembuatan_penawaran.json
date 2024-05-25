@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": ".###./IT/SAR/.MM./.YY.",
+ "autoname": "HKP/FI-SAR\u201304-.###./SAR/.MM./.YY.",
  "creation": "2023-08-21 10:30:18.583883",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -79,7 +79,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-27 13:40:01.274685",
+ "modified": "2024-05-20 13:56:33.834382",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "INFORMASI PEMBUATAN PENAWARAN",

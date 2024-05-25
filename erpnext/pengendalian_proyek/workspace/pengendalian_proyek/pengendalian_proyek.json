@@ -17,28 +17,10 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Akses Verifikasi",
+   "label": "Perbaikan dan Peningkatan",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Laporan Mingguan",
-   "link_to": "Sub Contract Weekly Progress",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Laporan Mingguan Kendala",
-   "link_to": "Sub Contract Weekly Progresses",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
   },
   {
    "hidden": 0,
@@ -48,6 +30,23 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Laporan pengendalian pekerjaan tidak sesuai",
+   "link_to": "Laporan Pengendalian Pekerjaan Tidak Sesuai",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Pengendalian Mutu",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
   },
   {
    "hidden": 0,
@@ -70,37 +69,10 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Daftar Periksa saat Kunjungan Lapangan",
-   "link_to": "DAFTAR PERIKSA SAAT KUNJUNGAN LAPANGAN",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Daftar Periksa saat Verifikasi Kunjungan Lapangan",
-   "link_to": "DAFTAR PERIKSA SAAT VERIFIKASI KUNJUNGAN LAPANGAN",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Akses Lihat",
+   "label": "Pengendalian Lingkup",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Evaluasi Supplier Jasa",
-   "link_to": "Evaluasi Supplier Jasa",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
   },
   {
    "hidden": 0,
@@ -110,45 +82,9 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Laporan Rekapitulasi Penawaran Supplier Jasa",
-   "link_to": "Report REKAPITULASI PENAWARAN SUPPLIER JASA",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Laporan Harian",
-   "link_to": "Laporan Harian",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Laporan Ringkasan Aktivitas Proyek",
-   "link_to": "Laporan Ringkasan Aktivitas Proyek",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Laporan Ringkasan Kebutuhan Proyek",
-   "link_to": "Laporan Ringkasan Kebutuhan Proyek",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
   }
  ],
- "modified": "2024-03-21 11:28:31.567037",
+ "modified": "2024-05-03 14:56:32.100248",
  "modified_by": "Administrator",
  "module": "Pengendalian Proyek",
  "name": "Pengendalian Proyek",

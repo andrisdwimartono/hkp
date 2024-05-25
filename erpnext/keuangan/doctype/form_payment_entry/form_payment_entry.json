@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "KB.#####.",
+ "autoname": "HKP-FI\u2013KEU\u201302-.#####.",
  "creation": "2023-03-20 14:01:26.374469",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -170,7 +170,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-28 08:53:26.799080",
+ "modified": "2024-05-20 09:17:51.804729",
  "modified_by": "Administrator",
  "module": "Keuangan",
  "name": "Form Payment Entry",

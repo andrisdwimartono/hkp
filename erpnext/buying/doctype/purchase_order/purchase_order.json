@@ -182,7 +182,6 @@
    "oldfieldtype": "Select",
    "print_hide": 1,
    "read_only": 1,
-   "reqd": 1,
    "set_only_once": 1
   },
   {
@@ -196,7 +195,6 @@
    "oldfieldtype": "Link",
    "options": "Supplier",
    "print_hide": 1,
-   "reqd": 1,
    "search_index": 1
   },
   {
@@ -224,8 +222,7 @@
    "oldfieldtype": "Link",
    "options": "Company",
    "print_hide": 1,
-   "remember_last_selected_value": 1,
-   "reqd": 1
+   "remember_last_selected_value": 1
   },
   {
    "fieldname": "column_break1",
@@ -242,7 +239,6 @@
    "label": "Date",
    "oldfieldname": "transaction_date",
    "oldfieldtype": "Date",
-   "reqd": 1,
    "search_index": 1
   },
   {
@@ -407,8 +403,7 @@
    "oldfieldname": "currency",
    "oldfieldtype": "Select",
    "options": "Currency",
-   "print_hide": 1,
-   "reqd": 1
+   "print_hide": 1
   },
   {
    "fieldname": "conversion_rate",
@@ -417,8 +412,7 @@
    "oldfieldname": "conversion_rate",
    "oldfieldtype": "Currency",
    "precision": "9",
-   "print_hide": 1,
-   "reqd": 1
+   "print_hide": 1
   },
   {
    "fieldname": "cb_price_list",
@@ -513,8 +507,7 @@
    "label": "Items",
    "oldfieldname": "po_details",
    "oldfieldtype": "Table",
-   "options": "Purchase Order Item",
-   "reqd": 1
+   "options": "Purchase Order Item"
   },
   {
    "collapsible": 1,
@@ -944,7 +937,6 @@
    "options": "\nDraft\nOn Hold\nTo Receive and Bill\nTo Bill\nTo Receive\nCompleted\nCancelled\nClosed\nDelivered",
    "print_hide": 1,
    "read_only": 1,
-   "reqd": 1,
    "search_index": 1
   },
   {
@@ -1207,20 +1199,17 @@
   {
    "fieldname": "quotation_date",
    "fieldtype": "Date",
-   "label": "Quotation Date",
-   "reqd": 1
+   "label": "Quotation Date"
   },
   {
    "fieldname": "negotiation_date",
    "fieldtype": "Date",
-   "label": "Negotiation Date",
-   "reqd": 1
+   "label": "Negotiation Date"
   },
   {
    "fieldname": "quotation_reference",
    "fieldtype": "Data",
-   "label": "Quotation Reference",
-   "reqd": 1
+   "label": "Quotation Reference"
   },
   {
    "depends_on": "eval: doc.discount_mode == \"Nominal\"",
@@ -1267,7 +1256,7 @@
  "idx": 105,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-12-12 11:37:21.527287",
+ "modified": "2024-04-23 08:30:21.194436",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Purchase Order",

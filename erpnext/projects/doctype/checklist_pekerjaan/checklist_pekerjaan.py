@@ -22,9 +22,9 @@ class ChecklistPekerjaan(Document):
 				urut2 = "0{0}".format(urut)
 			else:
 				urut2 = "{0}".format(urut)
-			self.name = "CL/{2}/{5}/{3}/{0}/{1}".format(bulan, mydate.year, urut2, self.project, "", self.sub_contract)
+			self.name = "FI-DKD-05-/{2}/{5}/{3}/{0}/{1}".format(bulan, mydate.year, urut2, self.project, "", self.sub_contract)
 		else:
-			self.name = "CL/001/{4}/{2}/{0}/{1}".format(bulan, mydate.year, self.project, "", self.sub_contract)
+			self.name = "FI-DKD-05-/001/{4}/{2}/{0}/{1}".format(bulan, mydate.year, self.project, "", self.sub_contract)
 
 @frappe.whitelist()
 def get_detail(laporan_pengajuan_penagihan):

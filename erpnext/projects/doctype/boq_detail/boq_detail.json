@@ -8,10 +8,10 @@
  "field_order": [
   "types",
   "document_of_type",
+  "deskripsi",
   "type",
   "item",
   "level",
-  "deskripsi",
   "uom",
   "qty",
   "koefisien",
@@ -114,7 +114,8 @@
    "fieldname": "pemasangan_dan_instalasi_section_harga_satuan",
    "fieldtype": "Currency",
    "label": "Harga Satuan",
-   "reqd": 1
+   "reqd": 1,
+   "width": "20"
   },
   {
    "columns": 1,
@@ -171,7 +172,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-09-21 13:40:30.744059",
+ "modified": "2024-04-23 11:27:43.666389",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "BOQ Detail",

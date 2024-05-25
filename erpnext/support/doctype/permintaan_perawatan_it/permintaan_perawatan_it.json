@@ -1,7 +1,6 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "PPIT-.YY.-.####.",
  "creation": "2023-10-18 20:00:56.494653",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -102,7 +101,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-20 13:37:52.040329",
+ "modified": "2024-05-22 14:48:48.751938",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Permintaan Perawatan IT",

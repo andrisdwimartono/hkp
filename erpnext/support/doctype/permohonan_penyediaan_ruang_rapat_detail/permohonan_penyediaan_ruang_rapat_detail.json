@@ -13,9 +13,10 @@
  "fields": [
   {
    "fieldname": "perlengkapan",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Perlengkapan"
+   "label": "Perlengkapan",
+   "options": "Perlengkapan"
   },
   {
    "default": "Tidak",
@@ -35,7 +36,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-12-15 13:47:15.026592",
+ "modified": "2024-05-16 20:40:55.152704",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Permohonan Penyediaan Ruang Rapat Detail",

@@ -24,9 +24,9 @@ class LAPORANTINDAKANPERBAIKANDANPENCEGAHAN(Document):
 				urut2 = "0{0}".format(urut)
 			else:
 				urut2 = "{0}".format(urut)
-			self.name = "LTBC/{2}/{3}/{0}/{1}".format(bulan, mydate.year, urut2, self.project)
+			self.name = "FI-DKD-/{2}/{3}/{0}/{1}".format(bulan, mydate.year, urut2, self.project)
 		else:
-			self.name = "LTBC/001/{2}/{0}/{1}".format(bulan, mydate.year, self.project)
+			self.name = "FI-DKD-/001/{2}/{0}/{1}".format(bulan, mydate.year, self.project)
 
 	# def validate(self):
 	# 	ltbc = frappe.db.sql("""SELECT * FROM `tabLAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN` WHERE name = '{0}'""".format(self.name), as_dict=1)

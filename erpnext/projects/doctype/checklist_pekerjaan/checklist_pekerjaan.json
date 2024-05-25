@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "FI-DKD-05-.#####.",
  "creation": "2023-10-11 23:05:56.416682",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -102,7 +103,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-11-02 10:48:10.828955",
+ "modified": "2024-05-20 09:22:48.169992",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Checklist Pekerjaan",

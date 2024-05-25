@@ -5,66 +5,48 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "kepada_merupakan_karyawan",
-  "designation",
-  "employee",
+  "type",
+  "pihak",
   "employee_name",
   "user_id"
  ],
  "fields": [
   {
-   "columns": 2,
-   "depends_on": "eval:doc.kepada_merupakan_karyawan != 1",
-   "fieldname": "designation",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Designation",
-   "mandatory_depends_on": "eval:doc.kepada_merupakan_karyawan != 1",
-   "options": "Designation",
-   "read_only_depends_on": "eval:doc.kepada_merupakan_karyawan == 1"
-  },
-  {
-   "columns": 1,
-   "default": "0",
-   "fieldname": "kepada_merupakan_karyawan",
-   "fieldtype": "Check",
-   "in_list_view": 1,
-   "label": "Merupakan Karyawan"
-  },
-  {
-   "depends_on": "eval:doc.kepada_merupakan_karyawan == 1",
-   "fieldname": "employee",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Employee",
-   "mandatory_depends_on": "eval:doc.kepada_merupakan_karyawan == 1",
-   "options": "Employee",
-   "read_only_depends_on": "eval:doc.kepada_merupakan_karyawan != 1"
-  },
-  {
-   "depends_on": "eval:doc.kepada_merupakan_karyawan == 1",
-   "fetch_from": "employee.employee_name",
    "fieldname": "employee_name",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "label": "Employee Name",
-   "mandatory_depends_on": "eval:doc.kepada_merupakan_karyawan == 1",
-   "read_only_depends_on": "eval:doc.kepada_merupakan_karyawan != 1"
+   "read_only": 1
   },
   {
-   "fetch_from": "employee.user_id",
    "fieldname": "user_id",
    "fieldtype": "Link",
    "hidden": 1,
    "label": "User ID",
    "options": "User",
    "read_only": 1
+  },
+  {
+   "columns": 1,
+   "default": "Designation",
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Jenis",
+   "options": "Employee\nDesignation\nCustomer\nSupplier\nSubkon\nSub Contract"
+  },
+  {
+   "fieldname": "pihak",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "label": "Pihak",
+   "options": "type",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-12-13 10:53:26.394106",
+ "modified": "2024-05-14 05:47:32.020635",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Memo Kepada",

@@ -12,6 +12,7 @@
   "drawing",
   "drawing_last",
   "drawing_history",
+  "drawing_name",
   "document_no",
   "date",
   "date_last",
@@ -84,7 +85,7 @@
    "fetch_from": "drawing.document_no",
    "fieldname": "document_no",
    "fieldtype": "Data",
-   "label": "Document No"
+   "label": "No Gambar"
   },
   {
    "default": "Today",
@@ -153,6 +154,7 @@
    "in_list_view": 1,
    "label": "Progress",
    "options": "RFC\nNEN/APPROVE\nEN\nFI",
+   "print_hide": 1,
    "reqd": 1
   },
   {
@@ -247,12 +249,19 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Letter No"
+  },
+  {
+   "fetch_from": "drawing.drawing_name",
+   "fieldname": "drawing_name",
+   "fieldtype": "Data",
+   "label": "Drawing Name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-06-06 14:10:46.496721",
+ "modified": "2024-04-23 10:31:46.169713",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Design Detail",

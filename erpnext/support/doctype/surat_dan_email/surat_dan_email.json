@@ -53,13 +53,6 @@
    "reqd": 1
   },
   {
-   "fieldname": "customer",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Nama Perusahaan",
-   "reqd": 1
-  },
-  {
    "depends_on": "eval:doc.type == \"Email\"",
    "fieldname": "email_address",
    "fieldtype": "Data",
@@ -69,9 +62,10 @@
   {
    "depends_on": "eval:doc.type == \"Surat\"",
    "fieldname": "nomer_surat",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Nomer Surat",
-   "mandatory_depends_on": "eval:doc.type == \"Surat\""
+   "mandatory_depends_on": "eval:doc.type == \"Surat\"",
+   "options": "Customer"
   },
   {
    "fieldname": "perihal",
@@ -108,7 +102,7 @@
   },
   {
    "fieldname": "description",
-   "fieldtype": "Small Text",
+   "fieldtype": "Text Editor",
    "label": "Description"
   },
   {
@@ -162,12 +156,20 @@
    "hidden": 1,
    "label": "Abbr",
    "read_only": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Nama Perusahaan",
+   "options": "Customer",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-12-20 11:33:25.862618",
+ "modified": "2024-05-15 11:43:50.316823",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Surat dan Email",

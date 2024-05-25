@@ -7,7 +7,8 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "to",
+  "to_employee",
+  "from_employee",
   "from",
   "subject",
   "column_break_0eosr",
@@ -25,17 +26,12 @@
  ],
  "fields": [
   {
-   "fieldname": "to",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "To",
-   "reqd": 1
-  },
-  {
+   "fetch_from": "from_employee.employee_name",
    "fieldname": "from",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "From",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -48,7 +44,8 @@
   {
    "fieldname": "target_penyelesaian",
    "fieldtype": "Small Text",
-   "label": "Target Penyelesaian"
+   "label": "Uraian Pesan",
+   "reqd": 1
   },
   {
    "default": "Today",
@@ -111,11 +108,25 @@
    "fieldname": "document",
    "fieldtype": "Attach",
    "label": "Document"
+  },
+  {
+   "fieldname": "to_employee",
+   "fieldtype": "Table",
+   "label": "To Employee",
+   "options": "Communication Form Kepada",
+   "reqd": 1
+  },
+  {
+   "fieldname": "from_employee",
+   "fieldtype": "Link",
+   "label": "From Employee",
+   "options": "Employee",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-15 14:01:12.639062",
+ "modified": "2024-05-18 09:10:19.580878",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Communication Form",

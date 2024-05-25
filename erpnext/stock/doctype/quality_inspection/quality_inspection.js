@@ -14,6 +14,14 @@ frappe.ui.form.on("Quality Inspection", {
 			};
 		});
 
+		// frm.set_query("reference_name", function() {
+		// 	return {
+		// 		filters: {
+		// 			"docstatus": 1
+		// 		}
+		// 	};
+		// });
+
 		// Serial No based on item_code
 		frm.set_query("item_serial_no", function() {
 			let filters = {};

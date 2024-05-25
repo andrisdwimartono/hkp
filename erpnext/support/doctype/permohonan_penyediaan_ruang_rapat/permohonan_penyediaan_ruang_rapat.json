@@ -32,7 +32,8 @@
    "fieldname": "employee",
    "fieldtype": "Link",
    "label": "Pemohon",
-   "options": "Employee"
+   "options": "Employee",
+   "reqd": 1
   },
   {
    "fetch_from": "employee.employee_name",
@@ -75,7 +76,8 @@
    "fieldtype": "Select",
    "label": "Ruang Rapat",
    "mandatory_depends_on": "eval: doc.__unsaved != 1",
-   "options": "\nGIS\nSUTET\nGITET"
+   "options": "\nGIS\nSUTET\nGITET\nCOWORKING",
+   "reqd": 1
   },
   {
    "fieldname": "amended_from",
@@ -107,7 +109,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-12-20 11:42:36.751207",
+ "modified": "2024-05-18 10:13:51.111100",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Permohonan Penyediaan Ruang Rapat",

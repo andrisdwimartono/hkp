@@ -39,12 +39,13 @@
    "fieldname": "grand_total",
    "fieldtype": "Float",
    "label": "Grand Total",
-   "read_only": 1
+   "read_only": 1,
+   "width": "20"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-03-21 10:52:12.080666",
+ "modified": "2024-04-23 11:19:56.154659",
  "modified_by": "Administrator",
  "module": "Engineering",
  "name": "BOQ",

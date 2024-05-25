@@ -2,6 +2,18 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('PERMINTAAN ALAT KERJA KANTOR', {
+	setup: function(frm){
+		frm.set_query("asset", "detail", function(doc, cdt, cdn) {
+			var d = locals[cdt][cdn];
+			if(d.asset_category){
+				return {
+					"filters": {
+						"asset_category": ["=", d.asset_category],
+					}
+				};
+			}
+		});
+	},
 	refresh: function(frm) {
 		if (frm.doc.__unsaved == 1)	{
 			if(!frm.doc.process_rules){
@@ -34,4 +46,9 @@ frappe.ui.form.on('PERMINTAAN ALAT KERJA KANTOR', {
 		}
 		cur_frm.fields_dict['process_rules'].$wrapper.find('.grid-add-row').addClass('d-none');
 	},
+});
+
+
+frappe.ui.form.on('PERMINTAAN ALAT KERJA KANTOR DETAIL', {
+	
 });

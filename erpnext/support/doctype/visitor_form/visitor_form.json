@@ -10,6 +10,8 @@
  "field_order": [
   "start_date",
   "nama",
+  "employee",
+  "employee_name",
   "perusahaan",
   "column_break_o9ni9",
   "finish_date",
@@ -58,12 +60,14 @@
   {
    "fieldname": "perusahaan",
    "fieldtype": "Data",
-   "label": "Perusahaan"
+   "label": "Perusahaan",
+   "reqd": 1
   },
   {
    "fieldname": "alamat",
    "fieldtype": "Small Text",
-   "label": "Alamat"
+   "label": "Alamat",
+   "reqd": 1
   },
   {
    "fieldname": "no_kendaraan",
@@ -73,12 +77,14 @@
   {
    "fieldname": "no_telepon",
    "fieldtype": "Data",
-   "label": "No Telepon"
+   "label": "No Telepon",
+   "reqd": 1
   },
   {
    "fieldname": "keperluan",
    "fieldtype": "Small Text",
-   "label": "Keperluan"
+   "label": "Keperluan",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_o9ni9",
@@ -114,11 +120,24 @@
    "fieldname": "safety_induction_list",
    "fieldtype": "HTML",
    "label": "Safety Induction List"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "read_only": 1
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2024-01-31 11:41:26.627035",
+ "modified": "2024-05-18 10:22:23.774509",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Visitor Form",

@@ -167,7 +167,7 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
+   "is_query_report": 1,
    "label": "Laporan Hasil Survey Pelanggan",
    "link_to": "LAPORAN HASIL SURVEY PELANGGAN",
    "link_type": "Report",
@@ -201,7 +201,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-04-05 10:29:03.977401",
+ "modified": "2024-05-16 20:27:39.323443",
  "modified_by": "Administrator",
  "module": "Pemasaran",
  "name": "Pemasaran",

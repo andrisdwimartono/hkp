@@ -11,7 +11,7 @@ class FormPaymentEntryProject(Document):
 	def after_insert(self):
 		assigner = []
 		for d in self.pejabat:
-			if d.user:
+			if x:
 				assigner.append(d.user)
 				self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(d.user))
 			notification_doc = {

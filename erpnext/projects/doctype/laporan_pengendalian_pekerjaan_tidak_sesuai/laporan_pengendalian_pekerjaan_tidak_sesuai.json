@@ -14,13 +14,12 @@
   "keluhan",
   "pelapor_section",
   "nama_pelapor",
+  "penerima",
   "column_break_qwudj",
   "jabatan_pelapor",
+  "nama_penerima",
   "column_break_9dqi0",
   "tanggal_pelapor",
-  "penerima_laporan_section",
-  "penerima",
-  "nama_penerima",
   "column_break_2nlkb",
   "jabatan_penerima",
   "column_break_lsvkh",
@@ -94,7 +93,8 @@
   {
    "fieldname": "nama_pelapor",
    "fieldtype": "Data",
-   "label": "Nama Pelapor"
+   "label": "Nama Pelapor",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_qwudj",
@@ -103,7 +103,8 @@
   {
    "fieldname": "jabatan_pelapor",
    "fieldtype": "Data",
-   "label": "Jabatan"
+   "label": "Jabatan",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_9dqi0",
@@ -112,12 +113,8 @@
   {
    "fieldname": "tanggal_pelapor",
    "fieldtype": "Date",
-   "label": "Tanggal"
-  },
-  {
-   "fieldname": "penerima_laporan_section",
-   "fieldtype": "Section Break",
-   "label": "Penerima Laporan"
+   "label": "Tanggal",
+   "reqd": 1
   },
   {
    "fetch_from": "penerima.employee_name",
@@ -246,7 +243,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-10 11:37:46.416729",
+ "modified": "2024-05-18 10:25:09.292244",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Laporan Pengendalian Pekerjaan Tidak Sesuai",

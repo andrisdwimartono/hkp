@@ -86,13 +86,11 @@
   },
   {
    "columns": 1,
-   "default": "RFC",
    "fieldname": "completeness",
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Progress",
-   "options": "PROSES REVIEW\nRFC\nNEN/APPROVE\nEN\nFI",
-   "reqd": 1
+   "options": "\nPROSES REVIEW\nRFC\nNEN/APPROVE\nEN\nFI"
   },
   {
    "fieldname": "drawing_number",
@@ -141,7 +139,7 @@
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-24 16:06:22.689135",
+ "modified": "2024-04-23 10:10:58.151283",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Preliminary Design Detail2",

@@ -26,9 +26,9 @@ class PermintaanPerawatanIT(Document):
 				urut2 = "0{0}".format(urut)
 			else:
 				urut2 = "{0}".format(urut)
-			self.name = "{2}/{3}/PPIT/{0}/{1}".format(bulan, mydate.year-2000, urut2, get_department_abbr_by_session())
+			self.name = "{2}/IT/PTP/{0}/{1}".format(bulan, mydate.year-2000, urut2, get_department_abbr_by_session())
 		else:
-			self.name = "001/{2}/PPIT/{0}/{1}".format(bulan, mydate.year-2000, get_department_abbr_by_session())
+			self.name = "001/{2}/IT/PTP/{0}/{1}".format(bulan, mydate.year-2000, get_department_abbr_by_session())
 
 def get_permission_query_conditions(user):
 	if get_department_abbr_by_session() == "ADU":

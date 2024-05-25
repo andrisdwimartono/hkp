@@ -11,6 +11,7 @@
   "sub_section_last",
   "sub_section_history",
   "drawing",
+  "drawing_name",
   "drawing_last",
   "drawing_history",
   "document_no",
@@ -154,13 +155,11 @@
   },
   {
    "columns": 1,
-   "default": "RFC",
    "fieldname": "completeness",
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Progress",
-   "options": "PROSES REVIEW\nRFC\nNEN/APPROVE\nEN\nFI",
-   "reqd": 1
+   "options": "\nPROSES REVIEW\nRFC\nNEN/APPROVE\nEN\nFI"
   },
   {
    "fieldname": "completeness_last",
@@ -253,24 +252,29 @@
    "label": "Letter No"
   },
   {
-   "columns": 1,
-   "fieldname": "no_gambar",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "in_list_view": 1,
-   "label": "No Gambar"
-  },
-  {
    "fieldname": "histories",
    "fieldtype": "Button",
    "in_list_view": 1,
    "label": "Histories"
+  },
+  {
+   "fetch_from": "drawing.drawing_name",
+   "fieldname": "drawing_name",
+   "fieldtype": "Data",
+   "label": "Drawing Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "no_gambar",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "No Gambar"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-12-22 15:05:44.040776",
+ "modified": "2024-04-23 10:10:24.004023",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Preliminary Design Detail",

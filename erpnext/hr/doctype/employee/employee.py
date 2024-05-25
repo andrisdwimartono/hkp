@@ -574,3 +574,7 @@ def has_upload_permission(doc, ptype="read", user=None):
 	if get_doc_permissions(doc, user=user, ptype=ptype).get(ptype):
 		return True
 	return doc.user_id == user
+
+@frappe.whitelist()
+def get_employee_info(name):
+	return frappe.db.sql("""SELECT employee_name, user_id FROM tabEmployee e WHERE name = '{0}'""".format(name), as_dict=1)

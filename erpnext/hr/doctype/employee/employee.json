@@ -36,6 +36,7 @@
   "date_of_start_contract",
   "date_of_end_contract",
   "employee_number",
+  "cell_number",
   "emergency_contact_details",
   "person_to_be_contacted",
   "relation",
@@ -81,7 +82,6 @@
   "health_insurance_provider",
   "health_insurance_no",
   "contact_details",
-  "cell_number",
   "prefered_email",
   "personal_email",
   "unsubscribed",
@@ -219,6 +219,7 @@
   },
   {
    "default": "Active",
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
@@ -237,6 +238,7 @@
    "oldfieldtype": "Data"
   },
   {
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "employment_type",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
@@ -255,6 +257,7 @@
    "reqd": 1
   },
   {
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "date_of_birth",
    "fieldtype": "Date",
    "label": "Date of Birth",
@@ -263,6 +266,7 @@
    "reqd": 1
   },
   {
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "date_of_joining",
    "fieldtype": "Date",
    "in_list_view": 1,
@@ -274,6 +278,7 @@
   },
   {
    "allow_in_quick_entry": 1,
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "emergency_contact_details",
    "fieldtype": "Section Break",
    "label": "Emergency Contact"
@@ -298,6 +303,7 @@
   },
   {
    "collapsible": 1,
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "erpnext_user",
    "fieldtype": "Section Break",
    "label": "ERPNext User"
@@ -327,6 +333,7 @@
   {
    "allow_in_quick_entry": 1,
    "collapsible": 1,
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "employment_details",
    "fieldtype": "Section Break",
    "label": "Joining Details"
@@ -378,6 +385,7 @@
   },
   {
    "collapsible": 1,
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "job_profile",
    "fieldtype": "Section Break",
    "label": "Department and Grade"
@@ -442,6 +450,7 @@
   },
   {
    "collapsible": 1,
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "salary_information",
    "fieldtype": "Section Break",
    "label": "Salary Details",
@@ -474,6 +483,7 @@
   },
   {
    "collapsible": 1,
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "health_insurance_section",
    "fieldtype": "Section Break",
    "label": "Health Insurance"
@@ -492,6 +502,7 @@
   },
   {
    "collapsible": 1,
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "contact_details",
    "fieldtype": "Section Break",
    "label": "Contact Details"
@@ -565,6 +576,7 @@
   },
   {
    "collapsible": 1,
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "sb53",
    "fieldtype": "Section Break",
    "label": "Personal Bio"
@@ -577,6 +589,7 @@
   },
   {
    "collapsible": 1,
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "personal_details",
    "fieldtype": "Section Break",
    "label": "Personal Details"
@@ -632,6 +645,7 @@
   },
   {
    "collapsible": 1,
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "educational_qualification",
    "fieldtype": "Section Break",
    "label": "Educational Qualification"
@@ -644,6 +658,7 @@
   },
   {
    "collapsible": 1,
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "previous_work_experience",
    "fieldtype": "Section Break",
    "label": "Previous Work Experience",
@@ -657,6 +672,7 @@
   },
   {
    "collapsible": 1,
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "history_in_company",
    "fieldtype": "Section Break",
    "hidden": 1,
@@ -672,6 +688,7 @@
   },
   {
    "collapsible": 1,
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "exit",
    "fieldtype": "Section Break",
    "label": "Exit",
@@ -773,6 +790,7 @@
   },
   {
    "collapsible": 1,
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "attendance_and_leave_details",
    "fieldtype": "Section Break",
    "label": "Attendance and Leave Details"
@@ -816,6 +834,7 @@
    "options": "User"
   },
   {
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "approvers_section",
    "fieldtype": "Section Break",
    "label": "Approvers"
@@ -837,6 +856,7 @@
   },
   {
    "default": "Office",
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "position",
    "fieldtype": "Select",
    "label": "Position",
@@ -844,19 +864,20 @@
   },
   {
    "collapsible": 1,
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "certificates_section",
    "fieldtype": "Section Break",
    "label": "Certificates"
   },
   {
-   "depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\" || doc.employment_type == \"PKWT\" || doc.employment_type == \"Intern\"",
+   "depends_on": "eval: (doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\" || doc.employment_type == \"PKWT\" || doc.employment_type == \"Intern\") && (frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User'))",
    "fieldname": "date_of_end_contract",
    "fieldtype": "Date",
    "label": "Date of End Contract",
    "mandatory_depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\" || doc.employment_type == \"PKWT\" || doc.employment_type == \"Intern\""
   },
   {
-   "depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\" || doc.employment_type == \"PKWT\" || doc.employment_type == \"Intern\"",
+   "depends_on": "eval: (doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\" || doc.employment_type == \"PKWT\" || doc.employment_type == \"Intern\") && (frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User'))",
    "fieldname": "contract_number",
    "fieldtype": "Data",
    "label": "Contract Number",
@@ -875,6 +896,7 @@
    "options": "Employee Certificate"
   },
   {
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "employee_project_section",
    "fieldtype": "Section Break",
    "label": "Employee Project"
@@ -886,6 +908,7 @@
    "options": "Employee Project"
   },
   {
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "fieldname": "place_of_birth",
    "fieldtype": "Data",
    "label": "Place of Birth"
@@ -904,19 +927,20 @@
    "label": "NIK"
   },
   {
+   "depends_on": "eval:frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User')",
    "description": "* Digunakan untuk mencocokkan dengan ID di Facerecognition",
    "fieldname": "emp_code",
    "fieldtype": "Data",
    "label": "Kode Absensi"
   },
   {
-   "depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\" || doc.employment_type == \"PKWT\" || doc.employment_type == \"Intern\"",
+   "depends_on": "eval: (doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\" || doc.employment_type == \"PKWT\" || doc.employment_type == \"Intern\") && (frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User'))",
    "fieldname": "contract_document",
    "fieldtype": "Attach",
    "label": "Contract Document"
   },
   {
-   "depends_on": "eval: doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\" || doc.employment_type == \"PKWT\" || doc.employment_type == \"Intern\"",
+   "depends_on": "eval: (doc.employment_type == \"Contract\" || doc.employment_type == \"On Job Training\" || doc.employment_type == \"PKWT\" || doc.employment_type == \"Intern\") && (frappe.user.has_role('Administrator') || frappe.user.has_role('HR Manager') || frappe.user.has_role('HR User'))",
    "fieldname": "date_of_start_contract",
    "fieldtype": "Date",
    "label": "Date of Start Contract",
@@ -937,7 +961,7 @@
    "link_fieldname": "employee"
   }
  ],
- "modified": "2023-12-20 14:20:36.502562",
+ "modified": "2024-05-16 20:11:03.092959",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Employee",

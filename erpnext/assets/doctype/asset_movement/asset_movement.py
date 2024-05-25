@@ -55,14 +55,14 @@ class AssetMovement(Document):
 					frappe.throw(_("Employee is required while issuing Asset {0}").format(d.asset))
 
 			if self.purpose == "Transfer":
-				if d.to_employee:
-					frappe.throw(
-						_(
-							"Transferring cannot be done to an Employee. \
-						Please enter location where Asset {0} has to be transferred"
-						).format(d.asset),
-						title="Incorrect Movement Purpose",
-					)
+				# if d.to_employee:
+				# 	frappe.throw(
+				# 		_(
+				# 			"Transferring cannot be done to an Employee. \
+				# 		Please enter location where Asset {0} has to be transferred"
+				# 		).format(d.asset),
+				# 		title="Incorrect Movement Purpose",
+				# 	)
 				if not d.target_location:
 					frappe.throw(_("Target Location is required while transferring Asset {0}").format(d.asset))
 				if d.source_location == d.target_location:

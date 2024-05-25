@@ -12,7 +12,7 @@ from frappe.utils import add_days, add_months, add_years, getdate, nowdate, form
 class AssetMaintenance(Document):
 	def validate(self):
 		for task in self.get("asset_maintenance_tasks"):
-			if task.end_date and (getdate(task.start_date) >= getdate(task.end_date)):
+			if task.end_date and (getdate(task.start_date) > getdate(task.end_date)):
 				throw(_("Start date should be less than end date for task {0}").format(task.maintenance_task))
 			if getdate(task.next_due_date) < getdate(nowdate()):
 				task.maintenance_status = "Overdue"

@@ -10,6 +10,7 @@
   "project_name",
   "customer",
   "contract_no",
+  "lampiran",
   "process_rules"
  ],
  "fields": [
@@ -49,11 +50,16 @@
    "fieldtype": "Table",
    "label": "Process Rules",
    "options": "Process Rules"
+  },
+  {
+   "fieldname": "lampiran",
+   "fieldtype": "Attach",
+   "label": "Lampiran"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-28 14:56:28.226638",
+ "modified": "2024-04-30 13:42:02.327910",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "TINJAUAN TERHADAP PERSYARATAN DALAM DOKUMEN KONTRAK",

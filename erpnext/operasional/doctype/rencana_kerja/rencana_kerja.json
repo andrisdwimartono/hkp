@@ -1,7 +1,6 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "RK-.YYYY.-.######.",
  "creation": "2023-05-09 14:56:50.320692",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -121,7 +120,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-04-01 14:12:00.582830",
+ "modified": "2024-05-22 15:09:55.918856",
  "modified_by": "Administrator",
  "module": "Operasional",
  "name": "Rencana Kerja",

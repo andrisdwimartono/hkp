@@ -86,16 +86,6 @@
    "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Branch",
-   "link_to": "Branch",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Department",
    "link_to": "Department",
    "link_type": "DocType",
@@ -108,16 +98,6 @@
    "is_query_report": 0,
    "label": "Designation",
    "link_to": "Designation",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Employee Grade",
-   "link_to": "Employee Grade",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -168,16 +148,6 @@
    "type": "Card Break"
   },
   {
-   "dependencies": "Job Applicant",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Employee Onboarding",
-   "link_to": "Employee Onboarding",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
    "dependencies": "Employee",
    "hidden": 0,
    "is_query_report": 0,
@@ -203,24 +173,6 @@
    "is_query_report": 0,
    "label": "Employee Transfer",
    "link_to": "Employee Transfer",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Grievance Type",
-   "link_to": "Grievance Type",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Employee Grievance",
-   "link_to": "Employee Grievance",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -258,43 +210,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Shift Management",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "dependencies": "",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Shift Type",
-   "link_to": "Shift Type",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Shift Request",
-   "link_to": "Shift Request",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Shift Assignment",
-   "link_to": "Shift Assignment",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Leaves",
    "onboard": 0,
    "type": "Card Break"
@@ -315,36 +230,6 @@
    "is_query_report": 0,
    "label": "Leave Type",
    "link_to": "Leave Type",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Leave Period",
-   "link_to": "Leave Period",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Leave Type",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Leave Policy",
-   "link_to": "Leave Policy",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Leave Policy",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Leave Policy Assignment",
-   "link_to": "Leave Policy Assignment",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -385,16 +270,6 @@
    "is_query_report": 0,
    "label": "Leave Block List",
    "link_to": "Leave Block List",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Employee",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Compensatory Leave Request",
-   "link_to": "Compensatory Leave Request",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -467,16 +342,6 @@
    "dependencies": "Employee",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Expense Claim",
-   "link_to": "Expense Claim",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Employee",
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Employee Advance",
    "link_to": "Employee Advance",
    "link_type": "DocType",
@@ -513,16 +378,6 @@
    "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Daily Work Summary Group",
-   "link_to": "Daily Work Summary Group",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Team Updates",
    "link_to": "team-updates",
    "link_type": "Page",
@@ -535,15 +390,6 @@
    "label": "Fleet Management",
    "onboard": 0,
    "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Driver",
-   "link_to": "Driver",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
   },
   {
    "dependencies": "",
@@ -652,35 +498,8 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Interview Type",
-   "link_to": "Interview Type",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Interview Round",
-   "link_to": "Interview Round",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Interview",
    "link_to": "Interview",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Interview Feedback",
-   "link_to": "Interview Feedback",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -929,9 +748,18 @@
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sosialisasi budaya dan nilai perusahaan",
+   "link_to": "Sosialisasi Peraturan Perusahaan dan Budaya Perusahaan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2023-12-14 15:30:19.579372",
+ "modified": "2024-05-07 14:34:07.144343",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "HR",

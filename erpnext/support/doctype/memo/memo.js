@@ -35,3 +35,37 @@ frappe.ui.form.on('Memo', {
 		cur_frm.fields_dict['process_rules'].$wrapper.find('.grid-add-row').addClass('d-none');
 	}
 });
+
+
+frappe.ui.form.on('Memo Kepada', {
+	pihak: function(frm, dt, dn){
+		var d = locals[dt][dn];
+		if(d.type == "Employee"){
+			frappe.call({
+				method: 'erpnext.hr.doctype.employee.employee.get_employee_info',
+				args: {
+					'name': d.pihak
+				},
+				callback: function(r) {
+					if(r.message){
+						var vals = r.message;
+						d.employee_name = vals[0].employee_name;
+						d.user_id = vals[0].user_id;
+						frm.refresh_field("kepada");
+						frm.refresh_field("tembusan");
+					}
+				}
+			});
+		}
+	},
+	type: function(frm, dt, dn){
+		var d = locals[dt][dn];
+		if(d.type != "Employee"){
+			d.pihak = "";
+			d.employee_name = "";
+			d.user_id = "";
+			frm.refresh_field("kepada");
+			frm.refresh_field("tembusan");
+		}
+	}
+});

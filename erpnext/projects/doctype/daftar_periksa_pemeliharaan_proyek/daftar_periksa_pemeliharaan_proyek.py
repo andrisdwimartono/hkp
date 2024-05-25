@@ -22,6 +22,6 @@ class DaftarPeriksaPemeliharaanProyek(Document):
 				urut2 = "0{0}".format(urut)
 			else:
 				urut2 = "{0}".format(urut)
-			self.name = "HAR/{2}/{3}/{0}/{1}".format(bulan, mydate.year, urut2, self.project)
+			self.name = "FI-DKD-06-/{2}/{3}/{0}/{1}".format(bulan, mydate.year, urut2, self.project)
 		else:
-			self.name = "HAR/001/{2}/{0}/{1}".format(bulan, mydate.year, self.project)
+			self.name = "FI-DKD-06-/001/{2}/{0}/{1}".format(bulan, mydate.year, self.project)
