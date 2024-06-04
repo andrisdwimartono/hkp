@@ -47,14 +47,14 @@ def get_column(columns):
 def get_data(filters):
 	where = ""
 	if filters.customer and (filters.start_date and filters.finish_date):
-		where = "WHERE main.customer = '{0}' AND lpt.tanggal BETWEEN '{1}' AND '{2}'".format(filters.customer, filters.start_date, filters.finish_date)
+		where = "WHERE main.customer = '{0}' AND umt.pemasukan_penawaran_tanggal BETWEEN '{1}' AND '{2}'".format(filters.customer, filters.start_date, filters.finish_date)
 	if not filters.customer and (filters.start_date and filters.finish_date):
-		where = "WHERE lpt.tanggal BETWEEN '{1}' AND '{2}'".format(filters.customer, filters.start_date, filters.finish_date)
+		where = "WHERE umt.pemasukan_penawaran_tanggal BETWEEN '{1}' AND '{2}'".format(filters.customer, filters.start_date, filters.finish_date)
 	if filters.customer and not (filters.start_date and filters.finish_date):
 		where = "WHERE main.customer = '{0}'".format(filters.customer, filters.start_date, filters.finish_date)
 	return frappe.db.sql("""
 		SELECT 
-			main.customer, main.lingkup_pekerjaan, lpt.tanggal as tanggal_rks, main.name, COALESCE(ipt.harga_penawaran_hkp/1000, 0) AS nilai_penawaran, COALESCE(ipt.keterangan, "") catatan FROM `tabINFORMASI PEMBUATAN PENAWARAN` AS main
-		LEFT JOIN `tabLAPORAN PENJELASAN TENDER` AS lpt ON lpt.informasi_pembuatan_penawaran = main.name 
+			main.customer, main.lingkup_pekerjaan, umt.pemasukan_penawaran_tanggal as tanggal_rks, main.name, COALESCE(ipt.harga_penawaran_hkp/1000, 0) AS nilai_penawaran, COALESCE(ipt.keterangan, "") catatan FROM `tabINFORMASI PEMBUATAN PENAWARAN` AS main
+		LEFT JOIN `tabUSULAN MENGIKUTI TENDER` AS umt ON umt.name = main.usulan_mengikuti_tender 
 		LEFT JOIN `tabINFORMASI PEMBUKAAN TENDER` AS ipt ON ipt.informasi_pembuatan_penawaran_terkait = main.name 
 		{0}""".format(where), as_dict=1)

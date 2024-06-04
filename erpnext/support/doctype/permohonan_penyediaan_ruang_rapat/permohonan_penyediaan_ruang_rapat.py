@@ -5,6 +5,9 @@ import frappe
 from frappe.model.document import Document
 from erpnext.support.doctype.risalah_rapat.risalah_rapat import get_department_abbr_by_session
 import datetime
+from frappe.utils import (
+	today,
+)
 
 class PermohonanPenyediaanRuangRapat(Document):
 	def on_submit(self):
@@ -17,11 +20,11 @@ class PermohonanPenyediaanRuangRapat(Document):
 
 	def autoname(self):
 		roman = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"]
-		mydate = datetime.datetime.strptime(self.tanggal_pengajuan, '%Y-%m-%d')
+		mydate = datetime.datetime.strptime(today(), '%Y-%m-%d')
 		bulan = roman[int(mydate.month)]
 		
 
-		a = frappe.db.sql("""SELECT COUNT(*) cnt FROM `tabPermohonan Penyediaan Ruang Rapat` WHERE tanggal_pengajuan between '{0}' and '{1}'""".format("{0}-01-01".format(mydate.year), "{0}-12-31".format(mydate.year)), as_dict=1)
+		a = frappe.db.sql("""SELECT COUNT(*) cnt FROM `tabPermohonan Penyediaan Ruang Rapat` WHERE name like '%/{0}/{1}'""".format(bulan, mydate.year), as_dict=1)
 		if a:
 			urut = a[0].cnt+1
 			urut2 = ""
@@ -31,9 +34,9 @@ class PermohonanPenyediaanRuangRapat(Document):
 				urut2 = "0{0}".format(urut)
 			else:
 				urut2 = "{0}".format(urut)
-			self.name = "{2}/{3}/PPRP/{0}/{1}".format(bulan, mydate.year-2000, urut2, get_department_abbr_by_session())
+			self.name = "{2}/ADU/PRT/{0}/{1}".format(bulan, mydate.year, urut2)
 		else:
-			self.name = "001/{2}/PPRP/{0}/{1}".format(bulan, mydate.year-2000, get_department_abbr_by_session())
+			self.name = "01/ADU/PRT/{0}/{1}".format(bulan, mydate.year)
 
 @frappe.whitelist()
 def tolak_pengajuan(docname):
