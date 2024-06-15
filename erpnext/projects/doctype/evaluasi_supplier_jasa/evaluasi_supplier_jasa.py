@@ -27,7 +27,7 @@ class EvaluasiSupplierJasa(Document):
 				urut2 = "{0}".format(urut)
 			self.name = "{2}/OPS/ESJ/{0}/{1}".format(bulan, mydate.year, urut2)
 		else:
-			self.name = "01/OPS/ESJ/{0}/{1}".format(bulan, mydate.year)
+			self.name = "0001/OPS/ESJ/{0}/{1}".format(bulan, mydate.year)
 	# def before_insert(self):
 	# 	for d in self.pejabat:
 	# 		if d.idx == 1:
