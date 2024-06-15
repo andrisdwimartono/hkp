@@ -158,7 +158,7 @@
   {
    "hidden": 0,
    "is_query_report": 1,
-   "label": "Laporan Penerimaan Barang",
+   "label": "Penerimaan Purchase Order",
    "link_to": "Penerimaan Purchase Order",
    "link_type": "Report",
    "onboard": 0,
@@ -185,7 +185,7 @@
   {
    "hidden": 0,
    "is_query_report": 1,
-   "label": "Laporan Barang Keluar",
+   "label": "Stock Ledger",
    "link_to": "Stock Ledger",
    "link_type": "Report",
    "onboard": 0,
@@ -242,18 +242,9 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Monitoring Surat Penerimaan Barang",
-   "link_to": "Monitoring Surat Penerimaan Barang",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
   }
  ],
- "modified": "2024-04-05 10:22:45.528466",
+ "modified": "2024-06-08 11:49:20.748830",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Logistik",

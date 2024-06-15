@@ -3,17 +3,19 @@
 
 import frappe
 from frappe.model.document import Document
-from erpnext.projects.utils import notify_user
 import datetime
+from frappe.utils import (
+	today,
+)
 
 class EvaluasiSupplierJasa(Document):
 	def autoname(self):
 		roman = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"]
-		mydate = datetime.datetime.strptime(self.posting_date, '%Y-%m-%d')
+		mydate = datetime.datetime.strptime(today(), '%Y-%m-%d')
 		bulan = roman[int(mydate.month)]
 		
 
-		a = frappe.db.sql("""SELECT COUNT(*) cnt FROM `tabEvaluasi Supplier Jasa` WHERE name like '%/{2}/{0}/{1}'""".format(bulan, mydate.year, self.project), as_dict=1)
+		a = frappe.db.sql("""SELECT COUNT(*) cnt FROM `tabSub Section Material Type Entries` WHERE name like '%/{0}/{1}'""".format(bulan, mydate.year), as_dict=1)
 		if a:
 			urut = a[0].cnt+1
 			urut2 = ""
@@ -23,9 +25,9 @@ class EvaluasiSupplierJasa(Document):
 				urut2 = "0{0}".format(urut)
 			else:
 				urut2 = "{0}".format(urut)
-			self.name = "ESJ/{2}/{3}/{0}/{1}".format(bulan, mydate.year, urut2, self.project)
+			self.name = "{2}/OPS/ESJ/{0}/{1}".format(bulan, mydate.year, urut2)
 		else:
-			self.name = "ESJ/001/{2}/{0}/{1}".format(bulan, mydate.year, self.project)
+			self.name = "01/OPS/ESJ/{0}/{1}".format(bulan, mydate.year)
 	# def before_insert(self):
 	# 	for d in self.pejabat:
 	# 		if d.idx == 1:

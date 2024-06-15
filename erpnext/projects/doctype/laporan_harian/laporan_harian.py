@@ -23,6 +23,6 @@ class LaporanHarian(Document):
 				urut2 = "0{0}".format(urut)
 			else:
 				urut2 = "{0}".format(urut)
-			self.name = "LH/{2}/{3}/{0}/{1}".format(bulan, mydate.year, urut2, self.project)
+			self.name = "{2}/LHH/{3}/{0}/{1}".format(bulan, mydate.year, urut2, self.project)
 		else:
-			self.name = "LH/001/{2}/{0}/{1}".format(bulan, mydate.year, self.project)
+			self.name = "001/LH/{2}/{0}/{1}".format(bulan, mydate.year, self.project)

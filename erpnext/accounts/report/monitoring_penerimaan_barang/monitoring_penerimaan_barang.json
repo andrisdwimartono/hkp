@@ -25,7 +25,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2023-04-18 11:15:50.356539",
+ "modified": "2024-06-08 11:27:20.065707",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Monitoring Penerimaan Barang",
@@ -37,10 +37,7 @@
  "report_type": "Query Report",
  "roles": [
   {
-   "role": "Accounts Manager"
-  },
-  {
-   "role": "Accounts User"
+   "role": "Manajer Logistik"
   },
   {
    "role": "Logistik"

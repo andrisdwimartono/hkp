@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "BO!-.YYYY.-.####.",
+ "autoname": "BOQ-.YYYY.-.####.",
  "creation": "2023-07-07 19:05:45.118083",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -45,7 +45,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-04-23 11:19:56.154659",
+ "modified": "2024-06-08 08:57:26.154033",
  "modified_by": "Administrator",
  "module": "Engineering",
  "name": "BOQ",

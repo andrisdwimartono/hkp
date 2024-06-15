@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_copy": 1,
+ "allow_rename": 1,
  "creation": "2023-09-10 11:14:28.241305",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -116,7 +117,7 @@
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-11 11:08:37.195957",
+ "modified": "2024-06-08 10:02:18.373135",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Sub Section Material Type Entries",
