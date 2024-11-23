@@ -8,7 +8,7 @@ def execute(filters=None):
 	columns = [
 			{
 				'fieldname': 'no',
-				'label': _('No'),
+				'label': _('Nomor'),
 				'fieldtype': 'Data',
 				'width': 20
 			},

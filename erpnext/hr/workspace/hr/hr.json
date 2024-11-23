@@ -1,4 +1,5 @@
 {
+ "cards_label": "SUB Menu HCD",
  "category": "Modules",
  "charts": [
   {
@@ -6,6 +7,7 @@
    "label": "Outgoing Salary"
   }
  ],
+ "charts_label": "Menu HCD",
  "creation": "2020-03-02 15:48:58.322521",
  "developer_mode_only": 0,
  "disable_user_customization": 0,
@@ -39,24 +41,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Tarik Data Absensi",
-   "link_to": "Tarik Data Absensi",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Absensi",
-   "link_to": "Attendance",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Proyek",
    "link_to": "Project",
    "link_type": "DocType",
@@ -70,16 +54,6 @@
    "link_to": "TENAGA KERJA PROYEK",
    "link_type": "Report",
    "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Employment Type",
-   "link_to": "Employment Type",
-   "link_type": "DocType",
-   "onboard": 0,
    "type": "Link"
   },
   {
@@ -113,16 +87,6 @@
    "type": "Link"
   },
   {
-   "dependencies": "",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Employee Health Insurance",
-   "link_to": "Employee Health Insurance",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
    "hidden": 0,
    "is_query_report": 0,
    "label": "Penilaian Karyawan Kontrak",
@@ -143,7 +107,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Employee Lifecycle",
+   "label": "Siklus Karyawan",
    "onboard": 0,
    "type": "Card Break"
   },
@@ -173,6 +137,26 @@
    "is_query_report": 0,
    "label": "Employee Transfer",
    "link_to": "Employee Transfer",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Employee Health Insurance",
+   "link_to": "Employee Health Insurance",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Employment Type",
+   "link_to": "Employment Type",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -210,7 +194,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Leaves",
+   "label": "Tanggal Libur dan Cuti",
    "onboard": 0,
    "type": "Card Break"
   },
@@ -282,21 +266,29 @@
    "type": "Card Break"
   },
   {
-   "dependencies": "Employee",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Employee Attendance Tool",
-   "link_to": "Employee Attendance Tool",
+   "label": "Absensi",
+   "link_to": "Attendance",
    "link_type": "DocType",
-   "onboard": 1,
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tarik Data Absensi",
+   "link_to": "Tarik Data Absensi",
+   "link_type": "DocType",
+   "onboard": 0,
    "type": "Link"
   },
   {
    "dependencies": "Employee",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Attendance",
-   "link_to": "Attendance",
+   "label": "Employee Attendance Tool",
+   "link_to": "Employee Attendance Tool",
    "link_type": "DocType",
    "onboard": 1,
    "type": "Link"
@@ -759,7 +751,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-05-07 14:34:07.144343",
+ "modified": "2024-11-01 13:43:43.875694",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "HR",
@@ -807,5 +799,6 @@
    "stats_filter": "{\n    \"status\": \"Open\"\n}",
    "type": "Dashboard"
   }
- ]
+ ],
+ "shortcuts_label": "Menu HCD"
 }

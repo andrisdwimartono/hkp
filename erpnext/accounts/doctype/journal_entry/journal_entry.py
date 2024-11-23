@@ -44,7 +44,10 @@ class JournalEntry(AccountsController):
 		return self.voucher_type
 
 	def validate(self):
-		mydate = datetime.strptime(self.posting_date, '%Y-%m-%d')
+		if isinstance(self.posting_date, str):
+			mydate = datetime.strptime(self.posting_date, '%Y-%m-%d')
+		else:
+			mydate = self.posting_date
 		if frappe.db.sql("""SELECT * FROM `tabJournal Entry` WHERE posting_date >= '{0}' AND posting_date < '{1}' AND nomor_bukti = '{2}' AND name != '{3}'""".format("{0}-{1}-01".format(mydate.year, mydate.month), "{0}-{1}-01".format(mydate.year if mydate.month < 12 else mydate.year+1, mydate.month+1 if mydate.month < 12 else 1), self.nomor_bukti, self.name), as_dict=1):
 			frappe.throw("No Bukti sudah dipakai dibulan ini".format(self.nomor_bukti))
 

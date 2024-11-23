@@ -12,6 +12,7 @@ class Deposite(AccountsController):
 	def validate(self):
 		self.items = []
 	def on_submit(self):
+		return
 		student_gl_entries = self.get_gl_dict(
 			{
 				"account": self.account_receivable,
@@ -51,73 +52,73 @@ class Deposite(AccountsController):
 			return
 		if not self.taken_balance:
 			return
-		student_gl_entries = self.get_gl_dict(
-			{
-				"account": self.account,
-				"against": self.account_receivable,
-				"debit": self.taken_balance,
-				"debit_in_account_currency": self.taken_balance,
-				"against_voucher": self.name,
-				"against_voucher_type": self.doctype,
-				"transaction_date": self.taken_date,
-				"cost_center": self.cost_center
-			},
-			item=self,
-		)
+		# student_gl_entries = self.get_gl_dict(
+		# 	{
+		# 		"account": self.account,
+		# 		"against": self.account_receivable,
+		# 		"debit": self.taken_balance,
+		# 		"debit_in_account_currency": self.taken_balance,
+		# 		"against_voucher": self.name,
+		# 		"against_voucher_type": self.doctype,
+		# 		"transaction_date": self.taken_date,
+		# 		"cost_center": self.cost_center
+		# 	},
+		# 	item=self,
+		# )
 
-		fee_gl_entry = self.get_gl_dict(
-			{
-				"account": self.account_receivable,
-				"against": self.account,
-				"credit": self.taken_balance,
-				"credit_in_account_currency": self.taken_balance,
-				"transaction_date": self.taken_date,
-				"cost_center": self.cost_center
-			},
-			item=self,
-		)
+		# fee_gl_entry = self.get_gl_dict(
+		# 	{
+		# 		"account": self.account_receivable,
+		# 		"against": self.account,
+		# 		"credit": self.taken_balance,
+		# 		"credit_in_account_currency": self.taken_balance,
+		# 		"transaction_date": self.taken_date,
+		# 		"cost_center": self.cost_center
+		# 	},
+		# 	item=self,
+		# )
 
-		make_gl_entries(
-			[student_gl_entries, fee_gl_entry],
-			cancel=(False),
-			update_outstanding="Yes",
-			merge_entries=False,
-		)
+		# make_gl_entries(
+		# 	[student_gl_entries, fee_gl_entry],
+		# 	cancel=(False),
+		# 	update_outstanding="Yes",
+		# 	merge_entries=False,
+		# )
 
 		if not self.interest_balance:
 			return
-		student_gl_entries = self.get_gl_dict(
-			{
-				"account": self.account_interest,
-				"against": self.account_receivable_interest,
-				"debit": self.interest_balance,
-				"debit_in_account_currency": self.interest_balance,
-				"against_voucher": self.name,
-				"against_voucher_type": self.doctype,
-				"transaction_date": self.taken_date,
-				"cost_center": self.cost_center
-			},
-			item=self,
-		)
+		# student_gl_entries = self.get_gl_dict(
+		# 	{
+		# 		"account": self.account_interest,
+		# 		"against": self.account_receivable_interest,
+		# 		"debit": self.interest_balance,
+		# 		"debit_in_account_currency": self.interest_balance,
+		# 		"against_voucher": self.name,
+		# 		"against_voucher_type": self.doctype,
+		# 		"transaction_date": self.taken_date,
+		# 		"cost_center": self.cost_center
+		# 	},
+		# 	item=self,
+		# )
 
-		fee_gl_entry = self.get_gl_dict(
-			{
-				"account": self.account_receivable_interest,
-				"against": self.account_interest,
-				"credit": self.interest_balance,
-				"credit_in_account_currency": self.interest_balance,
-				"transaction_date": self.taken_date,
-				"cost_center": self.cost_center
-			},
-			item=self,
-		)
+		# fee_gl_entry = self.get_gl_dict(
+		# 	{
+		# 		"account": self.account_receivable_interest,
+		# 		"against": self.account_interest,
+		# 		"credit": self.interest_balance,
+		# 		"credit_in_account_currency": self.interest_balance,
+		# 		"transaction_date": self.taken_date,
+		# 		"cost_center": self.cost_center
+		# 	},
+		# 	item=self,
+		# )
 
-		make_gl_entries(
-			[student_gl_entries, fee_gl_entry],
-			cancel=(False),
-			update_outstanding="Yes",
-			merge_entries=False,
-		)
+		# make_gl_entries(
+		# 	[student_gl_entries, fee_gl_entry],
+		# 	cancel=(False),
+		# 	update_outstanding="Yes",
+		# 	merge_entries=False,
+		# )
 
 		frappe.db.sql("update `tabDeposite` SET status = 'Taken' where name = '{0}'".format(self.name))
 		frappe.db.commit()

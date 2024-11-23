@@ -28,6 +28,7 @@
   "account_interest",
   "account_receivable_interest",
   "cost_center",
+  "keterangan",
   "amended_from"
  ],
  "fields": [
@@ -113,8 +114,7 @@
    "fieldtype": "Link",
    "label": "Akun Bank",
    "options": "Account",
-   "read_only_depends_on": "eval:doc.docstatus==1",
-   "reqd": 1
+   "read_only_depends_on": "eval:doc.docstatus==1"
   },
   {
    "fieldname": "column_break_sgbka",
@@ -136,8 +136,7 @@
    "fieldtype": "Link",
    "label": "Akun Deposito",
    "options": "Account",
-   "read_only_depends_on": "eval:doc.docstatus==1",
-   "reqd": 1
+   "read_only_depends_on": "eval:doc.docstatus==1"
   },
   {
    "allow_on_submit": 1,
@@ -190,7 +189,6 @@
    "fieldname": "cost_center",
    "fieldtype": "Link",
    "label": "Cost Center",
-   "mandatory_depends_on": "eval:doc.docstatus==1&&doc.status=='Deposited'",
    "options": "Cost Center",
    "read_only_depends_on": "eval:doc.docstatus==1&&doc.status=='Taken'"
   },
@@ -201,12 +199,17 @@
    "fieldtype": "Select",
    "label": "Dijaminkan",
    "options": "Yes\nNo"
+  },
+  {
+   "fieldname": "keterangan",
+   "fieldtype": "Small Text",
+   "label": "Keterangan"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-05-11 13:40:26.080443",
+ "modified": "2024-06-22 12:40:56.962448",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Deposite",

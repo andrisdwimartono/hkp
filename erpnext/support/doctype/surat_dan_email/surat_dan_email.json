@@ -62,10 +62,9 @@
   {
    "depends_on": "eval:doc.type == \"Surat\"",
    "fieldname": "nomer_surat",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Nomer Surat",
-   "mandatory_depends_on": "eval:doc.type == \"Surat\"",
-   "options": "Customer"
+   "mandatory_depends_on": "eval:doc.type == \"Surat\""
   },
   {
    "fieldname": "perihal",
@@ -169,7 +168,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-15 11:43:50.316823",
+ "modified": "2024-06-29 10:00:10.057617",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Surat dan Email",

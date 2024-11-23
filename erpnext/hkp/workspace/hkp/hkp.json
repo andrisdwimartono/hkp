@@ -2,6 +2,7 @@
  "cards_label": "Support",
  "category": "Modules",
  "charts": [],
+ "charts_label": "MENU HKP",
  "creation": "2023-12-15 10:45:16.820723",
  "developer_mode_only": 0,
  "disable_user_customization": 0,
@@ -323,7 +324,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-12-15 10:45:16.820723",
+ "modified": "2024-06-29 11:48:36.906444",
  "modified_by": "Administrator",
  "module": "HKP",
  "name": "HKP",

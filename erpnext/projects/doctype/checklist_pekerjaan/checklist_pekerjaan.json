@@ -16,6 +16,7 @@
   "column_break_zrsni",
   "termin",
   "tanggal",
+  "upload_dokumen",
   "section_break_myatb",
   "detail",
   "process_rules"
@@ -99,11 +100,16 @@
    "fieldtype": "Link",
    "label": "Sub Contract Hand Over",
    "options": "Sub Contract Hand Over"
+  },
+  {
+   "fieldname": "upload_dokumen",
+   "fieldtype": "Attach",
+   "label": "Upload Dokumen"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-20 09:22:48.169992",
+ "modified": "2024-06-20 14:32:13.566728",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Checklist Pekerjaan",

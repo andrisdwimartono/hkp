@@ -3,7 +3,7 @@
 
 frappe.ui.form.on('Berita Acara Klarifikasi dan Negosiasi', {
 	refresh: function(frm) {
-		if(frm.doc.__islocal){
+		if(frm.doc.__islocal && frm.doc.syarat_pembayaran.length == 0){
 			var c = frm.add_child("syarat_pembayaran");
 			c.hal = "Kwintasi";
 			var d = frm.add_child("syarat_pembayaran");
@@ -49,12 +49,12 @@ frappe.ui.form.on('Berita Acara Klarifikasi dan Negosiasi', {
 		}
 	},
 	uang_muka: function(frm){
-		var x = frm.doc.uang_muka*frm.doc.harga_pekerjaan;
+		var x = frm.doc.uang_muka*frm.doc.harga_pekerjaan/100;
 		frm.set_value("uang_muka_total", x);
 		frm.refresh_field("uang_muka_total");
 	},
 	harga_pekerjaan: function(frm){
-		var x = frm.doc.uang_muka*frm.doc.harga_pekerjaan;
+		var x = frm.doc.uang_muka*frm.doc.harga_pekerjaan/100;
 		frm.set_value("uang_muka_total", x);
 		frm.refresh_field("uang_muka_total");
 

@@ -543,6 +543,7 @@ scheduler_events = {
 		"erpnext.non_profit.doctype.membership.membership.set_expired_status",
 		"erpnext.hr.doctype.interview.interview.send_daily_feedback_reminder",
         "erpnext.hr.utils.get_employee_certificate_obsolete",
+        "erpnext.hr.utils.get_deposite_will_obsolete",
         "erpnext.hr.utils.get_employee_contract_obsolete",
         "erpnext.support.doctype.peminjaman_dokumen.peminjaman_dokumen.alert_kembalikan",
         "erpnext.support.doctype.company_document.company_document.get_company_document_obsolete",

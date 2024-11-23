@@ -788,6 +788,47 @@ def get_employee_certificate_obsolete():
 		make_notification_logs(notification_doc, assigner)
 
 @frappe.whitelist()
+def get_deposite_will_obsolete():
+	x = add_days(today(), -5)
+	deposite = frappe.db.sql("""SELECT 
+						   ec.*, date_format(ec.schedule_date, "%d-%m-%Y") dend 
+						   FROM `tabDeposite` ec
+						   WHERE ec.schedule_date <= '{0}'""".format(x), as_dict=1)
+	assigner = []
+	for d in deposite:
+		notification_doc = {
+			"type": "Alert",
+			"document_type": "Deposite",
+			"document_name": d.name,
+			"subject": "Deposit {0} yang akan berakhir di tanggal {1}".format(d.name, d.dend),
+			"from_user": d.owner or "Administrator",
+		}
+		
+		assigner.appen(d.owner)
+		keu_employees = frappe.db.sql("""SELECT DISTINCT u.name user_id FROM `tabHas Role` hr
+							   INNER JOIN tabUser u ON u.name = hr.parent
+							   WHERE hr.role IN ('Keuangan Pajak', 'Manajer Keuangan', 'Administrasi Keuangan') AND hr.parenttype = 'User'""", as_dict=1)
+		for hr in keu_employees:
+			assigner.append(hr.user_id)
+		notification_doc = frappe._dict(notification_doc)
+		
+		make_notification_logs(notification_doc, assigner)
+
+	bank_garansi = frappe.db.sql("""SELECT 
+						   ec.*, date_format(ec.schedule_date, "%d-%m-%Y") dend 
+						   FROM `tabBank Guarantee` ec
+						   WHERE ec.schedule_date <= '{0}'""".format(x), as_dict=1)
+
+	for d in bank_garansi:
+		notification_doc = {
+			"type": "Alert",
+			"document_type": "Bank Guarantee",
+			"document_name": d.name,
+			"subject": "Deposit {0} yang akan berakhir di tanggal {1}".format(d.name, d.dend),
+			"from_user": d.owner or "Administrator",
+		}
+
+@frappe.whitelist()
 def get_employee_contract_obsolete():
 	x = add_days(today(), -90)
 	y = add_days(today(), -60)

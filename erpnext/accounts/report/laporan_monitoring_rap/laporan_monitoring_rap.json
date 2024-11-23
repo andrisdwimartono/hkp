@@ -73,7 +73,7 @@
  "is_standard": "Yes",
  "json": "{}",
  "letter_head": "KOP HKP",
- "modified": "2024-04-01 09:52:37.899384",
+ "modified": "2024-06-22 09:25:58.133296",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Laporan Monitoring RAP",
@@ -107,6 +107,9 @@
   },
   {
    "role": "Operasional"
+  },
+  {
+   "role": "Pengendalian Biaya"
   }
  ]
 }

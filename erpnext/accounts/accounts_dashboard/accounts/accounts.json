@@ -14,6 +14,12 @@
   },
   {
    "card": "Sum of Total_budget-2"
+  },
+  {
+   "card": "Kartu1"
+  },
+  {
+   "card": "Kartu Contoh 1"
   }
  ],
  "charts": [
@@ -53,7 +59,7 @@
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
- "modified": "2024-05-08 08:57:42.687670",
+ "modified": "2024-07-30 12:44:27.999162",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Accounts",

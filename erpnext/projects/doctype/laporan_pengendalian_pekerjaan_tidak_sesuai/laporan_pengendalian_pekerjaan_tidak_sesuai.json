@@ -120,7 +120,8 @@
    "fetch_from": "penerima.employee_name",
    "fieldname": "nama_penerima",
    "fieldtype": "Data",
-   "label": "Penerima Laporan"
+   "label": "Nama Penerima Laporan",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_2nlkb",
@@ -129,7 +130,8 @@
   {
    "fieldname": "jabatan_penerima",
    "fieldtype": "Data",
-   "label": "Jabatan"
+   "label": "Jabatan",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_lsvkh",
@@ -138,7 +140,8 @@
   {
    "fieldname": "tanggal_penerima",
    "fieldtype": "Date",
-   "label": "Tanggal"
+   "label": "Tanggal",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_8t8k2",
@@ -147,7 +150,8 @@
   {
    "fieldname": "analisa_keluhan",
    "fieldtype": "Small Text",
-   "label": "Analisa Keluhan"
+   "label": "Analisa Keluhan",
+   "reqd": 1
   },
   {
    "default": "Diperbaiki",
@@ -159,7 +163,8 @@
   {
    "fieldname": "keterangan",
    "fieldtype": "Small Text",
-   "label": "Keterangan"
+   "label": "Keterangan",
+   "reqd": 1
   },
   {
    "fieldname": "disetujui_oleh_section",
@@ -170,7 +175,8 @@
    "fieldname": "disetujui",
    "fieldtype": "Link",
    "label": "Disetujui Oleh",
-   "options": "Employee"
+   "options": "Employee",
+   "reqd": 1
   },
   {
    "fetch_from": "disetujui.employee_name",
@@ -185,13 +191,15 @@
   {
    "fieldname": "tanggal_disetujui",
    "fieldtype": "Date",
-   "label": "Tanggal"
+   "label": "Tanggal",
+   "reqd": 1
   },
   {
    "fieldname": "penerima",
    "fieldtype": "Link",
    "label": "Penerima",
-   "options": "Employee"
+   "options": "Employee",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_kr2w1",
@@ -200,12 +208,14 @@
   {
    "fieldname": "tanggal_verifikasi_ulang",
    "fieldtype": "Date",
-   "label": "Tanggal Verifikasi Ulang"
+   "label": "Tanggal Verifikasi Ulang",
+   "reqd": 1
   },
   {
    "fieldname": "hasil_verifikasi",
    "fieldtype": "Small Text",
-   "label": "Hasil Verifikasi"
+   "label": "Hasil Verifikasi",
+   "reqd": 1
   },
   {
    "fieldname": "diverifikasi_oleh_section",
@@ -216,7 +226,8 @@
    "fieldname": "manager_operasi",
    "fieldtype": "Link",
    "label": "Manager Operasi",
-   "options": "Employee"
+   "options": "Employee",
+   "reqd": 1
   },
   {
    "fetch_from": "manager_operasi.employee_name",
@@ -228,22 +239,25 @@
   {
    "fieldname": "tanggal_verifikasi",
    "fieldtype": "Date",
-   "label": "Tanggal Verifikasi"
+   "label": "Tanggal Verifikasi",
+   "reqd": 1
   },
   {
    "fieldname": "pelanggan",
    "fieldtype": "Data",
-   "label": "Pelanggan"
+   "label": "Pelanggan",
+   "reqd": 1
   },
   {
    "fieldname": "tanggal_verifikasi_pelanggan",
    "fieldtype": "Date",
-   "label": "Tanggal Verifikasi Pelanggan"
+   "label": "Tanggal Verifikasi Pelanggan",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-18 10:25:09.292244",
+ "modified": "2024-06-21 08:34:57.886906",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Laporan Pengendalian Pekerjaan Tidak Sesuai",

@@ -11,7 +11,7 @@ from frappe.utils import (
 class LaporanPengajuanPenagihan(Document):
 	def autoname(self):
 		roman = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"]
-		mydate = datetime.datetime.strptime(today(), '%Y-%m-%d')
+		mydate = datetime.strptime(today(), '%Y-%m-%d')
 		bulan = roman[int(mydate.month)]
 		
 

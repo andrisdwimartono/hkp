@@ -146,7 +146,8 @@
    "default": "Today",
    "fieldname": "tanggal",
    "fieldtype": "Date",
-   "label": "Tanggal"
+   "label": "Tanggal",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_0vlv4",
@@ -167,7 +168,8 @@
   {
    "fieldname": "document",
    "fieldtype": "Attach",
-   "label": "Document"
+   "label": "Document",
+   "reqd": 1
   },
   {
    "fieldname": "master_item_pekerjaan",
@@ -180,7 +182,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-11-01 10:07:03.056933",
+ "modified": "2024-06-21 08:40:40.787646",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Laporan Pengajuan Penagihan",
