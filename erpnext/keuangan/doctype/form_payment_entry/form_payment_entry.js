@@ -21,6 +21,7 @@ function get_budget(d){
 	var vol = d.unit_price?d.unit_price:0;
 	var up = d.volume?d.volume:0;
 	d.budget_amount = vol*up;
+	d.budget_amount_submission = vol*up;
 	cur_frm.refresh_field("details");
 }
 

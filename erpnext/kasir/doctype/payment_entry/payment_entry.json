@@ -13,6 +13,7 @@
   "payment_order_status",
   "column_break_5",
   "posting_date",
+  "submit_date",
   "company",
   "mode_of_payment",
   "giro_mundur_date",
@@ -203,6 +204,8 @@
    "depends_on": "eval:doc.project",
    "fieldname": "type",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Type",
    "mandatory_depends_on": "eval:doc.project",
    "options": "Form Payment Entry Project\nSlip Pembayaran Subkon\nForm Payment Entry Supplier"
@@ -216,9 +219,12 @@
    "options": "Form Payment Entry\nSlip Pembayaran Subkon"
   },
   {
+   "columns": 1,
    "depends_on": "eval:doc.project && doc.type == \"Form Payment Entry Project\"",
    "fieldname": "form_payment_entry_project",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Form Payment Entry Project",
    "mandatory_depends_on": "eval:doc.project && doc.type == \"Form Payment Entry Project\"",
    "options": "Form Payment Entry Project"
@@ -232,10 +238,15 @@
    "options": "Form Payment Entry Supplier"
   },
   {
+   "columns": 6,
    "fieldname": "purpose",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Purpose",
-   "read_only": 1
+   "length": 255,
+   "reqd": 1
   },
   {
    "depends_on": "eval:doc.project && doc.type == \"Hand Over Progress\"",
@@ -264,10 +275,12 @@
    "options": "Cost Center"
   },
   {
+   "columns": 2,
    "depends_on": "eval:!doc.project && doc.type2 == \"Form Payment Entry\"",
    "fieldname": "form_payment_entry",
    "fieldtype": "Link",
    "label": "Form Payment Entry",
+   "mandatory_depends_on": "eval:!doc.project && doc.type2 == \"Form Payment Entry\"",
    "options": "Form Payment Entry"
   },
   {
@@ -280,18 +293,14 @@
    "depends_on": "eval:in_list([\"Receive\", \"Pay\"], doc.payment_type) && doc.docstatus==0",
    "fieldname": "party_type",
    "fieldtype": "Link",
-   "in_standard_filter": 1,
    "label": "Party Type",
    "options": "DocType",
-   "print_hide": 1,
-   "search_index": 1
+   "print_hide": 1
   },
   {
-   "bold": 1,
    "depends_on": "eval:in_list([\"Receive\", \"Pay\"], doc.payment_type) && doc.party_type",
    "fieldname": "party",
    "fieldtype": "Dynamic Link",
-   "in_standard_filter": 1,
    "label": "Party",
    "options": "party_type"
   },
@@ -811,12 +820,20 @@
    "label": "Title",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "submit_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Submit Date",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-21 11:19:26.995335",
+ "modified": "2025-04-12 11:29:01.675187",
  "modified_by": "Administrator",
  "module": "Kasir",
  "name": "Payment Entry",
@@ -858,6 +875,6 @@
  "show_name_in_global_search": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "title_field": "title",
+ "title_field": "purpose",
  "track_changes": 1
 }

@@ -61,7 +61,7 @@ def check_week(posting_date = None):
 	monday2 = (d2 - timedelta(days=d2.weekday()))
 	
 	week = (monday2 - monday1).days / 7
-	return week
+	return week+1
 
 @frappe.whitelist()
 def check_last_week(master_item_pekerjaan = None, sub_contract_hand_over = None, week = None):

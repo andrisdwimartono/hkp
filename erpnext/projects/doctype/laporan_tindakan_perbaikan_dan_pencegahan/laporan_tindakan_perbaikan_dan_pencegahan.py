@@ -98,6 +98,10 @@ class LAPORANTINDAKANPERBAIKANDANPENCEGAHAN(Document):
 	# 		enqueue_create_notification(assigner, notification_doc)
 
 def get_permission_query_conditions(user):
-	return """(`tabLAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN`.`owner` = '{owner}') or (`tabLAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN`.`disetujui_oleh_user` = '{owner}') or (`tabLAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN`.`diperiksa_oleh_user` = '{owner}' AND (`tabLAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN`.workflow_state = 'Disetujui' or `tabLAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN`.workflow_state = 'Diperiksa'))""".format(
+	return """((`tabLAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN`.`owner` = '{owner}') 
+				or (`tabLAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN`.`diperiksa_oleh_user` = '{owner}' 
+				or (`tabLAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN`.`disetujui_oleh_user` = '{owner}') 
+				AND (`tabLAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN`.workflow_state = 'Diperiksa' 
+				or `tabLAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN`.workflow_state = 'Disetujui')) OR ('Administrator' = '{owner}'))""".format(
 			owner=frappe.session.user,
 		)

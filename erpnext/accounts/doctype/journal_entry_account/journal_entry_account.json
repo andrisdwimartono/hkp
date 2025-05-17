@@ -37,7 +37,8 @@
   "col_break3",
   "is_advance",
   "user_remark",
-  "against_account"
+  "against_account",
+  "employee"
  ],
  "fields": [
   {
@@ -271,12 +272,18 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Reference Detail No"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
   }
  ],
  "idx": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-06-20 15:05:32.330022",
+ "modified": "2024-11-23 09:39:21.963656",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Journal Entry Account",

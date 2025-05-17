@@ -231,7 +231,8 @@ frappe.ui.form.on('Form Payment Entry Project', {
 						c.rap = 0;
 						c.volume = 1;
 						c.unit_price = vals.unit_price;
-						c.budget_amount = vals.budget_amount;
+						c.budget_amount = 0;
+						c.budget_amount_submission = vals.budget_amount;
 						c.remarks = "Progress ke-"+vals.progress_sequence
 						refresh_field("details");
 						cur_frm.set_value("project", vals.project);
@@ -284,7 +285,8 @@ frappe.ui.form.on('Form Payment Entry Project', {
 						}
 						c.volume = vols;
 						c.unit_price = vals.unit_price;
-						c.budget_amount = vals.unit_price*vols;
+						c.budget_amount = 0;
+						c.budget_amount_submission = vals.unit_price*vols;
 						c.account = vals.account;
 						c.cost_center = vals.cost_center;
 						c.description = vals.description;
@@ -341,6 +343,7 @@ function get_budget(d){
 	var vol = d.unit_price?d.unit_price:0;
 	var up = d.volume?d.volume:0;
 	d.budget_amount = vol*up;
+	d.budget_amount_submission = vol*up;
 	cur_frm.refresh_field("details");
 }
 
@@ -373,7 +376,8 @@ frappe.ui.form.on("Form Payment Entry Account", "pos_rap", function(frm, cdt, cd
 				}
 				d.volume = vols;
 				d.unit_price = vals.unit_price;
-				d.budget_amount = vals.budget_amount;
+				d.budget_amount = 0;
+				d.budget_amount_submission = vals.budget_amount;
 				d.account = vals.account;
 				d.cost_center = vals.cost_center;
 				d.description = vals.description;

@@ -98,6 +98,7 @@ class PaymentEntry(AccountsController):
 		self.update_payment_schedule()
 		self.set_status()
 		self.update_outstanding_amounts_kas_bon()
+		self.submit_date = nowdate()
 
 	def on_cancel(self):
 		self.ignore_linked_doctypes = ("GL Entry", "Stock Ledger Entry")
@@ -763,6 +764,10 @@ class PaymentEntry(AccountsController):
 				frappe.throw(_("Reference No and Reference Date is mandatory for Bank transaction"))
 
 	def set_remarks(self):
+		if self.purpose:
+			self.set("remarks", self.purpose)
+			return
+		
 		if self.custom_remarks:
 			return
 

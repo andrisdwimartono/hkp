@@ -46,6 +46,7 @@
    "read_only_depends_on": "eval: doc.workflow_state == \"Diperiksa\" ||\ndoc.workflow_state == \"Disetujui\" ||\ndoc.workflow_state == \"Rejected\""
   },
   {
+   "depends_on": "eval: doc.workflow_state == \"Dibuat\"",
    "fieldname": "uraian",
    "fieldtype": "Text Editor",
    "label": "Uraian",
@@ -111,7 +112,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-20 09:01:26.852586",
+ "modified": "2025-01-03 11:04:32.704217",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "LAPORAN TINDAKAN PERBAIKAN DAN PENCEGAHAN",

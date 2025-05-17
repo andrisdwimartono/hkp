@@ -207,7 +207,8 @@ frappe.ui.form.on('Payment Entry', {
 			return {
 				filters: {
 					use_payment_entry: 1,
-					docstatus: 1
+					docstatus: 1,
+					outstanding_amount: [">", 0]
 				}
 			}
 		});

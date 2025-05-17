@@ -105,3 +105,16 @@ frappe.ui.form.on('Realisasi Anggaran Non Proyek', {
 		});
 	}
 });
+
+
+frappe.ui.form.on("Form Payment Entry Non Project Realisasi", "unit_price", function(frm, cdt, cdn) {
+	var d = locals[cdt][cdn];
+    d.budget_amount = d.volume*d.unit_price;
+	refresh_field("detail");
+});
+
+frappe.ui.form.on("Form Payment Entry Non Project Realisasi", "volume", function(frm, cdt, cdn) {
+	var d = locals[cdt][cdn];
+    d.budget_amount = d.volume*d.unit_price;
+	refresh_field("detail");
+});

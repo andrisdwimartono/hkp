@@ -9,7 +9,7 @@
  "filters": [],
  "idx": 3,
  "is_standard": "Yes",
- "modified": "2024-03-07 09:24:53.533507",
+ "modified": "2025-03-15 09:29:19.317315",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "General Ledger",
@@ -40,6 +40,12 @@
   },
   {
    "role": "Keuangan Pajak"
+  },
+  {
+   "role": "Kasir HKP"
+  },
+  {
+   "role": "Manajer Keuangan"
   }
  ]
 }

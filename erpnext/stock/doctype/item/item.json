@@ -21,6 +21,7 @@
   "item_group",
   "is_item_from_hub",
   "stock_uom",
+  "working_group",
   "column_break0",
   "disabled",
   "allow_alternative_item",
@@ -972,6 +973,15 @@
    "fieldtype": "Data",
    "label": "Item Category Name",
    "read_only": 1
+  },
+  {
+   "default": "UMUM",
+   "fieldname": "working_group",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Working Group",
+   "options": "GI\nGIS\nSUTT\nSUTR-SUTM\nGEDUNG\nUMUM"
   }
  ],
  "icon": "fa fa-tag",
@@ -979,7 +989,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-30 13:31:59.847001",
+ "modified": "2025-02-15 10:22:47.565929",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",

@@ -233,16 +233,17 @@ class Item(Document):
 			if self.stock_ledger_created():
 				frappe.throw(_("Cannot be a fixed asset item as Stock Ledger is created."))
 			
-			if not hasattr(self, "from_asset"):
-				asset = frappe.db.get_all("Asset", filters={"item_code": self.name, "docstatus": 1}, limit=1)
-				if not asset:
-					asset_doc = frappe.get_doc({
-						"doctype": "Asset",
-						"asset_name": self.item_name,
-						"asset_category": self.asset_category,
-						"item_code": self.name
-					})
-					asset_doc.insert()
+			# if not hasattr(self, "from_asset"):
+			# 	asset = frappe.db.get_all("Asset", filters={"item_code": self.name, "docstatus": 1}, limit=1)
+			# 	if not asset:
+			# 		asset_doc = frappe.get_doc({
+			# 			"doctype": "Asset",
+			# 			"asset_name": self.item_name,
+			# 			"asset_category": self.asset_category,
+			# 			"item_code": self.name,
+			# 			"kode_inventaris": self.name
+			# 		})
+			# 		asset_doc.insert(ignore_mandatory=True)
 
 		if not self.is_fixed_asset:
 			asset = frappe.db.get_all("Asset", filters={"item_code": self.name, "docstatus": 1}, limit=1)

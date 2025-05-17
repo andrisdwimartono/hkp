@@ -1,0 +1,62 @@
+<table width="100%">
+    <thead>
+        <tr>
+            <td class="text-center"><h1>Laporan Realisasi Anggaran</h1></td>
+        </tr>
+        <tr>
+            <td class="text-center">Tanggal : {%= frappe.datetime.str_to_user(filters.date_from) %} s/d {%= frappe.datetime.str_to_user(filters.date_to) %}</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <table width="90%" border=1 style="margin-left: 5%;">
+                    <thead style="font-weight: bold;" class="text-center">
+                        <tr>
+                            <td width="5%">No</td>
+                            <td width="15%">Tipe</td>
+                            <td width="15%">Kas Bon</td>
+                            <td width="30%">Tujuan</td>
+                            <td width="12%">Rencana</td>
+                            <td width="12%">Realisasi</td>
+                            <td width="11%">Selisih</td>
+                        </tr>
+                    </thead>
+                    <tbody class="text-left">
+                        {% 
+                            var plan = 0;
+                            var real = 0; 
+                            var diff = 0;
+                        %}
+                        {% for(let i=0, k=data.length; i<k; i++) { %}
+                        {% 
+                            plan = plan+data[i].total_budget_plan;
+                            real = real+data[i].total_budget_realization;
+                            diff = diff+data[i].total_budget_difference;
+                        %}
+                        <tr>
+                            <td>{%= i+1 %}</td>
+                            <td>{%= data[i].type %}</td>
+                            <td>{%= data[i].kas_bon %}</td>
+                            <td>{%= data[i].purpose %}</td>
+                            <td class="text-right">{%= format_currency(data[i].total_budget_plan, "") %}</td>
+                            <td class="text-right">{%= format_currency(data[i].total_budget_realization, "") %}</td>
+                            <td class="text-right">{%= format_currency(data[i].total_budget_difference, "") %}</td>
+                        </tr>
+                        {% } %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <tr>
+                                <td colspan="4" class="text-right" style="padding-right: 15px !important;"><b>Total</b></td>
+                                <td class="text-right">{%= format_currency(plan, "") %}</td>
+                                <td class="text-right">{%= format_currency(real, "") %}</td>
+                                <td class="text-right">{%= format_currency(diff, "") %}</td>
+                            </tr>
+                        </tr>
+                    </tfoot>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>

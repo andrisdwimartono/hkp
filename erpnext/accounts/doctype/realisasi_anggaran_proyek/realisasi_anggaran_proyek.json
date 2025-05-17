@@ -77,7 +77,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-27 13:33:14.516351",
+ "modified": "2025-03-22 12:20:28.453476",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Realisasi Anggaran Proyek",
@@ -96,6 +96,8 @@
    "write": 1
   }
  ],
+ "search_fields": "purpose",
  "sort_field": "modified",
- "sort_order": "DESC"
+ "sort_order": "DESC",
+ "title_field": "purpose"
 }

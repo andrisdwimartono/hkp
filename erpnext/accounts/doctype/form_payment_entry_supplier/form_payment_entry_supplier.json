@@ -87,6 +87,7 @@
    "fetch_from": "purchase_order.supplier_name",
    "fieldname": "supplier_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Supplier Name",
    "read_only": 1
   },
@@ -238,7 +239,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-22 11:22:18.796329",
+ "modified": "2025-03-22 12:25:17.393938",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Form Payment Entry Supplier",
@@ -288,6 +289,7 @@
  "search_fields": "purpose",
  "sort_field": "modified",
  "sort_order": "DESC",
+ "title_field": "supplier_name",
  "track_changes": 1,
  "track_views": 1
 }

@@ -44,12 +44,13 @@ class JournalEntry(AccountsController):
 		return self.voucher_type
 
 	def validate(self):
-		if isinstance(self.posting_date, str):
-			mydate = datetime.strptime(self.posting_date, '%Y-%m-%d')
-		else:
-			mydate = self.posting_date
-		if frappe.db.sql("""SELECT * FROM `tabJournal Entry` WHERE posting_date >= '{0}' AND posting_date < '{1}' AND nomor_bukti = '{2}' AND name != '{3}'""".format("{0}-{1}-01".format(mydate.year, mydate.month), "{0}-{1}-01".format(mydate.year if mydate.month < 12 else mydate.year+1, mydate.month+1 if mydate.month < 12 else 1), self.nomor_bukti, self.name), as_dict=1):
-			frappe.throw("No Bukti sudah dipakai dibulan ini".format(self.nomor_bukti))
+		#sementara matikan ketika import
+		# if isinstance(self.posting_date, str):
+		# 	mydate = datetime.strptime(self.posting_date, '%Y-%m-%d')
+		# else:
+		# 	mydate = self.posting_date
+		# if frappe.db.sql("""SELECT * FROM `tabJournal Entry` WHERE posting_date >= '{0}' AND posting_date < '{1}' AND nomor_bukti = '{2}' AND name != '{3}'""".format("{0}-{1}-01".format(mydate.year, mydate.month), "{0}-{1}-01".format(mydate.year if mydate.month < 12 else mydate.year+1, mydate.month+1 if mydate.month < 12 else 1), self.nomor_bukti, self.name), as_dict=1):
+		# 	frappe.throw("No Bukti sudah dipakai dibulan ini".format(self.nomor_bukti))
 
 		if self.voucher_type == "Opening Entry":
 			self.is_opening = "Yes"
@@ -811,7 +812,10 @@ class JournalEntry(AccountsController):
 		gl_map = []
 		for d in self.get("accounts"):
 			if d.debit or d.credit:
-				r = [d.user_remark, self.remark]
+				if d.user_remark:
+					r = [d.user_remark]
+				else:
+					r = [self.remark]
 				r = [x for x in r if x]
 				remarks = "\n".join(r)
 
@@ -839,6 +843,7 @@ class JournalEntry(AccountsController):
 							"cost_center": d.cost_center,
 							"project": d.project,
 							"finance_book": self.finance_book,
+							"nomor_bukti": self.nomor_bukti
 						},
 						item=d,
 					)

@@ -259,7 +259,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-21 11:26:23.389888",
+ "modified": "2025-03-22 11:34:23.478906",
  "modified_by": "Administrator",
  "module": "Keuangan",
  "name": "Form Payment Entry Project",
@@ -309,6 +309,7 @@
  "search_fields": "purpose",
  "sort_field": "modified",
  "sort_order": "DESC",
+ "title_field": "purpose",
  "track_changes": 1,
  "track_views": 1
 }

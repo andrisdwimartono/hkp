@@ -149,7 +149,8 @@ frappe.query_reports["General Ledger"] = {
 			"fieldname": "presentation_currency",
 			"label": __("Currency"),
 			"fieldtype": "Select",
-			"options": erpnext.get_presentation_currency_list()
+			"options": erpnext.get_presentation_currency_list(),
+			"hidden": true,
 		},
 		{
 			"fieldname":"cost_center",
@@ -159,7 +160,8 @@ frappe.query_reports["General Ledger"] = {
 				return frappe.db.get_link_options('Cost Center', txt, {
 					company: frappe.query_report.get_filter_value("company")
 				});
-			}
+			},
+			"hidden": true,
 		},
 		{
 			"fieldname":"project",
@@ -175,7 +177,8 @@ frappe.query_reports["General Ledger"] = {
 			"fieldname": "include_dimensions",
 			"label": __("Consider Accounting Dimensions"),
 			"fieldtype": "Check",
-			"default": 1
+			"default": 1,
+			"hidden": true,
 		},
 		{
 			"fieldname": "show_opening_entries",
@@ -201,3 +204,6 @@ frappe.query_reports["General Ledger"] = {
 }
 
 erpnext.utils.add_dimensions('General Ledger', 15)
+$(".dataTables_wrapper").css("width", "100%").css("overflow", "hidden");
+$("table.dataTable").css("width", "100% !important");
+$(".dataTables_scrollBody").css("overflow-x", "hidden !important");

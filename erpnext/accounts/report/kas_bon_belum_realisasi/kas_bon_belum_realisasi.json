@@ -10,23 +10,17 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "KOP HKP",
- "modified": "2024-03-01 09:58:47.991010",
+ "modified": "2025-04-17 06:36:45.602824",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Kas Bon Belum Realisasi",
  "owner": "Administrator",
  "prepared_report": 0,
- "query": "SELECT\n\tfpep.name as \"Dokumen::200\",\n\t'Kas Bon Proyek' as \"Jenis::200\",\n\tgroup_concat(fpea.pos_rap separator ',') as \"Item::300\",\n\tfpep.outstanding_amount as \"Nilai Sisa:Currency:300\"\nFROM\n\t`tabForm Payment Entry Project` fpep\nLEFT JOIN `tabForm Payment Entry Account` fpea ON fpea.parent = fpep.name\nWHERE\n\tfpep.docstatus in (0, 1) AND fpep.outstanding_amount > 0 and fpep.base_on != 'Purchase Order'\nGROUP BY fpep.name\nUNION\nSELECT\n\tfpe.name as \"Dokumen::200\",\n\t'Kas Bon Non Proyek' as \"Jenis::200\",\n\tgroup_concat(fpenp.pos_rap separator ',') as \"Item::300\",\n\tfpe.outstanding_amount as \"Nilai Sisa:Currency:300\"\nFROM\n\t`tabForm Payment Entry` fpe\nLEFT JOIN `tabForm Payment Entry Non Project` fpenp ON fpenp.parent = fpe.name\nWHERE\n\tfpe.docstatus in (0, 1) AND fpe.outstanding_amount > 0\nGROUP BY fpe.name",
+ "query": "SELECT\n\tfpep.name as \"Dokumen::200\",\n\t'Kas Bon Proyek' as \"Jenis::200\",\n\tgroup_concat(fpea.pos_rap separator ',') as \"Item::300\",\n\tfpep.outstanding_amount as \"Nilai Sisa:Currency:250\",\n\tgroup_concat(fp.posting_date separator ',') as \"Tanggal bayar:Data:250\"\nFROM\n\t`tabForm Payment Entry Project` fpep\nLEFT JOIN `tabForm Payment Entry Account` fpea ON fpea.parent = fpep.name\nINNER JOIN `tabPayment Entry` fp ON fp.form_payment_entry_project = fpep.name AND fp.docstatus IN (1)\nLEFT JOIN `tabRealisasi Anggaran Proyek` rap ON rap.form_payment_entry_project = fpep.name AND rap.docstatus IN (1)\nWHERE\n\tfpep.docstatus in (1) and fpep.base_on != 'Purchase Order' AND rap.name is null\nGROUP BY fpep.name\nUNION\nSELECT\n\tfpe.name as \"Dokumen::200\",\n\t'Kas Bon Non Proyek' as \"Jenis::200\",\n\tgroup_concat(fpenp.pos_rap separator ',') as \"Item::300\",\n\tfpe.outstanding_amount as \"Nilai Sisa:Currency:250\",\n\tgroup_concat(fp.posting_date separator ',') as \"Tanggal bayar:Data:250\"\nFROM\n\t`tabForm Payment Entry` fpe\nLEFT JOIN `tabForm Payment Entry Non Project` fpenp ON fpenp.parent = fpe.name\nINNER JOIN `tabPayment Entry` fp ON fp.form_payment_entry = fpenp.name AND fp.docstatus IN (1)\nLEFT JOIN `tabRealisasi Anggaran Non Proyek` ranp ON ranp.form_payment_entry = fpenp.name AND ranp.docstatus IN (1)\nWHERE\n\tfpe.docstatus in (1) AND ranp.name is null\nGROUP BY fpe.name",
  "ref_doctype": "Form Payment Entry Project",
  "report_name": "Kas Bon Belum Realisasi",
- "report_type": "Query Report",
+ "report_type": "Script Report",
  "roles": [
-  {
-   "role": "Accounts Manager"
-  },
-  {
-   "role": "Accounts User"
-  },
   {
    "role": "Kasir"
   },

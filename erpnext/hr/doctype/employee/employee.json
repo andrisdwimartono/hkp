@@ -961,7 +961,7 @@
    "link_fieldname": "employee"
   }
  ],
- "modified": "2024-05-16 20:11:03.092959",
+ "modified": "2025-03-07 06:03:41.298344",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Employee",
@@ -973,7 +973,8 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Employee"
+   "role": "Employee",
+   "select": 1
   },
   {
    "create": 1,

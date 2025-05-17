@@ -200,7 +200,8 @@ def get_gl_entries(filters, accounting_dimensions):
 			party_type,
 			party,
 			voucher_type,
-			voucher_no, {dimension_fields}
+			voucher_no,
+			nomor_bukti, {dimension_fields}
 			cost_center, project,
 			against_voucher_type,
 			against_voucher,
@@ -229,7 +230,7 @@ def get_gl_entries(filters, accounting_dimensions):
 		"""
 		select
 			name as gl_entry, posting_date, account, party_type, party,
-			voucher_type, voucher_no, {dimension_fields}
+			voucher_type, voucher_no, nomor_bukti, {dimension_fields}
 			cost_center, project,
 			against_voucher_type, against_voucher, account_currency,
 			remarks, against, is_opening, creation {select_fields}
@@ -267,6 +268,9 @@ def get_conditions(filters):
 
 	if filters.get("voucher_no"):
 		conditions.append("voucher_no=%(voucher_no)s")
+	
+	if filters.get("nomor_bukti"):
+		conditions.append("nomor_bukti=%(nomor_bukti)s")
 
 	if filters.get("group_by") == "Group by Party" and not filters.get("party_type"):
 		conditions.append("party_type in ('Customer', 'Supplier')")
@@ -571,6 +575,13 @@ def get_columns(filters):
 		},
 		{"label": _("Posting Date"), "fieldname": "posting_date", "fieldtype": "Date", "width": 90},
 		{
+			"label": _("Nomor Bukti"),
+			"fieldname": "nomor_bukti",
+			"fieldtype": "Data",
+			"width": 150,
+		},
+		{"label": _("Remarks"), "fieldname": "remarks", "width": 400},
+		{
 			"label": _("Account"),
 			"fieldname": "account",
 			"fieldtype": "Link",
@@ -634,7 +645,6 @@ def get_columns(filters):
 				"width": 100,
 			},
 			{"label": _("Supplier Invoice No"), "fieldname": "bill_no", "fieldtype": "Data", "width": 100},
-			{"label": _("Remarks"), "fieldname": "remarks", "width": 400},
 		]
 	)
 

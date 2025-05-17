@@ -30,14 +30,14 @@ def get_saldo_awal(filtering):
 	if filtering.filter_based_on == "Fiscal Year":
 		fil.period_start_date = filtering.period_start_date
 		fil.period_end_date = filtering.period_end_date
-		if filtering.from_fiscal_year != "2023":
-			fil.from_fiscal_year = "2023"
+		if filtering.from_fiscal_year != "2024":
+			fil.from_fiscal_year = "2024"
 			fil.to_fiscal_year = str(int(filtering.to_fiscal_year)-1)
 		else:
 			is_nol = True
 	else:
 		return {}
-		fil.period_start_date = "2023-01-01"
+		fil.period_start_date = "2024-01-01"
 		fil.period_end_date = datetime.strptime(filtering.period_start_date, "%Y-%m-%d") + timedelta(days=(-1))
 		fil.from_fiscal_year = filtering.from_fiscal_year
 		fil.to_fiscal_year = filtering.to_fiscal_year

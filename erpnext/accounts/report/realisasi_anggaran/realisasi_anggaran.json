@@ -1,0 +1,129 @@
+{
+ "add_total_row": 0,
+ "columns": [
+  {
+   "fieldname": "type",
+   "fieldtype": "Data",
+   "label": "Tipe",
+   "width": 140
+  },
+  {
+   "fieldname": "kas_bon",
+   "fieldtype": "Data",
+   "label": "Kas Bon",
+   "width": 180
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Data",
+   "label": "Tujuan",
+   "width": 320
+  },
+  {
+   "fieldname": "total_budget_plan",
+   "fieldtype": "Float",
+   "label": "Rencana",
+   "width": 160
+  },
+  {
+   "fieldname": "total_budget_realization",
+   "fieldtype": "Float",
+   "label": "Realisasi",
+   "width": 160
+  },
+  {
+   "fieldname": "total_budget_difference",
+   "fieldtype": "Float",
+   "label": "Selisih",
+   "width": 140
+  }
+ ],
+ "creation": "2025-05-17 09:22:48.926695",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "date_from",
+   "fieldtype": "Date",
+   "label": "Tanggal Mulai",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "date_to",
+   "fieldtype": "Date",
+   "label": "Tanggal Akhir",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{}",
+ "letter_head": "KOP HKP",
+ "modified": "2025-05-17 11:47:41.524482",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Realisasi Anggaran",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\n    'KAS BON PROYEK' type,\n    reap.form_payment_entry_project AS kas_bon,\n    reap.purpose,\n    COALESCE(fpear.total_budget_realization, 0) AS total_budget_realization,\n    COALESCE(fpep.total_budget, 0) AS total_budget_plan,\n    COALESCE(fpear.total_budget_realization, 0)-COALESCE(fpep.total_budget, 0) AS total_budget_difference\nFROM `tabRealisasi Anggaran Proyek` reap\nLEFT JOIN (\n    SELECT fpear.parent, SUM(fpear.budget_realization) total_budget_realization FROM `tabForm Payment Entry Account Realisasi` fpear\n    GROUP BY fpear.parent\n) fpear ON fpear.parent = reap.name\nLEFT JOIN `tabForm Payment Entry Project` fpep ON fpep.name = reap.form_payment_entry_project\nWHERE reap.posting_date BETWEEN %(date_from)s AND %(date_to)s AND reap.docstatus = 1\nUNION\nSELECT\n    'KAS BON NON PROYEK' type,\n    reanp.form_payment_entry AS kas_bon,\n    reanp.purpose,\n    COALESCE(fpear.total_budget_realization, 0) AS total_budget_realization,\n    COALESCE(fpep.total_budget, 0) AS total_budget_plan,\n    COALESCE(fpear.total_budget_realization, 0)-COALESCE(fpep.total_budget, 0) AS total_budget_difference\nFROM `tabRealisasi Anggaran Non Proyek` reanp\nLEFT JOIN (\n    SELECT fpear.parent, SUM(fpear.budget_realization) total_budget_realization FROM `tabForm Payment Entry Non Project Realisasi` fpear\n    GROUP BY fpear.parent\n) fpear ON fpear.parent = reanp.name\nLEFT JOIN `tabForm Payment Entry` fpep ON fpep.name = reanp.form_payment_entry\nWHERE reanp.posting_date BETWEEN %(date_from)s AND %(date_to)s AND reanp.docstatus = 1;\n",
+ "ref_doctype": "Realisasi Anggaran Proyek",
+ "report_name": "Realisasi Anggaran",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Operasional"
+  },
+  {
+   "role": "Site Manager"
+  },
+  {
+   "role": "Manajer Keuangan"
+  },
+  {
+   "role": "Manajer Pemasaran"
+  },
+  {
+   "role": "Keuangan Pajak"
+  },
+  {
+   "role": "ADU"
+  },
+  {
+   "role": "SPV K3"
+  },
+  {
+   "role": "Admin Ops"
+  },
+  {
+   "role": "Manager Akuntansi"
+  },
+  {
+   "role": "Admin Logistik"
+  },
+  {
+   "role": "Staff - Pelaksana"
+  },
+  {
+   "role": "Engineering EM"
+  },
+  {
+   "role": "Pemasaran"
+  },
+  {
+   "role": "Pengendalian Proyek"
+  },
+  {
+   "role": "Manajer ADU"
+  },
+  {
+   "role": "Logistik Asset"
+  }
+ ]
+}

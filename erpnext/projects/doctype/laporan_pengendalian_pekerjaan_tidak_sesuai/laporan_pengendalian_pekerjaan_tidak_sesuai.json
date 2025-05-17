@@ -18,9 +18,8 @@
   "column_break_qwudj",
   "jabatan_pelapor",
   "nama_penerima",
-  "column_break_9dqi0",
-  "tanggal_pelapor",
   "column_break_2nlkb",
+  "tanggal_pelapor",
   "jabatan_penerima",
   "column_break_lsvkh",
   "tanggal_penerima",
@@ -105,10 +104,6 @@
    "fieldtype": "Data",
    "label": "Jabatan",
    "reqd": 1
-  },
-  {
-   "fieldname": "column_break_9dqi0",
-   "fieldtype": "Column Break"
   },
   {
    "fieldname": "tanggal_pelapor",
@@ -257,7 +252,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-06-21 08:34:57.886906",
+ "modified": "2025-05-15 16:07:55.968555",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Laporan Pengendalian Pekerjaan Tidak Sesuai",

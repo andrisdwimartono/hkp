@@ -19,6 +19,7 @@
    "fieldname": "purpose",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Purpose",
    "reqd": 1
   },
@@ -57,7 +58,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-03 10:24:38.181007",
+ "modified": "2025-03-22 12:19:33.604971",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Realisasi Anggaran Non Proyek",
@@ -76,6 +77,8 @@
    "write": 1
   }
  ],
+ "search_fields": "purpose",
  "sort_field": "modified",
- "sort_order": "DESC"
+ "sort_order": "DESC",
+ "title_field": "purpose"
 }

@@ -63,6 +63,15 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Rencana Anggaran Proyek",
+   "link_to": "Budget",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Master SPK",
    "link_to": "Sub Contract Hand Over",
    "link_type": "DocType",
@@ -329,7 +338,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-05-15 10:23:44.190040",
+ "modified": "2025-03-08 10:20:55.325306",
  "modified_by": "Administrator",
  "module": "Operasional",
  "name": "Operasional",
