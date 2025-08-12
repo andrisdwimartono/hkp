@@ -4,15 +4,14 @@
 import frappe
 from frappe.model.document import Document
 from erpnext.support.doctype.risalah_rapat.risalah_rapat import get_department_abbr_by_session
-import datetime
+from datetime import datetime
 from frappe.utils import (
 	today,
 )
 
 class CommunicationForm(Document):
-	pass
-	# def validate(self):
-	# 	self.abbr = get_department_abbr_by_session()
+	def validate(self):
+		self.abbr = get_department_abbr_by_session()
 
 	# 	#untuk notification
 	# 	assigner = []
@@ -33,28 +32,28 @@ class CommunicationForm(Document):
 	# 	from frappe.desk.doctype.notification_log.notification_log import make_notification_logs
 	# 	make_notification_logs(notification_doc, assigner)
 
-	# def autoname(self):
-	# 	roman = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"]
-	# 	mydate = datetime.strptime(today(), '%Y-%m-%d')
-	# 	bulan = roman[int(mydate.month)]
+	def autoname(self):
+		roman = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"]
+		mydate = datetime.strptime(today(), '%Y-%m-%d')
+		bulan = roman[int(mydate.month)]
 		
 
-	# 	a = frappe.db.sql("""SELECT COUNT(*) cnt FROM `tabCommunication Form` WHERE name like '%/{0}/{1}'""".format(bulan, mydate.year), as_dict=1)
-	# 	if a:
-	# 		urut = a[0].cnt+1
-	# 		urut2 = ""
-	# 		if urut < 9:
-	# 			urut2 = "00{0}".format(urut)
-	# 		elif urut < 99:
-	# 			urut2 = "0{0}".format(urut)
-	# 		else:
-	# 			urut2 = "{0}".format(urut)
-	# 		self.name = "{2}/ADU/CMF/{0}/{1}".format(bulan, mydate.year, urut2)
-	# 	else:
-	# 		self.name = "01/ADU/CMF/{0}/{1}".format(bulan, mydate.year)
+		a = frappe.db.sql("""SELECT COUNT(*) cnt FROM `tabCommunication Form` WHERE name like '%/{2}/{0}/{1}'""".format(bulan, mydate.year, get_department_abbr_by_session()), as_dict=1)
+		if a:
+			urut = a[0].cnt+1
+			urut2 = ""
+			if urut < 9:
+				urut2 = "00{0}".format(urut)
+			elif urut < 99:
+				urut2 = "0{0}".format(urut)
+			else:
+				urut2 = "{0}".format(urut)
+			self.name = "{2}/{3}/{0}/{1}".format(bulan, mydate.year, urut2, get_department_abbr_by_session())
+		else:
+			self.name = "01/{2}/{0}/{1}".format(bulan, mydate.year, get_department_abbr_by_session())
 
 def get_permission_query_conditions(user):
 	if get_department_abbr_by_session() == "ADU":
 		return ""
-	return """(`tabCommunication Form`.`abbr` = '{0}')
-	""".format(get_department_abbr_by_session())
+	return """(`tabCommunication Form`.`owner` = '{0}')
+	""".format(frappe.session.user)

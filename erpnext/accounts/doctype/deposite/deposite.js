@@ -43,5 +43,25 @@ frappe.ui.form.on('Deposite', {
 				}
 			},
 		})
+	},
+	start_date: function(frm){
+		setScheduleDate(frm);
+	},
+	length_type: function(frm){
+		setScheduleDate(frm);
+	},
+	time_length: function(frm){
+		setScheduleDate(frm);
 	}
 });
+
+function setScheduleDate(frm) {
+	if (frm.doc.start_date && frm.doc.length_type && frm.doc.time_length) {
+		if(frm.doc.length_type == "Day"){
+			frm.set_value("schedule_date", frappe.datetime.add_days(frm.doc.start_date, frm.doc.time_length));
+		}else if(frm.doc.length_type == "Month"){
+			frm.set_value("schedule_date", frappe.datetime.add_months(frm.doc.start_date, frm.doc.time_length));
+		}
+	}
+	refresh_field(frm, "schedule_date");
+}

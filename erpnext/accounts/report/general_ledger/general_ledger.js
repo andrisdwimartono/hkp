@@ -2,6 +2,19 @@
 // License: GNU General Public License v3. See license.txt
 
 frappe.query_reports["General Ledger"] = {
+	onload: function(report) {
+        frappe.db.get_list('Party Type', {
+            fields: ['name'],
+            limit: 100
+        }).then(records => {
+            let opts = [""];
+            records.forEach(r => {
+                opts.push(r.name); // or __(r.name) for translation
+            });
+            report.filters.find(f => f.df.fieldname === "party_type").df.options = opts;
+            report.filters.find(f => f.df.fieldname === "party_type").refresh();
+        });
+    },
 	"filters": [
 		{
 			"fieldname":"company",
@@ -57,15 +70,11 @@ frappe.query_reports["General Ledger"] = {
 			"fieldtype": "Break",
 		},
 		{
-			"fieldname":"party_type",
-			"label": __("Party Type"),
-			"fieldtype": "Link",
-			"options": "Party Type",
-			"default": "",
-			on_change: function() {
-				frappe.query_report.set_filter_value('party', "");
-			}
-		},
+            fieldname: "party_type",
+            label: __("Party Type"),
+            fieldtype: "Select",
+            options: [] // will be filled dynamically
+        },
 		{
 			"fieldname":"party",
 			"label": __("Party"),

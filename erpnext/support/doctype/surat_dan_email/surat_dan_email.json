@@ -10,6 +10,7 @@
   "direction",
   "type",
   "tanggal",
+  "customer_type",
   "customer",
   "email_address",
   "nomer_surat",
@@ -158,17 +159,25 @@
   },
   {
    "fieldname": "customer",
-   "fieldtype": "Link",
+   "fieldtype": "Dynamic Link",
    "in_list_view": 1,
    "label": "Nama Perusahaan",
-   "options": "Customer",
+   "options": "customer_type",
+   "reqd": 1
+  },
+  {
+   "default": "Customer",
+   "fieldname": "customer_type",
+   "fieldtype": "Select",
+   "label": "Customer Type",
+   "options": "Customer\nSupplier",
    "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-29 10:00:10.057617",
+ "modified": "2025-05-24 10:34:47.162107",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Surat dan Email",

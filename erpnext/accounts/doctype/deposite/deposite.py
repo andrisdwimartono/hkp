@@ -7,6 +7,13 @@ from frappe.model.document import Document
 import erpnext
 from erpnext.accounts.general_ledger import make_reverse_gl_entries, make_gl_entries
 from erpnext.controllers.accounts_controller import AccountsController
+from frappe.utils import (
+	add_days,
+	today,
+	date_diff,
+)
+
+from erpnext.projects.bot import send_message_finance
 
 class Deposite(AccountsController):
 	def validate(self):
@@ -198,3 +205,37 @@ def pencairan_deposito(dt = None, dn = None, taken_date = None, taken_balance = 
 			update_outstanding="Yes",
 			merge_entries=False,
 		)
+
+@frappe.whitelist()
+def get_deposite_obsolete():
+	x = today()
+	deposites = frappe.db.sql("""
+		SELECT 
+			a.*, 
+			DATE_FORMAT(a.schedule_date, "%%d-%%m-%%Y") AS dend, 
+			a.schedule_date
+		FROM 
+			`tabDeposite` a 
+		WHERE 
+			DATE_SUB(a.schedule_date, INTERVAL 15 DAY) <= %s
+	""", (x), as_dict=1)
+	for d in deposites:
+		if date_diff(x, d.schedule_date)%7 == 0:
+			notification_doc = {
+				"type": "Alert",
+				"document_type": "Deposite",
+				"document_name": d.name,
+				"subject": "Deposito {0} akan jatuh tempo di {1}".format(d.name, d.dend),
+				"from_user": d.owner or "Administrator",
+			}
+			
+			assigner = [d.owner]
+			adu_employees = frappe.db.sql("""SELECT DISTINCT u.name user_id FROM `tabHas Role` hr
+								INNER JOIN tabUser u ON u.name = hr.parent
+								WHERE hr.role IN ('ADU') AND hr.parenttype = 'User'""", as_dict=1)
+			for hr in adu_employees:
+				assigner.append(hr.user_id)
+			notification_doc = frappe._dict(notification_doc)
+			from frappe.desk.doctype.notification_log.notification_log import make_notification_logs
+			make_notification_logs(notification_doc, assigner)
+			send_message_finance("Deposito {0} akan jatuh tempo di {1}".format(d.name, d.dend), chat_id="-1002718415291")

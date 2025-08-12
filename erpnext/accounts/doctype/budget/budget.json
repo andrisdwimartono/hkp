@@ -114,7 +114,6 @@
    "label": "Applicable on Material Request"
   },
   {
-   "allow_on_submit": 1,
    "default": "Stop",
    "depends_on": "eval:doc.applicable_on_material_request == 1",
    "fieldname": "action_if_annual_budget_exceeded_on_mr",
@@ -123,7 +122,6 @@
    "options": "\nStop\nWarn\nIgnore"
   },
   {
-   "allow_on_submit": 1,
    "default": "Warn",
    "depends_on": "eval:doc.applicable_on_material_request == 1",
    "fieldname": "action_if_accumulated_monthly_budget_exceeded_on_mr",
@@ -142,7 +140,6 @@
    "label": "Applicable on Purchase Order"
   },
   {
-   "allow_on_submit": 1,
    "default": "Stop",
    "depends_on": "eval:doc.applicable_on_purchase_order == 1",
    "fieldname": "action_if_annual_budget_exceeded_on_po",
@@ -151,7 +148,6 @@
    "options": "\nStop\nWarn\nIgnore"
   },
   {
-   "allow_on_submit": 1,
    "default": "Warn",
    "depends_on": "eval:doc.applicable_on_purchase_order == 1",
    "fieldname": "action_if_accumulated_monthly_budget_exceeded_on_po",
@@ -171,7 +167,6 @@
    "label": "Applicable on booking actual expenses"
   },
   {
-   "allow_on_submit": 1,
    "default": "Stop",
    "depends_on": "eval:doc.applicable_on_booking_actual_expenses == 1",
    "fieldname": "action_if_annual_budget_exceeded",
@@ -180,7 +175,6 @@
    "options": "\nStop\nWarn\nIgnore"
   },
   {
-   "allow_on_submit": 1,
    "default": "Warn",
    "depends_on": "eval:doc.applicable_on_booking_actual_expenses == 1",
    "fieldname": "action_if_accumulated_monthly_budget_exceeded",
@@ -256,31 +250,13 @@
   }
  ],
  "index_web_pages_for_search": 1,
- "is_submittable": 1,
  "links": [],
- "modified": "2024-01-10 10:45:14.727117",
+ "modified": "2025-07-26 10:33:56.012980",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Budget",
  "owner": "Administrator",
- "permissions": [
-  {
-   "amend": 1,
-   "cancel": 1,
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "import": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Accounts Manager",
-   "share": 1,
-   "submit": 1,
-   "write": 1
-  }
- ],
+ "permissions": [],
  "sort_field": "modified",
  "sort_order": "DESC",
  "title_field": "project_name",

@@ -173,8 +173,7 @@ frappe.ui.form.on('Form Payment Entry Project', {
 		frm.set_query("budget", function() {
 			return {
 				filters: {
-					'project': frm.doc.project,
-					'docstatus': frm.doc.project?1:100
+					'project': frm.doc.project
 				}
 			};
 		});

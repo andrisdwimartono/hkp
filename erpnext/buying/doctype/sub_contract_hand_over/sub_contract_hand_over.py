@@ -4,7 +4,9 @@
 import frappe
 from frappe.model.document import Document
 import datetime
-
+#Q23nXY8fFWIrDohV
+#GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 
+#'Q23nXY8fFWIrDohV' WITH GRANT OPTION; FLUSH PRIVILEGES;
 class SubContractHandOver(Document):
 	def autoname(self):
 		roman = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"]

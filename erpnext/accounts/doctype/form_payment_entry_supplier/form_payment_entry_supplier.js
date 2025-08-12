@@ -5,9 +5,11 @@ frappe.ui.form.on('Form Payment Entry Supplier', {
 	refresh: function(frm) {
 		if(frm.doc.__islocal){
 			var x = ["SPB / SPBJ / Memo Bon", "Nota / Kwitansi", "Tanda Terima Barang", "Faktur Pajak"];
-			for(var i = 0; i < x.length; i++){
-				var c = frm.add_child("form_payment_entry_checklist");
-				c.remark = x[i];
+			if(frm.doc.details.length == 1 && frm.doc.details[0].name == "new-form-payment-entry-account-1"){
+				for(var i = 0; i < x.length; i++){
+					var c = frm.add_child("form_payment_entry_checklist");
+					c.remark = x[i];
+				}
 			}
 			frm.refresh_field("form_payment_entry_checklist");
 		}
@@ -48,8 +50,7 @@ frappe.ui.form.on('Form Payment Entry Supplier', {
 		frm.set_query("budget", function() {
 			return {
 				filters: {
-					'project': frm.doc.project,
-					'docstatus': frm.doc.project?1:100
+					'project': frm.doc.project
 				}
 			};
 		});
@@ -160,6 +161,7 @@ frappe.ui.form.on('Form Payment Entry Supplier', {
 						c.volume = vols;
 						c.unit_price = vals.unit_price;
 						c.budget_amount = vals.unit_price*vols;
+						c.budget_amount_submission = vals.unit_price*vols;
 						c.account = vals.account;
 						c.cost_center = vals.cost_center;
 						c.description = vals.description;

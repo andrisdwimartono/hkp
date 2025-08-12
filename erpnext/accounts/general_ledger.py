@@ -22,7 +22,7 @@ def make_gl_entries(
 	gl_map,
 	cancel=False,
 	adv_adj=False,
-	merge_entries=True,
+	merge_entries=False,
 	update_outstanding="Yes",
 	from_repost=False,
 ):
@@ -454,3 +454,20 @@ def set_as_cancel(voucher_type, voucher_no):
 		where voucher_type=%s and voucher_no=%s and is_cancelled = 0""",
 		(now(), frappe.session.user, voucher_type, voucher_no),
 	)
+
+def submit_all_journal():
+    entries = frappe.db.sql(
+        """SELECT name FROM `tabJournal Entry`
+           WHERE docstatus = 0 AND posting_date BETWEEN '2025-01-01' AND '2025-02-28'
+           LIMIT 1""",
+        as_dict=True,
+    )
+    print("Found entries:", entries)
+    for ju in entries:
+        try:
+            print("Submitting Journal Entry", ju["name"])
+            journal_entry = frappe.get_doc("Journal Entry", ju["name"])
+            journal_entry.make_gl_entries()
+            print("Submitted:", ju["name"])
+        except Exception as e:
+            print(f"Failed to submit {ju['name']}: {e}")

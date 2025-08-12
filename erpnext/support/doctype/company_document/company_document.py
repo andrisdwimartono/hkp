@@ -8,6 +8,7 @@ from frappe.utils import (
 	today,
 	date_diff,
 )
+from erpnext.projects.bot import send_message
 
 class CompanyDocument(Document):
 	def validate(self):
@@ -39,10 +40,19 @@ class CompanyDocument(Document):
 
 @frappe.whitelist()
 def get_company_document_obsolete():
-	x = add_days(today(), 180)
-	company_documents = frappe.db.sql("""SELECT a.*, date_format(a.tanggal_expired, "%d-%m-%Y") dend, tanggal_expired FROM `tabCompany Document` a WHERE a.tanggal_expired < '{0}'""".format(x), as_dict=1)
+	x = today()
+	company_documents = frappe.db.sql("""
+		SELECT 
+			a.*, 
+			DATE_FORMAT(a.tanggal_expired, "%%d-%%m-%%Y") AS dend, 
+			a.tanggal_expired 
+		FROM 
+			`tabCompany Document` a 
+		WHERE 
+			DATE_SUB(a.tanggal_expired, INTERVAL a.remind_me DAY) <= %s
+	""", (x,), as_dict=1)
 	for d in company_documents:
-		if date_diff(x, d.tanggal_expired)%7 == 0:
+		if date_diff(x, d.tanggal_expired)%7 == 0 and d.remind_me > 0:
 			notification_doc = {
 				"type": "Alert",
 				"document_type": "Company Document",
@@ -60,3 +70,4 @@ def get_company_document_obsolete():
 			notification_doc = frappe._dict(notification_doc)
 			from frappe.desk.doctype.notification_log.notification_log import make_notification_logs
 			make_notification_logs(notification_doc, assigner)
+			send_message("Dokumen Perusahaan {0} akan expired di {1}".format(d.name, d.dend), chat_id="-1002771894092")

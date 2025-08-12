@@ -9,7 +9,7 @@
  "filters": [],
  "idx": 2,
  "is_standard": "Yes",
- "modified": "2025-05-17 11:53:00.594553",
+ "modified": "2025-05-17 12:34:25.411036",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Stock Balance",
@@ -27,7 +27,7 @@
    "role": "Manajer Logistik"
   },
   {
-   "role": "Logistik Gudang"
+   "role": "Logistik Asset"
   }
  ]
 }

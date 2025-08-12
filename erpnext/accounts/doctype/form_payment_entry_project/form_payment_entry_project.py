@@ -57,7 +57,7 @@ def get_pos_rap(doctype, txt, searchfield, start, page_len, filters):
         SELECT DISTINCT pr.pos_rap FROM `tabBudget` b
         INNER JOIN `tabBudget Account` ba ON ba.parent = b.name
 		INNER JOIN `tabPOS RAP` pr ON ba.pos_rap = pr.pos_rap
-        WHERE b.name = '{0}' AND b.docstatus = 1 AND (pr.{1} LIKE "%{2}%")
+        WHERE b.name = '{0}' AND (pr.{1} LIKE "%{2}%")
         LIMIT {3}, {4}
         """.format(budget, searchfield, txt, start, page_len))
     else:

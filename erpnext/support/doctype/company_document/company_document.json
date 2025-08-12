@@ -22,6 +22,7 @@
   "ordner",
   "tanggal_terbit",
   "tanggal_expired",
+  "remind_me",
   "document",
   "description",
   "lft",
@@ -159,12 +160,21 @@
    "fieldtype": "Link",
    "label": "Parent",
    "options": "Company Document"
+  },
+  {
+   "default": "0",
+   "description": "Send notification days before",
+   "fieldname": "remind_me",
+   "fieldtype": "Int",
+   "label": "Remind Me",
+   "non_negative": 1,
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2023-12-13 14:22:43.499380",
+ "modified": "2025-07-05 11:28:25.298074",
  "modified_by": "Administrator",
  "module": "Support",
  "name": "Company Document",

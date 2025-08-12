@@ -547,6 +547,7 @@ scheduler_events = {
         "erpnext.hr.utils.get_employee_contract_obsolete",
         "erpnext.support.doctype.peminjaman_dokumen.peminjaman_dokumen.alert_kembalikan",
         "erpnext.support.doctype.company_document.company_document.get_company_document_obsolete",
+        "erpnext.accounts.doctype.deposite.deposite.get_deposite_obsolete",
         "erpnext.projects.utils.notifikasi_schedule_aktivitas",
         "erpnext.projects.utils.get_jadwal_dan_pic_tender",
         "erpnext.assets.doctype.asset_maintenance.asset_maintenance.get_asset_maintenance_task"

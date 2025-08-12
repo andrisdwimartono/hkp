@@ -49,6 +49,7 @@ class Budget(Document):
 		self.set_null_value()
 		self.validate_applicable_for()
 		self.set_total_budget_amount()
+		self.createposrap()
 	
 	def set_total_budget_amount(self):
 		self.total_budget_amount = 0

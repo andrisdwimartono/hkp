@@ -11,17 +11,17 @@ class VisitorForm(Document):
 	def on_submit(self):
 		if self.status == "Diajukan":
 			frappe.throw("Status masih diajukan, ubah sebelum submit")
-		if frappe.session.user != "hasta.satriautama@gmail.com":
-			frappe.throw("Hanya bisa disubmit oleh hasta.satriautama@gmail.com")
+		if frappe.session.user != "hasta.satriautama@hotmail.com":
+			frappe.throw("Hanya bisa disubmit oleh hasta.satriautama@hotmail.com")
 	def validate(self):
 		if self.status != "Diajukan":
-			if frappe.session.user != "hasta.maudyrismaslodia@gmail.com" and frappe.session.user != "hasta.satriautama@gmail.com":
-				frappe.throw("Hanya bisa diubah oleh hasta.maudyrismaslodia@gmail.com atau hasta.satriautama@gmail.com".format(self.user))
+			if frappe.session.user != "hasta.maudyrismaslodia@gmail.com" and frappe.session.user != "hasta.satriautama@hotmail.com":
+				frappe.throw("Hanya bisa diubah oleh hasta.maudyrismaslodia@gmail.com atau hasta.satriautama@hotmail.com".format(self.user))
 			else:
 				assigner = []
 
-				assigner.append("hasta.satriautama@gmail.com")
-				self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format("hasta.satriautama@gmail.com"))
+				assigner.append("hasta.satriautama@hotmail.com")
+				self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format("hasta.satriautama@hotmail.com"))
 				notification_doc = {
 					"type": "Alert",
 					"document_type": self.doctype,
@@ -39,8 +39,8 @@ class VisitorForm(Document):
 
 		assigner.append("hasta.maudyrismaslodia@gmail.com")
 		self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format("hasta.maudyrismaslodia@gmail.com"))
-		# assigner.append("hasta.satriautama@gmail.com")
-		# self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format("hasta.satriautama@gmail.com"))
+		# assigner.append("hasta.satriautama@hotmail.com")
+		# self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format("hasta.satriautama@hotmail.com"))
 		notification_doc = {
 			"type": "Alert",
 			"document_type": self.doctype,

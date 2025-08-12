@@ -8,18 +8,24 @@
  "engine": "InnoDB",
  "field_order": [
   "bank",
+  "location",
   "column_break_l0wfj",
   "posting_date",
   "section_break_nasfp",
   "account_number",
   "nama_rekening",
-  "currency",
-  "balance",
+  "start_date",
+  "length_type",
+  "time_length",
   "schedule_date",
+  "balance",
+  "currency",
   "status",
+  "available_status",
   "collateral",
-  "company",
+  "collateral_to",
   "column_break_sgbka",
+  "company",
   "taken_date",
   "taken_balance",
   "account",
@@ -27,8 +33,8 @@
   "interest_balance",
   "account_interest",
   "account_receivable_interest",
-  "cost_center",
   "keterangan",
+  "cost_center",
   "amended_from"
  ],
  "fields": [
@@ -66,6 +72,7 @@
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Jatuh Tempo",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -204,12 +211,56 @@
    "fieldname": "keterangan",
    "fieldtype": "Small Text",
    "label": "Keterangan"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Pembukaan",
+   "options": "Today",
+   "reqd": 1
+  },
+  {
+   "default": "Day",
+   "fieldname": "length_type",
+   "fieldtype": "Select",
+   "label": "Satuan Waktu",
+   "options": "Day\nMonth",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "time_length",
+   "fieldtype": "Int",
+   "label": "Jangka Waktu",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval:cur_frm.doc.collateral=='Yes';",
+   "fieldname": "collateral_to",
+   "fieldtype": "Data",
+   "label": "Dijaminkan Ke"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Available",
+   "fieldname": "available_status",
+   "fieldtype": "Select",
+   "label": "Available Status",
+   "options": "Available\nTaken",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-22 12:40:56.962448",
+ "modified": "2025-07-05 11:04:38.755516",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Deposite",

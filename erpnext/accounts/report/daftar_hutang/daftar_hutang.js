@@ -4,7 +4,7 @@ frappe.query_reports['Daftar Hutang'] = {
         "fieldname":"date_from",
         "label":__("Date From"),
         "fieldtype": "Date",
-        "default": "Today"
+        "default": frappe.datetime.add_months(frappe.datetime.get_today(), -1)
        },
        {
         "fieldname":"date_to",

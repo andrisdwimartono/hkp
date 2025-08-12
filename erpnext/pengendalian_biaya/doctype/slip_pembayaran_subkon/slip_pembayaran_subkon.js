@@ -5,10 +5,13 @@ frappe.ui.form.on('Slip Pembayaran Subkon', {
 	refresh: function(frm) {
 		if(frm.doc.__islocal){
 			var x = ["Kontrak Kerja / SPK", "Kwitansi / Progres Fisik", "Checklist / LKPP / Berita Acara", "Faktur Pajak"];
-			for(var i = 0; i < x.length; i++){
-				var c = frm.add_child("form_payment_entry_checklist");
-				c.remark = x[i];
+			if(frm.doc.form_payment_entry_checklist == undefined){
+				for(var i = 0; i < x.length; i++){
+					var c = frm.add_child("form_payment_entry_checklist");
+					c.remark = x[i];
+				}
 			}
+			
 			frm.refresh_field("form_payment_entry_checklist");
 		}
 	},
@@ -62,41 +65,32 @@ frappe.ui.form.on('Slip Pembayaran Subkon', {
 		}
 	},
 	paid: function(frm){
-		if(frm.doc.paid){
-			frm.set_value("ppn", frm.doc.ppn_percent*frm.doc.paid/100);
-			frm.refresh_field("ppn");
-		}
-		if(frm.doc.paid){
-			frm.set_value("pph", frm.doc.pph_percent*frm.doc.paid/100);
-			frm.refresh_field("pph");
-		}
-		if(frm.doc.paid){
-			frm.set_value("total", frm.doc.paid+frm.doc.ppn-frm.doc.potongan);
-			frm.refresh_field("total");
-		}
+		frm.set_value("ppn", frm.doc.ppn_percent*frm.doc.paid/100);
+		frm.refresh_field("ppn");
+
+		frm.set_value("pph", frm.doc.pph_percent*frm.doc.paid/100);
+		frm.refresh_field("pph");
+
+		set_total(frm);
 	},
 	ppn_percent: function(frm){
-		if(frm.doc.paid){
-			frm.set_value("ppn", frm.doc.ppn_percent*frm.doc.paid/100);
-			frm.refresh_field("ppn");
+		frm.set_value("ppn", frm.doc.ppn_percent*frm.doc.paid/100);
+		frm.refresh_field("ppn");
 
-			frm.set_value("total", frm.doc.paid+frm.doc.ppn-frm.doc.potongan);
-			frm.refresh_field("total");
-		}
+		set_total(frm);
 	},
 	pph_percent: function(frm){
-		if(frm.doc.paid){
-			frm.set_value("pph", frm.doc.pph_percent*frm.doc.paid/100);
-			frm.refresh_field("pph");
+		frm.set_value("pph", frm.doc.pph_percent*frm.doc.paid/100);
+		frm.refresh_field("pph");
 
-			frm.set_value("total", frm.doc.paid+frm.doc.ppn-frm.doc.potongan);
-			frm.refresh_field("total");
-		}
+		set_total(frm);
 	},
 	potongan: function(frm){
-		if(frm.doc.potongan){
-			frm.set_value("total", frm.doc.paid+frm.doc.ppn-frm.doc.potongan);
-			frm.refresh_field("total");
-		}
+		set_total(frm);
 	}
 });
+
+function set_total(frm){
+	frm.set_value("total", frm.doc.paid+frm.doc.ppn-frm.doc.potongan);
+	frm.refresh_field("total");
+}

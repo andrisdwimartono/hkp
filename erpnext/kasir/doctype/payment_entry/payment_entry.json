@@ -50,6 +50,13 @@
   "paid_to_account_type",
   "paid_to_account_currency",
   "paid_to_account_balance",
+  "pajak_section",
+  "has_tax",
+  "tax_source_account",
+  "tax_source_nominal",
+  "column_break_gi1ai",
+  "tax_destination_account",
+  "tax_destination_nominal",
   "payment_amounts_section",
   "paid_amount",
   "paid_amount_after_tax",
@@ -640,8 +647,7 @@
   },
   {
    "fieldname": "section_break_56",
-   "fieldtype": "Section Break",
-   "hide_border": 1
+   "fieldtype": "Section Break"
   },
   {
    "depends_on": "eval: doc.party_type == 'Supplier' || doc.party_type == 'Customer'",
@@ -653,6 +659,7 @@
   {
    "fieldname": "section_break_60",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "hide_border": 1
   },
   {
@@ -828,12 +835,60 @@
    "in_list_view": 1,
    "label": "Submit Date",
    "read_only": 1
+  },
+  {
+   "fieldname": "pajak_section",
+   "fieldtype": "Section Break",
+   "label": "Pajak"
+  },
+  {
+   "depends_on": "eval:doc.has_tax===1",
+   "fieldname": "tax_source_account",
+   "fieldtype": "Link",
+   "label": "Debit",
+   "mandatory_depends_on": "eval:doc.has_tax===1",
+   "options": "Account"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_tax",
+   "fieldtype": "Check",
+   "label": "PPN"
+  },
+  {
+   "fieldname": "column_break_gi1ai",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.has_tax===1",
+   "fieldname": "tax_source_nominal",
+   "fieldtype": "Currency",
+   "label": "Nominal",
+   "mandatory_depends_on": "eval:doc.has_tax===1",
+   "options": "paid_from_account_currency"
+  },
+  {
+   "depends_on": "eval:doc.has_tax===1",
+   "fieldname": "tax_destination_account",
+   "fieldtype": "Link",
+   "label": "Kredit",
+   "mandatory_depends_on": "eval:doc.has_tax===1",
+   "options": "Account"
+  },
+  {
+   "depends_on": "eval:doc.has_tax===1",
+   "fieldname": "tax_destination_nominal",
+   "fieldtype": "Currency",
+   "label": "Nominal",
+   "mandatory_depends_on": "eval:doc.has_tax===1",
+   "options": "paid_from_account_currency",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-04-12 11:29:01.675187",
+ "modified": "2025-08-09 12:34:43.857919",
  "modified_by": "Administrator",
  "module": "Kasir",
  "name": "Payment Entry",

@@ -820,7 +820,39 @@ class PaymentEntry(AccountsController):
 		self.add_deductions_gl_entries(gl_entries)
 		self.add_tax_gl_entries(gl_entries)
 		gl_entries = process_gl_map(gl_entries)
+		if self.has_tax == 1:
+			# create tax gl entries
+			self.adding_tax_to_gl_entries(gl_entries)
 		make_gl_entries(gl_entries, cancel=cancel, adv_adj=adv_adj)
+	
+	def adding_tax_to_gl_entries(self, gl_entries):
+		debit_tax_gl_entry = self.get_gl_dict(
+			{
+				"account": self.tax_source_account,
+				"against": self.tax_destination_account,
+				"debit": self.tax_source_nominal,
+				"debit_in_account_currency": self.tax_source_nominal,
+				"against_voucher": self.name,
+				"against_voucher_type": self.doctype,
+				"transaction_date": self.posting_date,
+				"cost_center": self.cost_center
+			},
+			item=self,
+		)
+
+		credit_tax_gl_entry = self.get_gl_dict(
+			{
+				"account": self.tax_destination_account,
+				"against": self.tax_source_account,
+				"credit": self.tax_destination_nominal,
+				"credit_in_account_currency": self.tax_destination_nominal,
+				"transaction_date": self.posting_date,
+				"cost_center": self.cost_center
+			},
+			item=self,
+		)
+		gl_entries.append(debit_tax_gl_entry)
+		gl_entries.append(credit_tax_gl_entry)
 
 	def add_party_gl_entries(self, gl_entries):
 		if self.party_account:

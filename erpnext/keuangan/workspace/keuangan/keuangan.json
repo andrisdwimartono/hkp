@@ -3,7 +3,7 @@
  "category": "Modules",
  "charts": [
   {
-   "chart_name": "Slip Pembayaran Subkon",
+   "chart_name": "Pembayaran Subkon",
    "label": "Slip Pembayaran Subkon"
   },
   {
@@ -167,7 +167,7 @@
    "hidden": 0,
    "is_query_report": 1,
    "label": "Daftar Deposito",
-   "link_to": "Daftar Deposito",
+   "link_to": "Deposito",
    "link_type": "Report",
    "onboard": 1,
    "type": "Link"
@@ -252,7 +252,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-04-05 13:14:20.316713",
+ "modified": "2025-07-26 10:05:33.318934",
  "modified_by": "Administrator",
  "module": "Keuangan",
  "name": "Keuangan",

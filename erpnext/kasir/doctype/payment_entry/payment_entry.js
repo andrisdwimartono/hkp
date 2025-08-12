@@ -214,6 +214,11 @@ frappe.ui.form.on('Payment Entry', {
 		});
 	},
 
+	tax_source_nominal: function(frm){
+		frm.set_value("tax_destination_nominal", frm.doc.tax_source_nominal);
+		frm.refresh_field("tax_destination_nominal");
+	},
+
 	type: function(frm){
 		if(cur_frm.doc.type == "Form Payment Entry Supplier"){
 			frm.set_value("party_type", "Supplier");
@@ -1558,7 +1563,7 @@ frappe.ui.form.on('Payment Entry Reference', {
 
 	references_remove: function(frm) {
 		frm.events.set_total_allocated_amount(frm);
-	}
+	},
 })
 
 frappe.ui.form.on('Advance Taxes and Charges', {

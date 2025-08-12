@@ -54,11 +54,14 @@ frappe.ui.form.on('Hand Over Progress', {
 				sub_contract_hand_over: frm.doc.sub_contract_hand_over
 			},
 			callback: function(r, rt) {
+				console.log(r);
 				if(r.message) {
 					cur_frm.clear_table("hand_over_progress_discount");
 					refresh_field("hand_over_progress_discount");
 					var c = frm.add_child("hand_over_progress_discount");
 					c.remarks = "Potongan Uang Muka ke-"+frm.doc.progress_sequence+" "+frm.doc.progress_achieved+"%";
+					c.is_down_payment = 1;
+					c.progress_bruto = frm.doc.down_payment;
 					c.progress_discount = frm.doc.progress_achieved/100*frm.doc.down_payment;
 					refresh_field("hand_over_progress_discount");
 
@@ -66,6 +69,8 @@ frappe.ui.form.on('Hand Over Progress', {
 						var vals = d;
 						var c = frm.add_child("hand_over_progress_discount");
 						c.remarks = vals.remarks;
+						c.is_down_payment = 0;
+						c.progress_bruto = vals.progress_discount;
 						c.progress_discount = vals.progress_discount;
 						refresh_field("hand_over_progress_discount");
 					});
@@ -178,4 +183,34 @@ frappe.ui.form.on('Hand Over Progress', {
 		frm.set_value("total_cost", total_cost);
 		refresh_field("total_cost");
 	}
+});
+
+frappe.ui.form.on("Hand Over Progress Discount", "progress_bruto", function(frm, cdt, cdn) {
+	var d = locals[cdt][cdn];
+	if(d.is_down_payment == 1){
+		d.progress_discount = d.progress_bruto*frm.doc.progress_achieved/100;
+	}else{
+		d.progress_discount = d.progress_bruto;
+	}
+	refresh_field("hand_over_progress_discount");
+});
+
+frappe.ui.form.on("Hand Over Progress Discount", "progress_discount", function(frm, cdt, cdn) {
+	var d = locals[cdt][cdn];
+	if(d.is_down_payment == 1){
+		d.progress_bruto = d.progress_discount/frm.doc.progress_achieved*100;
+	}else{
+		d.progress_bruto = d.progress_discount;
+	}
+	refresh_field("hand_over_progress_discount");
+});
+
+frappe.ui.form.on("Hand Over Progress Discount", "is_down_payment", function(frm, cdt, cdn) {
+	var d = locals[cdt][cdn];
+	if(d.is_down_payment == 1){
+		d.progress_discount = d.progress_bruto*frm.doc.progress_achieved/100;
+	}else{
+		d.progress_discount = d.progress_bruto;
+	}
+	refresh_field("hand_over_progress_discount");
 });
