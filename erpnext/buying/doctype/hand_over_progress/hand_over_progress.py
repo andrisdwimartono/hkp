@@ -49,7 +49,7 @@ def get_last_discounts(sub_contract_hand_over = None):
 		return frappe.db.sql("""SELECT CONCAT('Progres Fisik ', b.progress_sequence) remarks, a.paid progress_discount 
 					   FROM `tabSlip Pembayaran Subkon` a 
 					   INNER JOIN `tabHand Over Progress` b ON a.hand_over_progress = b.name
-					   WHERE a.sub_contract_hand_over = '{0}' AND a.docstatus = 0
+					   WHERE a.sub_contract_hand_over = '{0}'
 					   ORDER BY b.progress_sequence ASC, a.modified ASC""".format(sub_contract_hand_over), as_dict=1)
 	return None
 

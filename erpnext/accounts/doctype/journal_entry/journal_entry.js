@@ -17,6 +17,40 @@ frappe.ui.form.on("Journal Entry", {
 				}
 			};
 		});
+
+		frm.set_query('sub_contract_hand_over', 'accounts', function(frm, cdt, cdn) {
+			const child = locals[cdt][cdn];
+			if (child.party_type == 'Sub Contract' && child.party) {
+				return {
+					filters: {
+						'sub_contract': child.party
+					}
+				}
+			}else {
+				return {
+					filters: {
+						'sub_contract': 'samdnaskdaksndkjasdk'
+					}
+				}
+			}
+		});
+
+		frm.set_query('purchase_order', 'accounts', function(frm, cdt, cdn) {
+			const child = locals[cdt][cdn];
+			if (child.party_type == 'Supplier' && child.party) {
+				return {
+					filters: {
+						'supplier': child.party
+					}
+				}
+			}else {
+				return {
+					filters: {
+						'supplier': 'samdnaskdaksndkjasdk'
+					}
+				}
+			}
+		});
 	},
 
 	refresh: function(frm) {

@@ -27,6 +27,8 @@
   "purpose",
   "hand_over_progress",
   "slip_pembayaran_subkon",
+  "sub_contract_hand_over",
+  "purchase_order",
   "dimension_col_break",
   "cost_center",
   "form_payment_entry",
@@ -883,12 +885,28 @@
    "mandatory_depends_on": "eval:doc.has_tax===1",
    "options": "paid_from_account_currency",
    "read_only": 1
+  },
+  {
+   "fetch_from": "slip_pembayaran_subkon.sub_contract_hand_over",
+   "fieldname": "sub_contract_hand_over",
+   "fieldtype": "Link",
+   "label": "Sub Contract Hand Over",
+   "options": "Sub Contract Hand Over",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "form_payment_entry_supplier.purchase_order",
+   "fieldname": "purchase_order",
+   "fieldtype": "Link",
+   "label": "Purchase Order",
+   "options": "Purchase Order",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-08-09 12:34:43.857919",
+ "modified": "2025-08-30 12:00:31.494387",
  "modified_by": "Administrator",
  "module": "Kasir",
  "name": "Payment Entry",

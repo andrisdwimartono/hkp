@@ -32,7 +32,7 @@ class SlipPembayaranSubkon(Document):
 				frappe.db.commit()
 @frappe.whitelist()
 def get_outstanding(hand_over_progress):
-	total = frappe.db.sql("""SELECT SUM(total) total FROM `tabSlip Pembayaran Subkon` WHERE docstatus = 0 AND hand_over_progress = '{0}'""".format(hand_over_progress), as_dict=1)
+	total = frappe.db.sql("""SELECT SUM(total) total FROM `tabSlip Pembayaran Subkon` WHERE hand_over_progress = '{0}'""".format(hand_over_progress), as_dict=1)
 	if total:
 		return total[0].total
 
