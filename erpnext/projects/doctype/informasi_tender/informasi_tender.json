@@ -16,6 +16,10 @@
   "column_break_ruhu3",
   "ingatkan_sebelum",
   "section_break_7ybvu",
+  "jatuh_tempo_jaminan_penawaran",
+  "column_break_rexrc",
+  "ingatkan_sebelum_jaminan_penawaran",
+  "section_break_xbfug",
   "dokumen",
   "boq",
   "ringkasan",
@@ -83,7 +87,7 @@
    "description": "Jatuh tempo pengisian data",
    "fieldname": "jatuh_tempo",
    "fieldtype": "Date",
-   "label": "Jatuh Tempo"
+   "label": "Tanggal Pemasukan Tender"
   },
   {
    "default": "0",
@@ -104,11 +108,30 @@
   {
    "fieldname": "section_break_7ybvu",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "jatuh_tempo_jaminan_penawaran",
+   "fieldtype": "Date",
+   "label": "Jatuh Tempo Jaminan Penawaran"
+  },
+  {
+   "fieldname": "column_break_rexrc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ingatkan_sebelum_jaminan_penawaran",
+   "fieldtype": "Int",
+   "label": "Ingatkan Sebelum",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "section_break_xbfug",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-09-13 11:53:54.201283",
+ "modified": "2025-09-13 12:40:18.479276",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Informasi Tender",

@@ -67,6 +67,7 @@ treeviews = [
     "Company Document",
     "Dokumen Tender",
     "Manajemen File Administrasi",
+	"POS RAP"
 ]
 
 # website
@@ -550,7 +551,9 @@ scheduler_events = {
         "erpnext.accounts.doctype.deposite.deposite.get_deposite_obsolete",
         "erpnext.projects.utils.notifikasi_schedule_aktivitas",
         "erpnext.projects.utils.get_jadwal_dan_pic_tender",
-        "erpnext.assets.doctype.asset_maintenance.asset_maintenance.get_asset_maintenance_task"
+        "erpnext.assets.doctype.asset_maintenance.asset_maintenance.get_asset_maintenance_task",
+		"erpnext.projects.doctype.informasi_tender.informasi_tender.reminder_pengisian_tender",
+		"erpnext.projects.doctype.informasi_tender.informasi_tender.reminder_jaminan_penawaran",
 	],
 	"daily_long": [
 		"erpnext.setup.doctype.email_digest.email_digest.send",
