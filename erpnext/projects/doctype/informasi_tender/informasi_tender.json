@@ -1,0 +1,135 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "INFT.YY.MM.####",
+ "creation": "2025-09-13 10:30:03.643177",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "customer",
+  "nama_pekerjaan",
+  "lokasi",
+  "keputusan",
+  "section_break_irren",
+  "jatuh_tempo",
+  "column_break_ruhu3",
+  "ingatkan_sebelum",
+  "section_break_7ybvu",
+  "dokumen",
+  "boq",
+  "ringkasan",
+  "hasil_tender",
+  "keterangan"
+ ],
+ "fields": [
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "nama_pekerjaan",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nama Pekerjaan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "lokasi",
+   "fieldtype": "Small Text",
+   "label": "Lokasi",
+   "reqd": 1
+  },
+  {
+   "fieldname": "keputusan",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Keputusan",
+   "options": "\nDiikuti\nTidak Diikuti"
+  },
+  {
+   "fieldname": "dokumen",
+   "fieldtype": "Table",
+   "label": "Dokumen",
+   "options": "Informasi Tender Detail"
+  },
+  {
+   "fieldname": "boq",
+   "fieldtype": "Table",
+   "label": "BOQ",
+   "options": "Informasi Tender Detail"
+  },
+  {
+   "fieldname": "ringkasan",
+   "fieldtype": "Table",
+   "label": "Ringkasan",
+   "options": "Informasi Tender Detail"
+  },
+  {
+   "fieldname": "hasil_tender",
+   "fieldtype": "Select",
+   "label": "Hasil Tender",
+   "options": "\nLolos\nTidak Lolos"
+  },
+  {
+   "fieldname": "keterangan",
+   "fieldtype": "Small Text",
+   "label": "Keterangan"
+  },
+  {
+   "description": "Jatuh tempo pengisian data",
+   "fieldname": "jatuh_tempo",
+   "fieldtype": "Date",
+   "label": "Jatuh Tempo"
+  },
+  {
+   "default": "0",
+   "description": "Berapa hari sebelum jatuh tempo",
+   "fieldname": "ingatkan_sebelum",
+   "fieldtype": "Int",
+   "label": "Ingatkan Sebelum",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "section_break_irren",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_ruhu3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_7ybvu",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-13 11:53:54.201283",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Informasi Tender",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

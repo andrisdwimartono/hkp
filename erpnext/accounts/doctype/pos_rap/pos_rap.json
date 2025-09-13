@@ -8,7 +8,12 @@
  "engine": "InnoDB",
  "field_order": [
   "pos_rap",
-  "description"
+  "description",
+  "lft",
+  "rgt",
+  "is_group",
+  "old_parent",
+  "parent_pos_rap"
  ],
  "fields": [
   {
@@ -25,14 +30,49 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Description"
+  },
+  {
+   "fieldname": "lft",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Left",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "rgt",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Right",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Is Group"
+  },
+  {
+   "fieldname": "old_parent",
+   "fieldtype": "Link",
+   "label": "Old Parent",
+   "options": "POS RAP"
+  },
+  {
+   "fieldname": "parent_pos_rap",
+   "fieldtype": "Link",
+   "label": "Parent POS RAP",
+   "options": "POS RAP"
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_tree": 1,
  "links": [],
- "modified": "2023-05-25 10:07:39.444601",
+ "modified": "2025-09-13 10:13:30.511653",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS RAP",
+ "nsm_parent_field": "parent_pos_rap",
  "owner": "Administrator",
  "permissions": [
   {
