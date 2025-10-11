@@ -853,3 +853,9 @@ def get_employee_contract_obsolete():
 		
 		#make_notification_logs(notification_doc, assigner)
 		print(assigner)
+
+@frappe.whitelist()
+def get_designation_kpi(designation):
+	kpis = frappe.db.sql("""SELECT * FROM `tabDesignation KPI` dk WHERE dk.parent = '{0}'""".format(designation), as_dict=1)
+
+	return kpis

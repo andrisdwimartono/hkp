@@ -1,0 +1,101 @@
+{
+ "actions": [],
+ "creation": "2025-10-11 09:50:38.799548",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "kpi",
+  "description",
+  "weight",
+  "type",
+  "target",
+  "actual",
+  "achievement",
+  "score",
+  "final_score"
+ ],
+ "fields": [
+  {
+   "fieldname": "kpi",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "KPI",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "target",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Target",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "achievement",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Achievement",
+   "reqd": 1
+  },
+  {
+   "fieldname": "actual",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Actual",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Weight",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "score",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Score"
+  },
+  {
+   "default": "Lower is Better",
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Type",
+   "options": "Higher is Better\nLower is Better",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "final_score",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Final Score"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Description",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-10-11 11:10:23.955236",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "Realisasi KPI Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

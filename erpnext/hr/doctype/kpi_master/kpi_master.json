@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-10-10 13:56:26.639961",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "kpi_name",
+  "departementkpi",
+  "deskripsi",
+  "target_type",
+  "nilai_target",
+  "bobot",
+  "periode"
+ ],
+ "fields": [
+  {
+   "fieldname": "kpi_name",
+   "fieldtype": "Data",
+   "label": "KPI Name"
+  },
+  {
+   "fieldname": "departementkpi",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Departemen",
+   "options": "Department"
+  },
+  {
+   "fieldname": "nilai_target",
+   "fieldtype": "Float",
+   "label": "Target"
+  },
+  {
+   "fieldname": "bobot",
+   "fieldtype": "Float",
+   "label": "Bobot"
+  },
+  {
+   "fieldname": "deskripsi",
+   "fieldtype": "Small Text",
+   "label": "Deskripsi"
+  },
+  {
+   "fieldname": "target_type",
+   "fieldtype": "Select",
+   "label": "Tipe Target",
+   "options": "Positif/Negatif"
+  },
+  {
+   "fieldname": "periode",
+   "fieldtype": "Data",
+   "label": "Periode",
+   "options": "Q1 2025"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-10-10 14:52:53.052456",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "KPI Master",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
