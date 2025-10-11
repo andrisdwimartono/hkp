@@ -199,9 +199,26 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Informasi Tender",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Informasi Tender",
+   "link_to": "Informasi Tender",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-05-16 20:27:39.323443",
+ "modified": "2025-09-16 09:45:12.826073",
  "modified_by": "Administrator",
  "module": "Pemasaran",
  "name": "Pemasaran",
