@@ -2,15 +2,25 @@
  "actions": [],
  "allow_rename": 1,
  "creation": "2023-12-14 14:30:30.697952",
+ "description": "aa",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "employee",
   "employee_name",
-  "posting_date",
-  "tahun",
-  "detail"
+  "departemen",
+  "kpi_master",
+  "target",
+  "actual",
+  "target_type",
+  "achivement",
+  "nilai_standart",
+  "bobot",
+  "nilai_akhir",
+  "periode",
+  "achiev_formula",
+  "nilai_formula"
  ],
  "fields": [
   {
@@ -31,30 +41,73 @@
    "read_only": 1
   },
   {
-   "default": "Now",
-   "fieldname": "posting_date",
-   "fieldtype": "Datetime",
-   "label": "Posting Date",
-   "reqd": 1
+   "fieldname": "departemen",
+   "fieldtype": "Link",
+   "label": "Departemen",
+   "options": "Department"
   },
   {
-   "fieldname": "tahun",
-   "fieldtype": "Int",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Tahun"
+   "fieldname": "kpi_master",
+   "fieldtype": "Link",
+   "label": "KPI",
+   "options": "KPI Master"
   },
   {
-   "fieldname": "detail",
-   "fieldtype": "Table",
-   "label": "KPI Karyawan Detail",
-   "options": "KPI Karyawan Detail",
-   "reqd": 1
+   "fieldname": "target",
+   "fieldtype": "Float",
+   "label": "Target"
+  },
+  {
+   "fieldname": "actual",
+   "fieldtype": "Float",
+   "label": "Actual"
+  },
+  {
+   "fieldname": "target_type",
+   "fieldtype": "Select",
+   "label": "Tipe Target",
+   "options": "Positif/Negatif"
+  },
+  {
+   "fieldname": "achivement",
+   "fieldtype": "Float",
+   "label": "%Achievement"
+  },
+  {
+   "fieldname": "nilai_standart",
+   "fieldtype": "Float",
+   "label": "Nilai Standart"
+  },
+  {
+   "fieldname": "bobot",
+   "fieldtype": "Float",
+   "label": "Bobot"
+  },
+  {
+   "fieldname": "nilai_akhir",
+   "fieldtype": "Float",
+   "label": "Nilai Akhir"
+  },
+  {
+   "fieldname": "periode",
+   "fieldtype": "Data",
+   "label": "Periode",
+   "options": "Q1 2025"
+  },
+  {
+   "fieldname": "achiev_formula",
+   "fieldtype": "Read Only",
+   "label": "Formula Achievement"
+  },
+  {
+   "fieldname": "nilai_formula",
+   "fieldtype": "Read Only",
+   "label": "Formula Nilai Akhir"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-14 05:59:19.119108",
+ "modified": "2025-10-10 14:55:29.581312",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "KPI Karyawan",
