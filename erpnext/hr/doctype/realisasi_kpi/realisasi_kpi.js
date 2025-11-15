@@ -45,7 +45,7 @@ frappe.ui.form.on("Realisasi KPI Detail", "actual", function(frm, dt, dn) {
 		d.score = 100;
 	}else if (d.achievement == 100){
 		d.score = 90;
-	}else if (d.achievement >= 80){
+	}else if (d.achievement >= 90){
 		d.score = 80;
 	}else{
 		d.score = 50;

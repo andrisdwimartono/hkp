@@ -832,7 +832,9 @@ class PaymentEntry(AccountsController):
 					"against": against_account,
 					"account_currency": self.party_account_currency,
 					"cost_center": self.cost_center,
-					"posting_date": self.giro_mundur_date if self.mode_of_payment == "Giro Mundur" else self.posting_date
+					"posting_date": self.giro_mundur_date if self.mode_of_payment == "Giro Mundur" else self.posting_date,
+					"purchase_order": self.purchase_order,
+					"sub_contract_hand_over": self.sub_contract_hand_over
 				},
 				item=self,
 			)
@@ -895,7 +897,9 @@ class PaymentEntry(AccountsController):
 						"credit": self.base_paid_amount,
 						"cost_center": self.cost_center,
 						"post_net_value": True,
-						"posting_date": self.giro_mundur_date if self.mode_of_payment == "Giro Mundur" else self.posting_date
+						"posting_date": self.giro_mundur_date if self.mode_of_payment == "Giro Mundur" else self.posting_date,
+						"purchase_order": self.purchase_order,
+						"sub_contract_hand_over": self.sub_contract_hand_over
 					},
 					item=self,
 				)
@@ -946,7 +950,9 @@ class PaymentEntry(AccountsController):
 						else d.tax_amount,
 						"cost_center": d.cost_center,
 						"post_net_value": True,
-						"posting_date": self.giro_mundur_date if self.mode_of_payment == "Giro Mundur" else self.posting_date
+						"posting_date": self.giro_mundur_date if self.mode_of_payment == "Giro Mundur" else self.posting_date,
+						"purchase_order": self.purchase_order,
+						"sub_contract_hand_over": self.sub_contract_hand_over
 					},
 					account_currency,
 					item=d,
@@ -995,7 +1001,9 @@ class PaymentEntry(AccountsController):
 							"debit_in_account_currency": d.amount,
 							"debit": d.amount,
 							"cost_center": d.cost_center,
-							"posting_date": self.giro_mundur_date if self.mode_of_payment == "Giro Mundur" else self.posting_date
+							"posting_date": self.giro_mundur_date if self.mode_of_payment == "Giro Mundur" else self.posting_date,
+							"purchase_order": self.purchase_order,
+							"sub_contract_hand_over": self.sub_contract_hand_over
 						},
 						item=d,
 					)

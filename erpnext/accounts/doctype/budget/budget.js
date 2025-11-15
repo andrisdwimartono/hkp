@@ -70,24 +70,24 @@ frappe.ui.form.on('Budget', {
 
 frappe.ui.form.on("Budget Account", "volume", function(frm, cdt, cdn) {
     var d = locals[cdt][cdn];
-    d.budget_amount = d.volume*d.unit_price;
+    d.unit_price = d.budget_amount / (d.volume * d.duration);
 	refresh_field("accounts");
 });
 
-frappe.ui.form.on("Budget Account", "unit_price", function(frm, cdt, cdn) {
-    var d = locals[cdt][cdn];
-    d.budget_amount = d.volume*d.unit_price;
+frappe.ui.form.on("Budget Account", "budget_amount", function(frm, cdt, cdn) {
+	var d = locals[cdt][cdn];
+    d.unit_price = d.budget_amount / (d.volume * d.duration);
 	refresh_field("accounts");
 });
 
 frappe.ui.form.on("Income Account", "volume", function(frm, cdt, cdn) {
     var d = locals[cdt][cdn];
-    d.income_amount = d.volume*d.unit_price;
+	d.unit_price = d.income_amount / (d.volume * d.duration);
 	refresh_field("income_accounts");
 });
 
-frappe.ui.form.on("Income Account", "unit_price", function(frm, cdt, cdn) {
+frappe.ui.form.on("Income Account", "income_amount", function(frm, cdt, cdn) {
     var d = locals[cdt][cdn];
-    d.income_amount = d.volume*d.unit_price;
+	d.unit_price = d.income_amount / (d.volume * d.duration);
 	refresh_field("income_accounts");
 });

@@ -117,6 +117,36 @@ frappe.query_reports["General Ledger"] = {
 			"hidden": 1
 		},
 		{
+			"fieldname":"purchase_order",
+			"label": __("Purchase Order"),
+			"fieldtype": "MultiSelectList",
+			get_data: function(txt) {
+				var party_type = frappe.query_report.get_filter_value('party_type');
+				var parties = frappe.query_report.get_filter_value('party');
+
+				if(!party_type) return false;
+				if(party_type != "Supplier") return false;
+				return frappe.db.get_link_options('Purchase Order', txt, {
+					supplier: ["in", parties]
+				});
+			}
+		},
+		{
+			"fieldname":"sub_contract_hand_over",
+			"label": __("Sub Contract Hand Over"),
+			"fieldtype": "MultiSelectList",
+			get_data: function(txt) {
+				var party_type = frappe.query_report.get_filter_value('party_type');
+				var parties = frappe.query_report.get_filter_value('party');
+
+				if(!party_type) return false;
+				if(party_type != "Sub Contract") return false;
+				return frappe.db.get_link_options('Sub Contract Hand Over', txt, {
+					sub_contract: ["in", parties]
+				});
+			}
+		},
+		{
 			"fieldname":"group_by",
 			"label": __("Group by"),
 			"fieldtype": "Select",

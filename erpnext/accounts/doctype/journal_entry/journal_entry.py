@@ -843,7 +843,9 @@ class JournalEntry(AccountsController):
 							"cost_center": d.cost_center,
 							"project": d.project,
 							"finance_book": self.finance_book,
-							"nomor_bukti": self.nomor_bukti
+							"nomor_bukti": self.nomor_bukti,
+							"purchase_order": d.purchase_order,
+							"sub_contract_hand_over": d.sub_contract_hand_over
 						},
 						item=d,
 					)

@@ -16,37 +16,36 @@
   "account",
   "account_pdp",
   "cost_center",
-  "description"
+  "description",
+  "level",
+  "parent_budget_account",
+  "is_group"
  ],
  "fields": [
   {
    "columns": 1,
-   "depends_on": "eval: doc.group == 0",
    "fieldname": "account",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Account",
-   "mandatory_depends_on": "eval: doc.group == 0",
    "options": "Account"
   },
   {
    "columns": 2,
-   "depends_on": "eval: doc.group == 0",
+   "default": "0",
    "fieldname": "budget_amount",
    "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Budget Amount",
    "options": "Company:company:default_currency",
    "precision": "0",
-   "read_only": 1
+   "reqd": 1
   },
   {
    "columns": 1,
-   "default": "1",
+   "default": "365",
    "depends_on": "eval: doc.group == 0",
    "fieldname": "duration",
    "fieldtype": "Float",
-   "in_list_view": 1,
    "label": "Duration",
    "mandatory_depends_on": "eval: doc.group == 0",
    "precision": "0"
@@ -57,21 +56,19 @@
    "depends_on": "eval: doc.group == 0",
    "fieldname": "volume",
    "fieldtype": "Float",
-   "in_list_view": 1,
    "label": "Volume",
    "mandatory_depends_on": "eval: doc.group == 0",
    "precision": "0"
   },
   {
-   "columns": 1,
-   "depends_on": "eval: doc.group == 0",
+   "columns": 2,
+   "default": "0",
    "fieldname": "unit_price",
    "fieldtype": "Currency",
-   "in_list_view": 1,
    "label": "Unit Price",
-   "mandatory_depends_on": "eval: doc.group == 0",
    "options": "Company:company:default_currency",
-   "precision": "0"
+   "precision": "0",
+   "read_only": 1
   },
   {
    "fieldname": "description",
@@ -90,15 +87,14 @@
    "columns": 1,
    "fieldname": "cost_center",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Cost Center",
    "options": "Cost Center"
   },
   {
+   "default": "Lot",
    "depends_on": "eval: doc.group == 0",
    "fieldname": "uom",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "UoM",
    "mandatory_depends_on": "eval: doc.group == 0",
    "options": "UOM"
@@ -107,27 +103,48 @@
    "default": "0",
    "fieldname": "group",
    "fieldtype": "Check",
-   "in_list_view": 1,
-   "label": "Is Group"
+   "label": "Is Group",
+   "read_only": 1
   },
   {
+   "columns": 2,
    "fieldname": "nomor",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Nomor"
+   "label": "Nomor",
+   "reqd": 1
   },
   {
    "depends_on": "eval: doc.group == 0",
    "fieldname": "account_pdp",
    "fieldtype": "Link",
    "label": "Akun PDP",
-   "mandatory_depends_on": "eval: doc.group == 0",
    "options": "Account"
+  },
+  {
+   "default": "1",
+   "fieldname": "level",
+   "fieldtype": "Int",
+   "label": "level",
+   "read_only": 1
+  },
+  {
+   "fieldname": "parent_budget_account",
+   "fieldtype": "Data",
+   "label": "Parent Budget Account",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Is Group",
+   "read_only": 1
   }
  ],
  "istable": 1,
  "links": [],
- "modified": "2024-01-09 15:15:16.050591",
+ "modified": "2025-11-12 21:25:34.109758",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Budget Account",

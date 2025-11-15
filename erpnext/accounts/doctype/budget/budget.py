@@ -12,7 +12,9 @@ from erpnext.accounts.doctype.accounting_dimension.accounting_dimension import (
 	get_accounting_dimensions,
 )
 from erpnext.accounts.utils import get_fiscal_year
-
+import copy
+import re
+from typing import List, Dict, Optional, Any, Tuple
 
 class BudgetError(frappe.ValidationError):
 	pass
@@ -51,6 +53,73 @@ class Budget(Document):
 		self.set_total_budget_amount()
 		self.createposrap()
 	
+	def on_update(self):
+		list_detail = frappe.db.sql("""
+			SELECT * FROM `tabBudget Account` WHERE parent = %s
+			ORDER BY nomor ASC
+		""", self.name, as_dict=1)
+		idx = 1
+		for d in list_detail:
+			frappe.db.set_value("Budget Account", d.name, "idx", idx)
+			idx += 1
+
+		for d in list_detail:
+			# if doesn't have dot, then level 1 and is_group 1 and parent_budget_account None
+			if "." not in d.nomor:
+				frappe.db.set_value("Budget Account", d.name, "level", 1)
+				frappe.db.set_value("Budget Account", d.name, "is_group", 1)
+				frappe.db.set_value("Budget Account", d.name, "group", 1)
+				frappe.db.set_value("Budget Account", d.name, "budget_amount", 0)
+				frappe.db.set_value("Budget Account", d.name, "parent_budget_account", None)
+				# get children
+				prefix = d.nomor + "."
+				for child in list_detail:
+					if child.nomor.startswith(prefix) and child.nomor.count(".") == d.nomor.count(".") + 1:
+						frappe.db.set_value("Budget Account", child.name, "level", 2)
+						frappe.db.set_value("Budget Account", child.name, "parent_budget_account", d.name)
+						# recursively get children of this detail
+						self.set_children_level(child, list_detail, 2, child.name)
+		self.set_budget_amount_of_group_accounts()
+		self.reload()
+
+	def set_children_level(self, parent, list_detail, level, parent_name):
+		for child in list_detail:
+			if child.nomor.startswith(parent.nomor + ".") and child.nomor.count(".") == parent.nomor.count(".") + 1:
+				frappe.db.set_value("Budget Account", child.name, "level", level + 1)
+				frappe.db.set_value("Budget Account", child.name, "parent_budget_account", parent_name)
+				frappe.db.set_value("Budget Account", child.name, "is_group", 0)
+				frappe.db.set_value("Budget Account", child.name, "group", 0)
+				# calculate budget_amount
+				unit_price = frappe.db.get_value("Budget Account", child.name, "unit_price")
+				volume = frappe.db.get_value("Budget Account", child.name, "volume")
+				duration = frappe.db.get_value("Budget Account", child.name, "duration")
+				budget_amount = flt(unit_price) * flt(volume) * flt(duration)
+				frappe.db.set_value("Budget Account", child.name, "budget_amount", budget_amount)
+
+				frappe.db.set_value("Budget Account", parent_name, "budget_amount", 0)
+				frappe.db.set_value("Budget Account", parent_name, "is_group", 1)
+				frappe.db.set_value("Budget Account", parent_name, "group", 1)
+				frappe.db.set_value("Budget Account", parent_name, "budget_amount", 0)
+				
+				self.set_children_level(child, list_detail, level + 1, child.name)
+
+	def set_budget_amount_of_group_accounts(self):
+		# get all group accounts
+		list_detail = frappe.db.sql("""
+			SELECT * FROM `tabBudget Account` WHERE parent = %s
+			ORDER BY nomor ASC
+		""", self.name, as_dict=1)
+		group_accounts = [d for d in list_detail if d.is_group == 1]
+		# sort group accounts by level descending
+		group_accounts.sort(key=lambda x: x.level, reverse=True)
+		for group in group_accounts:
+			total_budget_amount = 0
+			prefix = group.nomor + "."
+			for child in list_detail:
+				if child.nomor.startswith(prefix) and child.nomor.count(".") == group.nomor.count(".") + 1:
+					total_budget_amount += flt(frappe.db.get_value("Budget Account", child.name, "budget_amount"))
+			frappe.db.set_value("Budget Account", group.name, "budget_amount", total_budget_amount)
+
 	def set_total_budget_amount(self):
 		self.total_budget_amount = 0
 		for d in self.accounts:

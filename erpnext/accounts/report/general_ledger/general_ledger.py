@@ -207,7 +207,7 @@ def get_gl_entries(filters, accounting_dimensions):
 			against_voucher,
 			account_currency,
 			remarks, against,
-			is_opening, `tabGL Entry`.creation {select_fields_with_percentage}
+			is_opening, `tabGL Entry`.creation, purchase_order, sub_contract_hand_over {select_fields_with_percentage}
 		FROM `tabGL Entry`,
 		(
 			SELECT parent, sum(percentage_allocation) as percentage_allocation
@@ -233,7 +233,7 @@ def get_gl_entries(filters, accounting_dimensions):
 			voucher_type, voucher_no, nomor_bukti, {dimension_fields}
 			cost_center, project,
 			against_voucher_type, against_voucher, account_currency,
-			remarks, against, is_opening, creation {select_fields}
+			remarks, against, is_opening, creation, purchase_order, sub_contract_hand_over {select_fields}
 		from `tabGL Entry`
 		where company=%(company)s {conditions}
 		{distributed_cost_center_query}
@@ -621,6 +621,8 @@ def get_columns(filters):
 			{"label": _("Against Account"), "fieldname": "against", "width": 120},
 			{"label": _("Party Type"), "fieldname": "party_type", "width": 100},
 			{"label": _("Party"), "fieldname": "party", "width": 100},
+			{"label": _("Purchase Order"), "fieldname": "purchase_order", "width": 100},
+			{"label": _("Sub Contract Hand Over"), "fieldname": "sub_contract_hand_over", "width": 100},
 			{"label": _("Project"), "options": "Project", "fieldname": "project", "width": 100},
 		]
 	)

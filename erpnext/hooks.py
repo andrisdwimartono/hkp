@@ -14,8 +14,23 @@ app_logo_url = "/assets/erpnext/images/erpnext-logo.svg"
 
 develop_version = "13.x.x-develop"
 
-app_include_js = "/assets/js/erpnext.min.js"
-app_include_css = "/assets/css/erpnext.css"
+app_include_js = [
+	"/assets/js/erpnext.min.js",
+	# "https://www.jeasyui.com/easyui/jquery.easyui.min.js",
+	# "https://www.jeasyui.com/easyui/jquery.edatagrid.js",
+	# "https://www.jeasyui.com/easyui/datagrid-detailview.js",
+	# "https://www.jeasyui.com/easyui/datagrid-groupview.js",
+	# "https://www.jeasyui.com/easyui/datagrid-bufferview.js",
+	# "https://www.jeasyui.com/easyui/datagrid-scrollview.js",
+	]
+app_include_css = [
+	"/assets/css/erpnext.css",
+	# "https://www.jeasyui.com/easyui/themes/bootstrap/easyui.css",
+	# "https://www.jeasyui.com/easyui/themes/icon.css",
+	# "https://www.jeasyui.com/easyui/themes/color.css",
+	# "https://www.jeasyui.com/css/demo1.css",
+	# "https://www.jeasyui.com/prettify/prettify.css",
+	]
 web_include_js = "/assets/js/erpnext-web.min.js"
 web_include_css = "/assets/css/erpnext-web.css"
 app_include_css = "/assets/erpnext/css/hkp.css"
@@ -358,6 +373,7 @@ permission_query_conditions = {
     "Project": "erpnext.projects.doctype.project.project.get_permission_query_conditions",
     "Form Payment Entry Project": "erpnext.accounts.doctype.form_payment_entry_project.form_payment_entry_project.get_permission_query_conditions",
     "Material Request": "erpnext.stock.doctype.material_request.material_request.get_permission_query_conditions",
+	"Realisasi KPI": "erpnext.hr.doctype.realisasi_kpi.realisasi_kpi.get_permission_query_conditions",
 }
 
 before_tests = "erpnext.setup.utils.before_tests"
