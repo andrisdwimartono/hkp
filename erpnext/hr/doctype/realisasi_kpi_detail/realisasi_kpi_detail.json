@@ -68,7 +68,7 @@
    "fieldname": "type",
    "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "Type",
+   "label": "Polaritas",
    "options": "Higher is Better\nLower is Better",
    "read_only": 1,
    "reqd": 1
@@ -90,7 +90,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-10-14 08:31:52.127312",
+ "modified": "2025-11-15 11:38:35.989471",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Realisasi KPI Detail",
