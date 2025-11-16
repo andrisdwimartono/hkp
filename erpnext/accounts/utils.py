@@ -163,6 +163,7 @@ def get_balance_on(
 	in_account_currency=True,
 	cost_center=None,
 	ignore_account_permission=False,
+	account_type=None,
 ):
 	if not account and frappe.form_dict.get("account"):
 		account = frappe.form_dict.get("account")
@@ -243,6 +244,21 @@ def get_balance_on(
 		else:
 			cond.append("""gle.account = %s """ % (frappe.db.escape(account, percent=False),))
 
+	if account_type:
+		accounts = frappe.db.get_all(
+			"Account",
+			filters={"company": company, "account_type": account_type, "is_group": 0},
+			pluck="name",
+			order_by="lft",
+		)
+
+		cond.append(
+			"""
+			gle.account in (%s)
+		"""
+			% (", ".join([frappe.db.escape(account) for account in accounts]))
+		)
+
 	if party_type and party:
 		cond.append(
 			"""gle.party_type = %s and gle.party = %s """
@@ -269,6 +285,106 @@ def get_balance_on(
 		# if bal is None, return 0
 		return flt(bal)
 
+# @frappe.whitelist()
+# def get_fiscal_year(
+# 	date=None,
+# 	fiscal_year=None,
+# 	label="Date",
+# 	verbose=1,
+# 	company=None,
+# 	as_dict=False,
+# 	boolean=None,
+# 	raise_on_missing=True,
+# ):
+# 	if isinstance(raise_on_missing, str):
+# 		raise_on_missing = loads(raise_on_missing)
+
+# 	# backwards compat
+# 	if isinstance(boolean, str):
+# 		boolean = loads(boolean)
+# 	if boolean is not None:
+# 		raise_on_missing = not boolean
+
+# 	fiscal_years = get_fiscal_years(
+# 		date, fiscal_year, label, verbose, company, as_dict=as_dict, raise_on_missing=raise_on_missing
+# 	)
+# 	return False if not fiscal_years else fiscal_years[0]
+
+# def get_fiscal_years(
+# 	transaction_date=None,
+# 	fiscal_year=None,
+# 	label="Date",
+# 	verbose=1,
+# 	company=None,
+# 	as_dict=False,
+# 	boolean=None,
+# 	raise_on_missing=True,
+# ):
+# 	if transaction_date:
+# 		transaction_date = getdate(transaction_date)
+# 	# backwards compat
+# 	if boolean is not None:
+# 		raise_on_missing = not boolean
+
+# 	all_fiscal_years = _get_fiscal_years(company=company)
+
+# 	# No restricting selectors
+# 	if not transaction_date and not fiscal_year:
+# 		return all_fiscal_years
+
+# 	for fy in all_fiscal_years:
+# 		if (fiscal_year and fy.name == fiscal_year) or (
+# 			transaction_date
+# 			and getdate(fy.year_start_date) <= transaction_date
+# 			and getdate(fy.year_end_date) >= transaction_date
+# 		):
+# 			if as_dict:
+# 				return (fy,)
+# 			else:
+# 				return ((fy.name, fy.year_start_date, fy.year_end_date),)
+
+# 	# No match for restricting selectors
+# 	if raise_on_missing:
+# 		error_msg = _("""{0} {1} is not in any active Fiscal Year""").format(
+# 			_(label), formatdate(transaction_date)
+# 		)
+# 		if company:
+# 			error_msg = _("""{0} for {1}""").format(error_msg, frappe.bold(company))
+
+# 		if verbose == 1:
+# 			frappe.msgprint(error_msg)
+
+# 		raise FiscalYearError(error_msg)
+# 	return []
+
+# def _get_fiscal_years(company=None):
+# 	fiscal_years = frappe.cache().hget("fiscal_years", company) or []
+
+# 	if not fiscal_years:
+# 		# if year start date is 2012-04-01, year end date should be 2013-03-31 (hence subdate)
+# 		FY = DocType("Fiscal Year")
+
+# 		query = (
+# 			frappe.qb.from_(FY).select(FY.name, FY.year_start_date, FY.year_end_date).where(FY.disabled == 0)
+# 		)
+
+# 		if company:
+# 			FYC = DocType("Fiscal Year Company")
+# 			query = query.where(
+# 				ExistsCriterion(frappe.qb.from_(FYC).select(FYC.name).where(FYC.parent == FY.name)).negate()
+# 				| ExistsCriterion(
+# 					frappe.qb.from_(FYC)
+# 					.select(FYC.company)
+# 					.where(FYC.parent == FY.name)
+# 					.where(FYC.company == company)
+# 				)
+# 			)
+
+# 		query = query.orderby(FY.year_start_date, order=Order.desc)
+# 		fiscal_years = query.run(as_dict=True)
+
+# 		frappe.cache().hset("fiscal_years", company, fiscal_years)
+# 	return fiscal_years
 
 def get_count_on(account, fieldname, date):
 	cond = ["is_cancelled=0"]

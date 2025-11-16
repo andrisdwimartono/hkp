@@ -11,11 +11,11 @@
   "cost_center",
   "project",
   "project_name",
-  "duration",
-  "cost_coefficient",
-  "fiscal_year",
   "column_break_3",
   "monthly_distribution",
+  "fiscal_year",
+  "cost_coefficient",
+  "duration",
   "amended_from",
   "section_break_6",
   "applicable_on_material_request",
@@ -227,7 +227,8 @@
   },
   {
    "fieldname": "section_break_oagdh",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "hidden": 1
   },
   {
    "fieldname": "income_accounts",
@@ -251,7 +252,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-26 10:33:56.012980",
+ "modified": "2025-11-12 21:40:47.492962",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Budget",

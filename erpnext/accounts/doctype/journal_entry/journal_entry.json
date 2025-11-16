@@ -21,6 +21,7 @@
   "column_break1",
   "from_template",
   "company",
+  "use_project",
   "project",
   "project_name",
   "form_payment_entry_project",
@@ -542,6 +543,7 @@
    "fieldname": "project",
    "fieldtype": "Link",
    "label": "Project",
+   "mandatory_depends_on": "eval:cur_frm.doc.use_project===1",
    "options": "Project"
   },
   {
@@ -566,6 +568,12 @@
    "in_list_view": 1,
    "label": "Nomor Bukti",
    "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "use_project",
+   "fieldtype": "Check",
+   "label": "Centang Jika Proyek"
   }
  ],
  "hide_toolbar": 1,
@@ -573,7 +581,7 @@
  "idx": 176,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-04-12 10:35:51.522487",
+ "modified": "2025-09-20 10:44:28.334487",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Journal Entry",
