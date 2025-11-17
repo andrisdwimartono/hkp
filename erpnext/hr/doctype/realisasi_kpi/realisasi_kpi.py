@@ -8,8 +8,8 @@ class RealisasiKPI(Document):
 	pass
 
 def get_permission_query_conditions(user):
-	emplpoyee = frappe.db.sql("""SELECT * FROM `tabEmployee` where user_id = '{0}'""".format(frappe.session.user), as_dict=1)
-	if emplpoyee AND employee[0].name:
+	employee = frappe.db.sql("""SELECT * FROM `tabEmployee` where user_id = '{0}'""".format(frappe.session.user), as_dict=1)
+	if employee and employee[0].name:
 		return """(`tabRealisasi KPI`.employee = '{0}')""".format(employee[0].name)
 	else:
 		return ""

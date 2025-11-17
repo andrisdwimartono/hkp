@@ -2,9 +2,15 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Realisasi KPI', {
-	// refresh: function(frm) {
-
-	// },
+	setup: function(frm) {
+		frm.set_query("employee", function() {
+			return {
+				filters: {
+					user_id: frappe.session.user
+				}
+			};
+		});
+	},
 	designation: function(frm){
 		frm.clear_table("detail");
 		frappe.call({
