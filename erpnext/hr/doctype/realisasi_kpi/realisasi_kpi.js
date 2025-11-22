@@ -4,11 +4,13 @@
 frappe.ui.form.on('Realisasi KPI', {
 	setup: function(frm) {
 		frm.set_query("employee", function() {
-			return {
-				filters: {
-					user_id: frappe.session.user
-				}
-			};
+			if(frappe.session.user != "Administrator"){
+				return {
+					filters: {
+						user_id: frappe.session.user
+					}
+				};
+			}
 		});
 	},
 	designation: function(frm){

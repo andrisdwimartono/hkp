@@ -10,6 +10,9 @@
   "account",
   "account_type",
   "balance",
+  "budget",
+  "project",
+  "pos_rap",
   "col_break1",
   "bank_account",
   "party_type",
@@ -19,8 +22,6 @@
   "purchase_order",
   "accounting_dimensions_section",
   "cost_center",
-  "dimension_col_break",
-  "project",
   "currency_section",
   "account_currency",
   "column_break_10",
@@ -218,6 +219,8 @@
    "label": "Reference Due Date"
   },
   {
+   "allow_on_submit": 1,
+   "fetch_from": "budget.project",
    "fieldname": "project",
    "fieldtype": "Link",
    "label": "Project",
@@ -260,10 +263,6 @@
    "label": "Accounting Dimensions"
   },
   {
-   "fieldname": "dimension_col_break",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "bank_account",
    "fieldtype": "Link",
    "label": "Bank Account",
@@ -294,12 +293,26 @@
    "fieldtype": "Link",
    "label": "Purchase Order",
    "options": "Purchase Order"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "budget",
+   "fieldtype": "Link",
+   "label": "Budget",
+   "options": "Budget"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "pos_rap",
+   "fieldtype": "Link",
+   "label": "POS RAP",
+   "options": "POS RAP"
   }
  ],
  "idx": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-08-30 11:45:56.754950",
+ "modified": "2025-11-22 10:23:08.880806",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Journal Entry Account",

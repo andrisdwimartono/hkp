@@ -842,6 +842,8 @@ class JournalEntry(AccountsController):
 							"voucher_detail_no": d.reference_detail_no,
 							"cost_center": d.cost_center,
 							"project": d.project,
+							"budget": d.budget,
+							"pos_rap": d.pos_rap,
 							"finance_book": self.finance_book,
 							"nomor_bukti": self.nomor_bukti,
 							"purchase_order": d.purchase_order,

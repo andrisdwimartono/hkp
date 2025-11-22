@@ -36,8 +36,8 @@
   "section_break_73dp1",
   "form_payment_entry_checklist",
   "keterangan",
-  "pejabat",
   "process_rules",
+  "approval",
   "amended_from"
  ],
  "fields": [
@@ -235,14 +235,9 @@
    "label": "Keterangan"
   },
   {
-   "fieldname": "pejabat",
-   "fieldtype": "Table",
-   "label": "Pejabat",
-   "options": "Process Rule"
-  },
-  {
    "fieldname": "process_rules",
    "fieldtype": "Table",
+   "hidden": 1,
    "label": "Process Rules",
    "options": "Process Rules"
   },
@@ -254,12 +249,18 @@
    "options": "Form Payment Entry Project",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "approval",
+   "fieldtype": "Table",
+   "label": "Approval",
+   "options": "Form Payment Entry Approval"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-03-22 11:34:23.478906",
+ "modified": "2025-11-22 10:08:11.822760",
  "modified_by": "Administrator",
  "module": "Keuangan",
  "name": "Form Payment Entry Project",
@@ -311,5 +312,6 @@
  "sort_order": "DESC",
  "title_field": "purpose",
  "track_changes": 1,
+ "track_seen": 1,
  "track_views": 1
 }
