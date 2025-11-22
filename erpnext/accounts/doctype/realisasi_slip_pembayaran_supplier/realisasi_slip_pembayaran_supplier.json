@@ -1,0 +1,103 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-18 06:26:07.835211",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "form_payment_entry_supplier",
+  "project",
+  "project_name",
+  "purpose",
+  "posting_date",
+  "week_periode",
+  "detail",
+  "process_rules"
+ ],
+ "fields": [
+  {
+   "fieldname": "form_payment_entry_supplier",
+   "fieldtype": "Link",
+   "label": "Form Payment Entry Supplier",
+   "options": "Form Payment Entry Supplier",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "form_payment_entry_supplier.project",
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project",
+   "options": "Project",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "form_payment_entry_project.purpose",
+   "fieldname": "purpose",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Purpose",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "week_periode",
+   "fieldtype": "Int",
+   "label": "Week Periode",
+   "reqd": 1
+  },
+  {
+   "fieldname": "detail",
+   "fieldtype": "Table",
+   "label": "Detail",
+   "options": "Form Payment Entry Account Realisasi"
+  },
+  {
+   "fieldname": "process_rules",
+   "fieldtype": "Table",
+   "label": "Process Rules",
+   "options": "Process Rules"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-11-18 06:26:07.835211",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Realisasi Slip Pembayaran Supplier",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "purpose",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "purpose"
+}

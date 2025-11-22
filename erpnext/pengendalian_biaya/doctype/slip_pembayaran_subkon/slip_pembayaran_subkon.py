@@ -61,3 +61,7 @@ def check_slip_pembayaran_subkon(slip_pembayaran_subkon):
         WHERE br.name = '{0}' AND br.docstatus = 1
         """.format(slip_pembayaran_subkon), as_dict=1)
 	return None
+
+@frappe.whitelist()
+def get_detail(slip_pembayaran_subkon):
+	return frappe.db.sql("""SELECT * FROM `tabForm Payment Entry Account` WHERE parent = '{0}' AND parenttype = 'Slip Pembayaran Subkon'""".format(slip_pembayaran_subkon), as_dict=1)

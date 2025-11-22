@@ -23,8 +23,6 @@
   "required_date",
   "week_periode",
   "use_payment_entry",
-  "section_break_kqfpp",
-  "details",
   "section_break_vsbtd",
   "total_cost",
   "outstanding_amount",
@@ -165,10 +163,6 @@
    "label": "Lewat Kasir"
   },
   {
-   "fieldname": "section_break_kqfpp",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "total_cost",
    "fieldtype": "Currency",
    "label": "Total Cost",
@@ -269,13 +263,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "details",
-   "fieldtype": "Table",
-   "label": "Form Payment Entry Account",
-   "options": "Form Payment Entry Account",
-   "reqd": 1
-  },
-  {
    "fieldname": "section_break_vsbtd",
    "fieldtype": "Section Break"
   }
@@ -284,7 +271,7 @@
  "is_submittable": 1,
  "links": [],
  "make_attachments_public": 1,
- "modified": "2025-11-15 10:24:14.646168",
+ "modified": "2025-11-22 10:18:27.676794",
  "modified_by": "Administrator",
  "module": "Pengendalian Biaya",
  "name": "Slip Pembayaran Subkon",

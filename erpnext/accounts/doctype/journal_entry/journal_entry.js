@@ -51,6 +51,24 @@ frappe.ui.form.on("Journal Entry", {
 				}
 			}
 		});
+
+		frm.set_query("pos_rap", "accounts", function(doc, cdt, cdn) {
+			const row = locals[cdt][cdn];
+			if(row.budget){
+				return {
+					query: "erpnext.accounts.doctype.budget_realization.budget_realization.get_pos_rap",
+					filters: {
+						'budget': row.budget
+					}
+				}
+			}else{
+				return {
+					filters: {
+						'docstatus': 100
+					}
+				}
+			}
+		});
 	},
 
 	refresh: function(frm) {

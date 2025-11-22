@@ -12,6 +12,9 @@
   "designation",
   "column_break_5fgzj",
   "date",
+  "approver_name",
+  "approver",
+  "user_approver",
   "section_break_vdf91",
   "detail",
   "amended_from"
@@ -79,12 +82,33 @@
   {
    "fieldname": "section_break_vdf91",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "approver",
+   "fieldtype": "Link",
+   "label": "Approver",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "approver.user_id",
+   "fieldname": "user_approver",
+   "fieldtype": "Link",
+   "label": "User Approver",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "approver.employee_name",
+   "fieldname": "approver_name",
+   "fieldtype": "Data",
+   "label": "Approver Name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-10-11 10:54:02.068359",
+ "modified": "2025-11-22 08:21:53.224090",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Realisasi KPI",

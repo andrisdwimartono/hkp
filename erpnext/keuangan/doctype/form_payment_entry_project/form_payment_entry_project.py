@@ -8,23 +8,23 @@ from time import gmtime, strftime, strptime
 from frappe.utils import today
 
 class FormPaymentEntryProject(Document):
-	def after_insert(self):
-		assigner = []
-		for d in self.pejabat:
-			if d.user:
-				assigner.append(d.user)
-				self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(d.user))
-			notification_doc = {
-				"type": "Alert",
-				"document_type": self.doctype,
-				"document_name": self.name,
-				"subject": "Kas Bon Proyek baru {0}".format(self.name),
-				"from_user": self.owner,
-			}
+	# def after_insert(self):
+	# 	assigner = []
+	# 	for d in self.pejabat:
+	# 		if d.user:
+	# 			assigner.append(d.user)
+	# 			self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(d.user))
+	# 		notification_doc = {
+	# 			"type": "Alert",
+	# 			"document_type": self.doctype,
+	# 			"document_name": self.name,
+	# 			"subject": "Kas Bon Proyek baru {0}".format(self.name),
+	# 			"from_user": self.owner,
+	# 		}
 			
-			notification_doc = frappe._dict(notification_doc)
-			from frappe.desk.doctype.notification_log.notification_log import make_notification_logs
-			make_notification_logs(notification_doc, assigner)
+	# 		notification_doc = frappe._dict(notification_doc)
+	# 		from frappe.desk.doctype.notification_log.notification_log import make_notification_logs
+	# 		make_notification_logs(notification_doc, assigner)
 	def validate(self):
 		self.total_budget = 0
 		for d in self.details:
@@ -34,6 +34,9 @@ class FormPaymentEntryProject(Document):
 		if self.docstatus == 0:
 			self.outstanding_amount = self.total_budget
 	def on_submit(self):
+		for d in self.details:
+			if d.pos_rap is None or d.pos_rap == "":
+				frappe.throw("Pos RAP pada detail tidak boleh kosong.")
 		budget_approval_plan_doc = frappe.get_doc({
 			"doctype" : "Budget Approval Plan",
 			"posting_date": today()

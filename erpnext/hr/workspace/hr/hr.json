@@ -749,9 +749,18 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Realisasi KPI",
+   "link_to": "Realisasi KPI",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-11-01 13:43:43.875694",
+ "modified": "2025-11-22 10:25:14.094267",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "HR",
