@@ -1,9 +1,13 @@
 <h2 class="text-center">{%= __(report.report_name) %}</h2>
 <table class="text-left">
-	{% if filters.employee != "" %}
+	{% if filters.employee %}
 	<tr>
 		<td>Karyawan</td>
+		{% if data.length > 0 %}
+		<td>: {%= data[0].employee_name %}</td>
+		{% else %}
 		<td>: {%= filters.employee %}</td>
+		{% endif %}
 	</tr>
 	{% endif %}
 	<tr>
@@ -23,6 +27,7 @@
 <table class="table table-bordered" width="100%">
 	<thead>
 		<tr>
+			<th style="text-align: center;">Tanggal</th>
 			<th style="text-align: center;">Karyawan</th>
 			<th style="text-align: center;">KPI</th>
 			<th style="text-align: center;">Hasil</th>
@@ -42,7 +47,10 @@
 			%}
 			<tr class="{%= row_class %}">
 				<td>
-					<span style="padding-left: {%= cint(data[j].indent) * 1 %}em">{%= row.employee %}</span>
+					{%= frappe.datetime.str_to_user(row.date) %}
+				</td>
+				<td>
+					{%= row.employee_name %}
 				</td>
 				<td>
 					{%= row.kpi %}
@@ -50,12 +58,14 @@
 				<td>
 					{%= row.description %}
 				</td>
-				<td></td>
+				<td>
+					{%= row.aktivitas_pekerjaan %}
+				</td>
 				<td style="text-align: right;">
 					{%= format_currency(row.target, " ") %}
 				</td>
 				<td style="text-align: right;">
-
+					{%= format_currency(row.weight, " ") %}
 				</td>
 				<td style="text-align: right;">
 					{%= format_currency(row.actual, " ") %}

@@ -27,6 +27,7 @@ frappe.ui.form.on('Realisasi KPI', {
 						var pr = frm.add_child("detail");
 						pr.kpi = vals[i].kpi;
 						pr.description = vals[i].description;
+						pr.aktivtas_pekerjaan = vals[i].aktivtas_pekerjaan;
 						pr.target = vals[i].target;
 						pr.weight = vals[i].weight;
 						pr.type = vals[i].type;

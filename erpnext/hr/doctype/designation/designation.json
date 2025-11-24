@@ -10,6 +10,7 @@
  "field_order": [
   "designation_name",
   "description",
+  "aktivtas_pekerjaan",
   "required_skills_section",
   "skills",
   "kpi"
@@ -46,12 +47,18 @@
    "fieldtype": "Table",
    "label": "KPI",
    "options": "Designation KPI"
+  },
+  {
+   "fieldname": "aktivtas_pekerjaan",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Aktivtas Pekerjaan"
   }
  ],
  "icon": "fa fa-bookmark",
  "idx": 1,
  "links": [],
- "modified": "2025-10-11 10:57:35.009093",
+ "modified": "2025-11-22 11:22:14.272536",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Designation",

@@ -29,7 +29,7 @@ def get_data(filters):
 			GROUP BY tjea.budget, tjea.pos_rap
 		) realization ON realization.budget = tba.parent AND realization.pos_rap = tba.pos_rap
 		WHERE tb.name = '{0}'
-		ORDER BY tba.pos_rap ASC
+		ORDER BY tba.idx ASC
 		""".format(filters.get("budget")),  as_dict=1)
 	return data
 

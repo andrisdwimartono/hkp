@@ -41,6 +41,10 @@
   {
    "chart": "Department Wise Openings",
    "width": "Half"
+  },
+  {
+   "chart": "Laporan Realisasi KPI",
+   "width": "Half"
   }
  ],
  "creation": "2020-07-22 11:56:33.015888",
@@ -50,7 +54,7 @@
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
- "modified": "2020-07-22 14:42:12.789249",
+ "modified": "2025-11-22 11:53:11.204761",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Human Resource",

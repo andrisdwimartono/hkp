@@ -38,6 +38,8 @@ def get_data(filters):
 			END AS status,
 			kpi_detail.kpi,
 			kpi_detail.description,
+			kpi_detail.aktivitas_pekerjaan,
+			kpi_detail.weight,
 			kpi_detail.target,
 			kpi_detail.actual,
 			kpi_detail.achievement,
@@ -67,6 +69,12 @@ def get_columns():
 			"options": "Employee",
 			"width": 250
 		},
+		{
+			"fieldname": "employee_name",
+			"label": "Employee Name",
+			"fieldtype": "Data",
+			"width": 250
+		},
 		# {
 		# 	"fieldname": "employee_name",
 		# 	"label": "Employee Name",
@@ -94,6 +102,12 @@ def get_columns():
 			"width": 150
 		},
 		{
+			"fieldname": "aktivitas_pekerjaan",
+			"label": "Aktivitas Pekerjaan",
+			"fieldtype": "Data",
+			"width": 150
+		},
+		{
 			"fieldname": "status",
 			"label": "Status",
 			"fieldtype": "Data",
@@ -114,6 +128,12 @@ def get_columns():
 		{
 			"fieldname": "target",
 			"label": "Target",
+			"fieldtype": "Float",
+			"width": 120
+		},
+		{
+			"fieldname": "weight",
+			"label": "Weight",
 			"fieldtype": "Float",
 			"width": 120
 		},

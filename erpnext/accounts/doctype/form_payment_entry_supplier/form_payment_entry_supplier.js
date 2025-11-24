@@ -73,8 +73,7 @@ frappe.ui.form.on('Form Payment Entry Supplier', {
 
 		frm.set_query("pos_rap", "details", function(doc, cdt, cdn) {
 			const row = locals[cdt][cdn];
-			if(row.rap == 1){
-				if(cur_frm.doc.budget)
+			if(cur_frm.doc.budget){
 					return {
 						query: "erpnext.accounts.doctype.budget_realization.budget_realization.get_pos_rap",
 						filters: {
