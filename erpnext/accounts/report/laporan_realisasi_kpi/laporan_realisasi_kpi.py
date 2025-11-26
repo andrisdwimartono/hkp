@@ -11,12 +11,13 @@ def execute(filters=None):
 
 def get_data(filters):
 	conditions = ""
-	if filters.get("employee"):
-		conditions += f" AND kpi.employee = '{filters.get('employee')}'"
-	if filters.get("from_date"):
-		conditions += f" AND kpi.date >= '{filters.get('from_date')}'"
+	if not filters.get("from_date"):
+		frappe.throw("From Date is required")
+	conditions += f" kpi.date >= '{filters.get('from_date')}'"
 	if filters.get("to_date"):
 		conditions += f" AND kpi.date <= '{filters.get('to_date')}'"
+	if filters.get("employee"):
+		conditions += f" AND kpi.employee = '{filters.get('employee')}'"
 	if filters.get("status"):
 		if filters.get("status") == "Draft":
 			conditions += " AND kpi.docstatus = 0"
@@ -52,7 +53,6 @@ def get_data(filters):
 		INNER JOIN
 			`tabRealisasi KPI Detail` kpi_detail ON kpi.name = kpi_detail.parent
 		WHERE
-			kpi.docstatus IN (0, 1)
 			{conditions}
 		ORDER BY
 			kpi.date DESC, kpi.employee ASC, kpi_detail.idx ASC

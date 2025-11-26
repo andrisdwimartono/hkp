@@ -29,7 +29,7 @@ frappe.query_reports["Laporan Realisasi KPI"] = {
 			fieldname: "to_date",
 			label: __("To Date"),
 			fieldtype: "Date",
-			default: frappe.datetime.add_days(frappe.datetime.month_start(),-1),
+			default: frappe.datetime.month_end(),
 			reqd: 1,
 		},
 	]
