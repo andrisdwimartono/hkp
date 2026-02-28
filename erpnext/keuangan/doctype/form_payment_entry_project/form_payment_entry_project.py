@@ -26,6 +26,8 @@ class FormPaymentEntryProject(Document):
 	# 		from frappe.desk.doctype.notification_log.notification_log import make_notification_logs
 	# 		make_notification_logs(notification_doc, assigner)
 	def validate(self):
+		if cannot_modified_kas_bon_permission():
+			frappe.throw("Anda tidak memiliki izin untuk membuat/mengubah Kas Bon Proyek.")
 		self.total_budget = 0
 		for d in self.details:
 			self.total_budget = self.total_budget+d.budget_amount
@@ -52,38 +54,46 @@ class FormPaymentEntryProject(Document):
 		frappe.db.commit()
 
 @frappe.whitelist()
+def cannot_modified_kas_bon_permission():
+	usr = frappe.db.sql("""SELECT * FROM `tabHas Role` WHERE parenttype = 'User' AND parent = '{0}' AND role = 'Admin Akuntansi'""".format(frappe.session.user))
+	if usr:
+		return True
+	else:
+		return False
+    
+@frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
 def get_pos_rap(doctype, txt, searchfield, start, page_len, filters):
-    budget = filters["budget"]
-    if budget:
-        return frappe.db.sql("""
-        SELECT DISTINCT pr.pos_rap FROM `tabBudget` b
-        INNER JOIN `tabBudget Account` ba ON ba.parent = b.name
+	budget = filters["budget"]
+	if budget:
+		return frappe.db.sql("""
+		SELECT DISTINCT pr.pos_rap FROM `tabBudget` b
+		INNER JOIN `tabBudget Account` ba ON ba.parent = b.name
 		INNER JOIN `tabPOS RAP` pr ON ba.pos_rap = pr.pos_rap
-        WHERE b.name = '{0}' AND b.docstatus = 1 AND (pr.{1} LIKE "%{2}%")
-        LIMIT {3}, {4}
-        """.format(budget, searchfield, txt, start, page_len))
-    else:
-        return {}
+		WHERE b.name = '{0}' AND b.docstatus = 1 AND (pr.{1} LIKE "%{2}%")
+		LIMIT {3}, {4}
+		""".format(budget, searchfield, txt, start, page_len))
+	else:
+		return {}
 
 @frappe.whitelist()
 def check_budget(budget = None, pos_rap = None):
-    if budget and pos_rap:
-        return frappe.db.sql("""
-        SELECT * FROM `tabBudget Account` ba 
-        LEFT JOIN (SELECT br.pos_rap, SUM(br.volume) volume_realization FROM `tabForm Payment Entry Account` br INNER JOIN `tabForm Payment Entry Project` fpep ON fpep.name = br.parent WHERE fpep.budget = '{0}' AND br.pos_rap = '{1}' AND br.docstatus = 1) br ON br.pos_rap = ba.pos_rap
-        WHERE ba.parent = '{0}' AND ba.pos_rap = '{1}' AND ba.docstatus = 1
-        """.format(budget, pos_rap), as_dict=1)
-    return None
+	if budget and pos_rap:
+		return frappe.db.sql("""
+		SELECT * FROM `tabBudget Account` ba 
+		LEFT JOIN (SELECT br.pos_rap, SUM(br.volume) volume_realization FROM `tabForm Payment Entry Account` br INNER JOIN `tabForm Payment Entry Project` fpep ON fpep.name = br.parent WHERE fpep.budget = '{0}' AND br.pos_rap = '{1}' AND br.docstatus = 1) br ON br.pos_rap = ba.pos_rap
+		WHERE ba.parent = '{0}' AND ba.pos_rap = '{1}' AND ba.docstatus = 1
+		""".format(budget, pos_rap), as_dict=1)
+	return None
 
 @frappe.whitelist()
 def get_details_hand_over_progress(hand_over_progress = None):
-    if hand_over_progress:
-        return frappe.db.sql("""
-        SELECT hop.pos_rap, hop.total_cost unit_price, hop.total_cost budget_amount, hop.project, hop.progress_sequence, hop.job_name FROM `tabHand Over Progress` hop 
-        WHERE hop.name = '{0}' AND hop.docstatus = 1
-        """.format(hand_over_progress), as_dict=1)
-    return None
+	if hand_over_progress:
+		return frappe.db.sql("""
+		SELECT hop.pos_rap, hop.total_cost unit_price, hop.total_cost budget_amount, hop.project, hop.progress_sequence, hop.job_name FROM `tabHand Over Progress` hop 
+		WHERE hop.name = '{0}' AND hop.docstatus = 1
+		""".format(hand_over_progress), as_dict=1)
+	return None
 
 @frappe.whitelist()
 def get_details(budget = None):
@@ -128,9 +138,11 @@ def get_permission_query_conditions(user):
 	usr = frappe.db.sql("""SELECT * FROM `tabUser` where name = '{0}'""".format(frappe.session.user), as_dict=1)
 	if usr and usr[0].role_profile_name == "Site Manager":
 		return """(`tabForm Payment Entry Project`.project in (SELECT parent FROM `tabProject Team` WHERE user = '{0}'))""".format(frappe.session.user)
+	elif frappe.session.user != "hasta.rizkiamalia@gmail.com" and frappe.session.user != "kasir@gmail.com" and frappe.session.user != "hasta.nurainihaqiqi@gmail.com" and frappe.session.user != "hasta.fauziyyah@gmail.com" and frappe.session.user != "Administrator":
+		return "(`tabForm Payment Entry Project`.`owner` NOT IN ('hasta.rizkiamalia@gmail.com', 'kasir@gmail.com', 'hasta.nurainihaqiqi@gmail.com', 'hasta.fauziyyah@gmail.com', 'Administrator'))"
 	else:
 		return ""
-      
+	  
 @frappe.whitelist()
 def get_detail(form_payment_entry_project):
       return frappe.db.sql("""SELECT * FROM `tabForm Payment Entry Account` WHERE parent = '{0}'""".format(form_payment_entry_project), as_dict=1)

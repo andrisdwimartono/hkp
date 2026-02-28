@@ -371,9 +371,11 @@ permission_query_conditions = {
     "Formulir Perbaikan Alat Kerja Yang Rusak": "erpnext.support.doctype.formulir_perbaikan_alat_kerja_yang_rusak.formulir_perbaikan_alat_kerja_yang_rusak.get_permission_query_conditions",
     "Permintaan Perawatan IT": "erpnext.support.doctype.permintaan_perawatan_it.permintaan_perawatan_it.get_permission_query_conditions",
     "Project": "erpnext.projects.doctype.project.project.get_permission_query_conditions",
-    "Form Payment Entry Project": "erpnext.accounts.doctype.form_payment_entry_project.form_payment_entry_project.get_permission_query_conditions",
+    "Form Payment Entry Project": "erpnext.keuangan.doctype.form_payment_entry_project.form_payment_entry_project.get_permission_query_conditions",
+	"Form Payment Entry": "erpnext.keuangan.doctype.form_payment_entry.form_payment_entry.get_permission_query_conditions",
     "Material Request": "erpnext.stock.doctype.material_request.material_request.get_permission_query_conditions",
 	"Realisasi KPI": "erpnext.hr.doctype.realisasi_kpi.realisasi_kpi.get_permission_query_conditions",
+    "LAPORAN AKTIVITAS DI LUAR KANTOR": "erpnext.pemasaran.doctype.laporan_aktivitas_di_luar_kantor.laporan_aktivitas_di_luar_kantor.get_permission_query_conditions",
 }
 
 before_tests = "erpnext.setup.utils.before_tests"

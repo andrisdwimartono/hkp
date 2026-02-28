@@ -218,9 +218,18 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
-   "label": "Laporan Monitoring RAP",
-   "link_to": "Laporan Monitoring RAP",
+   "is_query_report": 1,
+   "label": "Realisasi Rencana Anggaran Proyek",
+   "link_to": "Realisasi Rencana Anggaran Proyek",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Kartu Hutang",
+   "link_to": "Payment Card",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -252,7 +261,7 @@
    "type": "Link"
   }
  ],
- "modified": "2025-07-26 10:05:33.318934",
+ "modified": "2026-02-21 10:42:32.292152",
  "modified_by": "Administrator",
  "module": "Keuangan",
  "name": "Keuangan",

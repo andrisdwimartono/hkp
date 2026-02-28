@@ -32,6 +32,8 @@
   "dimension_col_break",
   "cost_center",
   "form_payment_entry",
+  "budget",
+  "pos_rap",
   "party_section",
   "party_type",
   "party",
@@ -901,12 +903,26 @@
    "label": "Purchase Order",
    "options": "Purchase Order",
    "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.project != null",
+   "fieldname": "budget",
+   "fieldtype": "Link",
+   "label": "Budget",
+   "options": "Budget"
+  },
+  {
+   "depends_on": "eval:doc.budget != null",
+   "fieldname": "pos_rap",
+   "fieldtype": "Link",
+   "label": "POS RAP",
+   "options": "POS RAP"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-08-30 12:00:31.494387",
+ "modified": "2026-01-31 10:01:48.550485",
  "modified_by": "Administrator",
  "module": "Kasir",
  "name": "Payment Entry",

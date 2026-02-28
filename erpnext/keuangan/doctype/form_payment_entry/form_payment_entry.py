@@ -29,4 +29,10 @@ class FormPaymentEntry(Document):
 ## Membuat API
 @frappe.whitelist()
 def get_detail(form_payment_entry):
-      return frappe.db.sql("""SELECT * FROM `tabForm Payment Entry Non Project` WHERE parent = '{0}'""".format(form_payment_entry), as_dict=1)
+      return frappe.db.sql("""SELECT * FROM `tabForm Payment Entry` WHERE parent = '{0}'""".format(form_payment_entry), as_dict=1)
+
+def get_permission_query_conditions(user):
+	if frappe.session.user != "hasta.rizkiamalia@gmail.com" and frappe.session.user != "hasta.yunikeu@gmail.com" and frappe.session.user != "hasta.vaniaharyani@gmail.com" and frappe.session.user != "kasir@gmail.com" and frappe.session.user != "hasta.nurainihaqiqi@gmail.com" and frappe.session.user != "hasta.fauziyyah@gmail.com" and frappe.session.user != "hasta.tahtaalf@gmail.com" and frappe.session.user != "Administrator":
+		return "(`tabForm Payment Entry`.owner NOT IN ('hasta.rizkiamalia@gmail.com', 'hasta.yunikeu@gmail.com', 'hasta.vaniaharyani@gmail.com', 'kasir@gmail.com', 'hasta.nurainihaqiqi@gmail.com', 'hasta.fauziyyah@gmail.com', 'hasta.tahtaalf@gmail.com', 'Administrator'))"
+	else:
+		return ""

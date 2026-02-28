@@ -1,0 +1,87 @@
+<table width="100%">
+    <thead>
+        <tr>
+            <td class="text-center"><h1>Realisasi Rencana Anggaran Proyek</h1></td>
+        </tr>
+        <tr>
+            <td class="text-center">Budget : {%= filters.budget %}</td>
+        </tr>
+        <tr>
+            <td class="text-center">Sampai Tanggal : {%= frappe.datetime.str_to_user(filters.date_to) %}</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <table width="90%" border=1 style="margin-left: 5%;">
+                    <thead style="font-weight: bold;" class="text-center">
+                        <tr>
+                            <td width="5%">No</td>
+                            <td width="10%">Nomor</td>
+                            <td width="25%">POS RAP</td>
+                            <td width="20%">Rencana</td>
+                            <td width="20%">Realisasi</td>
+                            <td width="20%">Sisa</td>
+                        </tr>
+                    </thead>
+                    <tbody class="text-left">
+                        {% 
+                            var plan = 0;
+                            var real = 0; 
+                            var diff = 0;
+                        %}
+                        {% for(let i=0, k=data.length; i<k; i++) { %}
+                        {% 
+                            plan = plan+data[i].budget_amount;
+                            real = real+data[i].total_realisasi;
+                            diff = diff+data[i].sisa;
+                        %}
+                        <tr>
+                            <td>
+                                {% if(data[i].group == 1) { %} <b> {% } %}
+                                {%= i+1 %}
+                                {% if(data[i].group == 1) { %} </b> {% } %}
+                            </td>
+                            <td>
+                                {% if(data[i].group == 1) { %} <b> {% } %}
+                                {%= data[i].nomor %}
+                                {% if(data[i].group == 1) { %} </b> {% } %}
+                            </td>
+                            <td>
+                                {% if(data[i].group == 1) { %} <b> {% } %}
+                                {%= data[i].pos_rap %}
+                                {% if(data[i].group == 1) { %} </b> {% } %}
+                            </td>
+                            <td class="text-right">
+                                {% if(data[i].group == 1) { %} <b> {% } %}
+                                {%= format_currency(data[i].budget_amount, "") %}
+                                {% if(data[i].group == 1) { %} </b> {% } %}
+                            </td>
+                            <td class="text-right">
+                                {% if(data[i].group == 1) { %} <b> {% } %}
+                                {%= format_currency(data[i].total_realisasi, "") %}
+                                {% if(data[i].group == 1) { %} </b> {% } %}
+                            </td>
+                            <td class="text-right">
+                                {% if(data[i].group == 1) { %} <b> {% } %}
+                                {%= format_currency(data[i].sisa, "") %}
+                                {% if(data[i].group == 1) { %} </b> {% } %}
+                            </td>
+                        </tr>
+                        {% } %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <tr>
+                                <td colspan="3" class="text-right" style="padding-right: 15px !important;"><b>Total</b></td>
+                                <td class="text-right">{%= format_currency(plan, "") %}</td>
+                                <td class="text-right">{%= format_currency(real, "") %}</td>
+                                <td class="text-right">{%= format_currency(diff, "") %}</td>
+                            </tr>
+                        </tr>
+                    </tfoot>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>

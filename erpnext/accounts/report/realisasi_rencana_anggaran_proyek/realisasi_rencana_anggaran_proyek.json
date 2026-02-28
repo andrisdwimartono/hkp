@@ -1,0 +1,102 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2026-01-31 10:29:01.079336",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "KOP HKP",
+ "modified": "2026-01-31 10:29:01.079336",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Realisasi Rencana Anggaran Proyek",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Budget",
+ "report_name": "Realisasi Rencana Anggaran Proyek",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Kasir"
+  },
+  {
+   "role": "Logistik"
+  },
+  {
+   "role": "Site Manager"
+  },
+  {
+   "role": "Operasional"
+  },
+  {
+   "role": "Administrasi Keuangan"
+  },
+  {
+   "role": "Manajer Keuangan"
+  },
+  {
+   "role": "Admin Akuntansi"
+  },
+  {
+   "role": "Logistik Asset"
+  },
+  {
+   "role": "Admin Logistik"
+  },
+  {
+   "role": "Manajer Logistik"
+  },
+  {
+   "role": "Keuangan Pajak"
+  },
+  {
+   "role": "Pengendalian Biaya"
+  },
+  {
+   "role": "SPV K3"
+  },
+  {
+   "role": "Pengendalian Proyek"
+  },
+  {
+   "role": "Engineering"
+  },
+  {
+   "role": "Engineering EM"
+  },
+  {
+   "role": "Admin Ops"
+  },
+  {
+   "role": "Staff - Pelaksana"
+  },
+  {
+   "role": "Manajer ADU"
+  },
+  {
+   "role": "Logistik Gudang"
+  },
+  {
+   "role": "Kasir HKP"
+  },
+  {
+   "role": "Manajer Pemasaran"
+  },
+  {
+   "role": "Pemasaran"
+  },
+  {
+   "role": "Manager Akuntansi"
+  },
+  {
+   "role": "HR Manager"
+  }
+ ]
+}

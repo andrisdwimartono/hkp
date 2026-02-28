@@ -90,13 +90,15 @@
   {
    "fieldname": "aktivitas_pekerjaan",
    "fieldtype": "Data",
-   "label": "Aktivitas Pekerjaan"
+   "in_list_view": 1,
+   "label": "Satuan",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-11-22 11:25:23.145050",
+ "modified": "2026-02-28 09:51:17.337122",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Realisasi KPI Detail",

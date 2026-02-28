@@ -44,3 +44,16 @@ class SubContractHandOver(Document):
 			sub_contract_doc.save(ignore_permissions=True)
 			frappe.db.commit()
 		self.sisa = self.budget_amount-self.total_terbayar
+
+		# update contract value in payment card and payment card detail
+		frappe.db.sql("""UPDATE `tabPayment Card` SET contract_value = {0} WHERE document = '{1}'""".format(self.budget_amount, self.name))
+		frappe.db.commit()
+		list_payment_card = frappe.db.sql("""SELECT
+			`tabPayment Card Detail`.name
+		FROM `tabPayment Card Detail`
+		INNER JOIN `tabPayment Card` ON `tabPayment Card`.name = `tabPayment Card Detail`.parent
+		WHERE `tabPayment Card`.document = '{0}' AND `tabPayment Card Detail`.idx = 1""".format(self.name), as_dict=1)
+		if list_payment_card:
+			for payment_card in list_payment_card:
+				frappe.db.sql("""UPDATE `tabPayment Card Detail` SET saldo = {0} WHERE name = '{1}'""".format(self.budget_amount, payment_card.name))
+				frappe.db.commit()

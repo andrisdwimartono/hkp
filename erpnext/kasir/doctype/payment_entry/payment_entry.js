@@ -26,6 +26,30 @@ frappe.ui.form.on('Payment Entry', {
 				}
 			}
 		});
+		frm.set_query("budget", function() {
+			return {
+				filters: {
+					"project": frm.doc.project,
+				}
+			}
+		});
+
+		frm.set_query("pos_rap", function() {
+			if(frm.doc.budget){
+				return {
+					query: "erpnext.accounts.doctype.budget_realization.budget_realization.get_pos_rap",
+					filters: {
+						'budget': frm.doc.budget
+					}
+				}
+			}else{
+				return {
+					filters: {
+						'docstatus': 100
+					}
+				}
+			}
+		});
 		// frm.set_query("paid_from", function() {
 		// 	frm.events.validate_company(frm);
 
@@ -212,6 +236,13 @@ frappe.ui.form.on('Payment Entry', {
 				}
 			}
 		});
+	},
+
+	project: function(frm){
+		frm.set_value("budget", "");
+		frm.set_value("pos_rap", "");
+		frm.refresh_field("budget");
+		frm.refresh_field("pos_rap");
 	},
 
 	tax_source_nominal: function(frm){
