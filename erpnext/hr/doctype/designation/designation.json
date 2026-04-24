@@ -52,13 +52,13 @@
    "fieldname": "aktivtas_pekerjaan",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Aktivtas Pekerjaan"
+   "label": "Aktivitas Pekerjaan"
   }
  ],
  "icon": "fa fa-bookmark",
  "idx": 1,
  "links": [],
- "modified": "2025-11-22 11:22:14.272536",
+ "modified": "2026-03-02 09:56:20.050596",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Designation",

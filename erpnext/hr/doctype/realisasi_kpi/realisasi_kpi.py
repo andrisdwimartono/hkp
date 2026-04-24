@@ -8,10 +8,22 @@ class RealisasiKPI(Document):
 	def validate(self):
 		if self.approver and self.user_approver is None:
 			frappe.throw("Approver tidak memiliki akun user.")
+		self.check_employee_kpi_per_month()
 
 	def on_submit(self):
 		if self.user_approver != frappe.session.user:
 			frappe.throw("Hanya approver yang dapat mensubmit Realisasi KPI ini.")
+
+	def check_employee_kpi_per_month(self):
+		# if employee already have kpi in same month of date, throw error
+		if frappe.db.sql("""
+			SELECT
+				*
+			FROM `tabRealisasi KPI`
+			WHERE name != '{0}' AND employee = '{1}' AND MONTH(date) = MONTH('{2}') AND YEAR(date) = YEAR('{2}')
+		""".format(self.name, self.employee, self.date)):
+			frappe.throw("Employee already have KPI in this month.")
+
 
 def get_permission_query_conditions(user):
 	employee = frappe.db.sql("""SELECT * FROM `tabEmployee` where user_id = '{0}'""".format(frappe.session.user), as_dict=1)

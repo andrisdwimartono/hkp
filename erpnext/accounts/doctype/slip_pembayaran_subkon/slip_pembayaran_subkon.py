@@ -14,7 +14,7 @@ class SlipPembayaranSubkon(Document):
 		if a:
 			if a[0]:
 				frappe.db.sql("""
-					UPDATE `tabSub Contract Hand Over` SET total_terbayar = {0}, sisa = budget_amount-total_terbayar WHERE name = '{1}'
+					UPDATE `tabSub Contract Hand Over` SET total_terbayar = {0}, sisa = budget_amount-{0} WHERE name = '{1}'
 				""".format(a[0].total_paid, self.sub_contract_hand_over))
 				frappe.db.commit()
 	
@@ -27,7 +27,7 @@ class SlipPembayaranSubkon(Document):
 		if a:
 			if a[0]:
 				frappe.db.sql("""
-					UPDATE `tabSub Contract Hand Over` SET total_terbayar = {0}, sisa = budget_amount-total_terbayar WHERE name = '{1}'
+					UPDATE `tabSub Contract Hand Over` SET total_terbayar = {0}, sisa = budget_amount-{0} WHERE name = '{1}'
 				""".format(a[0].total_paid, self.sub_contract_hand_over))
 				frappe.db.commit()
 @frappe.whitelist()
