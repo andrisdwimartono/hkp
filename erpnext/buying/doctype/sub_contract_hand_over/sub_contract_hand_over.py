@@ -43,6 +43,15 @@ class SubContractHandOver(Document):
 			})
 			sub_contract_doc.save(ignore_permissions=True)
 			frappe.db.commit()
+		
+		self.total_terbayar = 0
+		a = frappe.db.sql("""
+				SELECT sum(a.paid) total_paid FROM `tabSlip Pembayaran Subkon` a
+				WHERE a.docstatus = 1 AND a.sub_contract_hand_over = '{0}'
+				GROUP BY a.sub_contract_hand_over
+		""".format(self.name), as_dict=1)
+		if a and a[0]:
+			self.total_terbayar = a[0].total_paid
 		self.sisa = self.budget_amount-self.total_terbayar
 
 		# update contract value in payment card and payment card detail

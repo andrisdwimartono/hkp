@@ -3,16 +3,76 @@
 
 import frappe
 from frappe.model.document import Document
+import datetime
+from time import gmtime, strftime, strptime
+from frappe.utils import today
 
 class RealisasiKPI(Document):
+	def after_insert(self):
+		assigner = []
+		if self.process_rules and len(self.process_rules) > 1:
+			assigner.append(self.process_rules[1].user)
+			self.add_comment('Edit', text='Notifikasi terkirim ke {0} !'.format(self.process_rules[1].user))
+			notification_doc = {
+				"type": "Alert",
+				"document_type": self.doctype,
+				"document_name": self.name,
+				"subject": "Realisasi KPI perlu diverifikasi",
+				"from_user": self.owner,
+			}
+			
+			notification_doc = frappe._dict(notification_doc)
+			from frappe.desk.doctype.notification_log.notification_log import make_notification_logs
+			make_notification_logs(notification_doc, assigner)
+			
 	def validate(self):
 		if self.approver and self.user_approver is None:
 			frappe.throw("Approver tidak memiliki akun user.")
 		self.check_employee_kpi_per_month()
 
-	def on_submit(self):
-		if self.user_approver != frappe.session.user:
-			frappe.throw("Hanya approver yang dapat mensubmit Realisasi KPI ini.")
+		verifikators = frappe.db.sql("""
+			SELECT
+				*
+			FROM `tabProcess Rules`
+			WHERE parent = '{0}' AND jabatan = 'VERIFIKATOR'
+		""".format(self.name), as_dict=1)
+		if verifikators:
+			for d in verifikators:
+				assigner = []
+				if self.process_rules and len(self.process_rules) > 1 and self.process_rules[1].user != d.user:
+					assigner.append(self.process_rules[1].user)
+					self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(self.process_rules[1].user))
+					notification_doc = {
+						"type": "Alert",
+						"document_type": self.doctype,
+						"document_name": self.name,
+						"subject": "Realisasi KPI perlu diverifikasi {0}".format(self.process_rules[1].employee_name),
+						"from_user": self.owner,
+					}
+					
+					notification_doc = frappe._dict(notification_doc)
+					from frappe.desk.doctype.notification_log.notification_log import make_notification_logs
+					make_notification_logs(notification_doc, assigner)
+		# else:
+		# 	assigner = []
+		# 	if self.process_rules and len(self.process_rules) > 1:
+		# 		assigner.append(self.process_rules[1].user)
+		# 		self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(self.process_rules[1].user))
+		# 		notification_doc = {
+		# 			"type": "Alert",
+		# 			"document_type": self.doctype,
+		# 			"document_name": self.name,
+		# 			"subject": "Realisasi KPI perlu diverifikasi {0}".format(self.process_rules[1].employee_name),
+		# 			"from_user": self.owner,
+		# 		}
+				
+		# 		notification_doc = frappe._dict(notification_doc)
+		# 		from frappe.desk.doctype.notification_log.notification_log import make_notification_logs
+		# 		make_notification_logs(notification_doc, assigner)
+
+	# def on_submit(self):
+	# 	if self.user_approver != frappe.session.user:
+	# 		frappe.throw("Hanya approver yang dapat mensubmit Realisasi KPI ini.")
 
 	def check_employee_kpi_per_month(self):
 		# if employee already have kpi in same month of date, throw error

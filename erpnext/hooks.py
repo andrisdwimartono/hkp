@@ -55,6 +55,10 @@ setup_wizard_test = "erpnext.setup.setup_wizard.test_setup_wizard.run_setup_wiza
 before_install = "erpnext.setup.install.check_setup_wizard_not_completed"
 after_install = "erpnext.setup.install.after_install"
 
+# cors
+before_request = "erpnext.api.cors.before_request"
+after_request = "erpnext.api.cors.after_request"
+
 boot_session = "erpnext.startup.boot.boot_session"
 notification_config = "erpnext.startup.notifications.get_notification_config"
 get_help_messages = "erpnext.utilities.activation.get_help_messages"
