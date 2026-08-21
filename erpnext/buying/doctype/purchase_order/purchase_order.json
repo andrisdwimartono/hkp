@@ -69,6 +69,13 @@
   "scan_barcode",
   "items_col_break",
   "set_warehouse",
+  "section_break_k4ikj",
+  "material_grouping",
+  "material_status",
+  "column_break_6dbz0",
+  "inspecting_time",
+  "delivered_time_schedule",
+  "delivered_time",
   "items_section",
   "items",
   "sb_last_purchase",
@@ -1250,13 +1257,53 @@
    "fieldname": "up",
    "fieldtype": "Data",
    "label": "Up"
+  },
+  {
+   "fieldname": "section_break_k4ikj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "material_grouping",
+   "fieldtype": "Data",
+   "label": "Material Grouping"
+  },
+  {
+   "fieldname": "column_break_6dbz0",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "delivered_time_schedule",
+   "fieldtype": "Datetime",
+   "label": "On Site Schedule"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "delivered_time",
+   "fieldtype": "Datetime",
+   "label": "On Site Time"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Ordered",
+   "fieldname": "material_status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Ordered\nPaid\nManufacturing\nInspecting\nDelivering\nDelivered"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "inspecting_time",
+   "fieldtype": "Datetime",
+   "label": "FAT Time"
   }
  ],
  "icon": "fa fa-file-text",
  "idx": 105,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-23 08:30:21.194436",
+ "modified": "2026-08-03 06:10:52.039507",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Purchase Order",

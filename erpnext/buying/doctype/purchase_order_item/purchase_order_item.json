@@ -12,6 +12,7 @@
   "item_name",
   "product_bundle",
   "column_break_4",
+  "status",
   "schedule_date",
   "expected_delivery_date",
   "section_break_5",
@@ -835,13 +836,22 @@
    "label": "Sales Order Packed Item",
    "no_copy": 1,
    "print_hide": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Ordered",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Ordered\nPaid\nManufacturing\nInspecting\nDelivering\nDelivered"
   }
  ],
  "idx": 1,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-04-23 08:31:43.991808",
+ "modified": "2026-07-04 11:30:06.438102",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Purchase Order Item",

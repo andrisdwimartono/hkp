@@ -1,37 +1,37 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2023-03-27 13:25:31.838052",
+ "creation": "2026-08-15 10:45:57.633451",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "check_list_name",
-  "available"
+  "document_no",
+  "notes"
  ],
  "fields": [
   {
-   "fieldname": "check_list_name",
+   "fieldname": "document_no",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Check List Name",
+   "label": "Document No",
    "reqd": 1
   },
   {
-   "default": "0",
-   "fieldname": "available",
-   "fieldtype": "Check",
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
    "in_list_view": 1,
-   "label": "Available"
+   "label": "Notes",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-08-21 00:52:41.270968",
+ "modified": "2026-08-15 10:45:57.633451",
  "modified_by": "Administrator",
- "module": "Accounts",
- "name": "Purchase Order Document Checklist",
+ "module": "Projects",
+ "name": "Project Histories",
  "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",

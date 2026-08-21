@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-07-24 23:33:45.122838",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "task_id",
+  "subject",
+  "exp_start_date",
+  "exp_end_date",
+  "is_group",
+  "predecessors",
+  "outline_level",
+  "task_weight",
+  "task"
+ ],
+ "fields": [
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Subject",
+   "length": 500,
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Group"
+  },
+  {
+   "fieldname": "exp_start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Expected Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "exp_end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Expected End Date",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Group"
+  },
+  {
+   "fieldname": "task_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Task ID",
+   "reqd": 1
+  },
+  {
+   "fieldname": "predecessors",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Predecessors"
+  },
+  {
+   "default": "0",
+   "fieldname": "outline_level",
+   "fieldtype": "Int",
+   "label": "Outline Level"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "task",
+   "fieldtype": "Link",
+   "label": "Task",
+   "options": "Task",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "task_weight",
+   "fieldtype": "Float",
+   "label": "Weight"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-08-16 21:45:02.533762",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Task Import Detail",
+ "nsm_parent_field": "parent_task_import_detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

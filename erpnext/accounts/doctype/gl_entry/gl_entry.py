@@ -24,6 +24,7 @@ from erpnext.exceptions import (
 	InvalidAccountDimensionError,
 	MandatoryAccountDimensionError,
 )
+from erpnext.api.laporan_monitoring_rap import update_realization_by_account
 
 exclude_from_linked_with = True
 
@@ -42,6 +43,7 @@ class GLEntry(Document):
 		self.flags.ignore_submit_comment = True
 		self.validate_and_set_fiscal_year()
 		self.pl_must_have_cost_center()
+		update_realization_by_account(self.account)
 
 		if not self.flags.from_repost and self.voucher_type != "Period Closing Voucher":
 			self.check_mandatory()

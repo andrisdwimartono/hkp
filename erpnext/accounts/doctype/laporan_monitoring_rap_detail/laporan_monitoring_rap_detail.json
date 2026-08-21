@@ -6,63 +6,67 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "pos_rap",
   "account",
-  "rencana",
   "account2",
-  "realisasi",
-  "sisa",
-  "keterangan"
+  "realization",
+  "adjustment",
+  "final_realization",
+  "is_synchronized"
  ],
  "fields": [
   {
-   "fieldname": "pos_rap",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "POS RAP",
-   "options": "POS RAP"
-  },
-  {
    "fieldname": "account",
    "fieldtype": "Link",
-   "label": "Account",
-   "options": "Account"
-  },
-  {
-   "fieldname": "rencana",
-   "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Rencana"
-  },
-  {
-   "fieldname": "realisasi",
-   "fieldtype": "Currency",
-   "in_list_view": 1,
-   "label": "Realisasi"
-  },
-  {
-   "fieldname": "sisa",
-   "fieldtype": "Currency",
-   "in_list_view": 1,
-   "label": "Sisa"
-  },
-  {
-   "fieldname": "keterangan",
-   "fieldtype": "Small Text",
-   "label": "Keterangan"
+   "label": "Account PDP",
+   "options": "Account",
+   "reqd": 1
   },
   {
    "fieldname": "account2",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Akun Realisasi 2",
-   "options": "Account"
+   "label": "Account Biaya",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "realization",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Realization",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "adjustment",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Adjustment"
+  },
+  {
+   "default": "0",
+   "fieldname": "final_realization",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Final Realization",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_synchronized",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Is Synchronized",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-01-09 11:29:23.029707",
+ "modified": "2026-07-10 06:04:33.983077",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Laporan Monitoring RAP Detail",

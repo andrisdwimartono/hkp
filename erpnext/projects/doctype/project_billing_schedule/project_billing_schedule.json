@@ -1,37 +1,38 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2023-03-27 13:25:31.838052",
+ "creation": "2026-08-19 06:07:18.225172",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "check_list_name",
-  "available"
+  "date",
+  "amount"
  ],
  "fields": [
   {
-   "fieldname": "check_list_name",
-   "fieldtype": "Data",
+   "fieldname": "date",
+   "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Check List Name",
+   "label": "Date",
    "reqd": 1
   },
   {
    "default": "0",
-   "fieldname": "available",
-   "fieldtype": "Check",
+   "fieldname": "amount",
+   "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Available"
+   "label": "Amount",
+   "precision": "0"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-08-21 00:52:41.270968",
+ "modified": "2026-08-19 06:07:18.225172",
  "modified_by": "Administrator",
- "module": "Accounts",
- "name": "Purchase Order Document Checklist",
+ "module": "Projects",
+ "name": "Project Billing Schedule",
  "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",

@@ -259,8 +259,17 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Uraian Pekerjaan",
+   "label": "Task",
    "link_to": "Task",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Task Import",
+   "link_to": "Task Import",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -331,15 +340,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Tugas",
-   "link_to": "Task",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Master Suppliyer",
    "link_to": "Supplier",
    "link_type": "DocType",
@@ -347,7 +347,7 @@
    "type": "Link"
   }
  ],
- "modified": "2025-05-24 10:27:50.723510",
+ "modified": "2026-08-15 11:06:36.027300",
  "modified_by": "Administrator",
  "module": "Operasional",
  "name": "Operasional",

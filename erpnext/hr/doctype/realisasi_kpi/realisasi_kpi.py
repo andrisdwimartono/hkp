@@ -26,33 +26,57 @@ class RealisasiKPI(Document):
 			make_notification_logs(notification_doc, assigner)
 			
 	def validate(self):
+		assigner = []
 		if self.approver and self.user_approver is None:
 			frappe.throw("Approver tidak memiliki akun user.")
 		self.check_employee_kpi_per_month()
 
-		verifikators = frappe.db.sql("""
-			SELECT
-				*
-			FROM `tabProcess Rules`
-			WHERE parent = '{0}' AND jabatan = 'VERIFIKATOR'
-		""".format(self.name), as_dict=1)
-		if verifikators:
-			for d in verifikators:
-				assigner = []
-				if self.process_rules and len(self.process_rules) > 1 and self.process_rules[1].user != d.user:
-					assigner.append(self.process_rules[1].user)
-					self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(self.process_rules[1].user))
+		# verifikators = frappe.db.sql("""
+		# 	SELECT
+		# 		*
+		# 	FROM `tabProcess Rules`
+		# 	WHERE parent = '{0}' AND jabatan = 'VERIFIKATOR'
+		# """.format(self.name), as_dict=1)
+		# if verifikators:
+		# 	for d in verifikators:
+		# 		assigner = []
+		# 		if self.process_rules and len(self.process_rules) > 1 and self.process_rules[1].user != d.user:
+		# 			assigner.append(self.process_rules[1].user)
+		# 			self.add_comment('Edit', text='Notifikasi terkirim ke {0}'.format(self.process_rules[1].user))
+		# 			notification_doc = {
+		# 				"type": "Alert",
+		# 				"document_type": self.doctype,
+		# 				"document_name": self.name,
+		# 				"subject": "Realisasi KPI perlu diverifikasi {0}".format(self.process_rules[1].employee_name),
+		# 				"from_user": self.owner,
+		# 			}
+					
+		# 			notification_doc = frappe._dict(notification_doc)
+		# 			from frappe.desk.doctype.notification_log.notification_log import make_notification_logs
+		# 			make_notification_logs(notification_doc, assigner)
+		# Send notification to approver if workflow state changed
+		workflow_state = self.get_workflow_state_before()
+		if workflow_state != None and workflow_state != self.workflow_state:
+			next_idx = 0
+			for d in self.process_rules:
+				if d.state == self.workflow_state:
+					next_idx = d.idx + 1
+					
+				if d.idx == next_idx:
+					assigner.append(d.user)
+					self.add_comment('Edit', text='Notifikasi terkirim ke {0} !'.format(d.user))
 					notification_doc = {
 						"type": "Alert",
 						"document_type": self.doctype,
 						"document_name": self.name,
-						"subject": "Realisasi KPI perlu diverifikasi {0}".format(self.process_rules[1].employee_name),
+						"subject": "Realisasi KPI {0} perlu {1}".format(d.employee_name, d.state),
 						"from_user": self.owner,
 					}
 					
 					notification_doc = frappe._dict(notification_doc)
 					from frappe.desk.doctype.notification_log.notification_log import make_notification_logs
 					make_notification_logs(notification_doc, assigner)
+					
 		# else:
 		# 	assigner = []
 		# 	if self.process_rules and len(self.process_rules) > 1:
@@ -70,6 +94,13 @@ class RealisasiKPI(Document):
 		# 		from frappe.desk.doctype.notification_log.notification_log import make_notification_logs
 		# 		make_notification_logs(notification_doc, assigner)
 
+	def get_workflow_state_before(self):
+		state = frappe.db.sql("""SELECT workflow_state FROM `tabRealisasi KPI` WHERE name = '{0}'""".format(self.name), as_dict=1)
+		if state:
+			return state[0].workflow_state
+		else:
+			return None
+		
 	# def on_submit(self):
 	# 	if self.user_approver != frappe.session.user:
 	# 		frappe.throw("Hanya approver yang dapat mensubmit Realisasi KPI ini.")
@@ -87,8 +118,25 @@ class RealisasiKPI(Document):
 
 def get_permission_query_conditions(user):
 	employee = frappe.db.sql("""SELECT * FROM `tabEmployee` where user_id = '{0}'""".format(frappe.session.user), as_dict=1)
-	if employee and employee[0].name:
-		return """(`tabRealisasi KPI`.employee = '{0}' or `tabRealisasi KPI`.approver = '{0}')""".format(employee[0].name)
+
+	# check_rules = """SELECT
+	# 		`tabProcess Rules`.parent,
+	# 		`tabProcess Rules`.state
+	# 	FROM `tabProcess Rules`
+	# 	WHERE `tabProcess Rules`.parenttype = 'Realisasi KPI' AND `tabProcess Rules`.user = '{0}' AND `tabProcess Rules`.parent = `tabRealisasi KPI`.name AND `tabProcess Rules`.state = `tabRealisasi KPI`.workflow_state
+	# """.format(frappe.session.user)
+
+	check_rules = """SELECT
+			`tabProcess Rules`.parent,
+			`tabProcess Rules`.state
+		FROM `tabProcess Rules`
+		WHERE `tabProcess Rules`.parenttype = 'Realisasi KPI' AND `tabProcess Rules`.user = '{0}' AND `tabProcess Rules`.parent = `tabRealisasi KPI`.name
+	""".format(frappe.session.user)
+	
+	if frappe.session.user == "hasta.dhebinurlayli@gmail.com":
+		return """(`tabRealisasi KPI`.employee = '{0}' or `tabRealisasi KPI`.approver = '{0}' or `tabRealisasi KPI`.workflow_state = 'Approved' or exists ({1}))""".format(employee[0].name, check_rules)
+	elif employee and employee[0].name:
+		return """(`tabRealisasi KPI`.employee = '{0}' or `tabRealisasi KPI`.approver = '{0}' or exists ({1}))""".format(employee[0].name, check_rules)
 	else:
 		return ""
 

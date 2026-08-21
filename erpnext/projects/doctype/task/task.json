@@ -171,7 +171,8 @@
    "fetch_from": "type.weight",
    "fieldname": "task_weight",
    "fieldtype": "Float",
-   "label": "Weight"
+   "label": "Weight",
+   "precision": "5"
   },
   {
    "fieldname": "column_break_11",
@@ -411,7 +412,7 @@
  "is_tree": 1,
  "links": [],
  "max_attachments": 5,
- "modified": "2024-05-18 10:30:53.787238",
+ "modified": "2026-08-03 05:02:09.285631",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Task",

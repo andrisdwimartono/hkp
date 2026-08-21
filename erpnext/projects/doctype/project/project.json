@@ -12,6 +12,7 @@
   "project_name",
   "project_nick_name",
   "contract_no",
+  "contract_value",
   "project_address",
   "status",
   "project_type",
@@ -33,6 +34,10 @@
   "sales_order",
   "project_team_section",
   "project_team",
+  "section_break_obh3x",
+  "project_histories",
+  "section_break_lzhtf",
+  "project_billing_schedule",
   "users_section",
   "users",
   "copied_from",
@@ -506,6 +511,33 @@
    "fieldname": "day_count_down",
    "fieldtype": "HTML",
    "label": "Day Count Down"
+  },
+  {
+   "default": "0",
+   "fieldname": "contract_value",
+   "fieldtype": "Currency",
+   "label": "Nilai Kontrak",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "section_break_obh3x",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "project_histories",
+   "fieldtype": "Table",
+   "label": "Project Histories",
+   "options": "Project Histories"
+  },
+  {
+   "fieldname": "section_break_lzhtf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "project_billing_schedule",
+   "fieldtype": "Table",
+   "label": "Project Billing Schedule",
+   "options": "Project Billing Schedule"
   }
  ],
  "icon": "fa fa-puzzle-piece",
@@ -513,7 +545,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "max_attachments": 4,
- "modified": "2024-03-01 14:33:04.025643",
+ "modified": "2026-08-19 06:08:16.985287",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Project",

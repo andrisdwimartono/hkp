@@ -37,7 +37,8 @@
   "is_cancelled",
   "nomor_bukti",
   "purchase_order",
-  "sub_contract_hand_over"
+  "sub_contract_hand_over",
+  "custom_note"
  ],
  "fields": [
   {
@@ -287,13 +288,18 @@
    "fieldtype": "Link",
    "label": "POS RAP",
    "options": "POS RAP"
+  },
+  {
+   "fieldname": "custom_note",
+   "fieldtype": "Small Text",
+   "label": "Note"
   }
  ],
  "icon": "fa fa-list",
  "idx": 1,
  "in_create": 1,
  "links": [],
- "modified": "2025-11-22 09:39:09.845528",
+ "modified": "2026-07-11 06:59:49.331992",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "GL Entry",
