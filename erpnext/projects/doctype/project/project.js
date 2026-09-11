@@ -71,15 +71,9 @@ frappe.ui.form.on("Project", {
 			$(`div[data-fieldname="day_count_up"]`).html("");
 		}
 
-		if(frm.doc.expected_end_date){
-			var startDate = new Date();
-			var endDate = new Date(frm.doc.expected_end_date);
+		setDayCountDown(frm)
 
-			var millisecondsPerDay = 24 * 60 * 60 * 1000;
-			$(`div[data-fieldname="day_count_down"]`).html("<h4 class='text-center'>"+(((endDate - startDate) / millisecondsPerDay) < 0? "Sudah Melewati "+Math.floor((endDate - startDate) / millisecondsPerDay*(-1))+" Hari": "Kurang "+Math.ceil((endDate - startDate) / millisecondsPerDay)+" Hari")+"</h4>");
-		}else{
-			$(`div[data-fieldname="day_count_down"]`).html("");
-		}
+		setDayCountDownBond(frm)
 	},
 
 	expected_start_date: function(frm){
@@ -95,15 +89,11 @@ frappe.ui.form.on("Project", {
 	},
 
 	expected_end_date: function(frm){
-		if(frm.doc.expected_end_date){
-			var startDate = new Date();
-			var endDate = new Date(frm.doc.expected_end_date);
+		setDayCountDown(frm)
+	},
 
-			var millisecondsPerDay = 24 * 60 * 60 * 1000;
-			$(`div[data-fieldname="day_count_down"]`).html("<h4 class='text-center'>"+(((endDate - startDate) / millisecondsPerDay) < 0? "Sudah Melewati "+Math.floor((endDate - startDate) / millisecondsPerDay*(-1))+" Hari": "Kurang "+Math.ceil((endDate - startDate) / millisecondsPerDay)+" Hari")+"</h4>");
-		}else{
-			$(`div[data-fieldname="day_count_down"]`).html("");
-		}
+	bond_validity_period: function(frm){
+		setDayCountDownBond(frm)
 	},
 
 	set_buttons: function(frm) {
@@ -183,4 +173,28 @@ function open_form(frm, doctype, child_doctype, parentfield) {
 		frappe.ui.form.make_quick_entry(doctype, null, null, new_doc);
 	});
 
+}
+
+function setDayCountDown(frm){
+	if(frm.doc.expected_end_date){
+		var startDate = new Date();
+		var endDate = new Date(frm.doc.expected_end_date);
+
+		var millisecondsPerDay = 24 * 60 * 60 * 1000;
+		$(`div[data-fieldname="day_count_down"]`).html("<h4 class='text-center'>"+(((endDate - startDate) / millisecondsPerDay) < 0? "Sudah Melewati "+Math.floor((endDate - startDate) / millisecondsPerDay*(-1))+" Hari": "Kurang "+Math.ceil((endDate - startDate) / millisecondsPerDay)+" Hari")+"</h4>");
+	}else{
+		$(`div[data-fieldname="day_count_down"]`).html("");
+	}
+}
+
+function setDayCountDownBond(frm){
+	if(frm.doc.bond_validity_period){
+		var todayDate = new Date();
+		var bondValid = new Date(frm.doc.bond_validity_period);
+
+		var millisecondsPerDay = 24 * 60 * 60 * 1000;
+		$(`div[data-fieldname="day_count_down_bond"]`).html("<h4 class='text-center'>"+(((bondValid - todayDate) / millisecondsPerDay) < 0? "Sudah Melewati "+Math.floor((bondValid - todayDate) / millisecondsPerDay*(-1))+" Hari": "Kurang "+Math.ceil((bondValid - todayDate) / millisecondsPerDay)+" Hari")+"</h4 >");
+	}else{
+		$(`div[data-fieldname="day_count_down_bond"]`).html("");
+	}
 }

@@ -30,7 +30,10 @@ def get_projects(is_active=None, project_name=None):
                 WHEN 'Yes' THEN 'active'
                 ELSE 'inactive'
                 END AS is_active,
-            proj.status
+            proj.status,
+            spi.total_weight,
+            spi.total_pv,
+            spi.total_ev
         FROM
             `tabProject` AS proj
         LEFT JOIN tabCustomer AS cust ON cust.name = proj.customer
@@ -75,6 +78,15 @@ def get_projects(is_active=None, project_name=None):
             LEFT JOIN `tabForm Payment Entry Account Realisasi` AS reade ON reade.parent = rea.name = reade.parenttype = 'Realisasi Anggaran Proyek'
             WHERE rea.docstatus != 2
             GROUP BY rea.project) AS realisasi ON realisasi.project = proj.name
+        LEFT JOIN (
+            SELECT
+                project,
+                SUM(COALESCE(task_weight, 0)) AS total_weight,
+                SUM(CASE WHEN exp_start_date <= NOW() THEN (COALESCE(task_weight, 0)) ELSE 0 END) AS total_pv,
+                SUM(CASE WHEN exp_start_date <= NOW() THEN (COALESCE(task_weight, 0)*COALESCE(progress,0)/100) ELSE 0 END) AS total_ev
+            FROM tabTask WHERE `status` NOT IN ('Cancelled', 'Template')
+            GROUP BY project
+        ) AS spi ON spi.project = proj.name
         WHERE
             proj.docstatus < 2
     """

@@ -108,11 +108,11 @@ def get_expense_income_last_3_months(project=None):
 
         this_month_billing_schedule = frappe.db.sql("""
             SELECT
-                SUM(pbs.amount) AS total_billing
-            FROM `tabProject Billing Schedule` AS pbs
-            WHERE pbs.parenttype = 'Project'
-                AND pbs.parent = %(project)s
-                AND pbs.date BETWEEN %(start_date)s AND %(end_date)s""", {"project": project, "start_date": this_start, "end_date": this_end}, as_dict=True)
+                SUM(bs.amount) AS total_billing
+            FROM `tabBilling Schedule` AS bs
+            WHERE bs.project = %(project)s
+                AND bs.status NOT IN ('Completed')
+                AND bs.billing_date BETWEEN %(start_date)s AND %(end_date)s""", {"project": project, "start_date": this_start, "end_date": this_end}, as_dict=True)
 
         last_start = get_first_day(add_months(today, -1))
         last_end = get_last_day(add_months(today, -1))
@@ -138,11 +138,11 @@ def get_expense_income_last_3_months(project=None):
 
         last_month_billing_schedule = frappe.db.sql("""
             SELECT
-                SUM(pbs.amount) AS total_billing
-            FROM `tabProject Billing Schedule` AS pbs
-            WHERE pbs.parenttype = 'Project'
-                AND pbs.parent = %(project)s
-                AND pbs.date BETWEEN %(start_date)s AND %(end_date)s""", {"project": project, "start_date": last_start, "end_date": last_end}, as_dict=True)
+                SUM(bs.amount) AS total_billing
+            FROM `tabBilling Schedule` AS bs
+            WHERE bs.project = %(project)s
+                AND bs.status NOT IN ('Completed')
+                AND bs.billing_date BETWEEN %(start_date)s AND %(end_date)s""", {"project": project, "start_date": last_start, "end_date": last_end}, as_dict=True)
 
         third_start = get_first_day(add_months(today, -2))
         third_end = get_last_day(add_months(today, -2))
@@ -168,11 +168,11 @@ def get_expense_income_last_3_months(project=None):
         
         three_months_ago_billing_schedule = frappe.db.sql("""
             SELECT
-                SUM(pbs.amount) AS total_billing
-            FROM `tabProject Billing Schedule` AS pbs
-            WHERE pbs.parenttype = 'Project'
-                AND pbs.parent = %(project)s
-                AND pbs.date BETWEEN %(start_date)s AND %(end_date)s""", {"project": project, "start_date": third_start, "end_date": third_end}, as_dict=True)
+                SUM(bs.amount) AS total_billing
+            FROM `tabBilling Schedule` AS bs
+            WHERE bs.project = %(project)s
+                AND bs.status NOT IN ('Completed')
+                AND bs.billing_date BETWEEN %(start_date)s AND %(end_date)s""", {"project": project, "start_date": third_start, "end_date": third_end}, as_dict=True)
 
         return {
             "this_month_expense": this_month_expense[0]["total_expense"] if this_month_expense else 0,

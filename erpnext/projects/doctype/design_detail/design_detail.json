@@ -264,14 +264,14 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Status",
-   "options": "Issued\nProcess\nApprove\nReturn",
+   "options": "Issued\nProcess\nPartial Approve\nApprove\nReturn",
    "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-07-02 20:39:32.983260",
+ "modified": "2026-09-05 06:01:04.616720",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Design Detail",

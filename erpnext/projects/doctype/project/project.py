@@ -230,21 +230,29 @@ class Project(Document):
 				self.percent_complete = flt(flt(progress) / total, 2)
 
 			if self.percent_complete_method == "Task Weight" and total > 0:
-				weight_sum = frappe.db.sql(
-					"""select sum(task_weight) from tabTask where
-					project=%s""",
-					self.name,
-				)[0][0]
-				weighted_progress = frappe.db.sql(
-					"""select progress, task_weight from tabTask where
-					project=%s""",
-					self.name,
-					as_dict=1,
-				)
-				pct_complete = 0
-				for row in weighted_progress:
-					pct_complete += row["progress"] * frappe.utils.safe_div(row["task_weight"], weight_sum)
-				self.percent_complete = flt(flt(pct_complete), 2)
+				# weight_sum = frappe.db.sql(
+				# 	"""select sum(task_weight) from tabTask where
+				# 	project=%s""",
+				# 	self.name,
+				# )[0][0]
+				# weighted_progress = frappe.db.sql(
+				# 	"""select progress, task_weight from tabTask where
+				# 	project=%s""",
+				# 	self.name,
+				# 	as_dict=1,
+				# )
+				# pct_complete = 0
+				# for row in weighted_progress:
+				# 	pct_complete += row["progress"] * frappe.utils.safe_div(row["task_weight"], weight_sum)
+				res = frappe.db.sql("""
+					SELECT
+						SUM(ts.progress/100*ts.task_weight) AS total_progress_task_weight,
+						SUM(ts.task_weight) AS total_task_weight
+					FROM tabTask AS ts
+					WHERE ts.project = %s AND ts.status NOT IN ('Cancelled', 'Template') AND ts.task_weight != 0;
+				""", self.name, as_dict=1)
+				
+				self.percent_complete = flt(res[0].total_progress_task_weight / res[0].total_task_weight * 100, 2)
 
 		# don't update status if it is cancelled
 		if self.status == "Cancelled":
@@ -692,8 +700,13 @@ def set_project_status(project, status):
 	project.save()
 
 def get_permission_query_conditions(user):
-	usr = frappe.db.sql("""SELECT * FROM `tabUser` where name = '{0}'""".format(frappe.session.user), as_dict=1)
-	if usr and usr[0].role_profile_name == "Site Manager":
+	# usr = frappe.db.sql("""SELECT * FROM `tabUser` where name = '{0}'""".format(frappe.session.user), as_dict=1)
+	# if usr and usr[0].role_profile_name == "Site Manager":
+	# 	return """(`tabProject`.name in (SELECT parent FROM `tabProject Team` WHERE user = '{0}'))""".format(frappe.session.user)
+	# else:
+	# 	return ""
+	has_site_manager_role = frappe.db.sql("""SELECT * FROM `tabHas Role` WHERE parent = '{0}' AND role = 'Site Manager'""".format(frappe.session.user), as_dict=1)
+	if has_site_manager_role:
 		return """(`tabProject`.name in (SELECT parent FROM `tabProject Team` WHERE user = '{0}'))""".format(frappe.session.user)
 	else:
 		return ""

@@ -43,7 +43,40 @@ class Task(NestedSet):
 		self.update_depends_on()
 		self.validate_dependencies_for_template_task()
 		self.validate_completed_on()
+		self.set_progres_based_on_lkp()
 		self.validate_deviasi()
+
+	def set_progres_based_on_lkp(self):
+		if self.progress_by_lkp:
+			last_date = None
+			last_progress = 0
+			for d in self.progress_by_lkp:
+				if last_date is not None:
+					if d.date <= last_date:
+						frappe.throw(_("Tanggal harus berurutan"))
+					
+				if d.date > today():
+					frappe.throw(_("Tanggal tidak boleh lebih besar dari hari ini"))
+				
+				# realisasi boleh menurun, karena mungkin ada revisi. Tapi tetap harus beri peringatan
+				if d.progress < last_progress:
+					frappe.msgprint(_("Realisasi tanggal {0} lebih kecil dari realisasi tanggal sebelumnya").format(d.date))
+				# progress hanya 0 - 100
+				if d.progress < 0 or d.progress > 100:
+					frappe.throw(_("Progress harus diantara 0 dan 100"))
+
+				last_date = d.date
+				last_progress = d.progress
+			
+			self.progress = last_progress
+			self.completed_on = None
+			if last_progress == 100:
+				self.status = "Completed"
+				self.completed_on = last_date
+			elif last_progress > 0:
+				self.status = "Working"
+			else:
+				self.status = "Open"
 	
 	def validate_deviasi(self):
 		for d in self.task_progress:
@@ -193,8 +226,11 @@ class Task(NestedSet):
 		self.act_end_date = tl.end_date
 
 	def update_project(self):
+		# if self.project and not self.flags.from_project:
+		# 	frappe.get_cached_doc("Project", self.project).update_project()
 		if self.project and not self.flags.from_project:
-			frappe.get_cached_doc("Project", self.project).update_project()
+			project = frappe.get_doc("Project", self.project)
+			project.update_project()
 
 	def check_recursion(self):
 		if self.flags.ignore_recursion_check:

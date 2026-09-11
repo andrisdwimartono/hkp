@@ -1,0 +1,166 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-09-05 06:26:44.010488",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project",
+  "project_name",
+  "amount",
+  "column_break_g0mia",
+  "billing_date",
+  "termin",
+  "status",
+  "section_break_lvq0x",
+  "expected_end_date",
+  "day_count_down",
+  "column_break_2vi6v",
+  "bond_validity_period",
+  "day_count_down_bond",
+  "column_break_dhf4x",
+  "sbu_validity_period",
+  "day_count_down_sbu",
+  "section_break_zphty",
+  "documents"
+ ],
+ "fields": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_g0mia",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "termin",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Termin",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Planned\nIPMS\nVIP\nCompleted"
+  },
+  {
+   "fieldname": "section_break_zphty",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "documents",
+   "fieldtype": "Table",
+   "label": "Documents",
+   "options": "Billing Schedule Documents Checklist"
+  },
+  {
+   "fieldname": "section_break_lvq0x",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "project.bond_validity_period",
+   "fieldname": "bond_validity_period",
+   "fieldtype": "Date",
+   "label": "Bond Validity Period",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "project.expected_end_date",
+   "fieldname": "expected_end_date",
+   "fieldtype": "Date",
+   "label": "Expected End Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2vi6v",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "day_count_down",
+   "fieldtype": "HTML",
+   "label": "Day Count Down"
+  },
+  {
+   "fieldname": "day_count_down_bond",
+   "fieldtype": "HTML",
+   "label": "Day Count Down (Bond)"
+  },
+  {
+   "fieldname": "column_break_dhf4x",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sbu_validity_period",
+   "fieldtype": "Date",
+   "label": "SBU Validity Period",
+   "read_only": 1
+  },
+  {
+   "fieldname": "day_count_down_sbu",
+   "fieldtype": "HTML",
+   "label": "Day Count Down (SBU)"
+  },
+  {
+   "default": "0",
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "non_negative": 1,
+   "precision": "0",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "billing_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Billing Date",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-07 06:44:43.167332",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Billing Schedule",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

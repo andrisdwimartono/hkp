@@ -42,16 +42,15 @@ def get_logistics_counter(project=None):
 
     material_status = frappe.db.sql("""
         SELECT
-            SUM(CASE WHEN DATEDIFF(po.delivered_time_schedule, CURDATE()) > 14 THEN 1 ELSE 0 END) AS green_count,
-            SUM(CASE WHEN DATEDIFF(po.delivered_time_schedule, CURDATE()) > 7 AND DATEDIFF(po.delivered_time_schedule, CURDATE()) <=14 THEN 1 ELSE 0 END) AS yellow_count,
-            SUM(CASE WHEN DATEDIFF(po.delivered_time_schedule, CURDATE()) <=7 THEN 1 ELSE 0 END) AS red_count
+            SUM(CASE WHEN DATEDIFF(po.delivered_time_schedule, COALESCE(po.delivered_time, CURDATE())) > 14 THEN 1 ELSE 0 END) AS green_count,
+            SUM(CASE WHEN DATEDIFF(po.delivered_time_schedule, COALESCE(po.delivered_time, CURDATE())) > 7 AND DATEDIFF(po.delivered_time_schedule, COALESCE(po.delivered_time, CURDATE())) <=14 THEN 1 ELSE 0 END) AS yellow_count,
+            SUM(CASE WHEN DATEDIFF(po.delivered_time_schedule, COALESCE(po.delivered_time, CURDATE())) <=7 THEN 1 ELSE 0 END) AS red_count
         FROM `tabPurchase Order` AS po
         WHERE po.docstatus = 1
-        AND po.delivered_time IS NULL
         AND po.delivered_time_schedule IS NOT NULL
-        AND DATEDIFF(po.delivered_time_schedule, CURDATE()) <= 30
+        AND DATEDIFF(po.delivered_time_schedule, COALESCE(po.delivered_time, CURDATE())) <= 30
         {po_filter}
-        ORDER BY DATEDIFF(po.delivered_time_schedule, CURDATE()) DESC 
+        ORDER BY DATEDIFF(po.delivered_time_schedule, COALESCE(po.delivered_time, CURDATE())) DESC 
     """.format(po_filter=po_filter), as_dict=True)
     
     return {
@@ -76,11 +75,11 @@ def get_table_material_po(project=None, search=None, status=None, page=1, limit=
     status_filter = ""
     if status is not None:
         if status == 'green':
-            status_filter = "AND DATEDIFF(po.delivered_time_schedule, CURDATE()) > 14"
+            status_filter = "AND DATEDIFF(po.delivered_time_schedule, COALESCE(po.delivered_time, CURDATE())) > 14"
         elif status == 'yellow':
-            status_filter = "AND DATEDIFF(po.delivered_time_schedule, CURDATE()) > 7 AND DATEDIFF(po.delivered_time_schedule, CURDATE()) <=14"
+            status_filter = "AND DATEDIFF(po.delivered_time_schedule, COALESCE(po.delivered_time, CURDATE())) > 7 AND DATEDIFF(po.delivered_time_schedule, COALESCE(po.delivered_time, CURDATE())) <=14"
         elif status == 'red':
-            status_filter = "AND DATEDIFF(po.delivered_time_schedule, CURDATE()) <=7"
+            status_filter = "AND DATEDIFF(po.delivered_time_schedule, COALESCE(po.delivered_time, CURDATE())) <=7"
     
     data = frappe.db.sql("""
     SELECT
@@ -91,11 +90,11 @@ def get_table_material_po(project=None, search=None, status=None, page=1, limit=
         po.inspecting_time,
         po.delivered_time_schedule,
         po.delivered_time,
-        DATEDIFF(po.delivered_time_schedule, CURDATE()) AS date_diff,
+        DATEDIFF(po.delivered_time_schedule, COALESCE(po.delivered_time, CURDATE())) AS date_diff,
         CASE 
-            WHEN DATEDIFF(po.delivered_time_schedule, CURDATE()) > 14 THEN 'green'
-            WHEN DATEDIFF(po.delivered_time_schedule, CURDATE()) > 7 AND DATEDIFF(po.delivered_time_schedule, CURDATE()) <=14 THEN 'yellow'
-            WHEN DATEDIFF(po.delivered_time_schedule, CURDATE()) <=7 THEN 'red'
+            WHEN DATEDIFF(po.delivered_time_schedule, COALESCE(po.delivered_time, CURDATE())) > 14 THEN 'green'
+            WHEN DATEDIFF(po.delivered_time_schedule, COALESCE(po.delivered_time, CURDATE())) > 7 AND DATEDIFF(po.delivered_time_schedule, COALESCE(po.delivered_time, CURDATE())) <=14 THEN 'yellow'
+            WHEN DATEDIFF(po.delivered_time_schedule, COALESCE(po.delivered_time, CURDATE())) <=7 THEN 'red'
         END AS status,
         podc.available_document_count,
         podc.not_available_document_count,
@@ -124,13 +123,12 @@ def get_table_material_po(project=None, search=None, status=None, page=1, limit=
         GROUP BY podc.parent
     ) AS podc ON podc.parent = po.name
     WHERE po.docstatus = 1
-    AND po.delivered_time IS NULL
     AND po.delivered_time_schedule IS NOT NULL
-        AND DATEDIFF(po.delivered_time_schedule, CURDATE()) <= 30
+        AND DATEDIFF(po.delivered_time_schedule, COALESCE(po.delivered_time, CURDATE())) <= 30
     {po_filter}
     {search_filter}
     {status_filter}
-    ORDER BY DATEDIFF(po.delivered_time_schedule, CURDATE()) DESC
+    ORDER BY DATEDIFF(po.delivered_time_schedule, COALESCE(po.delivered_time, CURDATE())) DESC
     LIMIT {limit} OFFSET {offset}
     """.format(limit=int(limit), offset=(int(page)-1)*int(limit), po_filter=po_filter, search_filter=search_filter, status_filter=status_filter), as_dict=True)
 

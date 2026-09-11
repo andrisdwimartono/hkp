@@ -26,6 +26,8 @@
   "day_count_up",
   "expected_end_date",
   "day_count_down",
+  "bond_validity_period",
+  "day_count_down_bond",
   "priority",
   "department",
   "customer_details",
@@ -118,7 +120,7 @@
    "options": "Yes\nNo"
   },
   {
-   "default": "Task Completion",
+   "default": "Task Weight",
    "fieldname": "percent_complete_method",
    "fieldtype": "Select",
    "label": "% Complete Method",
@@ -128,7 +130,7 @@
    "bold": 1,
    "fieldname": "percent_complete",
    "fieldtype": "Percent",
-   "label": "% Completed",
+   "label": "% Progress Penyelesaian",
    "no_copy": 1,
    "read_only": 1
   },
@@ -149,7 +151,8 @@
    "fieldtype": "Date",
    "label": "Expected Start Date",
    "oldfieldname": "project_start_date",
-   "oldfieldtype": "Date"
+   "oldfieldtype": "Date",
+   "reqd": 1
   },
   {
    "bold": 1,
@@ -158,7 +161,8 @@
    "in_list_view": 1,
    "label": "Expected End Date",
    "oldfieldname": "completion_date",
-   "oldfieldtype": "Date"
+   "oldfieldtype": "Date",
+   "reqd": 1
   },
   {
    "fieldname": "priority",
@@ -538,6 +542,17 @@
    "fieldtype": "Table",
    "label": "Project Billing Schedule",
    "options": "Project Billing Schedule"
+  },
+  {
+   "fieldname": "bond_validity_period",
+   "fieldtype": "Date",
+   "label": "Bond Validity Period",
+   "reqd": 1
+  },
+  {
+   "fieldname": "day_count_down_bond",
+   "fieldtype": "HTML",
+   "label": "Day Count Down (Bond)"
   }
  ],
  "icon": "fa fa-puzzle-piece",
@@ -545,7 +560,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "max_attachments": 4,
- "modified": "2026-08-19 06:08:16.985287",
+ "modified": "2026-09-07 03:54:01.427502",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Project",
@@ -586,5 +601,7 @@
  "sort_order": "DESC",
  "timeline_field": "customer",
  "title_field": "project_name",
- "track_seen": 1
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }

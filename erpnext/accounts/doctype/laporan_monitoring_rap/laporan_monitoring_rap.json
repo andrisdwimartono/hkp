@@ -24,6 +24,7 @@
    "fieldname": "project",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Project",
    "options": "Project",
    "reqd": 1
@@ -33,6 +34,7 @@
    "fieldname": "project_name",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Project Name",
    "read_only": 1
   },
@@ -97,7 +99,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-08-12 08:06:49.260572",
+ "modified": "2026-08-22 09:38:56.567388",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Laporan Monitoring RAP",

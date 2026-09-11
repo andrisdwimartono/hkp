@@ -29,17 +29,22 @@ def update_cost_realization(docname, cost_adjustment=0):
 
     # get total of pdp and cost
     total_cost = frappe.db.sql("""
-        SELECT SUM(debit-credit) as amount FROM `tabGL Entry` WHERE account IN ('{0}','{1}') AND docstatus = 1
+        SELECT SUM(debit-credit) as amount FROM `tabGL Entry`
+        WHERE account IN ('{0}','{1}')
+        AND docstatus = 1
+        AND is_cancelled = 0
+        AND voucher_type != 'Period Closing Voucher'
     """.format(pdp, cost), as_dict=True)
 
     # update detail realization
-    doc.db_set("realization", total_cost[0].amount, update_modified=False)
+    realization = total_cost[0].amount if total_cost[0].amount else 0
+    doc.db_set("realization", realization, update_modified=False)
 
     adjustment = cost_adjustment or 0
 
     doc.db_set(
         "final_realization",
-        total_cost[0].amount + adjustment,
+        realization + adjustment,
         update_modified=False
     )
 

@@ -1,0 +1,124 @@
+{
+ "actions": [],
+ "autoname": "format:PD-{project}-{project_name}",
+ "creation": "2026-09-11 22:36:02.076644",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "is_group",
+  "project",
+  "project_name",
+  "file",
+  "column_break_13hfr",
+  "date",
+  "description",
+  "lft",
+  "rgt",
+  "old_parent",
+  "parent_project_documentation"
+ ],
+ "fields": [
+  {
+   "depends_on": "eval:doc.is_group == 1",
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "mandatory_depends_on": "eval:doc.is_group == 1",
+   "options": "Project"
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.is_group == 0",
+   "fieldname": "file",
+   "fieldtype": "Attach Image",
+   "label": "File",
+   "mandatory_depends_on": "eval:doc.is_group == 0"
+  },
+  {
+   "fieldname": "lft",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Left",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "rgt",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Right",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Is Group"
+  },
+  {
+   "fieldname": "old_parent",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Old Parent",
+   "options": "Project Documentation"
+  },
+  {
+   "fieldname": "parent_project_documentation",
+   "fieldtype": "Link",
+   "label": "Parent Project Documentation",
+   "options": "Project Documentation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_13hfr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_tree": 1,
+ "links": [],
+ "modified": "2026-09-12 04:51:42.044503",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Project Documentation",
+ "nsm_parent_field": "parent_project_documentation",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

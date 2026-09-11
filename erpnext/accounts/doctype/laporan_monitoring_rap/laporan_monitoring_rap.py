@@ -35,7 +35,11 @@ class LaporanMonitoringRAP(Document):
 	def get_income_realization(self):
 		if self.income:
 			amount = frappe.db.sql("""
-				SELECT SUM(credit-debit) as amount FROM `tabGL Entry` WHERE account = '{0}' AND docstatus = 1
+				SELECT SUM(credit-debit) as amount FROM `tabGL Entry`
+				WHERE account = '{0}'
+				AND docstatus = 1
+				AND is_cancelled = 0
+				AND voucher_type != 'Period Closing Voucher'
 			""".format(self.income), as_dict=True)
 
 			if amount and amount[0] and amount[0].amount:

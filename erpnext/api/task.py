@@ -15,6 +15,10 @@ def get_tasks_for_calendar(project=None):
     if project:
         filters["project"] = project
 
+    # status not in Cancelled and Template
+    filters["status"] = ["not in", ["Cancelled", "Template"]]
+    filters["task_weight"] = ["!=", 0]
+
     tasks = frappe.get_all(
         "Task",
         filters=filters,

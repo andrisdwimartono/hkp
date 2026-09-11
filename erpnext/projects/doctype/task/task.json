@@ -30,6 +30,8 @@
   "progress",
   "duration",
   "is_milestone",
+  "section_break_v1qvp",
+  "progress_by_lkp",
   "progress_section",
   "task_progress",
   "sb_details",
@@ -404,7 +406,18 @@
   {
    "fieldname": "progress_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Progress"
+  },
+  {
+   "fieldname": "section_break_v1qvp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "progress_by_lkp",
+   "fieldtype": "Table",
+   "label": "Progress Based On LKP",
+   "options": "Progress By LKP"
   }
  ],
  "icon": "fa fa-check",
@@ -412,7 +425,7 @@
  "is_tree": 1,
  "links": [],
  "max_attachments": 5,
- "modified": "2026-08-03 05:02:09.285631",
+ "modified": "2026-08-27 20:04:42.368705",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Task",

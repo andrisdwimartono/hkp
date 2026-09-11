@@ -15,7 +15,6 @@ class TaskImport(Document):
 		if not self.file:
 			return
 
-		# Kosongkan child table
 		self.set("detail", [])
 
 		file_doc = frappe.get_doc("File", {"file_url": self.file})
@@ -38,61 +37,34 @@ class TaskImport(Document):
 				headers[str(cell.value).strip()] = i
 
 		required_columns = [
-			"ID",
-			"Task Name",
+			"ITEM PEKERJAAN",
+			"BOBOT (%)",
 			"Start",
-			"Finish",
-			"Predecessors"
+			"Finish"
 		]
 
 		for column in required_columns:
 			if column not in headers:
-				frappe.throw("Column <b>{0}</b> not found.".format(column))
+				frappe.throw(f"Column <b>{column}</b> not found.")
 
 		# ==========================
 		# Read Excel
 		# ==========================
-		rows = []
-
 		for row in worksheet.iter_rows(min_row=2):
 
-			task_cell = row[headers["Task Name"] - 1]
+			subject = row[headers["ITEM PEKERJAAN"] - 1].value
+			task_weight = row[headers["BOBOT (%)"] - 1].value
+			start_date = row[headers["Start"] - 1].value
+			finish_date = row[headers["Finish"] - 1].value
 
-			if not task_cell.value:
+			# Hanya import task yang lengkap
+			if not (
+				subject
+				and task_weight is not None
+				and start_date
+				and finish_date
+			):
 				continue
-
-			subject = str(task_cell.value)
-
-			# Hitung jumlah spasi di depan
-			leading_spaces = len(subject) - len(subject.lstrip())
-
-			# MS Project copy-paste menggunakan 3 spasi setiap level
-			outline_level = (leading_spaces // 3) + 1
-
-			rows.append({
-				"task_id": row[headers["ID"] - 1].value,
-				"subject": subject.strip(),
-				"start": row[headers["Start"] - 1].value,
-				"finish": row[headers["Finish"] - 1].value,
-				"predecessors": row[headers["Predecessors"] - 1].value or "",
-				"outline_level": outline_level
-			})
-
-		# ==========================
-		# Generate Child Table
-		# ==========================
-		for i, row in enumerate(rows):
-
-			is_group = 0
-
-			# Jika level task berikutnya lebih dalam,
-			# maka task sekarang adalah group
-			if i < len(rows) - 1:
-				if rows[i + 1]["outline_level"] > row["outline_level"]:
-					is_group = 1
-
-			start_date = row["start"]
-			finish_date = row["finish"]
 
 			if isinstance(start_date, (int, float)):
 				start_date = from_excel(start_date)
@@ -101,14 +73,12 @@ class TaskImport(Document):
 				finish_date = from_excel(finish_date)
 
 			self.append("detail", {
-				"task_id": row["task_id"],
-				"subject": row["subject"],
+				"subject": str(subject).strip(),
+				"task_weight": task_weight,
 				"exp_start_date": start_date,
-				"exp_end_date": finish_date,
-				"outline_level": row["outline_level"],
-				"is_group": is_group,
-				"predecessors": str(row["predecessors"]).strip()
+				"exp_end_date": finish_date
 			})
+
 	def on_submit(self):
 		frappe.enqueue(
 			"erpnext.api.task.create_tasks",
@@ -132,6 +102,8 @@ class TaskImport(Document):
 		# 1. Create semua Task terlebih dahulu
 		# =====================================================
 
+		total = len(self.detail)
+		completed = 0
 		for d in self.detail:
 
 			task = frappe.new_doc("Task")
@@ -139,6 +111,7 @@ class TaskImport(Document):
 			task.subject = d.subject
 			task.exp_start_date = d.exp_start_date
 			task.exp_end_date = d.exp_end_date
+			task.task_weight = d.task_weight
 			task.status = "Open"
 
 			task.insert(ignore_permissions=True)
@@ -150,71 +123,8 @@ class TaskImport(Document):
 				update_modified=False
 			)
 
-			d.task = task.name
-
-			task_map[int(d.task_id)] = task.name
-
-		# =====================================================
-		# 2. Tentukan Parent Task berdasarkan Outline Level
-		# =====================================================
-
-		stack = []
-
-		for d in self.detail:
-
-			while stack and stack[-1]["level"] >= d.outline_level:
-				stack.pop()
-
-			if stack:
-				frappe.db.set_value(
-					"Task",
-					d.task,
-					"parent_task",
-					stack[-1]["task"],
-					update_modified=False
-				)
-
-			stack.append({
-				"task": d.task,
-				"task_id": d.task_id,
-				"level": d.outline_level
-			})
-
-		# =====================================================
-		# 3. Generate Dependent Tasks
-		# =====================================================
-
-		total = len(self.detail)
-		completed = 0
-		for d in self.detail:
-
-			if d.predecessors:
-				task = frappe.get_doc("Task", d.task)
-				task.set("depends_on", [])
-
-				predecessors = str(d.predecessors).split(",")
-
-				for predecessor in predecessors:
-					predecessor = predecessor.strip()
-					if not predecessor:
-						continue
-
-					# Ambil angka di depan
-					match = re.match(r"(\d+)", predecessor)
-					if not match:
-						continue
-
-					predecessor_id = int(match.group(1))
-					if predecessor_id not in task_map:
-						continue
-
-					task.append("depends_on", {
-						"task": task_map[predecessor_id]
-					})
-
-				task.save(ignore_permissions=True)
-
 			completed += 1
+
 			progress = round((completed / total) * 100, 2)
 
 			frappe.publish_realtime(
