@@ -1,0 +1,92 @@
+<h2 class="text-center">{%= __(report.report_name) %}</h2>
+<table class="text-left">
+	{% if filters.project %}
+	<tr>
+		<td>Project</td>
+		{% if data.length > 0 %}
+		<td>: {%= data[0].project_name %}</td>
+		{% else %}
+		<td>: {%= filters.project_name %}</td>
+		{% endif %}
+	</tr>
+	{% endif %}
+	<tr>
+		<td>Tanggal</td>
+		<td>: {%= frappe.datetime.str_to_user(filters.from_date) %}
+			s/d
+			{%= frappe.datetime.str_to_user(filters.to_date) %}
+		</td>
+	</tr>
+</table>
+<hr>
+{% for(let j=0, k=data.length; j<k; j++) { %}
+			{%
+				var row = data[j];
+				var row_class = j%2 == 0 ? "" : "even";
+				row_class += j%2 == 1 ? "" : " odd";
+			%}
+
+            {% } %}
+<table class="table table-bordered" width="100%">
+	<thead>
+		<tr>
+			<th style="text-align: center;">Tanggal</th>
+			<th style="text-align: center;">Karyawan</th>
+			<th style="text-align: center;">KPI</th>
+			<th style="text-align: center;">Hasil</th>
+			<th style="text-align: center;">Aktivitas Pekerjaan</th>
+			<th style="text-align: center;">Target</th>
+			<th style="text-align: center;">Bobot</th>
+			<th style="text-align: center;">Penilaian</th>
+			<th style="text-align: center;">Point</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for(let j=0, k=data.length; j<k; j++) { %}
+			{%
+				var row = data[j];
+				var row_class = j%2 == 0 ? "" : "even";
+				row_class += j%2 == 1 ? "" : " odd";
+			%}
+			<tr class="{%= row_class %}">
+				<td>
+					{%= frappe.datetime.str_to_user(row.date) %}
+				</td>
+				<td>
+					{%= row.employee_name %}
+				</td>
+				<td>
+					{%= row.kpi %}
+				</td>
+				<td>
+					{%= row.description %}
+				</td>
+				<td>
+					{%= row.aktivitas_pekerjaan %}
+				</td>
+				<td style="text-align: right;">
+					{%= format_currency(row.target, " ") %}
+				</td>
+				<td style="text-align: right;">
+					{%= format_currency(row.weight, " ") %}
+				</td>
+				<td style="text-align: right;">
+					{%= format_currency(row.actual, " ") %}
+				</td>
+				<td style="text-align: right;">
+					{%= format_currency(row.score, " ") %}
+				</td>
+			</tr>
+		{% } %}
+	</tbody>
+</table>
+
+<style>
+	.even td {
+		background-color: #f9f9f9;
+	}
+
+	.odd td {
+		background-color: #ffffff;
+	}
+</style>

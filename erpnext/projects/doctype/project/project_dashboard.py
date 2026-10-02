@@ -12,7 +12,7 @@ def get_data():
 				"items": ["Task", "Timesheet", "Expense Claim", "Issue", "Project Update", "Customer Request"],
 			},
 			{"label": _("Material"), "items": ["Material Request", "BOM", "Stock Entry"]},
-			{"label": _("Sales"), "items": ["Sales Order", "Delivery Note", "Sales Invoice"]},
+			{"label": _("Sales"), "items": ["Sales Order", "Delivery Note", "Sales Invoice", "Billing Schedule"]},
 			{"label": _("Purchase"), "items": ["Purchase Order", "Purchase Receipt", "Purchase Invoice"]},
 		],
 	}

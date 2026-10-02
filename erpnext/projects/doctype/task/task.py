@@ -43,8 +43,22 @@ class Task(NestedSet):
 		self.update_depends_on()
 		self.validate_dependencies_for_template_task()
 		self.validate_completed_on()
+		self.set_exp_duration()
 		self.set_progres_based_on_lkp()
 		self.validate_deviasi()
+
+	def set_exp_duration(self):
+		if self.exp_start_date and self.exp_end_date:
+			exp_duration = date_diff(self.exp_end_date, self.exp_start_date)
+			if exp_duration < 0:
+				frappe.throw(_("Expected End Date must be greater than Expected Start Date"))
+			self.exp_duration = exp_duration + 1
+			self.set_weight_per_day()
+
+	def set_weight_per_day(self):
+		# set weight_per_day, with 7 decimals places
+		if self.exp_duration and self.task_weight:
+			self.weight_per_day = round(self.task_weight / self.exp_duration, 7)
 
 	def set_progres_based_on_lkp(self):
 		if self.progress_by_lkp:

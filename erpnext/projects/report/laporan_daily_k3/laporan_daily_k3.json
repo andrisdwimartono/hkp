@@ -1,0 +1,27 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2026-09-23 05:09:31.460272",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "KOP HKP",
+ "modified": "2026-09-23 05:09:51.717287",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Laporan Daily K3",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Daily K3",
+ "report_name": "Laporan Daily K3",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

@@ -11,6 +11,7 @@
   "amount",
   "column_break_g0mia",
   "billing_date",
+  "payout_date",
   "termin",
   "status",
   "section_break_lvq0x",
@@ -135,11 +136,18 @@
    "in_list_view": 1,
    "label": "Billing Date",
    "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.status == \"IPMS\" || doc.status == \"VIP\" || doc.status == \"Completed\"",
+   "fieldname": "payout_date",
+   "fieldtype": "Date",
+   "label": "Payout Date",
+   "mandatory_depends_on": "eval:doc.status == \"Completed\""
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-09-07 06:44:43.167332",
+ "modified": "2026-09-25 19:33:14.501327",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Billing Schedule",

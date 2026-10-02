@@ -166,19 +166,19 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Jadwal Giro",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Rencana Penagihan",
    "link_to": "Billing Schedule",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Jadwal Giro",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
   },
   {
    "hidden": 0,
@@ -190,7 +190,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-09-10 13:41:03.007538",
+ "modified": "2026-09-22 10:45:30.267619",
  "modified_by": "Administrator",
  "module": "Pengendalian Biaya",
  "name": "Pengendalian Biaya",

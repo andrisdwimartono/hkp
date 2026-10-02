@@ -82,8 +82,8 @@ def get_projects(is_active=None, project_name=None):
             SELECT
                 project,
                 SUM(COALESCE(task_weight, 0)) AS total_weight,
-                SUM(CASE WHEN exp_start_date <= NOW() THEN (COALESCE(task_weight, 0)) ELSE 0 END) AS total_pv,
-                SUM(CASE WHEN exp_start_date <= NOW() THEN (COALESCE(task_weight, 0)*COALESCE(progress,0)/100) ELSE 0 END) AS total_ev
+                SUM(CASE WHEN exp_end_date <= NOW() THEN (COALESCE(task_weight, 0)) ELSE 0 END) AS total_pv,
+                SUM(CASE WHEN exp_end_date <= NOW() THEN (COALESCE(task_weight, 0)*COALESCE(progress,0)/100) ELSE 0 END) AS total_ev
             FROM tabTask WHERE `status` NOT IN ('Cancelled', 'Template')
             GROUP BY project
         ) AS spi ON spi.project = proj.name

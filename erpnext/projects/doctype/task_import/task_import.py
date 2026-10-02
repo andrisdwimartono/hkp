@@ -71,6 +71,9 @@ class TaskImport(Document):
 
 			if isinstance(finish_date, (int, float)):
 				finish_date = from_excel(finish_date)
+			
+			if start_date > finish_date:
+				frappe.throw(f"Start date <b>{start_date}</b> is greater than finish date <b>{finish_date}</b> for <b>{subject}</b>.")
 
 			self.append("detail", {
 				"subject": str(subject).strip(),

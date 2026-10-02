@@ -57,6 +57,13 @@ frappe.ui.form.on("Task", {
 	validate: function (frm) {
 		frm.doc.project && frappe.model.remove_from_locals("Project",
 			frm.doc.project);
+	},
+
+	exp_start_date: function(frm, dt, dn){
+		setExpDuration(frm);
+	},
+	exp_end_date: function(frm, dt, dn){
+		setExpDuration(frm);
 	}
 });
 
@@ -127,3 +134,27 @@ frappe.ui.form.on("Task Progress", {
 		frm.refresh_field("progress");
 	},
 });
+
+// set exp_duration
+function setExpDuration(frm){
+	if(frm.doc.exp_start_date && frm.doc.exp_end_date){
+		const dayDiff = frappe.datetime.get_day_diff(frm.doc.exp_end_date, frm.doc.exp_start_date);
+		if(dayDiff < 0){
+			frappe.throw(__("Expected End Date must be greater than Expected Start Date"));
+		}
+		frm.doc.exp_duration = dayDiff + 1;
+		frm.refresh_field("exp_duration");
+		setWeightPerDay(frm);
+	}
+}
+	
+// set weight_per_day, with 7 decimals places
+function setWeightPerDay(frm){
+	if(frm.doc.exp_duration && frm.doc.task_weight){
+		console.log(frm.doc.task_weight, frm.doc.exp_duration, typeof(frm.doc.task_weight), typeof(frm.doc.exp_duration));
+		const weight_per_day = Number((Number(frm.doc.task_weight) / Number(frm.doc.exp_duration)).toFixed(7));
+		console.log(weight_per_day, typeof(weight_per_day));
+		frm.set_value("weight_per_day", weight_per_day);
+		frm.refresh_field("weight_per_day");
+	}
+}

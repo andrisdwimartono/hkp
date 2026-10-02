@@ -99,11 +99,11 @@ def get_expense_income_last_3_months(project=None):
 
         this_month_income = frappe.db.sql("""
             SELECT
-                SUM(gle.credit-gle.debit) AS total_income
-            FROM `tabLaporan Monitoring RAP` AS lmr
-            INNER JOIN `tabGL Entry` AS gle ON gle.account = lmr.income AND gle.docstatus = 1
-            WHERE lmr.project = %(project)s
-                AND gle.posting_date BETWEEN %(start_date)s AND %(end_date)s;
+                SUM(bs.amount) AS total_income
+            FROM `tabBilling Schedule` AS bs
+            WHERE bs.project = %(project)s
+                AND bs.payout_date IS NOT NULL
+                AND bs.payout_date BETWEEN %(start_date)s AND %(end_date)s;
                     """, {"project": project, "start_date": this_start, "end_date": this_end}, as_dict=True)
 
         this_month_billing_schedule = frappe.db.sql("""
@@ -129,11 +129,11 @@ def get_expense_income_last_3_months(project=None):
 
         last_month_income = frappe.db.sql("""
             SELECT
-                SUM(gle.credit-gle.debit) AS total_income
-            FROM `tabLaporan Monitoring RAP` AS lmr
-            INNER JOIN `tabGL Entry` AS gle ON gle.account = lmr.income AND gle.docstatus = 1
-            WHERE lmr.project = %(project)s
-                AND gle.posting_date BETWEEN %(start_date)s AND %(end_date)s;
+                SUM(bs.amount) AS total_income
+            FROM `tabBilling Schedule` AS bs
+            WHERE bs.project = %(project)s
+                AND bs.payout_date IS NOT NULL
+                AND bs.payout_date BETWEEN %(start_date)s AND %(end_date)s;
                     """, {"project": project, "start_date": last_start, "end_date": last_end}, as_dict=True)
 
         last_month_billing_schedule = frappe.db.sql("""
@@ -159,11 +159,11 @@ def get_expense_income_last_3_months(project=None):
 
         three_months_ago_income = frappe.db.sql("""
             SELECT
-                SUM(gle.credit-gle.debit) AS total_income
-            FROM `tabLaporan Monitoring RAP` AS lmr
-            INNER JOIN `tabGL Entry` AS gle ON gle.account = lmr.income AND gle.docstatus = 1
-            WHERE lmr.project = %(project)s
-                AND gle.posting_date BETWEEN %(start_date)s AND %(end_date)s;
+                SUM(bs.amount) AS total_income
+            FROM `tabBilling Schedule` AS bs
+            WHERE bs.project = %(project)s
+                AND bs.payout_date IS NOT NULL
+                AND bs.payout_date BETWEEN %(start_date)s AND %(end_date)s;
                     """, {"project": project, "start_date": third_start, "end_date": third_end}, as_dict=True)
         
         three_months_ago_billing_schedule = frappe.db.sql("""
@@ -196,4 +196,40 @@ def get_expense_income_last_3_months(project=None):
         "last_month_billing_schedule": 0,
         "three_months_ago_billing_schedule": 0,
     }
-        
+
+@frappe.whitelist()
+def get_billing_schedule_no_complete(project=None):
+    if project:
+        return frappe.db.sql("""
+            SELECT
+                bs.*,
+                bs_dc.available_document_count,
+                bs_dc.not_available_document_count,
+                bs_dc.total_document_count,
+                bs_dc.document_list
+            FROM `tabBilling Schedule` AS bs
+            LEFT JOIN (
+        SELECT
+            bs_dc.parent,
+            SUM(CASE WHEN bs_dc.avaibility = 'Available' THEN 1 ELSE 0 END) AS available_document_count,
+            SUM(CASE WHEN bs_dc.avaibility = 'Not Available' THEN 1 ELSE 0 END) AS not_available_document_count,
+            COUNT(*) AS total_document_count,
+            CONCAT(
+                '[',
+                GROUP_CONCAT(
+                    JSON_OBJECT(
+                        'document_name', bs_dc.document_name,
+                        'avaibility', bs_dc.avaibility
+                    )
+                    SEPARATOR ','
+                ),
+                ']'
+            ) AS document_list
+        FROM `tabBilling Schedule Documents Checklist` AS bs_dc
+        WHERE bs_dc.parenttype = 'Billing Schedule'
+        GROUP BY bs_dc.parent
+    ) AS bs_dc ON bs_dc.parent = bs.name
+            WHERE bs.project = %(project)s
+                AND bs.billing_date IS NOT NULL
+        """, {"project": project}, as_dict=True)
+    return []

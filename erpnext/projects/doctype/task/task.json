@@ -27,6 +27,8 @@
   "start",
   "column_break_11",
   "exp_end_date",
+  "exp_duration",
+  "weight_per_day",
   "progress",
   "duration",
   "is_milestone",
@@ -418,6 +420,21 @@
    "fieldtype": "Table",
    "label": "Progress Based On LKP",
    "options": "Progress By LKP"
+  },
+  {
+   "default": "0",
+   "description": "In Day",
+   "fieldname": "exp_duration",
+   "fieldtype": "Int",
+   "label": "Expected Duration",
+   "read_only": 1
+  },
+  {
+   "fieldname": "weight_per_day",
+   "fieldtype": "Float",
+   "label": "Weight Per Day",
+   "precision": "7",
+   "read_only": 1
   }
  ],
  "icon": "fa fa-check",
@@ -425,7 +442,7 @@
  "is_tree": 1,
  "links": [],
  "max_attachments": 5,
- "modified": "2026-08-27 20:04:42.368705",
+ "modified": "2026-10-03 06:22:22.065097",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Task",

@@ -244,6 +244,15 @@
   },
   {
    "hidden": 0,
+   "is_query_report": 0,
+   "label": "Rencana Penagihan",
+   "link_to": "Billing Schedule",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
    "is_query_report": 1,
    "label": "Daftar Piutang",
    "link_to": "Daftar Piutang",
@@ -261,7 +270,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-02-21 10:42:32.292152",
+ "modified": "2026-09-22 10:43:51.150834",
  "modified_by": "Administrator",
  "module": "Keuangan",
  "name": "Keuangan",

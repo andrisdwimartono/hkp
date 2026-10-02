@@ -1,0 +1,341 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-09-13 04:55:21.337552",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project",
+  "project_name",
+  "project_address",
+  "man_power",
+  "working_hours",
+  "total_working_hours",
+  "column_break_f03zu",
+  "date",
+  "executor",
+  "weather",
+  "section_break_nfozp",
+  "body_harness_html",
+  "body_harness",
+  "column_break_ato0f",
+  "pelindung_mata_html",
+  "pelindung_mata",
+  "column_break_7bidh",
+  "masker_html",
+  "masker",
+  "column_break_pvoh4",
+  "respirator_html",
+  "respirator",
+  "column_break_xkhgt",
+  "kedok_las_html",
+  "kedok_las",
+  "column_break_tdvfv",
+  "helm_safety_html",
+  "helm_safety",
+  "section_break_v2fz9",
+  "earmuff_earplug_html",
+  "earmuff_earplug",
+  "column_break_evinj",
+  "sarung_tangan_html",
+  "sarung_tangan",
+  "column_break_wnodh",
+  "sepatu_safety_html",
+  "sepatu_safety",
+  "column_break_7o0pe",
+  "sabuk_pengaman_html",
+  "sabuk_pengaman",
+  "column_break_j3qw3",
+  "pelampung_html",
+  "pelampung",
+  "column_break_rs51m",
+  "wearpack_html",
+  "wearpack",
+  "activities_section",
+  "activities",
+  "section_break_omeex",
+  "result"
+ ],
+ "fields": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_f03zu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fetch_from": "project.project_address",
+   "fieldname": "project_address",
+   "fieldtype": "Small Text",
+   "label": "Project Address",
+   "read_only": 1
+  },
+  {
+   "default": "Safety Engineer",
+   "fieldname": "executor",
+   "fieldtype": "Data",
+   "label": "Executor"
+  },
+  {
+   "default": "Sunny",
+   "fieldname": "weather",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Weather",
+   "options": "Sunny\nCloudy\nRainy\nWindy\nStormy\nSnowy"
+  },
+  {
+   "fieldname": "section_break_nfozp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "body_harness",
+   "fieldtype": "Check",
+   "label": "Body Harness"
+  },
+  {
+   "fieldname": "column_break_ato0f",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "pelindung_mata",
+   "fieldtype": "Check",
+   "label": "Pelindung Mata"
+  },
+  {
+   "fieldname": "column_break_7bidh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "masker",
+   "fieldtype": "Check",
+   "label": "Masker"
+  },
+  {
+   "fieldname": "column_break_pvoh4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "respirator",
+   "fieldtype": "Check",
+   "label": "Respirator"
+  },
+  {
+   "fieldname": "column_break_xkhgt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "kedok_las",
+   "fieldtype": "Check",
+   "label": "Kedok Las"
+  },
+  {
+   "fieldname": "column_break_tdvfv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "helm_safety",
+   "fieldtype": "Check",
+   "label": "Helm Safety"
+  },
+  {
+   "fieldname": "section_break_v2fz9",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "earmuff_earplug",
+   "fieldtype": "Check",
+   "label": "Earmuff Earplug"
+  },
+  {
+   "fieldname": "column_break_evinj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "sarung_tangan",
+   "fieldtype": "Check",
+   "label": "Sarung Tangan"
+  },
+  {
+   "fieldname": "column_break_wnodh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "sepatu_safety",
+   "fieldtype": "Check",
+   "label": "Sepatu Safety"
+  },
+  {
+   "fieldname": "column_break_7o0pe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "sabuk_pengaman",
+   "fieldtype": "Check",
+   "label": "Sabuk Pengaman"
+  },
+  {
+   "fieldname": "column_break_j3qw3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "pelampung",
+   "fieldtype": "Check",
+   "label": "Pelampung"
+  },
+  {
+   "fieldname": "column_break_rs51m",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "wearpack",
+   "fieldtype": "Check",
+   "label": "Wearpack"
+  },
+  {
+   "fieldname": "body_harness_html",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "pelindung_mata_html",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "masker_html",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "respirator_html",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "kedok_las_html",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "helm_safety_html",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "earmuff_earplug_html",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "sarung_tangan_html",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "sepatu_safety_html",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "sabuk_pengaman_html",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "pelampung_html",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "wearpack_html",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "activities_section",
+   "fieldtype": "Section Break",
+   "label": "Activities"
+  },
+  {
+   "fieldname": "activities",
+   "fieldtype": "Text",
+   "label": "Activities"
+  },
+  {
+   "fieldname": "section_break_omeex",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "result",
+   "fieldtype": "Small Text",
+   "label": "Result"
+  },
+  {
+   "default": "1",
+   "fieldname": "man_power",
+   "fieldtype": "Int",
+   "label": "Man Power",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "working_hours",
+   "fieldtype": "Float",
+   "label": "Working Hours",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_working_hours",
+   "fieldtype": "Float",
+   "label": "Total Working Hours",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-13 05:15:32.758418",
+ "modified_by": "Administrator",
+ "module": "Operasional",
+ "name": "Daily K3",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
