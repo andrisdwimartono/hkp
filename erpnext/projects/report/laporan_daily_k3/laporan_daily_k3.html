@@ -1,92 +1,581 @@
-<h2 class="text-center">{%= __(report.report_name) %}</h2>
-<table class="text-left">
-	{% if filters.project %}
-	<tr>
-		<td>Project</td>
-		{% if data.length > 0 %}
-		<td>: {%= data[0].project_name %}</td>
-		{% else %}
-		<td>: {%= filters.project_name %}</td>
-		{% endif %}
-	</tr>
-	{% endif %}
-	<tr>
-		<td>Tanggal</td>
-		<td>: {%= frappe.datetime.str_to_user(filters.from_date) %}
-			s/d
-			{%= frappe.datetime.str_to_user(filters.to_date) %}
-		</td>
-	</tr>
-</table>
-<hr>
-{% for(let j=0, k=data.length; j<k; j++) { %}
-			{%
-				var row = data[j];
-				var row_class = j%2 == 0 ? "" : "even";
-				row_class += j%2 == 1 ? "" : " odd";
-			%}
+<style>
+    .no-border,
+    .no-border tr,
+    .no-border td {
+        border: none !important;
+    }
 
-            {% } %}
-<table class="table table-bordered" width="100%">
-	<thead>
-		<tr>
-			<th style="text-align: center;">Tanggal</th>
-			<th style="text-align: center;">Karyawan</th>
-			<th style="text-align: center;">KPI</th>
-			<th style="text-align: center;">Hasil</th>
-			<th style="text-align: center;">Aktivitas Pekerjaan</th>
-			<th style="text-align: center;">Target</th>
-			<th style="text-align: center;">Bobot</th>
-			<th style="text-align: center;">Penilaian</th>
-			<th style="text-align: center;">Point</th>
-		</tr>
-	</thead>
+    .no-border {
+        width: 100%;
+        border-collapse: collapse !important;
+    }
+
+    .no-border td {
+        padding: 2px 0;
+        vertical-align: top;
+    }
+</style>
+{%
+	var first_row = data[0];
+%}
+{% for(let j=0, k=data.length; j<k; j++) { %}
+	{%
+		var row = data[j];
+		var row_class = j%2 == 0 ? "" : "even";
+		row_class += j%2 == 1 ? "" : " odd";
+	%}
+{% } %}
+<table border="1" width="90%" height="100%" class="main-print">
 	<tbody>
-		{% for(let j=0, k=data.length; j<k; j++) { %}
-			{%
-				var row = data[j];
-				var row_class = j%2 == 0 ? "" : "even";
-				row_class += j%2 == 1 ? "" : " odd";
-			%}
-			<tr class="{%= row_class %}">
-				<td>
-					{%= frappe.datetime.str_to_user(row.date) %}
-				</td>
-				<td>
-					{%= row.employee_name %}
-				</td>
-				<td>
-					{%= row.kpi %}
-				</td>
-				<td>
-					{%= row.description %}
-				</td>
-				<td>
-					{%= row.aktivitas_pekerjaan %}
-				</td>
-				<td style="text-align: right;">
-					{%= format_currency(row.target, " ") %}
-				</td>
-				<td style="text-align: right;">
-					{%= format_currency(row.weight, " ") %}
-				</td>
-				<td style="text-align: right;">
-					{%= format_currency(row.actual, " ") %}
-				</td>
-				<td style="text-align: right;">
-					{%= format_currency(row.score, " ") %}
-				</td>
-			</tr>
-		{% } %}
+		<tr>
+			<td class="text-center" rowspan="2">
+				{% if first_row.image %}
+				<div>
+					<img src='{%= first_row.image %}' style="width: 40px !important; margin-bottom: 3px !important;">
+				</div>
+				{% endif %}
+				<span class="customer-title">
+					{%= first_row.customer %}
+				</span>
+			</td>
+			<td colspan=3 class="text-center" width="77%" style="vertical-align: middle !important;">
+				<strong>FORMULIR</strong>
+			</td>
+		</tr>
+		<tr>
+			<td colspan=3 class="text-center" width="77%" style="vertical-align: middle !important;">
+				<strong>RESUME LAPORAN BULANAN K3</strong>
+			</td>
+		</tr>
+		<tr class="text-all">
+			<td colspan="4">
+
+				<div style="margin-top: 10px;">
+					<u><strong>DATA PROYEK</strong></u>
+				</div>
+
+				<table class="no-border">
+					<tr>
+						<td style="width: 25%;">
+							<strong>PROYEK</strong>
+						</td>
+						<td style="width: 75%;">
+							<strong>: {%= first_row.project_name %}</strong>
+						</td>
+					</tr>
+
+					<tr>
+						<td style="width: 25%;">
+							<strong>LOKASI</strong>
+						</td>
+						<td style="width: 75%;">
+							<strong>: {%= first_row.project_address %}</strong>
+						</td>
+					</tr>
+
+					<tr>
+						<td style="width: 25%;">
+							<strong>KONTRAKTOR</strong>
+						</td>
+						<td style="width: 75%;">
+							<strong>: PT HASTA KARYA PERDANA</strong>
+						</td>
+					</tr>
+
+					<tr>
+						<td style="width: 25%;">
+							<strong>PENGAWAS K3 KONTRAKTOR</strong>
+						</td>
+						<td style="width: 75%;">
+							<strong>: {%= first_row.employee_name_k3 %}</strong>
+						</td>
+					</tr>
+				</table>
+
+			</td>
+		</tr>
+		<tr class="text-all">
+			<td colspan="4">
+
+				<div style="margin-top: 10px;">
+					<u><strong>DATA K3</strong></u>
+				</div>
+
+				<table class="no-border">
+					<tr>
+						<td style="width: 25%;">
+							<strong>INSPEKSI K3</strong>
+						</td>
+						<td colspan="2" style="width: 75%;">
+							<strong>: ADA/TIDAK</strong>
+						</td>
+					</tr>
+
+					<tr>
+						<td style="width: 25%;">
+							<strong>PROSEDUR KERJA</strong>
+						</td>
+						<td style="width: 34%;">
+							<strong>: ADA/TIDAK</strong>
+						</td>
+						<td style="width: 33%;">
+							<strong>LENGKAP/TIDAK</strong>
+						</td>
+					</tr>
+
+					<tr>
+						<td style="width: 25%;">
+							<strong>WP & JSA</strong>
+						</td>
+						<td style="width: 34%;">
+							<strong>: ADA/TIDAK</strong>
+						</td>
+						<td style="width: 33%;">
+							<strong>LENGKAP/TIDAK</strong>
+						</td>
+					</tr>
+
+					<tr>
+						<td style="width: 25%;">
+							<strong>RAMBU-RAMBU</strong>
+						</td>
+						<td style="width: 34%;">
+							<strong>: ADA/TIDAK</strong>
+						</td>
+						<td style="width: 33%;">
+							<strong>LENGKAP/TIDAK</strong>
+						</td>
+					</tr>
+
+					<tr>
+						<td style="width: 25%;">
+							<strong>APD</strong>
+						</td>
+						<td style="width: 34%;">
+							<strong>: ADA/TIDAK</strong>
+						</td>
+						<td style="width: 33%;">
+							<strong>LENGKAP/TIDAK</strong>
+						</td>
+					</tr>
+
+					<tr>
+						<td style="width: 25%;">
+							<strong>SAFETY BRIEFING</strong>
+						</td>
+						<td colspan="2" style="width: 75%;">
+							<strong>: ADA/TIDAK</strong>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr class="text-all">
+			<td colspan="4">
+
+				<div style="margin-top: 10px;">
+					<u><strong>PELAPORAN INSIDEN</strong></u>
+				</div>
+
+				<table class="no-border">
+					<tr>
+						<td style="width: 25%;">
+							<strong>HAMPIR CELAKA</strong>
+						</td>
+						<td style="width: 75%;">
+							<strong>: </strong>
+						</td>
+					</tr>
+
+					<tr>
+						<td style="width: 25%;">
+							<strong>LUKA RINGAN</strong>
+						</td>
+						<td style="width: 75%;">
+							<strong>: </strong>
+						</td>
+					</tr>
+
+					<tr>
+						<td style="width: 25%;">
+							<strong>PERTOLONGAN PERTAMA</strong>
+						</td>
+						<td style="width: 75%;">
+							<strong>: </strong>
+						</td>
+					</tr>
+
+					<tr>
+						<td style="width: 25%;">
+							<strong>CEDERA PERAWATAN</strong>
+						</td>
+						<td style="width: 75%;">
+							<strong>: </strong>
+						</td>
+					</tr>
+
+					<tr>
+						<td style="width: 25%;">
+							<strong>HILANG HARI KERJA</strong>
+						</td>
+						<td style="width: 75%;">
+							<strong>: </strong>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr class="text-all">
+			<td colspan="4">
+				<table class="no-border">
+					<tr>
+						<td style="width: 33%;"></td>
+						<td style="width: 34%;"></td>
+						<td style="width: 33%;" class="text-center">
+							<strong></strong>................., ..............................,</strong>
+						</td>
+					</tr>
+					<tr>
+						<td class="text-center">
+							<strong>Dibuat Oleh:</strong>
+						</td>
+						<td></td>
+						<td class="text-center">
+							<strong>MENGETAHUI,</strong>
+						</td>
+					</tr>
+					<tr>
+						<td class="text-center">
+							<strong>PT Hasta Karya Perdana</strong>
+						</td>
+						<td></td>
+						<td class="text-center">
+							<strong>................................</strong>
+						</td>
+					</tr>
+					<tr>
+						<td height="90px"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="text-center">
+							<strong>(..................................)</strong>
+						</td>
+						<td></td>
+						<td class="text-center">
+							<strong>(..................................)</strong>
+						</td>
+					</tr>
+					<tr>
+						<td class="text-center">
+							<strong>Project Manager/Site Manager</strong>
+						</td>
+						<td></td>
+						<td class="text-center">
+							<strong>Manager</strong>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
 	</tbody>
 </table>
-
+<div class="page-break-before"></div>
+{% for(let j=0, k=data.length; j<k; j++) { %}
+	{%
+		var row = data[j];
+		var row_class = j%2 == 0 ? "" : "even";
+		row_class += j%2 == 1 ? "" : " odd";
+	%}
+	<table border="1" width="90%" height="100%" class="main-print">
+		<tbody>
+			<tr>
+				<td class="text-center">
+					{% if row.image %}
+					<div>
+						<img src='{%= row.image %}' style="width: 40px !important; margin-bottom: 3px !important;">
+					</div>
+					{% endif %}
+					<span class="customer-title">
+						{%= row.customer %}
+					</span>
+				</td>
+				<td colspan=3 class="text-center" width="77%" style="vertical-align: middle !important;">
+					<strong>LAPORAN HARIAN K3</strong>
+				</td>
+			</tr>
+			<tr>
+				<td colspan=4>&nbsp;</td>
+			</tr>
+			<tr class="text-all">
+				<td width="21%">Proyek</td>
+				<td width="38%">{%= row.project_name %}</td>
+				<td width="20%">Kondisi Cuaca</td>
+				<td width="21%">{%= row.weather %}</td>
+			</tr>
+			<tr class="text-all">
+				<td>Lokasi</td>
+				<td>{%= row.project_address %}</td>
+				<td>Jumlah Pekerja</td>
+				<td>{%= row.man_power %} orang</td>
+			</tr>
+			<tr class="text-all">
+				<td>Kontraktor</td>
+				<td>PT. Hasta Karya Perdana</td>
+				<td>WP & JSA</td>
+				<td>Lampirkan</td>
+			</tr>
+			<tr class="text-all">
+				<td>Disiapkan Oleh</td>
+				<td>{%= row.executor %}</td>
+				<td>Daftar Hadir</td>
+				<td>Lampirkan</td>
+			</tr>
+			<tr class="text-all">
+				<td>Hari/Tanggal</td>
+				<td>{%= frappe.datetime.str_to_user(row.date) %}</td>
+				<td>Foto Kegiatan</td>
+				<td>Lampirkan</td>
+			</tr>
+			<tr>
+				<td colspan=4 class="text-center">
+					<div class="text-all">Alat Pelindung Diri yang Digunakan</div>
+					<div>
+						<table width="100%" border="0">
+							<tr>
+								<td style="width: 8% !important;" class="list-td">
+									<div>
+										<img src="/files/1_body_harness.jpeg" style="width: 50px !important;">
+									</div>
+									<span class="list-label">
+										{% if row.body_harness == 1 %}
+											&#x2610;
+										{% else %}
+											&#x2611;
+										{% endif %}
+									</span>
+								</td>
+								<td style="width: 8% !important;" class="list-td">
+									<div>
+										<img src="/files/2_pelindung_mata.jpeg" style="width: 50px !important;">
+									</div>
+									<span class="list-label">
+										{% if row.pelindung_mata == 1 %}
+											&#x2610;
+										{% else %}
+											&#x2611;
+										{% endif %}
+									</span>
+								</td>
+								<td style="width: 8% !important;" class="list-td">
+									<div>
+										<img src="/files/3_masker.jpeg" style="width: 50px !important;">
+									</div>
+									<span class="list-label">
+										{% if row.masker == 1 %}
+											&#x2610;
+										{% else %}
+											&#x2611;
+										{% endif %}
+									</span>
+								</td>
+								<td style="width: 8% !important;" class="list-td">
+									<div>
+										<img src="/files/4_respirator.jpeg" style="width: 50px !important;">
+									</div>
+									<span class="list-label">
+										{% if row.respirator == 1 %}
+											&#x2610;
+										{% else %}
+											&#x2611;
+										{% endif %}
+									</span>
+								</td>
+								<td style="width: 8% !important;" class="list-td">
+									<div>
+										<img src="/files/5_kedok_las.jpeg" style="width: 50px !important;">
+									</div>
+									<span class="list-label">
+										{% if row.kedok_las == 1 %}
+											&#x2610;
+										{% else %}
+											&#x2611;
+										{% endif %}
+									</span>
+								</td>
+								<td style="width: 8% !important;" class="list-td">
+									<div>
+										<img src="/files/6_helm_safety.jpeg" style="width: 50px !important;">
+									</div>
+									<span class="list-label">
+										{% if row.helm_safety == 1 %}
+											&#x2610;
+										{% else %}
+											&#x2611;
+										{% endif %}
+									</span>
+								</td>
+								<td style="width: 8% !important;" class="list-td">
+									<div>
+										<img src="/files/7_earmuff_earplug.jpeg" style="width: 50px !important;">
+									</div>
+									<span class="list-label">
+										{% if row.earmuff_earplug == 1 %}
+											&#x2610;
+										{% else %}
+											&#x2611;
+										{% endif %}
+									</span>
+								</td>
+								<td style="width: 8% !important;" class="list-td">
+									<div>
+										<img src="/files/8_sarung_tangan.jpeg" style="width: 50px !important;">
+									</div>
+									<span class="list-label">
+										{% if row.sarung_tangan == 1 %}
+											&#x2610;
+										{% else %}
+											&#x2611;
+										{% endif %}
+									</span>
+								</td>
+								<td style="width: 8% !important;" class="list-td">
+									<div>
+										<img src="/files/9_sepatu_safety.jpeg" style="width: 50px !important;">
+									</div>
+									<span class="list-label">
+										{% if row.sepatu_safety == 1 %}
+											&#x2610;
+										{% else %}
+											&#x2611;
+										{% endif %}
+									</span>
+								</td>
+								<td style="width: 8% !important;" class="list-td">
+									<div>
+										<img src="/files/10_sabuk_pengaman.jpeg" style="width: 50px !important;">
+									</div>
+									<span class="list-label">
+										{% if row.sabuk_pengaman == 1 %}
+											&#x2610;
+										{% else %}
+											&#x2611;
+										{% endif %}
+									</span>
+								</td>
+								<td style="width: 8% !important;" class="list-td">
+									<div>
+										<img src="/files/11_pelampung.jpeg" style="width: 50px !important;">
+									</div>
+									<span class="list-label">
+										{% if row.pelampung == 1 %}
+											&#x2610;
+										{% else %}
+											&#x2611;
+										{% endif %}
+									</span>
+								</td>
+								<td style="width: 8% !important;" class="list-td">
+									<div>
+										<img src="/files/12_wearpack.jpeg" style="width: 50px !important;">
+									</div>
+									<span class="list-label">
+										{% if row.wearpack == 1 %}
+											&#x2610;
+										{% else %}
+											&#x2611;
+										{% endif %}
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan=4 class="text-left detail-activities">
+					<span style="white-space: pre-line;" class="text-all">{%= row.activities %}</span>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" class="text-center detail-result">
+					<div class="text-all">
+						Pelaporan Insiden/ Unsafe Action / Unsafe Condition
+					</div>
+			
+					<div style="white-space: pre-line;" class="text-all">
+						<i>{%= row.result %}</i>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan=4>
+					<table border=0 width="100%">
+						<tr class="text-all text-center">
+							<td width="34%">
+								Dilaporkan Oleh,
+							</td>
+							<td width="33%">
+								Diperiksa Oleh,
+							</td>
+							<td width="33%">
+								Diperiksa Oleh,
+							</td>
+						</tr>
+						<tr class="text-all text-center">
+							<td>Pengawas K3 Kontraktor</td>
+							<td>SPV K3</td>
+							<td>Manajer Operasi</td>
+						</tr>
+						<tr>
+							<td height="70px"></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr class="text-all text-center">
+							<td>..............................</td>
+							<td>..............................</td>
+							<td>..............................</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	{% if j < data.length - 1 %}
+	<div class="page-break-before"></div>
+	{% } %}
+{% } %}
 <style>
-	.even td {
-		background-color: #f9f9f9;
+	.page-break-before {
+		break-before: page;
+		clear: both;
 	}
-
-	.odd td {
-		background-color: #ffffff;
+	.main-print {
+		margin-left: 30px !important;
+		margin-top: 30px !important;
+	}
+	.list-td {
+		text-align: center !important;
+	}
+	.list-label {
+		font-size: 24px !important;
+		font-weight: bold !important;
+		width: 100% !important;
+		text-align: center !important;
+	}
+	.customer-title {
+		font-size: 10px !important;
+	}
+	.text-all {
+		font-size: 11px !important;
+		font-weight: bold !important;
+	}
+	.detail-activities {
+		height: 200px !important;
+	}
+	.detail-result {
+		height: 150px !important;
 	}
 </style>

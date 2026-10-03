@@ -73,17 +73,29 @@ def get_projects(is_active=None, project_name=None):
         LEFT JOIN (
             SELECT
             rea.project,
-            SUM(COALESCE(reade.budget_amount, 0)) AS total_realisasi
-            FROM `tabRealisasi Anggaran Proyek` AS rea
-            LEFT JOIN `tabForm Payment Entry Account Realisasi` AS reade ON reade.parent = rea.name = reade.parenttype = 'Realisasi Anggaran Proyek'
+            SUM(COALESCE(reade.final_realization, 0)) AS total_realisasi
+            FROM `tabLaporan Monitoring RAP` AS rea
+            LEFT JOIN `tabLaporan Monitoring RAP Detail` AS reade ON reade.parent = rea.name AND reade.parenttype = 'Laporan Monitoring RAP'
             WHERE rea.docstatus != 2
             GROUP BY rea.project) AS realisasi ON realisasi.project = proj.name
         LEFT JOIN (
             SELECT
                 project,
                 SUM(COALESCE(task_weight, 0)) AS total_weight,
-                SUM(CASE WHEN exp_end_date <= NOW() THEN (COALESCE(task_weight, 0)) ELSE 0 END) AS total_pv,
-                SUM(CASE WHEN exp_end_date <= NOW() THEN (COALESCE(task_weight, 0)*COALESCE(progress,0)/100) ELSE 0 END) AS total_ev
+                SUM(
+                    CASE WHEN DATE(NOW()) BETWEEN exp_start_date AND exp_end_date AND exp_duration > 0
+                        THEN (COALESCE(task_weight, 0) / exp_duration) * (DATEDIFF(DATE(NOW()), exp_start_date)+1)
+                        WHEN DATE(NOW()) > exp_end_date AND exp_duration > 0
+                        THEN (COALESCE(task_weight, 0) / exp_duration) * (DATEDIFF(exp_end_date, exp_start_date)+1)
+                        ELSE 0 END
+                    ) AS total_pv,
+                SUM(
+                    CASE WHEN DATE(NOW()) BETWEEN exp_start_date AND exp_end_date AND exp_duration > 0
+                        THEN ((COALESCE(task_weight, 0) / exp_duration) * (DATEDIFF(DATE(NOW()), exp_start_date)+1) * COALESCE(progress,0)/100)
+                        WHEN DATE(NOW()) > exp_end_date AND exp_duration > 0
+                        THEN ((COALESCE(task_weight, 0) / exp_duration) * (DATEDIFF(exp_end_date, exp_start_date)+1) * COALESCE(progress,0)/100)
+                        ELSE 0 END
+                    ) AS total_ev
             FROM tabTask WHERE `status` NOT IN ('Cancelled', 'Template')
             GROUP BY project
         ) AS spi ON spi.project = proj.name

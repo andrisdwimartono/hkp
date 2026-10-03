@@ -22,7 +22,7 @@ def get_tasks_for_calendar(project=None):
     tasks = frappe.get_all(
         "Task",
         filters=filters,
-        fields=["name", "subject", "project", "exp_start_date", "exp_end_date", "status", "color", "is_group", "task_weight", "completed_on", "progress"]
+        fields=["name", "subject", "project", "exp_start_date", "exp_end_date", "status", "color", "is_group", "task_weight", "completed_on", "progress", "exp_duration", "weight_per_day"]
     )
 
     return tasks

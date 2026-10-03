@@ -290,7 +290,7 @@
   {
    "fieldname": "result",
    "fieldtype": "Small Text",
-   "label": "Result"
+   "label": "Pelaporan Insiden"
   },
   {
    "default": "1",
@@ -317,7 +317,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-09-13 05:15:32.758418",
+ "modified": "2026-10-03 11:01:29.749699",
  "modified_by": "Administrator",
  "module": "Operasional",
  "name": "Daily K3",

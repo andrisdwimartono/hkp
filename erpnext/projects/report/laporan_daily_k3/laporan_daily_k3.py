@@ -113,14 +113,24 @@ def get_data(filters):
 				CASE WHEN `tabDaily K3`.sepatu_safety THEN 1 ELSE 0 END +
 				CASE WHEN `tabDaily K3`.sabuk_pengaman THEN 1 ELSE 0 END +
 				CASE WHEN `tabDaily K3`.pelampung THEN 1 ELSE 0 END +
-				CASE WHEN `tabDaily K3`.wearpack THEN 1 ELSE 0 END ) * 100.0 / 12 AS checklist_k3
+				CASE WHEN `tabDaily K3`.wearpack THEN 1 ELSE 0 END ) * 100.0 / 12 AS checklist_k3,
+			team.employee_name AS employee_name_k3
 		FROM `tabDaily K3`
 		LEFT JOIN `tabProject` ON `tabDaily K3`.project = `tabProject`.name
 		LEFT JOIN `tabCustomer` ON `tabProject`.customer = `tabCustomer`.name
+		LEFT JOIN (
+			SELECT
+				pt.parent,
+				pt.employee_name
+			FROM `tabProject Team` AS pt
+			WHERE pt.parent = %s AND pt.designation = 'Pelaksana K3L'
+			ORDER BY pt.name
+			LIMIT 1
+		) AS team ON team.parent = `tabDaily K3`.project
 		WHERE `tabDaily K3`.project = %s
 		AND `tabDaily K3`.date BETWEEN %s AND %s
 		ORDER BY `tabDaily K3`.date ASC
-	""", (filters.get("project"), filters.get("from_date"), filters.get("to_date")), as_dict=1)
+	""", (filters.get("project"), filters.get("project"), filters.get("from_date"), filters.get("to_date")), as_dict=1)
 
 
 	

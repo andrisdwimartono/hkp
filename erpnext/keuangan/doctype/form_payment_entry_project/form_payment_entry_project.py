@@ -138,8 +138,8 @@ def get_permission_query_conditions(user):
 	usr = frappe.db.sql("""SELECT * FROM `tabUser` where name = '{0}'""".format(frappe.session.user), as_dict=1)
 	if usr and usr[0].role_profile_name == "Site Manager":
 		return """(`tabForm Payment Entry Project`.project in (SELECT parent FROM `tabProject Team` WHERE user = '{0}'))""".format(frappe.session.user)
-	elif frappe.session.user != "hasta.rizkiamalia@gmail.com" and frappe.session.user != "kasir@gmail.com" and frappe.session.user != "hasta.nurainihaqiqi@gmail.com" and frappe.session.user != "hasta.fauziyyah@gmail.com" and frappe.session.user != "Administrator" and frappe.session.user != "hasta.vaniaharyani@gmail.com":
-		return "(`tabForm Payment Entry Project`.`owner` NOT IN ('hasta.rizkiamalia@gmail.com', 'kasir@gmail.com', 'hasta.nurainihaqiqi@gmail.com', 'hasta.fauziyyah@gmail.com', 'Administrator', 'hasta.vaniaharyani@gmail.com'))"
+	elif frappe.session.user != "hasta.rizkiamalia@gmail.com" and frappe.session.user != "kasir@gmail.com" and frappe.session.user != "hasta.nurainihaqiqi@gmail.com" and frappe.session.user != "hasta.fauziyyah@gmail.com" and frappe.session.user != "Administrator" and frappe.session.user != "hasta.yunikeu@gmail.com":
+		return "(`tabForm Payment Entry Project`.`owner` NOT IN ('hasta.rizkiamalia@gmail.com', 'kasir@gmail.com', 'hasta.nurainihaqiqi@gmail.com', 'hasta.fauziyyah@gmail.com', 'Administrator', 'hasta.yunikeu@gmail.com'))"
 	else:
 		return ""
 	  

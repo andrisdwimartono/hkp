@@ -705,7 +705,7 @@ def get_permission_query_conditions(user):
 	# 	return """(`tabProject`.name in (SELECT parent FROM `tabProject Team` WHERE user = '{0}'))""".format(frappe.session.user)
 	# else:
 	# 	return ""
-	has_site_manager_role = frappe.db.sql("""SELECT * FROM `tabHas Role` WHERE parent = '{0}' AND role = 'Site Manager'""".format(frappe.session.user), as_dict=1)
+	has_site_manager_role = frappe.db.sql("""SELECT * FROM `tabHas Role` WHERE parent = '{0}' AND role IN ('Site Manager', 'Staff K3')""".format(frappe.session.user), as_dict=1)
 	if has_site_manager_role:
 		return """(`tabProject`.name in (SELECT parent FROM `tabProject Team` WHERE user = '{0}'))""".format(frappe.session.user)
 	else:
